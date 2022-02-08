@@ -91,7 +91,7 @@ const userLogin = async (req, res) => {
         //Password matches generating token
         const payload = { userID: user._id, userEmail: user.email };
         let token = jwt.sign(payload, process.env.JWT_SECRET, {
-            expiresIn: '1h',
+            expiresIn: 12*60*60,
         });
         user.token = token;
         await user.save();
