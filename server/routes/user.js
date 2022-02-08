@@ -5,11 +5,6 @@ const bcrypt = require('bcrypt');
 
 const userRegister = async (req, res) => {
     try {
-        const errors = validationResult(req);
-        console.log('Errors', errors);
-        if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
-        }
         console.log('register User route');
         let {
             name,
@@ -87,8 +82,6 @@ const userLogin = async (req, res) => {
             return res
                 .status(401)
                 .send({ success: false, message: 'Invalid Credentials' });
-        console.log('Password', password);
-        console.log('Hashed Password', user.password);
         let passwordMatches = await bcrypt.compare(password, user.password);
         if (!passwordMatches)
             return res

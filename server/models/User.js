@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Event = require('./Event');
+const DelCard = require('./DelegateCard')
 const UserSchema = new mongoose.Schema({
     role: {
         type: String,
@@ -84,6 +85,13 @@ const UserSchema = new mongoose.Schema({
             ref: 'Team',
         },
     ],
+    delegateCard:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'DelCard'
+    }],
+    QRCode:{
+        type:String
+    }
 });
 
 module.exports = User = mongoose.model('User', UserSchema);
