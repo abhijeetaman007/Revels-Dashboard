@@ -1,11 +1,6 @@
 const mongoose = require('mongoose');
 const Event = require('./Event');
 const UserSchema = new mongoose.Schema({
-    // userID:{
-    //     type:Number,
-    //     required:true,
-    //     unique:true
-    // },
     role: {
         type: String,
         default: 'User',
@@ -37,6 +32,10 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
+    },
+    registrationNumber:{
+        type:String,
+        required:true
     },
     branch: {
         type: String,
