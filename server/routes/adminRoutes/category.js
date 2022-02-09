@@ -1,8 +1,17 @@
 const Category = require('../../models/Category');
 const data = require('../../utils/categories');
+const jwt = require('jsonwebtoken');
 
-const registerCategory = async (req, res) => {
+//Private Route -- Only for SysAdmin
+const categoryRegister = async (req, res) => {
     try {
+        let secretKey = req.headers['authorization'];
+        //For Protection 
+        if (secretKey != 'sysadminisbest')
+            return res.status(403).send({
+                success: false,
+                msg: 'Not Authorized,Contact System Admin Team',
+            });
         data.categories.forEach(async (cat) => {
             try {
                 const result = Math.random().toString(36).substring(2, 7);
@@ -31,30 +40,59 @@ const registerCategory = async (req, res) => {
             .send({ success: false, msg: 'Internal Server Error' });
     }
 };
-const loginCategory = async (req, res) => {
+const categoryLogin = async (req, res) => {
     try {
         const category = await Category.findOne({
             categoryId: req.body.categoryId,
         });
-        if (!category)
-            return res.status(401).json({ message: 'Invalid category' });
+        if (!category) return res.status(401).json({ msg: 'Invalid category' });
 
         const isValid = req.body.password == category.password;
-        if (!isValid)
-            return res.status(401).json({ message: 'Invalid password' });
+        if (!isValid) return res.status(401).json({ msg: 'Invalid password' });
 
-        let token = jwt.sign(category, process.env.JWT_SECRET, {
-            expiresIn: 12 * 60 * 60,
+        let payload = {
+            category_Id: category._id,
+            categoryId: category.categoryId,
+        };
+        let token = jwt.sign(payload, process.env.JWT_SECRET, {
+            expiresIn: 60 * 60,
         });
         category.token = token;
         await category.save();
         return res.status(200).json({
             msg: 'Category Signed in Successfully ',
             success: true,
+            data: token,
         });
     } catch (err) {
-        return res.status(500).json({ message: error.toString() });
+        console.log(err);
+        return res
+            .status(500)
+            .json({ success: false, msg: 'Internal Server Error' });
     }
 };
 
-module.exports = { registerCategory };
+const categoryLogout = async (req, res) => {
+    try {
+        let token = req.headers['authorization'];
+        let category = await Category.findOne({ token });
+        if (category) {
+            category.token = '';
+            await category.save();
+            return res.status(200).send({
+                success: true,
+                msg: 'Logged Out Successfully',
+            });
+        } else {
+            return res
+                .status(400)
+                .send({ success: false, msg: 'Not Logged In' });
+        }
+    } catch (err) {
+        return res
+            .status(500)
+            .json({ success: false, msg: 'Internal Server Error' });
+    }
+};
+
+module.exports = { categoryRegister, categoryLogin, categoryLogout };

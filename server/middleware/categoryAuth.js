@@ -1,24 +1,17 @@
-const User = require('../models/User');
+const Category = require('../models/Category');
 var jwt = require('jsonwebtoken');
 
-const isUserLoggedIn = async (req, res, next) => {
+const isCategoryLoggedIn = async (req, res, next) => {
     try {
         const token = req.headers['authorization'];
         if (typeof token !== 'undefined') {
             let payload = await jwt.verify(token, process.env.JWT_SECRET);
             console.log('Payload ', payload);
             if (payload) {
-                let user = await User.findById(payload.userID);
-                if (user) {
-                    if (user.isEmailVerified) {
-                        req.requestUser = user;
-                         next();
-                    } else {
-                        return res.status(400).send({
-                            success: false,
-                            msg: 'Please verify Email to login',
-                        });
-                    }
+                let category = await User.findById(payload.category_ID);
+                if (category) {
+                    req.requestUser = user;
+                    next();
                 } else {
                     return res.status(401).send({
                         success: false,
@@ -28,7 +21,7 @@ const isUserLoggedIn = async (req, res, next) => {
             } else {
                 return res.status(401).send({
                     success: false,
-                    msg: 'Token Expired,Please Login Again',
+                    msg: 'Token Expired,Please Login',
                 });
             }
         } else {
@@ -52,15 +45,4 @@ const isUserLoggedIn = async (req, res, next) => {
     }
 };
 
-// const isSC = async (req, res, next) => {
-//     try {
-//         if (req.requestUser.role == 'SC') next();
-//         return res.send({ success: false, msg: 'Access Denied' });
-//     } catch (err) {
-//         return res
-//             .status(500)
-//             .send({ success: false, msg: 'Internal Server Error' });
-//     }
-// };
-
-module.exports = { isUserLoggedIn };
+module.exports = { isCategoryLoggedIn };

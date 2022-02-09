@@ -28,7 +28,7 @@ const EventSchema = new mongoose.Schema({
         type: String,
     },
     prize: {
-        type: Number,
+        type: String,
     },
     minMembers: {
         type: Number,

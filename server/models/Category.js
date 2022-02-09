@@ -4,21 +4,19 @@ const Event = require('./Event')
 const categorySchema = mongoose.Schema({
     categoryId: {
         type: String,
-        // required: true,
+        required: true,
         unique: true,
     },
     name: {
         type: String,
-        // required: true,
         unique: true,
     },
     password: {
         type: String,
-        // required: true,
+        required: true,
     },
     email: {
         type: String,
-        // required: true,
     },
     token:{
         type:String,
