@@ -3,8 +3,6 @@ const { check, validationResult } = require('express-validator');
 const userRegistrationValidation = () => {
     return [
         check('name')
-            .isAlpha()
-            .withMessage('Must contain only alphabetical characters')
             .isLength({ min: 3 })
             .withMessage('Must be at least 3 characters long'),
         check('email').isEmail().withMessage('Enter a valid Email'),
@@ -18,13 +16,13 @@ const userRegistrationValidation = () => {
         check(
             'registrationNumber',
             'Please enter College Registration Number'
-        ).exists(),
-        check('college', 'Enter your College name').exists(),
-        check('branch', 'Enter your branch').exists(),
-        check('isMahe', 'Do you belong to MAHE or not?').exists(),
-        check('IDCardLink', 'Please enter ID Card Link').exists(),
-        check('covidVaccinationLink', 'Please enter ID Card Link').exists(),
-        check('state', 'Enter a valid State').exists(),
+        ).not().isEmpty(),
+        check('college', 'Enter your College name').not().isEmpty(),
+        check('branch', 'Enter your branch').not().isEmpty(),
+        check('isMahe', 'Do you belong to MAHE or not?').not().isEmpty(),
+        check('IDCardLink', 'Please enter ID Card Link').not().isEmpty(),
+        check('covidVaccinationLink', 'Please enter ID Card Link').not().isEmpty(),
+        check('state', 'Enter a valid State').not().isEmpty(),
     ];
 };
 
@@ -48,7 +46,7 @@ const userValidate = (req, res, next) => {
         .array()
         .map((err) => extractedErrors.push({ [err.param]: err.msg }));
 
-    return res.send({ success: false, message: extractedErrors });
+    return res.send({ success: false, msg: extractedErrors });
 };
 
 module.exports = {

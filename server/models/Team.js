@@ -15,7 +15,12 @@ const TeamSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    members: [{ ref: 'User' }],
+    members: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+        },
+    ],
     timeStamp: {
         type: Date,
         default: Date.now(),

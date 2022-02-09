@@ -4,9 +4,14 @@ const DelCard = require('./DelegateCard')
 const UserSchema = new mongoose.Schema({
     role: {
         type: String,
-        default: 'User',
+        default: 'USER',
+        enum: ['USER'],
     },
     token: {
+        type: String,
+        default: '',
+    },
+    passwordResetToken: {
         type: String,
         default: '',
     },

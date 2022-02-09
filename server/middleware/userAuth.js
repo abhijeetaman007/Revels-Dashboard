@@ -7,38 +7,47 @@ const isUserLoggedIn = async (req, res, next) => {
         if (typeof token !== 'undefined') {
             let payload = await jwt.verify(token, process.env.JWT_SECRET);
             console.log('Payload ', payload);
-            if (!payload) {
-                return res.status(400).send({
-                    success: false,
-                    message: 'Token Invalid, Please Login',
-                });
+            if (payload) {
+                let user = await User.findById(payload.userID);
+                if (user) {
+                    if (user.isEmailVerified) {
+                        req.requestUser = user;
+                        next();
+                    }
+                    return res.status(400).send({
+                        success: false,
+                        msg: 'Please verify Email to login',
+                    });
+                }
             }
-            let user = await User.findOne({ token });
-            if (!user) {
-                return res.status(403).send({
-                    success: false,
-                    message: 'Token Invalid,Please Login',
-                });
-            }
-            req.token = token;
-            req.requestUser = user;
-            next();
-        } else {
-            res.status(403).send({
-                success: false,
-                message: 'Token Invalid,Please Login',
-            });
         }
+        return res.status(403).send({
+            success: false,
+            msg: 'Token Invalid,Please Login',
+        });
     } catch (err) {
         console.log(err);
         if (err.name == 'TokenExpiredError') {
             console.log('Token Expired');
-            res.send({
+            return res.send({
                 success: false,
                 msg: 'Token Expired,Please Login Again',
             });
         }
-        return res.status(500).send({ success: false, msg: 'Internal Server Error' });
+        return res
+            .status(500)
+            .send({ success: false, msg: 'Internal Server Error' });
+    }
+};
+
+const isSC = async (req, res, next) => {
+    try {
+        if (req.requestUser.role == 'SC') next();
+        return res.send({ success: false, msg: 'Access Denied' });
+    } catch (err) {
+        return res
+            .status(500)
+            .send({ success: false, msg: 'Internal Server Error' });
     }
 };
 

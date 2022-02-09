@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Category = require('./Category');
 
 const EventSchema = new mongoose.Schema({
     eventID: {
@@ -11,7 +12,8 @@ const EventSchema = new mongoose.Schema({
         required: true,
     },
     category: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'Category'
     },
     description: {
         type: String,
@@ -45,12 +47,28 @@ const EventSchema = new mongoose.Schema({
         },
     ],
     deadline: {
-        type: String,
+        type: Date,
     },
     tags: [
         {
             type: String,
         },
+    ],
+    results: [
+        {
+            round: {
+                type: Number,
+                required:true
+            },
+            candidate: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'User',
+                required:true
+            },
+            position: {
+                type: Number,
+            },
+        }
     ],
 });
 

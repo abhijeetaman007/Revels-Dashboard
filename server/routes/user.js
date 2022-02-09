@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 
 const userRegister = async (req, res) => {
     try {
-        console.log('register User route');
+        console.log('Register User route');
         let {
             name,
             email,
@@ -48,6 +48,11 @@ const userRegister = async (req, res) => {
         }
         const salt = await bcrypt.genSalt(10);
         password = await bcrypt.hash(password, salt);
+
+        const passwordResetToken = jwt.sign(
+            { userEmail: email },
+            process.env.JWT_SECRET
+        );
         const newUser = new User({
             name,
             email,
@@ -61,14 +66,15 @@ const userRegister = async (req, res) => {
             IDCardLink,
             covidVaccinationLink,
             accommodationRequired,
+            passwordResetToken,
         });
         await newUser.save();
-        res.status(200).send({ success: true, message: 'User Registered' });
+        res.status(200).send({ success: true, msg: 'User Registered' });
     } catch (err) {
         console.log(err);
         res.status(500).send({
             success: false,
-            message: 'Internal Server Error',
+            msg: 'Internal Server Error',
         });
     }
 };
@@ -81,30 +87,34 @@ const userLogin = async (req, res) => {
         if (!user)
             return res
                 .status(401)
-                .send({ success: false, message: 'Invalid Credentials' });
+                .send({ success: false, msg: 'Invalid Credentials' });
         let passwordMatches = await bcrypt.compare(password, user.password);
         if (!passwordMatches)
             return res
                 .status(401)
-                .send({ success: false, message: 'Invalid Credentials' });
+                .send({ success: false, msg: 'Invalid Credentials' });
 
-        //Password matches generating token
-        const payload = { userID: user._id, userEmail: user.email };
+        //Password matches,generating token
+        const payload = {
+            userID: user._id,
+            userEmail: user.email,
+            userRole: user.role,
+        };
         let token = jwt.sign(payload, process.env.JWT_SECRET, {
-            expiresIn: 12*60*60,
+            expiresIn: 12 * 60 * 60,
         });
         user.token = token;
         await user.save();
         res.status(200).send({
             success: true,
-            message: 'Login Successful',
+            msg: 'Login Successful',
             data: token,
         });
     } catch (err) {
         console.log(err);
         res.status(500).send({
             success: false,
-            message: 'Internal Server Error',
+            msg: 'Internal Server Error',
         });
     }
 };
@@ -115,18 +125,18 @@ const userLogout = async (req, res) => {
         if (!user)
             return res
                 .status(400)
-                .send({ success: false, message: 'User not LoggedIn' });
+                .send({ success: false, msg: 'User not LoggedIn' });
         user.token = '';
         await user.save();
         res.status(200).send({
             success: true,
-            message: 'Successfully LoggedOut',
+            msg: 'Successfully LoggedOut',
         });
     } catch (err) {
         console.log(err);
         res.status(500).send({
             success: false,
-            message: 'Internal Server Error',
+            msg: 'Internal Server Error',
         });
     }
 };
