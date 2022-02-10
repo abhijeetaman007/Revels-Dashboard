@@ -1,5 +1,5 @@
 const Team = require("../../models/Team");
-const { mailer } = require("../utils/mailer");
+const Event = require("../../models/Event");
 const nanoid = require("nanoid");
 
 const teamRegister = async (req, res) => {
@@ -98,6 +98,7 @@ const leaveTeam = async (req, res) => {
         msg: "Team successfully deleted",
       });
     }
+
     return res.json({
       success: true,
       msg: "User left team successfully",
