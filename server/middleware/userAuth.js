@@ -52,6 +52,21 @@ const isUserLoggedIn = async (req, res, next) => {
     }
 };
 
+
+const isEmailVerified = async(req,res,next) =>{
+    try
+    {
+        let user = await User.findOne({email:req.body.email})
+        if(!user.isEmailVerified)
+            return res.status(400).send({success:false,msg:'Please Verify Email to login'})
+        next()
+    }
+    catch(err)
+    {
+        console.log(err);
+        return res.status(500).send({success:false,msg:'Internal Server Error'})
+    }
+}
 // const isSC = async (req, res, next) => {
 //     try {
 //         if (req.requestUser.role == 'SC') next();
@@ -63,4 +78,4 @@ const isUserLoggedIn = async (req, res, next) => {
 //     }
 // };
 
-module.exports = { isUserLoggedIn };
+module.exports = { isUserLoggedIn,isEmailVerified };

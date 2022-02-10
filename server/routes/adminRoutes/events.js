@@ -30,6 +30,7 @@ const addEvent = async (req, res) => {
             eventHead,
             deadline,
         });
+        //TODO : Add validations
         await event.save();
         console.log(event);
         return res.status(200).send({ success: true, msg: 'Event Added' });
@@ -40,10 +41,8 @@ const addEvent = async (req, res) => {
 };
 const getCategoryEvent = async (req, res) => {
     try {
-        let category_Id = req.params.category_Id;
-        let events = await Event.find({ category: category_Id }).populate(
-            'category'
-        );
+        let category_Id = req.body.category_Id;
+        let events = await Event.find({ category: category_Id })
         return res.send({ success: true, data: events });
     } catch {
         console.log(err);

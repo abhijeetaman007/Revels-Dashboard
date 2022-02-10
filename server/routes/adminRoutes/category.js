@@ -62,7 +62,7 @@ const categoryLogin = async (req, res) => {
         return res.status(200).json({
             msg: 'Category Signed in Successfully ',
             success: true,
-            data: token,
+            data: category,
         });
     } catch (err) {
         console.log(err);

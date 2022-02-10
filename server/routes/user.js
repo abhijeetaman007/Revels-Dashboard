@@ -72,7 +72,7 @@ const userRegister = async (req, res) => {
             passwordResetToken,
         });
         await newUser.save();
-        let message = `Please Click to verify http://localhost:${process.env.token}/api/user/verify/${passwordResetToken}`;
+        let message = `Please Click to verify http://localhost:${process.env.PORT}/api/user/verify/${passwordResetToken}`;
         mailer(newUser.email, "Verify Email - REVELS '22", message);
 
         return res.status(200).send({ success: true, msg: 'User Registered' });
@@ -82,6 +82,32 @@ const userRegister = async (req, res) => {
             success: false,
             msg: 'Internal Server Error',
         });
+    }
+};
+
+const resendVerificationLink = async (req, res) => {
+    try {
+        if (
+            !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
+                req.body.email
+            )
+        )
+            return res
+                .status(400)
+                .send({ success: false, msg: 'Please enter a valid email' });
+        let user = await User.findOne({ email: req.body.email });
+        if (!user)
+            return res
+                .status(400)
+                .send({ success: false, msg: 'Email doesnot exists' });
+        let message = `Please Click to verify http://localhost:${process.env.PORT}/api/user/verify/${user.passwordResetToken}`;
+        mailer(user.email, "Verify Email - REVELS '22", message);
+        return res.status(200).send({ success: true, msg: 'Email Resent' });
+    } catch (err) {
+        console.log(err);
+        return res
+            .status(500)
+            .send({ success: false, msg: 'Internal Server Error' });
     }
 };
 
@@ -111,8 +137,6 @@ const userLogin = async (req, res) => {
         });
         user.token = token;
         await user.save();
-        delete user['password'];
-        console.log(user);
         res.status(200).send({
             success: true,
             msg: 'Login Successful',
@@ -151,19 +175,19 @@ const userLogout = async (req, res) => {
 
 const userEmailVerify = async (req, res) => {
     try {
-        let token = req.params;
-        let newToken = jwt.sign({ userEmail: email }, process.env.JWT_SECRET, {
-            expiresIn: '365d',
-        });
-        await User.updateOne(
+        let token = req.params.token;
+        let user = await User.findOne({ passwordResetToken: token });
+        if (!user) return res.send({ success: false, msg: 'Token Invalid' });
+        let newToken = jwt.sign(
+            { userEmail: user.email },
+            process.env.JWT_SECRET,
             {
-                passwordResetToken: token,
-            },
-            {
-                isEmailVerified: true,
-                passwordResetToken: newToken,
+                expiresIn: '365d',
             }
         );
+        user.passwordResetToken = newToken;
+        user.isEmailVerified = true;
+        await user.save();
         return res.send({ success: true, msg: 'User Verified' });
     } catch (err) {
         console.log(err);
@@ -174,6 +198,10 @@ const userEmailVerify = async (req, res) => {
 const userPassResetLink = async (req, res) => {
     try {
         let { email } = req.body;
+        if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+            return res
+                .status(400)
+                .send({ success: false, msg: 'Please enter a valid email' });
         let user = await User.findOne({ email });
         if (!user) {
             return res.send({
@@ -181,9 +209,9 @@ const userPassResetLink = async (req, res) => {
                 msg: 'User does not exists,Please register ',
             });
         }
-        let resetLink = `${process.env.BASE_URL}/forgetpass/${obj.token}/${user.passwordResetToken}`;
+        let resetLink = `${process.env.BASE_URL}forgetpass/${user.passwordResetToken}`;
         let message = `Click here to change yout password ${resetLink}`;
-        mailer(email, "Reset Password - REVELS '22", resetLink, message);
+        mailer(email, "Reset Password - REVELS '22", message);
         return res.send({ success: true, msg: 'Password Reset Link emailed' });
     } catch (err) {
         console.log(err);
@@ -192,8 +220,7 @@ const userPassResetLink = async (req, res) => {
 };
 const userPassResetVerify = async (req, res) => {
     try {
-        let token = req.body.token;
-        let newPassword = req.body.password;
+        let { token, newPassword, email } = req.body;
         let user = await User.findOne({ email });
         if (!user) {
             return res
@@ -223,7 +250,7 @@ const userPassResetVerify = async (req, res) => {
         );
         user.password = newPassword;
         user.passwordResetToken = newPasswordResetToken;
-
+        await user.save();
         return res.send({
             success: true,
             msg: 'Password Changed Successfully',
@@ -238,6 +265,7 @@ module.exports = {
     userRegister,
     userLogin,
     userLogout,
+    resendVerificationLink,
     userEmailVerify,
     userPassResetLink,
     userPassResetVerify,

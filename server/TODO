@@ -1,0 +1,18 @@
+//User related be done on first priority -- Required by APPDEV  
+User Related Routes:
+    - Team related routes:
+         - makeTeam
+         - joinTeam
+         - leaveTeam etc.
+    - Delegate Card routes:
+        - buyDelegateCard/(Decide on Payment Gateway)
+        - getUserDelegateCard
+    - Event Related:
+        - registerEvent
+        - getRegisteredEvent
+        - getRegisteredEventResults(with some restriction on when to show)
+    
+
+Admin/Category Related Routes:
+
+SuperAdmin Related Routes:

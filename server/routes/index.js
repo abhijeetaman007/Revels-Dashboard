@@ -5,7 +5,7 @@ const {
     userValidate,
     loginValidation,
 } = require('../middleware/validate');
-const { isUserLoggedIn } = require('../middleware/userAuth');
+const { isUserLoggedIn, isEmailVerified } = require('../middleware/userAuth');
 const { isCategoryLoggedIn } = require('../middleware/categoryAuth');
 const {
     userRegister,
@@ -14,6 +14,7 @@ const {
     userEmailVerify,
     userPassResetLink,
     userPassResetVerify,
+    resendVerificationLink,
 } = require('./user');
 const {
     categoryRegister,
@@ -34,11 +35,18 @@ router.post(
     userValidate,
     userRegister
 );
-router.post('/user/login', loginValidation(), userValidate, userLogin);
+router.post(
+    '/user/login',
+    loginValidation(),
+    userValidate,
+    isEmailVerified,
+    userLogin
+);
 router.get('/user/logout', userLogout);
 router.get('/user/verify/:token', userEmailVerify);
-router.get('/user/forgetpass/', userPassResetLink);
-router.post('/user/forgetpass/', userPassResetVerify);
+router.post('/user/resendlink',resendVerificationLink)
+router.post('/user/forgetpass/', userPassResetLink);
+router.post('/user/forgetpass/verify', userPassResetVerify);
 
 //Admin Routes :
 //Category Routes

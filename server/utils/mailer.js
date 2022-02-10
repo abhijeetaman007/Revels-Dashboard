@@ -12,7 +12,7 @@ const mailer = async (to, subject, message) => {
         };
         var transporter = nodemailer.createTransport(smtpConfig);
         var mailOptions = {
-            from: '"System Admin - Revels" <webdevrevels22@gmail.com>', // sender address
+            from: '"System Admin - Revels" <sysadrevels22@gmail.com>', // sender address
             to: to, // list of receivers
             subject: subject, // Subject line
             text: subject, // plaintext body
@@ -27,10 +27,11 @@ const mailer = async (to, subject, message) => {
                 return transport.close();
             }
         });
+        console.log("Email Sent to ",to)
     } catch (error) {
         // console.log(error);
         throw error;
     }
 };
 
-module.exports = mailer;
+module.exports = {mailer};
