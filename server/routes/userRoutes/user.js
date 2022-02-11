@@ -1,7 +1,7 @@
-const User = require('../models/User');
+const User = require('../../models/User');
 var jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const { mailer } = require('../utils/mailer');
+const { mailer } = require('../../utils/mailer');
 
 const userRegister = async (req, res) => {
     try {
@@ -49,6 +49,14 @@ const userRegister = async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         password = await bcrypt.hash(password, salt);
 
+        let ids = await User.find({}, { userID: 1, _id: 0 })
+            .sort({ userID: -1 })
+            .limit(1);
+        let userID = 1001;
+        if (ids[0]) {
+            userID = ids[0].userID + 1;
+        }
+
         const passwordResetToken = jwt.sign(
             { userEmail: email },
             process.env.JWT_SECRET,
@@ -56,8 +64,11 @@ const userRegister = async (req, res) => {
                 expiresIn: '365d',
             }
         );
+        let verified = 'UNVERIFIED';
+        if (isMahe) verified = 'VERIFIED';
         const newUser = new User({
             name,
+            userID,
             email,
             password,
             mobileNumber,
@@ -66,6 +77,7 @@ const userRegister = async (req, res) => {
             college,
             state,
             isMahe,
+            verified,
             IDCardLink,
             covidVaccinationLink,
             accommodationRequired,

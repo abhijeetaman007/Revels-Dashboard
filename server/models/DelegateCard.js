@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+// To store all delegate Card and Proshow Tickets types
 const DelCardSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -8,14 +9,19 @@ const DelCardSchema = new mongoose.Schema({
         type: String,
         enum: ['MAHE', 'NONMAHE'],
     },
-    mahePrice: {
-        type: String,
+    isProShow: {
+        type: Boolean,
+        required: true,
     },
-    nonMahePrice: {
+    price: {
         type: String,
     },
     active: {
         type: Boolean,
+    },
+    //Contains Info about the type of delegate card
+    description: {
+        type: String,
     },
 });
 

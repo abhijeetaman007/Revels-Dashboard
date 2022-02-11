@@ -67,6 +67,7 @@ const isEmailVerified = async(req,res,next) =>{
         return res.status(500).send({success:false,msg:'Internal Server Error'})
     }
 }
+
 // const isSC = async (req, res, next) => {
 //     try {
 //         if (req.requestUser.role == 'SC') next();
@@ -78,4 +79,18 @@ const isEmailVerified = async(req,res,next) =>{
 //     }
 // };
 
-module.exports = { isUserLoggedIn,isEmailVerified };
+const isVerifiedForRevels = async(req,res,next) =>{
+    try{
+
+        if(!req.requestUser.verified)
+            return res.status(400).send({success:false,msg:'You are not yet verified'})
+            next()
+    }
+    catch(err)
+    {
+        console.log(err)
+        return res.status(500).send({success:false,msg:'Internal Server Error'})
+    }
+}
+
+module.exports = { isUserLoggedIn,isEmailVerified ,isVerifiedForRevels};

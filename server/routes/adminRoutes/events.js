@@ -1,39 +1,45 @@
 const Event = require('../../models/Event');
+const moment = require('moment')
 
 const addEvent = async (req, res) => {
     try {
-        let {
-            eventID,
-            name,
-            category,
-            description,
-            eventType,
-            mode,
-            participationCriteria,
-            prize,
-            minMembers,
-            maxMembers,
-            eventHead,
-            deadline,
-        } = req.body;
-        let event = new Event({
-            eventID,
-            name,
-            category,
-            description,
-            eventType,
-            mode,
-            participationCriteria,
-            prize,
-            minMembers,
-            maxMembers,
-            eventHead,
-            deadline,
-        });
         //TODO : Add validations
-        await event.save();
-        console.log(event);
-        return res.status(200).send({ success: true, msg: 'Event Added' });
+        let {name,description,eventType,mode,participationCriteria,prize,minMembers,maxMembers,eventHeads,eventDate,eventTime,eventVenue,tags}
+        let eventName = Event.findOne({name})
+        if(eventName)
+            return res.status(400).send({success:false,msg:'Event with same name is already registered'})
+
+        let ids = await Event.find({}, { eventID: 1, _id: 0 })
+            .sort({ eventID: -1 })
+            .limit(1);
+        let eventID = 5001;
+        if (ids[0]) {
+            userID = ids[0].userID + 1;
+        }
+ 
+        let newEvent = new Event({
+            eventID,
+            name,
+            category:req.requestCategory,
+            description,
+            eventType,
+            mode,
+            participationCriteria,
+            prize,
+            minMembers,
+            maxMembers,
+            eventHeads,
+            eventSchedule:{
+                date:eventDate,
+                time:eventTime,
+                venue:eventVenue
+            },
+            tags
+        })
+
+        await newEvent.save();
+        console.log(newEvent);
+        return res.status(200).send({ success: true, msg: 'Event Added',data:newEvent });
     } catch (err) {
         console.log(err);
         res.status(500).send({ success: false, msg: 'Internal Server Error' });

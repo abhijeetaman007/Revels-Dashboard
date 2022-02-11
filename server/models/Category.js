@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Event = require('./Event')
+const Event = require('./Event');
 
 const categorySchema = mongoose.Schema({
     categoryId: {
@@ -18,13 +18,15 @@ const categorySchema = mongoose.Schema({
     email: {
         type: String,
     },
-    token:{
-        type:String,
+    token: {
+        type: String,
     },
-    events: [{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Event'
-    }],
+    events: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Event',
+        },
+    ],
 });
 
 module.exports = Category = mongoose.model('Category', categorySchema);

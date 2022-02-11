@@ -13,16 +13,18 @@ const EventSchema = new mongoose.Schema({
     },
     category: {
         type: mongoose.Schema.Types.ObjectId,
-        ref:'Category'
+        ref: 'Category',
     },
     description: {
         type: String,
     },
     eventType: {
         type: String,
+        enum: ['CULTURAL', 'SPORTS'],
     },
     mode: {
         type: String,
+        enum: ['OFFLINE', 'ONLINE'],
     },
     participationCriteria: {
         type: String,
@@ -36,7 +38,7 @@ const EventSchema = new mongoose.Schema({
     maxMembers: {
         type: Number,
     },
-    eventHead: [
+    eventHeads: [
         {
             name: {
                 type: String,
@@ -46,29 +48,15 @@ const EventSchema = new mongoose.Schema({
             },
         },
     ],
-    deadline: {
-        type: Date,
+    eventSchedule: {
+        date: String,
+        time: String,
+        venue: String,
     },
     tags: [
         {
             type: String,
         },
-    ],
-    results: [
-        {
-            round: {
-                type: Number,
-                required:true
-            },
-            candidate: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'User',
-                required:true
-            },
-            position: {
-                type: Number,
-            },
-        }
     ],
 });
 

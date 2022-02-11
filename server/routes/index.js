@@ -1,69 +1,98 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 const {
-  userRegistrationValidation,
-  userValidate,
-  loginValidation,
-} = require("../middleware/validate");
-const { isUserLoggedIn, isEmailVerified } = require("../middleware/userAuth");
-const { isCategoryLoggedIn } = require("../middleware/categoryAuth");
+    userRegistrationValidation,
+    userValidate,
+    loginValidation,
+} = require('../middleware/validate');
 const {
-  userRegister,
-  userLogin,
-  userLogout,
-  userEmailVerify,
-  userPassResetLink,
-  userPassResetVerify,
-  resendVerificationLink,
-} = require("./user");
+    isUserLoggedIn,
+    isEmailVerified,
+    isVerifiedForRevels,
+} = require('../middleware/userAuth');
+const { isCategoryLoggedIn } = require('../middleware/categoryAuth');
 const {
-  categoryRegister,
-  categoryLogin,
-  categoryLogout,
-} = require("../routes/adminRoutes/category");
-const { addEvent, getCategoryEvent } = require("../routes/adminRoutes/events");
+    userRegister,
+    userLogin,
+    userLogout,
+    userEmailVerify,
+    userPassResetLink,
+    userPassResetVerify,
+    resendVerificationLink,
+} = require('./userRoutes/user');
+const { registerEvent, getUserEvents } = require('./userRoutes/event');
 const {
-  teamRegister,
-  joinTeam,
-  leaveTeam,
-} = require("../routes/userRoutes/team");
+    categoryRegister,
+    categoryLogin,
+    categoryLogout,
+} = require('../routes/adminRoutes/category');
+const { addEvent, getCategoryEvent } = require('../routes/adminRoutes/events');
+const {
+    teamRegister,
+    joinTeam,
+    leaveTeam,
+} = require('../routes/userRoutes/team');
 
 //Routes:
-router.get("/test", isUserLoggedIn, (req, res) => {
-  res.send("Protected Route");
+router.get('/test', isUserLoggedIn, (req, res) => {
+    res.send('Protected Route');
 });
 
-//User Routes:
+//@User Routes:
+// Auth:
 router.post(
-  "/user/register",
-  userRegistrationValidation(),
-  userValidate,
-  userRegister
+    '/user/register',
+    userRegistrationValidation(),
+    userValidate,
+    userRegister
 );
 router.post(
-  "/user/login",
-  loginValidation(),
-  userValidate,
-  isEmailVerified,
-  userLogin
+    '/user/login',
+    loginValidation(),
+    userValidate,
+    isEmailVerified,
+    userLogin
 );
-router.get("/user/logout", userLogout);
-router.get("/user/verify/:token", userEmailVerify);
-router.post("/user/resendlink", resendVerificationLink);
-router.post("/user/forgetpass/", userPassResetLink);
-router.post("/user/forgetpass/verify", userPassResetVerify);
+router.get('/user/logout', userLogout);
+router.get('/user/verify/:token', userEmailVerify);
+router.post('/user/resendlink', resendVerificationLink);
+router.post('/user/forgetpass/', userPassResetLink);
+router.post('/user/forgetpass/verify', userPassResetVerify);
+//Team:
+router.post(
+    '/user/team/register',
+    isUserLoggedIn,
+    isVerifiedForRevels,
+    teamRegister
+);
+router.post(
+    '/user/team/jointeam',
+    isUserLoggedIn,
+    isVerifiedForRevels,
+    joinTeam
+);
+router.post('/team/leaveteam', isUserLoggedIn, isVerifiedForRevels, leaveTeam);
+//Events:
+router.post(
+    '/user/event/register',
+    isUserLoggedIn,
+    isVerifiedForRevels,
+    registerEvent
+);
+router.get(
+    '/user/event/getevents',
+    isUserLoggedIn,
+    isVerifiedForRevels,
+    getUserEvents
+);
 
-//Admin Routes :
+//@Admin Routes :
 //Category Routes
-router.get("/category/register", categoryRegister);
-router.post("/category/login", categoryLogin);
-router.get("/category/logout", categoryLogout);
+router.get('/category/register', categoryRegister);
+router.post('/category/login', categoryLogin);
+router.get('/category/logout', categoryLogout);
 //Events
-router.post("/category/addevent", addEvent);
-router.get("/category/getevents", getCategoryEvent);
-//Team
-router.post("/team/register", isUserLoggedIn, teamRegister);
-router.post("/team/jointeam", isUserLoggedIn, joinTeam);
-router.post("/team/leaveteam", isUserLoggedIn, leaveTeam);
+router.post('/category/addevent', addEvent);
+router.get('/category/getevents', getCategoryEvent);
 
 module.exports = router;

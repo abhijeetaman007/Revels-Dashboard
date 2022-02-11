@@ -7,12 +7,14 @@ User Related Routes:
     - Delegate Card routes:
         - buyDelegateCard/(Decide on Payment Gateway)
         - getUserDelegateCard
+        - QR Code
     - Event Related:
-        - registerEvent
-        - getRegisteredEvent
-        - getRegisteredEventResults(with some restriction on when to show)
-    
+        - registerEvent(done)
+        - getRegisteredEvent(done)
+        - getRegisteredEventResults(with some restriction on when to show) 
+
 
 Admin/Category Related Routes:
 
 SuperAdmin Related Routes:
+
