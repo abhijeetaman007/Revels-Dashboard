@@ -62,8 +62,8 @@ router.get("/category/logout", categoryLogout);
 router.post("/category/addevent", addEvent);
 router.get("/category/getevents", getCategoryEvent);
 //Team
-router.post("/team/register", teamRegister);
-router.post("/team/jointeam", joinTeam);
-router.post("/team/leaveteam", leaveTeam);
+router.post("/team/register", isUserLoggedIn, teamRegister);
+router.post("/team/jointeam", isUserLoggedIn, joinTeam);
+router.post("/team/leaveteam", isUserLoggedIn, leaveTeam);
 
 module.exports = router;

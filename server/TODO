@@ -1,9 +1,9 @@
 //User related be done on first priority -- Required by APPDEV  
 User Related Routes:
     - Team related routes:
-         - makeTeam
-         - joinTeam
-         - leaveTeam etc.
+         - makeTeam (done)
+         - joinTeam (done)
+         - leaveTeam (done)
     - Delegate Card routes:
         - buyDelegateCard/(Decide on Payment Gateway)
         - getUserDelegateCard

@@ -1,16 +1,24 @@
 const Team = require("../../models/Team");
 const Event = require("../../models/Event");
-const nanoid = require("nanoid");
+const { nanoid } = require("nanoid");
 
 const teamRegister = async (req, res) => {
   try {
-    const { eventId } = req.body;
-    const event = await Event.findById(eventId);
+    const user = await User.findById(req.requestUser._id);
+    const { eventID } = req.body;
+    const event = await Event.findOne({ eventID: eventID });
     if (!event) return res.status(404).json({ msg: "Event not found" });
-
-    const teams = await Team.find({ event: eventId });
+    // UNCOMMENT AFTER EVENT ROUTE MADE : if user is not registered for the event
+    // if (!user.regEvents.includes(user._id)) {
+    //   return res
+    //     .status(400)
+    //     .json({ msg: "Please register first to create a team" });
+    // }
+    const teams = await Team.find({ event: event._id });
+    if (!teams) return res.status(404).json({ msg: "No teams found" });
     for (let i = 0; i < teams.length; i++) {
       for (let j = 0; j < teams[i].members.length; j++) {
+        console.log(teams[i].members[j]);
         if (teams[i].members[j] === req.userId) {
           return res.status(400).json({
             msg: "You are already registered for this event and cannot create a new team",
@@ -18,19 +26,23 @@ const teamRegister = async (req, res) => {
         }
       }
     }
-
     // user is not in any team hence eligible to make a team
+    let members = [req.requestUser._id];
+    const teamID = nanoid(5);
     const team = new Team({
-      teamID: nanoid(5),
-      event: eventId,
-      members: [req.userId],
+      teamID,
+      event: event._id,
+      members: members,
     });
 
     await team.save();
+
+    user.teamList.push(team._id);
+    await user.save();
     return res.json({
       success: true,
       msg: "Team registered successfully",
-      teamCode: teamCode,
+      teamID: teamID,
     });
   } catch (err) {
     console.log(err);
@@ -42,9 +54,17 @@ const teamRegister = async (req, res) => {
 
 const joinTeam = async (req, res) => {
   try {
-    const { eventId, inputTeamCode } = req.body;
-    const event = await Event.findById(eventId);
-    const teams = await Team.find({ event: eventId });
+    const user = await User.findById(req.requestUser._id);
+    const { eventID, inputTeamCode } = req.body;
+    const event = await Event.find({ eventID: eventID });
+    if (!event) return res.status(404).json({ msg: "Event not found" });
+    // UNCOMMENT AFTER EVENT ROUTE MADE : if user is not registered for the event
+    // if (!user.regEvents.includes(user._id)) {
+    //   return res
+    //     .status(400)
+    //     .json({ msg: "Please register first to join a team" });
+    // }
+    const teams = await Team.find({ event: event._id });
     //check if user is already in a team
     for (let i = 0; i < teams.length; i++) {
       for (let j = 0; j < teams[i].members.length; j++) {
@@ -59,14 +79,16 @@ const joinTeam = async (req, res) => {
     const team = await Team.findOne({ teamID: inputTeamCode });
     if (!team) return res.status(404).json({ msg: "Team not found" });
     //check if team full
-    if (team.members.length >= event.maxTeamSize) {
+    if (team.members.length == event.maxTeamSize) {
       return res.status(400).json({
         msg: "Team is full",
       });
     }
     //add user to team with teamid as input
-    team.members.push(req.userId);
+    team.members.push(user._id);
     await team.save();
+    user.teamList.push(team._id);
+    await user.save();
     return res.json({
       success: true,
       msg: "Team joined successfully",
@@ -81,15 +103,18 @@ const joinTeam = async (req, res) => {
 
 const leaveTeam = async (req, res) => {
   try {
-    const { teamId } = req.body;
-    const team = await Team.findById(teamId);
+    const user = await User.findById(req.requestUser._id);
+    const { teamID } = req.body;
+    const team = await Team.findOne({ teamID: teamID });
     if (!team) return res.status(404).json({ msg: "Team not found" });
     //check if user is in the team
-    if (!team.members.includes(req.userId))
+    if (!team.members.includes(user._id))
       return res.status(400).json({ msg: "User not in team" });
-    //remove user from team
-    team.members = team.members.filter((member) => member !== req.userId);
-    await team.save();
+    //remove user from members in team model
+    await Team.updateOne({ teamID: teamID }, { $pull: { members: user._id } });
+
+    //remove team form user model but still registered
+    await User.updateOne({ _id: user._id }, { $pull: { teamList: team._id } });
 
     if (team.members.length === 0) {
       await Team.findByIdAndDelete(teamId);
