@@ -5,7 +5,7 @@ const addEvent = async (req, res) => {
     try {
         //TODO : Add validations
         let {name,description,eventType,mode,participationCriteria,prize,minMembers,maxMembers,eventHeads,eventDate,eventTime,eventVenue,tags} = req.body
-        let eventName = Event.findOne({name})
+        let eventName = await Event.findOne({name})
         if(eventName)
             return res.status(400).send({success:false,msg:'Event with same name is already registered'})
 
@@ -14,13 +14,13 @@ const addEvent = async (req, res) => {
             .limit(1);
         let eventID = 5001;
         if (ids[0]) {
-            userID = ids[0].userID + 1;
+            eventID = ids[0].eventID + 1;
         }
  
         let newEvent = new Event({
             eventID,
             name,
-            category:req.requestCategory,
+            category:req.requestCategory._id,
             description,
             eventType,
             mode,
@@ -38,7 +38,6 @@ const addEvent = async (req, res) => {
         })
 
         await newEvent.save();
-        console.log(newEvent);
         return res.status(200).send({ success: true, msg: 'Event Added',data:newEvent });
     } catch (err) {
         console.log(err);
@@ -47,7 +46,7 @@ const addEvent = async (req, res) => {
 };
 const getCategoryEvent = async (req, res) => {
     try {
-        let category_Id = req.body.category_Id;
+        let category_Id = req.requestCategory._id;
         let events = await Event.find({ category: category_Id })
         return res.send({ success: true, data: events });
     } catch {

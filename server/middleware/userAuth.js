@@ -12,7 +12,8 @@ const isUserLoggedIn = async (req, res, next) => {
                 if (user) {
                     if (user.isEmailVerified) {
                         req.requestUser = user;
-                         next();
+                        console.log('we are here 123 ', req.requestUser);
+                        next();
                     } else {
                         return res.status(400).send({
                             success: false,
@@ -52,21 +53,21 @@ const isUserLoggedIn = async (req, res, next) => {
     }
 };
 
-
-const isEmailVerified = async(req,res,next) =>{
-    try
-    {
-        let user = await User.findOne({email:req.body.email})
-        if(!user.isEmailVerified)
-            return res.status(400).send({success:false,msg:'Please Verify Email to login'})
-        next()
-    }
-    catch(err)
-    {
+const isEmailVerified = async (req, res, next) => {
+    try {
+        let user = await User.findOne({ email: req.body.email });
+        if (!user.isEmailVerified)
+            return res
+                .status(400)
+                .send({ success: false, msg: 'Please Verify Email to login' });
+        next();
+    } catch (err) {
         console.log(err);
-        return res.status(500).send({success:false,msg:'Internal Server Error'})
+        return res
+            .status(500)
+            .send({ success: false, msg: 'Internal Server Error' });
     }
-}
+};
 
 // const isSC = async (req, res, next) => {
 //     try {
@@ -79,18 +80,19 @@ const isEmailVerified = async(req,res,next) =>{
 //     }
 // };
 
-const isVerifiedForRevels = async(req,res,next) =>{
-    try{
-
-        if(!req.requestUser.verified)
-            return res.status(400).send({success:false,msg:'You are not yet verified'})
-            next()
+const isVerifiedForRevels = async (req, res, next) => {
+    try {
+        if (!req.requestUser.verified)
+            return res
+                .status(400)
+                .send({ success: false, msg: 'You are not yet verified' });
+        next();
+    } catch (err) {
+        console.log(err);
+        return res
+            .status(500)
+            .send({ success: false, msg: 'Internal Server Error' });
     }
-    catch(err)
-    {
-        console.log(err)
-        return res.status(500).send({success:false,msg:'Internal Server Error'})
-    }
-}
+};
 
-module.exports = { isUserLoggedIn,isEmailVerified ,isVerifiedForRevels};
+module.exports = { isUserLoggedIn, isEmailVerified, isVerifiedForRevels };

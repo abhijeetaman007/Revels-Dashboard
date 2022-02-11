@@ -12,7 +12,7 @@ const categoryRegister = async (req, res) => {
                 success: false,
                 msg: 'Not Authorized,Contact System Admin Team',
             });
-        console.log(data.categories);
+        console.log("Register Category Route")
         data.categories.forEach(async (cat) => {
             try {
                 const result = Math.random().toString(36).substring(2, 7);
@@ -96,4 +96,17 @@ const categoryLogout = async (req, res) => {
     }
 };
 
-module.exports = { categoryRegister, categoryLogin, categoryLogout };
+const getCategoryFromToken = async (token) =>{
+  try
+  {
+      let category = await Category.findOne(token)
+      return category
+  }
+  catch(err)
+  {
+      console.log(err)
+  }
+}
+
+
+module.exports = { categoryRegister, categoryLogin, categoryLogout ,getCategoryFromToken};

@@ -92,7 +92,7 @@ router.get('/category/register', categoryRegister);
 router.post('/category/login', categoryLogin);
 router.get('/category/logout', categoryLogout);
 //Events
-router.post('/category/addevent', addEvent);
-router.get('/category/getevents', getCategoryEvent);
+router.post('/category/addevent',isCategoryLoggedIn, addEvent);
+router.get('/category/getevents',isCategoryLoggedIn, getCategoryEvent);
 
 module.exports = router;

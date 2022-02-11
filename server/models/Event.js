@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Category = require('./Category');
+const User = require('./User')
 
 const EventSchema = new mongoose.Schema({
     eventID: {
@@ -58,6 +59,10 @@ const EventSchema = new mongoose.Schema({
             type: String,
         },
     ],
+    participants:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'User'
+    }]
 });
 
 module.exports = Event = mongoose.model('Event', EventSchema);

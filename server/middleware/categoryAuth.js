@@ -8,7 +8,9 @@ const isCategoryLoggedIn = async (req, res, next) => {
             let payload = await jwt.verify(token, process.env.JWT_SECRET);
             console.log('Payload ', payload);
             if (payload) {
-                let category = await Category.findById(payload.category_ID);
+                console.log('id:', payload.category_Id);
+                let category = await Category.findById(payload.category_Id);
+                console.log('here ', category);
                 if (category) {
                     req.requestCategory = category;
                     next();

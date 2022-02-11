@@ -16,12 +16,11 @@ const UserSchema = new mongoose.Schema({
     token: {
         type: String,
         default: '',
-        unique: true,
     },
     passwordResetToken: {
         type: String,
         default: '',
-        unique: true,
+        // unique: true,
     },
     timeStamp: {
         date: String,

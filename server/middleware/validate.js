@@ -13,15 +13,16 @@ const userRegistrationValidation = () => {
             .isNumeric()
             .isLength({ min: 10, max: 10 })
             .withMessage('Please Enter a valid Mobile Number'),
-        check(
-            'registrationNumber',
-            'Please enter College Registration Number'
-        ).not().isEmpty(),
+        check('registrationNumber', 'Please enter College Registration Number')
+            .not()
+            .isEmpty(),
         check('college', 'Enter your College name').not().isEmpty(),
         check('branch', 'Enter your branch').not().isEmpty(),
         check('isMahe', 'Do you belong to MAHE or not?').not().isEmpty(),
         check('IDCardLink', 'Please enter ID Card Link').not().isEmpty(),
-        check('covidVaccinationLink', 'Please enter ID Card Link').not().isEmpty(),
+        check('covidVaccinationLink', 'Please enter ID Card Link')
+            .not()
+            .isEmpty(),
         check('state', 'Enter a valid State').not().isEmpty(),
     ];
 };

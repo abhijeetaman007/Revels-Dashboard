@@ -272,6 +272,14 @@ const userPassResetVerify = async (req, res) => {
         return res.send({ success: false, msg: 'Internal Server Error' });
     }
 };
+const getUserFromToken = async (token) => {
+    try {
+        let user = await User.findOne(token);
+        return user;
+    } catch (err) {
+        console.log(err);
+    }
+};
 
 module.exports = {
     userRegister,
@@ -281,4 +289,5 @@ module.exports = {
     userEmailVerify,
     userPassResetLink,
     userPassResetVerify,
+    getUserFromToken,
 };
