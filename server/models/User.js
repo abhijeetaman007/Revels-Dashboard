@@ -74,12 +74,10 @@ const UserSchema = new mongoose.Schema({
     IDCardLink: {
         type: String,
         required: true,
-        unique: true,
     },
     covidVaccinationLink: {
         type: String,
         required: true,
-        unique: true,
     },
     verified: {
         type: String,
@@ -109,7 +107,6 @@ const UserSchema = new mongoose.Schema({
             //QR Code With each generated Delegate Card/Ticket -- For easy verification by vigilance team
             QRCode: {
                 type: String,
-                unique: true,
             },
         },
     ],

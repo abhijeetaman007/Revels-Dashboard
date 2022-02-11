@@ -1,7 +1,7 @@
 const User = require('../../models/User');
 const Event = require('../../models/Event');
 
-const registerEvent = (req, res) => {
+const registerEvent = async (req, res) => {
     try {
         let { eventID } = req.body;
         let event = await Event.find({ eventID });
@@ -33,7 +33,7 @@ const getUserEvents = async (req, res) => {
     try {
         let { user } = req.requestUser;
         let events = [];
-        user.regEvents.forEach((id) => {
+        user.regEvents.forEach(async (id) => {
             let event = await Event.findById(id);
             events.push(event);
         });

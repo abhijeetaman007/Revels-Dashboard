@@ -4,7 +4,7 @@ const moment = require('moment')
 const addEvent = async (req, res) => {
     try {
         //TODO : Add validations
-        let {name,description,eventType,mode,participationCriteria,prize,minMembers,maxMembers,eventHeads,eventDate,eventTime,eventVenue,tags}
+        let {name,description,eventType,mode,participationCriteria,prize,minMembers,maxMembers,eventHeads,eventDate,eventTime,eventVenue,tags} = req.body
         let eventName = Event.findOne({name})
         if(eventName)
             return res.status(400).send({success:false,msg:'Event with same name is already registered'})
