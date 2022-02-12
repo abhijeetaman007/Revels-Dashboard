@@ -49,10 +49,17 @@ const EventSchema = new mongoose.Schema({
             },
         },
     ],
-    eventSchedule: {
-        date: String,
-        time: String,
-        venue: String,
+    eventDateTime:{
+        type:Date,
+        required:true
+    },
+    eventVenue:{
+        type:String,
+        required:true
+    },
+    registrationDeadline:{
+        type:Date,
+        required:true
     },
     tags: [
         {

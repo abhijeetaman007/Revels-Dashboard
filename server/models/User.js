@@ -22,8 +22,7 @@ const UserSchema = new mongoose.Schema({
         default: '',
     },
     timeStamp: {
-        date: String,
-        time: String,
+        type:Date
     },
     name: {
         type: String,
@@ -103,16 +102,16 @@ const UserSchema = new mongoose.Schema({
                 type: mongoose.Schema.Types.ObjectId,
                 ref: 'DelCard',
             },
-            //QR Code With each generated Delegate Card/Ticket -- For easy verification by vigilance team
-            QRCode: {
-                type: String,
-            },
+            // //QR Code With each generated Delegate Card/Ticket -- For easy verification by vigilance team
+            // QRCode: {
+            //     type: String,
+            // },
         },
     ],
-    //User Identity QRCode
-    QRCode: {
-        type: String,
-    },
+    // //User Identity QRCode
+    // QRCode: {
+    //     type: String,
+    // },
 });
 
 module.exports = User = mongoose.model('User', UserSchema);

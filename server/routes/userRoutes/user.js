@@ -32,6 +32,19 @@ const userRegister = async (req, res) => {
                 .status(400)
                 .send({ success: false, msg: 'Mobile Number already exists.' });
         }
+
+        if (isMahe) {
+            user = await User.findOne({ registrationNumber });
+            if (user) {
+                return res
+                    .status(400)
+                    .send({
+                        success: false,
+                        msg: 'Registration Number already exists',
+                    });
+            }
+        }
+
         const salt = await bcrypt.genSalt(10);
         password = await bcrypt.hash(password, salt);
 
@@ -52,6 +65,11 @@ const userRegister = async (req, res) => {
         );
         let verified = 'UNVERIFIED';
         if (isMahe) verified = 'VERIFIED';
+
+        const date = new Date();
+        offset = (60 * 5 + 30) * 60 * 1000;
+        var ISTTime = new Date(date.getTime() + offset);
+        timeStamp = ISTTime;
         const newUser = new User({
             name,
             userID,
@@ -68,6 +86,7 @@ const userRegister = async (req, res) => {
             covidVaccinationLink,
             accommodationRequired,
             passwordResetToken,
+            timeStamp,
         });
         await newUser.save();
         let message = `Please Click to verify http://localhost:${process.env.PORT}/api/user/verify/${passwordResetToken}`;
@@ -267,24 +286,32 @@ const getUserFromToken = async (token) => {
     }
 };
 
-const updateDriveLink = async (req,res) => {
-    try{
-        if(!req.body.driveLink)
-        {
-            return res.status(400).send({success:false,msg:'Drive Link Empty'})
+const updateDriveLink = async (req, res) => {
+    try {
+        if (!req.body.driveLink) {
+            return res
+                .status(400)
+                .send({ success: false, msg: 'Drive Link Empty' });
         }
-        let user = await User.findOneAndUpdate({_id:req.requestUser._id},{
-            driveLink:req.body.driveLink
-        })
-        return res.status(200).send({success:true,msg:'Drive Link Updated,Wait until OutStation Management Team verifies'})
+        let user = await User.findOneAndUpdate(
+            { _id: req.requestUser._id },
+            {
+                driveLink: req.body.driveLink,
+            }
+        );
+        return res
+            .status(200)
+            .send({
+                success: true,
+                msg: 'Drive Link Updated,Wait until OutStation Management Team verifies',
+            });
+    } catch (err) {
+        console.log(err);
+        return res
+            .status(500)
+            .send({ success: false, msg: 'Update dive link failed' });
     }
-    catch(err)
-    {
-        console.log(err)
-        return res.status(500).send({success:false,msg:'Update dive link failed'})
-    }
-
-}
+};
 
 module.exports = {
     userRegister,

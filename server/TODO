@@ -7,11 +7,11 @@ User Related Routes:
     - Delegate Card routes:
         - buyDelegateCard/(Decide on Payment Gateway)
         - getUserDelegateCard
-        - QR Code
+        - QR Code  --- (All QR related part from frontend)
     - Event Related:
         - registerEvent(done)
         - getRegisteredEvent(done)
-        - getRegisteredEventResults(with some restriction on when to show) 
+        - getRegisteredEventResults(with some restriction on when to show) -- Part of Judges Portal
 
 
 Admin/Category Related Routes:

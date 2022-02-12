@@ -3,7 +3,9 @@ var jwt = require('jsonwebtoken');
 
 const isCategoryLoggedIn = async (req, res, next) => {
     try {
+        console.log("Category login")
         const token = req.headers['authorization'];
+        console.log(token)
         if (typeof token !== 'undefined') {
             let payload = await jwt.verify(token, process.env.JWT_SECRET);
             console.log('Payload ', payload);
