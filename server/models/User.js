@@ -20,7 +20,6 @@ const UserSchema = new mongoose.Schema({
     passwordResetToken: {
         type: String,
         default: '',
-        // unique: true,
     },
     timeStamp: {
         date: String,
@@ -70,13 +69,8 @@ const UserSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    IDCardLink: {
-        type: String,
-        required: true,
-    },
-    covidVaccinationLink: {
-        type: String,
-        required: true,
+    driveLink: {
+        type:String,
     },
     verified: {
         type: String,
@@ -85,8 +79,14 @@ const UserSchema = new mongoose.Schema({
     },
     regEvents: [
         {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Event',
+            event: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Event',
+            },
+            isPresent: {
+                type: Boolean,
+                default: false,
+            },
         },
     ],
     teamList: [

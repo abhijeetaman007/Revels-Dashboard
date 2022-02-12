@@ -19,10 +19,6 @@ const userRegistrationValidation = () => {
         check('college', 'Enter your College name').not().isEmpty(),
         check('branch', 'Enter your branch').not().isEmpty(),
         check('isMahe', 'Do you belong to MAHE or not?').not().isEmpty(),
-        check('IDCardLink', 'Please enter ID Card Link').not().isEmpty(),
-        check('covidVaccinationLink', 'Please enter ID Card Link')
-            .not()
-            .isEmpty(),
         check('state', 'Enter a valid State').not().isEmpty(),
     ];
 };

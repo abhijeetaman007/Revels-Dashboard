@@ -82,10 +82,15 @@ const isEmailVerified = async (req, res, next) => {
 
 const isVerifiedForRevels = async (req, res, next) => {
     try {
-        if (!req.requestUser.verified)
+        console.log("Status :",req.requestUser.verified)
+        if (req.requestUser.verified == 'UNVERIFIED')
             return res
                 .status(400)
-                .send({ success: false, msg: 'You are not yet verified' });
+                .send({ success: false, msg: 'You are not yet verified,wait until Outstation Management Team verifies' });
+        if (req.requestUser.verified == 'REJECTED')
+            return res
+                .status(400)
+                .send({ success: false, msg: 'You are verification is rejected,Please update your drive link with correct Documents' });
         next();
     } catch (err) {
         console.log(err);

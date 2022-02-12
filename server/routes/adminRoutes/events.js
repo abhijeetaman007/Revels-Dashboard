@@ -47,7 +47,7 @@ const addEvent = async (req, res) => {
 const getCategoryEvent = async (req, res) => {
     try {
         let category_Id = req.requestCategory._id;
-        let events = await Event.find({ category: category_Id })
+        let events = await Event.find({ category: category_Id }).populate('participants')
         return res.send({ success: true, data: events });
     } catch {
         console.log(err);

@@ -32,20 +32,6 @@ const userRegister = async (req, res) => {
                 .status(400)
                 .send({ success: false, msg: 'Mobile Number already exists.' });
         }
-        user = await User.findOne({ IDCardLink });
-        if (user) {
-            return res.status(400).send({
-                success: false,
-                msg: 'ID card Link already exits,try with different link',
-            });
-        }
-        user = await User.findOne({ covidVaccinationLink });
-        if (user) {
-            return res.status(400).send({
-                success: false,
-                msg: 'Covid Vaccination Link already exits,try with different link',
-            });
-        }
         const salt = await bcrypt.genSalt(10);
         password = await bcrypt.hash(password, salt);
 
@@ -281,10 +267,30 @@ const getUserFromToken = async (token) => {
     }
 };
 
+const updateDriveLink = async (req,res) => {
+    try{
+        if(!req.body.driveLink)
+        {
+            return res.status(400).send({success:false,msg:'Drive Link Empty'})
+        }
+        let user = await User.findOneAndUpdate({_id:req.requestUser._id},{
+            driveLink:req.body.driveLink
+        })
+        return res.status(200).send({success:true,msg:'Drive Link Updated,Wait until OutStation Management Team verifies'})
+    }
+    catch(err)
+    {
+        console.log(err)
+        return res.status(500).send({success:false,msg:'Update dive link failed'})
+    }
+
+}
+
 module.exports = {
     userRegister,
     userLogin,
     userLogout,
+    updateDriveLink,
     resendVerificationLink,
     userEmailVerify,
     userPassResetLink,

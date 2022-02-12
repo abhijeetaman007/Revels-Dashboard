@@ -19,8 +19,9 @@ const {
     userPassResetLink,
     userPassResetVerify,
     resendVerificationLink,
+    updateDriveLink,
 } = require('./userRoutes/user');
-const { registerEvent, getUserEvents } = require('./userRoutes/event');
+const { registerEvent, getUserEvents,getAllEvents } = require('./userRoutes/event');
 const {
     categoryRegister,
     categoryLogin,
@@ -58,6 +59,9 @@ router.get('/user/verify/:token', userEmailVerify);
 router.post('/user/resendlink', resendVerificationLink);
 router.post('/user/forgetpass/', userPassResetLink);
 router.post('/user/forgetpass/verify', userPassResetVerify);
+//Update User Profile:
+router.post('/user/updatedrivelink',isUserLoggedIn,updateDriveLink)
+
 //Team:
 router.post(
     '/user/team/register',
@@ -85,6 +89,8 @@ router.get(
     isVerifiedForRevels,
     getUserEvents
 );
+router.get('/user/event/getallevents',isUserLoggedIn,getAllEvents)
+
 
 //@Admin Routes :
 //Category Routes
