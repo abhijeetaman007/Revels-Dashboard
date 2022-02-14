@@ -3,6 +3,9 @@ const DelCard = require('./DelegateCard')
 const User = require('./User')
 
 const transactionSchema = new mongoose.Schema({
+    name:{
+        type:String
+    },
     delegateCard:{
         type:mongoose.Types.ObjectId,
         ref:'DelCard'

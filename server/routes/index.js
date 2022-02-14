@@ -46,6 +46,7 @@ const {
 const {
     registerOrder,
     verifyPayment,
+    verifyPaymentAlternate,
 } = require('../routes/userRoutes/razorpay');
 const {
     addDelegateCard,
@@ -53,7 +54,9 @@ const {
     viewAllDelegateCards
 } = require('../routes/sysAdminRoutes/delegateCard')
 const {
-    getAllDelegateCards
+    getAllDelegateCards,
+    getMyDelegateCards,
+    getAllMyTransactions,
 } = require('../routes/userRoutes/delegateCard')
 
 //Routes:
@@ -115,9 +118,12 @@ router.get(
 router.get('/user/event/getallevents', isUserLoggedIn, getAllEvents);
 //Delegate Cards
 router.get('/user/delegatecard/getall',getAllDelegateCards)
+router.get('/user/delegatecard/getmydelegatecards',isUserLoggedIn,getMyDelegateCards)
+router.get('/user/delegatecard/getalltransactions',isUserLoggedIn,getAllMyTransactions)
 // Razorpay - Payment
-router.post('/user/payment', registerOrder);
-router.post('/payment/verify',verifyPayment)
+router.post('/user/payment',registerOrder);
+router.post('/user/payment/verify',verifyPayment)
+router.post('/user/payment/onproduction/verify',verifyPaymentAlternate)
 
 //@Admin Routes :
 //Category Routes
@@ -131,8 +137,8 @@ router.post('/category/event/update', isCategoryLoggedIn, updateEvent);
 router.post('/category/event/delete', isCategoryLoggedIn, deleteEvent);
 
 //@SysAdmin Routes - Private Routes for internal use
-router.post('/sysadmin/delegatecard/add',addDelegateCard);
-router.post('/sysadmin/delegatecard/delete',isSysAdmin,deleteDelegateCard);
-router.get('/sysadmin/delegatecard/view',isSysAdmin,viewAllDelegateCards)
+router.post('/sysadmin/delegatecard/add',isSysAdmin,addDelegateCard);
+router.post('/sysadmin/delegatecard/delete',deleteDelegateCard);
+router.get('/sysadmin/delegatecard/view',viewAllDelegateCards)
 
 module.exports = router;
