@@ -16,8 +16,9 @@ const DelCardSchema = new mongoose.Schema({
     price: {
         type: String,
     },
-    active: {
+    isActive: {
         type: Boolean,
+        default: true
     },
     //Contains Info about the type of delegate card
     description: {

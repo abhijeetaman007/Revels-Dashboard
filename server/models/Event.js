@@ -69,7 +69,11 @@ const EventSchema = new mongoose.Schema({
     participants:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:'User'
-    }]
+    }],
+    isActive:{
+        type:Boolean,
+        default:true,
+    }
 });
 
 module.exports = Event = mongoose.model('Event', EventSchema);
