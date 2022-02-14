@@ -5,16 +5,19 @@ const DelCardSchema = new mongoose.Schema({
     name: {
         type: String,
     },
-    cardType: {
-        type: String,
-        enum: ['MAHE', 'NONMAHE'],
-    },
+    // cardType: {
+    //     type: String,
+    //     enum: ['MAHE', 'NONMAHE'],
+    // },
     isProShow: {
         type: Boolean,
         required: true,
     },
-    price: {
-        type: String,
+    mahePrice: {
+        type: Number,
+    },
+    nonMahePrice:{
+        type: Number
     },
     isActive: {
         type: Boolean,

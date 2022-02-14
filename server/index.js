@@ -17,10 +17,10 @@ app.use(
     })
 );
 
-const razorpay = new Razorpay({
-    key_id: 'rzp_test_YwEGRlKoqLToxD',
-    key_secret: 'HyE84sPchHUZ2mqDOyC5j97l',
-});
+// const razorpay = new Razorpay({
+//     key_id: 'rzp_test_YwEGRlKoqLToxD',
+//     key_secret: 'HyE84sPchHUZ2mqDOyC5j97l',
+// });
 
 app.get('/', (req, res) => {
     res.json({
@@ -32,4 +32,4 @@ app.get('/', (req, res) => {
 app.use('/api', router);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Running on port ${PORT}`));
-module.exports = { razorpay };
+// module.exports = { razorpay };

@@ -2,24 +2,18 @@ const DelCard = require('../../models/DelegateCard');
 
 const addDelegateCard = async (req, res) => {
     try {
-        let { name, cardType, isProShow, price, description } = req.body;
-        let delegateCard = await DelCard.findOne({ name });
-        if (!name || !cardType || !isProShow || !price || !description)
+        let { name, isProShow, mahePrice,nonMahePrice, description } = req.body;
+        console.log(name,isProShow,mahePrice,nonMahePrice,description)
+        if (!name || !mahePrice || !nonMahePrice || !description)
             return res
                 .status(400)
                 .send({ success: false, msg: 'Please fill all the fields' });
-        if (delegateCard)
-            return res
-                .status(400)
-                .send({
-                    success: false,
-                    msg: 'Delegate Card/ProShow with same name already exists',
-                });
-        delegateCard = new DelCard({
+        let delegateCard = new DelCard({
             name,
-            cardType,
             isProShow,
-            price,
+            mahePrice,
+            nonMahePrice,
+            nonMahePrice,
             description,
         });
         delegateCard = await delegateCard.save();
@@ -53,4 +47,18 @@ const deleteDelegateCard = async(req,res) =>{
         return res.send(500).send({success:false,msg:'Internal Server Error'})
     }
 }
-module.exports = {addDelegateCard,deleteDelegateCard}
+
+const viewAllDelegateCards = async (req,res) =>{
+    try
+    {
+        let delCards =await DelCard.find()
+        return res.status(200).send({success:true,data:delCards})            
+    }
+    catch(err)
+    {
+        console.log(err)
+        return res.status(500).send({success:false,msg:'Internal Server Error'})
+    }
+}
+
+module.exports = {addDelegateCard,deleteDelegateCard,viewAllDelegateCards}

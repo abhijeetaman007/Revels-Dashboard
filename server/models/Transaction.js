@@ -21,7 +21,7 @@ const transactionSchema = new mongoose.Schema({
         type:String,
     },
     isPaymentConfirmed:{
-        type:Boolean.length,
+        type:Boolean,
         default:false
     }
 }) 

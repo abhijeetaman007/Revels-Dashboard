@@ -11,6 +11,7 @@ const {
     isVerifiedForRevels,
 } = require('../middleware/userAuth');
 const { isCategoryLoggedIn } = require('../middleware/categoryAuth');
+const {isSysAdmin} = require('../middleware/sysAdminAuth')
 const {
     userRegister,
     userLogin,
@@ -21,61 +22,43 @@ const {
     resendVerificationLink,
     updateDriveLink,
 } = require('./userRoutes/user');
-const { registerEvent, getUserEvents,getAllEvents } = require('./userRoutes/event');
+const {
+    registerEvent,
+    getUserEvents,
+    getAllEvents,
+} = require('./userRoutes/event');
 const {
     categoryRegister,
     categoryLogin,
     categoryLogout,
 } = require('../routes/adminRoutes/category');
-const { addEvent, getCategoryEvent,updateEvent,deleteEvent } = require('../routes/adminRoutes/events');
+const {
+    addEvent,
+    getCategoryEvent,
+    updateEvent,
+    deleteEvent,
+} = require('../routes/adminRoutes/events');
 const {
     teamRegister,
     joinTeam,
     leaveTeam,
 } = require('../routes/userRoutes/team');
+const {
+    registerOrder,
+    verifyPayment,
+} = require('../routes/userRoutes/razorpay');
+const {
+    addDelegateCard,
+    deleteDelegateCard,
+    viewAllDelegateCards
+} = require('../routes/sysAdminRoutes/delegateCard')
+const {
+    getAllDelegateCards
+} = require('../routes/userRoutes/delegateCard')
 
 //Routes:
 router.get('/test', (req, res) => {
-
-    // let obj = {
-        // eventID:1001
-    // }
-    // let url = qrcode.toDataURL((obj, function (err, url) {
-        // if(err) return console.log(err)
-        // console.log(url)
-    //   }))
-    // console.log(url) 
-    // const input_text = "TEST";
-    // qrcode.toDataURL(input_text, (err, src) => {
-    // if (err) res.send("Something went wrong!!");
-    // res.send({
-    //   qr_code: src,
-    // });
-//   });
-console.log('DateTime: ',new Date())
-
-
-
-    // var d1 = new Date().toLocaleString(undefined, {timeZone: 'Asia/Kolkata'});
-    // console.log(d1)
-    // d1 = new Date(d1)
-    // if(typeof d1 === 'object' && d1 !== null && 'getDate' in d1)
-    // {
-        // console.log("here")
-        // console.log(d1.getDate())
-    // }
-
-    // const date = new Date();
-    // console.log("current Time", date);
-    // offset = (60*5+30)*60*1000;
-    // var T1 = new Date(date.getTime()+offset);
-    // var T2 = new Date(date.getTime()+(60*6+30)*60*1000);
-    // console.log(T1)
-    // console.log(T2)
-    // console.log(T2-T1)
-    // let str = ''
-    // console.log(!!str)
-
+    console.log('DateTime: ', new Date());
     res.send('Testing Route');
 });
 
@@ -100,7 +83,7 @@ router.post('/user/resendlink', resendVerificationLink);
 router.post('/user/forgetpass/', userPassResetLink);
 router.post('/user/forgetpass/verify', userPassResetVerify);
 //Update User Profile:
-router.post('/user/updatedrivelink',isUserLoggedIn,updateDriveLink)
+router.post('/user/updatedrivelink', isUserLoggedIn, updateDriveLink);
 
 //Team:
 router.post(
@@ -129,8 +112,12 @@ router.get(
     isVerifiedForRevels,
     getUserEvents
 );
-router.get('/user/event/getallevents',isUserLoggedIn,getAllEvents)
-
+router.get('/user/event/getallevents', isUserLoggedIn, getAllEvents);
+//Delegate Cards
+router.get('/user/delegatecard/getall',getAllDelegateCards)
+// Razorpay - Payment
+router.post('/user/payment', registerOrder);
+router.post('/payment/verify',verifyPayment)
 
 //@Admin Routes :
 //Category Routes
@@ -138,11 +125,14 @@ router.get('/category/register', categoryRegister);
 router.post('/category/login', categoryLogin);
 router.get('/category/logout', categoryLogout);
 //Events
-router.post('/category/event/add',isCategoryLoggedIn, addEvent);
-router.get('/category/event/getevents',isCategoryLoggedIn, getCategoryEvent);
-router.post('/category/event/update',isCategoryLoggedIn,updateEvent)
-router.post('/category/event/delete',isCategoryLoggedIn,deleteEvent)
+router.post('/category/event/add', isCategoryLoggedIn, addEvent);
+router.get('/category/event/getevents', isCategoryLoggedIn, getCategoryEvent);
+router.post('/category/event/update', isCategoryLoggedIn, updateEvent);
+router.post('/category/event/delete', isCategoryLoggedIn, deleteEvent);
 
-
+//@SysAdmin Routes - Private Routes for internal use
+router.post('/sysadmin/delegatecard/add',addDelegateCard);
+router.post('/sysadmin/delegatecard/delete',isSysAdmin,deleteDelegateCard);
+router.get('/sysadmin/delegatecard/view',isSysAdmin,viewAllDelegateCards)
 
 module.exports = router;

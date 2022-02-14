@@ -1,13 +1,21 @@
 const DelCard = require('../../models/DelegateCard');
 const Transaction = require('../../models/Transaction');
-const razorpay = require('../../index');
+// const razorpay = require('../../index');
+const Razorpay = require('razorpay');
 const shortid = require('shortid');
 const crypto = require('crypto');
+const mongoose = require('mongoose');
 
 //Registering Order on Razorpay server
 const registerOrder = async (req, res) => {
     try {
+        const razorpay = new Razorpay({
+            key_id: 'rzp_test_YwEGRlKoqLToxD',
+            key_secret: 'HyE84sPchHUZ2mqDOyC5j97l',
+        });
         let { delCard_id } = req.body;
+        delCard_id = mongoose.Types.ObjectId(delCard_id);
+
         let delegateCard = await DelCard.findById(delCard_id);
         if (!delegateCard)
             return res.status(400).send({
@@ -15,25 +23,40 @@ const registerOrder = async (req, res) => {
                 msg: 'No Delegate-Card/ProShow Found',
             });
 
+        console.log('Selected Delegate Card', delegateCard);
+        // String(delegateCard.price * 100)
         const options = {
-            amount: delegateCard.price * 100,
+            amount: (delegateCard.mahePrice * 100),
             currency: 'INR',
             receipt: shortid.generate(),
-            payment_capture: 1,
+            payment_capture: true,
         };
 
-        let response = await razorpay.orders.create(options);
+        let response;
+        await razorpay.orders.create(options, (err, order) => {
+            if (err) {
+                console.log('Razorpay Error :', err);
+                return res
+                    .status(500)
+                    .send({ success: false, msg: 'Razorpay Server Error' });
+            }
+            if (order) {
+                response = order;
+                console.log('Order generated : ', order);
+            }
+        });
         console.log(response);
 
-        if (!response)
-            return res.status(500).send({
-                success: false,
-                msg: 'Razorpay Server Issue,Please try after sometime',
-            });
+        // if (!response)
+            // return res.status(500).send({
+                // success: false,
+                // msg: 'Razorpay Server Issue,Please try after sometime',
+            // });
 
         //New Transaction Initiated
         let newTransaction = new Transaction({
-            user: req.requestUser._id,
+            // user: req.requestUser._id,
+            user: '620817f8862d3d9cb1bd5105',
             delegateCard: delegateCard._id,
             orderId: response.id,
             amount: response.amount,
@@ -45,7 +68,7 @@ const registerOrder = async (req, res) => {
         return res.status(200).send({
             success: true,
             msg: 'Order Registered with Razorpay and New Transaction initiated',
-            data: newTransactions,
+            data: newTransaction,
         });
     } catch (err) {
         console.log(err);
@@ -57,7 +80,7 @@ const registerOrder = async (req, res) => {
 
 //To verify payment has been registered
 //In production razorpay webhook will hit this endpoint on money deducted by razorpay
-const verifyPayment = (req, res) => {
+const verifyPayment = async (req, res) => {
     try {
         // confirmation to razorpay
         res.sendStatus(200);
@@ -74,7 +97,7 @@ const verifyPayment = (req, res) => {
         //If validation true confirm payment in DB
         if (digest === req.headers['x-razorpay-signature']) {
             console.log('Valid Request,Confirming Payment');
-            let transaction = Transaction.findOne({
+            let transaction = await Transaction.findOne({
                 orderId: req.body.payload.payment.entity.order_id,
             });
             if (transaction) {
