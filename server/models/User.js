@@ -68,6 +68,10 @@ const UserSchema = new mongoose.Schema({
         type: Boolean,
         default: false,
     },
+    accommodationType:{
+        type:String,
+        enum:['TIER-1','TIER-2'],
+    },
     driveLink: {
         type:String,
     },

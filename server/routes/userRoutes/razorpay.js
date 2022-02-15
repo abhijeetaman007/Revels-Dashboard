@@ -1,6 +1,6 @@
 const DelCard = require('../../models/DelegateCard');
 const Transaction = require('../../models/Transaction');
-// const razorpay = require('../../index');
+const User = require('../../models/User');
 const Razorpay = require('razorpay');
 const shortid = require('shortid');
 const crypto = require('crypto');
@@ -22,11 +22,24 @@ const registerOrder = async (req, res) => {
                 success: false,
                 msg: 'No Delegate-Card/ProShow Found',
             });
-
         console.log('Selected Delegate Card', delegateCard);
-        // String(delegateCard.price * 100)
+
+        let user = await User.findOne({
+            _id: req.requestUser._id,
+            // _id:'620817f8862d3d9cb1bd5105',  //For Testing
+            delegateCard: { $elemMatch: { cardType: delCard_id } },
+        });
+        if (user) {
+            console.log('Delegate-Card/ProShow already purchased', user);
+            return res.status(400).send({
+                success: false,
+                msg: 'Delegate-Card/ProShow already purchased',
+            });
+        }
+
+        // TODO: Overhead razorpay charges to be added in ammout
         const options = {
-            amount: (delegateCard.mahePrice * 100),
+            amount: delegateCard.mahePrice * 100,
             currency: 'INR',
             receipt: shortid.generate(),
             payment_capture: true,
@@ -46,20 +59,20 @@ const registerOrder = async (req, res) => {
             }
         });
         console.log(response);
-        console.log(delegateCard)
+        console.log(delegateCard);
         //New Transaction Initiated
         let newTransaction = new Transaction({
-            // user: req.requestUser._id,
-            user: '620817f8862d3d9cb1bd5105',
+            user: req.requestUser._id,
+            // user: '620817f8862d3d9cb1bd5105',  //For Testing
             delegateCard: delegateCard._id,
-            name:delegateCard.name,
+            name: delegateCard.name,
             orderId: response.id,
-            amount: response.amount,
+            amount: response.amount / 100,
             isPaymentConfirmed: false,
         });
 
         await newTransaction.save();
-        console.log("New Transaction initiated",newTransaction)
+        console.log('New Transaction initiated', newTransaction);
         return res.status(200).send({
             success: true,
             msg: 'Order Registered with Razorpay and New Transaction initiated',
@@ -99,6 +112,12 @@ const verifyPaymentAlternate = async (req, res) => {
                 (transaction.isPaymentConfirmed = true),
                     (transaction.transactionData = req.body);
                 await transaction.save();
+                let delegateCardID = transaction.delegateCard;
+                let user = await User.findOneAndUpdate(
+                    { _id: transaction.user },
+                    { $push: { delegateCard: { cardType: delegateCardID } } }
+                );
+                console.log('Payment Success');
             }
         } else {
             console.log(
@@ -113,46 +132,60 @@ const verifyPaymentAlternate = async (req, res) => {
     }
 };
 
-const verifyPayment  = async(req,res) =>{
-    try
-    {
-        let {order_id,razorpay_payment_id,razorpay_signature} = req.body
+const verifyPayment = async (req, res) => {
+    try {
+        let { order_id, razorpay_payment_id, razorpay_signature } = req.body;
         //Validating
-        const secret = 'HyE84sPchHUZ2mqDOyC5j97l';  //Secret Key
+        const secret = 'HyE84sPchHUZ2mqDOyC5j97l'; //Secret Key
         console.log(req.body);
 
-        body=order_id + "|" + razorpay_payment_id;
-        var expectedSignature = crypto.createHmac('sha256', secret)
-                                        .update(body.toString())
-                                        .digest('hex');
-                                        console.log("sig received " ,razorpay_signature);
-                                        console.log("sig generated " ,expectedSignature);
-      
-        if(expectedSignature == razorpay_signature)
-        {
+        body = order_id + '|' + razorpay_payment_id;
+        var expectedSignature = crypto
+            .createHmac('sha256', secret)
+            .update(body.toString())
+            .digest('hex');
+        console.log('sig received ', razorpay_signature);
+        console.log('sig generated ', expectedSignature);
+
+        if (expectedSignature == razorpay_signature) {
             let transaction = await Transaction.findOne({
                 orderId: order_id,
             });
-            console.log("Transaction :",transaction)
+            console.log('Transaction :', transaction);
             if (transaction) {
-                transaction.isPaymentConfirmed = true,
-                transaction.transactionData = {
-                    order_id,
-                    razorpay_payment_id
-                }
+                (transaction.isPaymentConfirmed = true),
+                    (transaction.transactionData = {
+                        order_id,
+                        razorpay_payment_id,
+                    });
                 await transaction.save();
-
-                console.log("Payment Success")
+                console.log('Transaction ID ', transaction.delegateCard);
+                let delegateCardID = transaction.delegateCard;
+                let user = await User.findOneAndUpdate(
+                    { _id: transaction.user },
+                    { $push: { delegateCard: { cardType: delegateCardID } } }
+                );
+                console.log('Payment Success');
+                console.log('Transaction : ', transaction);
+                console.log('User : ', user);
             }
-            return res.status(200).send({success:true,msg:'Payement Confirmed',data:transaction})
+            return res.status(200).send({
+                success: true,
+                msg: 'Payement Confirmed',
+                data: transaction,
+            });
         }
-        return res.status(400).send({success:false,msg:'Payment validation failed'})
+        return res
+            .status(400)
+            .send({ success: false, msg: 'Payment validation failed' });
+    } catch (error) {
+        console.log(error);
+        return res.send({
+            success: false,
+            msg: 'Internal Server Error',
+            error,
+        });
     }
-    catch(error)
-    {
-        console.log(error)
-        return res.send({success:false,msg:'Internal Server Error',error})
-    }
-}
+};
 
-module.exports = { verifyPayment, registerOrder ,verifyPaymentAlternate};
+module.exports = { verifyPayment, registerOrder, verifyPaymentAlternate };
