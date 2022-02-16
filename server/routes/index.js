@@ -155,14 +155,8 @@ router.post('/category/event/update', isCategoryLoggedIn, updateEvent); //checke
 router.post('/category/event/delete', isCategoryLoggedIn, deleteEvent); //checked
 
 //@SysAdmin Routes - Private Routes for internal use
-<<<<<<< Updated upstream
-router.post('/sysadmin/delegatecard/add', isSysAdmin, addDelegateCard); //checked
-router.post('/sysadmin/delegatecard/delete', deleteDelegateCard); //checked
-router.get('/sysadmin/delegatecard/view', viewAllDelegateCards); //checked
-=======
 router.post('/sysadmin/delegatecard/add', isSysAdmin, addDelegateCard);
 router.post('/sysadmin/delegatecard/delete',isSysAdmin, deleteDelegateCard);
 router.get('/sysadmin/delegatecard/view', isSysAdmin,viewAllDelegateCards);
->>>>>>> Stashed changes
 
 module.exports = router;
