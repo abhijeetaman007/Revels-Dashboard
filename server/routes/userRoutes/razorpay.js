@@ -24,26 +24,52 @@ const registerOrder = async (req, res) => {
       });
     console.log('Selected Delegate Card', delegateCard);
 
-    let user = await User.findOne({
-      _id: req.requestUser._id,
-      // _id:'620817f8862d3d9cb1bd5105',  //For Testing
-      delegateCard: { $elemMatch: { cardType: delCard_id } },
-    });
-    if (user) {
-      console.log('Delegate-Card/ProShow already purchased', user);
-      return res.status(400).send({
-        success: false,
-        msg: 'Delegate-Card/ProShow already purchased',
-      });
-    }
+        let user = await User.findOne({
+            _id: req.requestUser._id,
+            // _id:'620ca50338f5188bf035cb94',  //For Testing
+            delegateCard: { $elemMatch: { cardType: delCard_id } },
+        });
+        if (user) {
+            console.log('Delegate-Card/ProShow already purchased', user);
+            return res.status(400).send({
+                success: false,
+                msg: 'Delegate-Card/ProShow already purchased',
+            });
+        }
 
-    // TODO: Overhead razorpay charges to be added in ammout
-    const options = {
-      amount: delegateCard.mahePrice * 100,
-      currency: 'INR',
-      receipt: shortid.generate(),
-      payment_capture: true,
-    };
+        // TODO: Overhead razorpay charges to be added in ammout
+        const options = {
+            amount: delegateCard.mahePrice * 100,
+            currency: 'INR',
+            receipt: shortid.generate(),
+            payment_capture: true,
+        };
+
+        let response;
+        await razorpay.orders.create(options, (err, order) => {
+            if (err) {
+                console.log('Razorpay Error :', err);
+                return res
+                    .status(500)
+                    .send({ success: false, msg: 'Razorpay Server Error' });
+            }
+            if (order) {
+                response = order;
+                console.log('Order generated : ', order);
+            }
+        });
+        console.log(response);
+        console.log(delegateCard);
+        //New Transaction Initiated
+        let newTransaction = new Transaction({
+            user: req.requestUser._id,
+            // user: '620ca50338f5188bf035cb94',  //For Testing
+            delegateCard: delegateCard._id,
+            name: delegateCard.name,
+            orderId: response.id,
+            amount: response.amount / 100,
+            isPaymentConfirmed: false,
+        });
 
     let response;
     await razorpay.orders.create(options, (err, order) => {

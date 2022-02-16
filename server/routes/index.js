@@ -1,139 +1,142 @@
 const express = require('express');
 const router = express.Router();
 const {
-  userRegistrationValidation,
-  userValidate,
-  loginValidation,
+    userRegistrationValidation,
+    userValidate,
+    loginValidation,
 } = require('../middleware/validate');
 const {
-  isUserLoggedIn,
-  isEmailVerified,
-  isVerifiedForRevels,
+    isUserLoggedIn,
+    isEmailVerified,
+    isVerifiedForRevels,
 } = require('../middleware/userAuth');
 const { isCategoryLoggedIn } = require('../middleware/categoryAuth');
 const { isSysAdmin } = require('../middleware/sysAdminAuth');
 const {
-  userRegister,
-  userLogin,
-  userLogout,
-  userEmailVerify,
-  userPassResetLink,
-  userPassResetVerify,
-  resendVerificationLink,
-  updateDriveLink,
+    userRegister,
+    userLogin,
+    userLogout,
+    userEmailVerify,
+    userPassResetLink,
+    userPassResetVerify,
+    resendVerificationLink,
+    updateDriveLink,
+    getUserFromToken,
+    updateAccommodation,
 } = require('./userRoutes/user');
 const {
-  registerEvent,
-  getUserEvents,
-  getAllEvents,
+    registerEvent,
+    getUserEvents,
+    getAllEvents,
 } = require('./userRoutes/event');
 const {
-  categoryRegister,
-  categoryLogin,
-  categoryLogout,
+    categoryRegister,
+    categoryLogin,
+    categoryLogout,
 } = require('../routes/adminRoutes/category');
 const {
-  addEvent,
-  getCategoryEvent,
-  updateEvent,
-  deleteEvent,
+    addEvent,
+    getCategoryEvent,
+    updateEvent,
+    deleteEvent,
 } = require('../routes/adminRoutes/events');
 const {
-  teamRegister,
-  joinTeam,
-  leaveTeam,
+    teamRegister,
+    joinTeam,
+    leaveTeam,
 } = require('../routes/userRoutes/team');
 const {
-  registerOrder,
-  verifyPayment,
-  verifyPaymentAlternate,
+    registerOrder,
+    verifyPayment,
+    verifyPaymentAlternate,
 } = require('../routes/userRoutes/razorpay');
 const {
-  addDelegateCard,
-  deleteDelegateCard,
-  viewAllDelegateCards,
+    addDelegateCard,
+    deleteDelegateCard,
+    viewAllDelegateCards,
 } = require('../routes/sysAdminRoutes/delegateCard');
 const {
-  getAllDelegateCards,
-  getMyDelegateCards,
-  getAllMyTransactions,
+    getAllDelegateCards,
+    getMyDelegateCards,
+    getAllMyTransactions,
 } = require('../routes/userRoutes/delegateCard');
 
 //Routes:
 router.get('/test', (req, res) => {
-  console.log('DateTime: ', new Date());
-  res.send('Testing Route');
+    console.log('DateTime: ', new Date());
+    res.send('Testing Route');
 });
 
 //@User Routes:
 // Auth:
 router.post(
-  '/user/register',
-  userRegistrationValidation(),
-  userValidate,
-  userRegister
+    '/user/register',
+    userRegistrationValidation(),
+    userValidate,
+    userRegister
 ); //checked
 router.post(
-  '/user/login',
-  loginValidation(),
-  userValidate,
-  isEmailVerified,
-  userLogin
+    '/user/login',
+    loginValidation(),
+    userValidate,
+    isEmailVerified,
+    userLogin
 ); //checked
-router.get('/user/logout', userLogout); //checked
-router.get('/user/verify/:token', userEmailVerify); //checked
-router.post('/user/resendlink', resendVerificationLink); //checked
-router.post('/user/forgetpass/', userPassResetLink); //checked
-router.post('/user/forgetpass/verify', userPassResetVerify); //checked
+router.get('/user/logout', userLogout);
+router.get('/user/verify/:token', userEmailVerify);
+router.post('/user/resendlink', resendVerificationLink);
+router.post('/user/forgetpass/', userPassResetLink);
+router.post('/user/forgetpass/verify', userPassResetVerify);
+router.get('/user/:token', isUserLoggedIn, getUserFromToken);
 //Update User Profile:
-router.post('/user/updatedrivelink', isUserLoggedIn, updateDriveLink); //checked
+router.post('/user/updatedrivelink', isUserLoggedIn, updateDriveLink);
+router.post('/user/updateaccommodation', isUserLoggedIn, updateAccommodation);
 
 //Team:
 router.post(
-  '/user/team/register',
-  isUserLoggedIn,
-  isVerifiedForRevels,
-  teamRegister
+    '/user/team/register',
+    isUserLoggedIn,
+    isVerifiedForRevels,
+    teamRegister
 ); //checked
 router.post(
-  '/user/team/jointeam',
-  isUserLoggedIn,
-  isVerifiedForRevels,
-  joinTeam
+    '/user/team/jointeam',
+    isUserLoggedIn,
+    isVerifiedForRevels,
+    joinTeam
 ); //checked
 router.post(
-  '/user/team/leaveteam',
-  isUserLoggedIn,
-  isVerifiedForRevels,
-  leaveTeam
+    '/user/team/leaveteam',
+    isUserLoggedIn,
+    isVerifiedForRevels,
+    leaveTeam
 ); //checked
 //Events:
 router.post(
-  '/user/event/register',
-  isUserLoggedIn,
-  isVerifiedForRevels,
-  registerEvent
-); //checked
+    '/user/event/register',
+    isUserLoggedIn,
+    isVerifiedForRevels,
+    registerEvent
+);
 router.get(
-  '/user/event/getevents',
-  isUserLoggedIn,
-  isVerifiedForRevels,
-  getUserEvents
-); //checked
-router.get('/user/event/getallevents', isUserLoggedIn, getAllEvents); //checked
+    '/user/event/getevents',
+    isUserLoggedIn,
+    isVerifiedForRevels,
+    getUserEvents
+);
+router.get('/user/event/getallevents', isUserLoggedIn, getAllEvents);
 //Delegate Cards
 router.get('/user/delegatecard/getall', isUserLoggedIn, getAllDelegateCards); //checked
 router.get(
-  '/user/delegatecard/getmydelegatecards',
-  isUserLoggedIn,
-  getMyDelegateCards
-); //checked
+    '/user/delegatecard/getmydelegatecards',
+    isUserLoggedIn,
+    getMyDelegateCards
+);
 router.get(
-  '/user/delegatecard/getalltransactions',
-  isUserLoggedIn,
-  getAllMyTransactions
-); //checked
-
+    '/user/delegatecard/getalltransactions',
+    isUserLoggedIn,
+    getAllMyTransactions
+);
 // Razorpay - Payment
 // TODO : put middleware
 router.post('/user/payment', isUserLoggedIn, registerOrder);
@@ -152,8 +155,14 @@ router.post('/category/event/update', isCategoryLoggedIn, updateEvent); //checke
 router.post('/category/event/delete', isCategoryLoggedIn, deleteEvent); //checked
 
 //@SysAdmin Routes - Private Routes for internal use
+<<<<<<< Updated upstream
 router.post('/sysadmin/delegatecard/add', isSysAdmin, addDelegateCard); //checked
 router.post('/sysadmin/delegatecard/delete', deleteDelegateCard); //checked
 router.get('/sysadmin/delegatecard/view', viewAllDelegateCards); //checked
+=======
+router.post('/sysadmin/delegatecard/add', isSysAdmin, addDelegateCard);
+router.post('/sysadmin/delegatecard/delete',isSysAdmin, deleteDelegateCard);
+router.get('/sysadmin/delegatecard/view', isSysAdmin,viewAllDelegateCards);
+>>>>>>> Stashed changes
 
 module.exports = router;

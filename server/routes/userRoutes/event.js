@@ -1,6 +1,5 @@
 const User = require("../../models/User");
 const Event = require("../../models/Event");
-const { getUserFromToken } = require("../userRoutes/user");
 
 const registerEvent = async (req, res) => {
   try {
