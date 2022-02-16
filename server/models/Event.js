@@ -1,81 +1,86 @@
-const mongoose = require("mongoose");
-const Category = require("./Category");
-const User = require("./User");
+const mongoose = require('mongoose');
+const Category = require('./Category');
+const User = require('./User');
+const DelCard = require('./DelegateCard');
 
 const EventSchema = new mongoose.Schema({
-  eventID: {
-    type: Number,
-    required: true,
-    unique: true,
-  },
-  name: {
-    type: String,
-    required: true,
-  },
-  category: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Category",
-  },
-  description: {
-    type: String,
-  },
-  eventType: {
-    type: String,
-    enum: ["CULTURAL", "SPORTS"],
-  },
-  mode: {
-    type: String,
-    enum: ["OFFLINE", "ONLINE"],
-  },
-  participationCriteria: {
-    type: String,
-  },
-  prize: {
-    type: String,
-  },
-  minMembers: {
-    type: Number,
-  },
-  maxMembers: {
-    type: Number,
-  },
-  eventHeads: [
-    {
-      name: {
-        type: String,
-      },
-      phoneNo: {
+    eventID: {
         type: Number,
-      },
+        required: true,
+        unique: true,
     },
-  ],
-  eventDateTime: {
-    type: Date,
-    required: true,
-  },
-  eventVenue: {
-    type: String,
-    required: true,
-  },
-  registrationDeadline: {
-    type: Date,
-    required: true,
-  },
-  tags: [
-    {
-      type: String,
+    name: {
+        type: String,
+        required: true,
     },
-  ],
-  participants: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+    category: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Category',
     },
-  ],
-  isActive: {
-    type: Boolean,
-    default: true,
-  },
+    description: {
+        type: String,
+    },
+    eventType: {
+        type: String,
+        enum: ['CULTURAL', 'SPORTS'],
+    },
+    mode: {
+        type: String,
+        enum: ['OFFLINE', 'ONLINE'],
+    },
+    participationCriteria: {
+        type: String,
+    },
+    prize: {
+        type: String,
+    },
+    minMembers: {
+        type: Number,
+    },
+    maxMembers: {
+        type: Number,
+    },
+    eventHeads: [
+        {
+            name: {
+                type: String,
+            },
+            phoneNo: {
+                type: Number,
+            },
+        },
+    ],
+    eventDateTime: {
+        type: Date,
+        required: true,
+    },
+    eventVenue: {
+        type: String,
+        required: true,
+    },
+    registrationDeadline: {
+        type: Date,
+        required: true,
+    },
+    tags: [
+        {
+            type: String,
+        },
+    ],
+    participants: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User',
+        },
+    ],
+    isActive: {
+        type: Boolean,
+        default: true,
+    },
+    requiredDelegateCards: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'DelCard',
+    },
 });
 
-module.exports = Event = mongoose.model("Event", EventSchema);
+module.exports = Event = mongoose.model('Event', EventSchema);
