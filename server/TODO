@@ -5,8 +5,8 @@ User Related Routes:
          - joinTeam (done)
          - leaveTeam (done)
     - Delegate Card routes:
-        - buyDelegateCard/(Decide on Payment Gateway)
-        - getUserDelegateCard
+        - buyDelegateCard/(Decide on Payment Gateway) (done)
+        - getUserDelegateCard(done)
         - QR Code  --- (All QR related part from frontend)
     - Event Related:
         - registerEvent(done)

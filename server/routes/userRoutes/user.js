@@ -274,23 +274,19 @@ const userPassResetVerify = async (req, res) => {
         return res.send({ success: false, msg: 'Internal Server Error' });
     }
 };
-// const getUserFromToken = async (token) => {
-//   try {
-//     let user = await User.findOne(token);
-//     return user;
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
 
 const getUserFromToken = async (req, res) => {
     try {
-        const token = req.params.token;
-        const user = await User.findOne({ token: token }).select('-password');
+        let user = req.requestUser;
         if (user) return res.send({ success: true, data: user });
-        else return res.send({ success: false, data: 'Invalid Token' });
+        else
+            return res
+                .status(400)
+                .send({ success: false, data: 'Invalid Token' });
     } catch (error) {
-        return res.send({ success: false, message: 'Something went wrong.' });
+        return res
+            .status(500)
+            .send({ success: false, message: 'Internal Server Error' });
     }
 };
 
@@ -355,5 +351,5 @@ module.exports = {
     userPassResetLink,
     userPassResetVerify,
     getUserFromToken,
-    updateAccommodation
+    updateAccommodation,
 };

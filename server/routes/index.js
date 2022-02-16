@@ -87,7 +87,7 @@ router.get('/user/verify/:token', userEmailVerify);
 router.post('/user/resendlink', resendVerificationLink);
 router.post('/user/forgetpass/', userPassResetLink);
 router.post('/user/forgetpass/verify', userPassResetVerify);
-router.get('/user/:token', isUserLoggedIn, getUserFromToken);
+router.get('/user/getuser', isUserLoggedIn, getUserFromToken);
 //Update User Profile:
 router.post('/user/updatedrivelink', isUserLoggedIn, updateDriveLink);
 router.post('/user/updateaccommodation', isUserLoggedIn, updateAccommodation);
