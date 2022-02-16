@@ -1,8 +1,8 @@
-const Event = require("../../models/Event");
-const moment = require("moment");
+const Event = require('../../models/Event');
+const moment = require('moment');
 
 const addEvent = async (req, res) => {
-  console.log("ok");
+  console.log('ok');
   try {
     //TODO : Add validations
     let {
@@ -23,7 +23,7 @@ const addEvent = async (req, res) => {
     if (eventName)
       return res.status(400).send({
         success: false,
-        msg: "Event with same name is already registered",
+        msg: 'Event with same name is already registered',
       });
 
     let ids = await Event.find({}, { eventID: 1, _id: 0 })
@@ -34,8 +34,8 @@ const addEvent = async (req, res) => {
       eventID = ids[0].eventID + 1;
     }
     if (
-      // !eventVenue ||
-      // !eventDateTime ||
+      !eventVenue ||
+      !eventDateTime ||
       !name ||
       !eventType ||
       !mode ||
@@ -45,18 +45,18 @@ const addEvent = async (req, res) => {
     ) {
       return res
         .status(400)
-        .send({ success: false, msg: "Please fill required fields" });
+        .send({ success: false, msg: 'Please fill required fields' });
     }
 
     let dateTime = new Date(eventDateTime);
     eventDateTime = dateTime;
-    if (eventDateTime.toString() == "Invalid Date") {
+    if (eventDateTime.toString() == 'Invalid Date') {
       return res.status(400).send({
         success: false,
-        msg: "Valid DataTime in IST is required",
+        msg: 'Valid DataTime in IST is required',
       });
     }
-    console.log("Date Time is ", eventDateTime);
+    console.log('Date Time is ', eventDateTime);
 
     //registrationDeadline is same as event Start Time by default
     let registrationDeadline = eventDateTime;
@@ -81,29 +81,29 @@ const addEvent = async (req, res) => {
     await newEvent.save();
     return res
       .status(200)
-      .send({ success: true, msg: "Event Added", data: newEvent });
+      .send({ success: true, msg: 'Event Added', data: newEvent });
   } catch (err) {
     console.log(err.name);
     console.log(err);
-    res.status(500).send({ success: false, msg: "Internal Server Error" });
+    res.status(500).send({ success: false, msg: 'Internal Server Error' });
   }
 };
 const getCategoryEvent = async (req, res) => {
   try {
     let category_Id = req.requestCategory._id;
     let events = await Event.find({ category: category_Id }).populate(
-      "participants"
+      'participants'
     );
     return res.status(200).send({ success: true, data: events });
   } catch {
     console.log(err);
-    res.status(500).send({ success: false, msg: "Internal Server Error" });
+    res.status(500).send({ success: false, msg: 'Internal Server Error' });
   }
 };
 
 const updateEvent = async (req, res) => {
   try {
-    console.log("Event update");
+    console.log('Event update');
     let {
       eventID,
       name,
@@ -124,7 +124,7 @@ const updateEvent = async (req, res) => {
     if (!event)
       return res.status(400).send({
         success: false,
-        msg: "Invalid Event ID",
+        msg: 'Invalid Event ID',
       });
     if (name) {
       let events = await Event.find({ name });
@@ -133,7 +133,7 @@ const updateEvent = async (req, res) => {
         if (!(events[0].name == name) && events[0].eventID == eventID)
           return res.status(400).send({
             success: false,
-            msg: "Event with same name is already registered",
+            msg: 'Event with same name is already registered',
           });
       }
     }
@@ -141,10 +141,10 @@ const updateEvent = async (req, res) => {
       let dateTime = new Date(eventDateTime);
       eventDateTime = dateTime;
       registrationDeadline = eventDateTime;
-      if (eventDateTime.toString() == "Invalid Date") {
+      if (eventDateTime.toString() == 'Invalid Date') {
         return res.status(400).send({
           success: false,
-          msg: "Valid DataTime in IST is required",
+          msg: 'Valid DataTime in IST is required',
         });
       }
     }
@@ -170,28 +170,28 @@ const updateEvent = async (req, res) => {
       }
     );
     console.log(updatedEvent);
-    return res.status(200).send({ success: true, msg: "Event Updated" });
+    return res.status(200).send({ success: true, msg: 'Event Updated' });
   } catch (err) {
     console.log(err);
     return res
       .status(500)
-      .send({ success: false, msg: "Internal Server Error" });
+      .send({ success: false, msg: 'Internal Server Error' });
   }
 };
 
 const deleteEvent = async (req, res) => {
   try {
-    console.log("Event delete");
+    console.log('Event delete');
     let eventID = req.body.eventID;
     let event = await Event.findOneAndDelete({ eventID });
     if (!event)
-      return res.status(400).send({ success: false, msg: "Event Not Found" });
-    return res.status(200).send({ success: true, msg: "Event Deleted" });
+      return res.status(400).send({ success: false, msg: 'Event Not Found' });
+    return res.status(200).send({ success: true, msg: 'Event Deleted' });
   } catch (err) {
     console.log(err);
     return res
       .status(500)
-      .send({ success: false, msg: "Internal Server Error" });
+      .send({ success: false, msg: 'Internal Server Error' });
   }
 };
 
