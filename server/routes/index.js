@@ -80,13 +80,13 @@ router.post(
   isEmailVerified,
   userLogin
 ); //checked
-router.get('/user/logout', userLogout);
-router.get('/user/verify/:token', userEmailVerify);
-router.post('/user/resendlink', resendVerificationLink);
-router.post('/user/forgetpass/', userPassResetLink);
-router.post('/user/forgetpass/verify', userPassResetVerify);
+router.get('/user/logout', userLogout); //checked
+router.get('/user/verify/:token', userEmailVerify); //checked
+router.post('/user/resendlink', resendVerificationLink); //checked
+router.post('/user/forgetpass/', userPassResetLink); //checked
+router.post('/user/forgetpass/verify', userPassResetVerify); //checked
 //Update User Profile:
-router.post('/user/updatedrivelink', isUserLoggedIn, updateDriveLink);
+router.post('/user/updatedrivelink', isUserLoggedIn, updateDriveLink); //checked
 
 //Team:
 router.post(
@@ -113,45 +113,47 @@ router.post(
   isUserLoggedIn,
   isVerifiedForRevels,
   registerEvent
-);
+); //checked
 router.get(
   '/user/event/getevents',
   isUserLoggedIn,
   isVerifiedForRevels,
   getUserEvents
-);
-router.get('/user/event/getallevents', isUserLoggedIn, getAllEvents);
+); //checked
+router.get('/user/event/getallevents', isUserLoggedIn, getAllEvents); //checked
 //Delegate Cards
-router.get('/user/delegatecard/getall', getAllDelegateCards);
+router.get('/user/delegatecard/getall', isUserLoggedIn, getAllDelegateCards); //checked
 router.get(
   '/user/delegatecard/getmydelegatecards',
   isUserLoggedIn,
   getMyDelegateCards
-);
+); //checked
 router.get(
   '/user/delegatecard/getalltransactions',
   isUserLoggedIn,
   getAllMyTransactions
-);
+); //checked
+
 // Razorpay - Payment
-router.post('/user/payment', registerOrder);
-router.post('/user/payment/verify', verifyPayment);
+// TODO : put middleware
+router.post('/user/payment', isUserLoggedIn, registerOrder);
+router.post('/user/payment/verify', isUserLoggedIn, verifyPayment);
 router.post('/user/payment/onproduction/verify', verifyPaymentAlternate);
 
 //@Admin Routes :
 //Category Routes
 router.get('/category/register', categoryRegister); //checked
 router.post('/category/login', categoryLogin); //checked
-router.get('/category/logout', categoryLogout);
+router.get('/category/logout', categoryLogout); //checked
 //Events
 router.post('/category/event/add', isCategoryLoggedIn, addEvent); //checked
 router.get('/category/event/getevents', isCategoryLoggedIn, getCategoryEvent); //checked
-router.post('/category/event/update', isCategoryLoggedIn, updateEvent);
-router.post('/category/event/delete', isCategoryLoggedIn, deleteEvent);
+router.post('/category/event/update', isCategoryLoggedIn, updateEvent); //checked
+router.post('/category/event/delete', isCategoryLoggedIn, deleteEvent); //checked
 
 //@SysAdmin Routes - Private Routes for internal use
-router.post('/sysadmin/delegatecard/add', isSysAdmin, addDelegateCard);
-router.post('/sysadmin/delegatecard/delete', deleteDelegateCard);
-router.get('/sysadmin/delegatecard/view', viewAllDelegateCards);
+router.post('/sysadmin/delegatecard/add', isSysAdmin, addDelegateCard); //checked
+router.post('/sysadmin/delegatecard/delete', deleteDelegateCard); //checked
+router.get('/sysadmin/delegatecard/view', viewAllDelegateCards); //checked
 
 module.exports = router;
