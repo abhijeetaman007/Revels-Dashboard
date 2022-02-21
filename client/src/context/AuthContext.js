@@ -12,22 +12,21 @@ export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  
   const restoreUser = async () => {
     const token = localStorage.getItem(TOKEN_ID);
     if (token) {
       try {
         const token = localStorage.getItem(TOKEN_ID);
-        const res = await axios.get(`/admin/category/${token}`, {
+        const res = await axios.get("/api/user/getuser", {
           headers: {
-            Authorization: `Bearer ${token}`,
+            authorization: token
           },
         });
         if (res.data.success) {
-          console.log("from 30");
-
           setUser(res.data.data);
           setLoading(false);
-          navigate(`/admin/${res.data.data.category}`);
+          navigate("/dashboard");
         }
       } catch (error) {
         console.log(error);
@@ -90,7 +89,7 @@ export default function AuthProvider({ children }) {
   };
 
   // method to handle user logout
-  const userLogout = async () => {
+  const logout = async () => {
     try {
       setUser(null);
       localStorage.removeItem(TOKEN_ID);
@@ -117,9 +116,9 @@ export default function AuthProvider({ children }) {
   };
 
   const value = {
-    category: user,
+    user: user,
     userRegister: userRegister,
-    userLogout: userLogout,
+    userLogout: logout,
     userLogin: userLogin,
     categoryLogin: categoryLogin,
     loading,

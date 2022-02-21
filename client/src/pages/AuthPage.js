@@ -2,6 +2,8 @@ import React, { useEffect } from "react"
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Register from "../components/Register";
+import SignIn from "../components/SignIn";
+import ForgotPassword from "../components/ForgotPassword";
 
 const AuthPage = () => {
     const auth = useAuth();
@@ -9,7 +11,7 @@ const AuthPage = () => {
     useEffect(() => {
         if(!auth.loading) {
             if(auth.user) {
-                navigate("/")
+                navigate("/dashboard")
             }
         }
     }, [auth.loading]);
@@ -18,6 +20,8 @@ const AuthPage = () => {
         <div>
             Auth Page
             <Register />
+            <SignIn />
+            <ForgotPassword />
         </div>
     )
 }

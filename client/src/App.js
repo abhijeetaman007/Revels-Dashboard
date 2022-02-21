@@ -8,6 +8,9 @@ import AuthProvider from './context/AuthContext';
 
 import AuthPage from './pages/AuthPage';
 import Landing from './pages/Landing';
+import PrivateRoute from './utils/PrivateRoute';
+import Dashboard from './pages/Dashboard';
+import ResetPassword from './pages/ResetPassword';
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
@@ -22,6 +25,22 @@ function App() {
               path="/login"
               element={
                 <AuthPage />
+              } 
+            />
+            <Route 
+              exact
+              path="/dashboard"
+              element={
+                <PrivateRoute>
+                  <Dashboard />
+                </PrivateRoute>
+              } 
+            />
+            <Route 
+              exact
+              path="/forgetpass/:passtoken"
+              element={
+                <ResetPassword />
               } 
             />
             {/* <Route path="/admin/:category" element={}/> */}
