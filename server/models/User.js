@@ -1,121 +1,123 @@
-const mongoose = require('mongoose');
-const Event = require('./Event');
-const DelCard = require('./DelegateCard');
-const UserSchema = new mongoose.Schema({
+const mongoose = require("mongoose");
+const Event = require("./Event");
+const DelCard = require("./DelegateCard");
+const file = require("./file");
+
+const UserSchema = new mongoose.Schema(
+  {
     //userID: will be used as ID in frontend for each user not mongo's _id
     userID: {
-        type: Number,
-        required: true,
-        unique: true,
+      type: Number,
+      required: true,
+      unique: true,
     },
     role: {
-        type: String,
-        default: 'USER',
-        enum: ['USER'],
+      type: String,
+      default: "USER",
+      enum: ["USER"],
     },
     token: {
-        type: String,
-        default: '',
+      type: String,
+      default: "",
     },
     passwordResetToken: {
-        type: String,
-        default: '',
-    },
-    timeStamp: {
-        type:Date
+      type: String,
+      default: "",
     },
     name: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     email: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
+      unique: true,
     },
     isEmailVerified: {
-        type: Boolean,
-        default: false,
+      type: Boolean,
+      default: false,
     },
     mobileNumber: {
-        type: Number,
-        required: true,
+      type: Number,
+      required: true,
+      unique: true,
     },
     password: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     registrationNumber: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
+      unique: true,
     },
     branch: {
-        type: String,
-        default: '',
+      type: String,
+      default: "",
     },
     college: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     state: {
-        type: String,
-        required: true,
+      type: String,
+      required: true,
     },
     isMahe: {
-        type: Boolean,
-        required: true,
+      type: Boolean,
+      required: true,
     },
-    accommodationRequired: {
+    accommodation: {
+      required: {
         type: Boolean,
         default: false,
+      },
+      type: {
+        type: String,
+        enum: ["TIER-1", "TIER-2"],
+      },
     },
-    accommodationType:{
-        type:String,
-        enum:['TIER-1','TIER-2'],
-    },
-    driveLink: {
-        type:String,
+    documents: {
+      aadhar: {
+        type: file.FileSchema,
+      },
+      vaccination: {
+        type: file.FileSchema,
+      },
     },
     verified: {
-        type: String,
-        enum: ['VERIFIED', 'REJECTED', 'UNVERIFIED'],
-        default: 'UNVERIFIED',
+      type: String,
+      enum: ["VERIFIED", "REJECTED", "UNVERIFIED"],
+      default: "UNVERIFIED",
     },
     regEvents: [
-        {
-            event: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Event',
-            },
-            isPresent: {
-                type: Boolean,
-                default: false,
-            },
+      {
+        event: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Event",
         },
-    ],
-    teamList: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Team',
+        isPresent: {
+          type: Boolean,
+          default: false,
         },
+      },
     ],
+    //   teamList: [
+    //     {
+    //       type: mongoose.Schema.Types.ObjectId,
+    //       ref: "Team",
+    //     },
+    //   ],
     //Stores all types of delegate Card/Tickets
     // NOTE: Each user should have max one delegate card of each type
     delegateCard: [
-        {
-            cardType: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'DelCard',
-            },
-            // //QR Code With each generated Delegate Card/Ticket -- For easy verification by vigilance team
-            // QRCode: {
-            //     type: String,
-            // },
-        },
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "DelCard",
+      },
     ],
-    // //User Identity QRCode
-    // QRCode: {
-    //     type: String,
-    // },
-});
+  },
+  { timestamps: true }
+);
 
-module.exports = User = mongoose.model('User', UserSchema);
+module.exports = User = mongoose.model("User", UserSchema);
