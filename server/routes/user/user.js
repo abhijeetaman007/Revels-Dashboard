@@ -325,9 +325,9 @@ const getUserFromToken = async (req, res) => {
 // };
 const updateAccommodation = async (req, res) => {
     try {
-        let { accomodation } = req.body;
+        let { isRequired,arrivalDate,arrivalTime } = req.body;
         let user = req.requestUser;
-        if (!accommodation.required)
+        if (!isRequired)
             return res
                 .status(200)
                 .send({ success: true, msg: 'Accommodation Status Updated' });
@@ -339,12 +339,12 @@ const updateAccommodation = async (req, res) => {
                     msg: 'Accomodation only for Non-Mahe Users',
                 });
         }
-        if (!accomodation.required) {
-            user.accommodation.required = accomodation.required
+        if (!isRequired) {
+            user.accommodation.required = isRequired
         } else {
-            user.accommodation.required = accommodation.required
-            user.accommodation.arrivalDate = accomodation.arrivalDate,
-            user.accommodation.arrivalTime = accomodation.arrivalTime
+            user.accommodation.required = isRequired
+            user.accommodation.arrivalDate = arrivalDate,
+            user.accommodation.arrivalTime = arrivalTime
         }
         await user.save();
         return res

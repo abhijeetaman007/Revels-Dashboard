@@ -67,13 +67,6 @@ const EventSchema = new mongoose.Schema({
       type: String,
     },
   ],
-  // Part of Team Schema
-  //   participants: [
-  //     {
-  //       type: mongoose.Schema.Types.ObjectId,
-  //       ref: "User",
-  //     },
-  //   ],
   isActive: {
     type: Boolean,
     default: true,

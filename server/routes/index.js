@@ -89,7 +89,7 @@ router.get("/college",getAllColleges)
 
 //Update User Profile:
 // router.post("/user/updatedrivelink", isUserLoggedIn, updateDriveLink);
-router.post("/user/updateaccommodation", isUserLoggedIn, updateAccommodation);
+router.post("/user/update/accommodation", isUserLoggedIn, updateAccommodation);
 
 // Team 
 router.post(

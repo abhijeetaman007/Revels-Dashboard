@@ -77,10 +77,10 @@ const UserSchema = new mongoose.Schema(
         default: false,
       },
       arrivalDate:{
-        type:Date,
+        type:String
       },
       arrivalTime:{
-        type:Date
+        type:String
       },
     },
     documents: {
@@ -112,13 +112,6 @@ const UserSchema = new mongoose.Schema(
         // },
       },
     ],
-    // Part of Team Model
-    //   teamList: [
-    //     {
-    //       type: mongoose.Schema.Types.ObjectId,
-    //       ref: "Team",
-    //     },
-    //   ],
     //Stores all types of delegate Card/Tickets
     // NOTE: Each user should have max one delegate card of each type
     delegateCard: [
