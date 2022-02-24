@@ -35,7 +35,7 @@ const {
   updateEvent,
   deleteEvent,
 } = require("./category/events");
-const { joinTeam } = require("./user/team");
+const { joinTeam,leaveTeam } = require("./user/team");
 const {
   registerOrder,
   verifyPayment,
@@ -93,11 +93,17 @@ router.post("/user/updateaccommodation", isUserLoggedIn, updateAccommodation);
 
 // Team 
 router.post(
-  "/user/team/jointeam",
+  "/user/team/join",
   isUserLoggedIn,
   isVerifiedForRevels,
   joinTeam
 ); 
+router.post(
+  "/user/team/leave",
+  isUserLoggedIn,
+  isVerifiedForRevels,
+  leaveTeam
+)
 
 //Events:
 router.post(
