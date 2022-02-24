@@ -63,6 +63,10 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    isMIT:{
+      type:Boolean,
+      required:true,
+    },
     isMahe: {
       type: Boolean,
       required: true,
@@ -72,9 +76,11 @@ const UserSchema = new mongoose.Schema(
         type: Boolean,
         default: false,
       },
-      type: {
-        type: String,
-        enum: ["TIER-1", "TIER-2"],
+      arrivalDate:{
+        type:Date,
+      },
+      arrivalTime:{
+        type:Date
       },
     },
     documents: {
@@ -83,6 +89,9 @@ const UserSchema = new mongoose.Schema(
       },
       vaccination: {
         type: file.FileSchema,
+      },
+      undertaking:{
+        type:file.FileSchema
       },
     },
     verified: {
@@ -96,12 +105,14 @@ const UserSchema = new mongoose.Schema(
           type: mongoose.Schema.Types.ObjectId,
           ref: "Event",
         },
-        isPresent: {
-          type: Boolean,
-          default: false,
-        },
+        // Will be part of judges portal and result model
+        // isPresent: {
+        //   type: Boolean,
+        //   default: false,
+        // },
       },
     ],
+    // Part of Team Model
     //   teamList: [
     //     {
     //       type: mongoose.Schema.Types.ObjectId,

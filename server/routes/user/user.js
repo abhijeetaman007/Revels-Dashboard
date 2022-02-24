@@ -1,4 +1,5 @@
 const User = require('../../models/User');
+const College = require('../../models/College')
 var jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const { mailer } = require('../../utils/mailer');
@@ -14,11 +15,7 @@ const userRegister = async (req, res) => {
             registrationNumber,
             branch,
             college,
-            state,
-            isMahe,
-            IDCardLink,
-            covidVaccinationLink,
-            accommodationRequired,
+            state
         } = req.body;
         let user = await User.findOne({ email });
         if (user) {
@@ -33,6 +30,13 @@ const userRegister = async (req, res) => {
                 .send({ success: false, msg: 'Mobile Number already exists.' });
         }
 
+        college = await College.findOne({name:college})
+        if(!college)
+        {
+            return res.status(400).send({success:false,msg:'College Not allowed'})
+        }
+        let isMahe = college.isMahe
+        let isMIT = false
         if (isMahe) {
             user = await User.findOne({ registrationNumber });
             if (user) {
@@ -41,6 +45,12 @@ const userRegister = async (req, res) => {
                     msg: 'Registration Number already exists',
                 });
             }
+        }
+
+        console.log(college.name)
+        if(college.name == "Manipal Institute of Technology")
+        {
+            isMIT = true
         }
 
         const salt = await bcrypt.genSalt(10);
@@ -61,8 +71,9 @@ const userRegister = async (req, res) => {
                 expiresIn: '365d',
             }
         );
+        
         let verified = 'UNVERIFIED';
-        if (isMahe) verified = 'VERIFIED';
+        if (isMIT) verified = 'VERIFIED';
 
         const date = new Date();
         offset = (60 * 5 + 30) * 60 * 1000;
@@ -76,13 +87,11 @@ const userRegister = async (req, res) => {
             mobileNumber,
             registrationNumber,
             branch,
-            college,
+            college:college.name,
             state,
             isMahe,
+            isMIT,
             verified,
-            IDCardLink,
-            covidVaccinationLink,
-            accommodationRequired,
             passwordResetToken,
             timeStamp,
         });
@@ -290,45 +299,53 @@ const getUserFromToken = async (req, res) => {
     }
 };
 
-const updateDriveLink = async (req, res) => {
-    try {
-        if (!req.body.driveLink) {
-            return res
-                .status(400)
-                .send({ success: false, msg: 'Drive Link Empty' });
-        }
-        let user = await User.findOneAndUpdate(
-            { _id: req.requestUser._id },
-            {
-                driveLink: req.body.driveLink,
-            }
-        );
-        return res.status(200).send({
-            success: true,
-            msg: 'Drive Link Updated,Wait until OutStation Management Team verifies',
-        });
-    } catch (err) {
-        console.log(err);
-        return res
-            .status(500)
-            .send({ success: false, msg: 'Update dive link failed' });
-    }
-};
+// const updateDriveLink = async (req, res) => {
+//     try {
+//         if (!req.body.driveLink) {
+//             return res
+//                 .status(400)
+//                 .send({ success: false, msg: 'Drive Link Empty' });
+//         }
+//         let user = await User.findOneAndUpdate(
+//             { _id: req.requestUser._id },
+//             {
+//                 driveLink: req.body.driveLink,
+//             }
+//         );
+//         return res.status(200).send({
+//             success: true,
+//             msg: 'Drive Link Updated,Wait until OutStation Management Team verifies',
+//         });
+//     } catch (err) {
+//         console.log(err);
+//         return res
+//             .status(500)
+//             .send({ success: false, msg: 'Update dive link failed' });
+//     }
+// };
 const updateAccommodation = async (req, res) => {
     try {
-        let { accommodationType, accommodationRequired } = req.body;
+        let { accomodation } = req.body;
         let user = req.requestUser;
-        if (!accommodationType)
+        if (!accommodation.required)
             return res
                 .status(200)
                 .send({ success: true, msg: 'Accommodation Status Updated' });
         if (user.isMahe) {
             return res
                 .status(400)
-                .send({ success: false, msg: 'Only For Non-Mahe Users' });
+                .send({
+                    success: false,
+                    msg: 'Accomodation only for Non-Mahe Users',
+                });
         }
-        user.accommodationRequired = accommodationRequired;
-        user.accommodationType = accommodationType;
+        if (!accomodation.required) {
+            user.accommodation.required = accomodation.required
+        } else {
+            user.accommodation.required = accommodation.required
+            user.accommodation.arrivalDate = accomodation.arrivalDate,
+            user.accommodation.arrivalTime = accomodation.arrivalTime
+        }
         await user.save();
         return res
             .status(200)
@@ -345,7 +362,6 @@ module.exports = {
     userRegister,
     userLogin,
     userLogout,
-    updateDriveLink,
     resendVerificationLink,
     userEmailVerify,
     userPassResetLink,

@@ -1,5 +1,7 @@
 const User = require('../../models/User');
 const Event = require('../../models/Event');
+const Team = require('../../models/Team');
+const { nanoid } = require('nanoid');
 
 const registerEvent = async (req, res) => {
     try {
@@ -11,6 +13,7 @@ const registerEvent = async (req, res) => {
                 .status(400)
                 .send({ success: false, msg: 'No Events Found' });
 
+        //TODO: Check Date
         const date = new Date();
         offset = (60 * 5 + 30) * 60 * 1000;
         var currentDateTime = new Date(date.getTime() + offset);
@@ -23,19 +26,21 @@ const registerEvent = async (req, res) => {
                 .send({ success: false, msg: 'Registration Closed' });
         }
         let user = req.requestUser;
-        for (let i = 0; i < user.regEvents.length; i++) {
-            if (String(user.regEvents[i]._id) == String(event._id)) {
-                return res.status(400).send({
-                    success: false,
-                    msg: 'You are already registered for this event',
-                });
-            }
-        }
 
-        user.regEvents.push(event._id);
-        await user.save();
-        event.participants.push(user._id);
-        await event.save();
+        let team = await Team.findOne({ event:event._id, members: { $in: user._id } });
+        if (team)
+            return res
+                .status(400)
+                .send({ success: false, msg: 'Already registered' });
+
+        let teamID = nanoid(8);
+        team = await new Team({
+            teamID,
+            event: event._id,
+            members: [user._id],
+        });
+        await team.save();
+
         console.log('Registered New Event');
         return res
             .status(200)
@@ -51,7 +56,13 @@ const registerEvent = async (req, res) => {
 const getUserEvents = async (req, res) => {
     try {
         let user = req.requestUser;
-        let events = await Event.find({ participants: user._id });
+        let teams = await Team.find({ members: { $in: user._id } }).populate(
+            'event'
+        );
+        let events = []
+        teams.forEach((team)=>{
+            events.push(team.event)
+        })
         return res.status(200).send({ success: true, data: events });
     } catch (err) {
         console.log(err);
@@ -63,7 +74,7 @@ const getUserEvents = async (req, res) => {
 
 const getAllEvents = async (req, res) => {
     try {
-        let events = await Event.find();
+        let events = await Event.find().populate('category');
         return res.status(200).send({ success: false, data: events });
     } catch (err) {
         console.log(err);

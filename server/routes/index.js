@@ -20,7 +20,6 @@ const {
   userPassResetLink,
   userPassResetVerify,
   resendVerificationLink,
-  updateDriveLink,
   getUserFromToken,
   updateAccommodation,
 } = require("./user/user");
@@ -29,14 +28,14 @@ const {
   categoryRegister,
   categoryLogin,
   categoryLogout,
-} = require("./admin/category");
+} = require("./category/category");
 const {
   addEvent,
   getCategoryEvent,
   updateEvent,
   deleteEvent,
-} = require("./admin/events");
-const { teamRegister, joinTeam, leaveTeam } = require("./user/team");
+} = require("./category/events");
+const { joinTeam } = require("./user/team");
 const {
   registerOrder,
   verifyPayment,
@@ -52,11 +51,15 @@ const {
   getMyDelegateCards,
   getAllMyTransactions,
 } = require("./user/delegateCard");
+const {
+  getAllColleges 
+} = require("./user/college")
 
 //Routes:
 router.get("/test", (req, res) => {
-  console.log("DateTime: ", new Date());
-  res.send("Testing Route");
+  let date = new Date()
+  console.log(date)
+  res.send("Testing");
 });
 
 //@User Routes:
@@ -66,43 +69,36 @@ router.post(
   userRegistrationValidation(),
   userValidate,
   userRegister
-); //checked
+); 
 router.post(
   "/user/login",
   loginValidation(),
   userValidate,
   isEmailVerified,
   userLogin
-); //checked
+); 
 router.get("/user/logout", userLogout);
 router.get("/user/verify/:token", userEmailVerify);
 router.post("/user/resendlink", resendVerificationLink);
 router.post("/user/forgetpass/", userPassResetLink);
 router.post("/user/forgetpass/verify", userPassResetVerify);
 router.get("/user/getuser", isUserLoggedIn, getUserFromToken);
+
+//College
+router.get("/college",getAllColleges) 
+
 //Update User Profile:
-router.post("/user/updatedrivelink", isUserLoggedIn, updateDriveLink);
+// router.post("/user/updatedrivelink", isUserLoggedIn, updateDriveLink);
 router.post("/user/updateaccommodation", isUserLoggedIn, updateAccommodation);
 
-//Team:
-router.post(
-  "/user/team/register",
-  isUserLoggedIn,
-  isVerifiedForRevels,
-  teamRegister
-); //checked
+// Team 
 router.post(
   "/user/team/jointeam",
   isUserLoggedIn,
   isVerifiedForRevels,
   joinTeam
-); //checked
-router.post(
-  "/user/team/leaveteam",
-  isUserLoggedIn,
-  isVerifiedForRevels,
-  leaveTeam
-); //checked
+); 
+
 //Events:
 router.post(
   "/user/event/register",
@@ -118,7 +114,7 @@ router.get(
 );
 router.get("/user/event/getallevents", isUserLoggedIn, getAllEvents);
 //Delegate Cards
-router.get("/user/delegatecard/getall", isUserLoggedIn, getAllDelegateCards); //checked
+router.get("/user/delegatecard/getall", isUserLoggedIn, getAllDelegateCards); 
 router.get(
   "/user/delegatecard/getmydelegatecards",
   isUserLoggedIn,
@@ -137,16 +133,16 @@ router.post("/user/payment/onproduction/verify", verifyPaymentAlternate);
 
 //@Admin Routes :
 //Category Routes
-router.get("/category/register", categoryRegister); //checked
-router.post("/category/login", categoryLogin); //checked
-router.get("/category/logout", categoryLogout); //checked
+router.post("/category/login", categoryLogin); 
+router.get("/category/logout", categoryLogout); 
 //Events
-router.post("/category/event/add", isCategoryLoggedIn, addEvent); //checked
-router.get("/category/event/getevents", isCategoryLoggedIn, getCategoryEvent); //checked
-router.post("/category/event/update", isCategoryLoggedIn, updateEvent); //checked
-router.post("/category/event/delete", isCategoryLoggedIn, deleteEvent); //checked
+router.post("/category/event/add", isCategoryLoggedIn, addEvent); 
+router.get("/category/event/getevents", isCategoryLoggedIn, getCategoryEvent); 
+router.post("/category/event/update", isCategoryLoggedIn, updateEvent); 
+router.post("/category/event/delete", isCategoryLoggedIn, deleteEvent); 
 
 //@SysAdmin Routes - Private Routes for internal use
+router.get("/category/register",isSysAdmin, categoryRegister); 
 router.post("/sysadmin/delegatecard/add", isSysAdmin, addDelegateCard);
 router.post("/sysadmin/delegatecard/delete", isSysAdmin, deleteDelegateCard);
 router.get("/sysadmin/delegatecard/view", isSysAdmin, viewAllDelegateCards);

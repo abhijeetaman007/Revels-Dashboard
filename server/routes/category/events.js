@@ -48,6 +48,11 @@ const addEvent = async (req, res) => {
         .send({ success: false, msg: 'Please fill required fields' });
     }
 
+    if(Number(minMembers) > Number(maxMembers))
+    {
+      return res.status(400).send({success:false,msg:'Min Members can\'t be more than Max Members '})
+    }
+
     let dateTime = new Date(eventDateTime);
     eventDateTime = dateTime;
     if (eventDateTime.toString() == 'Invalid Date') {
@@ -91,9 +96,7 @@ const addEvent = async (req, res) => {
 const getCategoryEvent = async (req, res) => {
   try {
     let category_Id = req.requestCategory._id;
-    let events = await Event.find({ category: category_Id }).populate(
-      'participants'
-    );
+    let events = await Event.find({ category: category_Id })
     return res.status(200).send({ success: true, data: events });
   } catch {
     console.log(err);

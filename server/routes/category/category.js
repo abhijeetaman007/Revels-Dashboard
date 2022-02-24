@@ -5,13 +5,6 @@ const jwt = require("jsonwebtoken");
 //Private Route -- Only for SysAdmin
 const categoryRegister = async (req, res) => {
   try {
-    let secretKey = req.headers["authorization"];
-    //For Protection
-    if (secretKey != "sysadminisbest")
-      return res.status(403).send({
-        success: false,
-        msg: "Not Authorized,Contact System Admin Team",
-      });
     console.log("Register Category Route");
     data.categories.forEach(async (cat) => {
       try {
@@ -58,16 +51,8 @@ const categoryLogin = async (req, res) => {
     let token = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: 60 * 60,
     });
-    await Category.updateOne(
-      { _id: category._id },
-      {
-        $set: {
-          token: token,
-        },
-      }
-    );
-    // category.token = token;
-    // await category.save();
+    category.token = token;
+    await category.save();
     return res.status(200).json({
       msg: "Category Signed in Successfully ",
       success: true,
