@@ -1,5 +1,6 @@
 const Team = require('../../models/Team');
 const Event = require('../../models/Event');
+const {nanoid} = require('nanoid');
 
 const joinTeam = async (req, res) => {
     try {
@@ -54,8 +55,12 @@ const joinTeam = async (req, res) => {
         }
 
         //Register To new Team
-        newTeam.members.push(user._id);
-        await newTeam.save();
+        await Team.updateOne(
+            { teamID: newTeam.teamID },
+            { $push: { members: user._id } }
+        );
+        // newTeam.members.push(user._id);
+        // await newTeam.save();
 
         //Final Team
         team = await Team.findOne({ eventID, members: { $in: user._id } });
@@ -78,19 +83,22 @@ const leaveTeam = async (req, res) => {
         const event = await Event.findOne({ eventID: eventID });
         if (!event) return res.status(404).json({ msg: 'Event not found' });
         let currentTeam = await Team.findOne({
-            _id: event._id,
+            event: event._id,
             members: { $in: user._id },
         });
-        if(!currentTeam)
-            return res.status(400).send({success:false,msg:'Event Not registered'})
-        console.log("Current Team ",currentTeam)
+        console.log('Current Team', currentTeam);
+        if (!currentTeam)
+            return res
+                .status(400)
+                .send({ success: false, msg: 'Event Not registered' });
+        console.log('Current Team ', currentTeam);
         if (
             currentTeam.members.length == 1 &&
             String(currentTeam.members[0]) == String(user._id)
         )
-            return res.status.send({
+            return res.status(400).send({
                 success: false,
-                msg: 'Already not in Team',
+                msg: 'Not in Team',
             });
         await Team.updateOne(
             { teamID: currentTeam.teamID },
