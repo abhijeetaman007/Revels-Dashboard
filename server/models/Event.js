@@ -12,7 +12,7 @@ const EventSchema = new mongoose.Schema({
   },
   category: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Category",
+    ref: "Admin",
   },
   description: {
     type: String,
@@ -52,15 +52,15 @@ const EventSchema = new mongoose.Schema({
   ],
   eventDateTime: {
     type: Date,
-    required: true,
+    // required: true,
   },
   eventVenue: {
     type: String,
-    required: true,
+    // required: true,
   },
   registrationDeadline: {
     type: Date,
-    required: true,
+    // required: true,
   },
   tags: [
     {

@@ -1,5 +1,6 @@
 const Event = require('../../models/Event');
-const moment = require('moment');
+const jwt = require("jsonwebtoken");
+
 
 const addEvent = async (req, res) => {
   console.log('ok');
@@ -15,8 +16,8 @@ const addEvent = async (req, res) => {
       minMembers,
       maxMembers,
       eventHeads,
-      eventDateTime,
-      eventVenue,
+    //   eventDateTime, (To be set by operations)
+    //   eventVenue,
       tags,
     } = req.body;
     let eventName = await Event.findOne({ name });
@@ -34,8 +35,8 @@ const addEvent = async (req, res) => {
       eventID = ids[0].eventID + 1;
     }
     if (
-      !eventVenue ||
-      !eventDateTime ||
+    //   !eventVenue ||
+    //   !eventDateTime ||
       !name ||
       !eventType ||
       !mode ||
@@ -53,22 +54,22 @@ const addEvent = async (req, res) => {
       return res.status(400).send({success:false,msg:'Min Members can\'t be more than Max Members '})
     }
 
-    let dateTime = new Date(eventDateTime);
-    eventDateTime = dateTime;
-    if (eventDateTime.toString() == 'Invalid Date') {
-      return res.status(400).send({
-        success: false,
-        msg: 'Valid DataTime in IST is required',
-      });
-    }
-    console.log('Date Time is ', eventDateTime);
+    // let dateTime = new Date(eventDateTime);
+    // eventDateTime = dateTime;
+    // if (eventDateTime.toString() == 'Invalid Date') {
+    //   return res.status(400).send({
+    //     success: false,
+    //     msg: 'Valid DataTime in IST is required',
+    //   });
+    // }
+    // console.log('Date Time is ', eventDateTime);
 
     //registrationDeadline is same as event Start Time by default
-    let registrationDeadline = eventDateTime;
+    // let registrationDeadline = eventDateTime;
     let newEvent = new Event({
       eventID,
       name,
-      category: req.requestCategory._id,
+      category: req.requestAdmin._id, //Change
       description,
       eventType,
       mode,
@@ -77,9 +78,9 @@ const addEvent = async (req, res) => {
       minMembers,
       maxMembers,
       eventHeads,
-      eventDateTime,
-      eventVenue,
-      registrationDeadline,
+    //   eventDateTime,
+    //   eventVenue,
+    //   registrationDeadline,
       tags,
     });
 
@@ -95,7 +96,8 @@ const addEvent = async (req, res) => {
 };
 const getCategoryEvent = async (req, res) => {
   try {
-    let category_Id = req.requestCategory._id;
+    // let category_Id = req.requestCategory._id;
+    let category_Id = req.requestAdmin._id;
     let events = await Event.find({ category: category_Id })
     return res.status(200).send({ success: true, data: events });
   } catch {
@@ -118,8 +120,8 @@ const updateEvent = async (req, res) => {
       minMembers,
       maxMembers,
       eventHeads,
-      eventDateTime,
-      eventVenue,
+    //   eventDateTime,
+    //   eventVenue,
       tags,
     } = req.body;
 
@@ -140,21 +142,21 @@ const updateEvent = async (req, res) => {
           });
       }
     }
-    if (eventDateTime) {
-      let dateTime = new Date(eventDateTime);
-      eventDateTime = dateTime;
-      registrationDeadline = eventDateTime;
-      if (eventDateTime.toString() == 'Invalid Date') {
-        return res.status(400).send({
-          success: false,
-          msg: 'Valid DataTime in IST is required',
-        });
-      }
-    }
+    // if (eventDateTime) {
+    //   let dateTime = new Date(eventDateTime);
+    //   eventDateTime = dateTime;
+    //   registrationDeadline = eventDateTime;
+    //   if (eventDateTime.toString() == 'Invalid Date') {
+    //     return res.status(400).send({
+    //       success: false,
+    //       msg: 'Valid DataTime in IST is required',
+    //     });
+    //   }
+    // }
 
     //Check for more validations
 
-    let updatedEvent = await Event.findOneAndUpdate(
+     await Event.findOneAndUpdate(
       { eventID },
       {
         name,
@@ -166,13 +168,12 @@ const updateEvent = async (req, res) => {
         minMembers,
         maxMembers,
         eventHeads,
-        eventDateTime,
-        eventVenue,
-        registrationDeadline,
+        // eventDateTime,
+        // eventVenue,
+        // registrationDeadline,
         tags,
       }
     );
-    console.log(updatedEvent);
     return res.status(200).send({ success: true, msg: 'Event Updated' });
   } catch (err) {
     console.log(err);
