@@ -33,6 +33,14 @@ const registerEvent = async (req, res) => {
                 .status(400)
                 .send({ success: false, msg: 'Already registered' });
 
+        // Check on delegate cards
+        event.delegateCards.forEach((delCard)=>{
+            if(user.delegateCards.indexOf(delCard) == -1)
+            {
+                return res.status(400).send({success:false,msg:'Please buy event specific delegate card(s)'})
+            }
+        })
+
         let teamID = nanoid(8);
         team = await new Team({
             teamID,

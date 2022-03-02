@@ -6,8 +6,10 @@ const mailer = async (to, subject, message) => {
         var smtpConfig = {
             service: 'gmail',
             auth: {
-                user: process.env.userEmail,
-                pass: process.env.userPassword,
+                // user: process.env.userEmail,
+                // pass: process.env.userPassword,
+                user:'sysadrevels22@gmail.com',
+                pass:'w3bd3v_adm1n2*2cd'
             },
         };
         var transporter = nodemailer.createTransport(smtpConfig);
