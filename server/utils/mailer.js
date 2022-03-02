@@ -5,11 +5,10 @@ const mailer = async (to, subject, message) => {
     try {
         var smtpConfig = {
             service: 'gmail',
+            port: 587,
             auth: {
-                // user: process.env.userEmail,
-                // pass: process.env.userPassword,
-                user:'sysadrevels22@gmail.com',
-                pass:'w3bd3v_adm1n2*2cd'
+                user: process.env.userEmail,
+                pass: process.env.userPassword,
             },
         };
         var transporter = nodemailer.createTransport(smtpConfig);
