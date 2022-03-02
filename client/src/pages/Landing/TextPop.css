@@ -1,0 +1,40 @@
+.popout {
+    width: fit-content;
+}
+@keyframes ani {
+  0% {
+    transform: translate3d(0, 0, 0);
+    text-shadow: 0em 0em 0 #f573809c;
+    color: #64DFDF;
+  }
+  30% {
+    transform: translate3d(0, 0, 0);
+    text-shadow: 0em 0em 0 #f573809c;
+    color: #64DFDF;
+  }
+  70% {
+    transform: translate3d(0.08em, -0.08em, 0);
+    text-shadow: -0.08em 0.08em #f573809c;
+    color: #64DFDF;
+  }
+  100% {
+    transform: translate3d(0.08em, -0.08em, 0);
+    text-shadow: -0.08em 0.08em #f573809c;
+    color: #64DFDF;
+  }
+}
+.popout:hover span {
+  position: relative;
+  display: inline-block;
+  animation: ani 1s infinite alternate cubic-bezier(0.86, 0, 0.07, 1);
+}
+.popout:hover span:nth-last-child(1n) {
+  animation-delay: -0.1666666667s;
+}
+.popout:hover span:nth-last-child(2n) {
+  animation-delay: -0.3333333333s;
+}
+.popout:hover span:nth-last-child(3n) {
+  animation-delay: -0.5s;
+}
+  

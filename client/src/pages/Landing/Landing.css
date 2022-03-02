@@ -1,0 +1,221 @@
+.theme-wrapper {
+    height: 80px;
+    width: 100vw;
+    position: fixed;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.theme-wrapper img {
+    padding: 30px;
+}
+.line {
+    height: 2px;
+    width: 65%;
+    background-color: white;
+}
+.theme-wrapper h4{ 
+    color: white;
+    padding: 30px;
+    font-size: 2rem;
+}
+.aagaz-text {
+    height: 100%;
+}
+.content-wrapper {
+    display: flex;
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
+}
+.logo-wrapper {
+    width: 50%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    position: relative;
+} 
+.nav-wrapper {
+    width: 50%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+.nav-wrapper a {
+    color: #64DFDF;
+}
+.logo-box {
+    position: relative;
+}
+.logo-moon {
+    height: 500px;
+}
+.revels-22 {
+    color: white;
+    position: absolute;
+    top: 47%;
+    right: -50px;
+    letter-spacing: 10px;
+    font-size: 3.5rem;
+}
+.years-40 {
+    color: white;
+    position: absolute;
+    top: 53%;
+    right: -70px;
+    letter-spacing: 5px;
+    font-size: 2rem;
+}
+.nav-link {
+    margin: 1rem 0;
+    font-size: 2.5rem;
+}
+.text-area {
+    position: absolute;
+    top: 45%;
+    right: -10%;
+    color: white;
+}
+ul {
+    margin-inline-end: 0;
+    margin-block-end: 0;
+    margin-block-start: 0;
+    margin-inline-start: 0;
+    padding-inline-start: 0;
+}
+li {
+  display: inline-block;
+  font-size: 2.3em;
+  list-style-type: none;
+  text-align: center;
+  padding: 0.5em;
+  text-transform: uppercase;
+}
+li span {
+  display: block;
+  font-size: 4.5rem;
+}
+li:hover {
+    background: -webkit-linear-gradient(135deg, #f57380, red, #f57380, black);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: translateY(-5px);
+    transition-duration: 500ms;
+}
+@media only screen and (min-width: 300px) and (max-width: 370px) {
+    .theme-wrapper {
+        flex-direction: column;
+        position: relative;
+    }
+    .theme-wrapper h4, 
+    .theme-wrapper img {
+        padding: 0;
+    }
+    .content-wrapper {
+        flex-flow: column-reverse;
+        width: 100vw;
+    }
+    .logo-wrapper {
+        justify-content: start;
+        width: 100%;
+        height: 55%;
+    }
+    .nav-wrapper {
+        height: 45%;
+        width: 100%;
+        align-items: center;
+    }
+    .logo-box {
+        align-self: flex-start;
+        height: 250px;
+        width: 250px;
+    }
+    .logo-moon {
+        height: 250px;
+    }
+    .text-area {
+        top: 25%;
+        right: 3%;
+    }
+    .nav-link {
+        font-size: 1.2rem;
+    }
+    li {
+        font-size: 0.9rem;
+    }
+    li span{
+        font-size: 1.9rem;
+    }
+}
+@media only screen and (min-width: 370px) and (max-width: 760px) {
+    .theme-wrapper {
+        flex-direction: column;
+        position: relative;
+    }
+    .theme-wrapper h4, 
+    .theme-wrapper img {
+        padding: 0;
+    }
+    .content-wrapper {
+        flex-flow: column-reverse;
+        width: 100vw;
+    }
+    .logo-wrapper {
+        justify-content: flex-start;
+        width: 100%;
+        height: 55%;
+    }
+    .nav-wrapper {
+        height: 45%;
+        width: 100%;
+        align-items: center;
+    }
+    .logo-box {
+        align-self: flex-start;
+        height: 250px;
+        width: 250px;
+    }
+    .logo-moon {
+        height: 250px;
+    }
+    .text-area {
+        top: 23%;
+        right: 5%;
+    }
+    .nav-link {
+        font-size: 1.2rem;
+    }
+    li {
+        font-size: 1rem;
+    }
+    li span{
+        font-size: 2rem;
+    }
+}
+@media only screen and (min-width: 760px) and (max-width: 1020px) {
+    li {
+        font-size: 1rem;
+    }
+    li span {
+        font-size: 2.4rem;
+    }
+    .logo-moon {
+        height: 350px;
+    }
+    .text-area {
+        right: -45%;
+    }
+}
+@media only screen and (min-width: 1020px) and (max-width: 1300px) {
+    li {
+        font-size: 1.5rem;
+    }
+    li span {
+        font-size: 3rem;
+    }
+    .text-area {
+        right: -50%;
+    }
+}

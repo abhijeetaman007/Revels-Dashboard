@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AuthProvider from './context/AuthContext';
 
 import AuthPage from './pages/AuthPage';
-import Landing from './pages/Landing';
+import Landing from './pages/Landing/Landing';
 import PrivateRoute from './utils/PrivateRoute';
 import Dashboard from './pages/Dashboard';
 import ResetPassword from './pages/ResetPassword';

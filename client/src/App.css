@@ -8,6 +8,17 @@
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
 }
+@font-face {
+  font-family: "Korolev";
+  src: url("./fonts/korolev-heavy-cdnfonts/Korolev\ Medium.otf") format("opentype");
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+}
+body {
+  background-color: #100B1B;
+  font-family: "Korolev";
+}
 body::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: transparent;
@@ -29,4 +40,8 @@ button:focus {
 }
 input:focus {
   outline: none
+}
+a {
+  text-decoration: none;
+  color: inherit;
 }
