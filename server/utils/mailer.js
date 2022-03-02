@@ -4,7 +4,7 @@ const nodemailer = require('nodemailer');
 const mailer = async (to, subject, message) => {
     try {
         var smtpConfig = {
-            service: 'gmail',
+            service: 'yahoo',
             auth: {
                 user: process.env.userEmail,
                 pass: process.env.userPassword,
@@ -12,7 +12,7 @@ const mailer = async (to, subject, message) => {
         };
         var transporter = nodemailer.createTransport(smtpConfig);
         var mailOptions = {
-            from: '"System Admin - Revels" <sysadrevels22@gmail.com>', // sender address
+            from: '"System Admin - Revels" <sysadrevels22@yahoo.com>', // sender address
             to: to, // list of receivers
             subject: subject, // Subject line
             text: subject, // plaintext body
