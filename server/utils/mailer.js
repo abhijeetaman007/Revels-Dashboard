@@ -4,10 +4,16 @@ const nodemailer = require('nodemailer');
 const mailer = async (to, subject, message) => {
     try {
         var smtpConfig = {
-            service: 'yahoo',
+            // service: 'yahoo',
+            host: 'smtp.gmail.com',
+            port: 587,
+            secure: false, // true for 465, false for other ports
             auth: {
                 user: process.env.userEmail,
                 pass: process.env.userPassword,
+            },
+            tls: {
+                rejectUnathorized: false,
             },
         };
         var transporter = nodemailer.createTransport(smtpConfig);
