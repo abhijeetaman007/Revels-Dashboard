@@ -124,7 +124,9 @@ const resendVerificationLink = async (req, res) => {
             return res
                 .status(400)
                 .send({ success: false, msg: 'Email doesnot exists' });
-        let message = `Please Click to verify http://localhost:${process.env.PORT}/api/user/verify/${user.passwordResetToken}`;
+        // let message = `Please Click to verify http://localhost:${process.env.PORT}/api/user/verify/${user.passwordResetToken}`;
+        let message = `Please Click to verify https://revels22-api.herokuapp.com/api/user/verify/${user.passwordResetToken}`;
+
         mailer(user.email, "Verify Email - REVELS '22", message);
         return res.status(200).send({ success: true, msg: 'Email Resent' });
     } catch (err) {
