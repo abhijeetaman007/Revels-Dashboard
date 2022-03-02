@@ -5,7 +5,6 @@ const mailer = async (to, subject, message) => {
     try {
         var smtpConfig = {
             service: 'gmail',
-            port: 587,
             auth: {
                 user: process.env.userEmail,
                 pass: process.env.userPassword,
