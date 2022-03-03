@@ -5,6 +5,7 @@ import logoMoon from "./../../assets/logo_moon.png"
 import logo from "./../../assets/logo_white.png"
 import GridBackground from "../../components/GridBackground/GridBackground"
 import Parallax from "parallax-js"
+import Helmet from "react-helmet"
 
 const Landing = () => {
 
@@ -27,6 +28,46 @@ const Landing = () => {
 
     return (
         <GridBackground>
+            <Helmet>
+                <title>Aagaz | Revels '22</title>
+                <meta name='description' content="Aagaz—Beyond Legacies | Revels '22" />
+                <meta
+                  name='keywords'
+                  content='revels, revelsmit, mit, manipal, aagaz, 2022, fest, cultural, sports, MAHE, beyond, legacies'
+                />
+                <meta name='url' content='https://revelsmit.in/' />
+                <meta name='coverage' content='Worldwide' />
+                <meta name='target' content='all' />
+                <meta name='HandheldFriendly' content='True' />
+                <link rel="canonical" href="https://revelsmit.in/" />
+                {/* OG meta tags */}
+                <meta property="og:type" content="webpage" />
+                <meta
+                  property="og:title"
+                  content="Aagaz—Beyond Legacies | Revels '22"
+                />
+                <meta
+                  property="og:description"
+                  content="Aagaz—Beyond Legacies | Revels '22"
+                />
+                <meta property="og:image" content='' />
+                <meta property="og:url" content='https://revelsmit.in/' />
+                <meta
+                  property="og:site_name"
+                  content="Aagaz—Beyond Legacies | Revels '22"
+                />
+                <meta
+                  name='twitter:title'
+                  content="Aagaz—Beyond Legacies | Revels '22"
+                />
+                <meta
+                  name="twitter:description"
+                  content="Aagaz—Beyond Legacies | Revels '22"
+                />
+                <meta name="twitter:image" content="" />
+                <meta name="twitter:site" content="@RevelsMIT" />
+                <meta name="twitter:creator" content="@RevelsMIT" />
+            </Helmet>
             <div className="moon-back">
                 <img className="back-moon" alt="Revels '22 Logo" src={logoMoon}></img>
                 <div className="theme-wrapper">
