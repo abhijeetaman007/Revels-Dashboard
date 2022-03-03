@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import "./Landing.css"
 import "./TextPop.css"
 import logoMoon from "./../../assets/logo_moon.png"
-import aagaz from "./../../assets/aagaz.png"
+import logo from "./../../assets/logo_white.png"
 import GridBackground from "../../components/GridBackground/GridBackground"
 import Parallax from "parallax-js"
 
@@ -27,20 +27,17 @@ const Landing = () => {
 
     return (
         <GridBackground>
-            <div className="theme-wrapper">
-                <img alt="Aagaz Logo" src={aagaz} className="aagaz-text"></img>
-                <div className="line"></div>
-                <h4>BEYOND LEGACIES</h4>
-            </div>
-            <div className="content-wrapper">
-                <div className="logo-wrapper">
-                    <div className="logo-box" id="scene">
-                        <img alt="Revels Logo" data-depth="0.7" id="logo-moon" className="logo-moon" src={logoMoon}></img>
-                    </div>
-                    <div className="text-area">
-                        {/* <p className="revels-22">REVELS '22</p>
-                        <p className="years-40">Celebrating 40 years</p> */}
-                        <div id="countdown">
+            <div className="moon-back">
+                <img className="back-moon" alt="Revels '22 Logo" src={logoMoon}></img>
+                <div className="theme-wrapper">
+                    <img alt="Revels '22 Logo Moon" className="brand" src={logo}></img>
+                    <h1 className="revels-brand font-light">Revels '22</h1>
+                </div>
+                <div className="content-wrapper">
+                    <div className="countdown-wrapper">
+                        <h4 className="font-medium">CELEBRATING</h4>
+                        <h1 className="font-heavy">40 YEARS</h1>
+                        <div id="countdown" className="font-medium">
                           <ul>
                             <li><span id="days"></span>days</li>
                             <li><span id="hours"></span>Hours</li>
@@ -49,42 +46,45 @@ const Landing = () => {
                           </ul>
                         </div>
                     </div>
+                    <div className="nav-wrapper">
+                        <a className="nav-link popout font-medium" href="/">
+                            <span>L</span>
+                            <span>O</span>
+                            <span>G</span>
+                            <span>I</span>
+                            <span>N</span>
+                        </a>
+                        <a className="nav-link popout font-medium" href="/">
+                            <span>E</span>
+                            <span>V</span>
+                            <span>E</span>
+                            <span>N</span>
+                            <span>T</span>
+                            <span>S</span>
+                        </a>
+                        <a className="nav-link popout font-medium" href="/">
+                            <span>T</span>
+                            <span>S</span>
+                            <span>H</span>
+                            <span>I</span>
+                            <span>R</span>
+                            <span>T</span>
+                            <span>S</span>
+                        </a>
+                        <a className="nav-link popout font-medium" href="/">
+                            <span>S</span>
+                            <span>C</span>
+                            <span>H</span>
+                            <span>E</span>
+                            <span>D</span>
+                            <span>U</span>
+                            <span>L</span>
+                            <span>E</span>
+                        </a>
+                    </div>
                 </div>
-                <div className="nav-wrapper">
-                    <a className="nav-link popout" href="/">
-                        <span>L</span>
-                        <span>O</span>
-                        <span>G</span>
-                        <span>I</span>
-                        <span>N</span>
-                    </a>
-                    <a className="nav-link popout" href="/">
-                        <span>E</span>
-                        <span>V</span>
-                        <span>E</span>
-                        <span>N</span>
-                        <span>T</span>
-                        <span>S</span>
-                    </a>
-                    <a className="nav-link popout" href="/">
-                        <span>T</span>
-                        <span>S</span>
-                        <span>H</span>
-                        <span>I</span>
-                        <span>R</span>
-                        <span>T</span>
-                        <span>S</span>
-                    </a>
-                    <a className="nav-link popout" href="/">
-                        <span>S</span>
-                        <span>C</span>
-                        <span>H</span>
-                        <span>E</span>
-                        <span>D</span>
-                        <span>U</span>
-                        <span>L</span>
-                        <span>E</span>
-                    </a>
+                <div className="revelry font-light" id="scene">
+                    <p data-depth="0.2">LET THE REVELRY BEGIN</p>
                 </div>
             </div>
         </GridBackground>

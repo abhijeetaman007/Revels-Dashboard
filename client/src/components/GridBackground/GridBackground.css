@@ -41,7 +41,7 @@
 /* Main styles */
 .grid-back {
   /* img size is 50x50 */
-  background: url("./../../assets/grid.svg") repeat 0 0;
+  background: url("./../../assets/greygrid.svg") repeat 0 0;
   -webkit-animation: bg-scrolling-reverse 40000ms infinite;
   /* Safari 4+ */
   -moz-animation: bg-scrolling-reverse 40000ms infinite;

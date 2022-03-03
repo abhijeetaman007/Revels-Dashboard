@@ -1,27 +1,35 @@
 .theme-wrapper {
-    height: 80px;
+    height: 120px;
     width: 100vw;
     position: fixed;
-    padding: 20px 0;
+    top: 0;
+    padding: 10px 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
-.theme-wrapper img {
-    padding: 30px;
-}
-.line {
-    height: 2px;
-    width: 65%;
-    background-color: white;
-}
-.theme-wrapper h4{ 
-    color: white;
-    padding: 30px;
-    font-size: 2rem;
-}
-.aagaz-text {
+.brand {
     height: 100%;
+}
+.revels-brand {
+    font-size: 6rem;
+    color: #5d419ac4;
+    letter-spacing: 1rem;
+    padding-top: 20px;
+    margin: auto 10px;
+}
+.moon-back {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top:0;
+}
+.back-moon {
+    position: absolute;
+    left: -4%;
+    bottom: -4%;
+    transform: rotate(-30deg) scale(1.5);
+    filter: grayscale(100%) opacity(0.1);
 }
 .content-wrapper {
     display: flex;
@@ -29,13 +37,26 @@
     width: 80%;
     margin: 0 auto;
 }
-.logo-wrapper {
+.countdown-wrapper {
     width: 50%;
     display: flex;
-    justify-content: start;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
     align-items: center;
     position: relative;
+    color: white;
 } 
+.countdown-wrapper h4 {
+    font-size: 2.5rem;
+    color: #F5737F;
+    letter-spacing: 5px;
+}
+.countdown-wrapper h1 {
+    font-size: 4rem;
+    color: #F5737F;
+    letter-spacing: 5px;
+}
 .nav-wrapper {
     width: 50%;
     display: flex;
@@ -46,37 +67,10 @@
 .nav-wrapper a {
     color: #64DFDF;
 }
-.logo-box {
-    position: relative;
-}
-.logo-moon {
-    height: 500px;
-}
-.revels-22 {
-    color: white;
-    position: absolute;
-    top: 47%;
-    right: -50px;
-    letter-spacing: 10px;
-    font-size: 3.5rem;
-}
-.years-40 {
-    color: white;
-    position: absolute;
-    top: 53%;
-    right: -70px;
-    letter-spacing: 5px;
-    font-size: 2rem;
-}
 .nav-link {
     margin: 1rem 0;
     font-size: 2.5rem;
-}
-.text-area {
-    position: absolute;
-    top: 45%;
-    right: -10%;
-    color: white;
+    letter-spacing: 0.6rem;
 }
 ul {
     margin-inline-end: 0;
@@ -87,15 +81,18 @@ ul {
 }
 li {
   display: inline-block;
-  font-size: 2.3em;
+  font-size: 1.7rem;
   list-style-type: none;
   text-align: center;
-  padding: 0.5em;
-  text-transform: uppercase;
+  padding: 1em;
+  letter-spacing: 0.2rem;
+  text-transform: lowercase;
+  font-family: "Korolev Light";
 }
 li span {
   display: block;
-  font-size: 4.5rem;
+  font-size: 7.5rem;
+  font-family: "Korolev Medium";
 }
 li:hover {
     background: -webkit-linear-gradient(135deg, #f57380, red, #f57380, black);
@@ -104,118 +101,62 @@ li:hover {
     transform: translateY(-5px);
     transition-duration: 500ms;
 }
-@media only screen and (min-width: 300px) and (max-width: 370px) {
-    .theme-wrapper {
-        flex-direction: column;
-        position: relative;
-    }
-    .theme-wrapper h4, 
-    .theme-wrapper img {
-        padding: 0;
-    }
-    .content-wrapper {
-        flex-flow: column-reverse;
-        width: 100vw;
-    }
-    .logo-wrapper {
-        justify-content: start;
-        width: 100%;
-        height: 55%;
-    }
-    .nav-wrapper {
-        height: 45%;
-        width: 100%;
-        align-items: center;
-    }
-    .logo-box {
-        align-self: flex-start;
-        height: 250px;
-        width: 250px;
-    }
-    .logo-moon {
-        height: 250px;
-    }
-    .text-area {
-        top: 25%;
-        right: 3%;
-    }
-    .nav-link {
-        font-size: 1.2rem;
-    }
-    li {
-        font-size: 0.9rem;
-    }
-    li span{
-        font-size: 1.9rem;
-    }
+.revelry {
+    width: 100vw;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    padding: 10px;
+    mix-blend-mode: multiply;
+    font-size: 2rem;
+    color: #767676;
+    letter-spacing: 0.6rem;
 }
-@media only screen and (min-width: 370px) and (max-width: 760px) {
+@media only screen and (max-width: 800px) {
     .theme-wrapper {
-        flex-direction: column;
-        position: relative;
-    }
-    .theme-wrapper h4, 
-    .theme-wrapper img {
+        height: 100px;
         padding: 0;
     }
-    .content-wrapper {
-        flex-flow: column-reverse;
-        width: 100vw;
-    }
-    .logo-wrapper {
-        justify-content: flex-start;
-        width: 100%;
-        height: 55%;
-    }
-    .nav-wrapper {
-        height: 45%;
-        width: 100%;
-        align-items: center;
-    }
-    .logo-box {
-        align-self: flex-start;
-        height: 250px;
-        width: 250px;
-    }
-    .logo-moon {
-        height: 250px;
-    }
-    .text-area {
-        top: 23%;
-        right: 5%;
-    }
-    .nav-link {
-        font-size: 1.2rem;
-    }
-    li {
-        font-size: 1rem;
-    }
-    li span{
+    .revels-brand {
         font-size: 2rem;
+        letter-spacing: 0.3rem;
     }
-}
-@media only screen and (min-width: 760px) and (max-width: 1020px) {
+    .back-moon {
+        left: -80%;
+        bottom: -20%;
+        transform: scale(0.8) rotate(-30deg);
+    }
+    .content-wrapper {
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+    }
+    .countdown-wrapper {
+        width: 100%;
+        height: 50%;
+        justify-content: flex-end;
+    }
+    .countdown-wrapper h4 {
+        font-size: 1.8rem;
+    }
+    .countdown-wrapper h1 {
+        font-size: 3rem;
+    }
+    .nav-wrapper {
+        width: 100%;
+        align-items: center;
+        height: 50%;
+    }
+    .nav-link {
+        font-size: 1.5rem;
+    }
     li {
         font-size: 1rem;
-    }
-    li span {
-        font-size: 2.4rem;
-    }
-    .logo-moon {
-        height: 350px;
-    }
-    .text-area {
-        right: -45%;
-    }
-}
-@media only screen and (min-width: 1020px) and (max-width: 1300px) {
-    li {
-        font-size: 1.5rem;
     }
     li span {
         font-size: 3rem;
     }
-    .text-area {
-        right: -50%;
+    .revelry {
+        font-size: 1.1rem;
     }
 }

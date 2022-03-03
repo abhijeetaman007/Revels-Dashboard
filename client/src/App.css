@@ -9,15 +9,37 @@
   user-select: none;
 }
 @font-face {
-  font-family: "Korolev";
+  font-family: "Korolev Medium";
   src: url("./fonts/korolev-heavy-cdnfonts/Korolev\ Medium.otf") format("opentype");
   font-style: normal;
   font-weight: 600;
   font-display: swap;
 }
+@font-face {
+  font-family: "Korolev Bold";
+  src: url("./fonts/korolev-heavy-cdnfonts/Korolev\ Heavy.otf") format("opentype");
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Korolev Light";
+  src: url("./fonts/korolev-heavy-cdnfonts/Korolev\ Light.otf") format("opentype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
 body {
   background-color: #100B1B;
-  font-family: "Korolev";
+}
+.font-light {
+  font-family: "Korolev Light";
+}
+.font-medium {
+  font-family: "Korolev Medium";
+}
+.font-heavy {
+  font-family: "Korolev Bold";
 }
 body::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
