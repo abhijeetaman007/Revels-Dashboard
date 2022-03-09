@@ -234,7 +234,9 @@ const userPassResetLink = async (req, res) => {
                 msg: 'User does not exists,Please register ',
             });
         }
+        // let resetLink = `${process.env.BASE_URL}forgetpass/${user.passwordResetToken}`;
         let resetLink = `${process.env.BASE_URL}forgetpass/${user.passwordResetToken}`;
+        
         let message = `Click here to change yout password ${resetLink}`;
         mailer(email, "Reset Password - REVELS '22", message);
         return res.send({ success: true, msg: 'Password Reset Link emailed' });
