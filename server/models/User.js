@@ -12,9 +12,8 @@ const UserSchema = new mongoose.Schema(
       unique: true,
     },
     role: {
-      type: String,
-      default: "USER",
-      enum: ["USER"],
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Role",
     },
     token: {
       type: String,
@@ -63,9 +62,9 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    isMIT:{
-      type:Boolean,
-      required:true,
+    isMIT: {
+      type: Boolean,
+      required: true,
     },
     isMahe: {
       type: Boolean,
@@ -73,14 +72,12 @@ const UserSchema = new mongoose.Schema(
     },
     accommodation: {
       required: {
-        type: Boolean,
-        default: false,
+        type: Number,
+        default: 0,
+        enum: [0, 1, 2, 3],
       },
-      arrivalDate:{
-        type:String
-      },
-      arrivalTime:{
-        type:String
+      arrivalDateTime: {
+        type: Date,
       },
     },
     documents: {
@@ -90,13 +87,13 @@ const UserSchema = new mongoose.Schema(
       vaccination: {
         type: file.FileSchema,
       },
-      undertaking:{
-        type:file.FileSchema
+      undertaking: {
+        type: file.FileSchema,
       },
     },
-    verified: {
+    status: {
       type: String,
-      enum: ["VERIFIED", "REJECTED", "UNVERIFIED"],
+      enum: ["VERIFIED", "REJECTED", "UNVERIFIED", "BANNED"],
       default: "UNVERIFIED",
     },
     regEvents: [
@@ -105,11 +102,20 @@ const UserSchema = new mongoose.Schema(
           type: mongoose.Schema.Types.ObjectId,
           ref: "Event",
         },
-        // Will be part of judges portal and result model
-        // isPresent: {
-        //   type: Boolean,
-        //   default: false,
-        // },
+        attendance: [
+          {
+            roundNumber: {
+              type: Number,
+              default: 1,
+            },
+          },
+          {
+            isPresent: {
+              type: Boolean,
+              default: false,
+            },
+          },
+        ],
       },
     ],
     //Stores all types of delegate Card/Tickets

@@ -1,14 +1,20 @@
-const mongoose = require('mongoose');
-const CollegeSchema = new mongoose.Schema({
-    name:{
-        type:String,
-        required:true,
-        unique:true
+const mongoose = require("mongoose");
+const CollegeSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      unique: true,
     },
-    isMahe:{
-        type:Boolean,
-        default:false
-    }
-})
-module.exports = College = mongoose.model('College', CollegeSchema);
-
+    state: {
+      type: String,
+      default: null,
+    },
+    isMahe: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  { timestamps: true }
+);
+module.exports = College = mongoose.model("College", CollegeSchema);

@@ -1,32 +1,35 @@
-const mongoose = require('mongoose');
-const DelCard = require('./DelegateCard')
-const User = require('./User')
+const mongoose = require("mongoose");
+const DelCard = require("./DelegateCard");
+const User = require("./User");
 
-const transactionSchema = new mongoose.Schema({
-    name:{
-        type:String
+const transactionSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
     },
-    delegateCard:{
-        type:mongoose.Types.ObjectId,
-        ref:'DelCard'
+    delegateCard: {
+      type: mongoose.Types.ObjectId,
+      ref: "DelCard",
     },
-    user:{
-        type:mongoose.Types.ObjectId,
-        ref:'User'
+    user: {
+      type: mongoose.Types.ObjectId,
+      ref: "User",
     },
-    orderId:{
-        type:String
+    orderId: {
+      type: String,
     },
-    transactionData:{
-        type:Object
+    transactionData: {
+      type: Object,
     },
-    amount:{
-        type:String,
+    amount: {
+      type: String,
     },
-    isPaymentConfirmed:{
-        type:Boolean,
-        default:false
-    }
-}) 
+    isPaymentConfirmed: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  { timestamps: true }
+);
 
-module.exports = Transaction = mongoose.model('Transaction', transactionSchema);
+module.exports = Transaction = mongoose.model("Transaction", transactionSchema);
