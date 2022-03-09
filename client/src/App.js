@@ -12,8 +12,16 @@ import PrivateRoute from './utils/PrivateRoute';
 import Dashboard from './pages/Dashboard';
 import ResetPassword from './pages/ResetPassword';
 
+import DelegateCard from './components/DelegateCard';
+
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
+  return 
+  // (
+    // <div className="App">
+    //   <DelegateCard/>
+    // </div>
+  // )
   return (
     <div className="App">
       <BrowserRouter>

@@ -96,7 +96,7 @@ const userRegister = async (req, res) => {
             timeStamp,
         });
         await newUser.save();
-        let message = `Please Click to verify http://localhost:${process.env.PORT}/api/user/verify/${passwordResetToken}`;
+        let message = `Please Click to verify ${BASE_URL}/api/user/verify/${passwordResetToken}`;
         mailer(newUser.email, "Verify Email - REVELS '22", message);
 
         return res.status(200).send({ success: true, msg: 'User Registered' });
@@ -124,7 +124,9 @@ const resendVerificationLink = async (req, res) => {
             return res
                 .status(400)
                 .send({ success: false, msg: 'Email doesnot exists' });
-        let message = `Please Click to verify http://localhost:${process.env.PORT}/api/user/verify/${user.passwordResetToken}`;
+        // let message = `Please Click to verify http://localhost:${process.env.PORT}/api/user/verify/${user.passwordResetToken}`;
+        let message = `Please Click to verify https://revels22-api.herokuapp.com/api/user/verify/${user.passwordResetToken}`;
+
         mailer(user.email, "Verify Email - REVELS '22", message);
         return res.status(200).send({ success: true, msg: 'Email Resent' });
     } catch (err) {
@@ -232,7 +234,9 @@ const userPassResetLink = async (req, res) => {
                 msg: 'User does not exists,Please register ',
             });
         }
+        // let resetLink = `${process.env.BASE_URL}forgetpass/${user.passwordResetToken}`;
         let resetLink = `${process.env.BASE_URL}forgetpass/${user.passwordResetToken}`;
+        
         let message = `Click here to change yout password ${resetLink}`;
         mailer(email, "Reset Password - REVELS '22", message);
         return res.send({ success: true, msg: 'Password Reset Link emailed' });

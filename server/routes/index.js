@@ -116,7 +116,7 @@ router.get(
 );
 router.get('/user/event/getallevents', isUserLoggedIn, getAllEvents);
 //Delegate Cards
-router.get('/user/delegatecard/getall', isUserLoggedIn, getAllDelegateCards);
+router.get('/user/delegatecard/getall', getAllDelegateCards);
 router.get(
     '/user/delegatecard/getmydelegatecards',
     isUserLoggedIn,
@@ -128,9 +128,9 @@ router.get(
     getAllMyTransactions
 );
 // Razorpay - Payment
-// TODO : put middleware
-router.post('/user/payment', isUserLoggedIn, registerOrder);
-router.post('/user/payment/verify', isUserLoggedIn, verifyPayment);
+// TODO : put middleware after testing
+router.post('/user/payment', registerOrder);
+router.post('/user/payment/verify', verifyPayment);
 router.post('/user/payment/onproduction/verify', verifyPaymentAlternate);
 
 //@Category/Admin Routes(Common Login)

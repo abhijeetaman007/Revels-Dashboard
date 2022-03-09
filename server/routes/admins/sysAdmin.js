@@ -1,3 +1,4 @@
+const { nanoid } = require('nanoid');
 const DelCard = require('../../models/DelegateCard');
 
 const addDelegateCard = async (req, res) => {
@@ -8,7 +9,17 @@ const addDelegateCard = async (req, res) => {
             return res
                 .status(400)
                 .send({ success: false, msg: 'Please fill all the fields' });
+        
+        let cardID;
+        while(true)
+        {
+            cardID = nanoid(5)
+            let card = await DelCard.findOne({cardID})
+            if(!card)
+                break;
+        }            
         let delegateCard = new DelCard({
+            cardID,
             name,
             isProShow,
             mahePrice,

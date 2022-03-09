@@ -17,6 +17,7 @@ function loadScript(src) {
 }
 
 async function displayRazorpay(delegateCardID) {
+    console.log('here 1');
     const res = await loadScript(
         'https://checkout.razorpay.com/v1/checkout.js'
     );
@@ -41,7 +42,7 @@ async function displayRazorpay(delegateCardID) {
         name: data.name, //Name of Ticket/Card
         description: "Revels'22",
         // Logo Image
-        image: "https://scontent.fixr3-2.fna.fbcdn.net/v/t1.6435-9/81363115_3254316291309114_9119946810595475456_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=z5N4zUOYsqgAX-DZ3CE&_nc_ht=scontent.fixr3-2.fna&oh=00_AT8fP09Jreo-FiZHchIMQKb806mPWPs0rrg-ovT91MFfEQ&oe=622F8575",
+        image: 'https://scontent.fixr3-2.fna.fbcdn.net/v/t1.6435-9/81363115_3254316291309114_9119946810595475456_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=z5N4zUOYsqgAX-DZ3CE&_nc_ht=scontent.fixr3-2.fna&oh=00_AT8fP09Jreo-FiZHchIMQKb806mPWPs0rrg-ovT91MFfEQ&oe=622F8575',
         prefill: {
             name: 'userName', //Enter Logged In User details to be prefilled in checkout form
             email: 'test@test.com',
@@ -58,11 +59,17 @@ async function displayRazorpay(delegateCardID) {
                     razorpay_payment_id: response.razorpay_payment_id,
                     razorpay_signature: response.razorpay_signature,
                 })
-                .then(alert('Your payment was successful'))
+                .then((resp) => {
+                    if (resp.data.success) {
+                        alert('Payment successful');
+                    } else {
+                        alert('Payment Failed');
+                    }
+                });
         },
     };
     console.log('Payment Initiated');
-    
+
     //Finally opens checkout window and where user pays for registered order
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
@@ -70,7 +77,6 @@ async function displayRazorpay(delegateCardID) {
 
 function DelegateCard() {
     async function fetchDelegateCards() {
-
         // To get all types of proshow and non proshow
         let resp = await axios.get(
             'http://localhost:5000/api/user/delegatecard/getall'
@@ -107,7 +113,7 @@ function DelegateCard() {
                 } = delCard;
                 return (
                     <div>
-                        <p>
+                        <p style={{ color: 'white' }}>
                             Name : {name} <br />
                             isProShow : {isProShow} <br />
                             MAHE-Price: {mahePrice} <br />

@@ -1,6 +1,6 @@
 const Event = require('../../models/Event');
 const jwt = require("jsonwebtoken");
-
+const DelCard = require('../../models/DelegateCard');
 
 const addEvent = async (req, res) => {
   console.log('ok');
@@ -16,6 +16,7 @@ const addEvent = async (req, res) => {
       minMembers,
       maxMembers,
       eventHeads,
+      delegateCardID, //List of all needed delegate card IDs 
     //   eventDateTime, (To be set by operations)
     //   eventVenue,
       tags,
@@ -120,6 +121,7 @@ const updateEvent = async (req, res) => {
       minMembers,
       maxMembers,
       eventHeads,
+      delegateCard, //List of Delegate CardIDs
     //   eventDateTime,
     //   eventVenue,
       tags,
@@ -155,6 +157,16 @@ const updateEvent = async (req, res) => {
     // }
 
     //Check for more validations
+    let newDelegateCards = []
+    for(let i=0;i<delegateCard.length;i++)
+    {
+      let card = await DelCard.findOne({cardID:delegateCard[i].cardID})
+      if(!card)
+        return res.status(400).send({success:false,msg:'Delegate Card ID not found,enter valid Delegate Card ID'})
+        newDelegateCards.push(card._id)
+      } 
+
+      console.log("Sending ",newDelegateCards)
 
      await Event.findOneAndUpdate(
       { eventID },
@@ -172,6 +184,7 @@ const updateEvent = async (req, res) => {
         // eventVenue,
         // registrationDeadline,
         tags,
+        delegateCard:newDelegateCards,
       }
     );
     return res.status(200).send({ success: true, msg: 'Event Updated' });

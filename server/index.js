@@ -24,7 +24,7 @@ app.use(
 
 app.get('/', (req, res) => {
     res.json({
-        message: 'Welcome to Revels22 Dashboard API',
+        msg: 'Welcome to Revels22 Dashboard API',
         success: true,
     });
 });
