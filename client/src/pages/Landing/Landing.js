@@ -6,6 +6,7 @@ import logo from "./../../assets/logo_white.png"
 import GridBackground from "../../components/GridBackground/GridBackground"
 import Parallax from "parallax-js"
 import Helmet from "react-helmet"
+import { Link } from "react-router-dom";
 
 const Landing = () => {
 
@@ -88,13 +89,15 @@ const Landing = () => {
                         </div>
                     </div>
                     <div className="nav-wrapper">
-                        <a className="nav-link popout font-medium" href="/">
-                            <span>L</span>
-                            <span>O</span>
-                            <span>G</span>
-                            <span>I</span>
-                            <span>N</span>
-                        </a>
+                        <Link to="/login">
+                          <p className="nav-link popout font-medium">
+                              <span>L</span>
+                              <span>O</span>
+                              <span>G</span>
+                              <span>I</span>
+                              <span>N</span>
+                          </p>
+                        </Link>
                         <a className="nav-link popout font-medium" href="/">
                             <span>E</span>
                             <span>V</span>
