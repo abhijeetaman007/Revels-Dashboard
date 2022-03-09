@@ -5,8 +5,8 @@ import { useAuth } from "../context/AuthContext";
 const SignIn = () => {
     const auth = useAuth();
 
-    const [email, setEmail] = useState("parthivmenon01@gmail.com");
-    const [password, setPassword] = useState("password1");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     // handles input field validation
     const validateForm = (toastId) => {
         if(

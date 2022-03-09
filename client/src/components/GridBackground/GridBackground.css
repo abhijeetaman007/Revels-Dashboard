@@ -1,0 +1,60 @@
+@-webkit-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 100vh 100vw;
+  }
+}
+@-moz-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 100vh 100vw;
+  }
+}
+@-o-keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 100vh 100vw;
+  }
+}
+@keyframes bg-scrolling-reverse {
+  100% {
+    background-position: 100vh 100vw;
+  }
+}
+@-webkit-keyframes bg-scrolling {
+  0% {
+    background-position: 100vh 100vw;
+  }
+}
+@-moz-keyframes bg-scrolling {
+  0% {
+    background-position: 100vh 100vw;
+  }
+}
+@-o-keyframes bg-scrolling {
+  0% {
+    background-position: 100vh 100vw;
+  }
+}
+@keyframes bg-scrolling {
+  0% {
+    background-position: 100vh 100vw;
+  }
+}
+/* Main styles */
+.grid-back {
+  /* img size is 50x50 */
+  background: url("./../../assets/greygrid.svg") repeat 0 0;
+  -webkit-animation: bg-scrolling-reverse 40000ms infinite;
+  /* Safari 4+ */
+  -moz-animation: bg-scrolling-reverse 40000ms infinite;
+  /* Fx 5+ */
+  -o-animation: bg-scrolling-reverse 40000ms infinite;
+  /* Opera 12+ */
+  animation: bg-scrolling-reverse 40000ms infinite;
+  /* IE 10+ */
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function: linear;
+  -o-animation-timing-function: linear;
+  animation-timing-function: linear;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
