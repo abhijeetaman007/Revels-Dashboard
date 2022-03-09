@@ -6,7 +6,7 @@ import { Toaster } from "react-hot-toast";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AuthProvider from './context/AuthContext';
 
-import AuthPage from './pages/AuthPage';
+import AuthPage from './pages/AuthPages/AuthPage';
 import Landing from './pages/Landing/Landing';
 import PrivateRoute from './utils/PrivateRoute';
 import Dashboard from './pages/Dashboard';

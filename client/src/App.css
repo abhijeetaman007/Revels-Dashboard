@@ -31,6 +31,7 @@
 }
 body {
   background-color: #100B1B;
+  overflow-x: hidden;
 }
 .font-light {
   font-family: "Korolev Light";
@@ -66,4 +67,12 @@ input:focus {
 a {
   text-decoration: none;
   color: inherit;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
 }
