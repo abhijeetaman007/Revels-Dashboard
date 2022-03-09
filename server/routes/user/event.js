@@ -41,7 +41,10 @@ const registerEvent = async (req, res) => {
             }
         })
 
+
         let teamID = nanoid(8);
+        
+
         team = await new Team({
             teamID,
             event: event._id,

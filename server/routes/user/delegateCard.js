@@ -1,5 +1,6 @@
 const DelCard = require('../../models/DelegateCard');
 const Transaction = require('../../models/Transaction');
+const {nanoid} = require('nanoid');
 
 const getMyDelegateCards = async (req, res) => {
     try {
@@ -19,6 +20,7 @@ const getMyDelegateCards = async (req, res) => {
 const getAllDelegateCards = async (req, res) => {
     try {
         let delCards = await DelCard.find();
+        console.log("All Cards ",delCards)
         return res.status(200).send({ success: true, data: delCards });
     } catch (err) {
         console.log(err);

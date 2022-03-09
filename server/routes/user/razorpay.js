@@ -15,7 +15,6 @@ const registerOrder = async (req, res) => {
         });
         let { delCard_id } = req.body;
         delCard_id = mongoose.Types.ObjectId(delCard_id);
-
         let delegateCard = await DelCard.findById(delCard_id);
         if (!delegateCard)
             return res.status(400).send({
@@ -26,8 +25,8 @@ const registerOrder = async (req, res) => {
 
         let user = await User.findOne({
             _id: req.requestUser._id,
-            // _id:'620ca50338f5188bf035cb94',  //For Testing
-            delegateCard: { $elemMatch: { cardType: delCard_id } },
+            // _id:'6228a7d17ff99d984e267927',  //For Testing
+            delegateCard: { $in: delCard_id },
         });
         if (user) {
             console.log('Delegate-Card/ProShow already purchased', user);
@@ -60,10 +59,11 @@ const registerOrder = async (req, res) => {
         });
         console.log(response);
         console.log(delegateCard);
+
         //New Transaction Initiated
         let newTransaction = new Transaction({
             user: req.requestUser._id,
-            // user: '620ca50338f5188bf035cb94',  //For Testing
+            // user: '6228a7d17ff99d984e267927',  //For Testing
             delegateCard: delegateCard._id,
             name: delegateCard.name,
             orderId: response.id,
@@ -113,9 +113,10 @@ const verifyPaymentAlternate = async (req, res) => {
                     (transaction.transactionData = req.body);
                 await transaction.save();
                 let delegateCardID = transaction.delegateCard;
+                
                 let user = await User.findOneAndUpdate(
                     { _id: transaction.user },
-                    { $push: { delegateCard: { cardType: delegateCardID } } }
+                    { $push: { delegateCard: { card_id: delegateCardID } } }
                 );
                 console.log('Payment Success');
             }
@@ -126,9 +127,9 @@ const verifyPaymentAlternate = async (req, res) => {
         }
     } catch (err) {
         console.log(err);
-        return res
-            .status(500)
-            .send({ success: false, msg: 'Internal Server Error' });
+        // return res
+        //     .status(500)
+        //     .send({ success: false, msg: 'Internal Server Error' });
     }
 };
 
@@ -163,12 +164,13 @@ const verifyPayment = async (req, res) => {
                 let delegateCardID = transaction.delegateCard;
                 let user = await User.findOneAndUpdate(
                     { _id: transaction.user },
-                    { $push: { delegateCard: { cardType: delegateCardID } } }
+                    { $push: { delegateCard:  delegateCardID } }
                 );
                 console.log('Payment Success');
                 console.log('Transaction : ', transaction);
                 console.log('User : ', user);
             }
+            console.log("Payment Confirmed")
             return res.status(200).send({
                 success: true,
                 msg: 'Payement Confirmed',

@@ -96,7 +96,7 @@ const userRegister = async (req, res) => {
             timeStamp,
         });
         await newUser.save();
-        let message = `Please Click to verify http://localhost:${process.env.PORT}/api/user/verify/${passwordResetToken}`;
+        let message = `Please Click to verify ${BASE_URL}/api/user/verify/${passwordResetToken}`;
         mailer(newUser.email, "Verify Email - REVELS '22", message);
 
         return res.status(200).send({ success: true, msg: 'User Registered' });
