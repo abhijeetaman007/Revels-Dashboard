@@ -1,5 +1,4 @@
 import './styles/index.scss';
-import './reset.css';
 import React from 'react';
 import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
@@ -27,9 +26,9 @@ function App() {
               exact
               path="/dashboard"
               element={
-                <PrivateRoute>
+                // <PrivateRoute>
                   <Dashboard />
-                </PrivateRoute>
+                // </PrivateRoute>
               }
             />
             <Route
