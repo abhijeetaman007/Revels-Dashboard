@@ -11,12 +11,12 @@ const userRegistrationValidation = () => {
             .withMessage('Password of minimum 8 characters is required'),
         check('mobileNumber', 'Please enter a valid Mobile Number')
             .isNumeric()
-            .isLength({ min: 10, max: 10 }),
+            .isLength({ min: 7, max: 15 }),
         check('registrationNumber', 'Please enter College Registration Number')
             .not()
             .isEmpty(),
         check('college', 'Enter your College name').not().isEmpty(),
-        check('branch', 'Enter your branch').not().isEmpty(),
+        check('course', 'Enter your course').not().isEmpty(),
         check('state', 'Enter a valid State').not().isEmpty(),
     ];
 };

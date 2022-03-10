@@ -16,49 +16,48 @@ import DelegateCard from './components/DelegateCard';
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
-  return 
-  // (
-    // <div className="App">
-    //   <DelegateCard/>
-    // </div>
-  // )
   return (
-    <div className="App">
-      <BrowserRouter>
-        <AuthProvider>
-          <Routes>
-            <Route path="/" element={<Landing />} />
-            <Route 
-              exact
-              path="/login"
-              element={
-                <AuthPage />
-              } 
-            />
-            <Route 
-              exact
-              path="/dashboard"
-              element={
-                <PrivateRoute>
-                  <Dashboard />
-                </PrivateRoute>
-              } 
-            />
-            <Route 
-              exact
-              path="/forgetpass/:passtoken"
-              element={
-                <ResetPassword />
-              } 
-            />
-            {/* <Route path="/admin/:category" element={}/> */}
-            {/* <Route path="/admin/SYSADMIN" element={}/> */}
-          </Routes>
-        </AuthProvider>
-      </BrowserRouter>
-      <Toaster />
+    <div className='App'>
+      <DelegateCard/>
     </div>
-  );
+  )
+  // return (
+  //   <div className="App">
+  //     <BrowserRouter>
+  //       <AuthProvider>
+  //         <Routes>
+  //           <Route path="/" element={<Landing />} />
+  //           <Route 
+  //             exact
+  //             path="/login"
+  //             element={
+  //               <AuthPage />
+  //             } 
+  //           />
+  //           <Route 
+  //             exact
+  //             path="/dashboard"
+  //             element={
+  //               <PrivateRoute>
+  //                 <Dashboard />
+  //               </PrivateRoute>
+  //             } 
+  //           />
+  //           <Route 
+  //             exact
+  //             path="/forgetpass/:passtoken"
+  //             element={
+  //               <ResetPassword />
+  //             } 
+  //           />
+  //           {/* <Route path="/admin/:category" element={}/> */}
+  //           {/* <Route path="/admin/SYSADMIN" element={}/> */}
+  //         </Routes>
+  //       </AuthProvider>
+  //     </BrowserRouter>
+  //     <Toaster />
+  //   </div>
+  // );
 }
 
 export default App;

@@ -25,6 +25,9 @@ const registerEvent = async (req, res) => {
                 .status(400)
                 .send({ success: false, msg: 'Registration Closed' });
         }
+        // Check isActive
+
+
         let user = req.requestUser;
 
         let team = await Team.findOne({ event:event._id, members: { $in: user._id } });
@@ -43,7 +46,7 @@ const registerEvent = async (req, res) => {
 
 
         let teamID = nanoid(8);
-        
+
 
         team = await new Team({
             teamID,

@@ -45,6 +45,7 @@ const {
     addDelegateCard,
     deleteDelegateCard,
     viewAllDelegateCards,
+    addRole,
 } = require('./admins/sysAdmin');
 const {
     getAllDelegateCards,
@@ -162,5 +163,6 @@ router.post('/sysadmin/delegatecard/add', isSysAdmin, addDelegateCard);
 router.post('/sysadmin/delegatecard/delete', isSysAdmin, deleteDelegateCard);
 router.get('/sysadmin/delegatecard/view', isSysAdmin, viewAllDelegateCards);
 router.post('/sysadmin/register/admin', isSysAdmin,adminRegister);
+router.post('/sysadmin/role/add',addRole)
 
 module.exports = router;

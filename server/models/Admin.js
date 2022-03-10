@@ -8,12 +8,6 @@ const adminSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    //0 - Misc Admin ; 1 - Category Admins
-    type: {
-      default: 0,
-      enum: [0, 1],
-      type: Number,
-    },
     role: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Role",

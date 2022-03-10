@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
 const RoleSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-      unique: true,
+    //0 - Misc/Individual Admin ; 1 - Category Admins
+    type: {
+      default: 0,
+      enum: [0, 1],
+      type: Number,
     },
     // 0 - User Roles;
     // 1 - Category Read Only; 2 - Category Read/Write; 3 - Category SuperAdmin;
@@ -27,4 +28,4 @@ const RoleSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-module.exports = College = mongoose.model("Role", RoleSchema);
+module.exports = HTMLTableRowElement = mongoose.model("Role", RoleSchema);

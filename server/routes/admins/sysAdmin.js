@@ -1,5 +1,6 @@
 const { nanoid } = require('nanoid');
 const DelCard = require('../../models/DelegateCard');
+const Role = require('../../models/Role')
 
 const addDelegateCard = async (req, res) => {
     try {
@@ -72,4 +73,24 @@ const viewAllDelegateCards = async (req,res) =>{
     }
 }
 
-module.exports = {addDelegateCard,deleteDelegateCard,viewAllDelegateCards}
+const addRole = async(req,res) =>{
+    try
+    {
+        let {accessLevel,categoryId,type} = req.body
+        let newRole = await new Role({
+            accessLevel,
+            categoryId,
+            isActive:true,
+            type
+        })
+        await newRole.save()
+        return res.status(200).send({success:true,data:newRole,msg:'New Role Added'})            
+    }
+    catch(err)
+    {
+        console.log(err)
+        return res.status(500).send({success:false,msg:'Internal Server Error'})
+    }
+} 
+
+module.exports = {addDelegateCard,deleteDelegateCard,viewAllDelegateCards,addRole}
