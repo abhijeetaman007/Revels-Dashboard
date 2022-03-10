@@ -27,10 +27,11 @@ function App() {
               path="/dashboard"
               element={
                 // <PrivateRoute>
-                  <Dashboard />
+                <Dashboard />
                 // </PrivateRoute>
               }
             />
+            <Route path="/dashboard/delegatecard" element={<DelegateCard />} />
             <Route
               exact
               path="/forgetpass/:passtoken"

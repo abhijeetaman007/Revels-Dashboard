@@ -231,4 +231,95 @@ input:after {
   -ms-user-select: initial;
   user-select: initial;
 }
+
+.delegate-container p {
+  font-size: 15px;
+}
+
+.delegate-container .title {
+  font-size: 30px;
+  color: white;
+  margin-left: 20px;
+}
+
+.delegate-container .del-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.delegate-container .del-flex .delcardblue {
+  margin: 20px;
+  border-radius: 10px;
+  padding: 30px;
+  font-size: 24px;
+  background-color: #3a5a64;
+  background-image: url("../assets/blue.png");
+  background-repeat: no-repeat;
+}
+
+.delegate-container .del-flex .delcardblue button {
+  margin: 10px;
+  padding: 10px 40px 10px 40px;
+  border-radius: 10px;
+  color: black;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+}
+
+.delegate-container .del-flex .delcardblack {
+  margin: 20px;
+  border-radius: 10px;
+  padding: 30px;
+  font-size: 24px;
+  background-color: #6e6767;
+  background-image: url("../assets/black.png");
+  background-repeat: no-repeat;
+}
+
+.delegate-container .del-flex .delcardblack button {
+  margin: 10px;
+  padding: 10px 40px 10px 40px;
+  border-radius: 10px;
+  color: black;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+}
+
+.delegate-container .del-flex .delcardpurple {
+  margin: 20px;
+  border-radius: 10px;
+  padding: 30px;
+  font-size: 24px;
+  background-color: #441d81;
+  background-image: url("../assets/purple.png");
+  background-repeat: no-repeat;
+}
+
+.delegate-container .del-flex .delcardpurple button {
+  margin: 10px;
+  padding: 10px 40px 10px 40px;
+  border-radius: 10px;
+  color: black;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+}
+
+.collegetype {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: large;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  font-weight: bold;
+}
 /*# sourceMappingURL=index.css.map */

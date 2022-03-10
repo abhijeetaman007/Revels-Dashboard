@@ -1,0 +1,111 @@
+.layout-wrapper {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.layout-wrapper nav {
+  width: 100vw;
+  height: 100px;
+  background-color: #181027;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.layout-wrapper nav .brand {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: left;
+  color: white;
+  font-size: 1.3rem;
+}
+
+.layout-wrapper nav .brand p {
+  font-size: 1rem;
+}
+
+.layout-wrapper nav .brand img {
+  height: 100%;
+}
+
+.layout-wrapper nav i {
+  color: white;
+  font-size: 1.3rem;
+}
+
+.layout-wrapper .dash-wrapper {
+  height: 100%;
+}
+
+.layout-wrapper .dash-wrapper .sidebar {
+  width: 17%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+.layout-wrapper .dash-wrapper .sidebar .side-nav {
+  height: 70%;
+  padding: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  color: white;
+}
+
+.layout-wrapper .dash-wrapper .sidebar .side-footer {
+  width: 100%;
+  height: 30%;
+  padding: 2rem 1rem;
+  border-top: 2px solid grey;
+  text-align: center;
+  color: white;
+}
+
+.layout-wrapper .dash-wrapper .sidebar .side-footer h4 {
+  font-size: 1.4rem;
+}
+
+.layout-wrapper .dash-wrapper .sidebar .side-footer .buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 20px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.layout-wrapper .dash-wrapper .sidebar .side-footer .buttons button {
+  border: 0;
+  padding: 5px 15px;
+  margin: 5px;
+  border-radius: 10px;
+}
+/*# sourceMappingURL=Layout.css.map */
