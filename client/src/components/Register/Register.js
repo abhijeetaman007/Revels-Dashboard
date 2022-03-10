@@ -206,10 +206,9 @@ const Register = (props) => {
                 </div>
                 <button onClick={(e) => handleSubmit(e)} className="font-medium">Register</button>
             </form> 
-            <div className="my-2 d-flex justify-content-between">
-                <p onClick={() => {props.setRegister(false); props.setForgotPass(true)}} className="font-medium">Forgot Password</p>
+            <div className="my-2 d-flex justify-content-center">
                 <p className="font-medium" onClick={() => {props.setLogin(true); props.setRegister(false)}}>
-                    Have an account?
+                    Already have an account?
                 </p>
             </div>
         </div>

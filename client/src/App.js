@@ -1,9 +1,8 @@
-import './App.css';
-import './reset.css'
+import './styles/index.scss';
 import React from 'react';
-import axios from "axios";
-import { Toaster } from "react-hot-toast";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import axios from 'axios';
+import { Toaster } from 'react-hot-toast';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AuthProvider from './context/AuthContext';
 
 import AuthPage from './pages/AuthPages/AuthPage';
@@ -17,8 +16,33 @@ import DelegateCard from './components/DelegateCard';
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
   return (
-    <div className='App'>
-      <DelegateCard/>
+    <div className="App">
+      <BrowserRouter>
+        <AuthProvider>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route exact path="/login" element={<AuthPage />} />
+            <Route
+              exact
+              path="/dashboard"
+              element={
+                // <PrivateRoute>
+                <Dashboard />
+                // </PrivateRoute>
+              }
+            />
+            <Route path="/dashboard/delegatecard" element={<DelegateCard />} />
+            <Route
+              exact
+              path="/forgetpass/:passtoken"
+              element={<ResetPassword />}
+            />
+            {/* <Route path="/admin/:category" element={}/> */}
+            {/* <Route path="/admin/SYSADMIN" element={}/> */}
+          </Routes>
+        </AuthProvider>
+      </BrowserRouter>
+      <Toaster />
     </div>
   )
   // return (

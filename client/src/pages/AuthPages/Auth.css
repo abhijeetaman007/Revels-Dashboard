@@ -33,6 +33,7 @@
 }
 .form-wrapper div p:hover {
   color:#c4515c;
+  cursor: pointer;
 }
 /* text field styling */
 .user-box {

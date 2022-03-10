@@ -1,0 +1,75 @@
+.delegate-container {
+  p {
+    font-size: 15px;
+  }
+  .title {
+    font-size: 30px;
+    color: white;
+    margin-left: 20px;
+  }
+  .del-flex {
+    display: flex;
+    justify-content: space-between;
+    .delcardblue {
+      margin: 20px;
+      border-radius: 10px;
+      padding: 30px;
+      font-size: 24px;
+      background-color: #3a5a64;
+      background-image: url('../assets/blue.png');
+      background-repeat: no-repeat;
+      button {
+        margin: 10px;
+        padding: 10px 40px 10px 40px;
+        border-radius: 10px;
+        color: black;
+        font-weight: bold;
+        background: rgba(255, 255, 255, 0.85);
+        border: none;
+      }
+    }
+    .delcardblack {
+      margin: 20px;
+      border-radius: 10px;
+      padding: 30px;
+      font-size: 24px;
+      background-color: rgb(110, 103, 103);
+      background-image: url('../assets/black.png');
+      background-repeat: no-repeat;
+      button {
+        margin: 10px;
+        padding: 10px 40px 10px 40px;
+        border-radius: 10px;
+        color: black;
+        font-weight: bold;
+        background: rgba(255, 255, 255, 0.85);
+        border: none;
+      }
+    }
+    .delcardpurple {
+      margin: 20px;
+      border-radius: 10px;
+      padding: 30px;
+      font-size: 24px;
+      background-color: #441d81;
+      background-image: url('../assets/purple.png');
+      background-repeat: no-repeat;
+      button {
+        margin: 10px;
+        padding: 10px 40px 10px 40px;
+        border-radius: 10px;
+        color: black;
+        font-weight: bold;
+        background: rgba(255, 255, 255, 0.85);
+        border: none;
+      }
+    }
+  }
+}
+.collegetype {
+  margin-top: 10px;
+  display: flex;
+  font-size: large;
+  justify-content: space-evenly;
+  font-weight: bold;
+}
