@@ -2,7 +2,7 @@ import './styles/index.scss';
 import React from 'react';
 import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import AuthProvider from './context/AuthContext';
 
 import AuthPage from './pages/AuthPages/AuthPage';
@@ -12,6 +12,8 @@ import Dashboard from './pages/Dashboard';
 import ResetPassword from './pages/ResetPassword';
 
 import DelegateCard from './components/DelegateCard';
+import Profile from './pages/ProfilePage/Profile';
+import Events from './pages/EventPage/EventPage';
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
@@ -24,10 +26,19 @@ function App() {
             <Route exact path="/login" element={<AuthPage />} />
             <Route
               exact
-              path="/dashboard"
+              path="/dashboard/profile"
               element={
                 // <PrivateRoute>
-                <Dashboard />
+                <Profile />
+                // </PrivateRoute>
+              }
+            />
+            <Route
+              exact
+              path="/dashboard/events"
+              element={
+                // <PrivateRoute>
+                <Events />
                 // </PrivateRoute>
               }
             />

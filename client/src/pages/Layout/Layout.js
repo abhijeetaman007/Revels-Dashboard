@@ -1,22 +1,32 @@
 import React from "react";
 import "./Layout.scss";
+import aagaz from "./../../assets/aagaz.png";
 import logoWhite from "./.././../assets/logo_white.png";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, isAagazVisible=false }) => {
+
+    const handleHamburger = () => {
+        document.querySelector(".dash-wrapper").classList.toggle("active");
+    }
+
     return (
         <div className="layout-wrapper">
             <nav className="navbar">
                 <div className="brand">
+                    <i className="fa fa-bars" onClick={handleHamburger}></i>
                     <img alt="Revels Logo" src={logoWhite}></img>
                     <div>
                         <h4 className="font-medium">REVELS '22</h4>
                         <p className="font-light">Welcome back John Doe</p>
                     </div>
                 </div>
-                <i className="fa-solid fa-bell"></i>
+                <i class="fa fa-bell"></i>
             </nav>
             <div className="dash-wrapper">
                 <div className="sidebar">
+                    <div className="cross">
+                        <i class="fa fa-times" onClick={handleHamburger}></i>
+                    </div>
                     <div className="side-nav">
                         <div className="side-nav-link">
                             Events
@@ -41,6 +51,14 @@ const Layout = ({ children }) => {
                     </div>
                 </div>
                 <div className="content-area">
+                    {
+                        isAagazVisible 
+                        ?
+                        <div className="aagaz-wrapper">
+                            <img src={aagaz}></img>
+                        </div>
+                        : <></>
+                    }
                     {children}
                 </div>
             </div>
