@@ -6,11 +6,11 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import AuthProvider from './context/AuthContext';
 
 import AuthPage from './pages/AuthPages/AuthPage';
+import DelegatePage from './pages/DelegatePage/DelegatePage';
 import Landing from './pages/Landing/Landing';
 import PrivateRoute from './utils/PrivateRoute';
 import ResetPassword from './pages/ResetPassword';
 
-import DelegateCard from './components/DelegateCard';
 import Profile from './pages/ProfilePage/Profile';
 import Events from './pages/EventPage/EventPage';
 import MyEvents from './pages/MyEvents/MyEvents';
@@ -61,7 +61,7 @@ function App() {
                 // </PrivateRoute>
               }
             />
-            <Route path="/dashboard/delegatecard" element={<DelegateCard />} />
+            <Route path="/dashboard/delegatecard" element={<DelegatePage />} />
             <Route
               exact
               path="/forgetpass/:passtoken"
@@ -74,35 +74,35 @@ function App() {
       </BrowserRouter>
       <Toaster />
     </div>
-  )
+  );
   // return (
   //   <div className="App">
   //     <BrowserRouter>
   //       <AuthProvider>
   //         <Routes>
   //           <Route path="/" element={<Landing />} />
-  //           <Route 
+  //           <Route
   //             exact
   //             path="/login"
   //             element={
   //               <AuthPage />
-  //             } 
+  //             }
   //           />
-  //           <Route 
+  //           <Route
   //             exact
   //             path="/dashboard"
   //             element={
   //               <PrivateRoute>
   //                 <Dashboard />
   //               </PrivateRoute>
-  //             } 
+  //             }
   //           />
-  //           <Route 
+  //           <Route
   //             exact
   //             path="/forgetpass/:passtoken"
   //             element={
   //               <ResetPassword />
-  //             } 
+  //             }
   //           />
   //           {/* <Route path="/admin/:category" element={}/> */}
   //           {/* <Route path="/admin/SYSADMIN" element={}/> */}
