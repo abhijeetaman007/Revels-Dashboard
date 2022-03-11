@@ -1,4 +1,5 @@
 $nav-color: #181027;
+$tile-color: #F5737F;
 
 .layout-wrapper {
     height: 100vh;
@@ -53,16 +54,44 @@ $nav-color: #181027;
 
             .cross {
                 display: none;
+                color: white;
             }
 
             .side-nav {
                 height: 70%;
-                padding: 5rem;
+                padding: 2rem;
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
-                align-items: flex-start;
+                align-items: center;
                 color: white;
+
+                a {
+                    text-decoration: none;
+                    color: inherit;
+                }
+
+                .side-nav-link {
+                    width: 170px;
+                    display: flex;
+                    align-items: center;
+                    border-radius: 10px;
+                    padding: 10px;
+                    margin: 5px 0;
+                    font-weight: 800;
+                    font-size: 1.1rem;
+                    cursor: pointer;
+
+                    span {
+                        line-height: 100%;
+                        margin-right: 10px;
+                    }
+                }
+
+                .side-nav-link.active {
+                    background-color: $tile-color;
+                    transition-duration: 500ms;
+                }
             }
     
             .side-footer {

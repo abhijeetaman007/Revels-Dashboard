@@ -8,12 +8,13 @@ import AuthProvider from './context/AuthContext';
 import AuthPage from './pages/AuthPages/AuthPage';
 import Landing from './pages/Landing/Landing';
 import PrivateRoute from './utils/PrivateRoute';
-import Dashboard from './pages/Dashboard';
 import ResetPassword from './pages/ResetPassword';
 
 import DelegateCard from './components/DelegateCard';
 import Profile from './pages/ProfilePage/Profile';
 import Events from './pages/EventPage/EventPage';
+import MyEvents from './pages/MyEvents/MyEvents';
+import Proshow from './pages/Proshow/Proshow';
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
@@ -39,6 +40,24 @@ function App() {
               element={
                 // <PrivateRoute>
                 <Events />
+                // </PrivateRoute>
+              }
+            />
+            <Route
+              exact
+              path="/dashboard/myevents"
+              element={
+                // <PrivateRoute>
+                <MyEvents />
+                // </PrivateRoute>
+              }
+            />
+            <Route
+              exact
+              path="/dashboard/proshow"
+              element={
+                // <PrivateRoute>
+                <Proshow />
                 // </PrivateRoute>
               }
             />

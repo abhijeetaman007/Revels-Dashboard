@@ -79,6 +79,7 @@ const Register = (props) => {
                     toast.error(res.msg[0][Object.keys(res.msg[0])[0]], { position: "bottom-center", id: toastId });
                 }
             } catch (error) {
+                console.log(error)
                 toast.error(error.response.data.msg, {
                     position: "bottom-center",
                     id: toastId
