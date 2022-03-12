@@ -1,6 +1,7 @@
 const Event = require('../../models/Event');
 const jwt = require("jsonwebtoken");
 const DelCard = require('../../models/DelegateCard');
+const Category = require('../../models/Category');
 
 const addEvent = async (req, res) => {
   console.log('ok');
@@ -16,12 +17,14 @@ const addEvent = async (req, res) => {
       minMembers,
       maxMembers,
       eventHeads,
-      delegateCardID, //List of all needed delegate card IDs 
+      delegateCards, //List of all needed delegate card IDs 
     //   eventDateTime, (To be set by operations)
     //   eventVenue,
       tags,
+      teamDelegateCardWorks, //If team leader delegate Card is sufficient for registration
     } = req.body;
-    let eventName = await Event.findOne({ name });
+    
+    let eventName = await Event.exists({ name });
     if (eventName)
       return res.status(400).send({
         success: false,
@@ -50,11 +53,8 @@ const addEvent = async (req, res) => {
         .send({ success: false, msg: 'Please fill required fields' });
     }
 
-    if(Number(minMembers) > Number(maxMembers))
-    {
-      return res.status(400).send({success:false,msg:'Min Members can\'t be more than Max Members '})
-    }
-
+    if((Number(minMembers) > Number(maxMembers)) || (Number(minMembers) < 1))
+      return res.status(400).send({success:false,msg:'Invalid Members'})
     // let dateTime = new Date(eventDateTime);
     // eventDateTime = dateTime;
     // if (eventDateTime.toString() == 'Invalid Date') {
@@ -67,10 +67,19 @@ const addEvent = async (req, res) => {
 
     //registrationDeadline is same as event Start Time by default
     // let registrationDeadline = eventDateTime;
+    if(!delegateCards) delegateCards = []
+    for(let i=0;i<delegateCards.length;i++)
+    {
+      let validCard = await DelCard.exists(delegateCards[i]); 
+      if(!validCard)
+        return res.status(400).send({success:false,msg:'Invalid Delegate Card'})
+    }
+    
+    console.log("test: ",req.requestAdmin.role.categoryId)
     let newEvent = new Event({
       eventID,
       name,
-      category: req.requestAdmin._id, //Change
+      category: req.requestAdmin.role.categoryId, //Change
       description,
       eventType,
       mode,
@@ -83,6 +92,8 @@ const addEvent = async (req, res) => {
     //   eventVenue,
     //   registrationDeadline,
       tags,
+      teamDelegateCardWorks,
+      delegateCards, //TODO: Check on delegate Cards
     });
 
     await newEvent.save();

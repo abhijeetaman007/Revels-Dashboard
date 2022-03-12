@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import React from 'react';
+import Layout from '../Layout/Layout';
 const axios = require('axios');
 
 function loadScript(src) {
@@ -25,7 +26,7 @@ async function displayRazorpay(delegateCardID) {
   }
 
   //Helps start an order and register order with razorpay
-  const resp = await axios.post('http://localhost:5000/api/user/payment', {
+  const resp = await axios.post('/api/user/payment', {
     delCard_id: delegateCardID,
   });
 
@@ -53,7 +54,7 @@ async function displayRazorpay(delegateCardID) {
     handler: function (response) {
       console.log('Response Razorpay', response);
       axios
-        .post('http://localhost:5000/api/user/payment/verify', {
+        .post('/api/user/payment/verify', {
           order_id: response.razorpay_order_id,
           razorpay_payment_id: response.razorpay_payment_id,
           razorpay_signature: response.razorpay_signature,
@@ -74,12 +75,10 @@ async function displayRazorpay(delegateCardID) {
   paymentObject.open();
 }
 
-function DelegateCard() {
+function DelegatePage() {
   async function fetchDelegateCards() {
     // To get all types of proshow and non proshow
-    let resp = await axios.get(
-      'http://localhost:5000/api/user/delegatecard/getall'
-    );
+    let resp = await axios.get('/api/user/delegatecard/getall');
     console.log('DATA ', resp.data);
     setDelegateCard([...resp.data.data]);
   }
@@ -99,7 +98,7 @@ function DelegateCard() {
   }, []);
 
   return (
-    <div>
+    <Layout>
       {delegateCard.map((delCard) => {
         let {
           name,
@@ -126,15 +125,11 @@ function DelegateCard() {
                   typesetting industry. Lorem Ipsum has been the industry's
                   standard dummy text ever since the 1500s, when an unknown
                   printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged. It was popularised in the 1960s with
-                  the release of Letraset sheets containing Lorem Ipsum
-                  passages, and more recently with desktop publishing software
-                  like Aldus PageMaker including versions of Lorem Ipsum.
+                  specimen book.
                   <div className="collegetype">
                     <div className="clg">
-                      MAHE STUDENTS
+                      <center> MAHE STUDENTS</center>
+
                       <center>Rs 250</center>
                     </div>
                     <div className="clg">
@@ -161,19 +156,14 @@ function DelegateCard() {
                   typesetting industry. Lorem Ipsum has been the industry's
                   standard dummy text ever since the 1500s, when an unknown
                   printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged. It was popularised in the 1960s with
-                  the release of Letraset sheets containing Lorem Ipsum
-                  passages, and more recently with desktop publishing software
-                  like Aldus PageMaker including versions of Lorem Ipsum.
+                  specimen book.
                   <div className="collegetype">
                     <div className="clg">
-                      MAHE STUDENTS
+                      <center> MAHE STUDENTS</center>
                       <center>Rs 250</center>
                     </div>
                     <div className="clg">
-                      NON-MAHE STUDENTS
+                      <center> NON-MAHE STUDENTS</center>
                       <center>Rs 350</center>
                     </div>
                   </div>
@@ -196,19 +186,44 @@ function DelegateCard() {
                   typesetting industry. Lorem Ipsum has been the industry's
                   standard dummy text ever since the 1500s, when an unknown
                   printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
-                  essentially unchanged. It was popularised in the 1960s with
-                  the release of Letraset sheets containing Lorem Ipsum
-                  passages, and more recently with desktop publishing software
-                  like Aldus PageMaker including versions of Lorem Ipsum.
+                  specimen book.
                   <div className="collegetype">
                     <div className="clg">
-                      MAHE STUDENTS
+                      <center> MAHE STUDENTS</center>
                       <center>Rs 250</center>
                     </div>
                     <div className="clg">
-                      NON-MAHE STUDENTS
+                      <center> NON-MAHE STUDENTS</center>
+                      <center>Rs 350</center>
+                    </div>
+                  </div>
+                  <center>
+                    <button onClick={() => displayRazorpay(_id)}>
+                      BUY NOW
+                    </button>
+                  </center>
+                </p>
+              </div>
+              <div className="delcardblue">
+                <h1 style={{ color: 'white' }}>SPORTS</h1>
+                <p style={{ color: 'white', marginTop: '10px' }}>
+                  {/* Name : {name} <br />
+                  isProShow : {isProShow} <br />
+                  MAHE-Price: {mahePrice} <br />
+                  NON-MAHE Price : {nonMahePrice} <br />
+                  description : {description} <br /> */}
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book.
+                  <div className="collegetype">
+                    <div className="clg">
+                      <center> MAHE STUDENTS</center>
+                      <center>Rs 250</center>
+                    </div>
+                    <div className="clg">
+                      <center> NON-MAHE STUDENTS</center>
                       <center>Rs 350</center>
                     </div>
                   </div>
@@ -223,8 +238,8 @@ function DelegateCard() {
           </div>
         );
       })}
-    </div>
+    </Layout>
   );
 }
 
-export default DelegateCard;
+export default DelegatePage;

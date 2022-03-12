@@ -7,16 +7,16 @@ const {
 } = require('../middleware/validate');
 const {
     isUserLoggedIn,
-    isEmailVerified,
     isVerifiedForRevels,
-} = require('../middleware/userAuth');
+    isAdminLoggedIn
+} = require('../middleware/auth');
 // const { isCategoryLoggedIn } = require('../middleware/categoryAuth');
-const {
-    isSysAdmin,
-    isAdminLoggedIn,
-    isOperations,
-    isCategory,
-} = require('../middleware/adminAuth');
+// const {
+//     isSysAdmin,
+//     isAdminLoggedIn,
+//     isOperations,
+//     isCategory,
+// } = require('../middleware/adminAuth');
 const {
     userRegister,
     userLogin,
@@ -46,6 +46,8 @@ const {
     deleteDelegateCard,
     viewAllDelegateCards,
     addRole,
+    addCategories,
+    registerAdmin
 } = require('./admins/sysAdmin');
 const {
     getAllDelegateCards,
@@ -81,7 +83,6 @@ router.post(
     '/user/login',
     loginValidation(),
     userValidate,
-    isEmailVerified,
     userLogin
 );
 router.get('/user/logout', userLogout);
@@ -138,31 +139,33 @@ router.post('/user/payment/onproduction/verify', verifyPaymentAlternate);
 router.post('/admin/login', adminLogin); //changed
 router.get('/admin/logout', adminLogout);//changed
 //Events
-router.post('/admin/category/event/add', isAdminLoggedIn,isCategory, addEvent);
-router.get('/admin/category/event/getevents', isAdminLoggedIn,isCategory, getCategoryEvent);
-router.post('/admin/category/event/update', isAdminLoggedIn,isCategory, updateEvent);
-router.post('/admin/category/event/delete', isAdminLoggedIn,isCategory, deleteEvent);
+router.post('/admin/category/event/add', isAdminLoggedIn, addEvent);
+router.get('/admin/category/event/getevents', isAdminLoggedIn, getCategoryEvent);
+router.post('/admin/category/event/update', isAdminLoggedIn, updateEvent);
+router.post('/admin/category/event/delete', isAdminLoggedIn, deleteEvent);
 
 //@Operations Route
 router.post(
     '/admin/operations/seteventschedule',
     isAdminLoggedIn,
-    isOperations,
+    // isOperations,
     setEventScheldule
 );
 router.get(
     '/admin/operations/getallevents',
     isAdminLoggedIn,
-    isOperations,
+    // isOperations,
     getAllEvents
 );
 
 //@SysAdmin Routes - Private Routes for internal use - No frontend needed
-router.get('/sysadmin/register/category', isSysAdmin, categoryRegister);  //changed
-router.post('/sysadmin/delegatecard/add', isSysAdmin, addDelegateCard);
-router.post('/sysadmin/delegatecard/delete', isSysAdmin, deleteDelegateCard);
-router.get('/sysadmin/delegatecard/view', isSysAdmin, viewAllDelegateCards);
-router.post('/sysadmin/register/admin', isSysAdmin,adminRegister);
+// router.get('/sysadmin/register/category', categoryRegister);  //changed
+router.post('/sysadmin/delegatecard/add', addDelegateCard);
+router.post('/sysadmin/delegatecard/delete', deleteDelegateCard);
+router.get('/sysadmin/delegatecard/view', viewAllDelegateCards);
+// router.post('/sysadmin/register/admin', isSysAdmin,adminRegister);
 router.post('/sysadmin/role/add',addRole)
+router.post('/sysadmin/category/add',addCategories)
+router.post('/sysadmin/admin/register',registerAdmin);
 
 module.exports = router;

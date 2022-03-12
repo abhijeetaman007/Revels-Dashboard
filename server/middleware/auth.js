@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Admin = require('../models/Admin');
 var jwt = require('jsonwebtoken');
 
 const isUserLoggedIn = async (req, res, next) => {
@@ -20,7 +21,7 @@ const isUserLoggedIn = async (req, res, next) => {
                 let user = await User.findById(payload.userID);
                 if (user) {
                     if (user.token === token && user.isEmailVerified) {
-                        req.requestUser = user;
+                        req.requestUser = user; 
                         console.log('we are here 123 ', req.requestUser);
                         next();
                     } else {
@@ -62,26 +63,6 @@ const isUserLoggedIn = async (req, res, next) => {
     }
 };
 
-const isEmailVerified = async (req, res, next) => {
-    try {
-        let user = await User.findOne({ email: req.body.email });
-        if (!user)
-            return res
-                .status(400)
-                .send({ success: false, msg: 'User not found' });
-        if (!user.isEmailVerified)
-            return res
-                .status(400)
-                .send({ success: false, msg: 'Please Verify Email to login' });
-        next();
-    } catch (err) {
-        console.log(err);
-        return res
-            .status(500)
-            .send({ success: false, msg: 'Internal Server Error' });
-    }
-};
-
 const isVerifiedForRevels = async (req, res, next) => {
     try {
         console.log('Status :', req.requestUser.verified);
@@ -110,4 +91,53 @@ const isVerifiedForRevels = async (req, res, next) => {
     }
 };
 
-module.exports = { isUserLoggedIn, isEmailVerified, isVerifiedForRevels };
+const isAdminLoggedIn = async (req, res, next) => {
+    try {
+        console.log('Admin login');
+        const token = req.headers['authorization'];
+        console.log(token);
+        if (typeof token !== 'undefined') {
+            let payload = await jwt.verify(token, process.env.JWT_SECRET);
+            console.log('Payload ', payload);
+            if (payload) {
+                console.log('id:', payload.admin_Id);
+                let admin = await Admin.findById(payload.admin_Id).populate('role role.categoryId');
+                console.log('here ', admin);
+                if (admin) {
+                    req.requestAdmin = admin;
+                    next();
+                } else {
+                    return res.status(401).send({
+                        success: false,
+                        msg: 'Token Invalid,Please Login',
+                    });
+                }
+            } else {
+                return res.status(401).send({
+                    success: false,
+                    msg: 'Token Expired,Please Login',
+                });
+            }
+        } else {
+            return res.status(401).send({
+                success: false,
+                msg: 'Token Invalid,Please Login',
+            });
+        }
+    } catch (err) {
+        console.log(err);
+        if (err.name == 'TokenExpiredError') {
+            console.log('Token Expired');
+            return res.send({
+                success: false,
+                msg: 'Token Expired,Please Login Again',
+            });
+        }
+        return res
+            .status(500)
+            .send({ success: false, msg: 'Internal Server Error' });
+    }
+};
+
+
+module.exports = { isUserLoggedIn, isVerifiedForRevels,isAdminLoggedIn };

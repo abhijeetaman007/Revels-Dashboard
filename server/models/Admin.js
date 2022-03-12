@@ -22,17 +22,12 @@ const adminSchema = new mongoose.Schema(
     },
     token: {
       type: String,
+      default:null
     },
     passwordResetToken: {
       type: String,
+      default:null
     },
-    // Only for Category type
-    //   events: [
-    //     {
-    //       type: mongoose.Schema.Types.ObjectId,
-    //       ref: "Event",
-    //     },
-    //   ],
   },
   { timestamps: true }
 );

@@ -135,11 +135,15 @@ const resendVerificationLink = async (req, res) => {
                 .status(400)
                 .send({ success: false, msg: 'Please enter a valid email' });
 
-        let user = await User.exists({ email: req.body.email , isEmailVerified: false });
+        let user = await User.exists({
+            email: req.body.email,
+            isEmailVerified: false,
+        });
         if (!user)
-            return res
-                .status(400)
-                .send({ success: false, msg: 'Email already verified or Inavlid Email' });
+            return res.status(400).send({
+                success: false,
+                msg: 'Email already verified or Inavlid Email',
+            });
         const passwordResetToken = jwt.sign(
             { userEmail: req.body.email },
             process.env.JWT_SECRET,
@@ -151,11 +155,16 @@ const resendVerificationLink = async (req, res) => {
             { email: req.body.email },
             { $set: { passwordResetToken } }
         );
-        let message = `Please Click to verify http://localhost:${process.env.PORT}/api/user/verify/${passwordResetToken}`;
-        res.status(200).send({ success: true, msg: 'Email Resent' });
-
-        // let message = `Please Click to verify https://revels22-api.herokuapp.com/api/user/verify/${passwordResetToken}`;
-
+        let message
+        if(process.env.CONFIG == "DEV")
+        {
+            message = `Please Click to verify http://localhost:${process.env.PORT}/api/user/verify/${passwordResetToken}`;
+            res.status(200).send({ success: true, msg: 'Email Resent' });
+        }
+        else if(process.env.CONFIG == "PROD")
+        {
+            message = `Please Click to verify ${process.env.API_URL}/api/user/verify/${passwordResetToken}`;
+        }
         mailer(req.body.email, "Verify Email - REVELS '22", message);
         return 0;
     } catch (err) {
@@ -174,6 +183,10 @@ const userLogin = async (req, res) => {
             return res
                 .status(401)
                 .send({ success: false, msg: 'Invalid Credentials' });
+        if (!user.isEmailVerified)
+            return res
+                .status(403)
+                .send({ success: false, msg: 'Please Verify Email to login' });
         let passwordMatches = await bcrypt.compare(password, user.password);
         if (!passwordMatches)
             return res
@@ -206,7 +219,7 @@ const userLogin = async (req, res) => {
 const userLogout = async (req, res) => {
     try {
         let token = req.headers['authorization'];
-        let user =   await User.exists({ token });
+        let user = await User.exists({ token });
         if (!user)
             return res
                 .status(400)
@@ -248,19 +261,31 @@ const userPassResetLink = async (req, res) => {
             return res
                 .status(400)
                 .send({ success: false, msg: 'Please enter a valid email' });
-        let user = await User.findOne({ email });
+        let user = await User.exists({ email });
         if (!user) {
             return res.send({
                 success: false,
                 msg: 'User does not exists,Please register ',
             });
         }
+        const payload = {
+            userID: user._id,
+            userEmail: email,
+            userRole: user.role,
+        };
+        let token = jwt.sign(payload, process.env.JWT_SECRET, {
+            expiresIn: 1 * 60 * 60,
+        });
+        await User.updateOne(
+            { _id: user._id },
+            { $set: { passwordResetToken: token } }
+        );
         // let resetLink = `${process.env.BASE_URL}forgetpass/${user.passwordResetToken}`;
-        let resetLink = `${process.env.BASE_URL}forgetpass/${user.passwordResetToken}`;
-
+        let resetLink = `${process.env.BASE_URL}forgetpass/${token}`;
         let message = `Click here to change yout password ${resetLink}`;
+        res.send({ success: true, msg: 'Password Reset Link emailed' });
         mailer(email, "Reset Password - REVELS '22", message);
-        return res.send({ success: true, msg: 'Password Reset Link emailed' });
+        return 0;
     } catch (err) {
         console.log(err);
         return res.send({ success: false, msg: 'Internal Server Error' });
@@ -269,7 +294,7 @@ const userPassResetLink = async (req, res) => {
 const userPassResetVerify = async (req, res) => {
     try {
         let { token, newPassword, email } = req.body;
-        let user = await User.findOne({ email });
+        let user = await User.exists({ email }, { passwordResetToken: 1 });
         if (!user) {
             return res
                 .status(400)
@@ -284,21 +309,15 @@ const userPassResetVerify = async (req, res) => {
         if (user.passwordResetToken != token) {
             return res.status(400).send({
                 success: false,
-                msg: 'Invalid Token,Password cannot be changed',
+                msg: 'Password Reset Failed',
             });
         }
         const salt = await bcrypt.genSalt(10);
         newPassword = await bcrypt.hash(newPassword, salt);
-        const newPasswordResetToken = jwt.sign(
-            { userEmail: email },
-            process.env.JWT_SECRET,
-            {
-                expiresIn: '365d',
-            }
+        await User.updateOne(
+            { _id: user._id },
+            { $set: { passwordResetToken: null, password: newPassword } }
         );
-        user.password = newPassword;
-        user.passwordResetToken = newPasswordResetToken;
-        await user.save();
         return res.send({
             success: true,
             msg: 'Password Changed Successfully',
@@ -324,52 +343,36 @@ const getUserFromToken = async (req, res) => {
     }
 };
 
-// const updateDriveLink = async (req, res) => {
-//     try {
-//         if (!req.body.driveLink) {
-//             return res
-//                 .status(400)
-//                 .send({ success: false, msg: 'Drive Link Empty' });
-//         }
-//         let user = await User.findOneAndUpdate(
-//             { _id: req.requestUser._id },
-//             {
-//                 driveLink: req.body.driveLink,
-//             }
-//         );
-//         return res.status(200).send({
-//             success: true,
-//             msg: 'Drive Link Updated,Wait until OutStation Management Team verifies',
-//         });
-//     } catch (err) {
-//         console.log(err);
-//         return res
-//             .status(500)
-//             .send({ success: false, msg: 'Update dive link failed' });
-//     }
-// };
 const updateAccommodation = async (req, res) => {
     try {
-        let { isRequired, arrivalDate, arrivalTime } = req.body;
+        let { required, arrivalDateTime } = req.body;
         let user = req.requestUser;
-        if (!isRequired)
-            return res
-                .status(200)
-                .send({ success: true, msg: 'Accommodation Status Updated' });
-        if (user.isMahe) {
+        // MIT not allowed to apply
+        if (user.isMahe != 1) {
             return res.status(400).send({
                 success: false,
-                msg: 'Accomodation only for Non-Mahe Users',
+                msg: 'Accomodation only for Outside Participants',
             });
         }
-        if (!isRequired) {
-            user.accommodation.required = isRequired;
-        } else {
-            user.accommodation.required = isRequired;
-            (user.accommodation.arrivalDate = arrivalDate),
-                (user.accommodation.arrivalTime = arrivalTime);
+        // Already Applied
+        if(user.accommodation.required)
+        {
+            return res
+                .status(200)
+                .send({ success: true, msg: 'Already applied for Accommodation' });
         }
-        await user.save();
+        if (!required) {
+            arrivalDateTime=null
+        }
+        await User.updateOne(
+            { _id: req.requestUser._id },
+            {
+                $set: {
+                    required: true,
+                    arrivalDateTime,
+                },
+            }
+        );
         return res
             .status(200)
             .send({ success: true, msg: 'Accommodation Status Updated' });

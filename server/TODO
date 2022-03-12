@@ -1,7 +1,11 @@
 TODO:
 - isActive check while sending delegate cards and other places
 - ResetPassword Route for Admins
-- Add to Team Option for whole crew on one delegate Card
+- Add to Team Option for whole crew on one delegate Card -- this will simply register particular user to event without individually buying delegate Card
+    - Check if person adding to team has delegate Card and event supports teamDelegateCard
+- Token model
+- Send token from Authorization header
+- set time in IST in server
 _______________________________________________________________________________
 MIDDLEWARES:
 
@@ -10,7 +14,7 @@ Auth-Middlewares
 - isEmailVerified (or Can be part of Login Route if not middleware) (Main DashBoard)
 - isAdminLoggedIn  (All Portals) (req.requestAdmin has Admin Info)
 - Validation Middleware
-
+- isVerifiedForRevels
 
 Category Type Middleware: (All Portals)
 - isCategory -- check admin type(checks individual or Category) (No need to create Individual as a Category)
