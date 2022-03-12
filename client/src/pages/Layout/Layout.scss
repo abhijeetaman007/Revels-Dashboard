@@ -127,6 +127,9 @@ $tile-color: #F5737F;
             width: calc(100% - 17%);
             left: 17%;
             top: 12vh;
+            padding: 20px;
+            display: flex;
+            gap: 10px;
 
             .aagaz-wrapper {
                 position: absolute;
@@ -174,6 +177,8 @@ $tile-color: #F5737F;
             .content-area {
                 left: 0;
                 width: 100%;
+                height: fit-content;
+                flex-direction: column;
             }
         }
 
