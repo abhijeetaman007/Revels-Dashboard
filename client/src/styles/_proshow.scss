@@ -1,9 +1,14 @@
 .proshow {
   display: flex;
+  flex-wrap: wrap;
   margin: 20px;
   .card {
+    padding: 20px;
+    margin: 20px;
     background-image: ('../assets/aagaz.png');
     button {
+      margin: 20px;
+      width: 200px;
       background-color: white;
       color: black;
       padding: 10px 20px 10px 20px;

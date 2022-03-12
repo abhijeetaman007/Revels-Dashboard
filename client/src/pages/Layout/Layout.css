@@ -69,11 +69,12 @@
 
 .layout-wrapper .dash-wrapper .sidebar .cross {
   display: none;
+  color: white;
 }
 
 .layout-wrapper .dash-wrapper .sidebar .side-nav {
   height: 70%;
-  padding: 5rem;
+  padding: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -84,10 +85,42 @@
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: white;
+}
+
+.layout-wrapper .dash-wrapper .sidebar .side-nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.layout-wrapper .dash-wrapper .sidebar .side-nav .side-nav-link {
+  width: 170px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px 0;
+  font-weight: 800;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.layout-wrapper .dash-wrapper .sidebar .side-nav .side-nav-link span {
+  line-height: 100%;
+  margin-right: 10px;
+}
+
+.layout-wrapper .dash-wrapper .sidebar .side-nav .side-nav-link.active {
+  background-color: #F5737F;
+  -webkit-transition-duration: 500ms;
+          transition-duration: 500ms;
 }
 
 .layout-wrapper .dash-wrapper .sidebar .side-footer {

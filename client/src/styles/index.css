@@ -322,4 +322,29 @@ input:after {
           justify-content: space-evenly;
   font-weight: bold;
 }
+
+.proshow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 20px;
+}
+
+.proshow .card {
+  padding: 20px;
+  margin: 20px;
+  background-image: "../assets/aagaz.png";
+}
+
+.proshow .card button {
+  margin: 20px;
+  width: 200px;
+  background-color: white;
+  color: black;
+  padding: 10px 20px 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+}
 /*# sourceMappingURL=index.css.map */
