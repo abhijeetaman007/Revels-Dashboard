@@ -76,6 +76,7 @@ const UserSchema = new mongoose.Schema(
       },
       arrivalDateTime: {
         type: Date,
+        default:null
       },
     },
     documents: {
