@@ -1,29 +1,42 @@
-const { nanoid } = require('nanoid');
+const { nanoid, customAlphabet } = require('nanoid');
 const DelCard = require('../../models/DelegateCard');
 const Role = require('../../models/Role');
 const Category = require('../../models/Category');
 const Admin = require('../../models/Admin');
+const College = require('../../models/College');
 
 const addDelegateCard = async (req, res) => {
     try {
-        let { name, isProShow, mahePrice, nonMahePrice, description } =
-            req.body;
-        console.log(name, isProShow, mahePrice, nonMahePrice, description);
-        if (!name || !mahePrice || !nonMahePrice || !description)
+        let { name, type, mahePrice, nonMahePrice, description } = req.body;
+        console.log(name, type, mahePrice, nonMahePrice, description);
+        if (!name || !mahePrice || !nonMahePrice || !description || !type)
             return res
                 .status(400)
                 .send({ success: false, msg: 'Please fill all the fields' });
 
+        let card = DelCard.exists({ name });
+        if (card)
+            return res
+                .status(400)
+                .send({
+                    success: false,
+                    msg: 'Delegate with same name exists',
+                });
+
         let cardID;
         while (true) {
-            cardID = nanoid(5);
+            const nanoid = customAlphabet(
+                '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                4
+            );
+            cardID = nanoid();
             let card = await DelCard.findOne({ cardID });
             if (!card) break;
         }
         let delegateCard = new DelCard({
             cardID,
             name,
-            isProShow,
+            type,
             mahePrice,
             nonMahePrice,
             nonMahePrice,
@@ -45,8 +58,8 @@ const addDelegateCard = async (req, res) => {
 
 const deleteDelegateCard = async (req, res) => {
     try {
-        let { delegateCard_id } = req.body;
-        let card = await DelCard.findOneAndDelete({ _id: delegateCard_id });
+        let { cardID } = req.body;
+        let card = await DelCard.findOneAndDelete({ cardID });
         if (!card)
             return res.status(400).send({
                 success: false,
@@ -80,12 +93,17 @@ const viewAllDelegateCards = async (req, res) => {
 const addRole = async (req, res) => {
     try {
         let { accessLevel, categoryId, type } = req.body;
-        let category = await Category.findOne({categoryId},{_id:1})
-        if(!category)
-            return res.status(400).send({msg:'Category Not Found',success:false})
+        if (categoryId) {
+            let category = await Category.findOne({ categoryId }, { _id: 1 });
+            if (!category)
+                return res
+                    .status(400)
+                    .send({ msg: 'Category Not Found', success: false });
+        }
+        categoryId = categoryId == null ? null : category._id
         let newRole = await new Role({
             accessLevel,
-            categoryId:category._id,
+            categoryId,
             isActive: true,
             type,
         });
@@ -161,6 +179,24 @@ const registerAdmin = async (req, res) => {
     }
 };
 
+const addCollege = async (req, res) => {
+    try {
+        let { name, state, isMahe } = req.body;
+        let college = new College({
+            name,
+            state,
+            isMahe,
+        });
+        await college.save();
+        return res.status(200).send({ success: true, msg: 'College Added' });
+    } catch (err) {
+        console.log(err);
+        return res
+            .status(500)
+            .send({ success: false, msg: 'Internal Server Error' });
+    }
+};
+
 module.exports = {
     addDelegateCard,
     deleteDelegateCard,
@@ -168,4 +204,5 @@ module.exports = {
     addCategories,
     addRole,
     registerAdmin,
+    addCollege,
 };

@@ -66,17 +66,17 @@ const isUserLoggedIn = async (req, res, next) => {
 const isVerifiedForRevels = async (req, res, next) => {
     try {
         console.log('Status :', req.requestUser.verified);
-        if (req.requestUser.verified == 'UNVERIFIED')
+        if (req.requestUser.status == 'UNVERIFIED')
             return res.status(400).send({
                 success: false,
                 msg: 'You are not yet verified,wait until Outstation Management Team verifies',
             });
-        if (req.requestUser.verified == 'REJECTED')
+        if (req.requestUser.status == 'REJECTED')
             return res.status(400).send({
                 success: false,
                 msg: 'You are verification is rejected,Please update your drive link with correct Documents',
             });
-        if (req.requestUser.verified == 'BANNED')
+        if (req.requestUser.status == 'BANNED')
             return res.status(400).send({
                 success: false,
                 msg: 'You are banned from revels,contact Student Council or System Admin Team for more details',
