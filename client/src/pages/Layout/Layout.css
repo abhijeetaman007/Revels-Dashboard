@@ -159,6 +159,11 @@
   width: calc(100% - 17%);
   left: 17%;
   top: 12vh;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
 }
 
 .layout-wrapper .dash-wrapper .content-area .aagaz-wrapper {
@@ -201,6 +206,13 @@
   .layout-wrapper .dash-wrapper .content-area {
     left: 0;
     width: 100%;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
   .layout-wrapper .dash-wrapper.active .sidebar {
     position: absolute;
