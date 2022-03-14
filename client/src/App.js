@@ -10,6 +10,7 @@ import DelegatePage from './pages/DelegatePage/DelegatePage';
 import Landing from './pages/Landing/Landing';
 import PrivateRoute from './utils/PrivateRoute';
 import ResetPassword from './pages/ResetPassword';
+import ProshowCard from './components/ProshowCard/ProshowCard';
 
 import Profile from './pages/ProfilePage/Profile';
 import Events from './pages/EventPage/EventPage';
@@ -36,28 +37,19 @@ function App() {
             />
             <Route
               exact
+              path="/dashboard/proshowcard"
+              element={
+                // <PrivateRoute>
+                <ProshowCard />
+                // </PrivateRoute>
+              }
+            />
+            <Route
+              exact
               path="/dashboard/events"
               element={
                 // <PrivateRoute>
                 <Events />
-                // </PrivateRoute>
-              }
-            />
-            <Route
-              exact
-              path="/dashboard/myevents"
-              element={
-                // <PrivateRoute>
-                <MyEvents />
-                // </PrivateRoute>
-              }
-            />
-            <Route
-              exact
-              path="/dashboard/proshow"
-              element={
-                // <PrivateRoute>
-                <Proshow />
                 // </PrivateRoute>
               }
             />
