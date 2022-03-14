@@ -13,7 +13,7 @@ const DelCardSchema = new mongoose.Schema(
     },
     type: {
       type: String,
-      enum: ["PROSHOW", "INF", "GAMING", "WORKSHOPS"],
+      enum: ["PROSHOW", "INF", "GAMING", "WORKSHOPS","GENERAL"],
     },
     mahePrice: {
       type: Number,

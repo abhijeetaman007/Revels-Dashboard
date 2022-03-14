@@ -47,7 +47,8 @@ const {
     viewAllDelegateCards,
     addRole,
     addCategories,
-    registerAdmin
+    registerAdmin,
+    addCollege
 } = require('./admins/sysAdmin');
 const {
     getAllDelegateCards,
@@ -93,7 +94,7 @@ router.post('/user/forgetpass/verify', userPassResetVerify);
 router.get('/user/getuser', isUserLoggedIn, getUserFromToken);
 
 //College
-router.get('/college', getAllColleges);
+router.get('/colleges', getAllColleges);
 
 //Update User Profile:
 // router.post("/user/updatedrivelink", isUserLoggedIn, updateDriveLink);
@@ -116,7 +117,7 @@ router.get(
     isVerifiedForRevels,
     getUserEvents
 );
-router.get('/user/event/getallevents', isUserLoggedIn, getAllEvents);
+router.get('/user/event/getallevents', getAllEvents);
 //Delegate Cards
 router.get('/user/delegatecard/getall', getAllDelegateCards);
 router.get(
@@ -167,5 +168,6 @@ router.get('/sysadmin/delegatecard/view', viewAllDelegateCards);
 router.post('/sysadmin/role/add',addRole)
 router.post('/sysadmin/category/add',addCategories)
 router.post('/sysadmin/admin/register',registerAdmin);
+router.post('/sysadmin/college/add',addCollege)
 
 module.exports = router;
