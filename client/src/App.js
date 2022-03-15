@@ -12,6 +12,7 @@ import Dashboard from './pages/Dashboard';
 import ResetPassword from './pages/ResetPassword';
 
 import DelegateCard from './components/DelegateCard';
+import Profile from './pages/ProfilePage/Profile';
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
@@ -28,6 +29,15 @@ function App() {
               element={
                 // <PrivateRoute>
                   <Dashboard />
+                // </PrivateRoute>
+              }
+            />
+            <Route
+              exact
+              path="/dashboard/profile"
+              element={
+                // <PrivateRoute>
+                  <Profile />
                 // </PrivateRoute>
               }
             />
