@@ -52,12 +52,7 @@ function App() {
                 // </PrivateRoute>
               }
             />
-            <Route
-              exact
-              path="/dashboard/delegatecard"
-              element={<DelegatePage />}
-            />
-            <Route exact path="/dashboard/myevents" element={<MyEvents />} />
+            <Route path="/dashboard/delegatecard" element={<DelegatePage />} />
             <Route
               exact
               path="/forgetpass/:passtoken"

@@ -81,7 +81,7 @@ export default function AuthProvider({ children }) {
         password,
       });
       if (!res.data.success) return res.data;
-
+      console.log(res.data);
       localStorage.setItem(TOKEN_ID, res.data.data.token);
       restoreUser();
       return res.data;
