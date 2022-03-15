@@ -63,7 +63,7 @@ const Register = (props) => {
     if (validateForm(toastId)) {
       try {
         const res = await auth.userRegister(
-          name,
+          name.trim(),
           email,
           password,
           mobileNumber,
@@ -101,7 +101,7 @@ const Register = (props) => {
             autoComplete="off"
             required
             value={name}
-            onChange={(e) => setName(e.target.value.trim())}
+            onChange={(e) => setName(e.target.value)}
             maxLength={100}
           />
           <label>Name</label>

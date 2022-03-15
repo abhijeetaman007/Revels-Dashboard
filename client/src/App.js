@@ -55,6 +55,15 @@ function App() {
             />
             <Route
               exact
+              path="/dashboard/myevents"
+              element={
+                // <PrivateRoute>
+                <MyEvents />
+                // </PrivateRoute>
+              }
+            />
+            <Route
+              exact
               path="/dashboard/event/:eventid"
               element={
                 // <PrivateRoute>
@@ -67,6 +76,15 @@ function App() {
               exact
               path="/forgetpass/:passtoken"
               element={<ResetPassword />}
+            />
+            <Route
+              exact
+              path="/resetpassword"
+              element={
+                // <PrivateRoute>
+                <ResetPassword />
+                // </PrivateRoute>
+              }
             />
             {/* <Route path="/admin/:category" element={}/> */}
             {/* <Route path="/admin/SYSADMIN" element={}/> */}
