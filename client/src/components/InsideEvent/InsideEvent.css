@@ -1,4 +1,36 @@
-button {
+.event-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: white;
+}
+
+.event-details button {
+  margin: 1rem;
+  margin-right: 3.5px;
+  border: 1.5px solid #f5737f;
+  border-radius: 10px;
+  background-color: transparent;
+  padding: 6px 50px;
+  text-transform: uppercase;
   color: #f5737f;
+}
+
+.event-details .event-grp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.event-details .event-grp .compo {
+  padding-right: 1rem;
+}
+
+.event-details .ele {
+  margin: 1rem;
 }
 /*# sourceMappingURL=InsideEvent.css.map */
