@@ -24,7 +24,7 @@ const Layout = ({ children, isAagazVisible=false, activeTab }) => {
 
     useEffect(() => {
         document.querySelector(`#${activeTab}`).classList.toggle("active");  
-    })
+    }, [])
 
     return (
         <div className="layout-wrapper">

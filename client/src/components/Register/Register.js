@@ -11,7 +11,7 @@ const Register = (props) => {
     const [regNum, setRegNum] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPass, setConfirmPass] = useState("");
-    const [branch, setBranch] = useState("");
+    const [course, setCourse] = useState("");
     const [college, setCollege] = useState("--");
     const [state, setState] = useState("");
     const [isMahe, setIsMahe] = useState(true);
@@ -22,7 +22,7 @@ const Register = (props) => {
             email === "" ||
             mobileNumber === "" ||
             regNum === "" ||
-            branch === "" ||
+            course === "" ||
             password === "" ||
             confirmPass === "" ||
             college === "" ||
@@ -68,7 +68,7 @@ const Register = (props) => {
                     password,
                     mobileNumber,
                     regNum,
-                    branch,
+                    course,
                     college,
                     state,
                     isMahe
@@ -145,11 +145,11 @@ const Register = (props) => {
                     name=""
                     autoComplete="off"
                     required
-                    value={branch}
-                    onChange={(e) => setBranch(e.target.value.trim())}
+                    value={course}
+                    onChange={(e) => setCourse(e.target.value.trim())}
                     maxLength={100}
                   />
-                  <label>Branch</label>
+                  <label>Course</label>
                 </div>
                 <div className="user-box">
                     <select

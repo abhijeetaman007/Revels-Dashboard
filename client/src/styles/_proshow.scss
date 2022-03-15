@@ -1,6 +1,7 @@
 .proshow {
   display: flex;
   flex-wrap: wrap;
+  height: fit-content;
   margin: 20px;
   .card {
     padding: 20px;

@@ -1,36 +1,31 @@
 $event-card-background: #C6A3FF;
 
 .event-card-wrapper {
-    width: 33.3%;
+    min-width: calc(83%/2.6);
+    max-width: calc(83%/2.6);
     height: fit-content;
     padding: 25px;
     background-color: $event-card-background;
     border-radius: 0.5rem;
-
     .event-content {
         .event-header {
             display: flex;
             justify-content: space-between;
             color: white;
-
             .event-area {
                 display: flex;
                 flex-direction: column;
-
                 p {
                     font-size: 0.95rem;
-                }
-                
+                }         
                 h3 {
                     font-size: 1.4rem;
                 }
             }
-
             .button-area {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
-
                 button:first-child {
                     border: 1.5px solid white;
                     margin-bottom: 2.5px;
@@ -52,22 +47,18 @@ $event-card-background: #C6A3FF;
                 }
             }
         }
-
         .tags-line {
             display: flex;
             gap: 5px;
             color: #3D2761;
         }
-
         .description {
             margin: 8px 0px;
             line-height: 20px;
         }
-
         .data-area {
             display: flex;
             gap: 10px;
-
             .box {
                 display: flex;
                 color: white;
@@ -77,7 +68,6 @@ $event-card-background: #C6A3FF;
         }
     }
 }
-
 @media only screen and (max-width: 812px) {
     .event-card-wrapper {
         width: 100%;
