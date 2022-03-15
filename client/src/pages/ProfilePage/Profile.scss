@@ -1,0 +1,145 @@
+$text-color: #c4c4c4;
+
+.layout-wrapper {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  nav {
+    height: 12vh;
+    i{
+      padding: 10px;
+      background-color: #c4515c;
+      color: white;
+      border-radius: 50%;
+    }
+  }
+  .dash-wrapper {
+    height: 88vh;
+    display: flex;
+
+    .sidebar {
+      width: 17%;
+      background-image: radial-gradient(
+        circle,
+        #f5737f,
+        #e96a76,
+        #dc626d,
+        #d05965,
+        #c4515c
+      );
+      justify-content: center;
+      align-items: center;
+      img {
+        width: 80%;
+      }
+    }
+    .content-area {
+      color: $text-color;
+      .back-btn {
+        color: white;
+        position: fixed;
+        top: 13vh;
+        left: 18%;
+        font-size: 1.1rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        i {
+          margin-right: 10px;
+        }
+      }
+      width: 83%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .text {
+        font-size: 1.2rem;
+        font-weight: 200;
+        margin-left: 80px;
+        margin-top: 0;
+        height: 80%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        
+        .name {
+          h1 {
+            font-size: 2.8rem;
+            color: #c4515c;
+          }
+          span {
+            font-size: 1rem;
+            padding: 2px 5px;
+            color: #c6a3ff;
+            border: 1px solid;
+            border-radius: 5px;
+          }
+        }
+        .delegate-card {
+          max-height: 150px;
+          background-color: white;
+          border-radius: 8px;
+          display: flex;
+
+          align-items: center;
+          justify-content: center;
+          width: 70%;
+          p {
+            color: #c4515c;
+            font-weight: 700;
+
+            span {
+              color: black;
+              font-weight: 500;
+            }
+          }
+          img {
+            width: 150px;
+          }
+        }
+        .grid {
+          display: grid;
+          grid-template-columns: auto auto auto;
+          div {
+            h1 {
+              font-size: 1rem;
+              font-weight: 700;
+            }
+          }
+        }
+        .drivelink {
+         
+          input {
+            color: white;
+            background-color: rgba(81, 109, 216, 0.26);
+            border-bottom: none;
+            padding: 5px;
+            width: 70%;
+            height: 40px;
+          }
+          button {
+            height: 40px;
+            margin-left: 20px;
+            width: 20%;
+            font-size: 1rem;
+            font-weight: 600;
+            background-color: #22b6e6;
+            border: none;
+            
+            border-radius: 8px;
+          }
+        }
+      }
+      .aagaz {
+        position: fixed;
+        right: -100px;
+
+        opacity: 0.1;
+        vertical-align: middle;
+
+        transform: rotate(90deg);
+      }
+    }
+  }
+}
