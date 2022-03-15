@@ -1,7 +1,7 @@
-import axios from "axios";
-import React, { useContext, createContext, useState, useEffect } from "react";
-import { TOKEN_ID } from "../utils/constants";
-import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+import React, { useContext, createContext, useState, useEffect } from 'react';
+import { TOKEN_ID } from '../utils/constants';
+import { useNavigate } from 'react-router-dom';
 const AuthContext = createContext(null);
 
 export const useAuth = () => {
@@ -12,21 +12,21 @@ export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  
+
   const restoreUser = async () => {
     const token = localStorage.getItem(TOKEN_ID);
     if (token) {
       try {
         const token = localStorage.getItem(TOKEN_ID);
-        const res = await axios.get("/api/user/getuser", {
+        const res = await axios.get('/api/user/getuser', {
           headers: {
-            authorization: token
+            authorization: token,
           },
         });
         if (res.data.success) {
           setUser(res.data.data);
           setLoading(false);
-          navigate("/dashboard");
+          navigate('/dashboard');
         }
       } catch (error) {
         console.log(error);
@@ -42,18 +42,19 @@ export default function AuthProvider({ children }) {
 
   // method to handle user registration
   const userRegister = async (
-        name,
-        email,
-        password,
-        mobileNumber,
-        registrationNumber,
-        branch,
-        college,
-        state,
-        isMahe
-    ) => {
+    name,
+    email,
+    password,
+    mobileNumber,
+    registrationNumber,
+    branch,
+    college,
+    course,
+    state,
+    isMahe
+  ) => {
     try {
-      const res = await axios.post("/api/user/register", {
+      const res = await axios.post('/api/user/register', {
         name,
         email,
         password,
@@ -61,8 +62,9 @@ export default function AuthProvider({ children }) {
         registrationNumber,
         branch,
         college,
+        course,
         state,
-        isMahe
+        isMahe,
       });
       if (!res.data.success) return res.data;
       return res.data;
@@ -74,7 +76,7 @@ export default function AuthProvider({ children }) {
   // method to handle user login
   const userLogin = async (email, password) => {
     try {
-      const res = await axios.post("/api/user/login", {
+      const res = await axios.post('/api/user/login', {
         email,
         password,
       });
@@ -101,7 +103,7 @@ export default function AuthProvider({ children }) {
   // method to handle category login
   const categoryLogin = async (categoryId, password) => {
     try {
-      const res = await axios.post("/category/login", {
+      const res = await axios.post('/category/login', {
         categoryId,
         password,
       });
