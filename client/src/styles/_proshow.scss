@@ -2,19 +2,10 @@
   display: flex;
   flex-wrap: wrap;
   height: fit-content;
-  margin: 20px;
-  .card {
-    padding: 20px;
-    margin: 20px;
-    background-image: ('../assets/aagaz.png');
-    button {
-      margin: 20px;
-      width: 200px;
-      background-color: white;
-      color: black;
-      padding: 10px 20px 10px 20px;
-      border-radius: 10px;
-      font-weight: bold;
-    }
+  gap: 10px;
+}
+@media only screen and (max-width: 800px) {
+  .proshow {
+    flex-direction: column;
   }
 }

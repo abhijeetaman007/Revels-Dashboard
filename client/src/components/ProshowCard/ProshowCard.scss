@@ -1,0 +1,68 @@
+.proshow-card {
+    width: 30%;
+    height: 550px;
+    border-radius: 10px;
+    .image-wrapper {
+        border-radius: 10px;
+        background-image: url("./../../assets/Kuhad.png");
+        height: 100%;
+        width: 100%;
+        .gradient {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            height: 100%;
+            padding: 20px;
+            background: linear-gradient(180deg, rgba(245, 115, 127, 0.08) 0.01%, rgba(0, 0, 0, 0.01) 0.02%, #F5737F 100%);
+            .proshow-card-header {
+                color: white;
+                text-align: center;
+                h6 {
+                    letter-spacing: 15px;
+                    font-size: 1.6rem;
+                }
+                p {
+                    font-size: 1.4rem;
+                }
+            }
+            .artist-name {
+                flex-grow: 1;
+                display: flex;
+                flex-flow: column;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                h2 {
+                    font-size: 3rem;
+                    margin: 0;
+                }
+                p {
+                    margin: 0;
+                    font-size: 2rem;
+                }
+            }
+            button {
+                border: 0;
+                background-color: white;
+                color: black;
+                display: flex;
+                align-self: flex-end;
+                align-items: center;
+                padding: 10px;
+                border-radius: 10px;
+                font-weight: bold;
+            }
+        }
+    }
+    &:hover {
+        border: 3px solid white;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .proshow-card {
+        width: 100%;
+    }
+}

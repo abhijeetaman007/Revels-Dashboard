@@ -42,17 +42,16 @@ export default function AuthProvider({ children }) {
 
   // method to handle user registration
   const userRegister = async (
-    name,
-    email,
-    password,
-    mobileNumber,
-    registrationNumber,
-    branch,
-    college,
-    course,
-    state,
-    isMahe
-  ) => {
+        name,
+        email,
+        password,
+        mobileNumber,
+        registrationNumber,
+        course,
+        college,
+        state,
+        isMahe
+    ) => {
     try {
       const res = await axios.post('/api/user/register', {
         name,
@@ -60,7 +59,7 @@ export default function AuthProvider({ children }) {
         password,
         mobileNumber,
         registrationNumber,
-        branch,
+        course,
         college,
         course,
         state,
