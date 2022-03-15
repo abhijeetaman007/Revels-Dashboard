@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,MAAM,CAAC;EACL,KAAK,EAFM,OAAO;CAGnB",
+    "sources": [
+        "InsideEvent.scss"
+    ],
+    "names": [],
+    "file": "InsideEvent.css"
+}

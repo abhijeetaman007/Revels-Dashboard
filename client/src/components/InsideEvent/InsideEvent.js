@@ -21,6 +21,8 @@ const InsideEvent = () => {
         {event.minMembers}-{event.maxMembers}
       </div>
       <div>{event.mode}</div>
+      <button>Create Team</button>
+      <button>Join Team</button>
     </Layout>
   );
 };

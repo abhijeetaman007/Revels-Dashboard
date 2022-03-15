@@ -81,8 +81,9 @@ export default function AuthProvider({ children }) {
         password,
       });
       if (!res.data.success) return res.data;
-      console.log(res.data);
-      localStorage.setItem(TOKEN_ID, res.data.data.token);
+      console.log(res.data.data);
+      console.log(res);
+      localStorage.setItem(TOKEN_ID, res.data.data);
       restoreUser();
       return res.data;
     } catch (err) {

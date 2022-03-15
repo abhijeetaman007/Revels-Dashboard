@@ -9,21 +9,21 @@ import logoWhite from './.././../assets/logo_white.png';
 import { Link } from 'react-router-dom';
 
 const Layout = ({ children, isAagazVisible = false, activeTab }) => {
-    const handleHamburger = () => {
-      document.querySelector('.dash-wrapper').classList.toggle('active');
-    };
+  const handleHamburger = () => {
+    document.querySelector('.dash-wrapper').classList.toggle('active');
+  };
 
-    const handleSideClick = (id) => {
-      let ids = ['events', 'my-events', 'proshow', 'delegate-card'];
-      for (let i = 0; i < ids.length; i++) {
-        document.querySelector(`#${ids[i]}`).classList.remove('active');
-      }
-      document.querySelector(`#${id}`).classList.toggle('active');
-    };
+  const handleSideClick = (id) => {
+    let ids = ['events', 'my-events', 'proshow', 'delegate-card'];
+    for (let i = 0; i < ids.length; i++) {
+      document.querySelector(`#${ids[i]}`).classList.remove('active');
+    }
+    document.querySelector(`#${id}`).classList.toggle('active');
+  };
 
-    useEffect(() => {
-        document.querySelector(`#${activeTab}`).classList.toggle("active");  
-    }, [])
+  useEffect(() => {
+    document.querySelector(`#${activeTab}`).classList.toggle('active');
+  }, []);
 
   return (
     <div className="layout-wrapper">
@@ -97,7 +97,10 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <h4 className="font-medium">John Doe</h4>
             <h5 className="font-light">Manipal institute of Technology</h5>
             <div className="buttons font-medium">
-              <button>Profile</button>
+              <Link to="/dashboard/profile" className="font-medium">
+                <button>Profile</button>
+              </Link>
+
               <button>Logout</button>
             </div>
           </div>
