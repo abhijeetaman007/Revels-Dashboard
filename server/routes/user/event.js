@@ -15,16 +15,20 @@ const registerEvent = async (req, res) => {
 
         //TODO: Check Date
         const date = new Date();
-        offset = (60 * 5 + 30) * 60 * 1000;
-        var currentDateTime = new Date(date.getTime() + offset);
-        console.log(event.registrationDeadline);
-        console.log(currentDateTime);
-        console.log(typeof event.deadline);
+        // offset = (60 * 5 + 30) * 60 * 1000;
+        // var currentDateTime = new Date(date.getTime() + offset);
+        var currentDateTime = new Date(date.getTime());
+        // console.log(event.registrationDeadline);
+        // console.log(currentDateTime);
+        // console.log(typeof event.deadline);
         if (event.registrationDeadline - currentDateTime <= 0) {
             return res
                 .status(400)
                 .send({ success: false, msg: 'Registration Closed' });
         }
+        // Check isActive
+
+
         let user = req.requestUser;
 
         let team = await Team.findOne({ event:event._id, members: { $in: user._id } });
@@ -42,15 +46,23 @@ const registerEvent = async (req, res) => {
         })
 
 
+        // TODO:Check on collision of nanoids
         let teamID = nanoid(8);
-        
-
         team = await new Team({
             teamID,
             event: event._id,
             members: [user._id],
         });
         await team.save();
+
+        // push to registeredEvents
+        await User.updateOne({_id:user._id},{
+            $push:{
+                "regEvents":{
+                    event:event._id
+                }
+            }
+        })
 
         console.log('Registered New Event');
         return res

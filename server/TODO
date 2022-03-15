@@ -1,21 +1,41 @@
-//User related be done on first priority -- Required by APPDEV  
-User Related Routes:
-    - Team related routes:
-         - makeTeam (done)
-         - joinTeam (done)
-         - leaveTeam (done)
-    - Delegate Card routes:
-        - buyDelegateCard/(Decide on Payment Gateway) (done)
-        - getUserDelegateCard(done)
-        - QR Code  --- (All QR related part from frontend)
-    - Event Related:
-        - registerEvent(done)
-        - getRegisteredEvent(done)
-        - getRegisteredEventResults(with some restriction on when to show) -- Part of Judges Portal
+TODO:
+- isActive check while sending delegate cards and other places
+- ResetPassword Route for Admins
+- Add to Team Option for whole crew on one delegate Card -- this will simply register particular user to event without individually buying delegate Card
+    - Check if person adding to team has delegate Card and event supports teamDelegateCard
+- Token model
+- Send token from Authorization header
+- set time in IST in server
+_______________________________________________________________________________
+MIDDLEWARES:
 
+Auth-Middlewares
+- isUserLoggedIn (Main DashBoard) (req.requestUser has user Info)
+- isEmailVerified (or Can be part of Login Route if not middleware) (Main DashBoard)
+- isAdminLoggedIn  (All Portals) (req.requestAdmin has Admin Info)
+- Validation Middleware
+- isVerifiedForRevels
 
-Admin/Category Related Routes:
+Category Type Middleware: (All Portals)
+- isCategory -- check admin type(checks individual or Category) (No need to create Individual as a Category)
 
-SuperAdmin Related Routes:
+Category Middleware :
+- isSysAdmin -- check admin -> role-> category SysAdmin (For All Portals)
+- isSC --  check admin -> role-> category SC (For All Portals)
+- isCulturalCategory -- check admin -> role-> category type Cultural
+- isOperation -- check admin -> role-> category operation (For Main Dashboard)
+- isVigilance -- check admin -> role-> category vigilance (For Main Dashboard)
+- isJudge (For Judges Portal)
+- isOM (For OM Portal)
+- isINF (For InfoDesk Portal)
+- isCNF (For CNF Portal)
+
+Access Level Middleware:(All Portals)
+- hasReadAccess
+- hasReadWriteAccess
+- hasCategorySuperAdminAccess
+- hasSuperAdminAccess
+
+_______________________________________________________________________________
 
 

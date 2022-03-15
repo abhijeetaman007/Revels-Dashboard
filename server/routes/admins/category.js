@@ -1,9 +1,10 @@
 const Event = require('../../models/Event');
 const jwt = require("jsonwebtoken");
 const DelCard = require('../../models/DelegateCard');
+const Category = require('../../models/Category');
 
 const addEvent = async (req, res) => {
-  console.log('ok');
+  console.log("Adding Event")
   try {
     //TODO : Add validations
     let {
@@ -16,12 +17,14 @@ const addEvent = async (req, res) => {
       minMembers,
       maxMembers,
       eventHeads,
-      delegateCardID, //List of all needed delegate card IDs 
+      delegateCards, //List of all needed delegate card IDs 
     //   eventDateTime, (To be set by operations)
     //   eventVenue,
       tags,
+      teamDelegateCardWorks, //If team leader delegate Card is sufficient for registration
     } = req.body;
-    let eventName = await Event.findOne({ name });
+    
+    let eventName = await Event.exists({ name });
     if (eventName)
       return res.status(400).send({
         success: false,
@@ -31,7 +34,7 @@ const addEvent = async (req, res) => {
     let ids = await Event.find({}, { eventID: 1, _id: 0 })
       .sort({ eventID: -1 })
       .limit(1);
-    let eventID = 5001;
+    let eventID = 101;
     if (ids[0]) {
       eventID = ids[0].eventID + 1;
     }
@@ -50,11 +53,8 @@ const addEvent = async (req, res) => {
         .send({ success: false, msg: 'Please fill required fields' });
     }
 
-    if(Number(minMembers) > Number(maxMembers))
-    {
-      return res.status(400).send({success:false,msg:'Min Members can\'t be more than Max Members '})
-    }
-
+    if((Number(minMembers) > Number(maxMembers)) || (Number(minMembers) < 1))
+      return res.status(400).send({success:false,msg:'Invalid Members'})
     // let dateTime = new Date(eventDateTime);
     // eventDateTime = dateTime;
     // if (eventDateTime.toString() == 'Invalid Date') {
@@ -67,10 +67,23 @@ const addEvent = async (req, res) => {
 
     //registrationDeadline is same as event Start Time by default
     // let registrationDeadline = eventDateTime;
+    let delCards = []
+    if(!delegateCards) delegateCards = []
+    for(let i=0;i<delegateCards.length;i++)
+    {
+      let validCard = await DelCard.findOne({cardID:delegateCards[i]},{_id:1}); 
+      if(!validCard)
+      {
+        return res.status(400).send({success:false,msg:'Invalid Delegate Card'})
+      }
+      delCards.push(validCard._id)
+    }
+    
+    console.log("test: ",req.requestAdmin.role.categoryId)
     let newEvent = new Event({
       eventID,
       name,
-      category: req.requestAdmin._id, //Change
+      category: req.requestAdmin.role.categoryId, //Change
       description,
       eventType,
       mode,
@@ -83,6 +96,8 @@ const addEvent = async (req, res) => {
     //   eventVenue,
     //   registrationDeadline,
       tags,
+      teamDelegateCardWorks,
+      delegateCards:delCards, //TODO: Check on delegate Cards
     });
 
     await newEvent.save();
@@ -97,8 +112,7 @@ const addEvent = async (req, res) => {
 };
 const getCategoryEvent = async (req, res) => {
   try {
-    // let category_Id = req.requestCategory._id;
-    let category_Id = req.requestAdmin._id;
+    let category_Id = req.requestAdmin.role.categoryId;
     let events = await Event.find({ category: category_Id })
     return res.status(200).send({ success: true, data: events });
   } catch {
@@ -121,23 +135,23 @@ const updateEvent = async (req, res) => {
       minMembers,
       maxMembers,
       eventHeads,
-      delegateCard, //List of Delegate CardIDs
+      teamDelegateCardWorks,
+      delegateCards, //List of Delegate CardIDs
     //   eventDateTime,
     //   eventVenue,
       tags,
     } = req.body;
 
-    let event = await Event.findOne({ eventID });
+    let event = await Event.exists({ eventID });
     if (!event)
       return res.status(400).send({
         success: false,
         msg: 'Invalid Event ID',
       });
     if (name) {
-      let events = await Event.find({ name });
-      if (events.length > 0) {
-        console.log(events);
-        if (!(events[0].name == name) && events[0].eventID == eventID)
+      let event = await Event.findOne({ name },{name,eventID});
+      if (event) {
+        if ((event.name == name) && (event.eventID != eventID))
           return res.status(400).send({
             success: false,
             msg: 'Event with same name is already registered',
@@ -158,11 +172,11 @@ const updateEvent = async (req, res) => {
 
     //Check for more validations
     let newDelegateCards = []
-    for(let i=0;i<delegateCard.length;i++)
+    for(let i=0;delegateCards && i<delegateCards.length;i++)
     {
-      let card = await DelCard.findOne({cardID:delegateCard[i].cardID})
+      let card = await DelCard.findOne({cardID:delegateCards[i].cardID})
       if(!card)
-        return res.status(400).send({success:false,msg:'Delegate Card ID not found,enter valid Delegate Card ID'})
+        return res.status(400).send({success:false,msg:'Invalid Delegate Card'})
         newDelegateCards.push(card._id)
       } 
 
@@ -184,7 +198,8 @@ const updateEvent = async (req, res) => {
         // eventVenue,
         // registrationDeadline,
         tags,
-        delegateCard:newDelegateCards,
+        delegateCards:newDelegateCards,
+        teamDelegateCardWorks,
       }
     );
     return res.status(200).send({ success: true, msg: 'Event Updated' });
@@ -211,5 +226,6 @@ const deleteEvent = async (req, res) => {
       .send({ success: false, msg: 'Internal Server Error' });
   }
 };
+
 
 module.exports = { addEvent, getCategoryEvent, updateEvent, deleteEvent };

@@ -231,4 +231,128 @@ input:after {
   -ms-user-select: initial;
   user-select: initial;
 }
+
+.delegate-container p {
+  font-size: 15px;
+}
+
+.delegate-container .title {
+  font-size: 30px;
+  color: white;
+  margin-left: 20px;
+}
+
+.delegate-container .del-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.delegate-container .del-flex .delcardblue {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 21%;
+          flex: 1 0 21%;
+  margin: 20px;
+  border-radius: 10px;
+  padding: 30px;
+  font-size: 24px;
+  background-color: #063858;
+  background-image: url("../assets/blue.png");
+  background-repeat: no-repeat;
+}
+
+.delegate-container .del-flex .delcardblue button {
+  margin: 10px;
+  padding: 10px 40px 10px 40px;
+  border-radius: 10px;
+  color: black;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+}
+
+.delegate-container .del-flex .delcardblack {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 21%;
+          flex: 1 0 21%;
+  margin: 20px;
+  border-radius: 10px;
+  padding: 30px;
+  font-size: 24px;
+  background-color: black;
+  background-image: url("../assets/black.png");
+  background-repeat: no-repeat;
+}
+
+.delegate-container .del-flex .delcardblack button {
+  margin: 10px;
+  padding: 10px 40px 10px 40px;
+  border-radius: 10px;
+  color: black;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+}
+
+.delegate-container .del-flex .delcardpurple {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 21%;
+          flex: 1 0 21%;
+  margin: 20px;
+  border-radius: 10px;
+  padding: 30px;
+  font-size: 24px;
+  background-color: #342749;
+  background-image: url("../assets/purple.png");
+  background-repeat: no-repeat;
+}
+
+.delegate-container .del-flex .delcardpurple button {
+  margin: 10px;
+  padding: 10px 40px 10px 40px;
+  border-radius: 10px;
+  color: black;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+}
+
+.collegetype {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: large;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  font-weight: bold;
+}
+
+.proshow {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 20px;
+}
+
+.proshow .card {
+  padding: 20px;
+  margin: 20px;
+  background-image: "../assets/aagaz.png";
+}
+
+.proshow .card button {
+  margin: 20px;
+  width: 200px;
+  background-color: white;
+  color: black;
+  padding: 10px 20px 10px 20px;
+  border-radius: 10px;
+  font-weight: bold;
+}
 /*# sourceMappingURL=index.css.map */

@@ -1,59 +1,84 @@
 $nav-color: #181027;
+$tile-color: #F5737F;
 
 .layout-wrapper {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-
     nav {
         width: 100vw;
-        height: 100px;
+        height: 12vh;
+        padding: 10px;
         background-color: $nav-color;
         display: flex;
         justify-content: space-between;
-
         .brand {
             display: flex;
             align-items: center;
             text-align: left;
             color: white;
             font-size: 1.3rem;
-
             p {
                 font-size: 1rem;
             }
-
             img {
                 height: 100%;
             }
         }
-
-        i {
+        i:nth-child(1) {
+            display: none;
+        }
+        i:nth-child(2) {
             color: white;
             font-size: 1.3rem;
+            margin-right: 10px;
         }
     }
-
     .dash-wrapper {
-        height: 100%;
-
+        height: 88vh;
         .sidebar {
             width: 17%;
             height: 100%;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-
+            z-index: 100;
+            .cross {
+                display: none;
+                color: white;
+            }
             .side-nav {
                 height: 70%;
-                padding: 5rem;
+                padding: 2rem;
                 display: flex;
                 flex-direction: column;
                 justify-content: flex-start;
-                align-items: flex-start;
+                align-items: center;
                 color: white;
+                a {
+                    text-decoration: none;
+                    color: inherit;
+                }
+                .side-nav-link {
+                    width: 170px;
+                    display: flex;
+                    align-items: center;
+                    border-radius: 10px;
+                    padding: 10px;
+                    margin: 5px 0;
+                    font-weight: 800;
+                    font-size: 1.1rem;
+                    cursor: pointer;
+                    span {
+                        line-height: 100%;
+                        margin-right: 10px;
+                    }
+                }
+                .side-nav-link.active {
+                    background-color: $tile-color;
+                    transition-duration: 500ms;
+                }
             }
-    
             .side-footer {
                 width: 100%;
                 height: 30%;
@@ -61,16 +86,13 @@ $nav-color: #181027;
                 border-top: 2px solid grey;
                 text-align: center;
                 color: white;
-
                 h4 {
                     font-size: 1.4rem;
                 }
-
                 .buttons {
                     display: flex;
                     margin: 20px;
                     justify-content: center;
-
                     button {
                         border: 0;
                         padding: 5px 15px;
@@ -78,6 +100,77 @@ $nav-color: #181027;
                         border-radius: 10px;
                     }
                 }
+            }
+        }
+        .content-area {
+            position: absolute;
+            height: 88vh;
+            width: calc(100% - 17%);
+            left: 17%;
+            top: 12vh;
+            padding: 20px;
+            display: flex;
+            // flex-wrap: wrap;
+            gap: 10px;
+            overflow-y: scroll;
+            .aagaz-wrapper {
+                position: absolute;
+                top: 45%;
+                right: 0;
+                transform: rotate(90deg);
+                z-index: -10;
+                img {
+                    filter: opacity(7%)
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .layout-wrapper {
+        nav {
+            justify-content: space-between;
+
+            i:first-child {
+                margin: 0 20px;
+                display: block;
+            }
+            
+            i:last-child {
+                display: none;
+            }
+        }
+
+        .dash-wrapper {
+            .sidebar {
+                display: none;
+                background-color: black;
+
+                .cross {
+                    display: block;
+                    padding: 20px;
+                    margin-left: auto;
+                    font-size: 1.4rem;
+                }
+            }
+
+            .content-area {
+                left: 0;
+                width: 100%;
+                height: fit-content;
+                flex-direction: column;
+            }
+        }
+
+        .dash-wrapper.active {
+            .sidebar {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 70%;
+                display: flex;
+                margin-left: 0;
             }
         }
     }

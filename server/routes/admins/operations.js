@@ -5,7 +5,7 @@ const Event = require('../../models/Event');
 const setEventScheldule = async (req, res) => {
     try {
         let { eventID, eventDateTime, eventVenue } = req.body;
-        let event = await Event.findOne({ eventID });
+        let event = await Event.exists({ eventID });
         console.log("event",event)
         if (!event)
             return res
@@ -17,7 +17,7 @@ const setEventScheldule = async (req, res) => {
         if (eventDateTime.toString() == 'Invalid Date') {
             return res.status(400).send({
                 success: false,
-                msg: 'Valid DataTime in IST is required',
+                msg: 'Valid DataTime required',
             });
         }
         console.log('Date Time is ', eventDateTime);

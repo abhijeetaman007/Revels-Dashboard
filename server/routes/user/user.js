@@ -1,8 +1,9 @@
 const User = require('../../models/User');
-const College = require('../../models/College')
+const College = require('../../models/College');
 var jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const { mailer } = require('../../utils/mailer');
+const Role = require('../../models/Role');
 
 const userRegister = async (req, res) => {
     try {
@@ -13,44 +14,48 @@ const userRegister = async (req, res) => {
             password,
             mobileNumber,
             registrationNumber,
-            branch,
+            course,
             college,
-            state
+            state,
         } = req.body;
-        let user = await User.findOne({ email });
+        let collegeExists = await College.findOne(
+            { name: college },
+            { isMahe: 1 }
+        );
+        if (!collegeExists) {
+            return res
+                .status(400)
+                .send({ success: false, msg: 'College Not allowed' });
+        }
+        // let isMahe = college.isMahe
+        // let isMIT = false
+
+        //     const condn =
+        //     user = await User.findOne({ registrationNumber });
+        //     if (user) {
+        //         return res.status(400).send({
+        //             success: false,
+        //             msg: 'Registration Number already exists',
+        //         });
+        //     }
+
+        let user = await User.exists({
+            $or: [
+                { email },
+                { mobileNumber },
+                { $and: [{ registrationNumber }, { college }] },
+            ],
+        });
         if (user) {
             return res
                 .status(400)
-                .send({ success: false, msg: 'Email already exists.' });
-        }
-        user = await User.findOne({ mobileNumber });
-        if (user) {
-            return res
-                .status(400)
-                .send({ success: false, msg: 'Mobile Number already exists.' });
+                .send({ success: false, msg: 'User already exists.' });
         }
 
-        college = await College.findOne({name:college})
-        if(!college)
+        let isMahe = collegeExists.isMahe;
+        if(college == "Manipal Institute of Technology")
         {
-            return res.status(400).send({success:false,msg:'College Not allowed'})
-        }
-        let isMahe = college.isMahe
-        let isMIT = false
-        if (isMahe) {
-            user = await User.findOne({ registrationNumber });
-            if (user) {
-                return res.status(400).send({
-                    success: false,
-                    msg: 'Registration Number already exists',
-                });
-            }
-        }
-
-        console.log(college.name)
-        if(college.name == "Manipal Institute of Technology")
-        {
-            isMIT = true
+           isMahe = 1;
         }
 
         const salt = await bcrypt.genSalt(10);
@@ -68,17 +73,28 @@ const userRegister = async (req, res) => {
             { userEmail: email },
             process.env.JWT_SECRET,
             {
-                expiresIn: '365d',
+                expiresIn: '3d',
             }
         );
-        
-        let verified = 'UNVERIFIED';
-        if (isMIT) verified = 'VERIFIED';
 
-        const date = new Date();
-        offset = (60 * 5 + 30) * 60 * 1000;
-        var ISTTime = new Date(date.getTime() + offset);
-        timeStamp = ISTTime;
+        let verified = 'UNVERIFIED';
+        if (isMahe) verified = 'VERIFIED';
+
+        // const date = new Date();
+        // offset = (60 * 5 + 30) * 60 * 1000;
+        // var ISTTime = new Date(date.getTime() + offset);
+        // timeStamp = ISTTime;
+        // TODO: replace this with hardcoded id
+        let role = await Role.findOne({
+            type: 0,
+            accessLevel: 0,
+            categoryId: null,
+        });
+        if (!role)
+            return res
+                .status(500)
+                .send({ success: false, msg: 'Role Not Created' });
+
         const newUser = new User({
             name,
             userID,
@@ -86,17 +102,16 @@ const userRegister = async (req, res) => {
             password,
             mobileNumber,
             registrationNumber,
-            branch,
-            college:college.name,
+            course,
+            college: college,
             state,
             isMahe,
-            isMIT,
             verified,
+            role: role._id,
             passwordResetToken,
-            timeStamp,
         });
         await newUser.save();
-        let message = `Please Click to verify ${BASE_URL}/api/user/verify/${passwordResetToken}`;
+        let message = `Please Click to verify http://localhost:5000/api/user/verify/${passwordResetToken}`;
         mailer(newUser.email, "Verify Email - REVELS '22", message);
 
         return res.status(200).send({ success: true, msg: 'User Registered' });
@@ -119,16 +134,39 @@ const resendVerificationLink = async (req, res) => {
             return res
                 .status(400)
                 .send({ success: false, msg: 'Please enter a valid email' });
-        let user = await User.findOne({ email: req.body.email });
-        if (!user)
-            return res
-                .status(400)
-                .send({ success: false, msg: 'Email doesnot exists' });
-        // let message = `Please Click to verify http://localhost:${process.env.PORT}/api/user/verify/${user.passwordResetToken}`;
-        let message = `Please Click to verify https://revels22-api.herokuapp.com/api/user/verify/${user.passwordResetToken}`;
 
-        mailer(user.email, "Verify Email - REVELS '22", message);
-        return res.status(200).send({ success: true, msg: 'Email Resent' });
+        let user = await User.exists({
+            email: req.body.email,
+            isEmailVerified: false,
+        });
+        if (!user)
+            return res.status(400).send({
+                success: false,
+                msg: 'Email already verified or Inavlid Email',
+            });
+        const passwordResetToken = jwt.sign(
+            { userEmail: req.body.email },
+            process.env.JWT_SECRET,
+            {
+                expiresIn: '3d',
+            }
+        );
+        await User.updateOne(
+            { email: req.body.email },
+            { $set: { passwordResetToken } }
+        );
+        let message
+        if(process.env.CONFIG == "DEV")
+        {
+            message = `Please Click to verify http://localhost:${process.env.PORT}/api/user/verify/${passwordResetToken}`;
+            res.status(200).send({ success: true, msg: 'Email Resent' });
+        }
+        else if(process.env.CONFIG == "PROD")
+        {
+            message = `Please Click to verify ${process.env.API_URL}/api/user/verify/${passwordResetToken}`;
+        }
+        mailer(req.body.email, "Verify Email - REVELS '22", message);
+        return 0;
     } catch (err) {
         console.log(err);
         return res
@@ -140,11 +178,15 @@ const resendVerificationLink = async (req, res) => {
 const userLogin = async (req, res) => {
     try {
         let { email, password } = req.body;
-        let user = await User.findOne({ email });
+        let user = await User.findOne({ email }, { password: 1, role: 1,isEmailVerified:1 });
         if (!user)
             return res
                 .status(401)
                 .send({ success: false, msg: 'Invalid Credentials' });
+        if (!user.isEmailVerified)
+            return res
+                .status(403)
+                .send({ success: false, msg: 'Please Verify Email to login' });
         let passwordMatches = await bcrypt.compare(password, user.password);
         if (!passwordMatches)
             return res
@@ -154,18 +196,17 @@ const userLogin = async (req, res) => {
         //Password matches,generating token
         const payload = {
             userID: user._id,
-            userEmail: user.email,
+            userEmail: email,
             userRole: user.role,
         };
         let token = jwt.sign(payload, process.env.JWT_SECRET, {
-            expiresIn: 12 * 60 * 60,
+            expiresIn: 1 * 60 * 60,
         });
-        user.token = token;
-        await user.save();
+        await User.updateOne({ _id: user._id }, { $set: { token } });
         res.status(200).send({
             success: true,
             msg: 'Login Successful',
-            data: user,
+            data: token,
         });
     } catch (err) {
         console.log(err);
@@ -178,13 +219,12 @@ const userLogin = async (req, res) => {
 const userLogout = async (req, res) => {
     try {
         let token = req.headers['authorization'];
-        let user = await User.findOne({ token });
+        let user = await User.exists({ token });
         if (!user)
             return res
                 .status(400)
                 .send({ success: false, msg: 'User not LoggedIn' });
-        user.token = '';
-        await user.save();
+        await User.updateOne({ token }, { $set: { token: null } });
         res.status(200).send({
             success: true,
             msg: 'Successfully LoggedOut',
@@ -201,18 +241,12 @@ const userLogout = async (req, res) => {
 const userEmailVerify = async (req, res) => {
     try {
         let token = req.params.token;
-        let user = await User.findOne({ passwordResetToken: token });
+        let user = await User.exists({ passwordResetToken: token });
         if (!user) return res.send({ success: false, msg: 'Token Invalid' });
-        let newToken = jwt.sign(
-            { userEmail: user.email },
-            process.env.JWT_SECRET,
-            {
-                expiresIn: '365d',
-            }
+        await User.updateOne(
+            { passwordReset:token },
+            { $set: { passwordResetToken: null, isEmailVerified: true } }
         );
-        user.passwordResetToken = newToken;
-        user.isEmailVerified = true;
-        await user.save();
         return res.send({ success: true, msg: 'User Verified' });
     } catch (err) {
         console.log(err);
@@ -227,19 +261,31 @@ const userPassResetLink = async (req, res) => {
             return res
                 .status(400)
                 .send({ success: false, msg: 'Please enter a valid email' });
-        let user = await User.findOne({ email });
+        let user = await User.exists({ email });
         if (!user) {
             return res.send({
                 success: false,
                 msg: 'User does not exists,Please register ',
             });
         }
+        const payload = {
+            userID: user._id,
+            userEmail: email,
+            userRole: user.role,
+        };
+        let token = jwt.sign(payload, process.env.JWT_SECRET, {
+            expiresIn: 1 * 60 * 60,
+        });
+        await User.updateOne(
+            { _id: user._id },
+            { $set: { passwordResetToken: token } }
+        );
         // let resetLink = `${process.env.BASE_URL}forgetpass/${user.passwordResetToken}`;
-        let resetLink = `${process.env.BASE_URL}forgetpass/${user.passwordResetToken}`;
-        
+        let resetLink = `${process.env.BASE_URL}forgetpass/${token}`;
         let message = `Click here to change yout password ${resetLink}`;
+        res.send({ success: true, msg: 'Password Reset Link emailed' });
         mailer(email, "Reset Password - REVELS '22", message);
-        return res.send({ success: true, msg: 'Password Reset Link emailed' });
+        return 0;
     } catch (err) {
         console.log(err);
         return res.send({ success: false, msg: 'Internal Server Error' });
@@ -248,7 +294,7 @@ const userPassResetLink = async (req, res) => {
 const userPassResetVerify = async (req, res) => {
     try {
         let { token, newPassword, email } = req.body;
-        let user = await User.findOne({ email });
+        let user = await User.exists({ email }, { passwordResetToken: 1 });
         if (!user) {
             return res
                 .status(400)
@@ -263,21 +309,15 @@ const userPassResetVerify = async (req, res) => {
         if (user.passwordResetToken != token) {
             return res.status(400).send({
                 success: false,
-                msg: 'Invalid Token,Password cannot be changed',
+                msg: 'Password Reset Failed',
             });
         }
         const salt = await bcrypt.genSalt(10);
         newPassword = await bcrypt.hash(newPassword, salt);
-        const newPasswordResetToken = jwt.sign(
-            { userEmail: email },
-            process.env.JWT_SECRET,
-            {
-                expiresIn: '365d',
-            }
+        await User.updateOne(
+            { _id: user._id },
+            { $set: { passwordResetToken: null, password: newPassword } }
         );
-        user.password = newPassword;
-        user.passwordResetToken = newPasswordResetToken;
-        await user.save();
         return res.send({
             success: true,
             msg: 'Password Changed Successfully',
@@ -303,54 +343,36 @@ const getUserFromToken = async (req, res) => {
     }
 };
 
-// const updateDriveLink = async (req, res) => {
-//     try {
-//         if (!req.body.driveLink) {
-//             return res
-//                 .status(400)
-//                 .send({ success: false, msg: 'Drive Link Empty' });
-//         }
-//         let user = await User.findOneAndUpdate(
-//             { _id: req.requestUser._id },
-//             {
-//                 driveLink: req.body.driveLink,
-//             }
-//         );
-//         return res.status(200).send({
-//             success: true,
-//             msg: 'Drive Link Updated,Wait until OutStation Management Team verifies',
-//         });
-//     } catch (err) {
-//         console.log(err);
-//         return res
-//             .status(500)
-//             .send({ success: false, msg: 'Update dive link failed' });
-//     }
-// };
 const updateAccommodation = async (req, res) => {
     try {
-        let { isRequired,arrivalDate,arrivalTime } = req.body;
+        let { required, arrivalDateTime } = req.body;
         let user = req.requestUser;
-        if (!isRequired)
+        // MIT not allowed to apply
+        if (user.isMahe != 1) {
+            return res.status(400).send({
+                success: false,
+                msg: 'Accomodation only for Outside Participants',
+            });
+        }
+        // Already Applied
+        if(user.accommodation.required)
+        {
             return res
                 .status(200)
-                .send({ success: true, msg: 'Accommodation Status Updated' });
-        if (user.isMahe) {
-            return res
-                .status(400)
-                .send({
-                    success: false,
-                    msg: 'Accomodation only for Non-Mahe Users',
-                });
+                .send({ success: true, msg: 'Already applied for Accommodation' });
         }
-        if (!isRequired) {
-            user.accommodation.required = isRequired
-        } else {
-            user.accommodation.required = isRequired
-            user.accommodation.arrivalDate = arrivalDate,
-            user.accommodation.arrivalTime = arrivalTime
+        if (!required) {
+            arrivalDateTime=null
         }
-        await user.save();
+        await User.updateOne(
+            { _id: req.requestUser._id },
+            {
+                $set: {
+                    required: true,
+                    arrivalDateTime,
+                },
+            }
+        );
         return res
             .status(200)
             .send({ success: true, msg: 'Accommodation Status Updated' });

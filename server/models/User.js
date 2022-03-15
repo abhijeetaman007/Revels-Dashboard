@@ -17,11 +17,11 @@ const UserSchema = new mongoose.Schema(
     },
     token: {
       type: String,
-      default: "",
+      default: null,
     },
     passwordResetToken: {
       type: String,
-      default: "",
+      default: null,
     },
     name: {
       type: String,
@@ -50,9 +50,9 @@ const UserSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    branch: {
+    course: {
       type: String,
-      default: "",
+      default: null,
     },
     college: {
       type: String,
@@ -62,22 +62,21 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    isMIT: {
-      type: Boolean,
-      required: true,
-    },
+    // 0 - NON Mahe,1 - MIT,2 - MAHE
     isMahe: {
-      type: Boolean,
+      type: Number,
+      enum:[0,1,2],
       required: true,
+      default:2
     },
     accommodation: {
       required: {
-        type: Number,
-        default: 0,
-        enum: [0, 1, 2, 3],
+        type: Boolean,
+        default: false
       },
       arrivalDateTime: {
         type: Date,
+        default:null
       },
     },
     documents: {
@@ -102,6 +101,7 @@ const UserSchema = new mongoose.Schema(
           type: mongoose.Schema.Types.ObjectId,
           ref: "Event",
         },
+        // while populating check on last roundNumber
         attendance: [
           {
             roundNumber: {
@@ -120,7 +120,7 @@ const UserSchema = new mongoose.Schema(
     ],
     //Stores all types of delegate Card/Tickets
     // NOTE: Each user should have max one delegate card of each type
-    delegateCard: [
+    delegateCards: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "DelCard",

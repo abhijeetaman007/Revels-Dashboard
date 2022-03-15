@@ -8,12 +8,6 @@ const adminSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    //0 - Misc Admin ; 1 - Category Admins
-    type: {
-      default: 0,
-      enum: [0, 1],
-      type: Number,
-    },
     role: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Role",
@@ -28,17 +22,12 @@ const adminSchema = new mongoose.Schema(
     },
     token: {
       type: String,
+      default:null
     },
     passwordResetToken: {
       type: String,
+      default:null
     },
-    // Only for Category type
-    //   events: [
-    //     {
-    //       type: mongoose.Schema.Types.ObjectId,
-    //       ref: "Event",
-    //     },
-    //   ],
   },
   { timestamps: true }
 );

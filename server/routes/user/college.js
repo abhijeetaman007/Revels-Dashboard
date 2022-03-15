@@ -4,7 +4,7 @@ const getAllColleges = async(req,res) =>
 {
     try
     {
-        let colleges = College.find()
+        let colleges = await College.find()
         return res.status(200).send({success:true,data:colleges})
     }
     catch(err)

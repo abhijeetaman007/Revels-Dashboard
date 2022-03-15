@@ -73,7 +73,12 @@ const EventSchema = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
-    delegateCard: [
+    // To check for if team delegate card is enough for participation -- person with delegate will Add to team
+    teamDelegateCardWorks:{
+      type:Boolean,
+      default:false
+    },
+    delegateCards: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "DelCard",
