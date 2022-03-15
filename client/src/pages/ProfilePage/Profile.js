@@ -18,10 +18,10 @@ function Profile() {
         <i className="fa fa-bell "></i>
       </nav>
       <div className="dash-wrapper">
-        <div className="sidebar">
+        <div className="profile-sidebar">
           <img src={logoWhite} />
         </div>
-        <div className="content-area">
+        <div className="profile-content-area">
         <p className="back-btn">
             <i class="fa fa-angle-left fa-2x"></i> Back to Dashboard
           </p>

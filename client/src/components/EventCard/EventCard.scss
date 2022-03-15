@@ -1,8 +1,7 @@
 $event-card-background: #C6A3FF;
 
 .event-card-wrapper {
-    min-width: calc(83%/2.6);
-    max-width: calc(83%/2.6);
+    width: calc(83%/2.6);
     height: fit-content;
     padding: 25px;
     background-color: $event-card-background;

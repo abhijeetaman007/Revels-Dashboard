@@ -17,7 +17,7 @@ $text-color: #c4c4c4;
     height: 88vh;
     display: flex;
 
-    .sidebar {
+    .profile-sidebar {
       width: 17%;
       background-image: radial-gradient(
         circle,
@@ -33,7 +33,7 @@ $text-color: #c4c4c4;
         width: 80%;
       }
     }
-    .content-area {
+    .profile-content-area {
       color: $text-color;
       .back-btn {
         color: white;
@@ -109,7 +109,6 @@ $text-color: #c4c4c4;
           }
         }
         .drivelink {
-         
           input {
             color: white;
             background-color: rgba(81, 109, 216, 0.26);
