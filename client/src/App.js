@@ -36,6 +36,15 @@ function App() {
             />
             <Route
               exact
+              path="/dashboard/proshow"
+              element={
+                // <PrivateRoute>
+                <Proshow />
+                // </PrivateRoute>
+              }
+            />
+            <Route
+              exact
               path="/dashboard/events"
               element={
                 // <PrivateRoute>
@@ -45,23 +54,10 @@ function App() {
             />
             <Route
               exact
-              path="/dashboard/myevents"
-              element={
-                // <PrivateRoute>
-                <MyEvents />
-                // </PrivateRoute>
-              }
+              path="/dashboard/delegatecard"
+              element={<DelegatePage />}
             />
-            <Route
-              exact
-              path="/dashboard/proshow"
-              element={
-                // <PrivateRoute>
-                <Proshow />
-                // </PrivateRoute>
-              }
-            />
-            <Route path="/dashboard/delegatecard" element={<DelegatePage />} />
+            <Route exact path="/dashboard/myevents" element={<MyEvents />} />
             <Route
               exact
               path="/forgetpass/:passtoken"

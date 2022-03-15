@@ -14,9 +14,10 @@ const registerEvent = async (req, res) => {
                 .send({ success: false, msg: 'No Events Found' });
 
         //TODO: Check Date
-        // const date = new Date();
+        const date = new Date();
         // offset = (60 * 5 + 30) * 60 * 1000;
         // var currentDateTime = new Date(date.getTime() + offset);
+        var currentDateTime = new Date(date.getTime());
         // console.log(event.registrationDeadline);
         // console.log(currentDateTime);
         // console.log(typeof event.deadline);

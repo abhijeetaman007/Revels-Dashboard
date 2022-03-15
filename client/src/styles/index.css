@@ -246,17 +246,19 @@ input:after {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .delegate-container .del-flex .delcardblue {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 21%;
+          flex: 1 0 21%;
   margin: 20px;
   border-radius: 10px;
   padding: 30px;
   font-size: 24px;
-  background-color: #3a5a64;
+  background-color: #063858;
   background-image: url("../assets/blue.png");
   background-repeat: no-repeat;
 }
@@ -272,11 +274,14 @@ input:after {
 }
 
 .delegate-container .del-flex .delcardblack {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 21%;
+          flex: 1 0 21%;
   margin: 20px;
   border-radius: 10px;
   padding: 30px;
   font-size: 24px;
-  background-color: #6e6767;
+  background-color: black;
   background-image: url("../assets/black.png");
   background-repeat: no-repeat;
 }
@@ -292,11 +297,14 @@ input:after {
 }
 
 .delegate-container .del-flex .delcardpurple {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 21%;
+          flex: 1 0 21%;
   margin: 20px;
   border-radius: 10px;
   padding: 30px;
   font-size: 24px;
-  background-color: #441d81;
+  background-color: #342749;
   background-image: url("../assets/purple.png");
   background-repeat: no-repeat;
 }

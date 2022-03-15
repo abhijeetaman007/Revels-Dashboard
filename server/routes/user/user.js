@@ -53,10 +53,10 @@ const userRegister = async (req, res) => {
         }
 
         let isMahe = collegeExists.isMahe;
-        // if(college == "Manipal Institute of Technology")
-        // {
-        //    isMahe = 1;
-        // }
+        if(college == "Manipal Institute of Technology")
+        {
+           isMahe = 1;
+        }
 
         const salt = await bcrypt.genSalt(10);
         password = await bcrypt.hash(password, salt);
@@ -178,7 +178,7 @@ const resendVerificationLink = async (req, res) => {
 const userLogin = async (req, res) => {
     try {
         let { email, password } = req.body;
-        let user = await User.findOne({ email }, { password: 1, role: 1 });
+        let user = await User.findOne({ email }, { password: 1, role: 1,isEmailVerified:1 });
         if (!user)
             return res
                 .status(401)
@@ -244,7 +244,7 @@ const userEmailVerify = async (req, res) => {
         let user = await User.exists({ passwordResetToken: token });
         if (!user) return res.send({ success: false, msg: 'Token Invalid' });
         await User.updateOne(
-            { token },
+            { passwordReset:token },
             { $set: { passwordResetToken: null, isEmailVerified: true } }
         );
         return res.send({ success: true, msg: 'User Verified' });
