@@ -1,7 +1,10 @@
 import React from 'react';
 import './EventCard.scss';
-
+import { Link } from 'react-router-dom';
 const EventCard = ({ data }) => {
+  const [eventPath, setEventPath] = React.useState(
+    `/dashboard/event/${data.eventID}`
+  );
   return (
     <div className="event-card-wrapper">
       <div className="event-content">
@@ -14,7 +17,9 @@ const EventCard = ({ data }) => {
             <button className="font-heavy">
               {data.mode === 'OFFLINE' ? 'Offline' : 'Online'} Event
             </button>
-            <button className="font-medium">Register</button>
+            <Link to={eventPath} className="font-medium">
+              <button className="font-medium">Details</button>
+            </Link>
           </div>
         </div>
         <div className="tags-line">
