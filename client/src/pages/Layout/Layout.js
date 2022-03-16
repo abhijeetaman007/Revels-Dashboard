@@ -7,8 +7,12 @@ import proshow from './../../assets/icons/proshow.svg';
 import delegateCard from './../../assets/icons/delegateCard.svg';
 import logoWhite from './.././../assets/logo_white.png';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 const Layout = ({ children, isAagazVisible = false, activeTab }) => {
+
+    const auth = useAuth();
+
     const handleHamburger = () => {
       document.querySelector('.dash-wrapper').classList.toggle('active');
     };
@@ -98,7 +102,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <h5 className="font-light">Manipal institute of Technology</h5>
             <div className="buttons font-medium">
               <button>Profile</button>
-              <button>Logout</button>
+              <button onClick={auth.userLogout}>Logout</button>
             </div>
           </div>
         </div>

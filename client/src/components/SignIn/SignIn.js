@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
 const SignIn = (props) => {
   const auth = useAuth();
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -27,6 +29,7 @@ const SignIn = (props) => {
         if (res.success) {
           //redirect inside dashboard todo
           toast.success(res.msg, { position: 'bottom-center', id: toastId });
+          navigate("/dashboard/events");
         } else {
           toast.error(res.msg[0][Object.keys(res.msg[0])[0]], {
             position: 'bottom-center',

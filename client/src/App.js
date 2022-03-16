@@ -30,36 +30,36 @@ function App() {
               exact
               path="/dashboard/profile"
               element={
-                // <PrivateRoute>
-                <Profile />
-                // </PrivateRoute>
+                <PrivateRoute>
+                  <Profile />
+                </PrivateRoute>
               }
             />
             <Route
               exact
               path="/dashboard/proshow"
               element={
-                // <PrivateRoute>
-                <Proshow />
-                // </PrivateRoute>
+                <PrivateRoute>
+                  <Proshow />
+                </PrivateRoute>
               }
             />
             <Route
               exact
               path="/dashboard/events"
               element={
-                // <PrivateRoute>
-                <Events />
-                // </PrivateRoute>
+                <PrivateRoute>
+                  <Events />
+                </PrivateRoute>
               }
             />
             <Route
               exact
               path="/dashboard/myevents"
               element={
-                // <PrivateRoute>
-                <MyEvents />
-                // </PrivateRoute>
+                <PrivateRoute>
+                  <MyEvents />
+                </PrivateRoute>
               }
             />
             <Route

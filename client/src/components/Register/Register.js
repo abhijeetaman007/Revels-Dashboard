@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router';
 
 const Register = (props) => {
   const auth = useAuth();
+  const navigate = useNavigate();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -75,6 +77,10 @@ const Register = (props) => {
         );
         if (res.success) {
           toast.success(res.msg, { position: 'bottom-center', id: toastId });
+          setTimeout(() => {
+            props.setLogin(true);
+            props.setRegister(false);
+          }, 3000)
         } else {
           toast.error(res.msg[0][Object.keys(res.msg[0])[0]], {
             position: 'bottom-center',
