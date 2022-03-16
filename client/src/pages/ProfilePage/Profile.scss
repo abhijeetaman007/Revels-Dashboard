@@ -6,7 +6,7 @@ $text-color: #c4c4c4;
   overflow: hidden;
   nav {
     height: 12vh;
-    i{
+    i {
       padding: 10px;
       background-color: #c4515c;
       color: white;
@@ -27,6 +27,7 @@ $text-color: #c4c4c4;
         #d05965,
         #c4515c
       );
+      display: flex;
       justify-content: center;
       align-items: center;
       img {
@@ -54,6 +55,7 @@ $text-color: #c4c4c4;
       align-items: center;
 
       .text {
+        width: 50%;
         font-size: 1.2rem;
         font-weight: 200;
         margin-left: 80px;
@@ -62,7 +64,7 @@ $text-color: #c4c4c4;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-        
+
         .name {
           h1 {
             font-size: 2.8rem;
@@ -83,7 +85,7 @@ $text-color: #c4c4c4;
           display: flex;
 
           align-items: center;
-          justify-content: center;
+          justify-content: space-around;
           width: 70%;
           p {
             color: #c4515c;
@@ -99,6 +101,7 @@ $text-color: #c4c4c4;
           }
         }
         .grid {
+          width: 70%;
           display: grid;
           grid-template-columns: auto auto auto;
           div {
@@ -109,6 +112,27 @@ $text-color: #c4c4c4;
           }
         }
         .drivelink {
+          display: flex;
+          flex-direction: column;
+          
+         
+          label {
+            input{
+              margin-left: auto;
+            }
+          }
+          input[type=file]::file-selector-button {
+            //height: 40px;
+           // margin-left: 20px;
+            //width: 20%;
+            font-size: 1rem;
+           
+            background-color: white;
+            border: none;
+
+            border-radius: 5px;
+          }
+          
           input {
             color: white;
             background-color: rgba(81, 109, 216, 0.26);
@@ -125,7 +149,7 @@ $text-color: #c4c4c4;
             font-weight: 600;
             background-color: #22b6e6;
             border: none;
-            
+
             border-radius: 8px;
           }
         }
@@ -138,6 +162,47 @@ $text-color: #c4c4c4;
         vertical-align: middle;
 
         transform: rotate(90deg);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .layout-wrapper {
+    .dash-wrapper {
+      .profile-sidebar {
+        display: none;
+      }
+      .profile-content-area {
+        width: 100%;
+        
+        margin-top: 60px;
+        .back-btn {
+          left: 4%;
+        }
+
+        .text {
+          width: 80%;
+          margin: 0 auto;
+          
+          .delegate-card {
+            justify-content: space-around;
+            width: 100%;
+          }
+          // .name{
+          //   display: flex;
+          //   flex-direction: column;
+          // }
+        }
+        align-items: baseline;
+        justify-content: space-around;
+        .aagaz {
+          opacity: 0.05;
+          position: absolute; /* new */
+          top: 50%;
+          transform: translatey(-50%) rotate(90deg);
+          right: -150px;
+        }
       }
     }
   }

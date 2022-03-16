@@ -1,10 +1,19 @@
-import React from "react";
+import React , {useEffect} from "react";
 import logoWhite from "./.././../assets/logo_white.png";
 import "../Layout/Layout.scss";
 import "./Profile.scss";
 import aagaz from "./.././../assets/aagaz.png";
-
+import { useNavigate } from "react-router-dom";
+import {useAuth} from '../../context/AuthContext';
 function Profile() {
+  const navigate = useNavigate();
+  const auth = useAuth();
+   
+  useEffect(() => {
+    console.log(auth);
+  }, )
+  
+
   return (
     <div className="layout-wrapper">
       <nav className="navbar">
@@ -22,15 +31,14 @@ function Profile() {
           <img src={logoWhite} />
         </div>
         <div className="profile-content-area">
-        <p className="back-btn">
-            <i class="fa fa-angle-left fa-2x"></i> Back to Dashboard
+          <p className="back-btn" onClick={() => navigate("/dashboard")}>
+            <i class="fa fa-angle-left fa-2x"></i>Dashboard
           </p>
           <div className="text">
             <div className="name">
               <h1>Ishan Kumar</h1>
-              <p>
-                ishan.kumar1@learner.manipal.edu <span>EMAIL VERIFIED</span>
-              </p>
+              <p>ishan.kumar1@learner.manipal.edu</p>
+              <span>EMAIL VERIFIED</span>
             </div>
             <div className="grid">
               <div>
@@ -46,13 +54,23 @@ function Profile() {
                 <p>MIT, Manipal</p>
               </div>
             </div>
-            <div>
-              <p>Drive link for College ID</p>
+            {/* <div>
+              <p>Upload Documents</p>
               <div className="drivelink">
-                <input />
-                <button>Submit</button>
+                <label>
+                  Aadhar Card
+                  <input type="file" />
+                </label>
+                <label>
+                  College ID
+                  <input type="file" />
+                </label>
+                <label>
+                  Bonafide
+                  <input type="file" />
+                </label>
               </div>
-            </div>
+            </div> */}
             <div className="delegate-card">
               <p>
                 Delegate ID <br />
@@ -65,7 +83,6 @@ function Profile() {
             <img src={aagaz} />
           </div>
         </div>
-        
       </div>
     </div>
   );

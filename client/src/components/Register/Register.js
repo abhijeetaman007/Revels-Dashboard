@@ -1,34 +1,34 @@
-import React, { useState } from 'react';
-import toast from 'react-hot-toast';
-import { useAuth } from '../../context/AuthContext';
+import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { useAuth } from "../../context/AuthContext";
 
 const Register = (props) => {
   const auth = useAuth();
 
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [mobileNumber, setMobileNumber] = useState(null);
-  const [regNum, setRegNum] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPass, setConfirmPass] = useState('');
-  const [course, setCourse] = useState('');
-  const [college, setCollege] = useState('--');
-  const [state, setState] = useState('');
+  const [regNum, setRegNum] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPass, setConfirmPass] = useState("");
+  const [course, setCourse] = useState("");
+  const [college, setCollege] = useState("--");
+  const [state, setState] = useState("");
   const [isMahe, setIsMahe] = useState(true);
   // handles input field validation
   const validateForm = (toastId) => {
     if (
-      name === '' ||
-      email === '' ||
-      mobileNumber === '' ||
-      regNum === '' ||
-      course === '' ||
-      password === '' ||
-      confirmPass === '' ||
-      college === '' ||
-      state === '--'
+      name === "" ||
+      email === "" ||
+      mobileNumber === "" ||
+      regNum === "" ||
+      course === "" ||
+      password === "" ||
+      confirmPass === "" ||
+      college === "" ||
+      state === "--"
     ) {
-      toast.error('Please fill in all the fields', {
+      toast.error("Please fill in all the fields", {
         id: toastId,
       });
       return false;
@@ -43,13 +43,13 @@ const Register = (props) => {
         if (password === confirmPass) {
           return true;
         } else {
-          toast.error('Passwords do not match', {
+          toast.error("Passwords do not match", {
             id: toastId,
           });
           return false;
         }
       } else {
-        toast.error('Please enter a valid phone number', {
+        toast.error("Please enter a valid phone number", {
           id: toastId,
         });
         return false;
@@ -59,7 +59,7 @@ const Register = (props) => {
   // handles submit of registration form
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const toastId = toast.loading('Loading...');
+    const toastId = toast.loading("Loading...");
     if (validateForm(toastId)) {
       try {
         const res = await auth.userRegister(
@@ -74,17 +74,17 @@ const Register = (props) => {
           isMahe
         );
         if (res.success) {
-          toast.success(res.msg, { position: 'bottom-center', id: toastId });
+          toast.success(res.msg, { position: "bottom-center", id: toastId });
         } else {
           toast.error(res.msg[0][Object.keys(res.msg[0])[0]], {
-            position: 'bottom-center',
+            position: "bottom-center",
             id: toastId,
           });
         }
       } catch (error) {
         console.log(error);
         toast.error(error.response.data.msg, {
-          position: 'bottom-center',
+          position: "bottom-center",
           id: toastId,
         });
       }
@@ -162,9 +162,9 @@ const Register = (props) => {
             onChange={(e) => setCollege(e.target.value)}
           >
             {[
-              'Choose your college',
-              'Manipal Institute of Technology',
-              'BITS, Goa',
+              "Choose your college",
+              "Manipal Institute of Technology",
+              "BITS, Goa",
             ].map((value, index) => {
               return (
                 <option key={index} value={value}>
