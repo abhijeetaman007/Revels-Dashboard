@@ -30,9 +30,9 @@ function App() {
               exact
               path="/dashboard/profile"
               element={
-                <PrivateRoute>
+                //<PrivateRoute>
                   <Profile />
-                </PrivateRoute>
+                //</PrivateRoute>
               }
             />
             <Route
@@ -76,15 +76,6 @@ function App() {
               exact
               path="/forgetpass/:passtoken"
               element={<ResetPassword />}
-            />
-            <Route
-              exact
-              path="/resetpassword"
-              element={
-                // <PrivateRoute>
-                <ResetPassword />
-                // </PrivateRoute>
-              }
             />
             {/* <Route path="/admin/:category" element={}/> */}
             {/* <Route path="/admin/SYSADMIN" element={}/> */}

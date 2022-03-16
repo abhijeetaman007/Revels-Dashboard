@@ -1,24 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from "./../context/AuthContext";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import toast from "react-hot-toast";
 import './AuthPages/Auth.css';
 import axios from 'axios';
 
 const ResetPassword = () => {
-  const auth = useAuth();
   const navigate = useNavigate();
+  const params = useParams();
 
+  const passToken = params.passToken;
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
-
-  useEffect(() => {
-    if (!auth.loading) {
-      if (auth.user) {
-        navigate('/dashboard/profile');
-      }
-    }
-  }, [auth.loading]);
 
   const validateForm = (toastId) => {        
     if(password === "" || confirmPass === "") {
@@ -40,12 +34,19 @@ const ResetPassword = () => {
         // change API call route
         const res
             = await axios.post(
-                "/"
+                "/api/user/forgetpass/verify", {
+                  email,
+                  token: passToken,
+                  newPassword: password
+                }
             );
-        if(res.success) {
-            toast.success("Password reset successfully", { id: toastId });
+        if(res.data.success) {
+          toast.success("Password reset successfully", { position: "bottom-center", id: toastId });
+          setTimeout(() => {
+            navigate("/login");
+          }, 3000)
         } else {
-            toast.error("Password reset error", { id: toastId });
+          toast.error("Password reset error", { id: toastId });
         }
       } catch (error) {
         toast.error("Sorry! An error occurred. Please try again later!", {
@@ -64,6 +65,17 @@ const ResetPassword = () => {
             <div className="form-wrapper">
                 <h2 className="font-light auth-heading">RESET PASSWORD</h2>
                 <form className="auth-form">
+                    <div className="user-box">
+                      <input
+                        type="email"
+                        name=""
+                        autoComplete="off"
+                        required
+                        onChange={(e) => setEmail(e.target.value.trim())}
+                        maxLength={100}
+                      />
+                      <label>Email ID</label>
+                    </div>
                     <div className="user-box">
                       <input
                         type="password"
