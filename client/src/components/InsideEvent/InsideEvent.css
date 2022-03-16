@@ -33,4 +33,40 @@
 .event-details .ele {
   margin: 1rem;
 }
+
+.event-details .ele .split {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.event-details .ele .split .blueinwhite {
+  font-weight: bold;
+  border: none;
+  background-color: white;
+  color: #22b6e6;
+}
+
+.event-details .ele .split .whiteinblue {
+  font-weight: bold;
+  border: none;
+  background-color: #22b6e6;
+  color: white;
+}
+
+.event-details .ele .split .blackingrey {
+  font-weight: bold;
+  border: none;
+  background-color: white;
+  color: black;
+}
+
+.input-team {
+  color: #dadada;
+  background-color: #121c2f;
+  width: 400px;
+}
 /*# sourceMappingURL=InsideEvent.css.map */

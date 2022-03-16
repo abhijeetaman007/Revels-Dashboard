@@ -100,7 +100,6 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
               <Link to="/dashboard/profile" className="font-medium">
                 <button>Profile</button>
               </Link>
-
               <button>Logout</button>
             </div>
           </div>
