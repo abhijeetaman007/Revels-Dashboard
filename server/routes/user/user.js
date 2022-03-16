@@ -271,7 +271,7 @@ const userPassResetLink = async (req, res) => {
       { $set: { passwordResetToken: token } }
     );
     // let resetLink = `${process.env.BASE_URL}forgetpass/${user.passwordResetToken}`;
-    let resetLink = `${process.env.BASE_URL}forgetpass/${token}`;
+    let resetLink = `${process.env.FRONT_END_URL}forgetpass/${token}`;
     let message = `Click here to change yout password ${resetLink}`;
     res.send({ success: true, msg: 'Password Reset Link emailed' });
     mailer(email, "Reset Password - REVELS '22", message);
