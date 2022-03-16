@@ -77,15 +77,6 @@ function App() {
               path="/forgetpass/:passtoken"
               element={<ResetPassword />}
             />
-            <Route
-              exact
-              path="/resetpassword"
-              element={
-                // <PrivateRoute>
-                <ResetPassword />
-                // </PrivateRoute>
-              }
-            />
             {/* <Route path="/admin/:category" element={}/> */}
             {/* <Route path="/admin/SYSADMIN" element={}/> */}
           </Routes>

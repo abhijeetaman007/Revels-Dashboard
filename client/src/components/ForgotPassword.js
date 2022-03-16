@@ -1,13 +1,15 @@
 import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import { TOKEN_ID } from "../utils/constants";
+import { useNavigate } from "react-router";
 
 const ForgotPassword = () => {
-    const [email, setEmail] = useState("parthivmenon01@gmail.com")
+    const [email, setEmail] = useState("");
+    const navigate = useNavigate();
 
     // function to handle forgot password
-    const handleForgotPassword = async () => {
+    const handleForgotPassword = async (e) => {
+        e.preventDefault();
         const toastId = toast.loading("Loading...");
         if(email !== "") {
             try {
@@ -15,7 +17,7 @@ const ForgotPassword = () => {
                     = await axios.post(
                         "/api/user/forgetpass",
                         { email: email }
-                    )
+                    );
                 if(res.data.success) {
                     toast.success(res.data.msg, { position: "bottom-center", id: toastId });
                 } else {
@@ -37,11 +39,11 @@ const ForgotPassword = () => {
             <form className="auth-form">
                 <div className="user-box">
                   <input
-                    type="password"
+                    type="email"
                     name=""
                     autoComplete="off"
                     required
-                    // onChange={(e) => setPassword(e.target.value.trim())}
+                    onChange={(e) => setEmail(e.target.value.trim())}
                     maxLength={100}
                   />
                   <label>Registered Email ID</label>
