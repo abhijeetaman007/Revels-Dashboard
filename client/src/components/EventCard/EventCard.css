@@ -1,0 +1,112 @@
+.event-card-wrapper {
+  width: calc(83% / 2.6);
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 25px;
+  background-color: #c6a3ff;
+  border-radius: 0.5rem;
+}
+
+.event-card-wrapper .event-content .event-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: white;
+}
+
+.event-card-wrapper .event-content .event-header .event-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.event-card-wrapper .event-content .event-header .event-area p {
+  font-size: 0.95rem;
+}
+
+.event-card-wrapper .event-content .event-header .event-area h3 {
+  font-size: 1.4rem;
+}
+
+.event-card-wrapper .event-content .event-header .button-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.event-card-wrapper .event-content .event-header .button-area button:first-child {
+  border: 1.5px solid white;
+  margin-bottom: 2.5px;
+  border-radius: 10px;
+  background-color: transparent;
+  padding: 2px 4px;
+  text-transform: uppercase;
+  color: white;
+}
+
+.event-card-wrapper .event-content .event-header .button-area button:last-child {
+  border: 0;
+  margin-top: 2.5px;
+  border-radius: 10px;
+  background-color: transparent;
+  padding: 2px 4px;
+  background-color: black;
+  text-transform: uppercase;
+  color: white;
+}
+
+.event-card-wrapper .event-content .tags-line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 5px;
+  color: #3d2761;
+}
+
+.event-card-wrapper .event-content .description {
+  margin: 8px 0px;
+  line-height: 20px;
+}
+
+.event-card-wrapper .event-content .data-area {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+}
+
+.event-card-wrapper .event-content .data-area .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: white;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+@media only screen and (max-width: 812px) {
+  .event-card-wrapper {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=EventCard.css.map */

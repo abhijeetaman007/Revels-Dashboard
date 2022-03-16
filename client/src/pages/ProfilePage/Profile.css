@@ -1,0 +1,173 @@
+.layout-wrapper {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.layout-wrapper nav {
+  height: 12vh;
+}
+
+.layout-wrapper nav i {
+  padding: 10px;
+  background-color: #c4515c;
+  color: white;
+  border-radius: 50%;
+}
+
+.layout-wrapper .dash-wrapper {
+  height: 88vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.layout-wrapper .dash-wrapper .sidebar {
+  width: 17%;
+  background-image: radial-gradient(circle, #f5737f, #e96a76, #dc626d, #d05965, #c4515c);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.layout-wrapper .dash-wrapper .sidebar img {
+  width: 80%;
+}
+
+.layout-wrapper .dash-wrapper .content-area {
+  color: #c4c4c4;
+  width: 83%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.layout-wrapper .dash-wrapper .content-area .back-btn {
+  color: white;
+  position: fixed;
+  top: 13vh;
+  left: 18%;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.layout-wrapper .dash-wrapper .content-area .back-btn i {
+  margin-right: 10px;
+}
+
+.layout-wrapper .dash-wrapper .content-area .text {
+  font-size: 1.2rem;
+  font-weight: 200;
+  margin-left: 80px;
+  margin-top: 0;
+  height: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.layout-wrapper .dash-wrapper .content-area .text .name h1 {
+  font-size: 2.8rem;
+  color: #c4515c;
+}
+
+.layout-wrapper .dash-wrapper .content-area .text .name span {
+  font-size: 1rem;
+  padding: 2px 5px;
+  color: #c6a3ff;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.layout-wrapper .dash-wrapper .content-area .text .delegate-card {
+  max-height: 150px;
+  background-color: white;
+  border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 70%;
+}
+
+.layout-wrapper .dash-wrapper .content-area .text .delegate-card p {
+  color: #c4515c;
+  font-weight: 700;
+}
+
+.layout-wrapper .dash-wrapper .content-area .text .delegate-card p span {
+  color: black;
+  font-weight: 500;
+}
+
+.layout-wrapper .dash-wrapper .content-area .text .delegate-card img {
+  width: 150px;
+}
+
+.layout-wrapper .dash-wrapper .content-area .text .grid {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto auto auto;
+      grid-template-columns: auto auto auto;
+}
+
+.layout-wrapper .dash-wrapper .content-area .text .grid div h1 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.layout-wrapper .dash-wrapper .content-area .text .drivelink input {
+  color: white;
+  background-color: rgba(81, 109, 216, 0.26);
+  border-bottom: none;
+  padding: 5px;
+  width: 70%;
+  height: 40px;
+}
+
+.layout-wrapper .dash-wrapper .content-area .text .drivelink button {
+  height: 40px;
+  margin-left: 20px;
+  width: 20%;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #22b6e6;
+  border: none;
+  border-radius: 8px;
+}
+
+.layout-wrapper .dash-wrapper .content-area .aagaz {
+  position: fixed;
+  right: -100px;
+  opacity: 0.1;
+  vertical-align: middle;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+/*# sourceMappingURL=Profile.css.map */

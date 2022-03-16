@@ -34,7 +34,7 @@
 }
 body {
   background-color: #100b1b;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 .font-light {
   font-family: 'Korolev Light';
@@ -45,16 +45,16 @@ body {
 .font-heavy {
   font-family: 'Korolev Bold';
 }
-body::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: transparent;
   border-radius: 10px;
 }
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 5px;
   background-color: transparent;
 }
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   border-radius: 10px;
   /* need to change gradient colour */
   background: linear-gradient(to right, #a123db 0%, rgb(196, 58, 58));

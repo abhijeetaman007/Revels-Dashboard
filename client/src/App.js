@@ -15,6 +15,7 @@ import Profile from './pages/ProfilePage/Profile';
 import Events from './pages/EventPage/EventPage';
 import MyEvents from './pages/MyEvents/MyEvents';
 import Proshow from './pages/Proshow/Proshow';
+import InsideEvent from './components/InsideEvent/InsideEvent';
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
@@ -29,8 +30,17 @@ function App() {
               exact
               path="/dashboard/profile"
               element={
+                <PrivateRoute>
+                  <Profile />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              exact
+              path="/dashboard/proshow"
+              element={
                 // <PrivateRoute>
-                <Profile />
+                <Proshow />
                 // </PrivateRoute>
               }
             />
@@ -45,19 +55,10 @@ function App() {
             />
             <Route
               exact
-              path="/dashboard/myevents"
+              path="/dashboard/event/:eventid"
               element={
                 // <PrivateRoute>
-                <MyEvents />
-                // </PrivateRoute>
-              }
-            />
-            <Route
-              exact
-              path="/dashboard/proshow"
-              element={
-                // <PrivateRoute>
-                <Proshow />
+                <InsideEvent />
                 // </PrivateRoute>
               }
             />

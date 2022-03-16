@@ -85,13 +85,11 @@ const registerEvent = async (req, res) => {
     // );
 
     console.log("Registered New Event");
-    return res
-      .status(200)
-      .send({
-        success: true,
-        data: team,
-        msg: "Event Registered Successfully",
-      });
+    return res.status(200).send({
+      success: true,
+      data: team,
+      msg: "Event Registered Successfully",
+    });
   } catch (err) {
     console.log(err);
     return res
