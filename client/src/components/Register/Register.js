@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import toast from "react-hot-toast";
-import { useAuth } from "../../context/AuthContext";
+import React, { useState } from 'react';
+import toast from 'react-hot-toast';
+import { useAuth } from '../../context/AuthContext';
+import { useNavigate } from 'react-router';
 
 const Register = (props) => {
   const auth = useAuth();
+  const navigate = useNavigate();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -63,7 +65,7 @@ const Register = (props) => {
     if (validateForm(toastId)) {
       try {
         const res = await auth.userRegister(
-          name,
+          name.trim(),
           email,
           password,
           mobileNumber,
@@ -74,7 +76,11 @@ const Register = (props) => {
           isMahe
         );
         if (res.success) {
-          toast.success(res.msg, { position: "bottom-center", id: toastId });
+          toast.success(res.msg, { position: 'bottom-center', id: toastId });
+          setTimeout(() => {
+            props.setLogin(true);
+            props.setRegister(false);
+          }, 3000)
         } else {
           toast.error(res.msg[0][Object.keys(res.msg[0])[0]], {
             position: "bottom-center",
@@ -101,7 +107,7 @@ const Register = (props) => {
             autoComplete="off"
             required
             value={name}
-            onChange={(e) => setName(e.target.value.trim())}
+            onChange={(e) => setName(e.target.value)}
             maxLength={100}
           />
           <label>Name</label>

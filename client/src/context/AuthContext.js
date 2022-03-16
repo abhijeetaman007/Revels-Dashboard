@@ -26,7 +26,7 @@ export default function AuthProvider({ children }) {
         if (res.data.success) {
           setUser(res.data.data);
           setLoading(false);
-          navigate('/dashboard');
+          navigate('/dashboard/events');
         }
       } catch (error) {
         console.log(error);
@@ -80,8 +80,7 @@ export default function AuthProvider({ children }) {
         password,
       });
       if (!res.data.success) return res.data;
-      console.log(res.data.data);
-      console.log(res);
+      console.log(res.data);
       localStorage.setItem(TOKEN_ID, res.data.data);
       restoreUser();
       return res.data;

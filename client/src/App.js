@@ -39,18 +39,27 @@ function App() {
               exact
               path="/dashboard/proshow"
               element={
-                // <PrivateRoute>
-                <Proshow />
-                // </PrivateRoute>
+                <PrivateRoute>
+                  <Proshow />
+                </PrivateRoute>
               }
             />
             <Route
               exact
               path="/dashboard/events"
               element={
-                // <PrivateRoute>
-                <Events />
-                // </PrivateRoute>
+                <PrivateRoute>
+                  <Events />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              exact
+              path="/dashboard/myevents"
+              element={
+                <PrivateRoute>
+                  <MyEvents />
+                </PrivateRoute>
               }
             />
             <Route
@@ -67,6 +76,15 @@ function App() {
               exact
               path="/forgetpass/:passtoken"
               element={<ResetPassword />}
+            />
+            <Route
+              exact
+              path="/resetpassword"
+              element={
+                // <PrivateRoute>
+                <ResetPassword />
+                // </PrivateRoute>
+              }
             />
             {/* <Route path="/admin/:category" element={}/> */}
             {/* <Route path="/admin/SYSADMIN" element={}/> */}
