@@ -65,18 +65,18 @@ const UserSchema = new mongoose.Schema(
     // 0 - NON Mahe,1 - MIT,2 - MAHE
     isMahe: {
       type: Number,
-      enum:[0,1,2],
+      enum: [0, 1, 2],
       required: true,
-      default:2
+      default: 2,
     },
     accommodation: {
       required: {
         type: Boolean,
-        default: false
+        default: false,
       },
       arrivalDateTime: {
         type: Date,
-        default:null
+        default: null,
       },
     },
     documents: {
@@ -95,29 +95,29 @@ const UserSchema = new mongoose.Schema(
       enum: ["VERIFIED", "REJECTED", "UNVERIFIED", "BANNED"],
       default: "UNVERIFIED",
     },
-    regEvents: [
-      {
-        event: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Event",
-        },
-        // while populating check on last roundNumber
-        attendance: [
-          {
-            roundNumber: {
-              type: Number,
-              default: 1,
-            },
-          },
-          {
-            isPresent: {
-              type: Boolean,
-              default: false,
-            },
-          },
-        ],
-      },
-    ],
+    // regEvents: [
+    //   {
+    //     event: {
+    //       type: mongoose.Schema.Types.ObjectId,
+    //       ref: "Event",
+    //     },
+    //     // while populating check on last roundNumber
+    //     attendance: [
+    //       {
+    //         roundNumber: {
+    //           type: Number,
+    //           default: 1,
+    //         },
+    //       },
+    //       {
+    //         isPresent: {
+    //           type: Boolean,
+    //           default: false,
+    //         },
+    //       },
+    //     ],
+    //   },
+    // ],
     //Stores all types of delegate Card/Tickets
     // NOTE: Each user should have max one delegate card of each type
     delegateCards: [

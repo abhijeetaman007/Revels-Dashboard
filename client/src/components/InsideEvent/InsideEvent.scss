@@ -1,0 +1,54 @@
+$tile-color: #f5737f;
+$event-card-background: #c6a3ff;
+
+.event-details {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  button {
+    margin: 1rem;
+    margin-right: 3.5px;
+    border: 1.5px solid $tile-color;
+    border-radius: 10px;
+    background-color: transparent;
+    padding: 6px 50px;
+    text-transform: uppercase;
+    color: $tile-color;
+  }
+  .event-grp {
+    display: flex;
+    .compo {
+      padding-right: 1rem;
+    }
+  }
+  .ele {
+    margin: 1rem;
+    .split {
+      display: flex;
+      align-items: center;
+      .blueinwhite {
+        font-weight: bold;
+        border: none;
+        background-color: white;
+        color: #22b6e6;
+      }
+      .whiteinblue {
+        font-weight: bold;
+        border: none;
+        background-color: #22b6e6;
+        color: white;
+      }
+      .blackingrey {
+        font-weight: bold;
+        border: none;
+        background-color: white;
+        color: black;
+      }
+    }
+  }
+}
+.input-team {
+  color: #dadada;
+  background-color: rgb(18, 28, 47);
+  width: 400px;
+}

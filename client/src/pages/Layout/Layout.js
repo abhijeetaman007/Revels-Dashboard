@@ -17,17 +17,17 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
       document.querySelector('.dash-wrapper').classList.toggle('active');
     };
 
-    const handleSideClick = (id) => {
-      let ids = ['events', 'my-events', 'proshow', 'delegate-card'];
-      for (let i = 0; i < ids.length; i++) {
-        document.querySelector(`#${ids[i]}`).classList.remove('active');
-      }
-      document.querySelector(`#${id}`).classList.toggle('active');
-    };
+  const handleSideClick = (id) => {
+    let ids = ['events', 'my-events', 'proshow', 'delegate-card'];
+    for (let i = 0; i < ids.length; i++) {
+      document.querySelector(`#${ids[i]}`).classList.remove('active');
+    }
+    document.querySelector(`#${id}`).classList.toggle('active');
+  };
 
-    useEffect(() => {
-        document.querySelector(`#${activeTab}`).classList.toggle("active");  
-    }, [])
+  useEffect(() => {
+    document.querySelector(`#${activeTab}`).classList.toggle('active');
+  }, []);
 
   return (
     <div className="layout-wrapper">

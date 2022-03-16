@@ -232,8 +232,9 @@ const userEmailVerify = async (req, res) => {
     let token = req.params.token;
     let user = await User.exists({ passwordResetToken: token });
     if (!user) return res.send({ success: false, msg: 'Token Invalid' });
+    console.log("user Email Verify")
     await User.updateOne(
-      { passwordReset: token },
+      { passwordResetToken: token },
       { $set: { passwordResetToken: null, isEmailVerified: true } }
     );
     return res.send({ success: true, msg: 'User Verified' });

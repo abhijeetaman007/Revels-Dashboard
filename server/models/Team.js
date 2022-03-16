@@ -13,10 +13,23 @@ const TeamSchema = new mongoose.Schema(
     },
     members: [
       {
+        user: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+        },
+        attendance: [],
+      },
+    ],
+    requestedMembers: [
+      {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
       },
     ],
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   { timestamps: true }
 );

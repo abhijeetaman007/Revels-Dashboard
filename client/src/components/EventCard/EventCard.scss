@@ -1,74 +1,74 @@
-$event-card-background: #C6A3FF;
+$event-card-background: #c6a3ff;
 
 .event-card-wrapper {
-    width: calc(83%/2.6);
-    height: fit-content;
-    padding: 25px;
-    background-color: $event-card-background;
-    border-radius: 0.5rem;
-    .event-content {
-        .event-header {
-            display: flex;
-            justify-content: space-between;
-            color: white;
-            .event-area {
-                display: flex;
-                flex-direction: column;
-                p {
-                    font-size: 0.95rem;
-                }         
-                h3 {
-                    font-size: 1.4rem;
-                }
-            }
-            .button-area {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                button:first-child {
-                    border: 1.5px solid white;
-                    margin-bottom: 2.5px;
-                    border-radius: 10px;
-                    background-color: transparent;
-                    padding: 2px 4px;
-                    text-transform: uppercase;
-                    color: white;
-                }
-                button:last-child {
-                    border: 0;
-                    margin-top: 2.5px;
-                    border-radius: 10px;
-                    background-color: transparent;
-                    padding: 2px 4px;
-                    background-color: black;
-                    text-transform: uppercase;
-                    color: white;
-                }
-            }
+  width: calc(83% / 2.6);
+  height: fit-content;
+  padding: 25px;
+  background-color: $event-card-background;
+  border-radius: 0.5rem;
+  .event-content {
+    .event-header {
+      display: flex;
+      justify-content: space-between;
+      color: white;
+      .event-area {
+        display: flex;
+        flex-direction: column;
+        p {
+          font-size: 0.95rem;
         }
-        .tags-line {
-            display: flex;
-            gap: 5px;
-            color: #3D2761;
+        h3 {
+          font-size: 1.4rem;
         }
-        .description {
-            margin: 8px 0px;
-            line-height: 20px;
+      }
+      .button-area {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        button:first-child {
+          border: 1.5px solid white;
+          margin-bottom: 2.5px;
+          border-radius: 10px;
+          background-color: transparent;
+          padding: 2px 4px;
+          text-transform: uppercase;
+          color: white;
         }
-        .data-area {
-            display: flex;
-            gap: 10px;
-            .box {
-                display: flex;
-                color: white;
-                flex-direction: column;
-                align-items: flex-start;
-            }
+        button:last-child {
+          border: 0;
+          margin-top: 2.5px;
+          border-radius: 10px;
+          background-color: transparent;
+          padding: 2px 4px;
+          background-color: black;
+          text-transform: uppercase;
+          color: white;
         }
+      }
     }
+    .tags-line {
+      display: flex;
+      gap: 5px;
+      color: #3d2761;
+    }
+    .description {
+      margin: 8px 0px;
+      line-height: 20px;
+    }
+    .data-area {
+      display: flex;
+      gap: 10px;
+      .box {
+        display: flex;
+        color: white;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  }
 }
 @media only screen and (max-width: 812px) {
-    .event-card-wrapper {
-        width: 100%;
-    }
+  .event-card-wrapper {
+    width: 100%;
+  }
 }

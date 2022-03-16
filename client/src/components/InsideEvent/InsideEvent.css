@@ -1,0 +1,72 @@
+.event-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: white;
+}
+
+.event-details button {
+  margin: 1rem;
+  margin-right: 3.5px;
+  border: 1.5px solid #f5737f;
+  border-radius: 10px;
+  background-color: transparent;
+  padding: 6px 50px;
+  text-transform: uppercase;
+  color: #f5737f;
+}
+
+.event-details .event-grp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.event-details .event-grp .compo {
+  padding-right: 1rem;
+}
+
+.event-details .ele {
+  margin: 1rem;
+}
+
+.event-details .ele .split {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.event-details .ele .split .blueinwhite {
+  font-weight: bold;
+  border: none;
+  background-color: white;
+  color: #22b6e6;
+}
+
+.event-details .ele .split .whiteinblue {
+  font-weight: bold;
+  border: none;
+  background-color: #22b6e6;
+  color: white;
+}
+
+.event-details .ele .split .blackingrey {
+  font-weight: bold;
+  border: none;
+  background-color: white;
+  color: black;
+}
+
+.input-team {
+  color: #dadada;
+  background-color: #121c2f;
+  width: 400px;
+}
+/*# sourceMappingURL=InsideEvent.css.map */
