@@ -1,13 +1,15 @@
-import axios from "axios"
-import React, { useState } from "react"
-import toast from "react-hot-toast"
-import { TOKEN_ID } from "../utils/constants"
+import axios from "axios";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
 
 const ForgotPassword = () => {
-    const [email, setEmail] = useState("parthivmenon01@gmail.com")
+    const [email, setEmail] = useState("");
+    const navigate = useNavigate();
 
     // function to handle forgot password
-    const handleForgotPassword = async () => {
+    const handleForgotPassword = async (e) => {
+        e.preventDefault();
         const toastId = toast.loading("Loading...");
         if(email !== "") {
             try {
@@ -15,7 +17,7 @@ const ForgotPassword = () => {
                     = await axios.post(
                         "/api/user/forgetpass",
                         { email: email }
-                    )
+                    );
                 if(res.data.success) {
                     toast.success(res.data.msg, { position: "bottom-center", id: toastId });
                 } else {
@@ -25,15 +27,29 @@ const ForgotPassword = () => {
                 toast.error("Sorry! An error occurred. Please try again later!", {
                     position: "bottom-center",
                     id: toastId
-                })
+                });
             }
         } else {
             toast.error("Email cannot be empty", { position: "bottom-center", id: toastId })
         }
     }
     return (
-        <div>
-            <button onClick={handleForgotPassword}>Forgot Password</button>
+        <div className="form-wrapper">
+            <h2 className="font-light auth-heading">FORGOT PASSWORD</h2>
+            <form className="auth-form">
+                <div className="user-box">
+                  <input
+                    type="email"
+                    name=""
+                    autoComplete="off"
+                    required
+                    onChange={(e) => setEmail(e.target.value.trim())}
+                    maxLength={100}
+                  />
+                  <label>Registered Email ID</label>
+                </div>
+                <button onClick={handleForgotPassword}>Send Email</button>
+            </form>
         </div>
     )
 }

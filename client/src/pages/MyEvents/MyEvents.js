@@ -29,11 +29,11 @@ const MyEvents = () => {
     return (
         <Layout activeTab="my-events">
             {
-                events.map((eventData, index) => {
-                    return (
-                        <EventCard />
-                    )
-                })
+                // events.map((eventData, index) => {
+                //     return (
+                //         <EventCard />
+                //     )
+                // })
             }
         </Layout>
     )

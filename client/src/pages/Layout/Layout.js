@@ -7,11 +7,15 @@ import proshow from './../../assets/icons/proshow.svg';
 import delegateCard from './../../assets/icons/delegateCard.svg';
 import logoWhite from './.././../assets/logo_white.png';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
 const Layout = ({ children, isAagazVisible = false, activeTab }) => {
-  const handleHamburger = () => {
-    document.querySelector('.dash-wrapper').classList.toggle('active');
-  };
+
+    const auth = useAuth();
+
+    const handleHamburger = () => {
+      document.querySelector('.dash-wrapper').classList.toggle('active');
+    };
 
   const handleSideClick = (id) => {
     let ids = ['events', 'my-events', 'proshow', 'delegate-card'];
@@ -97,10 +101,8 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <h4 className="font-medium">John Doe</h4>
             <h5 className="font-light">Manipal institute of Technology</h5>
             <div className="buttons font-medium">
-              <Link to="/dashboard/profile" className="font-medium">
-                <button>Profile</button>
-              </Link>
-              <button>Logout</button>
+              <button>Profile</button>
+              <button onClick={auth.userLogout}>Logout</button>
             </div>
           </div>
         </div>
