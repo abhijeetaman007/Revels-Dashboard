@@ -27,9 +27,8 @@ const {
   resendVerificationLink,
   getUserFromToken,
   updateAccommodation,
-  updateUser,
-} = require("./user/user");
-const { registerEvent, getUserTeams, getAllEvents } = require("./user/event");
+} = require('./user/user');
+const { registerEvent, getUserTeams, getAllEvents,getEventById,getEventStatus,getEventTags } = require('./user/event');
 const {
   addEvent,
   getCategoryEvent,
@@ -127,7 +126,10 @@ router.get(
   isVerifiedForRevels,
   getUserTeams
 );
-router.get("/user/event/getallevents", getAllEvents);
+router.get('/user/event/getallevents', getAllEvents);
+router.post('/user/event/getbyid', getEventById);
+router.post('/user/event/gettags',getEventTags)
+router.post('/user/event/getstatus',isUserLoggedIn, getEventStatus);
 //Delegate Cards
 router.get("/user/delegatecard/getall", getAllDelegateCards);
 router.get(

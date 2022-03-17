@@ -285,6 +285,9 @@ const removeFromTeam = async (req, res) => {
   }
 };
 
+
+
+
 module.exports = { addToTeam, joinTeam, leaveTeam, removeFromTeam };
 
 //edge cases
