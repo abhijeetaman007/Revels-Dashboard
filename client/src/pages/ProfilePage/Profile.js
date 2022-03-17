@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import logoWhite from "./.././../assets/logo_white.png";
+import React , {useEffect, useState} from "react";
+import logoWhite from "./.././../assets/logos/logo_white.png";
 import "../Layout/Layout.scss";
 import "./Profile.scss";
 import aagaz from "./.././../assets/aagaz.png";

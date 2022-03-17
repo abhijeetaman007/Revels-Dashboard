@@ -1,0 +1,18 @@
+.proshow {
+    padding-bottom: 70px;
+    .button-bar{
+        width: 83%;
+        position: fixed;
+        bottom: 0;
+        padding: 20px;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        &:hover {
+            color: #F5737F;
+            cursor: pointer;
+        }
+    }    
+}

@@ -6,7 +6,7 @@ import events from './../../assets/icons/events.svg';
 import myEvents from './../../assets/icons/myEvents.svg';
 import proshow from './../../assets/icons/proshow.svg';
 import delegateCard from './../../assets/icons/delegateCard.svg';
-import logoWhite from './.././../assets/logo_white.png';
+import logoWhite from './.././../assets/logos/logo_white.png';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 

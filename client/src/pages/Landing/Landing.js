@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import './Landing.css';
 import './TextPop.css';
 import logoMoon from './../../assets/logo_moon.png';
-import logo from './../../assets/logo_white.png';
+import logo from './../../assets/logos/logo_white.png';
 import GridBackground from '../../components/GridBackground/GridBackground';
 import Parallax from 'parallax-js';
 import Helmet from 'react-helmet';

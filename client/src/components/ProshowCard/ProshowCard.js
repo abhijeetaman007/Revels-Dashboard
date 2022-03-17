@@ -1,6 +1,5 @@
 import React from "react";
 import "./ProshowCard.scss";
-import ArrowVector from '../../assets/right-arrow.png';
 
 const ProshowCard = () => {
     return (
@@ -13,15 +12,8 @@ const ProshowCard = () => {
                     </div>
                     <div className="artist-name">
                         <h2 className="font-heavy">Prateek Kuhad</h2>
-                        <p className="font-light">Indian Songwriter-Singer</p>
+                        <p className="font-light text-center">Indian Songwriter-Singer</p>
                     </div>
-                    <button>
-                      Buy Ticket
-                      <img
-                        style={{ height: '20px', marginLeft: '5px', marginTop: '3px' }}
-                        src={ArrowVector}
-                      ></img>
-                    </button>
                 </div>
             </div>
         </div>

@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
-import { useAuth } from "./../context/AuthContext";
+import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import toast from "react-hot-toast";
+
+import logoBlack from "./../assets/logos/logo_black.png";
 import './AuthPages/Auth.css';
+
 import axios from 'axios';
 
 const ResetPassword = () => {
@@ -58,8 +60,11 @@ const ResetPassword = () => {
   return (
     <div className="auth-wrapper">
       <div className="row">
-        <div className="col-8 hello-area d-flex justify-content-center align-items-center">
-          <div className="hello-box">p</div>
+        <div className="col-8 hello-area d-flex flex-column justify-content-center align-items-center">
+          <div className="hello-box">
+            <img src={logoBlack} style={{ height: "100%" }}></img>
+          </div>
+          <h4 className="auth-revelry">LET THE REVELRY BEGIN</h4>
         </div>
         <div className="col-4 login-area d-flex flex-col justify-content-center align-items-center">
             <div className="form-wrapper">

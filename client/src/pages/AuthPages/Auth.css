@@ -7,15 +7,31 @@
     height: 100vh;
     width: 100%;
 }
+.criss-cross {
+  background-image: url("./../../assets/backgrounds/CrissCross.svg");
+  background-size: cover;
+}
 .login-area {
-    background-color: #F7F2FF;
+    background-color: #100B1B;
     width: 100%;
-    overflow-y: scroll;
 }
 .hello-box {
     height: 400px;
     width: 400px;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 30px;
+    box-shadow: -19px 18px 0px 4px rgba(188,87,96,0.88);
+      -webkit-box-shadow: -19px 18px 0px 4px rgba(188,87,96,0.88);
+        -moz-box-shadow: -19px 18px 0px 4px rgba(188,87,96,0.88);
+}
+.auth-revelry {
+  text-align: center;
+  padding: 10px;
+  margin-top: 50px;
+  mix-blend-mode: multiply;
+  font-size: 2rem;
+  color: #767676;
+  letter-spacing: 0.6rem;
 }
 /* general auth styles */
 .form-wrapper {
@@ -30,6 +46,7 @@
 }
 .form-wrapper div p {
   text-decoration: none;
+  color: rgb(155, 155, 155);
 }
 .form-wrapper div p:hover {
   color:#c4515c;
@@ -46,9 +63,19 @@ select {
   font-size: 16px;
   margin-bottom: 15px;
   border: none;
+  color: white;
+  font-weight: 800;
   border-bottom: 4px solid darkgray;
   outline: none;
   background: transparent;
+}
+.college-select option {
+  color: black;
+  background-color: lightgray;
+}
+.college-select option:checked { display:none; }
+.college-select option:checked {
+  color: white;
 }
 .user-box label {
   position: absolute;
@@ -56,20 +83,20 @@ select {
   left: 0;
   padding: 10px 0;
   font-size: 16px;
-  color: darkgray;
+  color: lightgray;
   pointer-events: none;
   transition: 0.5s;
 }
 .user-box input:focus ~ label {
   top: -20px;
   left: 0;
-  color: #100B1B;
+  color: white;
   font-size: 12px;
 }
 .user-box input:valid ~ label {
   top: -20px;
   left: 0;
-  color: #696969;
+  color: #dbdbdb;
   font-size: 12px;
 }
 .user-box input:focus,
@@ -85,7 +112,64 @@ select:focus {
     border: none;
     background-image: linear-gradient(to bottom, #22b6e6, #20aad7, #1e9ec8, #1e9ec8, #1a86aa);
     border-radius: 10px;
-    padding: 0.8rem 0.5rem;
+    margin: 5px 0;
+    padding: 0.5rem;
     color: white;
     font-size: 1.4rem;
+}
+/* eye styling */
+.eye {
+  margin-top: 2px;
+  padding: 5px 10px;
+  border-bottom: 4px solid darkgray;
+  cursor: pointer;
+}
+/* mobile design */
+@media only screen and (max-width: 812px) {
+  .auth-wrapper {
+    min-height: 100vh;
+    width: 100vw;
+    background-color: #c4515c;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  .hello-area {
+    height: 55vh;
+  }
+  .hello-box {
+    height: 15vh;
+    width: fit-content;
+    box-shadow: none;
+  }
+  .auth-revelry {
+    padding: 2% 15%;
+    margin-top: 40px;
+    font-size: 1rem;
+  }
+  .login-area {
+    min-height: 45vh;
+    width: 100vw;
+    padding: 0;
+    padding-top: 40px;
+    border-top-left-radius: 3rem;
+    border-top-right-radius: 3rem;
+  }
+  .form-wrapper {
+    width: 80%;
+    overflow-y: hidden;
+  }
+  .eye {
+    margin-top: 0px;
+  }
+  .auth-form button {
+    height: 40px;
+    padding: 0;
+    font-size: 1rem;
+  }
+  .form-wrapper div p {
+    font-size: 12px;
+  }
+  input, select, .user-box label {
+    font-size: 14px;
+  }
 }

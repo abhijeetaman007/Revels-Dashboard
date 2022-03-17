@@ -8,6 +8,9 @@
   -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
 }
+html {
+  overflow-x: hidden;
+}
 @font-face {
   font-family: 'Korolev Medium';
   src: url('./fonts/korolev-heavy-cdnfonts/Korolev\ Medium.otf')

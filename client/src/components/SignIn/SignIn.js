@@ -7,6 +7,7 @@ const SignIn = (props) => {
   const auth = useAuth();
   const navigate = useNavigate();
 
+  const [isEyeOpen, setIsEyeOpen] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   // handles input field validation
@@ -60,16 +61,20 @@ const SignIn = (props) => {
           />
           <label>Email</label>
         </div>
-        <div className="user-box">
+        <div className="user-box d-flex justify-content-center align-items-center">
           <input
-            type="password"
-            name=""
-            autoComplete="off"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value.trim())}
-            maxLength={100}
+             type={`${isEyeOpen ? "text" : "password"}`}
+             name=""
+             autoComplete="off"
+             required
+             value={password}
+             onChange={(e) => setPassword(e.target.value.trim())}
+             maxLength={100}
+             className="password-input"
           />
+          <div className="mb-2 eye" onClick={() => setIsEyeOpen(!isEyeOpen)}>
+            <i className={`fa ${isEyeOpen ? "fa-eye" : "fa-eye-slash"} text-white`}></i>
+          </div>
           <label>Password</label>
         </div>
         <button onClick={(e) => handleSubmit(e)} className="font-medium">
