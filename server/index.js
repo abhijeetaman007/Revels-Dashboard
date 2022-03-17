@@ -37,7 +37,7 @@ app.use(
 //     key_secret: 'HyE84sPchHUZ2mqDOyC5j97l',
 // });
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.json({
     msg: "Welcome to Revels22 Dashboard API",
     success: true,
