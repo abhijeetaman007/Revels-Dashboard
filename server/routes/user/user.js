@@ -4,6 +4,8 @@ var jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const { mailer } = require("../../utils/mailer");
 const Role = require("../../models/Role");
+const { File } = require("../../models/file");
+const { doUpload } = require("../../utils/file-upload/upload-controller");
 
 const userRegister = async (req, res) => {
   try {
@@ -374,6 +376,66 @@ const updateAccommodation = async (req, res) => {
   }
 };
 
+const updateUser = async (req, res) => {
+  try {
+    let user = req.requestUser;
+    console.log(req.files.aadhar);
+    const files = req.files;
+
+    const doc = await User.findById(user._id, { documents: 1 });
+    let documents = doc.documents;
+    if (files.aadhar) documents.aadhar = getFile(files.aadhar[0], user);
+    if (files.collegeId)
+      documents.collegeId = getFile(files.collegeId[0], user);
+    if (files.undertaking)
+      documents.undertaking = getFile(files.undertaking[0], user);
+    if (files.vaccination)
+      documents.vaccination = getFile(files.vaccination[0], user);
+
+    user = await User.findByIdAndUpdate(
+      { _id: user._id },
+      {
+        $set: {
+          ...req.body,
+          documents,
+        },
+      },
+      { new: true }
+    );
+    return res.status(200).json({
+      message: user,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      message: error.toString(),
+    });
+  }
+};
+const getFile = (file, user) => {
+  if (!file) return null;
+  const randomID =
+    Math.random()
+      .toString(36)
+      .replace(/[^a-z]+/g, "")
+      .substr(0, 5) + "_";
+  const newFile = new File({
+    fileName: file.originalname,
+    url:
+      "https://" +
+      process.env.BUCKET +
+      ".s3.amazonaws.com/users/" +
+      user._id +
+      "/" +
+      randomID +
+      file.originalname,
+    type: file.mimetype,
+    key: "users/" + user._id + "/" + randomID + file.originalname,
+  });
+  doUpload(newFile.key, file);
+  console.log(newFile);
+  return newFile;
+};
 module.exports = {
   userRegister,
   userLogin,
@@ -384,4 +446,5 @@ module.exports = {
   userPassResetVerify,
   getUserFromToken,
   updateAccommodation,
+  updateUser,
 };
