@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import React from 'react';
 import Layout from '../Layout/Layout';
-
+import { TOKEN_ID } from '../../utils/constants';
 function loadScript(src) {
   return new Promise((resolve) => {
     const script = document.createElement('script');
@@ -26,9 +26,17 @@ async function displayRazorpay(delegateCardID) {
   }
 
   //Helps start an order and register order with razorpay
-  const resp = await axios.post('/api/user/payment', {
-    delCard_id: delegateCardID,
-  });
+  const resp = await axios.post(
+    '/api/user/payment',
+    {
+      delCard_id: delegateCardID,
+    },
+    {
+      headers: {
+        authorization: localStorage.getItem(TOKEN_ID),
+      },
+    }
+  );
 
   let data = resp.data.data;
   console.log('POST DATA : ', data);
@@ -54,11 +62,19 @@ async function displayRazorpay(delegateCardID) {
     handler: function (response) {
       console.log('Response Razorpay', response);
       axios
-        .post('/api/user/payment/verify', {
-          order_id: response.razorpay_order_id,
-          razorpay_payment_id: response.razorpay_payment_id,
-          razorpay_signature: response.razorpay_signature,
-        })
+        .post(
+          '/api/user/payment/verify',
+          {
+            order_id: response.razorpay_order_id,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_signature: response.razorpay_signature,
+          },
+          {
+            headers: {
+              authorization: localStorage.getItem(TOKEN_ID),
+            },
+          }
+        )
         .then((resp) => {
           if (resp.data.success) {
             alert('Payment successful');

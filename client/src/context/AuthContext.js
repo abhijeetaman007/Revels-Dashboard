@@ -24,7 +24,7 @@ export default function AuthProvider({ children }) {
           },
         });
         if (res.data.success) {
-          setUser(res.data.data);
+          setUser(res.data);
           setLoading(false);
           navigate('/dashboard/events');
         }

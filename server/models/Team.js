@@ -30,6 +30,20 @@ const TeamSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
+    rounds: [
+      {
+        roundNumber: {
+          type: Number,
+          default: 1,
+        },
+        scores: [
+          {
+            judge: { type: mongoose.Schema.Types.ObjectId, ref: "Judge" },
+            score: { type: Number, default: 0 },
+          },
+        ],
+      },
+    ],
   },
   { timestamps: true }
 );

@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-
 const EventSchema = new mongoose.Schema(
   {
     eventID: {
@@ -82,6 +81,20 @@ const EventSchema = new mongoose.Schema(
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "DelCard",
+      },
+    ],
+    rounds: [
+      {
+        roundNumber: {
+          type: Number,
+          default: 1,
+        },
+        judges: [
+          {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Judge",
+          },
+        ],
       },
     ],
   },

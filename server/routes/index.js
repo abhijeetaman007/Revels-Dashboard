@@ -27,6 +27,7 @@ const {
   resendVerificationLink,
   getUserFromToken,
   updateAccommodation,
+  updateUser,
 } = require("./user/user");
 const { registerEvent, getUserTeams, getAllEvents } = require("./user/event");
 const {
@@ -69,6 +70,7 @@ const {
   adminLogout,
   getAdminFromToken,
 } = require("./admins/auth");
+const { upload, multipleUpload } = require("../config/aws-s3/multer.config");
 
 //Routes:
 router.get("/test", (req, res) => {
@@ -87,6 +89,7 @@ router.post(
 );
 router.post("/user/login", loginValidation(), userValidate, userLogin);
 router.get("/user/logout", userLogout);
+router.post("/user/update", isUserLoggedIn, multipleUpload, updateUser);
 router.get("/user/verify/:token", userEmailVerify);
 router.post("/user/resendlink", resendVerificationLink);
 router.post("/user/forgetpass/", userPassResetLink);
@@ -139,8 +142,8 @@ router.get(
 );
 // Razorpay - Payment
 // TODO : put middleware after testing
-router.post("/user/payment", registerOrder);
-router.post("/user/payment/verify", verifyPayment);
+router.post("/user/payment", isUserLoggedIn, registerOrder);
+router.post("/user/payment/verify", isUserLoggedIn, verifyPayment);
 router.post("/user/payment/onproduction/verify", verifyPaymentAlternate);
 
 //@Category/Admin Routes(Common Login)

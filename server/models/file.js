@@ -17,6 +17,11 @@ const fileSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    status: {
+      type: Number,
+      default: 0,
+      enum: [0, 1, 2], //0 - unreviewed, 1 - Accepted, 2 - Rejected
+    },
   },
   { timestamps: true }
 );
