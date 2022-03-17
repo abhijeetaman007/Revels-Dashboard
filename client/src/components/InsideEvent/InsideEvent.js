@@ -6,128 +6,46 @@ import Layout from '../../pages/Layout/Layout';
 import axios from 'axios';
 import moment from 'moment';
 import './InsideEvent.scss';
+import { useAuth } from '../../context/AuthContext';
 const InsideEvent = () => {
+  const auth = useAuth();
   const header = {
     authorization: localStorage.getItem(TOKEN_ID),
   };
   const { eventid } = useParams();
   // const [events, setEvents] = useState([]);
   const [eventID, setEventID] = useState(eventid);
-  const [teamCode, setTeamCode] = useState('');
-  const handleCreateTeam = async () => {
-    const toastId = toast.loading('Loading...');
-    if (!isNaN(eventID)) {
-      try {
-        const res = await axios.post(
-          '/api/user/team/register',
-          { eventID: eventID },
-          { headers: header }
-        );
-        if (res.data.success) {
-          toast.success(res.data.msg, {
-            position: 'bottom-center',
-            id: toastId,
-          });
-        } else {
-          toast.error(res.data.msg[0][Object.keys(res.msg[0])[0]], {
-            position: 'bottom-center',
-            id: toastId,
-          });
-        }
-      } catch (error) {
-        toast.error(error.response.data.msg, {
-          position: 'bottom-center',
-          id: toastId,
-        });
-      }
-    }
+  const [teamID, setTeamID] = useState('');
+  const [userID, setUserID] = useState('');
+  const handleAddToTeam = async () => {
+    // const toastId = toast.loading('Loading...');
+    // if (!isNaN(eventID)) {
+    //   try {
+    //     const res = await axios.post(
+    //       '/api/user/team/register',
+    //       { eventID, teamID, userID },
+    //       { headers: header }
+    //     );
+    //     if (res.data.success) {
+    //       toast.success(res.data.msg, {
+    //         position: 'bottom-center',
+    //         id: toastId,
+    //       });
+    //     } else {
+    //       toast.error(res.data.msg[0][Object.keys(res.msg[0])[0]], {
+    //         position: 'bottom-center',
+    //         id: toastId,
+    //       });
+    //     }
+    //   } catch (error) {
+    //     toast.error(error.response.data.msg, {
+    //       position: 'bottom-center',
+    //       id: toastId,
+    //     });
+    //   }
+    // }
   };
-  const handleRegister = async () => {
-    const toastId = toast.loading('Loading...');
-    if (!isNaN(eventID)) {
-      try {
-        const res = await axios.post(
-          '/api/user/event/register',
-          { eventID: eventID },
-          { headers: header }
-        );
-        if (res.data.success) {
-          toast.success(res.data.msg, {
-            position: 'bottom-center',
-            id: toastId,
-          });
-        } else {
-          toast.error(res.data.msg[0][Object.keys(res.msg[0])[0]], {
-            position: 'bottom-center',
-            id: toastId,
-          });
-        }
-      } catch (error) {
-        toast.error(error.response.data.msg, {
-          position: 'bottom-center',
-          id: toastId,
-        });
-      }
-    }
-  };
-  const handleJoinTeam = async () => {
-    const toastId = toast.loading('Loading...');
-    if (!isNaN(eventID)) {
-      if (teamCode !== '') {
-        try {
-          const res = await axios.post(
-            '/api/user/team/jointeam',
-            {
-              eventID: eventID,
-              inputTeamCode: teamCode,
-            },
-            { headers: header }
-          );
-          if (res.data.success) {
-            toast.success(res.data.msg, {
-              position: 'bottom-center',
-              id: toastId,
-            });
-          }
-        } catch (error) {
-          toast.error(error.response.data.msg, {
-            position: 'bottom-center',
-            id: toastId,
-          });
-        }
-      } else {
-        toast.error('Team code cannot be empty', {
-          position: 'bottom-center',
-          id: toastId,
-        });
-      }
-    }
-  };
-  const handleLeaveTeam = async () => {
-    const toastId = toast.loading('Loading...');
-    if (teamCode !== '') {
-      try {
-        const res = await axios.post(
-          '/api/user/team/leaveteam',
-          {
-            teamID: teamCode,
-          },
-          { headers: header }
-        );
-        if (res.data.success) {
-          toast.success(res.data.msg, {
-            position: 'bottom-center',
-            id: toastId,
-          });
-        }
-      } catch (error) {
-        toast.error(error.response.data.msg, {
-          position: 'bottom-center',
-          id: toastId,
-        });
-      }
-    }
-  };
+
   const [event, setEvent] = React.useState({});
   const formatDate = (str) => {
     // var str = '2011-04-11T10:20:30Z';
@@ -137,7 +55,7 @@ const InsideEvent = () => {
     return dateComponent + ' , ' + timeComponent;
   };
   const callEventByID = async () => {
-    const res = await axios.get('/api/user/getevent/' + eventid);
+    const res = await axios.get('/api/user/getevent/' + eventID);
     console.log(res.data.data);
     setEvent(res.data.data);
   };
@@ -175,7 +93,7 @@ const InsideEvent = () => {
         </div>
         <div className="ele font-light">{event.description}</div>
         <div className="ele">
-          <button onClick={handleCreateTeam}>Create Team</button>
+          <button>Create Team</button>
           <button onClick={joinTeam}>Join Team</button>
         </div>
         <div className="ele">

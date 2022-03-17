@@ -340,22 +340,47 @@ input:after {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  margin: 20px;
+  gap: 10px;
 }
 
-.proshow .card {
-  padding: 20px;
-  margin: 20px;
-  background-image: "../assets/aagaz.png";
+@media only screen and (max-width: 800px) {
+  .proshow {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
-.proshow .card button {
-  margin: 20px;
-  width: 200px;
-  background-color: white;
-  color: black;
-  padding: 10px 20px 10px 20px;
-  border-radius: 10px;
+.lottie-anim {
+  height: 100vh;
+  width: 50vw;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 10%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.lottie-anim .anim-font {
+  color: white;
+  font-size: 2rem;
+}
+
+.lottie-anim .anim-btn {
+  padding: 1rem;
+  text-decoration: none;
+  border-radius: 1rem;
   font-weight: bold;
 }
 /*# sourceMappingURL=index.css.map */

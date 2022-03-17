@@ -160,9 +160,8 @@
   left: 17%;
   top: 12vh;
   padding: 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   gap: 10px;
   overflow-y: scroll;
 }
@@ -207,9 +206,6 @@
   .layout-wrapper .dash-wrapper .content-area {
     left: 0;
     width: 100%;
-    height: -webkit-fit-content;
-    height: -moz-fit-content;
-    height: fit-content;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;

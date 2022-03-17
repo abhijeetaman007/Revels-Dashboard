@@ -1,7 +1,7 @@
-const User = require("../../models/User");
-const Event = require("../../models/Event");
-const Team = require("../../models/Team");
-const { nanoid } = require("nanoid");
+const User = require('../../models/User');
+const Event = require('../../models/Event');
+const Team = require('../../models/Team');
+const { nanoid } = require('nanoid');
 
 const registerEvent = async (req, res) => {
   try {
@@ -12,7 +12,7 @@ const registerEvent = async (req, res) => {
     );
 
     if (!event)
-      return res.status(400).send({ success: false, msg: "No Events Found" });
+      return res.status(400).send({ success: false, msg: 'No Events Found' });
 
     //TODO: Check Date
     const date = new Date();
@@ -37,25 +37,25 @@ const registerEvent = async (req, res) => {
     if (!eventOpen)
       return res
         .status(400)
-        .send({ success: false, msg: "Registration Closed" });
+        .send({ success: false, msg: 'Registration Closed' });
 
     let user = req.requestUser;
 
     let team = await Team.exists({
       event: event._id,
-      "members.user": user._id,
+      'members.user': user._id,
     });
     if (team)
       return res
         .status(400)
-        .send({ success: false, msg: "Already registered" });
+        .send({ success: false, msg: 'Already registered' });
 
     // Check on delegate cards
     event.delegateCards.forEach((delCard) => {
       if (user.delegateCards.indexOf(delCard) == -1) {
         return res.status(400).send({
           success: false,
-          msg: "Please buy event specific delegate card(s)",
+          msg: 'Please buy event specific delegate card(s)',
         });
       }
     });
@@ -84,24 +84,24 @@ const registerEvent = async (req, res) => {
     //   }
     // );
 
-    console.log("Registered New Event");
+    console.log('Registered New Event');
     return res.status(200).send({
       success: true,
       data: team,
-      msg: "Event Registered Successfully",
+      msg: 'Event Registered Successfully',
     });
   } catch (err) {
     console.log(err);
     return res
       .status(500)
-      .send({ success: false, msg: "Internal Server Error" });
+      .send({ success: false, msg: 'Internal Server Error' });
   }
 };
 
 const getUserTeams = async (req, res) => {
   try {
     let user = req.requestUser;
-    let teams = await Team.find({ "members.user": user._id }).populate("event");
+    let teams = await Team.find({ 'members.user': user._id }).populate('event');
     // let events = [];
     // teams.forEach((team) => {
     //   events.push(team.event);
@@ -111,19 +111,19 @@ const getUserTeams = async (req, res) => {
     console.log(err);
     return res
       .status(500)
-      .send({ success: false, msg: "Internal Server Error" });
+      .send({ success: false, msg: 'Internal Server Error' });
   }
 };
 
 const getAllEvents = async (req, res) => {
   try {
-    let events = await Event.find().populate("category");
+    let events = await Event.find().populate('category');
     return res.status(200).send({ success: false, data: events });
   } catch (err) {
     console.log(err);
     return res
       .status(500)
-      .send({ success: false, msg: "Internal Server Error" });
+      .send({ success: false, msg: 'Internal Server Error' });
   }
 };
 

@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.26.0",
     "dotenv": "^16.0.0",
+    "lottie-react": "^2.2.1",
     "moment": "^2.29.1",
     "node-sass": "^7.0.1",
     "parallax-js": "^3.1.0",

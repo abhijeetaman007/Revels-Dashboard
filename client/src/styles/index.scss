@@ -2,3 +2,24 @@
 @import './reset';
 @import './delegateCard';
 @import './proshow';
+
+.lottie-anim {
+  height: 100vh;
+  width: 50vw;
+  margin: 0 auto;
+  display: flex;
+  padding: 0 10%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .anim-font {
+    color: white;
+    font-size: 2rem;
+  }
+  .anim-btn {
+    padding: 1rem;
+    text-decoration: none;
+    border-radius: 1rem;
+    font-weight: bold;
+  }
+}

@@ -1,0 +1,105 @@
+.proshow-card {
+  width: 30%;
+  height: 550px;
+  border-radius: 10px;
+}
+
+.proshow-card .image-wrapper {
+  border-radius: 10px;
+  background-image: url("./../../assets/Kuhad.png");
+  height: 100%;
+  width: 100%;
+}
+
+.proshow-card .image-wrapper .gradient {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 10px;
+  height: 100%;
+  padding: 20px;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.01%, rgba(245, 115, 127, 0.08)), color-stop(0.02%, rgba(0, 0, 0, 0.01)), to(#F5737F));
+  background: linear-gradient(180deg, rgba(245, 115, 127, 0.08) 0.01%, rgba(0, 0, 0, 0.01) 0.02%, #F5737F 100%);
+}
+
+.proshow-card .image-wrapper .gradient .proshow-card-header {
+  color: white;
+  text-align: center;
+}
+
+.proshow-card .image-wrapper .gradient .proshow-card-header h6 {
+  letter-spacing: 15px;
+  font-size: 1.6rem;
+}
+
+.proshow-card .image-wrapper .gradient .proshow-card-header p {
+  font-size: 1.4rem;
+}
+
+.proshow-card .image-wrapper .gradient .artist-name {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column;
+          flex-flow: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white;
+}
+
+.proshow-card .image-wrapper .gradient .artist-name h2 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.proshow-card .image-wrapper .gradient .artist-name p {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.proshow-card .image-wrapper .gradient button {
+  border: 0;
+  background-color: white;
+  color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.proshow-card:hover {
+  border: 3px solid white;
+}
+
+@media only screen and (max-width: 800px) {
+  .proshow-card {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=ProshowCard.css.map */

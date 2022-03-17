@@ -16,6 +16,8 @@ import Events from './pages/EventPage/EventPage';
 import MyEvents from './pages/MyEvents/MyEvents';
 import Proshow from './pages/Proshow/Proshow';
 import InsideEvent from './components/InsideEvent/InsideEvent';
+import VerifyAnimation from './components/VerifyAnimation';
+import NotFound from './components/NotFound';
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
@@ -31,7 +33,7 @@ function App() {
               path="/dashboard/profile"
               element={
                 //<PrivateRoute>
-                  <Profile />
+                <Profile />
                 //</PrivateRoute>
               }
             />
@@ -77,6 +79,8 @@ function App() {
               path="/forgetpass/:passtoken"
               element={<ResetPassword />}
             />
+            <Route path="/verified" element={<VerifyAnimation />} />
+            <Route path="*" element={<NotFound />} />
             {/* <Route path="/admin/:category" element={}/> */}
             {/* <Route path="/admin/SYSADMIN" element={}/> */}
           </Routes>
