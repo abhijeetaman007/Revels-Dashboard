@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import './Layout.scss';
+import {useNavigate} from 'react-router-dom';
 import aagaz from './../../assets/aagaz.png';
 import events from './../../assets/icons/events.svg';
 import myEvents from './../../assets/icons/myEvents.svg';
@@ -10,6 +11,8 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
 const Layout = ({ children, isAagazVisible = false, activeTab }) => {
+
+  const navigate = useNavigate();
 
     const auth = useAuth();
 
@@ -101,7 +104,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <h4 className="font-medium">John Doe</h4>
             <h5 className="font-light">Manipal institute of Technology</h5>
             <div className="buttons font-medium">
-              <button>Profile</button>
+              <button onClick={()=>navigate(`/dashboard/profile`)}>Profile</button>
               <button onClick={auth.userLogout}>Logout</button>
             </div>
           </div>

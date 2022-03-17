@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Event = require("./Event");
 const DelCard = require("./DelegateCard");
-const file = require("./file");
+const file = require("./file").FileSchema;
 
 const UserSchema = new mongoose.Schema(
   {
@@ -80,15 +80,10 @@ const UserSchema = new mongoose.Schema(
       },
     },
     documents: {
-      aadhar: {
-        type: file.FileSchema,
-      },
-      vaccination: {
-        type: file.FileSchema,
-      },
-      undertaking: {
-        type: file.FileSchema,
-      },
+      aadhar: file,
+      vaccination: file,
+      undertaking: file,
+      collegeId: file,
     },
     status: {
       type: String,

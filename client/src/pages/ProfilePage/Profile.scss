@@ -49,6 +49,9 @@ $text-color: #c4c4c4;
           margin-right: 10px;
         }
       }
+      .back-btn:hover {
+        cursor: pointer;
+      }
       width: 83%;
       display: flex;
       justify-content: space-between;
@@ -60,7 +63,7 @@ $text-color: #c4c4c4;
         font-weight: 200;
         margin-left: 80px;
         margin-top: 0;
-        height: 80%;
+        height: 90%;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -79,28 +82,33 @@ $text-color: #c4c4c4;
           }
         }
         .delegate-card {
-          max-height: 150px;
+          padding: 10px;
+
           background-color: white;
           border-radius: 8px;
           display: flex;
 
           align-items: center;
-          justify-content: space-around;
+          justify-content: space-between;
           width: 70%;
+          height: 160px;
           p {
             color: #c4515c;
             font-weight: 700;
-
+            margin: 5px;
             span {
               color: black;
               font-weight: 500;
             }
           }
-          img {
-            width: 150px;
+          .qr {
+            svg {
+              width: 100%;
+            }
           }
         }
         .grid {
+          margin: 10px 0;
           width: 70%;
           display: grid;
           grid-template-columns: auto auto auto;
@@ -112,39 +120,63 @@ $text-color: #c4c4c4;
           }
         }
         .drivelink {
+          width: 70%;
+          margin: 10px 0;
           display: flex;
           flex-direction: column;
-          
-         
-          label {
-            input{
+
+          .upload {
+            display: flex;
+
+            input {
               margin-left: auto;
+              color: white;
+
+              border-bottom: none;
+              padding: 5px;
+              width: 70%;
+              //height: 40px;
+            }
+            input[type="file"]::file-selector-button {
+              //height: 40px;
+              // margin-left: 20px;
+              //width: 20%;
+              font-size: 1rem;
+              color: $text-color;
+              background-color: rgba(81, 109, 216, 0.26);
+              border: none;
+              padding: 5px 10px;
+              border-radius: 5px;
             }
           }
-          input[type=file]::file-selector-button {
-            //height: 40px;
-           // margin-left: 20px;
-            //width: 20%;
-            font-size: 1rem;
-           
-            background-color: white;
-            border: none;
+          .radio-btn {
+            display: flex;
+            align-items: center;
+            //justify-content: space-around;
+            div {
+              margin-left: auto;
+              display: flex;
+              label {
+                margin: 0 15px;
+              }
+              input{
+                align-self: center;
+              }
+            }
 
-            border-radius: 5px;
+            
           }
-          
-          input {
-            color: white;
-            background-color: rgba(81, 109, 216, 0.26);
-            border-bottom: none;
-            padding: 5px;
-            width: 70%;
-            height: 40px;
-          }
+          //  label {
+          //   input{
+          //     margin-left: auto;
+          //   }
+          // }
+
           button {
-            height: 40px;
-            margin-left: 20px;
-            width: 20%;
+            margin: 0 auto;
+            //height: 40px;
+            padding: 5px 15px;
+            //width: 20%;
             font-size: 1rem;
             font-weight: 600;
             background-color: #22b6e6;
@@ -167,6 +199,36 @@ $text-color: #c4c4c4;
   }
 }
 
+@media only screen and (max-width: 1100px) {
+  .layout-wrapper {
+    .dash-wrapper {
+      .profile-content-area {
+        width: 100%;
+
+        margin-top: 60px;
+
+        .text {
+          width: 80%;
+          margin: 0 auto;
+          .grid {
+            width: 90%;
+          }
+          .delegate-card {
+            justify-content: space-around;
+            width: 80%;
+          }
+          // .name{
+          //   display: flex;
+          //   flex-direction: column;
+          // }
+        }
+        align-items: baseline;
+        justify-content: space-around;
+      }
+    }
+  }
+}
+
 @media only screen and (max-width: 850px) {
   .layout-wrapper {
     .dash-wrapper {
@@ -175,7 +237,7 @@ $text-color: #c4c4c4;
       }
       .profile-content-area {
         width: 100%;
-        
+
         margin-top: 60px;
         .back-btn {
           left: 4%;
@@ -184,7 +246,9 @@ $text-color: #c4c4c4;
         .text {
           width: 80%;
           margin: 0 auto;
-          
+          .grid, .drivelink {
+            width: 100%;
+          }
           .delegate-card {
             justify-content: space-around;
             width: 100%;

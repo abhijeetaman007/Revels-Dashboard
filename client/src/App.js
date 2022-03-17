@@ -32,9 +32,9 @@ function App() {
               exact
               path="/dashboard/profile"
               element={
-                //<PrivateRoute>
-                <Profile />
-                //</PrivateRoute>
+                <PrivateRoute>
+                  <Profile />
+                </PrivateRoute>
               }
             />
             <Route
