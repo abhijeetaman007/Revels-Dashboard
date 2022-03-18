@@ -27,6 +27,7 @@ const {
   resendVerificationLink,
   getUserFromToken,
   updateAccommodation,
+  updateUser
 } = require('./user/user');
 const { registerEvent, getUserTeams, getAllEvents,getEventById,getEventStatus,getEventTags } = require('./user/event');
 const {

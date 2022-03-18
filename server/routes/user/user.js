@@ -167,6 +167,7 @@ const resendVerificationLink = async (req, res) => {
 
 const userLogin = async (req, res) => {
   try {
+    console.log("User Login")
     let { email, password } = req.body;
     let user = await User.findOne(
       { email },
@@ -199,11 +200,11 @@ const userLogin = async (req, res) => {
       { _id: user._id },
       { $set: { token } },
       { new: true }
-    ).select({ password: 0 });
+    ).select({ password: 0 }).populate('delegateCards');
     res.status(200).send({
       success: true,
       msg: "Login Successful",
-      data: { token, user },
+      data: user ,
     });
   } catch (err) {
     console.log(err);

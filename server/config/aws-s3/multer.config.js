@@ -14,7 +14,7 @@ const multipleUpload = multer({ storage: storage }).fields([
     maxCount: 1,
   },
 ]);
-const upload = multer({ storage: storage }).single("file");
+const upload = multer({ storage: storage }).single("cdfile");
 module.exports = {
   upload: upload,
   multipleUpload: multipleUpload,
