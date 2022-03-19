@@ -26,7 +26,6 @@ function App() {
       <BrowserRouter>
         <AuthProvider>
           <Routes>
-            <Route path="/" element={<Landing />} />
             <Route exact path="/login" element={<AuthPage />} />
             <Route
               exact
@@ -83,6 +82,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
             {/* <Route path="/admin/:category" element={}/> */}
             {/* <Route path="/admin/SYSADMIN" element={}/> */}
+            <Route path="/" element={<Landing />} />
           </Routes>
         </AuthProvider>
       </BrowserRouter>

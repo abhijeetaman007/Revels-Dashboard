@@ -1,5 +1,6 @@
 $nav-color: #181027;
 $tile-color: #F5737F;
+$notif-tile: #ffccd1;
 
 .layout-wrapper {
     height: 100vh;
@@ -32,10 +33,57 @@ $tile-color: #F5737F;
             color: white;
             font-size: 1.3rem;
             margin-right: 10px;
+            cursor: pointer;
+            &:hover {
+                transform: scale(1.2);
+            }
         }
     }
     .dash-wrapper {
-        height: 88vh;
+        .notif-wrapper {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 100;
+            width: calc(100% - 17%);
+            height: 88vh;
+            position: absolute;
+            left: 17%;   
+            .notif-box {
+                width: 33%;
+                position: absolute;
+                right: 10px;
+                margin-top: -20px;
+                min-height: 33%;
+                max-height: 55%;
+                overflow-y: scroll;
+                border-radius: 10px;
+                background-color: white;
+                padding: 10px;
+                .notif-tile {
+                    background-color: $notif-tile;
+                    border-radius: 5px;
+                    width: 100%;
+                    min-height: 60px;
+                    height: fit-content;
+                    padding: 8px;
+                    margin: 5px 0;
+                    .notif-head {
+                        display: flex;
+                        justify-content: space-between;
+                        padding-right: 10px;
+                        h6 {
+                            font-size: 1.2rem;
+                        }
+                    }
+                    p {
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+        .notif-wrapper.active {
+            display: block;
+        }
         .sidebar {
             width: 17%;
             height: 100%;
@@ -48,7 +96,7 @@ $tile-color: #F5737F;
                 color: white;
             }
             .side-nav {
-                height: 70%;
+                height: 80%;                
                 padding: 2rem;
                 display: flex;
                 flex-direction: column;
@@ -81,7 +129,7 @@ $tile-color: #F5737F;
             }
             .side-footer {
                 width: 100%;
-                height: 30%;
+                height: fit-content;
                 padding: 2rem 1rem;
                 border-top: 2px solid grey;
                 text-align: center;
@@ -130,22 +178,22 @@ $tile-color: #F5737F;
     .layout-wrapper {
         nav {
             justify-content: space-between;
-
             i:first-child {
                 margin: 0 20px;
                 display: block;
             }
-            
             i:last-child {
                 display: none;
             }
         }
-
         .dash-wrapper {
+            .notif-wrapper {
+                width: 100%;
+                left: 0;
+            }
             .sidebar {
                 display: none;
                 background-color: black;
-
                 .cross {
                     display: block;
                     padding: 20px;
@@ -153,14 +201,12 @@ $tile-color: #F5737F;
                     font-size: 1.4rem;
                 }
             }
-
             .content-area {
                 left: 0;
                 width: 100%;
                 flex-direction: column;
             }
         }
-
         .dash-wrapper.active {
             .sidebar {
                 position: absolute;

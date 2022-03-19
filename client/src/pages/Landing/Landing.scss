@@ -5,12 +5,6 @@
     margin: 0;
     position: relative;
     background: linear-gradient(358.51deg, #f1964f 20.07%, #1E84A5 120.93%);
-    .landing-nav{
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 8;
-    }
     .svg-wrapper {
         position: absolute;
         inset: 0;
@@ -60,21 +54,65 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100vw;
+            height: 12vh;
+            padding: 10px;
+            background-color: transparent;
+            display: flex;
+            justify-content: space-between;
+            .landing-brand {
+                display: flex;
+                align-items: center;
+                text-align: left;
+                color: white;
+                font-size: 1.3rem;
+                p {
+                    font-size: 3rem;
+                }
+                img {
+                    height: 100%;
+                }
+                div {
+                    display: flex;
+                    align-items: center;
+                }
+            }
+            i:nth-child(1) {
+                display: none;
+            }
+            .landing-nav-links {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                gap: 30px;
+                font-size: 2rem;
+                color: white;
+            }
+        }
         .landing-title {
             color: white;
             z-index: 5;
             display: flex;
             flex-direction: column;
-        }
-        .title{
-            font-size: 13rem;
-            margin: -4rem 0 -2rem 0;
-        }
-        .subtitle1, .subtitle2{
-            font-size: 2rem;
-        }
-        .subtitle2{
-            margin-left: auto;
+            .title{
+                font-size: 14rem;
+                margin: 0;
+            }
+            h5 {
+                font-size: 2rem;
+                margin: 0;
+            }
+            h5:first-child {
+                align-self: flex-start;
+                margin-bottom: -20px;
+            }
+            h5:last-child {
+                align-self: flex-end;
+                margin-top: -20px;
+            }
         }
     }
 }
@@ -111,13 +149,41 @@
             
         }
         .content-wrapper {
-            .title{
-                font-size: 9rem;
-                margin: -2rem auto -1rem auto;
+            .landing-title {
+                justify-content: center;
+                .title{
+                    text-align: center;
+                    font-size: 9rem;
+                }
+                h5 {
+                    text-align: center;
+                }
+                h5:first-child, h5:last-child {
+                    align-self: center;
+                }
             }
-            .subtitle1, .subtitle2{
-                font-size: 2rem;
-                margin: 0 auto;
+            nav {
+                z-index: 100;
+                flex-direction: column;
+                i:first-child {
+                    margin: 0 20px;
+                    display: block;
+                }
+                .landing-brand {
+                    width: 100%;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                .landing-nav-links {
+                    display: none;
+                }
+                .landing-nav-links.active {
+                    display: flex;
+                    padding: 5px;
+                    flex-direction: column;
+                    height: fit-content;
+                    background-color: black;
+                }
             }
         }
     }

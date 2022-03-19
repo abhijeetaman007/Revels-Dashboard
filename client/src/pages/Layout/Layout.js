@@ -9,24 +9,28 @@ import delegateCard from './../../assets/icons/delegateCard.svg';
 import logoWhite from './.././../assets/logos/logo_white.png';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import NotifTile from '../../components/NotifTile';
 
 const Layout = ({ children, isAagazVisible = false, activeTab }) => {
 
   const navigate = useNavigate();
+  const auth = useAuth();
 
-    const auth = useAuth();
-
-    const handleHamburger = () => {
-      document.querySelector('.dash-wrapper').classList.toggle('active');
-    };
-
+  // handles hamburger click on mobiles
+  const handleHamburger = () => {
+    document.querySelector('.dash-wrapper').classList.toggle('active');
+  }
+  const handleBell = () => {
+    document.querySelector(".notif-wrapper").classList.toggle('active');
+  }
+  // handle sidebar nav click
   const handleSideClick = (id) => {
     let ids = ['events', 'my-events', 'proshow', 'delegate-card'];
     for (let i = 0; i < ids.length; i++) {
       document.querySelector(`#${ids[i]}`).classList.remove('active');
     }
     document.querySelector(`#${id}`).classList.toggle('active');
-  };
+  }
 
   useEffect(() => {
     document.querySelector(`#${activeTab}`).classList.toggle('active');
@@ -43,9 +47,18 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <p className="font-light">Welcome back John Doe</p>
           </div>
         </div>
-        <i className="fa fa-bell"></i>
+        <i className="fa fa-bell" onClick={handleBell}></i>
       </nav>
       <div className="dash-wrapper">
+        <div className="notif-wrapper">
+          <div className="notif-box">
+            <NotifTile />
+            <NotifTile />
+            <NotifTile />
+            <NotifTile />
+            <NotifTile />
+          </div>
+        </div>
         <div className="sidebar">
           <div className="cross">
             <i className="fa fa-times" onClick={handleHamburger}></i>
@@ -119,6 +132,15 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
           )}
           {children}
         </div>
+        {
+          activeTab.toUpperCase() === "PROSHOW" 
+          ?
+          <div className="button-bar font-medium">
+            BUY TICKETS NOW
+            <span className="mx-2"><i className="fa fa-arrow-right"></i></span>
+          </div>
+          : <> </>
+        }
       </div>
     </div>
   );

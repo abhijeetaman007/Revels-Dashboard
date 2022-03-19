@@ -15,10 +15,6 @@ const Proshow = () => {
         <ProshowCard />
         <ProshowCard />
         <ProshowCard />
-        <div className="button-bar font-medium">
-            BUY TICKETS NOW
-            <span className="mx-2"><i className="fa fa-arrow-right"></i></span>
-        </div>
       </div>
     </Layout>
   );

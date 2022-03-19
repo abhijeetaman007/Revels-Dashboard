@@ -1,18 +1,25 @@
 .proshow {
-    padding-bottom: 70px;
-    .button-bar{
-        width: 83%;
-        position: fixed;
-        bottom: 0;
-        padding: 20px;
-        background-color: white;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 1.2rem;
-        &:hover {
-            color: #F5737F;
-            cursor: pointer;
-        }
-    }    
+    padding-bottom: 70px;    
+}
+.button-bar{
+    width: 83%;
+    position: fixed;
+    left: 17%;
+    bottom: 0;
+    padding: 20px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    &:hover {
+        color: #F5737F;
+        cursor: pointer;
+    }
+}
+@media only screen and (max-width: 812px) {
+    .button-bar {
+        left: 0;
+        width: 100%;
+    }
 }

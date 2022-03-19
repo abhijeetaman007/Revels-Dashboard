@@ -28,7 +28,6 @@ const SignIn = (props) => {
       try {
         const res = await auth.userLogin(email, password);
         if (res.success) {
-          //redirect inside dashboard todo
           toast.success(res.msg, { position: 'bottom-center', id: toastId });
           navigate("/dashboard/events");
         } else {
