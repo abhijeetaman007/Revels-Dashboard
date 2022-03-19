@@ -30,7 +30,7 @@ export default function Navbar() {
             <img src={logo} width={'100px'}/> 
             <span>REVELS' 22</span>
         </div>
-      {(toggleMenu || screenWidth > 500) && (
+      {(toggleMenu || screenWidth > 812) && (
       <ul className="list">
         <li className="items">Login</li>
         <li className="items">Events</li>
