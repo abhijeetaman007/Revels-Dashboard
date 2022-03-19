@@ -17,7 +17,7 @@ const userRegistrationValidation = () => {
             .isEmpty(),
         check('college', 'Enter your College name').not().isEmpty(),
         check('course', 'Enter your course').not().isEmpty(),
-        check('state', 'Enter a valid State').not().isEmpty(),
+        // check('state', 'Enter a valid State').not().isEmpty(),
     ];
 };
 

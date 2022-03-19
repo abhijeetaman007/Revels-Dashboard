@@ -18,7 +18,7 @@ const userRegister = async (req, res) => {
       registrationNumber,
       course,
       college,
-      state,
+      // state,
     } = req.body;
     console.log(req.body);
     let collegeExists = await College.findOne({ name: college }, { isMahe: 1 });
@@ -101,7 +101,7 @@ const userRegister = async (req, res) => {
       registrationNumber,
       course,
       college: college,
-      state,
+      // state,
       isMahe,
       verified,
       role: role._id,
