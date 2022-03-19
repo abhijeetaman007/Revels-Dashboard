@@ -29,7 +29,7 @@ nav {
 }
 
 .items {
-    margin-right: 5rem;
+    margin-right: 4rem;
     margin-top: 2rem;
     text-transform: uppercase;
     cursor: pointer;
@@ -40,7 +40,7 @@ nav {
     position: absolute;
     right: 10px;
     top: 7px;
-    color: #000;
+    color: #f1f1f1;
     margin: 5px 15px;
     font-size: 3rem;
     font-weight: bolder;
@@ -48,13 +48,13 @@ nav {
     transform: rotate(-90deg);
 }
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 812px){
 
     .list {
         flex-direction: column;
         justify-content: center;
         height: auto;
-        background: rgba(0, 0, 0, 0.55);
+        background: rgba(0, 0, 0, 0.75);
     }
     .items:nth-child(1){
         margin-top: 30px;
@@ -67,6 +67,7 @@ nav {
     }
     .btn {
         display: block;
+        color: #f1f1f1;
     }
 
 }
