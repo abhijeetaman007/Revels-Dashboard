@@ -8,7 +8,7 @@ import birds from "./../../assets/backgrounds/birds.svg";
 import three from "./../../assets/backgrounds/three.svg";
 import clouds_top from "./../../assets/backgrounds/clouds_top.svg";
 import four from "./../../assets/backgrounds/four.svg";
-import logo from '../../assets/logo_landing.png'
+import logo from '../../assets/logo_landing.png';
 
 const Landing  = () => {
   // handles hamburger click on mobiles
