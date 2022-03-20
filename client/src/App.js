@@ -79,7 +79,7 @@ function App() {
               element={<ResetPassword />}
             />
             <Route path="/verified" element={<VerifyAnimation />} />
-            <Route path="*" element={<NotFound />} />
+            {/* <Route path="*" element={<NotFound />} /> */}
             {/* <Route path="/admin/:category" element={}/> */}
             {/* <Route path="/admin/SYSADMIN" element={}/> */}
             <Route path="/" element={<Landing />} />
