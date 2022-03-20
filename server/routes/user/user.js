@@ -342,7 +342,7 @@ const updateAccommodation = async (req, res) => {
     let { required, arrivalDateTime } = req.body;
     let user = req.requestUser;
     // MIT not allowed to apply
-    if (user.isMahe != 1) {
+    if (user.isMahe) {
       return res.status(400).send({
         success: false,
         msg: "Accomodation only for Outside Participants",
@@ -404,6 +404,7 @@ const updateUser = async (req, res) => {
       { new: true }
     );
     return res.status(200).json({
+      success :true,
       message: user,
     });
   } catch (error) {

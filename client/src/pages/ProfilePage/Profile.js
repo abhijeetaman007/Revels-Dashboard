@@ -1,4 +1,4 @@
-import React , { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import logoWhite from "./.././../assets/logos/logo_white.png";
 import "./Profile.scss";
 import aagaz from "./.././../assets/aagaz.png";
@@ -7,44 +7,109 @@ import { useAuth } from "../../context/AuthContext";
 import QRCode from "react-qr-code";
 import forty from "./.././../assets/forty.png";
 import toast from "react-hot-toast";
+import axios from "axios";
+import { TOKEN_ID } from "../../utils/constants";
 
 function Profile() {
   const navigate = useNavigate();
   const auth = useAuth();
 
   // useEffect(() => {
-    // console.log(auth.user);
+  // console.log(auth.user);
   // }, )
 
   const uploadDocs = async (e) => {
+    console.log(localStorage.getItem("tokenid="));
     e.preventDefault();
     const toastId = toast.loading("Loading...");
-    if(!aadhar){
-      toast.error("Aadhar Required", { position: "bottom-center", id: toastId });
-      return
+    if (!aadhar) {
+      toast.error("Aadhar Required", {
+        position: "bottom-center",
+        id: toastId,
+      });
+      return;
     }
-    if(!collegeid){
-      toast.error("CollegeID Required", { position: "bottom-center", id: toastId });
-      return
+    if (!collegeId) {
+      toast.error("CollegeID Required", {
+        position: "bottom-center",
+        id: toastId,
+      });
+      return;
     }
-    if(!accomodation){
-      toast.error("Choose Accomodation", { position: "bottom-center", id: toastId });
-      return
+    if (!vaccination) {
+      toast.error("Vaccination Certificate Required", {
+        position: "bottom-center",
+        id: toastId,
+      });
+      return;
     }
-    
+    await updateAccommodation(toastId);
+
     try {
-    } catch (error) {}
+      const docs = new FormData();
+      docs.append("aadhar", aadhar);
+      docs.append("collegeId", collegeId);
+      docs.append("vaccination", vaccination);
+      const res = await axios.post("/api/user/update", docs, {
+        headers: {
+          authorization: localStorage.getItem("tokenid="),
+        },
+      });
+      if (res.data.success) {
+        toast.success("Successfully Updated!", {
+          position: "bottom-center",
+          id: toastId,
+        });
+      }
+      console.log(res.data.success);
+    } catch (error) {
+      toast.error("Something went wrong1", {
+        position: "bottom-center",
+        id: toastId,
+      });
+      console.log(error.response.data);
+    }
+  };
+
+  const updateAccommodation = async (toastId) => {
+    if (!accomodation) {
+      toast.error("Choose Accomodation", {
+        position: "bottom-center",
+        id: toastId,
+      });
+      return;
+    }
+
+    try {
+      
+      const res = await axios.post("/api/user/update/accommodation", { required: parseInt(accomodation), arrivalDateTime  }, {
+        headers: {
+          authorization: localStorage.getItem("tokenid="),
+        },
+      });
+      if (res.data.success) {
+        toast.success("Accomodation Updated!", {
+          position: "bottom-center",
+          
+        });
+      }
+      //console.log(res.data.success);
+    } catch (error) {
+      console.log(error.response.data);
+      toast.error("Something went wrong", {
+        position: "bottom-center",
+        
+      });
+      //console.log(error.respsonse.data);
+    }
   };
 
   const [aadhar, setaadhar] = useState();
-  const [collegeid, setcollegeid] = useState();
+  const [collegeId, setcollegeid] = useState();
+  const [vaccination, setvaccination] = useState();
+  const [arrivalDateTime, setarrivalDateTime] = useState();
   const [accomodation, setaccomodation] = useState();
-  const aadharHandler = (event) => {
-    setaadhar(event.target.files[0]);
-  };
-  const collegeidHandler = (event) => {
-    setcollegeid(event.target.files[0]);
-  };
+
   return (
     <div className="layout-wrapper">
       <nav className="profile-nav">
@@ -61,7 +126,17 @@ function Profile() {
         <div className="profile-sidebar p-3">
           <img src={forty} />
         </div>
-        <div className="profile-content-area">
+
+        <div
+          className={
+            auth.user.isMahe === 0 &&
+            (auth.user.documents == undefined ||
+              (auth.user.documents != undefined &&
+                auth.user.status == "REJECTED"))
+              ? "profile-content-area extended"
+              : "profile-content-area"
+          }
+        >
           <p className="back-btn" onClick={() => navigate("/dashboard/events")}>
             <i class="fa fa-angle-left fa-2x"></i>Dashboard
           </p>
@@ -69,7 +144,9 @@ function Profile() {
             <div className="name">
               <h1>{auth.user.name}</h1>
               <p>{auth.user.email}</p>
-              <span>User ID: {auth.user.userID}</span>
+              <span className="border-box">
+                Delegate ID: {auth.user.userID}
+              </span>
             </div>
             <div className="grid">
               <div>
@@ -85,43 +162,80 @@ function Profile() {
                 <p>{auth.user.college}</p>
               </div>
             </div>
-            {(auth.user.isMahe === 0 && (auth.user.status == "UNVERIFIED" || auth.user.status == "REJECTED")) && (
-              <>
-                <div>
-                  <p>Documents</p>
-                  <div className="drivelink">
-                    <div className="upload">
-                      <label>Aadhar Card</label>
-                      <input type="file" onChange={aadharHandler}/>
-                    </div>
-                    <div className="upload">
-                      <label>College ID</label>
-                      <input type="file" onChange={collegeidHandler} />
-                    </div>
-                    <div className="radio-btn">
-                      <p>Accommodation?</p>
-                      <div onChange={e =>setaccomodation(e.target.value)}>
-                        <label for="yes">Yes</label>
+            {auth.user.isMahe === 0 &&
+              (auth.user.documents == undefined ||
+                auth.user.status == "REJECTED") && (
+                <>
+                  <div>
+                    <p>
+                      Documents{" "}
+                      <span className="border-box">TO BE UPLOADED</span>
+                    </p>
+                    <div className="drivelink">
+                      <div className="upload">
+                        <label>Aadhar Card</label>
                         <input
-                          type="radio"
-                          id="yes"
-                          name="accommodation"
-                          value="1"
-                        />
-                        <label for="no">No</label>
-                        <input
-                          type="radio"
-                          id="no"
-                          name="accommodation"
-                          value="0"
+                          type="file"
+                          onChange={(e) => setaadhar(e.target.files[0])}
                         />
                       </div>
+                      <div className="upload">
+                        <label>College ID</label>
+                        <input
+                          type="file"
+                          onChange={(e) => setcollegeid(e.target.files[0])}
+                        />
+                      </div>
+                      <div className="upload">
+                        <label>Vaccination</label>
+                        <input
+                          type="file"
+                          onChange={(e) => setvaccination(e.target.files[0])}
+                        />
+                      </div>
+                     
+                    
+                      <div className="radio-btn">
+                        <p>Accommodation?</p>
+
+                        <div onChange={(e) => setaccomodation(e.target.value)}>
+                          <label for="yes">Yes</label>
+                          <input
+                            type="radio"
+                            id="yes"
+                            name="accommodation"
+                            value="1"
+                          />
+                          <label for="no">No</label>
+                          <input
+                            type="radio"
+                            id="no"
+                            name="accommodation"
+                            value="0"
+                          />
+                        </div>
+                        {accomodation == 1 && (
+                          <input
+                            type="date"
+                            id="arrivalDate"
+                            name="arrivalDate"
+                            onChange={(e)=>setarrivalDateTime(e.target.value)}
+                          />
+                        )}
+                      </div>
+                      <button onClick={uploadDocs}>Submit</button>
                     </div>
-                    <button onClick={uploadDocs}>Submit</button>
                   </div>
-                </div>
-              </>
-            )}
+                </>
+              )}
+            {auth.user.isMahe === 0 &&
+              auth.user.documents != undefined &&
+              auth.user.status != "REJECTED" && (
+                <p>
+                  Documents{" "}
+                  <span className="border-box">{auth.user.status}</span>
+                </p>
+              )}
 
             <div className="delegate-card">
               <p>

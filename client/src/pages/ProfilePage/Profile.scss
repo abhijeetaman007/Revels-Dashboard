@@ -1,5 +1,14 @@
 $text-color: #c4c4c4;
-
+.rads{
+  display: inline-block;
+}
+.border-box{
+  font-size: 1rem;
+  padding: 2px 5px;
+  color: #c6a3ff;
+  border: 1px solid;
+  border-radius: 5px;
+}
 .layout-wrapper {
   height: 100vh;
   width: 100vw;
@@ -57,6 +66,7 @@ $text-color: #c4c4c4;
         width: 80%;
       }
     }
+    
     .profile-content-area {
       color: $text-color;
       .back-btn {
@@ -76,6 +86,8 @@ $text-color: #c4c4c4;
         cursor: pointer;
       }
       width: 83%;
+      overflow-y: hidden;
+      //padding-bottom: 100px ;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -83,8 +95,9 @@ $text-color: #c4c4c4;
         width: 50%;
         font-size: 1.2rem;
         font-weight: 200;
-        margin-left: 80px;
+        margin-left: 100px;
         margin-top: 0;
+
         height: 90%;
         display: flex;
         flex-direction: column;
@@ -94,13 +107,7 @@ $text-color: #c4c4c4;
             font-size: 2.8rem;
             color: #c4515c;
           }
-          span {
-            font-size: 1rem;
-            padding: 2px 5px;
-            color: #c6a3ff;
-            border: 1px solid;
-            border-radius: 5px;
-          }
+         
         }
         .delegate-card {
           padding: 10px;
@@ -169,12 +176,21 @@ $text-color: #c4c4c4;
             }
           }
           .radio-btn {
-            display: flex;
+            
+            
+
+            //display: flex;
             align-items: center;
+            justify-content: center;
+            width: 50%;
             //justify-content: space-around;
             div {
+              input[type="radio"] {
+                -webkit-appearance: radio;
+              }
               margin-left: auto;
               display: flex;
+              justify-content: center;
               label {
                 margin: 0 15px;
               }
@@ -213,6 +229,13 @@ $text-color: #c4c4c4;
         vertical-align: middle;
 
         transform: rotate(90deg);
+      }
+    }
+    .extended{
+      overflow-y: scroll;
+      padding-bottom: 100px ;
+      .text{
+        margin-top: 230px;
       }
     }
   }
