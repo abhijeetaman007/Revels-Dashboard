@@ -1,12 +1,11 @@
-import React , {useEffect, useState} from "react";
+import React , { useEffect, useState } from "react";
 import logoWhite from "./.././../assets/logos/logo_white.png";
-import "../Layout/Layout.scss";
 import "./Profile.scss";
 import aagaz from "./.././../assets/aagaz.png";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import QRCode from "react-qr-code";
-import axios from "axios";
+import forty from "./.././../assets/forty.png";
 import toast from "react-hot-toast";
 
 function Profile() {
@@ -14,7 +13,7 @@ function Profile() {
   const auth = useAuth();
 
   // useEffect(() => {
-  //   console.log(JSON.stringify(auth.user));
+    // console.log(auth.user);
   // }, )
 
   const uploadDocs = async (e) => {
@@ -48,7 +47,7 @@ function Profile() {
   };
   return (
     <div className="layout-wrapper">
-      <nav className="navbar">
+      <nav className="profile-nav">
         <div className="brand">
           <img alt="Revels Logo" src={logoWhite}></img>
           <div>
@@ -59,8 +58,8 @@ function Profile() {
         <i className="fa fa-bell "></i>
       </nav>
       <div className="dash-wrapper">
-        <div className="profile-sidebar">
-          <img src={logoWhite} />
+        <div className="profile-sidebar p-3">
+          <img src={forty} />
         </div>
         <div className="profile-content-area">
           <p className="back-btn" onClick={() => navigate("/dashboard/events")}>

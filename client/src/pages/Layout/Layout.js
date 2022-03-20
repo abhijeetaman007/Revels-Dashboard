@@ -38,7 +38,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
 
   return (
     <div className="layout-wrapper">
-      <nav className="navbar">
+      <nav className="layout-navbar">
         <div className="brand">
           <i className="fa fa-bars" onClick={handleHamburger}></i>
           <img alt="Revels Logo" src={logoWhite}></img>

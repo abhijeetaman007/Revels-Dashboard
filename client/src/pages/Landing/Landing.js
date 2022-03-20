@@ -1,14 +1,14 @@
 import React from "react";
 import "./Landing.scss"
 
-import tree from "./../../assets/backgrounds/tree.svg"; 
-import two from "./../../assets/backgrounds/two.svg";
-import sun from "./../../assets/backgrounds/sun.svg";
-import birds from "./../../assets/backgrounds/birds.svg";
-import three from "./../../assets/backgrounds/three.svg";
-import clouds_top from "./../../assets/backgrounds/clouds_top.svg";
+import tree from "./../../assets/backgrounds/tree.png"; 
+import two from "./../../assets/backgrounds/two.png";
+import sun from "./../../assets/backgrounds/sun.png";
+import birds from "./../../assets/backgrounds/birds.png";
+import three from "./../../assets/backgrounds/three.png";
+import clouds_top from "./../../assets/backgrounds/clouds.png";
 import four from "./../../assets/backgrounds/four.svg";
-import logo from '../../assets/logo_landing.png';
+import logo from "./../../assets/logos/logo_white.png";
 
 const Landing  = () => {
   // handles hamburger click on mobiles

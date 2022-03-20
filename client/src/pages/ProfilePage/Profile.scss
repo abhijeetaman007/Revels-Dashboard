@@ -4,19 +4,42 @@ $text-color: #c4c4c4;
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  nav {
+  .profile-nav {
     height: 12vh;
-    i {
-      padding: 10px;
-      background-color: #c4515c;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    .brand {
+      display: flex;
+      align-items: center;
+      text-align: left;
       color: white;
-      border-radius: 50%;
+      font-size: 1.3rem;
+      p {
+        font-size: 1rem;
+      }
+      img {
+        height: 100%;
+      }
+    }
+    i:nth-child(1) {
+        display: none;
+    }
+    i:nth-child(2) {
+        background-color: transparent;
+        margin: auto 0;
+        color: white;
+        font-size: 1.3rem;
+        margin-right: 10px;
+        cursor: pointer;
+        &:hover {
+            transform: scale(1.2);
+        }
     }
   }
   .dash-wrapper {
     height: 88vh;
     display: flex;
-
     .profile-sidebar {
       width: 17%;
       background-image: radial-gradient(
@@ -56,7 +79,6 @@ $text-color: #c4c4c4;
       display: flex;
       justify-content: space-between;
       align-items: center;
-
       .text {
         width: 50%;
         font-size: 1.2rem;
@@ -67,7 +89,6 @@ $text-color: #c4c4c4;
         display: flex;
         flex-direction: column;
         justify-content: space-around;
-
         .name {
           h1 {
             font-size: 2.8rem;
@@ -83,11 +104,9 @@ $text-color: #c4c4c4;
         }
         .delegate-card {
           padding: 10px;
-
           background-color: white;
           border-radius: 8px;
           display: flex;
-
           align-items: center;
           justify-content: space-between;
           width: 70%;
@@ -217,10 +236,6 @@ $text-color: #c4c4c4;
             justify-content: space-around;
             width: 80%;
           }
-          // .name{
-          //   display: flex;
-          //   flex-direction: column;
-          // }
         }
         align-items: baseline;
         justify-content: space-around;
@@ -229,7 +244,7 @@ $text-color: #c4c4c4;
   }
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 800px) {
   .layout-wrapper {
     .dash-wrapper {
       .profile-sidebar {
