@@ -74,6 +74,9 @@ body {
   background: linear-gradient(to right, #a123db 0%, rgb(196, 58, 58));
   opacity: 0.5;
 }
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
 button:active,
 button:focus {
   outline: none;

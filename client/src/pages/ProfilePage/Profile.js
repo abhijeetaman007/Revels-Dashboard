@@ -81,8 +81,8 @@ function Profile() {
     }
 
     try {
-      
-      const res = await axios.post("/api/user/update/accommodation", { required: parseInt(accomodation), arrivalDateTime  }, {
+      let dateOb = new Date(arrivalDateTime); 
+      const res = await axios.post("/api/user/update/accommodation", { required: Boolean(accomodation), arrivalDateTime: dateOb  }, {
         headers: {
           authorization: localStorage.getItem("tokenid="),
         },
@@ -124,7 +124,6 @@ function Profile() {
       </nav>
       <div className="dash-wrapper">
         <div className="profile-sidebar p-3">
-          <img src={forty} />
         </div>
 
         <div
@@ -137,19 +136,22 @@ function Profile() {
               : "profile-content-area"
           }
         >
-          <p className="back-btn" onClick={() => navigate("/dashboard/events")}>
-            <i class="fa fa-angle-left fa-2x"></i>Dashboard
-          </p>
+          <div className="back-btn w-100">
+            <i class="fa fa-angle-left fa-2x"></i>
+            <p className="" onClick={() => navigate("/dashboard/events")}>
+              Dashboard
+            </p>
+          </div>
           <div className="text">
-            <div className="name">
+            <div className="name font-medium">
               <h1>{auth.user.name}</h1>
               <p>{auth.user.email}</p>
               <span className="border-box">
                 Delegate ID: {auth.user.userID}
               </span>
             </div>
-            <div className="grid">
-              <div>
+            <div className="grid font-medium">
+              <div className="">
                 <h1>College ID</h1>
                 <p>{auth.user.registrationNumber}</p>
               </div>
@@ -166,7 +168,7 @@ function Profile() {
               (auth.user.documents == undefined ||
                 auth.user.status == "REJECTED") && (
                 <>
-                  <div>
+                  <div className="font-medium">
                     <p>
                       Documents{" "}
                       <span className="border-box">TO BE UPLOADED</span>
@@ -187,42 +189,46 @@ function Profile() {
                         />
                       </div>
                       <div className="upload">
-                        <label>Vaccination</label>
+                        <label>Vaccination Certificate</label>
                         <input
                           type="file"
                           onChange={(e) => setvaccination(e.target.files[0])}
                         />
                       </div>
-                     
-                    
-                      <div className="radio-btn">
-                        <p>Accommodation?</p>
-
-                        <div onChange={(e) => setaccomodation(e.target.value)}>
-                          <label for="yes">Yes</label>
-                          <input
-                            type="radio"
-                            id="yes"
-                            name="accommodation"
-                            value="1"
-                          />
-                          <label for="no">No</label>
-                          <input
-                            type="radio"
-                            id="no"
-                            name="accommodation"
-                            value="0"
-                          />
+                        <div className="radio-btn">
+                          <p>Do you require accommodation?</p>
+                          <div onChange={(e) => setaccomodation(e.target.value)}>
+                            <div>
+                              <input
+                                type="radio"
+                                id="yes"
+                                name="accommodation"
+                                value="1"
+                              />
+                              <label htmlFor="yes">Yes</label>
+                            </div>
+                            <div>
+                              <input
+                                type="radio"
+                                id="no"
+                                name="accommodation"
+                                value="0"
+                              />
+                              <label htmlFor="no">No</label>
+                            </div>
+                          </div>
+                          {accomodation == 1 && (
+                            <div className="w-100 mt-2">
+                              <p>Date of Arrival</p>
+                              <input
+                                type="date"
+                                id="arrivalDate"
+                                name="arrivalDate"
+                                onChange={(e) => setarrivalDateTime(e.target.value)}
+                              />
+                            </div>
+                          )}
                         </div>
-                        {accomodation == 1 && (
-                          <input
-                            type="date"
-                            id="arrivalDate"
-                            name="arrivalDate"
-                            onChange={(e)=>setarrivalDateTime(e.target.value)}
-                          />
-                        )}
-                      </div>
                       <button onClick={uploadDocs}>Submit</button>
                     </div>
                   </div>
@@ -238,9 +244,9 @@ function Profile() {
               )}
 
             <div className="delegate-card">
-              <p>
+              <p className="font-heavy">
                 Delegate ID <br />
-                <span>{auth.user.userID}</span>
+                <span className="font-medium">{auth.user.userID}</span>
               </p>
               <div className="qr">
                 <QRCode value={auth.user.token} size={155} />
