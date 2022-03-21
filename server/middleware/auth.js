@@ -18,7 +18,7 @@ const isUserLoggedIn = async (req, res, next) => {
       }
       console.log("Payload ", payload);
       if (payload) {
-        let user = await User.findById(payload.userID);
+        let user = await User.findById(payload.userID).populate('role');
         if (user) {
           if (user.token === token && user.isEmailVerified) {
             req.requestUser = user;

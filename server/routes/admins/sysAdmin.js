@@ -93,8 +93,9 @@ const viewAllDelegateCards = async (req, res) => {
 const addRole = async (req, res) => {
     try {
         let { accessLevel, categoryId, type } = req.body;
+        let category;
         if (categoryId) {
-            let category = await Category.findOne({ categoryId }, { _id: 1 });
+            category = await Category.findOne({ _id:categoryId }, { _id: 1 });
             if (!category)
                 return res
                     .status(400)
@@ -150,7 +151,8 @@ const registerAdmin = async (req, res) => {
             return res
                 .status(400)
                 .send({ success: false, msg: 'Category does not exists' });
-        let role = await Role.findOne(
+        // console.log(category)
+                let role = await Role.findOne(
             { accessLevel, type, category: category._id },
             { _id: 1 }
         );

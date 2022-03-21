@@ -339,6 +339,7 @@ const getUserFromToken = async (req, res) => {
 
 const updateAccommodation = async (req, res) => {
   try {
+    console.log("checking accom : " + req.body.required + " and date " + req.body.arrivalDateTime)
     let { required, arrivalDateTime } = req.body;
     let user = req.requestUser;
     // MIT not allowed to apply
@@ -361,8 +362,10 @@ const updateAccommodation = async (req, res) => {
       { _id: req.requestUser._id },
       {
         $set: {
-          required: true,
-          arrivalDateTime,
+          accommodation:{
+            arrivalDateTime,
+            required
+          },
         },
       }
     );
