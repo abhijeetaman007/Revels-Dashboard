@@ -28,4 +28,4 @@ const RoleSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-module.exports = HTMLTableRowElement = mongoose.model("Role", RoleSchema);
+module.exports = Role = mongoose.model("Role", RoleSchema);
