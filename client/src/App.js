@@ -67,9 +67,9 @@ function App() {
               exact
               path="/dashboard/event/:eventid"
               element={
-                // <PrivateRoute>
-                <InsideEvent />
-                // </PrivateRoute>
+                <PrivateRoute>
+                  <InsideEvent />
+                </PrivateRoute>
               }
             />
             <Route path="/dashboard/delegatecard" element={<DelegatePage />} />

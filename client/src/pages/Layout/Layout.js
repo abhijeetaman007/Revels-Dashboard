@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Layout.scss';
-import {useNavigate} from 'react-router-dom';
+import {useLocation, useNavigate, useParams, useSearchParams} from 'react-router-dom';
 import aagaz from './../../assets/aagaz.png';
 import events from './../../assets/icons/events.svg';
 import myEvents from './../../assets/icons/myEvents.svg';
@@ -10,11 +10,18 @@ import logoWhite from './.././../assets/logos/logo_white.png';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import NotifTile from '../../components/NotifTile';
+import ComingSoon from '../../components/ComingSoon/ComingSoon';
+import Loader from "./../Loader/Loader";
 
 const Layout = ({ children, isAagazVisible = false, activeTab }) => {
 
   const navigate = useNavigate();
   const auth = useAuth();
+  const user = auth.user;
+
+  const location = useLocation();
+  const [active, setActive] = useState(activeTab);
+  const [loading, setLoading] = useState(true);
 
   // handles hamburger click on mobiles
   const handleHamburger = () => {
@@ -33,10 +40,15 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
   }
 
   useEffect(() => {
-    document.querySelector(`#${activeTab}`).classList.toggle('active');
-  }, []);
+    if(!auth.loading) {
+      setLoading(false);    
+    }
+    if(!loading)
+      document.querySelector(`#${activeTab}`).classList.toggle('active');
+  }, [auth.loading]);
 
   return (
+    loading ? <Loader /> :
     <div className="layout-wrapper">
       <nav className="layout-navbar">
         <div className="brand">
@@ -44,7 +56,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
           <img alt="Revels Logo" src={logoWhite}></img>
           <div>
             <h4 className="font-medium">REVELS '22</h4>
-            <p className="font-light">Welcome back John Doe</p>
+            <p className="font-light">Welcome back {user.name}</p>
           </div>
         </div>
         <i className="fa fa-bell" onClick={handleBell}></i>
@@ -52,10 +64,6 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
       <div className="dash-wrapper">
         <div className="notif-wrapper">
           <div className="notif-box">
-            <NotifTile />
-            <NotifTile />
-            <NotifTile />
-            <NotifTile />
             <NotifTile />
           </div>
         </div>
@@ -66,56 +74,56 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
           <div className="side-nav font-medium">
             <Link to="/dashboard/events">
               <div
-                className="side-nav-link"
+                className={`side-nav-link ${active === "events" ? "active" : ""}`}
                 id="events"
-                onClick={() => handleSideClick('events')}
+                onClick={() => setActive('events')}
               >
                 <span>
-                  <img src={events}></img>
+                  <img src={events} alt="Events Icons"></img>
                 </span>
                 Events
               </div>
             </Link>
             <Link to="/dashboard/myevents">
               <div
-                className="side-nav-link"
+                className={`side-nav-link ${active === "my-events" ? "active" : ""}`}
                 id="my-events"
-                onClick={() => handleSideClick('my-events')}
+                onClick={() => setActive('my-events')}
               >
                 <span>
-                  <img src={myEvents}></img>
+                  <img src={myEvents} alt="my Events Icon"></img>
                 </span>
                 My Events
               </div>
             </Link>
             <Link to="/dashboard/proshow">
               <div
-                className="side-nav-link"
+                className={`side-nav-link ${active === "proshow" ? "active" : ""}`}
                 id="proshow"
-                onClick={() => handleSideClick('proshow')}
+                onClick={() => setActive('proshow')}
               >
                 <span>
-                  <img src={proshow}></img>
+                  <img src={proshow} alt="Proshow Icon"></img>
                 </span>
                 Proshow
               </div>
             </Link>
             <Link to="/dashboard/delegatecard">
               <div
-                className="side-nav-link"
+                className={`side-nav-link ${active === "delegate-card" ? "active" : ""}`}
                 id="delegate-card"
-                onClick={() => handleSideClick('delegate-card')}
+                onClick={() => setActive('delegate-card')}
               >
                 <span>
-                  <img src={delegateCard}></img>
+                  <img src={delegateCard} alt="Delegate Card Icon"></img>
                 </span>
                 Delegate Cards
               </div>
             </Link>
           </div>
           <div className="side-footer">
-            <h4 className="font-medium">John Doe</h4>
-            <h5 className="font-light">Manipal institute of Technology</h5>
+            <h4 className="font-medium">{user.name}</h4>
+            <h5 className="font-light">{user.college}</h5>
             <div className="buttons font-medium">
               <button onClick={()=>navigate(`/dashboard/profile`)}>Profile</button>
               <button onClick={auth.userLogout}>Logout</button>
@@ -130,9 +138,11 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
           ) : (
             <></>
           )}
-          {children}
+          {/* {children} */}
+          <ComingSoon />
         </div>
-        {
+        {/* uncomment for proshow */}
+        {/* {
           activeTab.toUpperCase() === "PROSHOW" 
           ?
           <div className="button-bar font-medium">
@@ -140,7 +150,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <span className="mx-2"><i className="fa fa-arrow-right"></i></span>
           </div>
           : <> </>
-        }
+        } */}
       </div>
     </div>
   );

@@ -5,21 +5,23 @@ import aagaz from "./.././../assets/aagaz.png";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import QRCode from "react-qr-code";
-import forty from "./.././../assets/forty.png";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { TOKEN_ID } from "../../utils/constants";
+import Loader from "../Loader/Loader";
+
 
 function Profile() {
   const navigate = useNavigate();
   const auth = useAuth();
+  const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  // console.log(auth.user);
-  // }, )
+  useEffect(() => {
+    if(!auth.loading) {
+      setLoading(false);  
+    }
+  },[])
 
   const uploadDocs = async (e) => {
-    console.log(localStorage.getItem("tokenid="));
     e.preventDefault();
     const toastId = toast.loading("Loading...");
     if (!aadhar) {
@@ -111,6 +113,7 @@ function Profile() {
   const [accomodation, setaccomodation] = useState();
 
   return (
+    loading ? <Loader /> :
     <div className="layout-wrapper">
       <nav className="profile-nav">
         <div className="brand">
@@ -129,9 +132,9 @@ function Profile() {
         <div
           className={
             auth.user.isMahe === 0 &&
-            (auth.user.documents == undefined ||
-              (auth.user.documents != undefined &&
-                auth.user.status == "REJECTED"))
+            (auth.user.documents === undefined ||
+              (auth.user.documents !== undefined &&
+                auth.user.status === "REJECTED"))
               ? "profile-content-area extended"
               : "profile-content-area"
           }
@@ -165,8 +168,8 @@ function Profile() {
               </div>
             </div>
             {auth.user.isMahe === 0 &&
-              (auth.user.documents == undefined ||
-                auth.user.status == "REJECTED") && (
+              (auth.user.documents === undefined ||
+                auth.user.status === "REJECTED") && (
                 <>
                   <div className="font-medium">
                     <p>
@@ -217,7 +220,7 @@ function Profile() {
                               <label htmlFor="no">No</label>
                             </div>
                           </div>
-                          {accomodation == 1 && (
+                          {accomodation === 1 && (
                             <div className="w-100 mt-2">
                               <p>Date of Arrival</p>
                               <input
@@ -235,8 +238,8 @@ function Profile() {
                 </>
               )}
             {auth.user.isMahe === 0 &&
-              auth.user.documents != undefined &&
-              auth.user.status != "REJECTED" && (
+              auth.user.documents !== undefined &&
+              auth.user.status !== "REJECTED" && (
                 <p>
                   Documents{" "}
                   <span className="border-box">{auth.user.status}</span>

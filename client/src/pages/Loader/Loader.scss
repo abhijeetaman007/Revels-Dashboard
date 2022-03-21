@@ -1,0 +1,22 @@
+.loader-wrapper {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20%;
+    .anim-wrapper {
+        width: 40%;
+        svg {
+            border-radius: 20px;
+        }
+    }
+}
+@media only screen and (max-width: 812px) {
+    .loader-wrapper {
+        padding: 5%;
+        .anim-wrapper {
+            width: 90%;
+        }
+    }
+}
