@@ -220,7 +220,7 @@ function Profile() {
                               <label htmlFor="no">No</label>
                             </div>
                           </div>
-                          {accomodation === 1 && (
+                          {accomodation == "1" && (
                             <div className="w-100 mt-2">
                               <p>Date of Arrival</p>
                               <input
