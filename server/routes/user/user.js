@@ -108,9 +108,12 @@ const userRegister = async (req, res) => {
       passwordResetToken,
     });
     await newUser.save();
-    let message = `Please Click to verify http://localhost:5000/api/user/verify/${passwordResetToken}`;
+    if (process.env.CONFIG == "DEV") {
+      message = `Please Click to verify http://localhost:5000/api/user/verify/${passwordResetToken}`;
+    } else if (process.env.CONFIG == "PROD") {
+      message = `Please Click to verify ${process.env.API_URL}/api/user/verify/${passwordResetToken}`;
+    }
     mailer(newUser.email, "Verify Email - REVELS '22", message);
-
     return res.status(200).send({ success: true, msg: "User Registered" });
   } catch (err) {
     console.log(err);
@@ -151,10 +154,10 @@ const resendVerificationLink = async (req, res) => {
     let message;
     if (process.env.CONFIG == "DEV") {
       message = `Please Click to verify http://localhost:${process.env.PORT}/api/user/verify/${passwordResetToken}`;
-      res.status(200).send({ success: true, msg: "Email Resent" });
     } else if (process.env.CONFIG == "PROD") {
       message = `Please Click to verify ${process.env.API_URL}/api/user/verify/${passwordResetToken}`;
     }
+    res.status(200).send({ success: true, msg: "Email Resent" });
     mailer(req.body.email, "Verify Email - REVELS '22", message);
     return 0;
   } catch (err) {
