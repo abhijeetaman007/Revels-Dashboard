@@ -12,6 +12,7 @@ import { useAuth } from '../../context/AuthContext';
 import NotifTile from '../../components/NotifTile';
 import ComingSoon from '../../components/ComingSoon/ComingSoon';
 import Loader from "./../Loader/Loader";
+import ComingSoonDash from '../../components/ComingSoon/ComingSoon2';
 
 const Layout = ({ children, isAagazVisible = false, activeTab }) => {
 
@@ -139,7 +140,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <></>
           )}
           {/* {children} */}
-          <ComingSoon />
+          <ComingSoonDash />
         </div>
         {/* uncomment for proshow */}
         {/* {

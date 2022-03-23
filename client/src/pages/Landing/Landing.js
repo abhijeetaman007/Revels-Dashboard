@@ -34,7 +34,7 @@ const Landing  = () => {
           </div>
           <ul class="nav-menu">
               <li class="nav-item" onClick={closeNav}>
-                  <a href="/register" class="nav-link">Login</a>
+                  <a href="/login" class="nav-link">Login</a>
               </li>
               <li class="nav-item" onClick={closeNav}>
                   <a href="/" class="nav-link">Events</a>
