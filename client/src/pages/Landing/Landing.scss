@@ -134,7 +134,8 @@
             }
             nav {
                 z-index: 100;
-                flex-direction: column;
+                flex-direction: row;
+                background-color: transparent;
                 i:first-child {
                     margin: 0 20px;
                     display: block;
