@@ -20,7 +20,7 @@ function Profile() {
         navigate('/');
       }  
     }
-  },[])
+  },[auth.loading])
 
   const uploadDocs = async (e) => {
     e.preventDefault();
@@ -221,7 +221,7 @@ function Profile() {
                               <label htmlFor="no">No</label>
                             </div>
                           </div>
-                          {accomodation == "1" && (
+                          {accomodation === "1" && (
                             <div className="w-100 mt-2">
                               <p>Date of Arrival</p>
                               <input
@@ -259,7 +259,7 @@ function Profile() {
             </div>
           </div>
           <div className="aagaz">
-            <img src={aagaz} />
+            <img src={aagaz} alt="Aagaz | Revels 22"/>
           </div>
         </div>
       </div>

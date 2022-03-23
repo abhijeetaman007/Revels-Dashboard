@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Layout.scss';
-import {useLocation, useNavigate, useParams, useSearchParams} from 'react-router-dom';
+import {useLocation, useNavigate } from 'react-router-dom';
 import aagaz from './../../assets/aagaz.png';
 import events from './../../assets/icons/events.svg';
 import myEvents from './../../assets/icons/myEvents.svg';
@@ -10,7 +10,6 @@ import logoWhite from './.././../assets/logos/logo_white.png';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import NotifTile from '../../components/NotifTile';
-import ComingSoon from '../../components/ComingSoon/ComingSoon';
 import Loader from "./../Loader/Loader";
 import ComingSoonDash from '../../components/ComingSoon/ComingSoon2';
 
@@ -31,23 +30,17 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
   const handleBell = () => {
     document.querySelector(".notif-wrapper").classList.toggle('active');
   }
-  // handle sidebar nav click
-  const handleSideClick = (id) => {
-    let ids = ['events', 'my-events', 'proshow', 'delegate-card'];
-    for (let i = 0; i < ids.length; i++) {
-      document.querySelector(`#${ids[i]}`).classList.remove('active');
-    }
-    document.querySelector(`#${id}`).classList.toggle('active');
-  }
-
   useEffect(() => {
     if(!auth.loading) {
-      setLoading(false);    
+      setLoading(false);
+      if (!auth.user) {
+        navigate('/');
+      }  
     }
     if(!loading)
       document.querySelector(`#${activeTab}`).classList.toggle('active');
-  }, [auth.loading]);
-
+  },[auth.loading])
+  
   return (
     loading ? <Loader /> :
     <div className="layout-wrapper">
