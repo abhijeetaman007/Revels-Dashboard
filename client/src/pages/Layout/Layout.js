@@ -18,7 +18,6 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
   const auth = useAuth();
   const user = auth.user;
 
-  const location = useLocation();
   const [active, setActive] = useState(activeTab);
   const [loading, setLoading] = useState(true);
 
