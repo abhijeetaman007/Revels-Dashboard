@@ -17,7 +17,7 @@ const NotFound = () => {
           loop
         />
         <Lottie
-          style={{ height: "40vh", marginLeft: "-80px" }}
+          style={{ height: "40vh", marginLeft: "-5em" }}
           animationData={notfound2Animation}
           loop
         />
@@ -29,9 +29,9 @@ const NotFound = () => {
           fontSize: "2em",
           fontWeight: "1000",
           opacity: "0.8",
-          marginTop: "-40px",
+          marginTop: "-2em",
         }}
-        className="anim-font"
+        className="anim-font back_"
       >
         Go Back to Revelry
       </div>
