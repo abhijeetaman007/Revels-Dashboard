@@ -115,11 +115,7 @@ const InsideEvent = () => {
       console.log(err);
     }
   };
-<<<<<<< Updated upstream
   const leaveTeam = async () => {};
-=======
-
->>>>>>> Stashed changes
   return (
     <Layout activeTab={'events'}>
       <div className="event-details">
@@ -233,13 +229,9 @@ const InsideEvent = () => {
               <div className="font-heavy">Team ID</div>
               <div className="split">
                 <div>1223</div>
-<<<<<<< Updated upstream
                 <button className="font-heavy blueinwhite" onClick={leaveTeam}>
                   Leave Team
                 </button>
-=======
-                <button className="font-heavy blueinwhite">Leave Team</button>
->>>>>>> Stashed changes
               </div>
             </div>
             {/* IF CREATOR*/}

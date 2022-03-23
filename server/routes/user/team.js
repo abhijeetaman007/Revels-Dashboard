@@ -290,21 +290,10 @@ const removeFromTeam = async (req, res) => {
   }
 };
 
-<<<<<<< Updated upstream
-const getEventTeam = async (req, res) => {
-  try {
-    // $and:[{},
-    let { event_ID } = req.body;
-    let team = await Team.findOne({
-      event: event_ID,
-      'members.user': req.requestUser._id,
-    });
-=======
 const getTeamByID = async (req, res) => {
   try {
     let { teamID } = req.body;
     let team = await Team.findOne({ teamID });
->>>>>>> Stashed changes
     if (!team)
       return res.status(400).send({ success: false, msg: 'Invalid Team' });
     return res.status(200).send({ success: false, data: team });
@@ -321,11 +310,7 @@ module.exports = {
   joinTeam,
   leaveTeam,
   removeFromTeam,
-<<<<<<< Updated upstream
-  getEventTeam,
-=======
   getTeamByID,
->>>>>>> Stashed changes
 };
 
 //edge cases

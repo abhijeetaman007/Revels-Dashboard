@@ -55,11 +55,7 @@ const {
   leaveTeam,
   addToTeam,
   removeFromTeam,
-<<<<<<< Updated upstream
-  getEventTeam,
-=======
   getTeamByID,
->>>>>>> Stashed changes
 } = require('./user/team');
 const {
   registerOrder,
@@ -137,16 +133,7 @@ router.post(
   isVerifiedForRevels,
   removeFromTeam
 );
-<<<<<<< Updated upstream
-router.post(
-  '/user/team/get',
-  isUserLoggedIn,
-  isVerifiedForRevels,
-  getEventTeam
-);
-=======
 router.post('/user/team/get', isUserLoggedIn, isVerifiedForRevels, getTeamByID);
->>>>>>> Stashed changes
 
 //Events:
 router.post(
