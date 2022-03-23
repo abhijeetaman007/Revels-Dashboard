@@ -10,13 +10,14 @@ const {
   isVerifiedForRevels,
   isAdminLoggedIn,
 } = require("../middleware/auth");
-// const { isCategoryLoggedIn } = require('../middleware/categoryAuth');
-// const {
-//     isSysAdmin,
-//     isAdminLoggedIn,
-//     isOperations,
-//     isCategory,
-// } = require('../middleware/adminAuth');
+const {
+  isCategory,
+  isOM,
+  isVigilance,
+  isOperation,
+  isSysAdmin,
+  isCulturalCategory,
+} = require("../middleware/category")
 const {
   userRegister,
   userLogin,
@@ -73,10 +74,10 @@ const {
 const { upload, multipleUpload } = require("../config/aws-s3/multer.config");
 
 //Routes:
-router.get("/test", (req, res) => {
+router.get("/test",isAdminLoggedIn,isCulturalCategory, (req, res) => {
   let date = new Date();
-  console.log(date);
-  res.send("Testing");
+  // console.log(date);
+  res.send("Testing ");
 });
 
 //@User Routes:

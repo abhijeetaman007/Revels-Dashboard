@@ -1,0 +1,658 @@
+[
+  {
+    "name": "A.G & S.G SIDDHARTHA DEGREE COLLEGE OF ARTS AND SCIENCE",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "ACHARYA NAGARJUNA UNIVERSITY",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "adarsha law college",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Aditya Engineering College",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "ADONI ARTS AND SCIENCE COLLEGE",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "AKKINENI NAGESWARA RAO COLLEGE",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "ALLURI SEETHARAMA RAJU ACADEMY OF MEDICAL SCIENCES",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Amritha Sai Institute Of Science And Technology",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "ANANTHA COLLEGE OF LAW",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "ANDHRA LOYOLA COLLEGE",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Andhra Loyola Institute Of Engineering",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "ANDHRA MUSLIM COLLEGE OF ARTS AND SCIENCE",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "ANDHRA UNIVERSITY",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Andhra Vidyalaya College",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "ANIL NEERUKONDA INSTITUTE OF TECNOLOGY",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "ANNABATTUNI SATYANARAYANA DEGREE COLLEGE",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "ANNAMACHARYA INSTITUTE OF TECHNOLOGY AND SCIENCE",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Annapurna International School of Film and Media",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "AU College of engineering",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "AUDISANKARA COLLEGE OF ENGINEERING AND TECHNOLOGY",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Bapatla Engineering College",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Bhoj Reddy Engineering College for Women",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "BITS",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Bonam Venkata Chalamayya Engineering College",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Brindavan Institute Technology And Science",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "CBIT",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Ch. S. D. St. Theresa College",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Chaitanya Engineering College",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "CMR College of Engineering and Technology",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Culinary Academy of India",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "CVR College of Engineering",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "D.N.R.College of Law",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Dadi Institute Of Engineering And Technology",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "DAITA SRIRAMULU HINDU COLLEGE OF LAW",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "DAMODARAM SANJIVAYYA NATIONAL LAW UNIVERSITY",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Dnr College Of Engineering And Technology",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "DR. B. R. AMBEDKAR COLLEGE OF LAW",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Dr. B. R. Ambedkar Open University",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Duvvuru Ramanamma Women s College",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "FATHIMA INSTITUTE OF MEDICAL SCIENCES",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "G Narayanamma Institute of Technology and Science",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "G.PULLA REDDY INSTITUTE OF TECHNOLOGY",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Gates Institute Of Technology",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Gayatri Vidya Parishad Institute",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Giet",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "GITAM University",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Gkce",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "GMR Institue of Technology",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Gokaraju Rangaraju Institute of Engineering and Technology",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Gowtham Degree College",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "GPCET",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "GREAT EASTERN MEDICAL SCHOOL AND HOSPITAL",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "GSL MEDICAL COLLEGE AND GENERAL HOSPITAL",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "GUDLAVALLERU ENGINEERING COLLEGE",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "GUNTUR MEDICAL COLLEGE",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Hamstech Institute of Fashion & Interior Design",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "INDIRA PRIYADARSHINI LAW COLLEGE",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Institute of Aeronautical Engineering",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "JC COLLEGE OF LAW",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "JNTU",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Jntua College Of Engineering",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "JNTUH College of Engineering JAGTIAL",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "JNTUH College of Engineering JAGTIAL",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "K L University",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Kakatiya Institute of Technology and Science",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Kakinada Institue of Technology and Science",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "KATURI MEDICAL COLLEGE AND HOSPITAL",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Kaushik College Of Engineering",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Keshav Memorial Institute of Technology",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "KKC COLLEGE OF LAW",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "KONASEEMA INSTITUTE OF MEDICAL SCIENCES & RESEARCH FOUNDATION",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Kuppam Engineering College",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "KURNOOL MEDICAL COLLEGE",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "LAKIREDDY BALI COLLEGE OF ENGINEERING",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Lenora College of Enginnering",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "MADANAPALLE INSTITUE OF COLLEGE OF ENGINEERING",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "MAHARAJAH'S INSTITUTE OF MEDICAL SCIENCES",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Mahatma Gandhi Degree College",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Mahatma Gandhi Institute of Technology",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Mahaveer Institute of Science and Technology",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Malla Reddy Engineering College",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Maturi Venkata Subba Rao Engineering College",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "MG Law College",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "MIC COLLEGE OF TECHNOLOGY",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Muffakham Jah College of Engineering and Technology",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Nalanda Degree College",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Nalla Malla Reddy Engineering College",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Nalsar University of Law",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "NARAYANA ENGINEERING COLLEGE",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "National Institute of Fashion Technology",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "NBKR INSTITUTE OF SCIENCE AND TECHNOLOGY",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "NRI MEDICAL COLLEGE",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "NVP LAW COLLEGE",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Osmania university",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Osmania university",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Padala Rami Reddy Law College",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "PB SIDDHARTHA COLLEGE ARTS AND SCIENCE,",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Pendekanti Law College",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "PES INSTITUTE OF MEDICAL SCIENCES AND RESEARCH",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "PRAGATI COLLEGE OF ENGINEERING",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "PS RAJU LAW COLLEGE",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "PVKN GOVT DEGREE COLLEGE",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "PVPSIT",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "PYDAH COLLEGE OF ENGINEERING",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Raghu Engineering College",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Rajiv Gandhi Educational Institute",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "RGMCET",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Rvr And Jc College Of Engineering",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Sagi Ramakrishnan Raju Engineering College",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Sarojini Naidu Vanita Maha Vidyalaya",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Sir C R Reddy College Of Engineering",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "SMT VELAGAPUDI DURGAMBA SIDDHARTHA LAW COLLEGE",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "SR Engineering College",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "SREE VIDYANIKETHAN Engineering College",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "SRI ESHWAR REDDY COLLEGE OF LAW",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "SRI KRISHNADEVEARAYA UNIVERSITY",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "SRI KRISHNADEVEARAYA UNIVERSITY",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "SRI R.K.M. LAW COLLEGE",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "SRI VENKATESWARA UNIVERSITY",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "St. Francis College for Women",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Symbiosis Law School Hyderabad",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "University College of Law, Osmania",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "University College of Technology",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "VARAHA COLLEGE OF ARCHITECTURE AND PLANNING",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Vasavi College of Engineering",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Vasireddy Venkatadri Institute Of Technology",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "VEERAVALLI COLLEGE OF LAW",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Vidya Jyoti Institute of Technology",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "Vignan's Institute Of Information Technology",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "VISAKHA LAW COLLEGE",
+    "state": "Andhra Pradesh",
+    "isMahe": "FALSE"
+  },
+  {
+    "name": "VSM College of Engineering",
+    "state": "Telangana",
+    "isMahe": "FALSE"
+  }
+]
+
