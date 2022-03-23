@@ -8,19 +8,72 @@ import QRCode from "react-qr-code";
 import toast from "react-hot-toast";
 import axios from "axios";
 import Loader from "../Loader/Loader";
-
-
+import "react-responsive-modal/styles.css";
+import { Modal } from "react-responsive-modal";
 function Profile() {
   const navigate = useNavigate();
   const auth = useAuth();
 
+  const [aadhar, setaadhar] = useState();
+  const [collegeId, setcollegeid] = useState();
+  const [vaccination, setvaccination] = useState();
+  const [arrivalDateTime, setarrivalDateTime] = useState();
+  const [accomodation, setaccomodation] = useState();
+  const [open, setOpen] = useState(false);
+  const [modalImage, setmodalImage] = useState("");
+  
+  const toggleModal = () => {
+    setOpen(!open)
+};
+ const setDocument = (e ,type) => {
+   if(type=== 'aadhar')setaadhar(e.target.files[0]);
+   if(type=== 'collegeId')setcollegeid(e.target.files[0]);
+   if(type=== 'vaccination')setvaccination(e.target.files[0]);
+ }
   useEffect(() => {
-    if(!auth.loading) {
+    console.log(!auth.loading);
+    if (!auth.loading) {
       if (!auth.user) {
-        navigate('/');
-      }  
+        navigate("/");
+      }
     }
-  },[])
+  }, []);
+
+  const uploadSelectiveDocs = async (e) => {
+    const docs = new FormData();
+    e.preventDefault();
+    const toastId = toast.loading("Loading...");
+    if (aadhar) {
+      docs.append("aadhar", aadhar);
+    }
+    if (collegeId) {
+      docs.append("collegeId", collegeId);
+    }
+    if (vaccination) {
+      docs.append("vaccination", vaccination);
+    }
+
+    try {
+      const res = await axios.post("/api/user/update", docs, {
+        headers: {
+          authorization: localStorage.getItem("tokenid="),
+        },
+      });
+      if (res.data.success) {
+        toast.success("Successfully Updated!", {
+          position: "bottom-center",
+          id: toastId,
+        });
+      }
+      console.log(res.data.success);
+    } catch (error) {
+      toast.error("Something went wrong1", {
+        position: "bottom-center",
+        id: toastId,
+      });
+      //console.log(error.response.data);
+    }
+  };
 
   const uploadDocs = async (e) => {
     e.preventDefault();
@@ -84,16 +137,19 @@ function Profile() {
     }
 
     try {
-      let dateOb = new Date(arrivalDateTime); 
-      const res = await axios.post("/api/user/update/accommodation", { required: Boolean(accomodation), arrivalDateTime: dateOb  }, {
-        headers: {
-          authorization: localStorage.getItem("tokenid="),
-        },
-      });
+      let dateOb = new Date(arrivalDateTime);
+      const res = await axios.post(
+        "/api/user/update/accommodation",
+        { required: Boolean(accomodation), arrivalDateTime: dateOb },
+        {
+          headers: {
+            authorization: localStorage.getItem("tokenid="),
+          },
+        }
+      );
       if (res.data.success) {
         toast.success("Accomodation Updated!", {
           position: "bottom-center",
-          
         });
       }
       //console.log(res.data.success);
@@ -101,20 +157,14 @@ function Profile() {
       console.log(error.response.data);
       toast.error("Something went wrong", {
         position: "bottom-center",
-        
       });
       //console.log(error.respsonse.data);
     }
   };
 
-  const [aadhar, setaadhar] = useState();
-  const [collegeId, setcollegeid] = useState();
-  const [vaccination, setvaccination] = useState();
-  const [arrivalDateTime, setarrivalDateTime] = useState();
-  const [accomodation, setaccomodation] = useState();
-
-  return (
-    auth.loading ? <Loader /> :
+  return auth.loading ? (
+    <Loader />
+  ) : (
     <div className="layout-wrapper">
       <nav className="profile-nav">
         <div className="brand">
@@ -127,8 +177,7 @@ function Profile() {
         <i className="fa fa-bell "></i>
       </nav>
       <div className="dash-wrapper">
-        <div className="profile-sidebar p-3">
-        </div>
+        <div className="profile-sidebar p-3"></div>
 
         <div
           className={
@@ -199,40 +248,42 @@ function Profile() {
                           onChange={(e) => setvaccination(e.target.files[0])}
                         />
                       </div>
-                        <div className="radio-btn">
-                          <p>Do you require accommodation?</p>
-                          <div onChange={(e) => setaccomodation(e.target.value)}>
-                            <div>
-                              <input
-                                type="radio"
-                                id="yes"
-                                name="accommodation"
-                                value="1"
-                              />
-                              <label htmlFor="yes">Yes</label>
-                            </div>
-                            <div>
-                              <input
-                                type="radio"
-                                id="no"
-                                name="accommodation"
-                                value="0"
-                              />
-                              <label htmlFor="no">No</label>
-                            </div>
+                      <div className="radio-btn">
+                        <p>Do you require accommodation?</p>
+                        <div onChange={(e) => setaccomodation(e.target.value)}>
+                          <div>
+                            <input
+                              type="radio"
+                              id="yes"
+                              name="accommodation"
+                              value="1"
+                            />
+                            <label htmlFor="yes">Yes</label>
                           </div>
-                          {accomodation == "1" && (
-                            <div className="w-100 mt-2">
-                              <p>Date of Arrival</p>
-                              <input
-                                type="date"
-                                id="arrivalDate"
-                                name="arrivalDate"
-                                onChange={(e) => setarrivalDateTime(e.target.value)}
-                              />
-                            </div>
-                          )}
+                          <div>
+                            <input
+                              type="radio"
+                              id="no"
+                              name="accommodation"
+                              value="0"
+                            />
+                            <label htmlFor="no">No</label>
+                          </div>
                         </div>
+                        {accomodation == "1" && (
+                          <div className="w-100 mt-2">
+                            <p>Date of Arrival</p>
+                            <input
+                              type="date"
+                              id="arrivalDate"
+                              name="arrivalDate"
+                              onChange={(e) =>
+                                setarrivalDateTime(e.target.value)
+                              }
+                            />
+                          </div>
+                        )}
+                      </div>
                       <button onClick={uploadDocs}>Submit</button>
                     </div>
                   </div>
@@ -241,10 +292,62 @@ function Profile() {
             {auth.user.isMahe === 0 &&
               auth.user.documents !== undefined &&
               auth.user.status !== "REJECTED" && (
-                <p>
-                  Documents{" "}
-                  <span className="border-box">{auth.user.status}</span>
-                </p>
+                <>
+                  <p>
+                    Documents{" "}
+                    <span className="border-box">{auth.user.status}</span>
+                  </p>
+                  <div className="drivelink">
+                    {Object.keys(auth.user.documents).map((doc, ind) => {
+                      return (
+                        <>
+                          {auth.user.documents[doc].status === 0 && (
+                            <div className="upload" onClick={()=>{toggleModal(); setmodalImage(auth.user.documents[doc].url)}}>
+                              <Modal open={open} onClose={()=>toggleModal()} center>
+                                <img src={modalImage} style={{pointerEvents : 'none'}}/>
+                              </Modal>
+                              <label>{doc.toUpperCase()}</label>
+                              <span className="border-box">Unreviewed</span>
+                            </div>
+                          )}
+
+                          {auth.user.documents[doc].status === 1 && (
+                            <>
+                            <div className="upload" onClick={()=>{toggleModal(); setmodalImage(auth.user.documents[doc].url)}}>
+                              <Modal open={open} onClose={()=>toggleModal()} center>
+                                <img src={modalImage} style={{pointerEvents : 'none'}}/>
+                              </Modal>
+                              <label>{doc.toUpperCase()}</label>
+                              <i class="fa fa-check "></i>
+                            </div>
+                            
+
+                            </>
+                          )}
+
+                          {auth.user.documents[doc].status === 2 && (
+                            <>
+                              <div className="upload" >
+                              <Modal open={open} onClose={()=>toggleModal()} center>
+                                <img src={modalImage} style={{pointerEvents : 'none' , height:"50%"}}/>
+                              </Modal>
+                                <label onClick={()=>{toggleModal(); setmodalImage(auth.user.documents[doc].url)}}>{doc.toUpperCase()}</label>
+                                <input
+                                  type="file"
+                                  onChange={(e) =>
+                                    setDocument(e , `${doc}`)
+                                  }
+                                />
+                              </div>
+                              <button onClick={uploadSelectiveDocs}>Upload</button>
+                            </>
+                          )}
+                        </>
+                      );
+                    })}
+                    
+                  </div>
+                </>
               )}
 
             <div className="delegate-card">
