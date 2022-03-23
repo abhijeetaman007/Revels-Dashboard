@@ -5,7 +5,9 @@ import notfoundAnimation from "../assets/404.json";
 
 import notfound2Animation from "../assets/404_1.json";
 
+import { useNavigate } from "react-router-dom";
 const NotFound = () => {
+  const navigate = useNavigate();
   return (
     <div className="lottie-anim">
       <div className="lottieContainer">
@@ -21,10 +23,13 @@ const NotFound = () => {
         />
       </div>
       <div
+        onClick={() => navigate("/")}
         style={{
+          cursor: "pointer",
           fontSize: "2em",
-          fontWeight: "800",
-          opacity: "0.6",
+          fontWeight: "1000",
+          opacity: "0.8",
+          marginTop: "-40px",
         }}
         className="anim-font"
       >
