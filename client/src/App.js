@@ -82,7 +82,7 @@ function App() {
             {/* <Route path="*" element={<NotFound />} /> */}
             {/* <Route path="/admin/:category" element={}/> */}
             {/* <Route path="/admin/SYSADMIN" element={}/> */}
-            <Route path="/" element={<Landing />} />
+            <Route exact path="/" element={<Landing />} />
           </Routes>
         </AuthProvider>
       </BrowserRouter>

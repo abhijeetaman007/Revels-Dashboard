@@ -13,11 +13,12 @@ import Loader from "../Loader/Loader";
 function Profile() {
   const navigate = useNavigate();
   const auth = useAuth();
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if(!auth.loading) {
-      setLoading(false);  
+      if (!auth.user) {
+        navigate('/');
+      }  
     }
   },[])
 
@@ -113,7 +114,7 @@ function Profile() {
   const [accomodation, setaccomodation] = useState();
 
   return (
-    loading ? <Loader /> :
+    auth.loading ? <Loader /> :
     <div className="layout-wrapper">
       <nav className="profile-nav">
         <div className="brand">

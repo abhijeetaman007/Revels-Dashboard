@@ -1,5 +1,6 @@
 import React from "react";
 import "./Landing.scss"
+import "./Navbar.css";
 
 import tree from "./../../assets/backgrounds/tree.png"; 
 import two from "./../../assets/backgrounds/two.png";
@@ -8,29 +9,47 @@ import birds from "./../../assets/backgrounds/birds.png";
 import three from "./../../assets/backgrounds/three.png";
 import clouds_top from "./../../assets/backgrounds/clouds.png";
 import four from "./../../assets/backgrounds/four.svg";
-import logo from "./../../assets/logos/logo_white.png";
+import logo from "./../../assets/logo_landing.png";
 
 const Landing  = () => {
   // handles hamburger click on mobiles
-  const handleHamburger = () => {
-    document.querySelector('.landing-nav-links').classList.toggle('active');
+  const mobileNav = () => {
+    const hamburger = document.querySelector(".hamburger");
+    const navMenu = document.querySelector(".nav-menu");
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+  }
+  const closeNav = () => {
+      const hamburger = document.querySelector(".hamburger");
+      const navMenu = document.querySelector(".nav-menu");
+      hamburger.classList.remove("active");
+      navMenu.classList.remove("active");
   }
   return (
     <div className="landing-wrapper">
       <div className="content-wrapper">
-        <nav className="landing-nav">
-          <div className="landing-brand">
-            <i className="fa fa-bars" onClick={handleHamburger}></i>
-            <div>
-              <img src={logo} alt="Revels Logo" width={'100px'}/> 
-              <p className="font-antiga">REVELS' 22</p>
-            </div>
+        <nav class="navbar">
+          <div class="nav-logo">
+            <img src={logo}></img>
           </div>
-          <div className="landing-nav-links">
-            <a href="/" className="font-antiga">Login</a>
-            <a href="/" className="font-antiga">Tshirts</a>
-            <a href="/" className="font-antiga">Events</a>
-            <a href="/" className="font-antiga">Schedule</a>
+          <ul class="nav-menu">
+              <li class="nav-item" onClick={closeNav}>
+                  <a href="/register" class="nav-link">Login</a>
+              </li>
+              <li class="nav-item" onClick={closeNav}>
+                  <a href="/" class="nav-link">Events</a>
+              </li>
+              <li class="nav-item" onClick={closeNav}>
+                  <a href="/" class="nav-link">Tshirts</a>
+              </li>
+              <li class="nav-item" onClick={closeNav}>
+                  <a href="/" class="nav-link">Schedule</a>
+              </li>
+          </ul>
+          <div class="hamburger" onClick={mobileNav}>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
           </div>
         </nav>
         <div className="font-antiga landing-title">

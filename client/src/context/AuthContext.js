@@ -11,7 +11,6 @@ export const useAuth = () => {
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
   const restoreUser = async () => {
     const token = localStorage.getItem(TOKEN_ID);
@@ -26,7 +25,6 @@ export default function AuthProvider({ children }) {
         if (res.data.success) {
           setUser(res.data.data);
           setLoading(false);
-          navigate('/dashboard/events');
         }
       } catch (error) {
         console.log(error);

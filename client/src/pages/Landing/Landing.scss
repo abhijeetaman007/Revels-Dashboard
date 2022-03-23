@@ -58,46 +58,9 @@
         height: 100%;
         width: 100%;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
-        .landing-nav {
-            position: fixed;
-            top: 0;
-            width: 100vw;
-            height: 12vh;
-            padding: 10px;
-            background-color: transparent;
-            display: flex;
-            justify-content: space-between;
-            .landing-brand {
-                display: flex;
-                align-items: center;
-                text-align: left;
-                color: white;
-                font-size: 1.3rem;
-                p {
-                    font-size: 3rem;
-                }
-                img {
-                    height: 100%;
-                }
-                div {
-                    display: flex;
-                    align-items: center;
-                }
-            }
-            i:nth-child(1) {
-                display: none;
-            }
-            .landing-nav-links {
-                height: 100%;
-                display: flex;
-                align-items: center;
-                gap: 30px;
-                font-size: 2rem;
-                color: white;
-            }
-        }
         .landing-title {
             color: white;
             z-index: 5;

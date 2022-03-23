@@ -240,6 +240,7 @@ $text-color: #c4c4c4;
       .profile-content-area {
         width: 100%;
         margin-top: 60px;
+        overflow-y: scroll;
         .text {
           width: 80%;
           margin: 0 auto;
@@ -257,6 +258,13 @@ $text-color: #c4c4c4;
         }
         align-items: baseline;
         justify-content: space-around;
+        .aagaz {
+          opacity: 0.05;
+          position: absolute; /* new */
+          top: 50%;
+          transform: translatey(-50%) rotate(90deg);
+          right: -150px;
+        }
       }
     }
   }
