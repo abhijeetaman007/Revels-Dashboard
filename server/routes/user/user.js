@@ -165,7 +165,7 @@ const resendVerificationLink = async (req, res) => {
       "Verify"
     );
     res.status(200).send({ success: true, msg: "Email Resent" });
-    sendEmailNotif(newUser.email, "Verify Email - REVELS '22", html, message);
+    sendEmailNotif(req.body.email, "Verify Email - REVELS '22", html, message);
     return 0;
   } catch (err) {
     console.log(err);
