@@ -304,10 +304,11 @@ const removeFromTeam = async (req, res) => {
     }
 };
 
-const getTeamByID =async (req, res) => {
+const getEventTeam =async (req, res) => {
     try {
-        let { teamID } = req.body;
-        let team = await Team.findOne({ teamID });
+      // $and:[{},
+        let { event_ID } = req.body;
+        let team = await Team.findOne({event:event_ID,'members.user':req.requestUser._id});
         if (!team)
             return res
                 .status(400)
@@ -321,7 +322,7 @@ const getTeamByID =async (req, res) => {
     }
 };
 
-module.exports = { addToTeam, joinTeam, leaveTeam, removeFromTeam,getTeamByID };
+module.exports = { addToTeam, joinTeam, leaveTeam, removeFromTeam,getEventTeam };
 
 //edge cases
 //user getting added into team multiple times
