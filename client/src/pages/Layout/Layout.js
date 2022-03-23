@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import './Layout.scss';
+<<<<<<< HEAD
 import {
   useLocation,
   useNavigate,
   useParams,
   useSearchParams,
 } from 'react-router-dom';
+=======
+import {useLocation, useNavigate } from 'react-router-dom';
+>>>>>>> d761d6ecd740bde5a9a30ba319ff5ee3825e0135
 import aagaz from './../../assets/aagaz.png';
 import events from './../../assets/icons/events.svg';
 import myEvents from './../../assets/icons/myEvents.svg';
@@ -15,8 +19,12 @@ import logoWhite from './.././../assets/logos/logo_white.png';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import NotifTile from '../../components/NotifTile';
+<<<<<<< HEAD
 import ComingSoon from '../../components/ComingSoon/ComingSoon';
 import Loader from './../Loader/Loader';
+=======
+import Loader from "./../Loader/Loader";
+>>>>>>> d761d6ecd740bde5a9a30ba319ff5ee3825e0135
 import ComingSoonDash from '../../components/ComingSoon/ComingSoon2';
 
 const Layout = ({ children, isAagazVisible = false, activeTab }) => {
@@ -33,6 +41,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
     document.querySelector('.dash-wrapper').classList.toggle('active');
   };
   const handleBell = () => {
+<<<<<<< HEAD
     document.querySelector('.notif-wrapper').classList.toggle('active');
   };
   // handle sidebar nav click
@@ -47,14 +56,31 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
   useEffect(() => {
     if (!auth.loading) {
       setLoading(false);
+=======
+    document.querySelector(".notif-wrapper").classList.toggle('active');
+  }
+  useEffect(() => {
+    if(!auth.loading) {
+      setLoading(false);
+      if (!auth.user) {
+        navigate('/');
+      }  
+>>>>>>> d761d6ecd740bde5a9a30ba319ff5ee3825e0135
     }
     if (!loading)
       document.querySelector(`#${activeTab}`).classList.toggle('active');
+<<<<<<< HEAD
   }, [auth.loading]);
 
   return loading ? (
     <Loader />
   ) : (
+=======
+  },[auth.loading])
+  
+  return (
+    loading ? <Loader /> :
+>>>>>>> d761d6ecd740bde5a9a30ba319ff5ee3825e0135
     <div className="layout-wrapper">
       <nav className="layout-navbar">
         <div className="brand">

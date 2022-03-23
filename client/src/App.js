@@ -18,6 +18,7 @@ import Proshow from './pages/Proshow/Proshow';
 import InsideEvent from './components/InsideEvent/InsideEvent';
 import VerifyAnimation from './components/VerifyAnimation';
 import NotFound from './components/NotFound';
+import Layout from './pages/Layout/Layout';
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
@@ -49,9 +50,7 @@ function App() {
               exact
               path="/dashboard/events"
               element={
-                <PrivateRoute>
-                  <Events />
-                </PrivateRoute>
+                <Events />
               }
             />
             <Route
@@ -73,6 +72,13 @@ function App() {
               }
             />
             <Route path="/dashboard/delegatecard" element={<DelegatePage />} />
+            <Route
+              exact
+              path="/dashboard"
+              element={
+                <Navigate to="/dashboard/profile" />
+              }
+            />
             <Route
               exact
               path="/forgetpass/:passtoken"

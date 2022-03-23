@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useContext, createContext, useState, useEffect } from 'react';
 import { TOKEN_ID } from '../utils/constants';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 const AuthContext = createContext(null);
 
 export const useAuth = () => {
@@ -11,6 +11,7 @@ export const useAuth = () => {
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const restoreUser = async () => {
     const token = localStorage.getItem(TOKEN_ID);
@@ -91,6 +92,7 @@ export default function AuthProvider({ children }) {
     try {
       setUser(null);
       localStorage.removeItem(TOKEN_ID);
+      navigate("/");
     } catch (err) {
       throw err;
     }
