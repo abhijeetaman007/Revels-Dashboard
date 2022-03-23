@@ -21,15 +21,15 @@ function Profile() {
   const [accomodation, setaccomodation] = useState();
   const [open, setOpen] = useState(false);
   const [modalImage, setmodalImage] = useState("");
-  
+
   const toggleModal = () => {
-    setOpen(!open)
-};
- const setDocument = (e ,type) => {
-   if(type=== 'aadhar')setaadhar(e.target.files[0]);
-   if(type=== 'collegeId')setcollegeid(e.target.files[0]);
-   if(type=== 'vaccination')setvaccination(e.target.files[0]);
- }
+    setOpen(!open);
+  };
+  const setDocument = (e, type) => {
+    if (type === "aadhar") setaadhar(e.target.files[0]);
+    if (type === "collegeId") setcollegeid(e.target.files[0]);
+    if (type === "vaccination") setvaccination(e.target.files[0]);
+  };
   useEffect(() => {
     console.log(!auth.loading);
     if (!auth.loading) {
@@ -52,7 +52,7 @@ function Profile() {
     if (vaccination) {
       docs.append("vaccination", vaccination);
     }
-    if(!aadhar || !collegeId || !vaccination) {
+    if (!aadhar || !collegeId || !vaccination) {
       toast.error("No document uploaded", {
         position: "bottom-center",
         id: toastId,
@@ -142,6 +142,14 @@ function Profile() {
       return;
     }
 
+    if (!arrivalDateTime) {
+      toast.error("Select Arrival Date", {
+        position: "bottom-center",
+        id: toastId,
+      });
+      return;
+    }
+
     try {
       let dateOb = new Date(arrivalDateTime);
       const res = await axios.post(
@@ -187,12 +195,14 @@ function Profile() {
 
         <div
           className={
-            auth.user.isMahe === 0 &&
-            (auth.user.documents === undefined ||
-              (auth.user.documents !== undefined &&
-                auth.user.status === "REJECTED"))
+            auth.user.isMahe === 0 && auth.user.documents === undefined
+              ? "profile-content-area extended-two"
+              : auth.user.isMahe === 0 &&
+                auth.user.documents !== undefined &&
+                (auth.user.status === "REJECTED" ||
+                  auth.user.status === "UNVERIFIED")
               ? "profile-content-area extended"
-              : "profile-content-area extended"
+              : "profile-content-area "
           }
         >
           <div className="back-btn w-100">
@@ -308,9 +318,22 @@ function Profile() {
                       return (
                         <>
                           {auth.user.documents[doc].status === 0 && (
-                            <div className="upload" onClick={()=>{toggleModal(); setmodalImage(auth.user.documents[doc].url)}}>
-                              <Modal open={open} onClose={()=>toggleModal()} center>
-                                <img src={modalImage} style={{pointerEvents : 'none'}}/>
+                            <div
+                              className="upload"
+                              onClick={() => {
+                                toggleModal();
+                                setmodalImage(auth.user.documents[doc].url);
+                              }}
+                            >
+                              <Modal
+                                open={open}
+                                onClose={() => toggleModal()}
+                                center
+                              >
+                                <img
+                                  src={modalImage}
+                                  style={{ pointerEvents: "none" }}
+                                />
                               </Modal>
                               <label>{doc.toUpperCase()}</label>
                               <span className="border-box">Unreviewed</span>
@@ -319,39 +342,66 @@ function Profile() {
 
                           {auth.user.documents[doc].status === 1 && (
                             <>
-                            <div className="upload" onClick={()=>{toggleModal(); setmodalImage(auth.user.documents[doc].url)}}>
-                              <Modal open={open} onClose={()=>toggleModal()} center>
-                                <img src={modalImage} style={{pointerEvents : 'none'}}/>
-                              </Modal>
-                              <label>{doc.toUpperCase()}</label>
-                              <i class="fa fa-check "></i>
-                            </div>
-                            
-
+                              <div
+                                className="upload"
+                                onClick={() => {
+                                  toggleModal();
+                                  setmodalImage(auth.user.documents[doc].url);
+                                }}
+                              >
+                                <Modal
+                                  open={open}
+                                  onClose={() => toggleModal()}
+                                  center
+                                >
+                                  <img
+                                    src={modalImage}
+                                    style={{ pointerEvents: "none" }}
+                                  />
+                                </Modal>
+                                <label>{doc.toUpperCase()}</label>
+                                <i class="fa fa-check "></i>
+                              </div>
                             </>
                           )}
 
                           {auth.user.documents[doc].status === 2 && (
                             <>
-                              <div className="upload" >
-                                <Modal open={open} onClose={()=>toggleModal()} center>
-                                  <img src={modalImage} style={{pointerEvents : 'none' , height:"50%"}}/>
+                              <div className="upload">
+                                <Modal
+                                  open={open}
+                                  onClose={() => toggleModal()}
+                                  center
+                                >
+                                  <img
+                                    src={modalImage}
+                                    style={{
+                                      pointerEvents: "none",
+                                      height: "50%",
+                                    }}
+                                  />
                                 </Modal>
-                                <label onClick={()=>{toggleModal(); setmodalImage(auth.user.documents[doc].url)}}>{doc.toUpperCase()}</label>
+                                <label
+                                  onClick={() => {
+                                    toggleModal();
+                                    setmodalImage(auth.user.documents[doc].url);
+                                  }}
+                                >
+                                  {doc.toUpperCase()}
+                                </label>
                                 <input
                                   type="file"
-                                  onChange={(e) =>
-                                    setDocument(e , `${doc}`)
-                                  }
+                                  onChange={(e) => setDocument(e, `${doc}`)}
                                 />
-                                <button onClick={uploadSelectiveDocs}>Upload</button>
+                                <button onClick={uploadSelectiveDocs}>
+                                  Upload
+                                </button>
                               </div>
                             </>
                           )}
                         </>
                       );
                     })}
-                    
                   </div>
                 </>
               )}
@@ -368,7 +418,7 @@ function Profile() {
             </div>
           </div>
           <div className="aagaz">
-            <img src={aagaz} alt="Aagaz | Revels 22"/>
+            <img src={aagaz} alt="Aagaz | Revels 22" />
           </div>
         </div>
       </div>
