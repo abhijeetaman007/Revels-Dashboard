@@ -2,9 +2,9 @@ const AWS = require("aws-sdk");
 const sendEmailNotif = async (email, mailSubject, body, textBody) => {
   try {
     const ses = new AWS.SES({
-      accessKeyId: process.env.AWS_ACCESS_KEY,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-      region: process.env.REGION,
+      accessKeyId: process.env.AWS_ACCESS_KEY_1,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY_1,
+      region: process.env.REGION_1,
     });
     const sesParams = {
       Destination: {
