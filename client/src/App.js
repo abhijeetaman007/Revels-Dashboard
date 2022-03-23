@@ -45,15 +45,7 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route
-              exact
-              path="/dashboard/events"
-              element={
-                <PrivateRoute>
-                  <Events />
-                </PrivateRoute>
-              }
-            />
+            <Route exact path="/dashboard/events" element={<Events />} />
             <Route
               exact
               path="/dashboard/myevents"
@@ -73,6 +65,11 @@ function App() {
               }
             />
             <Route path="/dashboard/delegatecard" element={<DelegatePage />} />
+            <Route
+              exact
+              path="/dashboard"
+              element={<Navigate to="/dashboard/profile" />}
+            />
             <Route
               exact
               path="/forgetpass/:passtoken"

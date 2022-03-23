@@ -1,18 +1,68 @@
+.rads {
+  display: inline-block;
+}
+
+.border-box {
+  font-size: 1rem;
+  padding: 2px 5px;
+  color: #c6a3ff;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
 .layout-wrapper {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
 }
 
-.layout-wrapper nav {
+.layout-wrapper .profile-nav {
   height: 12vh;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
-.layout-wrapper nav i {
-  padding: 10px;
-  background-color: #c4515c;
+.layout-wrapper .profile-nav .brand {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: left;
   color: white;
-  border-radius: 50%;
+  font-size: 1.3rem;
+}
+
+.layout-wrapper .profile-nav .brand p {
+  font-size: 1rem;
+}
+
+.layout-wrapper .profile-nav .brand img {
+  height: 100%;
+}
+
+.layout-wrapper .profile-nav i:nth-child(1) {
+  display: none;
+}
+
+.layout-wrapper .profile-nav i:nth-child(2) {
+  background-color: transparent;
+  margin: auto 0;
+  color: white;
+  font-size: 1.3rem;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.layout-wrapper .profile-nav i:nth-child(2):hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .layout-wrapper .dash-wrapper {
@@ -43,6 +93,7 @@
 .layout-wrapper .dash-wrapper .profile-content-area {
   color: #c4c4c4;
   width: 83%;
+  overflow-y: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -73,13 +124,17 @@
   margin-right: 10px;
 }
 
+.layout-wrapper .dash-wrapper .profile-content-area .back-btn:hover {
+  cursor: pointer;
+}
+
 .layout-wrapper .dash-wrapper .profile-content-area .text {
   width: 50%;
   font-size: 1.2rem;
   font-weight: 200;
-  margin-left: 80px;
+  margin-left: 100px;
   margin-top: 0;
-  height: 80%;
+  height: 90%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -96,16 +151,8 @@
   color: #c4515c;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .name span {
-  font-size: 1rem;
-  padding: 2px 5px;
-  color: #c6a3ff;
-  border: 1px solid;
-  border-radius: 5px;
-}
-
 .layout-wrapper .dash-wrapper .profile-content-area .text .delegate-card {
-  max-height: 150px;
+  padding: 10px;
   background-color: white;
   border-radius: 8px;
   display: -webkit-box;
@@ -114,14 +161,17 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 70%;
+  height: 160px;
 }
 
 .layout-wrapper .dash-wrapper .profile-content-area .text .delegate-card p {
   color: #c4515c;
   font-weight: 700;
+  margin: 5px;
 }
 
 .layout-wrapper .dash-wrapper .profile-content-area .text .delegate-card p span {
@@ -129,11 +179,12 @@
   font-weight: 500;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .delegate-card img {
-  width: 150px;
+.layout-wrapper .dash-wrapper .profile-content-area .text .delegate-card .qr svg {
+  width: 100%;
 }
 
 .layout-wrapper .dash-wrapper .profile-content-area .text .grid {
+  margin: 10px 0;
   width: 70%;
   display: -ms-grid;
   display: grid;
@@ -147,6 +198,8 @@
 }
 
 .layout-wrapper .dash-wrapper .profile-content-area .text .drivelink {
+  width: 70%;
+  margin: 10px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -156,30 +209,66 @@
           flex-direction: column;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink label input {
+.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink .upload {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink .upload input {
   margin-left: auto;
-}
-
-.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink input[type=file]::file-selector-button {
-  font-size: 1rem;
-  background-color: white;
-  border: none;
-  border-radius: 5px;
-}
-
-.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink input {
   color: white;
-  background-color: rgba(81, 109, 216, 0.26);
   border-bottom: none;
   padding: 5px;
   width: 70%;
-  height: 40px;
+}
+
+.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink .upload input[type="file"]::file-selector-button {
+  font-size: 1rem;
+  color: #c4c4c4;
+  background-color: rgba(81, 109, 216, 0.26);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink .radio-btn {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 50%;
+}
+
+.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink .radio-btn div {
+  margin-left: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink .radio-btn div input[type="radio"] {
+  -webkit-appearance: radio;
+}
+
+.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink .radio-btn div label {
+  margin: 0 15px;
+}
+
+.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink .radio-btn div input {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .layout-wrapper .dash-wrapper .profile-content-area .text .drivelink button {
-  height: 40px;
-  margin-left: 20px;
-  width: 20%;
+  margin: 0 auto;
+  padding: 5px 15px;
   font-size: 1rem;
   font-weight: 600;
   background-color: #22b6e6;
@@ -196,7 +285,40 @@
           transform: rotate(90deg);
 }
 
-@media only screen and (max-width: 850px) {
+.layout-wrapper .dash-wrapper .extended {
+  overflow-y: scroll;
+  padding-bottom: 100px;
+}
+
+.layout-wrapper .dash-wrapper .extended .text {
+  margin-top: 230px;
+}
+
+@media only screen and (max-width: 1100px) {
+  .layout-wrapper .dash-wrapper .profile-content-area {
+    width: 100%;
+    margin-top: 60px;
+    -webkit-box-align: baseline;
+        -ms-flex-align: baseline;
+            align-items: baseline;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .layout-wrapper .dash-wrapper .profile-content-area .text {
+    width: 80%;
+    margin: 0 auto;
+  }
+  .layout-wrapper .dash-wrapper .profile-content-area .text .grid {
+    width: 90%;
+  }
+  .layout-wrapper .dash-wrapper .profile-content-area .text .delegate-card {
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
   .layout-wrapper .dash-wrapper .profile-sidebar {
     display: none;
   }
@@ -215,6 +337,9 @@
   .layout-wrapper .dash-wrapper .profile-content-area .text {
     width: 80%;
     margin: 0 auto;
+  }
+  .layout-wrapper .dash-wrapper .profile-content-area .text .grid, .layout-wrapper .dash-wrapper .profile-content-area .text .drivelink {
+    width: 100%;
   }
   .layout-wrapper .dash-wrapper .profile-content-area .text .delegate-card {
     -ms-flex-pack: distribute;

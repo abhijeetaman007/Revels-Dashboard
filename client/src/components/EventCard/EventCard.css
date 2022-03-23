@@ -57,10 +57,12 @@
   padding: 2px 4px;
   text-transform: uppercase;
   color: white;
+  pointer-events: none;
 }
 
 .event-card-wrapper .event-content .event-header .button-area button:last-child {
   border: 0;
+  width: 100%;
   margin-top: 2.5px;
   border-radius: 10px;
   background-color: transparent;

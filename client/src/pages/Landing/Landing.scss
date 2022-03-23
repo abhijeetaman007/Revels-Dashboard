@@ -71,8 +71,9 @@
                 margin: 0;
             }
             h5 {
-                font-size: 2rem;
                 margin: 0;
+                font-family: 'Fira Sans', sans-serif;
+                font-size: 1.4rem;
             }
             h5:first-child {
                 align-self: flex-start;
@@ -80,7 +81,7 @@
             }
             h5:last-child {
                 align-self: flex-end;
-                margin-top: -20px;
+                margin-top: -50px;
             }
         }
     }
@@ -96,14 +97,13 @@
                 bottom: 5%;
             }
             img:nth-child(2) {
-                bottom: 7%;
+                display: none;
             }
             img:nth-child(3) {
-                object-fit: contain;
-                bottom: 17%;
+                display: none;
             }
             img:nth-child(4) {
-                bottom: -7%;
+                bottom: -20%;
             }
             img:nth-child(5) {
                 display: none;
@@ -131,10 +131,14 @@
                 h5:first-child, h5:last-child {
                     align-self: center;
                 }
+                h5:last-child {
+                    margin-top: -35px;
+                }
             }
             nav {
                 z-index: 100;
-                flex-direction: column;
+                flex-direction: row;
+                background-color: transparent;
                 i:first-child {
                     margin: 0 20px;
                     display: block;

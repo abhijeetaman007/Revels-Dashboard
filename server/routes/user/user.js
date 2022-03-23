@@ -404,6 +404,7 @@ const updateAccommodation = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
+  console.log("updated");
   try {
     let user = req.requestUser;
     console.log(req.files.aadhar);
