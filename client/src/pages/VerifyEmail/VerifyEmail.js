@@ -10,20 +10,23 @@ const VerifyEmail = () => {
     const token = params.token;
     useEffect(() => {
         const toastId = toast.loading("Loading...");
-        try {
-            const res = axios.post(`/user/verify/${token}`);
-            if(res.data.success) {
-                navigate("/verified");
-            } else {
-                toast.error("Could not verify email address!", {
-                    position: "bottom-center",
-                    id: toastId,
-                });
-                navigate("/login");
+        const verifyEmail = async () => {
+            try {
+                const res = await axios.get(`/api/user/verify/${token}`);
+                if(res.data.success) {
+                    navigate("/verified");
+                } else {
+                    toast.error("Could not verify email address!", {
+                        position: "bottom-center",
+                        id: toastId,
+                    });
+                    navigate("/login");
+                }
+            } catch (error) {
+                console.log(error);
             }
-        } catch (error) {
-            console.log(error);
         }
+        verifyEmail();
     }, [])
     return (
         <Loader />
