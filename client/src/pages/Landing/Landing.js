@@ -54,7 +54,7 @@ const Landing  = () => {
         </nav>
         <div className="font-antiga landing-title">
           <h5>CELEBRATING 40 YEARS OF REVELRY</h5>
-          <h1 className="title">AAGAZ</h1>
+          <h1 className="title fast-flicker">AAGAZ</h1>
           <h5>BEYOND LEGACIES</h5>
         </div>
       </div>
