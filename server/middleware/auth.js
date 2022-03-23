@@ -23,7 +23,7 @@ const isUserLoggedIn = async (req, res, next) => {
         if (user) {
           if (user.token === token && user.isEmailVerified) {
             req.requestUser = user;
-            // console.log("we are here 123 ", req.requestUser);
+            console.log("we are here 123 ", req.requestUser);
             next();
           } else {
             return res.status(400).send({
