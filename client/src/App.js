@@ -18,6 +18,7 @@ import Proshow from "./pages/Proshow/Proshow";
 import InsideEvent from "./components/InsideEvent/InsideEvent";
 import VerifyAnimation from "./components/VerifyAnimation";
 import NotFound from "./components/NotFound";
+import VerifyEmail from "./pages/VerifyEmail/VerifyEmail";
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
@@ -75,6 +76,7 @@ function App() {
               path="/forgetpass/:passtoken"
               element={<ResetPassword />}
             />
+            <Route path="/verify/:token" element={<VerifyEmail />} />
             <Route path="/verified" element={<VerifyAnimation />} />
 
             {/* <Route path="/admin/:category" element={}/> */}

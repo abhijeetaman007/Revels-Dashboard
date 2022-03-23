@@ -52,7 +52,13 @@ function Profile() {
     if (vaccination) {
       docs.append("vaccination", vaccination);
     }
-
+    if(!aadhar || !collegeId || !vaccination) {
+      toast.error("No document uploaded", {
+        position: "bottom-center",
+        id: toastId,
+      });
+      return;
+    }
     try {
       const res = await axios.post("/api/user/update", docs, {
         headers: {
@@ -186,7 +192,7 @@ function Profile() {
               (auth.user.documents !== undefined &&
                 auth.user.status === "REJECTED"))
               ? "profile-content-area extended"
-              : "profile-content-area"
+              : "profile-content-area extended"
           }
         >
           <div className="back-btn w-100">
@@ -328,9 +334,9 @@ function Profile() {
                           {auth.user.documents[doc].status === 2 && (
                             <>
                               <div className="upload" >
-                              <Modal open={open} onClose={()=>toggleModal()} center>
-                                <img src={modalImage} style={{pointerEvents : 'none' , height:"50%"}}/>
-                              </Modal>
+                                <Modal open={open} onClose={()=>toggleModal()} center>
+                                  <img src={modalImage} style={{pointerEvents : 'none' , height:"50%"}}/>
+                                </Modal>
                                 <label onClick={()=>{toggleModal(); setmodalImage(auth.user.documents[doc].url)}}>{doc.toUpperCase()}</label>
                                 <input
                                   type="file"
@@ -338,8 +344,8 @@ function Profile() {
                                     setDocument(e , `${doc}`)
                                   }
                                 />
+                                <button onClick={uploadSelectiveDocs}>Upload</button>
                               </div>
-                              <button onClick={uploadSelectiveDocs}>Upload</button>
                             </>
                           )}
                         </>

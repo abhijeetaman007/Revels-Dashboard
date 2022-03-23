@@ -3,7 +3,6 @@ import Lottie from 'lottie-react';
 import { Link } from 'react-router-dom';
 import verifiedAnimation from '../assets/verified.json';
 
-import ArrowVector from './../assets/right-arrow.png';
 const VerifyAnimation = () => {
   return (
     <div className="lottie-anim">
@@ -12,10 +11,7 @@ const VerifyAnimation = () => {
       <Link to="/login">
         <button>
           SIGN IN
-          <img
-            style={{ height: '20px', marginLeft: '5px', marginTop: '3px' }}
-            src={ArrowVector}
-          ></img>
+          <i className="fa fa-arrow-right"></i>
         </button>
       </Link>
     </div>
