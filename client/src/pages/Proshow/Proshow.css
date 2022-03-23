@@ -1,0 +1,35 @@
+.proshow {
+  padding-bottom: 70px;
+}
+
+.button-bar {
+  width: 83%;
+  position: fixed;
+  left: 17%;
+  bottom: 0;
+  padding: 20px;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.2rem;
+}
+
+.button-bar:hover {
+  color: #F5737F;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 812px) {
+  .button-bar {
+    left: 0;
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=Proshow.css.map */

@@ -1,0 +1,267 @@
+.landing-wrapper {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  margin: 0;
+  position: relative;
+  background: linear-gradient(358.51deg, #f1964f 20.07%, #1E84A5 120.93%);
+}
+
+.landing-wrapper .svg-wrapper {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100vw;
+}
+
+.landing-wrapper .svg-wrapper img {
+  position: absolute;
+}
+
+.landing-wrapper .svg-wrapper img:nth-child(1) {
+  width: 100%;
+  bottom: 5%;
+  z-index: 2;
+}
+
+.landing-wrapper .svg-wrapper img:nth-child(2) {
+  width: 100%;
+  bottom: -5%;
+  z-index: 3;
+}
+
+.landing-wrapper .svg-wrapper img:nth-child(3) {
+  width: 100%;
+  bottom: -10%;
+  z-index: 4;
+}
+
+.landing-wrapper .svg-wrapper img:nth-child(4) {
+  right: 7%;
+  bottom: -5%;
+  z-index: 1;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.landing-wrapper .svg-wrapper img:nth-child(5) {
+  right: 17%;
+  bottom: 45%;
+  z-index: 7;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.landing-wrapper .svg-wrapper img:nth-child(6) {
+  top: 20%;
+  z-index: 7;
+  width: 100%;
+  width: 100%;
+}
+
+.landing-wrapper .svg-wrapper img:nth-child(7) {
+  bottom: -25%;
+  left: -3%;
+  z-index: 3;
+}
+
+.landing-wrapper .content-wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.landing-wrapper .content-wrapper .landing-nav {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 12vh;
+  padding: 10px;
+  background-color: transparent;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.landing-wrapper .content-wrapper .landing-nav .landing-brand {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: left;
+  color: white;
+  font-size: 1.3rem;
+}
+
+.landing-wrapper .content-wrapper .landing-nav .landing-brand p {
+  font-size: 3rem;
+}
+
+.landing-wrapper .content-wrapper .landing-nav .landing-brand img {
+  height: 100%;
+}
+
+.landing-wrapper .content-wrapper .landing-nav .landing-brand div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.landing-wrapper .content-wrapper .landing-nav i:nth-child(1) {
+  display: none;
+}
+
+.landing-wrapper .content-wrapper .landing-nav .landing-nav-links {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 30px;
+  font-size: 2rem;
+  color: white;
+}
+
+.landing-wrapper .content-wrapper .landing-title {
+  color: white;
+  z-index: 5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.landing-wrapper .content-wrapper .landing-title .title {
+  font-size: 14rem;
+  margin: 0;
+}
+
+.landing-wrapper .content-wrapper .landing-title h5 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.landing-wrapper .content-wrapper .landing-title h5:first-child {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  margin-bottom: -20px;
+}
+
+.landing-wrapper .content-wrapper .landing-title h5:last-child {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-top: -20px;
+}
+
+@media only screen and (max-width: 812px) {
+  .landing-wrapper .svg-wrapper {
+    width: 100vw;
+  }
+  .landing-wrapper .svg-wrapper img {
+    left: -25%;
+  }
+  .landing-wrapper .svg-wrapper img:nth-child(1) {
+    bottom: 5%;
+  }
+  .landing-wrapper .svg-wrapper img:nth-child(2) {
+    bottom: 7%;
+  }
+  .landing-wrapper .svg-wrapper img:nth-child(3) {
+    -o-object-fit: contain;
+       object-fit: contain;
+    bottom: 17%;
+  }
+  .landing-wrapper .svg-wrapper img:nth-child(4) {
+    bottom: -7%;
+  }
+  .landing-wrapper .svg-wrapper img:nth-child(5) {
+    display: none;
+  }
+  .landing-wrapper .svg-wrapper img:nth-child(6) {
+    top: 20%;
+    left: -20%;
+  }
+  .landing-wrapper .svg-wrapper img:nth-child(7) {
+    bottom: -35%;
+    left: -10%;
+  }
+  .landing-wrapper .content-wrapper .landing-title {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .landing-wrapper .content-wrapper .landing-title .title {
+    text-align: center;
+    font-size: 9rem;
+  }
+  .landing-wrapper .content-wrapper .landing-title h5 {
+    text-align: center;
+  }
+  .landing-wrapper .content-wrapper .landing-title h5:first-child, .landing-wrapper .content-wrapper .landing-title h5:last-child {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+  .landing-wrapper .content-wrapper nav {
+    z-index: 100;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .landing-wrapper .content-wrapper nav i:first-child {
+    margin: 0 20px;
+    display: block;
+  }
+  .landing-wrapper .content-wrapper nav .landing-brand {
+    width: 100%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .landing-wrapper .content-wrapper nav .landing-nav-links {
+    display: none;
+  }
+  .landing-wrapper .content-wrapper nav .landing-nav-links.active {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding: 5px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    background-color: black;
+  }
+}
+/*# sourceMappingURL=Landing.css.map */

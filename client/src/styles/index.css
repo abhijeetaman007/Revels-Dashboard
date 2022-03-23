@@ -13,6 +13,10 @@
   user-select: none;
 }
 
+html {
+  overflow-x: hidden;
+}
+
 @font-face {
   font-family: 'Korolev Medium';
   src: url("./fonts/korolev-heavy-cdnfonts/Korolev Medium.otf") format("opentype");
@@ -37,6 +41,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Antiga';
+  src: url("./fonts/Antiga-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
 body {
   background-color: #100b1b;
   overflow: hidden;
@@ -52,6 +64,10 @@ body {
 
 .font-heavy {
   font-family: 'Korolev Bold';
+}
+
+.font-antiga {
+  font-family: 'Antiga';
 }
 
 ::-webkit-scrollbar-track {

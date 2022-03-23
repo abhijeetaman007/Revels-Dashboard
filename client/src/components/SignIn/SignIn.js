@@ -29,7 +29,7 @@ const SignIn = (props) => {
         const res = await auth.userLogin(email, password);
         if (res.success) {
           toast.success(res.msg, { position: 'bottom-center', id: toastId });
-          navigate("/dashboard/events");
+          navigate('/dashboard/events');
         } else {
           toast.error(res.msg[0][Object.keys(res.msg[0])[0]], {
             position: 'bottom-center',
@@ -62,17 +62,21 @@ const SignIn = (props) => {
         </div>
         <div className="user-box d-flex justify-content-center align-items-center">
           <input
-             type={`${isEyeOpen ? "text" : "password"}`}
-             name=""
-             autoComplete="off"
-             required
-             value={password}
-             onChange={(e) => setPassword(e.target.value.trim())}
-             maxLength={100}
-             className="password-input"
+            type={`${isEyeOpen ? 'text' : 'password'}`}
+            name=""
+            autoComplete="off"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value.trim())}
+            maxLength={100}
+            className="password-input"
           />
           <div className="mb-2 eye" onClick={() => setIsEyeOpen(!isEyeOpen)}>
-            <i className={`fa ${isEyeOpen ? "fa-eye" : "fa-eye-slash"} text-white`}></i>
+            <i
+              className={`fa ${
+                isEyeOpen ? 'fa-eye' : 'fa-eye-slash'
+              } text-white`}
+            ></i>
           </div>
           <label>Password</label>
         </div>

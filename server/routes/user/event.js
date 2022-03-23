@@ -114,7 +114,6 @@ const getUserTeams = async (req, res) => {
       .send({ success: false, msg: 'Internal Server Error' });
   }
 };
-
 const getAllEvents = async (req, res) => {
   try {
     let events = await Event.find().populate('category');
@@ -127,62 +126,67 @@ const getAllEvents = async (req, res) => {
   }
 };
 
-const getEventById = async(req,res) =>{
-  try
-  {
-    let {event_Id} = req.body
-    console.log(event_Id)
-    let event = await Event.findOne({_id:event_Id}).populate("category")
-    console.log(event)
-    if(!event)
-      return res.status(400).send({success:false,msg:'Invalid Event ID'})
-    return res.status(200).send({data:event,success:true})
-    
+const getEventById = async (req, res) => {
+  try {
+    let { event_Id } = req.body;
+    console.log(event_Id);
+    let event = await Event.findOne({ _id: event_Id }).populate('category');
+    console.log(event);
+    if (!event)
+      return res.status(400).send({ success: false, msg: 'Invalid Event ID' });
+    return res.status(200).send({ data: event, success: true });
+  } catch (err) {
+    console.log(err);
+    return res
+      .status(500)
+      .send({ msg: 'Internal Server Error', success: false });
   }
-  catch(err)
-  { 
-    console.log(err)
-    return res.status(500).send({msg:'Internal Server Error',success:false})
+};
+
+const getEventTags = async (req, res) => {
+  try {
+    let { event_Id } = req.body;
+    let event = await Event.findOne({ _id: event_Id }, { tags: 1 });
+    if (!event)
+      return res.status(400).send({ success: false, msg: 'Invalid Event ID' });
+    return res.status(200).send({ data: event, success: true });
+  } catch (err) {
+    console.log(err);
+    return res
+      .status(500)
+      .send({ msg: 'Internal Server Error', success: false });
   }
-}
+};
 
-const getEventTags = async(req,res)=>{
-  try
-  {
-    let {event_Id} = req.body
-    let event = await Event.findOne({_id:event_Id},{tags:1})
-    if(!event)
-      return res.status(400).send({success:false,msg:'Invalid Event ID'})
-    return res.status(200).send({data:event,success:true})
+const getEventStatus = async (req, res) => {
+  try {
+    let { event_Id } = req.body;
+    let user = req.requestUser;
+    let team = await Team.findOne({
+      'members.user': user._id,
+      event: event_Id,
+    });
+    if (!team)
+      return res
+        .status(400)
+        .send({ success: false, msg: 'Event Not registered' });
+
+    return res
+      .status(400)
+      .send({ success: true, data: team, msg: 'Event Not registered' });
+  } catch (err) {
+    console.log(err);
+    return res
+      .status(500)
+      .send({ msg: 'Internal Server Error', success: false });
   }
-  catch(err)
-  {
-    console.log(err)
-    return res.status(500).send({msg:'Internal Server Error',success:false})
-  }
-}
+};
 
-const getEventStatus = async(req,res) =>{
-  try
-  {
-    let {event_Id} = req.body
-    let user = req.requestUser
-    let team = await Team.findOne({"members.user":user._id,event:event_Id})
-    if(!team)
-      return res.status(400).send({success:false,msg:'Event Not registered'})
-
-    return res.status(400).send({success:true,data:team,msg:'Event Not registered'})
-    
-      
-  }
-  catch(err)
-  {
-    console.log(err)
-    return res.status(500).send({msg:'Internal Server Error',success:false})
-  }
-}
-
-
-
-
-module.exports = { registerEvent, getUserTeams, getAllEvents,getEventById,getEventStatus,getEventTags };
+module.exports = {
+  registerEvent,
+  getUserTeams,
+  getAllEvents,
+  getEventById,
+  getEventStatus,
+  getEventTags,
+};
