@@ -1,5 +1,5 @@
 const AWS = require("aws-sdk");
-const sendEmailNotif = async (email, mailSubject, body) => {
+const sendEmailNotif = async (email, mailSubject, body, textBody) => {
   try {
     const ses = new AWS.SES({
       accessKeyId: process.env.AWS_ACCESS_KEY,
@@ -19,7 +19,7 @@ const sendEmailNotif = async (email, mailSubject, body) => {
           },
           Text: {
             Charset: "UTF-8",
-            Data: mailSubject,
+            Data: textBody,
           },
         },
         Subject: {
