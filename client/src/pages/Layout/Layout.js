@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import './Layout.scss';
-import {useLocation, useNavigate, useParams, useSearchParams} from 'react-router-dom';
+<<<<<<< HEAD
+import {
+  useLocation,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from 'react-router-dom';
+=======
+import {useLocation, useNavigate } from 'react-router-dom';
+>>>>>>> d761d6ecd740bde5a9a30ba319ff5ee3825e0135
 import aagaz from './../../assets/aagaz.png';
 import events from './../../assets/icons/events.svg';
 import myEvents from './../../assets/icons/myEvents.svg';
@@ -10,12 +19,15 @@ import logoWhite from './.././../assets/logos/logo_white.png';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import NotifTile from '../../components/NotifTile';
+<<<<<<< HEAD
 import ComingSoon from '../../components/ComingSoon/ComingSoon';
+import Loader from './../Loader/Loader';
+=======
 import Loader from "./../Loader/Loader";
+>>>>>>> d761d6ecd740bde5a9a30ba319ff5ee3825e0135
 import ComingSoonDash from '../../components/ComingSoon/ComingSoon2';
 
 const Layout = ({ children, isAagazVisible = false, activeTab }) => {
-
   const navigate = useNavigate();
   const auth = useAuth();
   const user = auth.user;
@@ -27,10 +39,11 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
   // handles hamburger click on mobiles
   const handleHamburger = () => {
     document.querySelector('.dash-wrapper').classList.toggle('active');
-  }
+  };
   const handleBell = () => {
-    document.querySelector(".notif-wrapper").classList.toggle('active');
-  }
+<<<<<<< HEAD
+    document.querySelector('.notif-wrapper').classList.toggle('active');
+  };
   // handle sidebar nav click
   const handleSideClick = (id) => {
     let ids = ['events', 'my-events', 'proshow', 'delegate-card'];
@@ -38,18 +51,36 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
       document.querySelector(`#${ids[i]}`).classList.remove('active');
     }
     document.querySelector(`#${id}`).classList.toggle('active');
-  }
+  };
 
   useEffect(() => {
+    if (!auth.loading) {
+      setLoading(false);
+=======
+    document.querySelector(".notif-wrapper").classList.toggle('active');
+  }
+  useEffect(() => {
     if(!auth.loading) {
-      setLoading(false);    
+      setLoading(false);
+      if (!auth.user) {
+        navigate('/');
+      }  
+>>>>>>> d761d6ecd740bde5a9a30ba319ff5ee3825e0135
     }
-    if(!loading)
+    if (!loading)
       document.querySelector(`#${activeTab}`).classList.toggle('active');
+<<<<<<< HEAD
   }, [auth.loading]);
 
+  return loading ? (
+    <Loader />
+  ) : (
+=======
+  },[auth.loading])
+  
   return (
     loading ? <Loader /> :
+>>>>>>> d761d6ecd740bde5a9a30ba319ff5ee3825e0135
     <div className="layout-wrapper">
       <nav className="layout-navbar">
         <div className="brand">
@@ -75,7 +106,9 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
           <div className="side-nav font-medium">
             <Link to="/dashboard/events">
               <div
-                className={`side-nav-link ${active === "events" ? "active" : ""}`}
+                className={`side-nav-link ${
+                  active === 'events' ? 'active' : ''
+                }`}
                 id="events"
                 onClick={() => setActive('events')}
               >
@@ -87,7 +120,9 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             </Link>
             <Link to="/dashboard/myevents">
               <div
-                className={`side-nav-link ${active === "my-events" ? "active" : ""}`}
+                className={`side-nav-link ${
+                  active === 'my-events' ? 'active' : ''
+                }`}
                 id="my-events"
                 onClick={() => setActive('my-events')}
               >
@@ -99,7 +134,9 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             </Link>
             <Link to="/dashboard/proshow">
               <div
-                className={`side-nav-link ${active === "proshow" ? "active" : ""}`}
+                className={`side-nav-link ${
+                  active === 'proshow' ? 'active' : ''
+                }`}
                 id="proshow"
                 onClick={() => setActive('proshow')}
               >
@@ -111,7 +148,9 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             </Link>
             <Link to="/dashboard/delegatecard">
               <div
-                className={`side-nav-link ${active === "delegate-card" ? "active" : ""}`}
+                className={`side-nav-link ${
+                  active === 'delegate-card' ? 'active' : ''
+                }`}
                 id="delegate-card"
                 onClick={() => setActive('delegate-card')}
               >
@@ -126,7 +165,9 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <h4 className="font-medium">{user.name}</h4>
             <h5 className="font-light">{user.college}</h5>
             <div className="buttons font-medium">
-              <button onClick={()=>navigate(`/dashboard/profile`)}>Profile</button>
+              <button onClick={() => navigate(`/dashboard/profile`)}>
+                Profile
+              </button>
               <button onClick={auth.userLogout}>Logout</button>
             </div>
           </div>
@@ -139,8 +180,9 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
           ) : (
             <></>
           )}
-          {/* {children} */}
-          <ComingSoonDash />
+          {/* change before pushing code */}
+          {children}
+          {/* <ComingSoonDash /> */}
         </div>
         {/* uncomment for proshow */}
         {/* {

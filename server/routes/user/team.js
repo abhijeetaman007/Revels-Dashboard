@@ -1,7 +1,7 @@
-const Team = require("../../models/Team");
-const Event = require("../../models/Event");
-const { nanoid } = require("nanoid");
-const User = require("../../models/User");
+const Team = require('../../models/Team');
+const Event = require('../../models/Event');
+const { nanoid } = require('nanoid');
+const User = require('../../models/User');
 
 const joinTeam = async (req, res) => {
   try {
@@ -17,11 +17,11 @@ const joinTeam = async (req, res) => {
         maxMembers: 1,
       }
     );
-    if (!event) return res.status(404).json({ msg: "Event not found" });
+    if (!event) return res.status(404).json({ msg: 'Event not found' });
 
     //User is not registered for the event
     let team = await Team.findOne(
-      { eventID, "members.user": user._id },
+      { eventID, 'members.user': user._id },
       { teamID: 1 }
     );
 
@@ -31,21 +31,21 @@ const joinTeam = async (req, res) => {
     if (!newTeam)
       return res
         .status(400)
-        .send({ success: false, msg: "Request Team Code Invalid" });
+        .send({ success: false, msg: 'Request Team Code Invalid' });
 
     if (team && teamID == team.teamID)
-      return res.status(400).send({ success: false, msg: "Already in team" });
+      return res.status(400).send({ success: false, msg: 'Already in team' });
 
     if (team)
       return res.status(400).send({
         success: false,
-        msg: "User Already Registered !!",
+        msg: 'User Already Registered !!',
       });
 
     console.log(event);
     // Team Size Full
     if (event.maxMembers == newTeam.members.length)
-      return res.status(400).send({ success: false, msg: "Team is full" });
+      return res.status(400).send({ success: false, msg: 'Team is full' });
 
     if (!event.teamDelegateCard) {
       // Check on delegate cards
@@ -53,7 +53,7 @@ const joinTeam = async (req, res) => {
         if (user.delegateCards.indexOf(delCard) == -1) {
           return res.status(400).send({
             success: false,
-            msg: "Please buy event specific delegate card(s)",
+            msg: 'Please buy event specific delegate card(s)',
           });
         }
       });
@@ -91,7 +91,8 @@ const joinTeam = async (req, res) => {
     //Sending Team Request
     team = await Team.findOneAndUpdate(
       {
-        eventID,
+        // eventID,
+        teamID,
       },
       {
         $addToSet: { requestedMembers: user._id },
@@ -100,14 +101,16 @@ const joinTeam = async (req, res) => {
     );
     //TODO: Send Mail
 
-    return res
-      .status(200)
-      .send({ success: true, msg: "Request to Join team sent", data: team });
+    return res.status(200).send({
+      success: true,
+      msg: 'Request to Join team sent',
+      data: team,
+    });
   } catch (err) {
     console.log(err);
     return res
       .status(500)
-      .json({ success: false, msg: "Internal Server Error" });
+      .json({ success: false, msg: 'Internal Server Error' });
   }
 };
 
@@ -121,7 +124,7 @@ const addToTeam = async (req, res) => {
     if (!member) {
       return res
         .status(400)
-        .send({ success: false, msg: "User does not exist" });
+        .send({ success: false, msg: 'User does not exist' });
     }
 
     let event = await Event.findOne(
@@ -134,10 +137,10 @@ const addToTeam = async (req, res) => {
         maxMembers: 1,
       }
     );
-    if (!event) return res.status(404).json({ msg: "Event not found" });
+    if (!event) return res.status(404).json({ msg: 'Event not found' });
 
     let team = await Team.findOne(
-      { eventID, "members.user": member._id },
+      { eventID, 'members.user': member._id },
       { teamID: 1 }
     );
 
@@ -145,32 +148,32 @@ const addToTeam = async (req, res) => {
 
     //User is not registered for the event
     if (!newTeam)
-      return res.status(400).send({ success: false, msg: "Team Code Invalid" });
+      return res.status(400).send({ success: false, msg: 'Team Code Invalid' });
 
     if (team && teamID == team.teamID)
-      return res.status(400).send({ success: false, msg: "Already in team" });
+      return res.status(400).send({ success: false, msg: 'Already in team' });
 
     if (team)
       return res.status(400).send({
         success: false,
-        msg: "User Already Registered !!",
+        msg: 'User Already Registered !!',
       });
 
     // Team Size Full
     if (event.maxMembers == newTeam.members.length)
       return res
         .status(400)
-        .send({ success: false, msg: "Request Team is full" });
+        .send({ success: false, msg: 'Request Team is full' });
 
     if (newTeam.createdBy.toString() != user._id.toString())
-      return res.status(400).send({ success: false, msg: "Access Denied" });
+      return res.status(400).send({ success: false, msg: 'Access Denied' });
     if (!event.teamDelegateCard) {
       // Check on delegate cards
       event.delegateCards.forEach((delCard) => {
         if (user.delegateCards.indexOf(delCard) == -1) {
           return res.status(400).send({
             success: false,
-            msg: "Event specific delegate card(s) missing. Cannot add user.",
+            msg: 'Event specific delegate card(s) missing. Cannot add user.',
           });
         }
       });
@@ -217,12 +220,12 @@ const addToTeam = async (req, res) => {
 
     return res
       .status(200)
-      .send({ success: true, msg: "User Added to Team", data: team });
+      .send({ success: true, msg: 'User Added to Team', data: team });
   } catch (err) {
     console.log(err);
     return res
       .status(500)
-      .json({ success: false, msg: "Internal Server Error" });
+      .json({ success: false, msg: 'Internal Server Error' });
   }
 };
 
@@ -230,15 +233,15 @@ const leaveTeam = async (req, res) => {
   try {
     let { teamID } = req.body;
     let user = req.requestUser;
-    const team = await Team.findOne({ teamID, "members.user": user._id });
+    const team = await Team.findOne({ teamID, 'members.user': user._id });
     console.log(user._id, team);
     if (!team)
-      return res.status(404).json({ msg: "Unable to leave the team." });
+      return res.status(404).json({ msg: 'Unable to leave the team.' });
     if (team.createdBy.toString() == user._id.toString()) {
       await Team.deleteOne({ teamID });
       return res
         .status(200)
-        .send({ success: true, data: team, msg: "Team Deleted" });
+        .send({ success: true, data: team, msg: 'Team Deleted' });
     }
     await Team.findOneAndUpdate(
       { teamID: teamID },
@@ -247,12 +250,12 @@ const leaveTeam = async (req, res) => {
     );
     return res
       .status(200)
-      .send({ success: true, data: team, msg: "Team Left" });
+      .send({ success: true, data: team, msg: 'Team Left' });
   } catch (err) {
     console.log(err);
     return res
       .status(500)
-      .send({ success: false, msg: "Internal Server Error" });
+      .send({ success: false, msg: 'Internal Server Error' });
   }
 };
 const removeFromTeam = async (req, res) => {
@@ -261,34 +264,69 @@ const removeFromTeam = async (req, res) => {
 
     const member = await User.findOne({ userID }, { userID: 1 });
     let user = req.requestUser;
-    let team = await Team.findOne({ teamID, "members.user": member._id });
-    if (!team) return res.status(404).json({ msg: "Team not found" });
+    let team = await Team.findOne({ teamID, 'members.user': member._id });
+    if (!team) return res.status(404).json({ msg: 'Team not found' });
     console.log(team.createdBy.toString(), user._id.toString());
     if (team.createdBy.toString() != user._id.toString()) {
       return res
         .status(200)
-        .send({ success: true, data: team, msg: "Cannot Remove" });
+        .send({ success: true, data: team, msg: 'Cannot Remove' });
     }
     team = await Team.findOneAndUpdate(
       { teamID: teamID },
       { $pull: { members: { user: member._id } } },
       { new: true }
     );
-    return res
-      .status(200)
-      .send({ success: true, data: team, msg: "User removed from the team" });
+    return res.status(200).send({
+      success: true,
+      data: team,
+      msg: 'User removed from the team',
+    });
   } catch (err) {
     console.log(err);
     return res
       .status(500)
-      .send({ success: false, msg: "Internal Server Error" });
+      .send({ success: false, msg: 'Internal Server Error' });
   }
 };
 
+<<<<<<< Updated upstream
+const getEventTeam = async (req, res) => {
+  try {
+    // $and:[{},
+    let { event_ID } = req.body;
+    let team = await Team.findOne({
+      event: event_ID,
+      'members.user': req.requestUser._id,
+    });
+=======
+const getTeamByID = async (req, res) => {
+  try {
+    let { teamID } = req.body;
+    let team = await Team.findOne({ teamID });
+>>>>>>> Stashed changes
+    if (!team)
+      return res.status(400).send({ success: false, msg: 'Invalid Team' });
+    return res.status(200).send({ success: false, data: team });
+  } catch (err) {
+    console.log(err);
+    return res
+      .status(500)
+      .send({ msg: 'Internal Server Error', success: false });
+  }
+};
 
-
-
-module.exports = { addToTeam, joinTeam, leaveTeam, removeFromTeam };
+module.exports = {
+  addToTeam,
+  joinTeam,
+  leaveTeam,
+  removeFromTeam,
+<<<<<<< Updated upstream
+  getEventTeam,
+=======
+  getTeamByID,
+>>>>>>> Stashed changes
+};
 
 //edge cases
 //user getting added into team multiple times

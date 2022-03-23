@@ -3,8 +3,9 @@ import './EventCard.scss';
 import { Link } from 'react-router-dom';
 const EventCard = ({ data }) => {
   const [eventPath, setEventPath] = React.useState(
-    `/dashboard/event/${data.eventID}`
+    `/dashboard/event/${data._id}`
   );
+
   return (
     <div className="event-card-wrapper">
       <div className="event-content">
@@ -50,7 +51,7 @@ const EventCard = ({ data }) => {
           <div className="box">
             <p className="font-heavy">DATE</p>
             <h3 className="font-light">
-              {new Date(data.eventDateTime).getDate()}-
+              {new Date(data.eventDateTime).getDate()}&nbsp;/&nbsp;
               {new Date(data.eventDateTime).getUTCMonth()}
             </h3>
           </div>

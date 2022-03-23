@@ -52,3 +52,8 @@ $event-card-background: #c6a3ff;
   background-color: rgb(18, 28, 47);
   width: 400px;
 }
+.btn-grp {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

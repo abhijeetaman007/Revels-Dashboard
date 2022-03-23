@@ -362,7 +362,7 @@ function Profile() {
             </div>
           </div>
           <div className="aagaz">
-            <img src={aagaz} />
+            <img src={aagaz} alt="Aagaz | Revels 22"/>
           </div>
         </div>
       </div>
