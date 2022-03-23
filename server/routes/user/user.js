@@ -110,11 +110,11 @@ const userRegister = async (req, res) => {
       passwordResetToken,
     });
     await newUser.save();
-    message = `Please Click to verify ${process.env.FRONT_END_URL}/verify/${passwordResetToken}`;
+    message = `Please Click to verify ${process.env.FRONT_END_URL}verify/${passwordResetToken}`;
     html = emailTemplate(
       "Verify Email - REVELS '22",
       "Please click the below to verify your account.",
-      `${process.env.FRONT_END_URL}/verify/${passwordResetToken}`,
+      `${process.env.FRONT_END_URL}verify/${passwordResetToken}`,
       "Verify"
     );
 
@@ -157,11 +157,11 @@ const resendVerificationLink = async (req, res) => {
       { email: req.body.email },
       { $set: { passwordResetToken } }
     );
-    message = `Please Click to verify ${process.env.FRONT_END_URL}/verify/${passwordResetToken}`;
+    message = `Please Click to verify ${process.env.FRONT_END_URL}verify/${passwordResetToken}`;
     html = emailTemplate(
       "Verify Email - REVELS '22",
       "Please click the below button to verify your account.",
-      `${process.env.FRONT_END_URL}/verify/${passwordResetToken}`,
+      `${process.env.FRONT_END_URL}verify/${passwordResetToken}`,
       "Verify"
     );
     res.status(200).send({ success: true, msg: "Email Resent" });
