@@ -1,23 +1,23 @@
-import './styles/index.scss';
-import React from 'react';
-import axios from 'axios';
-import { Toaster } from 'react-hot-toast';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import AuthProvider from './context/AuthContext';
+import "./styles/index.scss";
+import React from "react";
+import axios from "axios";
+import { Toaster } from "react-hot-toast";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import AuthProvider from "./context/AuthContext";
 
-import AuthPage from './pages/AuthPages/AuthPage';
-import DelegatePage from './pages/DelegatePage/DelegatePage';
-import Landing from './pages/Landing/Landing';
-import PrivateRoute from './utils/PrivateRoute';
-import ResetPassword from './pages/ResetPassword';
+import AuthPage from "./pages/AuthPages/AuthPage";
+import DelegatePage from "./pages/DelegatePage/DelegatePage";
+import Landing from "./pages/Landing/Landing";
+import PrivateRoute from "./utils/PrivateRoute";
+import ResetPassword from "./pages/ResetPassword";
 
-import Profile from './pages/ProfilePage/Profile';
-import Events from './pages/EventPage/EventPage';
-import MyEvents from './pages/MyEvents/MyEvents';
-import Proshow from './pages/Proshow/Proshow';
-import InsideEvent from './components/InsideEvent/InsideEvent';
-import VerifyAnimation from './components/VerifyAnimation';
-import NotFound from './components/NotFound';
+import Profile from "./pages/ProfilePage/Profile";
+import Events from "./pages/EventPage/EventPage";
+import MyEvents from "./pages/MyEvents/MyEvents";
+import Proshow from "./pages/Proshow/Proshow";
+import InsideEvent from "./components/InsideEvent/InsideEvent";
+import VerifyAnimation from "./components/VerifyAnimation";
+import NotFound from "./components/NotFound";
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
@@ -79,10 +79,11 @@ function App() {
               element={<ResetPassword />}
             />
             <Route path="/verified" element={<VerifyAnimation />} />
-            {/* <Route path="*" element={<NotFound />} /> */}
+
             {/* <Route path="/admin/:category" element={}/> */}
             {/* <Route path="/admin/SYSADMIN" element={}/> */}
             <Route exact path="/" element={<Landing />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>
       </BrowserRouter>
