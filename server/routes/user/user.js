@@ -108,6 +108,7 @@ const userRegister = async (req, res) => {
       passwordResetToken,
     });
     await newUser.save();
+    let message;
     if (process.env.CONFIG == 'DEV') {
       message = `Please Click to verify http://localhost:5000/api/user/verify/${passwordResetToken}`;
     } else if (process.env.CONFIG == 'PROD') {

@@ -1,5 +1,4 @@
-// For Multiple Login
-// 
+// For Multiple Login 
 const mongoose = require("mongoose");
 const userTokenSchema = new mongoose.Schema({
     userID:{
