@@ -19,6 +19,9 @@ const {
   isCulturalCategory,
 } = require("../middleware/category")
 const {
+  hasReadAccess,hasReadWriteAccess,hasCategorySuperAdminAccess,hasSuperAdminAccess
+} = require("../middleware/accessLevel")
+const {
   userRegister,
   userLogin,
   userLogout,
@@ -42,6 +45,7 @@ const {
   leaveTeam,
   addToTeam,
   removeFromTeam,
+  getTeamByID
 } = require("./user/team");
 const {
   registerOrder,
@@ -73,8 +77,9 @@ const {
 } = require("./admins/auth");
 const { upload, multipleUpload } = require("../config/aws-s3/multer.config");
 
+
 //Routes:
-router.get("/test",isAdminLoggedIn,isCulturalCategory, (req, res) => {
+router.get("/test",isAdminLoggedIn,hasCategorySuperAdminAccess  , (req, res) => {
   let date = new Date();
   // console.log(date);
   res.send("Testing ");
@@ -114,6 +119,7 @@ router.post(
   isVerifiedForRevels,
   removeFromTeam
 );
+router.post("/user/team/get",isUserLoggedIn,isVerifiedForRevels,getTeamByID)
 
 //Events:
 router.post(

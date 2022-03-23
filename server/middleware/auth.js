@@ -104,7 +104,7 @@ const isAdminLoggedIn = async (req, res, next) => {
       console.log("Payload ", payload);
       if (payload) {
         console.log("id:", payload.admin_Id);
-        let admin = await Admin.findById(payload.admin_Id).populate("role");
+        let admin = await Admin.findOne({_id:payload.admin_Id,token}).populate("role");
         console.log("here ", admin);
         if (admin) {
           req.requestAdmin = admin;

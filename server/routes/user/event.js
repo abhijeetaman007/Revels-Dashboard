@@ -183,4 +183,6 @@ const getEventStatus = async(req,res) =>{
 }
 
 
+
+
 module.exports = { registerEvent, getUserTeams, getAllEvents,getEventById,getEventStatus,getEventTags };
