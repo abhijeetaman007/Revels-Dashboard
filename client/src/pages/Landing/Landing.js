@@ -7,7 +7,8 @@ import two from "./../../assets/backgrounds/two.png";
 import sun from "./../../assets/backgrounds/sun.png";
 import birds from "./../../assets/backgrounds/birds.png";
 import three from "./../../assets/backgrounds/three.png";
-import clouds_top from "./../../assets/backgrounds/clouds.png";
+import topCloud from "./../../assets/backgrounds/topCloud.svg";
+import bottomCloud from "./../../assets/backgrounds/bottomCloud.svg";
 import four from "./../../assets/backgrounds/four.svg";
 import logo from "./../../assets/logo_landing.png";
 import { useAuth } from "../../context/AuthContext";
@@ -76,8 +77,9 @@ const Landing  = () => {
         <img src={tree} alt="Trees layer"></img>
         <img src={sun} alt="This is the sun"></img>
         <img src={birds} alt="These are the birds"></img>
-        <img src={clouds_top} alt="These are the clouds"></img>
+        <img src={topCloud} alt="These are the clouds"></img>
         <img src={four} alt="This is layer four"></img>
+        <img src={bottomCloud} alt="Cloud"></img>
       </div>
     </div>
   );
