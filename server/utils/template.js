@@ -140,12 +140,12 @@ const emailTemplate = (title, description, url, Button) => {
                                                                                                                       href="https://www.instagram.com/revelsmit/"
                                                                                                                       className="button"><img
                                                                                                                           style="width:30px; height:30px;"
-                                                                                                                          src="https://www.edigitalagency.com.au/wp-content/uploads/new-instagram-logo-white-border-icon-png-large.png"></a><a
+                                                                                                                          src="https://test.revelsmit.in/instagram.png"></a><a
                                                                                                                       style="padding:0.6em 1em;border-radius:600px;color:#ffffff;font-size:14px;text-decoration:none;font-weight:bold"
                                                                                                                       href="https://twitter.com/revelsmit"
                                                                                                                       className="button"><img
                                                                                                                           style="width:30px; height:30px;"
-                                                                                                                          src="https://www.iconsdb.com/icons/preview/white/twitter-xxl.png"></a>
+                                                                                                                          src="https://test.revelsmit.in/twitter.png"></a>
                                                                                                               </div>
                                                                                                               <br>
   
