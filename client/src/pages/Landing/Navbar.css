@@ -7,7 +7,7 @@
     display: flex;
     position: fixed;
     width: 100%;
-    background-color: #100b1b;
+    /* background-color: #100b1b; */
     top: 0;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;

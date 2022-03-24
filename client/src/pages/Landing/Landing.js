@@ -69,7 +69,7 @@ const Landing  = () => {
           <img src={aagaz} alt="Aagaz 2022"></img>
           <h5>BEYOND LEGACIES</h5>
         </div>
-      </div>id="sun"
+      </div>
       <div className="svg-wrapper">
         <img src={three} alt="Layer Three"></img>
         <img src={two} alt="Layer Two"></img>
