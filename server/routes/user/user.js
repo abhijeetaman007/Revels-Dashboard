@@ -119,7 +119,8 @@ const userRegister = async (req, res) => {
     );
 
     res.status(200).send({ success: true, msg: "User Registered" });
-    sendEmailNotif(newUser.email, "Verify Email - REVELS '22", html, message);
+    sendEmailNotif(newUser.email, "Email Verification Revels", html, message);
+    sendENotif(newUser.email, "Email Verification Revels", message);
     return 0;
   } catch (err) {
     console.log(err);
