@@ -310,7 +310,7 @@ const userPassResetVerify = async (req, res) => {
   try {
     let { newPassword } = req.body;
     let { token } = req.query;
-    let user = await User.exists({ passwordResetToken: token });
+    let user = await User.findOne({ passwordResetToken: token });
     if (!user) {
       return res
         .status(400)
