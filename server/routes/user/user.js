@@ -7,7 +7,7 @@ const Role = require("../../models/Role");
 const { File } = require("../../models/file");
 const { doUpload } = require("../../utils/file-upload/upload-controller");
 const { emailTemplate } = require("../../utils/template");
-const { sendEmailNotif } = require("../../utils/ses");
+const { sendEmailNotif, sendENotif } = require("../../utils/ses");
 
 const userRegister = async (req, res) => {
   try {
@@ -112,14 +112,14 @@ const userRegister = async (req, res) => {
     await newUser.save();
     message = `Please Click to verify ${process.env.FRONT_END_URL}verify/${passwordResetToken}`;
     html = emailTemplate(
-      "Verify Email - REVELS '22",
+      newUser.name,
       "Please click the below to verify your account.",
       `${process.env.FRONT_END_URL}verify/${passwordResetToken}`,
       "Verify"
     );
 
     res.status(200).send({ success: true, msg: "User Registered" });
-    sendEmailNotif(newUser.email, "Verify Email - REVELS '22", html, message);
+    sendEmailNotif(newUser.email, "Email Verification Revels", html, message);
     return 0;
   } catch (err) {
     console.log(err);
@@ -153,19 +153,19 @@ const resendVerificationLink = async (req, res) => {
         expiresIn: "3d",
       }
     );
-    await User.updateOne(
+    const userDetails = await User.findOneAndUpdate(
       { email: req.body.email },
       { $set: { passwordResetToken } }
     );
     message = `Please Click to verify ${process.env.FRONT_END_URL}verify/${passwordResetToken}`;
     html = emailTemplate(
-      "Verify Email - REVELS '22",
+      userDetails.name,
       "Please click the below button to verify your account.",
       `${process.env.FRONT_END_URL}verify/${passwordResetToken}`,
       "Verify"
     );
     res.status(200).send({ success: true, msg: "Email Resent" });
-    sendEmailNotif(req.body.email, "Verify Email - REVELS '22", html, message);
+    sendEmailNotif(req.body.email, "Email Verification Revels", html, message);
     return 0;
   } catch (err) {
     console.log(err);
@@ -285,7 +285,7 @@ const userPassResetLink = async (req, res) => {
     let token = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: 1 * 60 * 60,
     });
-    await User.updateOne(
+    const userDetails = await User.findOneAndUpdate(
       { _id: user._id },
       { $set: { passwordResetToken: token } }
     );
@@ -293,13 +293,13 @@ const userPassResetLink = async (req, res) => {
     let resetLink = `${process.env.FRONT_END_URL}forgetpass/${token}`;
     let message = `Click here to change yout password ${resetLink}`;
     html = emailTemplate(
-      "Reset Password - REVELS '22",
+      userDetails.name,
       "Please click below to reset your account password.",
       resetLink,
       "Reset Password"
     );
     res.send({ success: true, msg: "Password Reset Link emailed" });
-    sendEmailNotif(email, "Password Reset - REVELS '22", html, message);
+    sendEmailNotif(email, "Revels Reset Password", html, message);
     return 0;
   } catch (err) {
     console.log(err);
@@ -308,8 +308,9 @@ const userPassResetLink = async (req, res) => {
 };
 const userPassResetVerify = async (req, res) => {
   try {
-    let { token, newPassword, email } = req.body;
-    let user = await User.exists({ email }, { passwordResetToken: 1 });
+    let { newPassword } = req.body;
+    let { token } = req.query;
+    let user = await User.findOne({ passwordResetToken: token });
     if (!user) {
       return res
         .status(400)
