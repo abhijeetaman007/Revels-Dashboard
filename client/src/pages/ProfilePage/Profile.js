@@ -14,9 +14,11 @@ function Profile() {
   const navigate = useNavigate();
   const auth = useAuth();
 
-  const [aadhar, setaadhar] = useState();
-  const [collegeId, setcollegeid] = useState();
-  const [vaccination, setvaccination] = useState();
+  const [aadhar, setaadhar] = useState(null);
+  const [collegeId, setcollegeid] = useState(null);
+  const [vaccination, setvaccination] = useState(null);
+  const [undertaking, setundertaking] = useState(null);
+
   const [arrivalDateTime, setarrivalDateTime] = useState();
   const [accomodation, setaccomodation] = useState();
   const [open, setOpen] = useState(false);
@@ -25,10 +27,27 @@ function Profile() {
   const toggleModal = () => {
     setOpen(!open);
   };
+
+  const checkFileType = (type) => {
+    if (
+      type == "image/jpeg" ||
+      type == "image/png" ||
+      type == "application/pdf"
+    )
+      return true;
+    return false;
+  };
   const setDocument = (e, type) => {
+    if(!checkFileType(e.target.files[0].type)){
+      toast.error("Only image/pdf allowed", {
+        position: "bottom-center",
+      });
+      return;
+    }
     if (type === "aadhar") setaadhar(e.target.files[0]);
     if (type === "collegeId") setcollegeid(e.target.files[0]);
     if (type === "vaccination") setvaccination(e.target.files[0]);
+    if (type === "undertaking") setundertaking(e.target.files[0]);
   };
   useEffect(() => {
     console.log(!auth.loading);
@@ -40,9 +59,22 @@ function Profile() {
   }, []);
 
   const uploadSelectiveDocs = async (e) => {
+    let len=0;
+    if(aadhar)len++;
+    if(collegeId)len++;
+    if(vaccination)len++;
+    if(undertaking)len++;
+    if (len==0) {
+      toast.error("No document selected", {
+        position: "bottom-center",
+        id: toastId,
+      });
+      return;
+    }
     const docs = new FormData();
     e.preventDefault();
     const toastId = toast.loading("Loading...");
+    
     if (aadhar) {
       docs.append("aadhar", aadhar);
     }
@@ -52,13 +84,11 @@ function Profile() {
     if (vaccination) {
       docs.append("vaccination", vaccination);
     }
-    if (!aadhar || !collegeId || !vaccination) {
-      toast.error("No document uploaded", {
-        position: "bottom-center",
-        id: toastId,
-      });
-      return;
+    if (undertaking) {
+      docs.append("undertaking", undertaking);
     }
+    
+    
     try {
       const res = await axios.post("/api/user/update", docs, {
         headers: {
@@ -73,7 +103,7 @@ function Profile() {
       }
       console.log(res.data.success);
     } catch (error) {
-      toast.error("Something went wrong1", {
+      toast.error("Something went wrong", {
         position: "bottom-center",
         id: toastId,
       });
@@ -84,6 +114,7 @@ function Profile() {
   const uploadDocs = async (e) => {
     e.preventDefault();
     const toastId = toast.loading("Loading...");
+
     if (!aadhar) {
       toast.error("Aadhar Required", {
         position: "bottom-center",
@@ -105,35 +136,6 @@ function Profile() {
       });
       return;
     }
-    await updateAccommodation(toastId);
-
-    try {
-      const docs = new FormData();
-      docs.append("aadhar", aadhar);
-      docs.append("collegeId", collegeId);
-      docs.append("vaccination", vaccination);
-      const res = await axios.post("/api/user/update", docs, {
-        headers: {
-          authorization: localStorage.getItem("tokenid="),
-        },
-      });
-      if (res.data.success) {
-        toast.success("Successfully Updated!", {
-          position: "bottom-center",
-          id: toastId,
-        });
-      }
-      console.log(res.data.success);
-    } catch (error) {
-      toast.error("Something went wrong1", {
-        position: "bottom-center",
-        id: toastId,
-      });
-      console.log(error.response.data);
-    }
-  };
-
-  const updateAccommodation = async (toastId) => {
     if (!accomodation) {
       toast.error("Choose Accomodation", {
         position: "bottom-center",
@@ -142,13 +144,59 @@ function Profile() {
       return;
     }
 
-    if (!arrivalDateTime) {
+    if (accomodation == "1" && arrivalDateTime == undefined) {
       toast.error("Select Arrival Date", {
         position: "bottom-center",
         id: toastId,
       });
       return;
     }
+    await updateAccommodation();
+
+    try {
+      const docs = new FormData();
+      docs.append("aadhar", aadhar);
+      docs.append("collegeId", collegeId);
+      docs.append("vaccination", vaccination);
+      docs.append("undertaking", undertaking);
+      const res = await axios.post("/api/user/update", docs, {
+        headers: {
+          authorization: localStorage.getItem("tokenid="),
+        },
+      });
+      if (res.data.success) {
+        toast.success("Documents Uploaded!", {
+          position: "bottom-center",
+          id: toastId,
+        });
+      }
+      console.log(res.data.success);
+    } catch (error) {
+      console.log(error.response);
+      toast.error("Documents not uploaded", {
+        position: "bottom-center",
+        id: toastId,
+      });
+      console.log(error.response.data);
+    }
+  };
+
+  const updateAccommodation = async () => {
+    // if (!accomodation) {
+    //   toast.error("Choose Accomodation", {
+    //     position: "bottom-center",
+    //     id: toastId,
+    //   });
+    //   return;
+    // }
+
+    // if (!arrivalDateTime) {
+    //   toast.error("Select Arrival Date", {
+    //     position: "bottom-center",
+    //     id: toastId,
+    //   });
+    //   return;
+    // }
 
     try {
       let dateOb = new Date(arrivalDateTime);
@@ -247,21 +295,64 @@ function Profile() {
                         <label>Aadhar Card</label>
                         <input
                           type="file"
-                          onChange={(e) => setaadhar(e.target.files[0])}
+                          accept="image/jpeg,image/png,application/pdf"
+                          onChange={(e) => {
+                            setaadhar(e.target.files[0]);
+                            if (!checkFileType(e.target.files[0].type)) {
+                              toast.error("Only image/pdf allowed", {
+                                position: "bottom-center",
+                              });
+                              setaadhar(null);
+                            }
+                          }}
                         />
                       </div>
                       <div className="upload">
                         <label>College ID</label>
                         <input
                           type="file"
-                          onChange={(e) => setcollegeid(e.target.files[0])}
+                          accept="image/jpeg,image/png,application/pdf"
+                          onChange={(e) => {
+                            setcollegeid(e.target.files[0]);
+                            if (!checkFileType(e.target.files[0].type)) {
+                              toast.error("Only image/pdf allowed", {
+                                position: "bottom-center",
+                              });
+                              setcollegeid(null);
+                            }
+                          }}
                         />
                       </div>
                       <div className="upload">
                         <label>Vaccination Certificate</label>
                         <input
                           type="file"
-                          onChange={(e) => setvaccination(e.target.files[0])}
+                          accept="image/jpeg,image/png,application/pdf"
+                          onChange={(e) => {
+                            setvaccination(e.target.files[0]);
+                            if (!checkFileType(e.target.files[0].type)) {
+                              toast.error("Only image/pdf allowed", {
+                                position: "bottom-center",
+                              });
+                              setvaccination(null);
+                            }
+                          }}
+                        />
+                      </div>
+                      <div className="upload">
+                        <label>Undertaking</label>
+                        <input
+                          type="file"
+                          accept="image/jpeg,image/png,application/pdf"
+                          onChange={(e) => {
+                            setundertaking(e.target.files[0]);
+                            if (!checkFileType(e.target.files[0].type)) {
+                              toast.error("Only image/pdf allowed", {
+                                position: "bottom-center",
+                              });
+                              setundertaking(null);
+                            }
+                          }}
                         />
                       </div>
                       <div className="radio-btn">
@@ -391,6 +482,7 @@ function Profile() {
                                 </label>
                                 <input
                                   type="file"
+                                  
                                   onChange={(e) => setDocument(e, `${doc}`)}
                                 />
                                 <button onClick={uploadSelectiveDocs}>

@@ -17,6 +17,10 @@ const multipleUpload = multer({ storage: storage }).fields([
     name: "vaccination",
     maxCount: 1,
   },
+  {
+    name: "undertaking",
+    maxCount: 1,
+  },
 ]);
 const upload = multer({ storage: storage }).single("cdfile");
 module.exports = {
