@@ -7,7 +7,7 @@ const Role = require("../../models/Role");
 const { File } = require("../../models/file");
 const { doUpload } = require("../../utils/file-upload/upload-controller");
 const { emailTemplate } = require("../../utils/template");
-const { sendEmailNotif } = require("../../utils/ses");
+const { sendEmailNotif, sendENotif } = require("../../utils/ses");
 
 const userRegister = async (req, res) => {
   try {
@@ -119,7 +119,8 @@ const userRegister = async (req, res) => {
     );
 
     res.status(200).send({ success: true, msg: "User Registered" });
-    sendEmailNotif(newUser.email, "Verify Email - REVELS '22", html, message);
+    sendEmailNotif(newUser.email, "Email Verification Revels", html, message);
+    sendENotif(newUser.email, "Email Verification Revels", message);
     return 0;
   } catch (err) {
     console.log(err);
@@ -159,7 +160,7 @@ const resendVerificationLink = async (req, res) => {
     );
     message = `Please Click to verify ${process.env.FRONT_END_URL}verify/${passwordResetToken}`;
     html = emailTemplate(
-      "Verify Email - REVELS '22",
+      "Revels Email Verification",
       "Please click the below button to verify your account.",
       `${process.env.FRONT_END_URL}verify/${passwordResetToken}`,
       "Verify"
