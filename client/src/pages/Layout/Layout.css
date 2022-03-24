@@ -4,7 +4,7 @@
   overflow: hidden;
 }
 
-.layout-wrapper nav {
+.layout-wrapper .layout-navbar {
   width: 100vw;
   height: 12vh;
   padding: 10px;
@@ -17,7 +17,7 @@
           justify-content: space-between;
 }
 
-.layout-wrapper nav .brand {
+.layout-wrapper .layout-navbar .brand {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -29,26 +29,87 @@
   font-size: 1.3rem;
 }
 
-.layout-wrapper nav .brand p {
+.layout-wrapper .layout-navbar .brand p {
   font-size: 1rem;
 }
 
-.layout-wrapper nav .brand img {
+.layout-wrapper .layout-navbar .brand img {
   height: 100%;
 }
 
-.layout-wrapper nav i:nth-child(1) {
+.layout-wrapper .layout-navbar i:nth-child(1) {
   display: none;
 }
 
-.layout-wrapper nav i:nth-child(2) {
+.layout-wrapper .layout-navbar i:nth-child(2) {
+  background-color: transparent;
+  margin: auto 0;
   color: white;
   font-size: 1.3rem;
   margin-right: 10px;
+  cursor: pointer;
 }
 
-.layout-wrapper .dash-wrapper {
+.layout-wrapper .layout-navbar i:nth-child(2):hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.layout-wrapper .dash-wrapper .notif-wrapper {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 100;
+  width: calc(100% - 17%);
   height: 88vh;
+  position: absolute;
+  left: 17%;
+}
+
+.layout-wrapper .dash-wrapper .notif-wrapper .notif-box {
+  width: 33%;
+  position: absolute;
+  right: 10px;
+  margin-top: -20px;
+  min-height: 33%;
+  max-height: 55%;
+  overflow-y: scroll;
+  border-radius: 10px;
+  background-color: white;
+  padding: 10px;
+}
+
+.layout-wrapper .dash-wrapper .notif-wrapper .notif-box .notif-tile {
+  background-color: #ffccd1;
+  border-radius: 5px;
+  width: 100%;
+  min-height: 60px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 8px;
+  margin: 5px 0;
+}
+
+.layout-wrapper .dash-wrapper .notif-wrapper .notif-box .notif-tile .notif-head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-right: 10px;
+}
+
+.layout-wrapper .dash-wrapper .notif-wrapper .notif-box .notif-tile .notif-head h6 {
+  font-size: 1.2rem;
+}
+
+.layout-wrapper .dash-wrapper .notif-wrapper .notif-box .notif-tile p {
+  font-size: 1rem;
+}
+
+.layout-wrapper .dash-wrapper .notif-wrapper.active {
+  display: block;
 }
 
 .layout-wrapper .dash-wrapper .sidebar {
@@ -73,7 +134,7 @@
 }
 
 .layout-wrapper .dash-wrapper .sidebar .side-nav {
-  height: 70%;
+  height: 80%;
   padding: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -125,7 +186,9 @@
 
 .layout-wrapper .dash-wrapper .sidebar .side-footer {
   width: 100%;
-  height: 30%;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
   padding: 2rem 1rem;
   border-top: 2px solid grey;
   text-align: center;
@@ -181,17 +244,21 @@
 }
 
 @media only screen and (max-width: 800px) {
-  .layout-wrapper nav {
+  .layout-wrapper .layout-navbar {
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
   }
-  .layout-wrapper nav i:first-child {
+  .layout-wrapper .layout-navbar i:first-child {
     margin: 0 20px;
     display: block;
   }
-  .layout-wrapper nav i:last-child {
+  .layout-wrapper .layout-navbar i:last-child {
     display: none;
+  }
+  .layout-wrapper .dash-wrapper .notif-wrapper {
+    width: 100%;
+    left: 0;
   }
   .layout-wrapper .dash-wrapper .sidebar {
     display: none;

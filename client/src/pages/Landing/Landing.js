@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Landing.scss"
 import "./Navbar.css";
 
@@ -10,6 +10,8 @@ import three from "./../../assets/backgrounds/three.png";
 import clouds_top from "./../../assets/backgrounds/clouds.png";
 import four from "./../../assets/backgrounds/four.svg";
 import logo from "./../../assets/logo_landing.png";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const Landing  = () => {
   // handles hamburger click on mobiles
@@ -25,6 +27,7 @@ const Landing  = () => {
       hamburger.classList.remove("active");
       navMenu.classList.remove("active");
   }
+  const auth = useAuth();
   return (
     <div className="landing-wrapper">
       <div className="content-wrapper">
@@ -33,9 +36,9 @@ const Landing  = () => {
             <img src={logo}></img>
           </div>
           <ul class="nav-menu">
-              <li class="nav-item" onClick={closeNav}>
-                  <a href="/register" class="nav-link">Login</a>
-              </li>
+              {auth.user && <li class="nav-item" onClick={closeNav}>
+                  <a href="/dashboard" class="nav-link">Dashboard</a>
+              </li>}
               <li class="nav-item" onClick={closeNav}>
                   <a href="/" class="nav-link">Events</a>
               </li>
@@ -44,6 +47,15 @@ const Landing  = () => {
               </li>
               <li class="nav-item" onClick={closeNav}>
                   <a href="/" class="nav-link">Schedule</a>
+              </li>
+              <li class="nav-item" onClick={closeNav}>
+                  {
+                    auth.user 
+                    ?
+                    <a onClick={auth.userLogout} class="nav-link">Logout</a>
+                    :
+                    <a href="/login" class="nav-link">Login</a>
+                  }
               </li>
           </ul>
           <div class="hamburger" onClick={mobileNav}>

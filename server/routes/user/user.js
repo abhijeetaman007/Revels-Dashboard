@@ -6,6 +6,8 @@ const { mailer } = require("../../utils/mailer");
 const Role = require("../../models/Role");
 const { File } = require("../../models/file");
 const { doUpload } = require("../../utils/file-upload/upload-controller");
+const { emailTemplate } = require("../../utils/template");
+const { sendEmailNotif } = require("../../utils/ses");
 
 const userRegister = async (req, res) => {
   try {
@@ -108,13 +110,17 @@ const userRegister = async (req, res) => {
       passwordResetToken,
     });
     await newUser.save();
-    if (process.env.CONFIG == "DEV") {
-      message = `Please Click to verify http://localhost:5000/api/user/verify/${passwordResetToken}`;
-    } else if (process.env.CONFIG == "PROD") {
-      message = `Please Click to verify ${process.env.API_URL}/api/user/verify/${passwordResetToken}`;
-    }
-    mailer(newUser.email, "Verify Email - REVELS '22", message);
-    return res.status(200).send({ success: true, msg: "User Registered" });
+    message = `Please Click to verify ${process.env.FRONT_END_URL}verify/${passwordResetToken}`;
+    html = emailTemplate(
+      "Verify Email - REVELS '22",
+      "Please click the below to verify your account.",
+      `${process.env.FRONT_END_URL}verify/${passwordResetToken}`,
+      "Verify"
+    );
+
+    res.status(200).send({ success: true, msg: "User Registered" });
+    sendEmailNotif(newUser.email, "Verify Email - REVELS '22", html, message);
+    return 0;
   } catch (err) {
     console.log(err);
     res.status(500).send({
@@ -151,14 +157,15 @@ const resendVerificationLink = async (req, res) => {
       { email: req.body.email },
       { $set: { passwordResetToken } }
     );
-    let message;
-    if (process.env.CONFIG == "DEV") {
-      message = `Please Click to verify http://localhost:${process.env.PORT}/api/user/verify/${passwordResetToken}`;
-    } else if (process.env.CONFIG == "PROD") {
-      message = `Please Click to verify ${process.env.API_URL}/api/user/verify/${passwordResetToken}`;
-    }
+    message = `Please Click to verify ${process.env.FRONT_END_URL}verify/${passwordResetToken}`;
+    html = emailTemplate(
+      "Verify Email - REVELS '22",
+      "Please click the below button to verify your account.",
+      `${process.env.FRONT_END_URL}verify/${passwordResetToken}`,
+      "Verify"
+    );
     res.status(200).send({ success: true, msg: "Email Resent" });
-    mailer(req.body.email, "Verify Email - REVELS '22", message);
+    sendEmailNotif(req.body.email, "Verify Email - REVELS '22", html, message);
     return 0;
   } catch (err) {
     console.log(err);
@@ -170,7 +177,7 @@ const resendVerificationLink = async (req, res) => {
 
 const userLogin = async (req, res) => {
   try {
-    console.log("User Login")
+    console.log("User Login");
     let { email, password } = req.body;
     let user = await User.findOne(
       { email },
@@ -203,11 +210,13 @@ const userLogin = async (req, res) => {
       { _id: user._id },
       { $set: { token } },
       { new: true }
-    ).select({ password: 0 }).populate('delegateCards');
+    )
+      .select({ password: 0 })
+      .populate("delegateCards");
     res.status(200).send({
       success: true,
       msg: "Login Successful",
-      data: user ,
+      data: user,
     });
   } catch (err) {
     console.log(err);
@@ -283,8 +292,14 @@ const userPassResetLink = async (req, res) => {
     // let resetLink = `${process.env.BASE_URL}forgetpass/${user.passwordResetToken}`;
     let resetLink = `${process.env.FRONT_END_URL}forgetpass/${token}`;
     let message = `Click here to change yout password ${resetLink}`;
+    html = emailTemplate(
+      "Reset Password - REVELS '22",
+      "Please click below to reset your account password.",
+      resetLink,
+      "Reset Password"
+    );
     res.send({ success: true, msg: "Password Reset Link emailed" });
-    mailer(email, "Reset Password - REVELS '22", message);
+    sendEmailNotif(email, "Password Reset - REVELS '22", html, message);
     return 0;
   } catch (err) {
     console.log(err);
@@ -342,7 +357,12 @@ const getUserFromToken = async (req, res) => {
 
 const updateAccommodation = async (req, res) => {
   try {
-    console.log("checking accom : " + req.body.required + " and date " + req.body.arrivalDateTime)
+    console.log(
+      "checking accom : " +
+        req.body.required +
+        " and date " +
+        req.body.arrivalDateTime
+    );
     let { required, arrivalDateTime } = req.body;
     let user = req.requestUser;
     // MIT not allowed to apply
@@ -365,9 +385,9 @@ const updateAccommodation = async (req, res) => {
       { _id: req.requestUser._id },
       {
         $set: {
-          accommodation:{
+          accommodation: {
             arrivalDateTime,
-            required
+            required,
           },
         },
       }
@@ -384,6 +404,7 @@ const updateAccommodation = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
+  console.log("updated");
   try {
     let user = req.requestUser;
     console.log(req.files.aadhar);
@@ -410,7 +431,7 @@ const updateUser = async (req, res) => {
       { new: true }
     );
     return res.status(200).json({
-      success :true,
+      success: true,
       message: user,
     });
   } catch (error) {

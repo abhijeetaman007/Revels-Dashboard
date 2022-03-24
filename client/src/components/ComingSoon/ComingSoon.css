@@ -202,6 +202,7 @@
     left: 50%;
     top: 60%;
     transform: translate(-50%, -50%);
+    transition-duration: 1000ms;
 }
 @media only screen and (max-width: 812px) {
     .sign {

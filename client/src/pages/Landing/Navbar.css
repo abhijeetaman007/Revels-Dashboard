@@ -6,6 +6,8 @@
     display: -ms-flexbox;
     display: flex;
     position: fixed;
+    width: 100%;
+    background-color: #100b1b;
     top: 0;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
@@ -55,8 +57,10 @@
     cursor: pointer;
 }
 .nav-link:hover{
-    color: #073646;
+    color: #f1964f;
     cursor: pointer;
+    transform: translateY(-3px);
+    transition-duration: 500ms;
 }
 .nav-logo {
     display: -webkit-box;
@@ -84,6 +88,8 @@
         -webkit-box-direction: normal;
             -ms-flex-direction: column;
                 flex-direction: column;
+        align-items: flex-start;
+        padding-left: 15%;
         background-color: #050404;
         width: 100%;
         text-align: center;
@@ -98,15 +104,16 @@
         height: 100vh;
     }
     .nav-item {
-        margin: 2.5rem 0;
+        margin: 0.85rem 0;
     }
     .hamburger.active .bar {
-        background-color: #A4161A;
+        background-color: #d16716;
     }
     .hamburger {
         display: block;
         z-index: 200;
         cursor: pointer;
+        padding-right: 10px;
     }
     .hamburger.active .bar:nth-child(2) {
         opacity: 0;

@@ -12,6 +12,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  .lottieContainer{
+    margin-left:-80px;
+    display: flex;
+    flex-direction: row;
+  }
   .anim-font {
     color: white;
     font-size: 2rem;
@@ -22,4 +27,21 @@
     border-radius: 1rem;
     font-weight: bold;
   }
+
+@media only screen and (max-width: 800px) {
+  .lottieContainer{
+    width: 200%;
+    text-align: center;
+    margin-left: 50px;
+    flex-direction: column;
+  }
+  .back_ {
+    width: 200%;
+    text-align: center;
+    font-size: 1rem !important;
+    font-weight: 300;
+  }
+  
+}
+
 }

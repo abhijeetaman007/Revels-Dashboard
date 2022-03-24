@@ -12,73 +12,142 @@
 // - isINF (For InfoDesk Portal)
 // - isCNF (For CNF Portal)
 
-const isCategory = async (req, res) => {
+const isCategory = async (req, res, next) => {
   try {
-    let user = req.reqeustUser;
-    if (user.role.type == 0) next();
-    return res.status(400).send({ msg: 'Not a category', success: false });
-  } catch (err) {
-    console.log(err);
-    return res.status(500).send({ msg: '' });
-  }
-};
-
-const isCulturalCategory = async (req, res) => {
-  try {
-    let user = req.reqeustUser;
-    if (user.categoryId.type == 'CULTURAL') next();
-    return res.status(403).send({ msg: 'Access Denied', success: false });
-  } catch (err) {
-    console.log(err);
-    return res.status(500).send({ msg: '' });
-  }
-};
-
-const isSysAdmin = async (req, res) => {
-  try {
-    let user = req.reqeustUser;
-    if (
-      user.categoryId.type == 'SUPPORTING' &&
-      user.categoryId.category == 'SYSADMIN'
-    )
+      let admin = req.requestAdmin;
+      console.log("Admin ",admin.role.type)
+      if (admin.role.type != 1) {
+          return res
+              .status(400)
+              .send({ msg: 'Not a category', success: false });
+      }
       next();
-    return res.status(403).send({ msg: 'Access Denied', success: false });
   } catch (err) {
-    console.log(err);
-    return res.status(500).send({ msg: '' });
+      console.log(err);
+      return res.status(500).send({ msg: '' });
   }
 };
 
-const isOperation = async (req, res) => {
+const isOM = async (req, res, next) => {
   try {
-    let user = req.reqeustUser;
-    if (
-      user.categoryId.type == 'SUPPORTING' &&
-      user.categoryId.category == 'OPERATION'
-    )
+      let admin = req.requestAdmin;
+      console.log('Category ', admin);
+      let category = await Category.findOne(
+          { _id: admin.role.categoryId },
+          { type: 1, categoryId: 1 }
+      );
+      console.log('category is ', category);
+      if (!(category.type == 'SUPPORTING' && category.categoryId == 'OM')) {
+          return res
+              .status(403)
+              .send({ msg: 'Access Denied', success: false });
+      }
       next();
-    return res.status(403).send({ msg: 'Access Denied', success: false });
   } catch (err) {
-    console.log(err);
-    return res
-      .status(500)
-      .send({ msg: 'Internal Server Error', success: false });
+      console.log(err);
+      return res
+          .status(500)
+          .send({ msg: 'Internal Server Error', success: false });
   }
 };
 
-const isVigilance = async (req, res) => {
+const isVigilance = async (req, res, next) => {
   try {
-    let user = req.reqeustUser;
-    if (
-      user.categoryId.type == 'SUPPORTING' &&
-      user.categoryId.category == 'VIGILANCE'
-    )
+      let admin = req.requestAdmin;
+      console.log('Category ', admin);
+      let category = await Category.findOne(
+          { _id: admin.role.categoryId },
+          { type: 1, categoryId: 1 }
+      );
+      console.log('category is ', category);
+      if (!(category.type == 'SUPPORTING' && category.categoryId == 'VIG')) {
+          return res
+              .status(403)
+              .send({ msg: 'Access Denied', success: false });
+      }
       next();
-    return res.status(403).send({ msg: 'Access Denied', success: false });
   } catch (err) {
-    console.log(err);
-    return res
-      .status(500)
-      .send({ msg: 'Internal Server Error', success: false });
+      console.log(err);
+      return res
+          .status(500)
+          .send({ msg: 'Internal Server Error', success: false });
   }
+};
+
+const isOperation = async (req, res, next) => {
+  try {
+      let admin = req.requestAdmin;
+      console.log('Category ', admin);
+      let category = await Category.findOne(
+          { _id: admin.role.categoryId },
+          { type: 1, categoryId: 1 }
+      );
+      console.log('category is ', category);
+      if (!(category.type == 'SUPPORTING' && category.categoryId == 'OPR')) {
+          return res
+              .status(403)
+              .send({ msg: 'Access Denied', success: false });
+      }
+      next();
+  } catch (err) {
+      console.log(err);
+      return res
+          .status(500)
+          .send({ msg: 'Internal Server Error', success: false });
+  }
+};
+
+const isSysAdmin = async (req, res, next) => {
+  try {
+      let admin = req.requestAdmin;
+      console.log('Category ', admin);
+      let category = await Category.findOne(
+          { _id: admin.role.categoryId },
+          { type: 1, categoryId: 1 }
+      );
+      console.log('category is ', category);
+      if (!(category.type == 'SUPPORTING' && category.categoryId == 'SYS')) {
+          return res
+              .status(403)
+              .send({ msg: 'Access Denied', success: false });
+      }
+      next();
+  } catch (err) {
+      console.log(err);
+      return res
+          .status(500)
+          .send({ msg: 'Internal Server Error', success: false });
+  }
+};
+
+const isCulturalCategory = async (req, res, next) => {
+  try {
+      let admin = req.requestAdmin;
+      console.log('Category ', admin);
+      let category = await Category.findOne(
+          { _id: admin.role.categoryId },
+          { type: 1, categoryId: 1 }
+      );
+      console.log('category is ', category);
+      if (!(category.type == 'CULTURAL' )) {
+          return res
+              .status(403)
+              .send({ msg: 'Access Denied', success: false });
+      }
+      next();
+  } catch (err) {
+      console.log(err);
+      return res
+          .status(500)
+          .send({ msg: 'Internal Server Error', success: false });
+  }
+};
+
+module.exports = {
+  isCategory,
+  isOM,
+  isVigilance,
+  isOperation,
+  isSysAdmin,
+  isCulturalCategory,
 };
