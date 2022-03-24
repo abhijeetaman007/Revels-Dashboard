@@ -226,17 +226,19 @@ $text-color: #c4c4c4;
         }
       }
       .aagaz {
-        position: fixed;
-        right: -100px;
-        opacity: 0.1;
-        vertical-align: middle;
-        transform: rotate(90deg);
+        
+          opacity: 0.05;
+          position: absolute; /* new */
+          top: 50%;
+          transform: translatey(-50%) rotate(90deg);
+          right: -80px;
+        
       }
     }
     .extended {
       width: 100%;
       overflow-y: scroll;
-      padding-top: 250px;
+      padding-top: 330px;
       padding-bottom: 50px;
       .text {
         margin-top: 230px;
@@ -245,7 +247,7 @@ $text-color: #c4c4c4;
     .extended-two {
       width: 100%;
       overflow-y: scroll;
-      padding-top: 380px;
+      padding-top: 460px;
       padding-bottom: 50px;
       .text {
         margin-top: 230px;
