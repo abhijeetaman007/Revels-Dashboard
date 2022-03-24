@@ -1,13 +1,11 @@
-@keyframes slideIn {
+@keyframes sunrise {
     from{
         bottom: -50%;
     }
     to{
-        bottom: -5%;
+        bottom: -7%;
     }
-    
 }
-
 .landing-wrapper {
     height: 100vh;
     width: 100vw;
@@ -40,7 +38,8 @@
         }
         img:nth-child(4) {
             right: 7%;
-            animation: slideIn 2.5s;
+            bottom: -7%;
+            animation: sunrise 2.5s;
             z-index: 1;
             width: fit-content;
         }
@@ -98,6 +97,14 @@
     }
 }
 @media only screen and (max-width: 812px) {
+    @keyframes sunrise {
+        from{
+            bottom: -50%;
+        }
+        to{
+            bottom: -24%;
+        }
+    }
     .landing-wrapper{
         .svg-wrapper {
             width: 100vw;
@@ -107,14 +114,13 @@
             img:nth-child(1) {
                 bottom: 5%;
             }
-            img:nth-child(2) {
-                display: none;
-            }
-            img:nth-child(3) {
-                display: none;
-            }
+            img:nth-child(2),
+            img:nth-child(3),
             img:nth-child(5) {
                 display: none;
+            }
+            img:nth-child(4) {
+                bottom: -24%;
             }
             img:nth-child(6) {
                 top: 20%;
@@ -127,9 +133,7 @@
             }
             img:nth-child(8) {
                 display: none;
-
             }
-            
         }
         .content-wrapper {
             .landing-title {

@@ -19,6 +19,7 @@ import InsideEvent from "./components/InsideEvent/InsideEvent";
 import VerifyAnimation from "./components/VerifyAnimation/VerifyAnimation";
 import NotFound from "./components/NotFound";
 import VerifyEmail from "./pages/VerifyEmail/VerifyEmail";
+import OpenComingSoon from "./pages/OpenComingSoon";
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
@@ -78,7 +79,9 @@ function App() {
             />
             <Route path="/verify/:token" element={<VerifyEmail />} />
             <Route path="/verified" element={<VerifyAnimation />} />
-
+            <Route path="/events" element={<OpenComingSoon />} />
+            <Route path="/tshirts" element={<OpenComingSoon />} />
+            <Route path="/schedule" element={<OpenComingSoon />} />
             {/* <Route path="/admin/:category" element={}/> */}
             {/* <Route path="/admin/SYSADMIN" element={}/> */}
             <Route exact path="/" element={<Landing />} />

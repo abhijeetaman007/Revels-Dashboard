@@ -10,61 +10,14 @@ import three from "./../../assets/backgrounds/three.png";
 import topCloud from "./../../assets/backgrounds/topCloud.svg";
 import bottomCloud from "./../../assets/backgrounds/bottomCloud.svg";
 import four from "./../../assets/backgrounds/four.svg";
-import logo from "./../../assets/logo_landing.png";
-import { useAuth } from "../../context/AuthContext";
 import aagaz from "./../../assets/aagaz.png"
+import Navbar from "../../components/Navbar/Navbar";
 
 const Landing  = () => {
-  // handles hamburger click on mobiles
-  const mobileNav = () => {
-    const hamburger = document.querySelector(".hamburger");
-    const navMenu = document.querySelector(".nav-menu");
-    hamburger.classList.toggle("active");
-    navMenu.classList.toggle("active");
-  }
-  const closeNav = () => {
-      const hamburger = document.querySelector(".hamburger");
-      const navMenu = document.querySelector(".nav-menu");
-      hamburger.classList.remove("active");
-      navMenu.classList.remove("active");
-  }
-  const auth = useAuth();
   return (
     <div className="landing-wrapper">
       <div className="content-wrapper">
-        <nav className="navbar">
-          <div className="nav-logo">
-            <img src={logo}></img>
-          </div>
-          <ul className="nav-menu">
-              {auth.user && <li className="nav-item" onClick={closeNav}>
-                  <a href="/dashboard" className="nav-link">Dashboard</a>
-              </li>}
-              <li className="nav-item" onClick={closeNav}>
-                  <a href="/" className="nav-link">Events</a>
-              </li>
-              <li className="nav-item" onClick={closeNav}>
-                  <a href="/" className="nav-link">Tshirts</a>
-              </li>
-              <li className="nav-item" onClick={closeNav}>
-                  <a href="/" className="nav-link">Schedule</a>
-              </li>
-              <li className="nav-item" onClick={closeNav}>
-                  {
-                    auth.user 
-                    ?
-                    <a onClick={auth.userLogout} className="nav-link">Logout</a>
-                    :
-                    <a href="/login" className="nav-link">Login</a>
-                  }
-              </li>
-          </ul>
-          <div className="hamburger" onClick={mobileNav}>
-              <span className="bar"></span>
-              <span className="bar"></span>
-              <span className="bar"></span>
-          </div>
-        </nav>
+        <Navbar />
         <div className="font-antiga landing-title">
           <h5>CELEBRATING 40 YEARS</h5>
           <img src={aagaz} alt="Aagaz 2022"></img>
