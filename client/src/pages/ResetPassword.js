@@ -11,8 +11,7 @@ const ResetPassword = () => {
   const navigate = useNavigate();
   const params = useParams();
 
-  const passToken = params.passToken;
-  const [email, setEmail] = useState("");
+  const passToken = params.passtoken;
   const [password, setPassword] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
 
@@ -33,12 +32,9 @@ const ResetPassword = () => {
     const toastId = toast.loading("Loading...");
     try {
         validateForm(toastId);
-        // change API call route
         const res
             = await axios.post(
-                "/api/user/forgetpass/verify", {
-                  email,
-                  token: passToken,
+                `/api/user/forgetpass/verify?token=${passToken}`, {
                   newPassword: password
                 }
             );
@@ -70,17 +66,6 @@ const ResetPassword = () => {
             <div className="form-wrapper">
                 <h2 className="font-light auth-heading">RESET PASSWORD</h2>
                 <form className="auth-form">
-                    <div className="user-box">
-                      <input
-                        type="email"
-                        name=""
-                        autoComplete="off"
-                        required
-                        onChange={(e) => setEmail(e.target.value.trim())}
-                        maxLength={100}
-                      />
-                      <label>Email ID</label>
-                    </div>
                     <div className="user-box">
                       <input
                         type="password"
