@@ -1,0 +1,38 @@
+[
+    {
+        "day" : "DAY ONE",
+        "date" : "13 April 2022",
+        "name" : "Akash Agarwal",
+        "description" : "Indian Song Writer"
+    },
+    {
+        "day" : "DAY ONE",
+        "date" : "13 April 2022",
+        "name" : "Parthiv Menon",
+        "description" : "Sunburn DJ"
+    },
+    {
+        "day" : "DAY TWO",
+        "date" : "14 April 2022",
+        "name" : "Abhijeet",
+        "description" : "Hollywood Director"
+    },
+    {
+        "day" : "DAY TWO",
+        "date" : "14 April 2022",
+        "name" : "Rhea",
+        "description" : "Indie Band"
+    },
+    {
+        "day" : "DAY THREE",
+        "date" : "15 April 2022",
+        "name" : "Pal Chedhha",
+        "description" : "Bollywood Singer"
+    },
+    {
+        "day" : "DAY THREE",
+        "date" : "15 April 2022",
+        "name" : "Akash Agarwal",
+        "description" : "Indian Song Writer"
+    }
+]
