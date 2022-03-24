@@ -16,12 +16,10 @@ const addDelegateCard = async (req, res) => {
 
         let card = DelCard.exists({ name });
         if (card)
-            return res
-                .status(400)
-                .send({
-                    success: false,
-                    msg: 'Delegate with same name exists',
-                });
+            return res.status(400).send({
+                success: false,
+                msg: 'Delegate with same name exists',
+            });
 
         let cardID;
         while (true) {
@@ -95,13 +93,13 @@ const addRole = async (req, res) => {
         let { accessLevel, categoryId, type } = req.body;
         let category;
         if (categoryId) {
-            category = await Category.findOne({ _id:categoryId }, { _id: 1 });
+            category = await Category.findOne({ _id: categoryId }, { _id: 1 });
             if (!category)
                 return res
                     .status(400)
                     .send({ msg: 'Category Not Found', success: false });
         }
-        categoryId = categoryId == null ? null : category._id
+        categoryId = categoryId == null ? null : category._id;
         let newRole = await new Role({
             accessLevel,
             categoryId,
@@ -152,7 +150,7 @@ const registerAdmin = async (req, res) => {
                 .status(400)
                 .send({ success: false, msg: 'Category does not exists' });
         // console.log(category)
-                let role = await Role.findOne(
+        let role = await Role.findOne(
             { accessLevel, type, category: category._id },
             { _id: 1 }
         );
@@ -161,7 +159,11 @@ const registerAdmin = async (req, res) => {
                 .status(400)
                 .send({ success: false, msg: 'Role does not exists' });
 
-        const pass = Math.random().toString(36).substring(1, 9);
+        const nanoid = customAlphabet(
+            '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
+            8
+        );
+        const pass = nanoid()
         let newAdmin = new Admin({
             name,
             password: pass,
