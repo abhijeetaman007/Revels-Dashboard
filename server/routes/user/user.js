@@ -159,7 +159,7 @@ const resendVerificationLink = async (req, res) => {
     );
     message = `Please Click to verify ${process.env.FRONT_END_URL}verify/${passwordResetToken}`;
     html = emailTemplate(
-      "Verify Email - REVELS '22",
+      "Revels Email Verification",
       "Please click the below button to verify your account.",
       `${process.env.FRONT_END_URL}verify/${passwordResetToken}`,
       "Verify"
