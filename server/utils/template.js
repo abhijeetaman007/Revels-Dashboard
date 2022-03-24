@@ -121,7 +121,7 @@ const emailTemplate = (title, description, url, Button) => {
                                                                                                               style="padding: 0 15px;text-align: justify;color: rgb(76, 76, 76);font-size: 12px;line-height: 18px;">
                                                                                                               <h3 style="font-weight: 600; padding: 0px; margin: 0px; font-size: 16px; line-height: 24px; text-align: center;"
                                                                                                                   className="title-color">
-                                                                                                                  ${title}
+                                                                                                                 Hi, ${title}
                                                                                                               </h3>
                                                                                                               <p
                                                                                                                   style="margin: 20px 0 30px 0;font-size: 15px;text-align: center;">
@@ -186,7 +186,7 @@ const emailTemplate = (title, description, url, Button) => {
                                                                                               valign="middle" width="100%"
                                                                                               style="border-top:1px solid #00A8CC;padding:12px 0px 20px 0px;text-align:center;color:#4c4c4c;font-weight:200;font-size:12px;line-height:18px">
                                                                                               <img style="width:100%;height:100px;object-fit:contain;background: #1a1a1a"
-                                                                                                  src="https://firebasestorage.googleapis.com/v0/b/task1-santanet.appspot.com/o/aagaz.png?alt=media&token=518b0184-46bf-4739-80f8-8de981805531">
+                                                                                                  src="https://test.revelsmit.in/static/media/aagaz.de02e9db11e773475475.png">
                                                                                               <p
                                                                                                   style="margin: 0px 0 0px 0;font-size: 10px;text-align: center; color:#fff ;opacity: 0.7">
   

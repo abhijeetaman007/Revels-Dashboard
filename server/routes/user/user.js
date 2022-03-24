@@ -119,8 +119,8 @@ const userRegister = async (req, res) => {
     );
 
     res.status(200).send({ success: true, msg: "User Registered" });
-    sendEmailNotif(newUser.email, "Email Verification Revels", html, message);
-    sendENotif(newUser.email, "Email Verification Revels", message);
+    sendEmailNotif(newUser.email, newUser.name, html, message);
+    sendENotif(newUser.email, `Hi, ${newUser.name}`, message);
     return 0;
   } catch (err) {
     console.log(err);
@@ -167,6 +167,7 @@ const resendVerificationLink = async (req, res) => {
     );
     res.status(200).send({ success: true, msg: "Email Resent" });
     sendEmailNotif(req.body.email, "Verify Email - REVELS '22", html, message);
+    sendENotif(req.body.email, "Verify Email - REVELS '22", message);
     return 0;
   } catch (err) {
     console.log(err);
