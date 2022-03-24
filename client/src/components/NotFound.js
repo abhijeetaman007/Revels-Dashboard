@@ -10,14 +10,12 @@ const NotFound = () => {
   const navigate = useNavigate();
   return (
     <div className="lottie-anim">
-      <div className="lottieContainer">
+      <div className="lottie-container">
         <Lottie
-          style={{ height: "40vh" }}
           animationData={notfoundAnimation}
           loop
         />
         <Lottie
-          style={{ height: "40vh", marginLeft: "-5em" }}
           animationData={notfound2Animation}
           loop
         />
@@ -29,11 +27,11 @@ const NotFound = () => {
           fontSize: "2em",
           fontWeight: "1000",
           opacity: "0.8",
-          marginTop: "-2em",
         }}
-        className="anim-font back_"
+        className="font-heavy back_ text-white"
       >
         Go Back to Revelry
+        <i className="fa fa-arrow-right mx-3"></i>
       </div>
     </div>
   );

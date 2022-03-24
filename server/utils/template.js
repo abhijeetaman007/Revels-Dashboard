@@ -120,7 +120,7 @@ const emailTemplate = (title, description, url, Button) => {
                                                                                                               width="100%"
                                                                                                               style="padding: 0 15px;text-align: justify;color: rgb(76, 76, 76);font-size: 12px;line-height: 18px;">
                                                                                                               <h3 style="font-weight: 600; padding: 0px; margin: 0px; font-size: 16px; line-height: 24px; text-align: center;"
-                                                                                                                  class="title-color">
+                                                                                                                  className="title-color">
                                                                                                                   ${title}
                                                                                                               </h3>
                                                                                                               <p
@@ -132,18 +132,18 @@ const emailTemplate = (title, description, url, Button) => {
                                                                                                                   style="font-weight: 200; text-align: center; margin: 25px;">
                                                                                                                   <a style="padding:0.6em 1em;border-radius:10px;color:#ffffff;font-size:14px;text-decoration:none;font-weight:bold"
                                                                                                                       href=${url}
-                                                                                                                      class="button-color">${Button}</a>
+                                                                                                                      className="button-color">${Button}</a>
                                                                                                               </div>
                                                                                                               <div
                                                                                                                   style="font-weight: 200; text-align: center; margin: 25px;">
                                                                                                                   <a style="padding:0.6em 1em;border-radius:600px;color:#ffffff;font-size:14px;text-decoration:none;font-weight:bold"
                                                                                                                       href="https://www.instagram.com/revelsmit/"
-                                                                                                                      class="button"><img
+                                                                                                                      className="button"><img
                                                                                                                           style="width:30px; height:30px;"
                                                                                                                           src="https://www.edigitalagency.com.au/wp-content/uploads/new-instagram-logo-white-border-icon-png-large.png"></a><a
                                                                                                                       style="padding:0.6em 1em;border-radius:600px;color:#ffffff;font-size:14px;text-decoration:none;font-weight:bold"
                                                                                                                       href="https://twitter.com/revelsmit"
-                                                                                                                      class="button"><img
+                                                                                                                      className="button"><img
                                                                                                                           style="width:30px; height:30px;"
                                                                                                                           src="https://www.iconsdb.com/icons/preview/white/twitter-xxl.png"></a>
                                                                                                               </div>
