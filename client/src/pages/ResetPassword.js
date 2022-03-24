@@ -60,13 +60,13 @@ const ResetPassword = () => {
   return (
     <div className="auth-wrapper">
       <div className="row">
-        <div className="col-8 hello-area d-flex flex-column justify-content-center align-items-center">
+        <div className="col-md-8 p-0 col-12 hello-area d-flex flex-column justify-content-center align-items-center">
           <div className="hello-box">
             <img src={logoBlack} style={{ height: "100%" }}></img>
           </div>
           <h4 className="auth-revelry">LET THE REVELRY BEGIN</h4>
         </div>
-        <div className="col-4 login-area d-flex flex-col justify-content-center align-items-center">
+        <div className="col-md-4 col-12 login-area d-flex flex-col justify-content-center align-items-center">
             <div className="form-wrapper">
                 <h2 className="font-light auth-heading">RESET PASSWORD</h2>
                 <form className="auth-form">

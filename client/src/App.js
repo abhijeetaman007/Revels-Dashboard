@@ -16,7 +16,7 @@ import Events from "./pages/EventPage/EventPage";
 import MyEvents from "./pages/MyEvents/MyEvents";
 import Proshow from "./pages/Proshow/Proshow";
 import InsideEvent from "./components/InsideEvent/InsideEvent";
-import VerifyAnimation from "./components/VerifyAnimation";
+import VerifyAnimation from "./components/VerifyAnimation/VerifyAnimation";
 import NotFound from "./components/NotFound";
 import VerifyEmail from "./pages/VerifyEmail/VerifyEmail";
 

@@ -51,7 +51,6 @@
             left: -3%;
             z-index: 3;
         }
-        
     }
     .content-wrapper {
         position: absolute;
@@ -66,10 +65,6 @@
             z-index: 5;
             display: flex;
             flex-direction: column;
-            .title{
-                font-size: 14rem;
-                margin: 0;
-            }
             h5 {
                 margin: 0;
                 font-family: 'Fira Sans', sans-serif;
@@ -121,12 +116,13 @@
         .content-wrapper {
             .landing-title {
                 justify-content: center;
-                .title{
-                    text-align: center;
-                    font-size: 9rem;
+                img{
+                    width: 85%;
+                    margin: 10px auto;
                 }
                 h5 {
                     text-align: center;
+                    opacity: 0.8;
                 }
                 h5:first-child, h5:last-child {
                     align-self: center;

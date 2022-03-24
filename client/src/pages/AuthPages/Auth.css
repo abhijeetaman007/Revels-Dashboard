@@ -7,10 +7,6 @@
     height: 100vh;
     width: 100%;
 }
-.criss-cross {
-  background-image: url("./../../assets/backgrounds/CrissCross.svg");
-  background-size: cover;
-}
 .login-area {
     background-color: #100B1B;
     width: 100%;
