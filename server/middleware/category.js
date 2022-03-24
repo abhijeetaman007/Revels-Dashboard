@@ -1,6 +1,8 @@
 // Category Type Middleware: (All Portals)
 // - isCategory -- check admin type(checks individual or Category) (No need to create Individual as a Category)
 
+const Category = require("../models/Category");
+
 // Category Middleware :
 // - isSysAdmin -- check admin -> role-> category SysAdmin (For All Portals)
 // - isSC --  check admin -> role-> category SC (For All Portals)
@@ -11,6 +13,9 @@
 // - isOM (For OM Portal)
 // - isINF (For InfoDesk Portal)
 // - isCNF (For CNF Portal)
+const isSystemAdminCC = (user,category) =>{
+    return (user.role.accessLevel>=4 && category.categoryId=="SYS")
+}
 
 const isCategory = async (req, res, next) => {
   try {
@@ -37,6 +42,11 @@ const isOM = async (req, res, next) => {
           { type: 1, categoryId: 1 }
       );
       console.log('category is ', category);
+      if(isSystemAdminCC(admin,category))
+      {
+          next()
+          return; 
+      }
       if (!(category.type == 'SUPPORTING' && category.categoryId == 'OM')) {
           return res
               .status(403)
@@ -60,6 +70,11 @@ const isVigilance = async (req, res, next) => {
           { type: 1, categoryId: 1 }
       );
       console.log('category is ', category);
+      if(isSystemAdminCC(admin,category))
+      {
+          next()
+          return; 
+      }
       if (!(category.type == 'SUPPORTING' && category.categoryId == 'VIG')) {
           return res
               .status(403)
@@ -83,6 +98,11 @@ const isOperation = async (req, res, next) => {
           { type: 1, categoryId: 1 }
       );
       console.log('category is ', category);
+      if(isSystemAdminCC(admin,category))
+      {
+          next()
+          return; 
+      }
       if (!(category.type == 'SUPPORTING' && category.categoryId == 'OPR')) {
           return res
               .status(403)
@@ -106,6 +126,11 @@ const isSysAdmin = async (req, res, next) => {
           { type: 1, categoryId: 1 }
       );
       console.log('category is ', category);
+      if(isSystemAdminCC(admin,category))
+      {
+          next()
+          return; 
+      }
       if (!(category.type == 'SUPPORTING' && category.categoryId == 'SYS')) {
           return res
               .status(403)
@@ -129,6 +154,11 @@ const isCulturalCategory = async (req, res, next) => {
           { type: 1, categoryId: 1 }
       );
       console.log('category is ', category);
+      if(isSystemAdminCC(admin,category))
+      {
+          next()
+          return; 
+      }
       if (!(category.type == 'CULTURAL' )) {
           return res
               .status(403)
