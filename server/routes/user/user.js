@@ -308,8 +308,9 @@ const userPassResetLink = async (req, res) => {
 };
 const userPassResetVerify = async (req, res) => {
   try {
-    let { token, newPassword, email } = req.body;
-    let user = await User.exists({ email }, { passwordResetToken: 1 });
+    let { newPassword } = req.body;
+    let { token } = req.query;
+    let user = await User.exists({ passwordResetToken: token });
     if (!user) {
       return res
         .status(400)
