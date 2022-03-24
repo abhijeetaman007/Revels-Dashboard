@@ -16,7 +16,17 @@ const Register = (props) => {
   const [password, setPassword] = useState("");
   const [confirmPass, setConfirmPass] = useState("");
   const [course, setCourse] = useState("");
-  const [college, setCollege] = useState("--");
+  const [college, setCollege] = useState(
+    JSON.stringify({
+      _id: "623b754d9823e7b3b02131a9",
+      name: "MANIPAL INSTITUTE OF TECHNOLOGY",
+      state: "Karnataka",
+      isMahe: true,
+      createdAt: "2022-03-23T19:30:22.432Z",
+      updatedAt: "2022-03-23T19:30:22.432Z",
+      __v: 0,
+    })
+  );
   const [isMahe, setIsMahe] = useState(true);
   // handles input field validation
   const validateForm = (toastId) => {
@@ -71,8 +81,7 @@ const Register = (props) => {
           mobileNumber,
           regNum,
           course,
-          college,
-          isMahe
+          college
         );
         if (res.success) {
           toast.success(res.msg, { position: "bottom-center", id: toastId });
@@ -142,18 +151,6 @@ const Register = (props) => {
         </div>
         <div className="user-box">
           <input
-            type="text"
-            name=""
-            autoComplete="off"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value.trim())}
-            maxLength={100}
-          />
-          <label>Email</label>
-        </div>
-        <div className="user-box">
-          <input
             type="number"
             name=""
             autoComplete="off"
@@ -165,16 +162,90 @@ const Register = (props) => {
           <label>Mobile Number</label>
         </div>
         <div className="user-box">
-          <input
-            type="number"
+          <select
+            className="college-select"
             name=""
-            autoComplete="off"
             required
-            value={regNum}
-            onChange={(e) => setRegNum(e.target.value.trim())}
-            maxLength={100}
-          />
-          <label>Registration Number</label>
+            value={college}
+            onChange={(e) => {
+              console.log(college);
+              let val = JSON.parse(e.target.value);
+              setCollege(e.target.value);
+              setIsMahe(val.isMahe);
+              setEmail("");
+              setRegNum("");
+            }}
+          >
+            {collegeList.map((value, index) => {
+              return (
+                <option key={index} value={JSON.stringify(value)}>
+                  {value.name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+        {!isMahe ? (
+          <>
+            <div className="user-box">
+              <input
+                type="text"
+                name=""
+                autoComplete="off"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value.trim())}
+                maxLength={100}
+              />
+              <label>Email</label>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="user-box d-flex justify-content-center align-items-center">
+              <input
+                type="text"
+                name=""
+                autoComplete="off"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value.trim())}
+                maxLength={100}
+              />
+              <div className="mb-2 eye">
+                <p>@learner.manipal.edu</p>
+              </div>
+              <label>Learner ID</label>
+            </div>
+          </>
+        )}
+        <div className="user-box">
+          {isMahe ? (
+            <>
+              <input
+                type="number"
+                name=""
+                autoComplete="off"
+                required
+                value={regNum}
+                onChange={(e) => setRegNum(e.target.value.trim())}
+                maxLength={100}
+              />
+              <label>Registration Number</label>{" "}
+            </>
+          ) : (
+            <>
+              <input
+                name=""
+                autoComplete="off"
+                required
+                value={regNum}
+                onChange={(e) => setRegNum(e.target.value.trim())}
+                maxLength={100}
+              />
+              <label>College Id</label>
+            </>
+          )}
         </div>
         <div className="user-box">
           <input
@@ -187,23 +258,6 @@ const Register = (props) => {
             maxLength={100}
           />
           <label>Course</label>
-        </div>
-        <div className="user-box">
-          <select
-            className="college-select"
-            name=""
-            required
-            value={college}
-            onChange={(e) => setCollege(e.target.value)}
-          >
-            {collegeList.map((value, index) => {
-              return (
-                <option key={index} value={value.name}>
-                  {value.name}
-                </option>
-              );
-            })}
-          </select>
         </div>
         <div className="user-box d-flex justify-content-center align-items-center">
           <input
