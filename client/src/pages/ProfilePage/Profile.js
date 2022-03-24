@@ -31,7 +31,6 @@ function Profile() {
     if (type === "vaccination") setvaccination(e.target.files[0]);
   };
   useEffect(() => {
-    console.log(!auth.loading);
     if (!auth.loading) {
       if (!auth.user) {
         navigate("/");
@@ -206,7 +205,7 @@ function Profile() {
           }
         >
           <div className="back-btn w-100">
-            <i class="fa fa-angle-left fa-2x"></i>
+            <i className="fa fa-angle-left fa-2x"></i>
             <p className="" onClick={() => navigate("/dashboard/events")}>
               Dashboard
             </p>
@@ -360,7 +359,7 @@ function Profile() {
                                   />
                                 </Modal>
                                 <label>{doc.toUpperCase()}</label>
-                                <i class="fa fa-check "></i>
+                                <i className="fa fa-check "></i>
                               </div>
                             </>
                           )}
