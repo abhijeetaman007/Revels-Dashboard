@@ -7,7 +7,7 @@ const Role = require("../../models/Role");
 const { File } = require("../../models/file");
 const { doUpload } = require("../../utils/file-upload/upload-controller");
 const { emailTemplate } = require("../../utils/template");
-const { sendEmailNotif } = require("../../utils/ses");
+const { sendEmailNotif, sendENotif } = require("../../utils/ses");
 
 const userRegister = async (req, res) => {
   try {
