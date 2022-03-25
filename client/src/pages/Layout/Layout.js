@@ -142,8 +142,8 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <></>
           )}
           {/* change before pushing code */}
-          {children}
-          {/* <ComingSoonDash /> */}
+          {/* {children} */}
+          <ComingSoonDash />
         </div>
         {/* uncomment for proshow */}
         {/* {
