@@ -1,8 +1,8 @@
 const College = require('../../models/College');
-
 const getAllColleges = async (req, res) => {
     try {
-        let colleges = await College.find({}, { name: 1, isMahe: 1, state: 1 });
+        console.log("get colleges")
+        let colleges = await College.find({}, { name: 1, state: 1,_id:0 });
         colleges.sort((college1, college2) => {
             if (
                 college1.name.toUpperCase() == 'MANIPAL INSTITUTE OF TECHNOLOGY'

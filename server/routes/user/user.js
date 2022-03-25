@@ -20,7 +20,6 @@ const userRegister = async (req, res) => {
       registrationNumber,
       course,
       college,
-      // state,
     } = req.body;
     console.log(req.body);
     let collegeExists = await College.findOne({ name: college }, { isMahe: 1 });
@@ -55,7 +54,7 @@ const userRegister = async (req, res) => {
     }
 
     let isMahe = collegeExists.isMahe;
-    if (college == "Manipal Institute of Technology") {
+    if (college == "MANIPAL INSTITUTE OF TECHNOLOGY") {
       isMahe = 1;
     }
 

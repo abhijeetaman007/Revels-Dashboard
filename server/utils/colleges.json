@@ -1,0 +1,3079 @@
+{
+    "colleges": [
+        {
+            "name": "MANIPAL INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka",
+            "isMahe":true
+        },
+        {
+            "name": "AAALIM MUHAMMED SALEGH COLLEGE OF ENGINEERING",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "A.G & S.G SIDDHARTHA DEGREE COLLEGE OF ARTS AND SCIENCE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "ABES GHAZIABAD",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "ABES ENGINEERING COLLEGE",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "AC PATIL COLLEGE OF ENGINEERING",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "ACADEMY OF FASHION AND TEXTILE TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "ACHARIYA COLLEGE OF ENGINEERING TECHNOLOGY",
+            "state": "Puducherry"
+        },
+        {
+            "name": "ACHARYA NAGARJUNA UNIVERSITY",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "ACHUTHA INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "ADARSHA LAW COLLEGE",
+            "state": "Telangana"
+        },
+        {
+            "name": "ADHIYAMAN COLLEGE OF ENGINEERING",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "ACHARIYA SCHOOL OF TOURISM AND HOTEL MANAGEMENT",
+            "state": "Puducherry"
+        },
+        {
+            "name": "ADICHUNCHANAGIRI INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "ADITYA ENGINEERING COLLEGE",
+            "state": "Telangana"
+        },
+        {
+            "name": "ADITHYA INSTITUTE OF TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "ADONI ARTS AND SCIENCE COLLEGE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "AGM RURAL COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "AGNEL INSTITUTE",
+            "state": "Goa"
+        },
+        {
+            "name": "AGRA COLLEGE",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "AIT, PUNE",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "AJ INSTITUTE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "AJ INSTITUTE OF MEDICAL SCIENCES AND RESEARCH CENTRE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "AJ INSTITUTE OF DENTAL SCIENCES",
+            "state": "Karnataka"
+        },
+        {
+            "name": "AJAY GARG ENGINEERING COLLEGE",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "AKKINENI NAGESWARA RAO COLLEGE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "AKSHAYA INSTITUTE  OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "ALIGADH MUSLIM UNIVERSITY",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "AKSHAYA INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "ALIGARH MUSLIM UNIVERSITY",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "ALLAHABAD UNIVERSITY",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "ALLIANCE COLLEGE OF ENGINEERING AND DESIGN",
+            "state": "Karnataka"
+        },
+        {
+            "name": "ALLIANCE UNIVERSITY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "ALLURI SEETHARAMA RAJU ACADEMY OF MEDICAL SCIENCES",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "ALPHA COLLEGE OF ENGINEERING",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "ALPHA COLLEGE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Puducherry"
+        },
+        {
+            "name": "ALVAS INSTITUTE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "ALVAS INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "AMBALA COLLEGE OF ENGINEERING AND APPLIED RESEARCH",
+            "state": "Haryana"
+        },
+        {
+            "name": "AMAL JYOTHI COLLEGE OF ENGINEERING",
+            "state": "Kerela"
+        },
+        {
+            "name": "AMBEDKAR INSTITUTE OF TECHNOLOGY",
+            "state": "Delhi"
+        },
+        {
+            "name": "AMBALIKA INST OF MANAGEMENT",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "AMC COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "AMITY LAW COLLEGE",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "AMITY LAW, IP (AFFILIATED TO IP)",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "AMITY SCHOOL OF ENGINEERING AND TECHNOLOGY, NOIDA",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "AMITY UNIVERSITY",
+            "state": "Punjab"
+        },
+        {
+            "name": "AMRITA SCHOOL OF MEDICINE",
+            "state": "Kerela"
+        },
+        {
+            "name": "AMRAPALI INSTITUTE OF TECHNOLOGY AND SCIENCES, HALDWANI",
+            "state": "Uttarakhand"
+        },
+        {
+            "name": "AMRITHA SAI INSTITUTE OF SCIENCE AND TECHNOLOGY",
+            "state": "Telangana"
+        },
+        {
+            "name": "AMRITHA VISHWA VIDYAPEETHAM",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "ANAND INSTITUTE OF HIGHER EDUCATION",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "ANANTHA COLLEGE OF LAW",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "ANDHRA LOYOLA COLLEGE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "ANDHRA MUSLIM COLLEGE OF ARTS AND SCIENCE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "ANDHRA LOYOLA INSTITUTE OF ENGINEERING",
+            "state": "Telangana"
+        },
+        {
+            "name": "ANDHRA UNIVERSITY",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "ANDHRA VIDYALAYA COLLEGE",
+            "state": "Telangana"
+        },
+        {
+            "name": "ANIL NEERUKONDA INSTITUTE OF TECNOLOGY",
+            "state": "Telangana"
+        },
+        {
+            "name": "ANJUMAN INSTITUTE OF TECHNOLOGY AND MANAGEMENT",
+            "state": "Karnataka"
+        },
+        {
+            "name": "ANNA SCHOOL OF MANAGEMENT & SCIENCE COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "ANGADI INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "ANNAMACHARYA INSTITUTE OF TECHNOLOGY AND SCIENCE",
+            "state": "Telangana"
+        },
+        {
+            "name": "ANNAMAL INSTITUTE OF HOTEL MANAGEMENT",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "ANNAPURNA INTERNATIONAL SCHOOL OF FILM AND MEDIA",
+            "state": "Telangana"
+        },
+        {
+            "name": "APOLLO ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "APPA INSTITUTE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "APS COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "ANNABATTUNI SATYANARAYANA DEGREE COLLEGE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "ANNA UNIVERSITY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "ARINAGAR ANNA GOVERNMENT ARTS AND SCIENCE COLLEGE",
+            "state": "Puducherry"
+        },
+        {
+            "name": "ARUTPERUNCHOTHI RAMALINGASAMMY COLLEGE OF EDUCATION",
+            "state": "Puducherry"
+        },
+        {
+            "name": "ASHOKA UNIVERISTY, SONIPAT",
+            "state": "Haryana"
+        },
+        {
+            "name": "ATME COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "AU COLLEGE OF ENGINEERING",
+            "state": "Telangana"
+        },
+        {
+            "name": "AUDISANKARA COLLEGE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Telangana"
+        },
+        {
+            "name": "AVVAIYAR COLLEGE OF ENGINEERING AND TECHNOLOGY FOR WOMEN",
+            "state": "Puducherry"
+        },
+        {
+            "name": "B V BHHOMARADI COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "B.S. ABDUR RAHMAN UNIVERSITY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "B.S.M. COLLEGE OF ENGINEERING",
+            "state": "Uttarakhand"
+        },
+        {
+            "name": "B.V BHOOMARADDI COLLEGE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "BANARAS HINDU UNIVERSITY",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "BANGALORE INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "BANGALORE MEDICAL COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "BANGALORE MEDICAL COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "BANGALORE INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "BANNARI AMMAN INSTITUTE OF TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "BAPATLA ENGINEERING COLLEGE",
+            "state": "Telangana"
+        },
+        {
+            "name": "BAPUJI INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "BASAVESHWARA ENGINEERING COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "BEARYS INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "BEARYS INSTITUTE OF TECHNOLOGY , MANGALORE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "BELLARY INSTITUTE OF TECHNOLOGY AND MANAGEMENT",
+            "state": "Karnataka"
+        },
+        {
+            "name": "BGS GLOBAL INSTITUTE OF MEDICAL SCIENCES",
+            "state": "Karnataka"
+        },
+        {
+            "name": "BGS INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "BHAGWAN PARSHURAM INSTITUTE OF TECHNOLOGY",
+            "state": "Delhi"
+        },
+        {
+            "name": "BHAJARANG ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "BHARATH INSTITUTE OF HIGHER EDUCATION AND RESEARCH",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "BHANDARKARS ARTS AND SCIENCE COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "BHARATHIDASAN INSTITUTE OF MANAGEMENT",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "BHARATI VIDYAPEETH'S COLLEGE OF ENGINEERING",
+            "state": "Delhi"
+        },
+        {
+            "name": "BHOJ REDDY ENGINEERING COLLEGE FOR WOMEN",
+            "state": "Telangana"
+        },
+        {
+            "name": "BIPIN TRIPATHI KUMAON INSTITUTE OF TECHNOLOGY",
+            "state": "Uttarakhand"
+        },
+        {
+            "name": "BITS GOA",
+            "state": "Goa"
+        },
+        {
+            "name": "BITS",
+            "state": "Telangana"
+        },
+        {
+            "name": "BITS PILANI",
+            "state": "Rajasthan"
+        },
+        {
+            "name": "BMSCE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "BNM INSTITUE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "BMSIT",
+            "state": "Karnataka"
+        },
+        {
+            "name": "BNMIT",
+            "state": "Karnataka"
+        },
+        {
+            "name": "BONAM VENKATA CHALAMAYYA ENGINEERING COLLEGE",
+            "state": "Telangana"
+        },
+        {
+            "name": "BOSTON INSTITUTE OF HOTEL MANAGEMENT",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "BRINDAVAN INSTITUTE TECHNOLOGY AND SCIENCE",
+            "state": "Telangana"
+        },
+        {
+            "name": "C.E.S COLLEGE OF ARTS AND COMMERCE",
+            "state": "Goa"
+        },
+        {
+            "name": "BRAHMA VALLEY COLLEGE OF ENGINEERING",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "CANARA COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "CANARA ENGINEERING COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "CBIT",
+            "state": "Telangana"
+        },
+        {
+            "name": "CCS HARYANA AGRICULTURAL UNIVERSITY",
+            "state": "Punjab"
+        },
+        {
+            "name": "CARMEL COLLEGE FOR WOMEN",
+            "state": "Goa"
+        },
+        {
+            "name": "CH. S. D. ST. THERESA COLLEGE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "CENTRAL INSTITUTE OF PLASTICS ENGINEERING AND TECHNOLOGY, LUCKNOW",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "CHAITANYA ENGINEERING COLLEGE",
+            "state": "Telangana"
+        },
+        {
+            "name": "CHANDIGARH ENGINEERING COLLEGE",
+            "state": "Punjab"
+        },
+        {
+            "name": "CHANDRA SHEKHAR UNIV OF AGRICULTURE",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "CHANDIGARH UNIVERSITY",
+            "state": "Punjab"
+        },
+        {
+            "name": "CHENGALPATTU MEDICAL COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "CHANNABASAVESHWARA INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "CHITKARA UNIVERSITY",
+            "state": "Punjab"
+        },
+        {
+            "name": "CHENNAI INSTITUTE OF TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "CHRIST COLLEGE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Puducherry"
+        },
+        {
+            "name": "CHRIST LAW SCHOOL",
+            "state": "Karnataka"
+        },
+        {
+            "name": "CHRIST INSTITUTE OF TECHNOLOGY",
+            "state": "Puducherry"
+        },
+        {
+            "name": "CHRIST UNIVERSITY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "CITY ENGINEERING COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "CMR COLLEGE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Telangana"
+        },
+        {
+            "name": "CMR INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "CMS COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "COEP",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "COIMBATORE INSTITUTE OF TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "COIMBATORE MEDICAL COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "COLLEGE OF APPLIED SCIENCE,ADOOR",
+            "state": "Kerela"
+        },
+        {
+            "name": "COLLEGE OF APPLIED SCIENCE,CHEEMENI",
+            "state": "Kerela"
+        },
+        {
+            "name": "COLLEGE OF APPLIED SCIENCE,KOOTHUPARAMBA",
+            "state": "Kerela"
+        },
+        {
+            "name": "COLLEGE OF APPLIED SCIENCE,MALAPPURAM",
+            "state": "Kerela"
+        },
+        {
+            "name": "COLLEGE OF APPLIED SCIENCE,MANJESHWARAM",
+            "state": "Kerela"
+        },
+        {
+            "name": "COLLEGE OF APPLIED SCIENCE,KOZHIKODE",
+            "state": "Kerela"
+        },
+        {
+            "name": "COLLEGE OF APPLIED SCIENCE,NATTIKA",
+            "state": "Kerela"
+        },
+        {
+            "name": "COLLEGE OF APPLIED SCIENCE,MAVELIKKARA",
+            "state": "Kerela"
+        },
+        {
+            "name": "COLLEGE OF ENGG. MUNNAR",
+            "state": "Kerela"
+        },
+        {
+            "name": "COLLEGE OF APPLIED SCIENCE,VADAKKANCHERY",
+            "state": "Kerela"
+        },
+        {
+            "name": "COLLEGE OF APPLIED SCIENCE,PATTUVAM",
+            "state": "Kerela"
+        },
+        {
+            "name": "COLLEGE OF ENGINEERING THALASSERY",
+            "state": "Kerela"
+        },
+        {
+            "name": "COLLEGE OF ENGINEERING, GUINDY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "COLLEGE OF ENGINEERING TRIVANDRUM",
+            "state": "Kerela"
+        },
+        {
+            "name": "COLLEGE OF ENGINEERING STUDIES, UPES",
+            "state": "Uttarakhand"
+        },
+        {
+            "name": "COLLEGE OF TECH, GB PANT UNIVERSITY OF AGRI & TECH",
+            "state": "Uttarakhand"
+        },
+        {
+            "name": "COLLEGE OF ENGINEERING,ROORKE",
+            "state": "Uttarakhand"
+        },
+        {
+            "name": "COLLEGE OF ENGINEERING CHEGANNUR",
+            "state": "Kerela"
+        },
+        {
+            "name": "COLLEGE OF VOCATIONAL STUDIES (CVS), DU",
+            "state": "Delhi"
+        },
+        {
+            "name": "COORG INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "CULINARY ACADEMY OF INDIA",
+            "state": "Telangana"
+        },
+        {
+            "name": "CUSAT MAIN CAMPUS",
+            "state": "Kerela"
+        },
+        {
+            "name": "CVR COLLEGE OF ENGINEERING",
+            "state": "Telangana"
+        },
+        {
+            "name": "D J ACADEMY OF DESIGN",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "DAMODARAM SANJIVAYYA NATIONAL LAW UNIVERSITY",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "DAITA SRIRAMULU HINDU COLLEGE OF LAW",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "D.N.R.COLLEGE OF LAW",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "DADI INSTITUTE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Telangana"
+        },
+        {
+            "name": "DAV COLLEGE",
+            "state": "Punjab"
+        },
+        {
+            "name": "DAYALBAGH EDUCATIONAL INSTITUTE",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "DATTA MEGHE COLLEGE OF ENGINEERING",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "DAYANAND SAGAR INSTITUTE OF TECHNOLOGY AND MANAGEMENT",
+            "state": "Karnataka"
+        },
+        {
+            "name": "DAYANAND SAGAR COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "DAYANANDA SAGAR COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "DAYANANDA SAGAR ACADEMY OF TECH AND MANAGAMENT",
+            "state": "Karnataka"
+        },
+        {
+            "name": "DELHI COLLEGE OF ARTS AND COMMERCE, DU",
+            "state": "Delhi"
+        },
+        {
+            "name": "DELHI TECHNOLOGICAL UNIVERSITY",
+            "state": "Delhi"
+        },
+        {
+            "name": "DEVAGIRI COLLEGE CALICUT",
+            "state": "Kerela"
+        },
+        {
+            "name": "DIT UNIVERSITY",
+            "state": "Uttarakhand"
+        },
+        {
+            "name": "DJ SANGHVI, MUMBAI",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "DNR COLLEGE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Telangana"
+        },
+        {
+            "name": "DON BOSCO COLLEGE OF ENGINEERING",
+            "state": "Goa"
+        },
+        {
+            "name": "DON BOSCO, MUMBAI",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "DOON INSTITUTE OF ENGINEERING & TECHNOLOGY",
+            "state": "Uttarakhand"
+        },
+        {
+            "name": "DR B R AMBEDKAR NATIONAL INSTITUTE OF TECHNOLOGY, JALANDHAR",
+            "state": "Punjab"
+        },
+        {
+            "name": "DR JJ MAGDUM COLLEGE OF ENGINEERING, JAISINGHPUR, KOLHAPUR",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "DR MGR UNIVERSITY EDUCATION AND RESEARCH",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "DR MAHALINGAM COLLEGE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "DR NGP INSTITUTE OF TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "DR. A.P.J ABDUL KALAM INSTITUTE OF TECHNOLOGY TANAKPUR",
+            "state": "Uttarakhand"
+        },
+        {
+            "name": "DR. B. R. AMBEDKAR COLLEGE OF LAW",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "DR. B. R. AMBEDKAR OPEN UNIVERSITY",
+            "state": "Telangana"
+        },
+        {
+            "name": "DR. B.R AMBEDKAR MEDICAL COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "DR.BR AMBEDKAR MEDICAL COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "DR. BABASAHEB AMBEDKAR MARATHWADA UNIVERSITY",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "DR.SOMERVELL MEMORIAL CSI MEDICAL COLLEGE",
+            "state": "Kerela"
+        },
+        {
+            "name": "DREAM ZONE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "DY PATIL KOHLAPUR",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "DUVVURU RAMANAMMA WOMEN S COLLEGE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "EASWARI ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "ESI MEDICAL COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "ETHIRAJ COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "FACULTY OF ENGINEERING AND TECHNOLOGY",
+            "state": "Delhi"
+        },
+        {
+            "name": "EMPEE INSTITUTE OF HOTEL MANAGEMENT AND CATERING TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "FACULTY OF ENGINEERING AND TECHNOLOGY GURUKUL KANGRI UNIVERSITY",
+            "state": "Uttarakhand"
+        },
+        {
+            "name": "FATHIMA INSTITUTE OF MEDICAL SCIENCES",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "FATIMA MICHAEL COLLEGE OF ENGINEERING TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "FAROOK COLLEGE",
+            "state": "Kerela"
+        },
+        {
+            "name": "FATHER MULLERS INSTITUTE OF MEDICAL EDUCATION AND RESEARCH",
+            "state": "Karnataka"
+        },
+        {
+            "name": "FEDERAL INSTITUTE OF SCIENCE AND TECHNOLOGY",
+            "state": "Kerela"
+        },
+        {
+            "name": "FR.AGNEL COLLEGE OF ARTS AND COMMERCE",
+            "state": "Goa"
+        },
+        {
+            "name": "FINOLEX ACADEMY OF MANAGEMENT AND TECHNOLOGY",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "G NARAYANAMMA INSTITUTE OF TECHNOLOGY AND SCIENCE",
+            "state": "Telangana"
+        },
+        {
+            "name": "G M INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "G.MADEGOWDA INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "G.PULLA REDDY INSTITUTE OF TECHNOLOGY",
+            "state": "Telangana"
+        },
+        {
+            "name": "GALGOTIAS, GREATER NOIDA",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "GAMRC",
+            "state": "Goa"
+        },
+        {
+            "name": "GATES INSTITUTE OF TECHNOLOGY",
+            "state": "Telangana"
+        },
+        {
+            "name": "GAYATRI VIDYA PARISHAD INSTITUTE",
+            "state": "Telangana"
+        },
+        {
+            "name": "GAUTAM BUDDHA UNIVERSITY",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "GITAM UNIVERSITY",
+            "state": "Telangana"
+        },
+        {
+            "name": "GKM COLLEGE OF ENGINEERING & TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "GL BAJAJ, GREATER NOIDA",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "GIET",
+            "state": "Telangana"
+        },
+        {
+            "name": "GKCE",
+            "state": "Telangana"
+        },
+        {
+            "name": "GLOBAL ACADEMY OF TECHNOLODY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "GM INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "GLOBAL ACADEMY OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "GMR INSTITUE OF TECHNOLOGY",
+            "state": "Telangana"
+        },
+        {
+            "name": "GOA ENGINEERING COLLEGE",
+            "state": "Goa"
+        },
+        {
+            "name": "GOA DENTAL COLLEGE",
+            "state": "Goa"
+        },
+        {
+            "name": "GOA INSTITUTE OF MANAGEMENT",
+            "state": "Goa"
+        },
+        {
+            "name": "GOA MEDICAL COLLEGE",
+            "state": "Goa"
+        },
+        {
+            "name": "GOA MULTI FACULTY COLLEGE",
+            "state": "Goa"
+        },
+        {
+            "name": "GOKARAJU RANGARAJU INSTITUTE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Telangana"
+        },
+        {
+            "name": "GOSWAMI GANESH DUTTA SANATAN DHARMA COLLEGE",
+            "state": "Punjab"
+        },
+        {
+            "name": "GOPALAN COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "GOVERNMENT COLLEGE OF ENGINEERING, AURANGABAD",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "GOVERNMENT COLLEGE OF TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "GOVERNMENT ENGINEERING COLLEGE,THRISSUR",
+            "state": "Kerela"
+        },
+        {
+            "name": "GOVERNMENT MEDICAL COLLEGE,THRISSUR",
+            "state": "Kerela"
+        },
+        {
+            "name": "GOVIND BALLABH PANT ENGINEERING COLLEGE",
+            "state": "Uttarakhand"
+        },
+        {
+            "name": "GOVT COLLEGE OF ARCHITECTURE",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "GOVT POLYTECHNIC PANAJI",
+            "state": "Goa"
+        },
+        {
+            "name": "GOVT COLLEGE OF ENGG KARAD",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "GOVT ENGG COLLEGE PALAKKAD",
+            "state": "Kerela"
+        },
+        {
+            "name": "GOVT COLLEGE OF ENGG,KANNUR",
+            "state": "Kerela"
+        },
+        {
+            "name": "GOVT. BRENNEN COLLEGE",
+            "state": "Kerela"
+        },
+        {
+            "name": "GOVT. MEDICAL COLLEGE , PALAKKAD",
+            "state": "Kerela"
+        },
+        {
+            "name": "GOVT. MEDICAL COLLEGE , ALAPPY",
+            "state": "Kerela"
+        },
+        {
+            "name": "GOVT. POLY TECH. COLLEGE ,KANNUR",
+            "state": "Kerela"
+        },
+        {
+            "name": "GREAT EASTERN MEDICAL SCHOOL AND HOSPITAL",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "GPCET",
+            "state": "Telangana"
+        },
+        {
+            "name": "GOWTHAM DEGREE COLLEGE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "GREAT LAKES INSTITUTE OF MANAGEMENT",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "GSL MEDICAL COLLEGE AND GENERAL HOSPITAL",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "GUDLAVALLERU ENGINEERING COLLEGE",
+            "state": "Telangana"
+        },
+        {
+            "name": "GUNTUR MEDICAL COLLEGE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "GURU NANAK DEV ENGINEERING COLLEGE",
+            "state": "Punjab"
+        },
+        {
+            "name": "GURU JAMBESHWAR UNIVERSITY OF SCIENCE AND TECHNOLOGY",
+            "state": "Haryana"
+        },
+        {
+            "name": "GURU NANAK DEV UNIVERSITY",
+            "state": "Punjab"
+        },
+        {
+            "name": "GURUDEV ARTS AND SCIENCE COLLEGE,MATHIL",
+            "state": "Kerela"
+        },
+        {
+            "name": "GURU TEG BAHADUR INSTITUTE OF TECHNOLOGY",
+            "state": "Delhi"
+        },
+        {
+            "name": "GURUVAYOORAPPAN COLLEGE",
+            "state": "Kerela"
+        },
+        {
+            "name": "GVM COMMERCE COLLEGE",
+            "state": "Goa"
+        },
+        {
+            "name": "HAMSTECH INSTITUTE OF FASHION & INTERIOR DESIGN",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "HARCOURT BUTLER TECHNICAL UNI.",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "HANSRAJ COLLEGE, DU",
+            "state": "Delhi"
+        },
+        {
+            "name": "HINDU COLLEGE, DU",
+            "state": "Delhi"
+        },
+        {
+            "name": "HINDUSTAN INSTITUTE OF TECHNOLOGY AND SCIENCE, CHENNAI",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "HIRASUGAR INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "HKBK COLLEGE OF ENGINERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "IBS COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "HMS INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "IIIT DESIGN AND MANUFACTURING",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "IEC GREATER NOIDA",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "ICAT DESIGN AND MEDIA COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "IILM, GREATER NOIDA",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "IIIT, BANGALORE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "IIM KOZHIKODE",
+            "state": "Kerela"
+        },
+        {
+            "name": "IIT BOMBAY",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "IIMB",
+            "state": "Karnataka"
+        },
+        {
+            "name": "IIT GOA",
+            "state": "Goa"
+        },
+        {
+            "name": "IIT MADRAS",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "INDIAN INSTITUTE OF INFORMATION TECHNOLOGY, ALLAHABAD",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "IMS GHAZIABAD",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "INDIAN INSTITUTE OF TECHNOLOGY, ROPAR",
+            "state": "Punjab"
+        },
+        {
+            "name": "INDIAN INSTITUTE OF TECHNOLOGY DELHI",
+            "state": "Delhi"
+        },
+        {
+            "name": "INDIRA GANDHI COLLEGE OF ARTS AND SCIENCE",
+            "state": "Puducherry"
+        },
+        {
+            "name": "INDRAPRASTHA COLLEGE FOR WOMEN, DU",
+            "state": "Delhi"
+        },
+        {
+            "name": "INDIRA PRIYADARSHINI LAW COLLEGE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "INSTITUTE OF AERONAUTICAL ENGINEERING",
+            "state": "Telangana"
+        },
+        {
+            "name": "INSTITUTE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Lucknow"
+        },
+        {
+            "name": "INDIRA GANDHI COLLEGE OF ENGI.",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "INSTITUTE OF ENGINEERING AND TECHNOLOGY, ALWAR",
+            "state": "Rajasthan"
+        },
+        {
+            "name": "INSTITUTE OF HOTEL MANAGEMENT",
+            "state": "Goa"
+        },
+        {
+            "name": "INSTITUTE OF HOTEL MANAGEMENT",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "INSTITUTE OF RURAL TECHNOLOGY",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "INSTITUTE OF NURSING EDUCATION",
+            "state": "Goa"
+        },
+        {
+            "name": "INSTITUTE OF SHIPBUILDING TECHNOLOGY",
+            "state": "Goa"
+        },
+        {
+            "name": "INTEGRAL UNIVERSITY",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "INTEGRAL UNIVERSITY, LUCKNOW",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "INTERNATIONAL MARITIME ACADEMY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "IPHB",
+            "state": "Goa"
+        },
+        {
+            "name": "J A INSTITUTE OF ENGINEERING & TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "JAIN COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "JAIN INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "JAIN COLLEGE OF ENGINEERING , BELGAUM",
+            "state": "Karnataka"
+        },
+        {
+            "name": "JAIPUR NATIONAL UNIVERSITY",
+            "state": "Rajasthan"
+        },
+        {
+            "name": "JANSONS INSTITUTE OF TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "JAIPURIA INST OF MANAGEMENT",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "JAWAHAR ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "JAWAHARLAL INSTITUTE OF POSTGRADUATE MEDICAL EDUCATION AND RESEARCH",
+            "state": "Puducherry"
+        },
+        {
+            "name": "JAWAHARLAL NEHRU NATIONAL COLLEGE OF ENGINEERING , SHIMOGA",
+            "state": "Karnataka"
+        },
+        {
+            "name": "JAWAHARLAL NEHRU NATIONAL COLLEGE OF ENGINEERING,",
+            "state": "Karnataka"
+        },
+        {
+            "name": "JAYA ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "JAYPEE INSTITUTE OF INFORMATION TECHNOLOGY",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "JAYPEE INSTITUTE OF INFORMATION TECHNOLOGY, NOIDA",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "JAYPEE UNIVERSITY OF INFORMATION TECHNOLOGY(HP)",
+            "state": "Uttarakhand"
+        },
+        {
+            "name": "JC COLLEGE OF LAW",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "JCT COLLEGE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "JERUSALEM COLLEGE OF ENGINEERING",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "JINDAL GLOBAL LAW SCHOOL",
+            "state": "Punjab"
+        },
+        {
+            "name": "JINDAL GLOBAL LAW SCHOOL, SONIPAT",
+            "state": "Haryana"
+        },
+        {
+            "name": "JNC COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "JNTU",
+            "state": "Telangana"
+        },
+        {
+            "name": "JNTUA COLLEGE OF ENGINEERING",
+            "state": "Telangana"
+        },
+        {
+            "name": "JNTUH COLLEGE OF ENGINEERING JAGTIAL",
+            "state": "Telangana"
+        },
+        {
+            "name": "JSS ACADEMY OF TECHNICAL EDUCATION",
+            "state": "Karnataka"
+        },
+        {
+            "name": "JSS NOIDA",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "JSS SCIENCE AND TECHNOLOGY UNIVERSITY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "K L UNIVERSITY",
+            "state": "Telangana"
+        },
+        {
+            "name": "K RAMAKRISHNAN COLLEGE OF ENGINEERING",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "K.A.P.VISWANATHAM GOVERNMENT MEDICAL COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "K.L.S GOGTE INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "K.L.S VISHWANATHRAO DESHPANDE RURAL INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "K.S.HEGDE MEDICAL ACADEMY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "K.V.G MEDICAL COLLEGE AND HOSPITAL",
+            "state": "Karnataka"
+        },
+        {
+            "name": "KAKATIYA INSTITUTE OF TECHNOLOGY AND SCIENCE",
+            "state": "Telangana"
+        },
+        {
+            "name": "KAKINADA INSTITUE OF TECHNOLOGY AND SCIENCE",
+            "state": "Telangana"
+        },
+        {
+            "name": "KANYAKUMARI GOVERNMENT MEDICAL COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "KARAVALI INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "KARPAGAM COLLLEGE OF ENGINEERING",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "KARUNYA INSTITUTE OF TECHNOLOGY AND SCIENCES",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "KARPAGAM INSTITUTE OF TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "KASTURBA MEDICAL COLLEGE",
+            "state": "Karnataka",
+            "isMahe":true
+        },
+        {
+            "name": "KATHIR COLLEGE OF ENGINEERING",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "KAMLA NEHRU INSTITUTE OF TECHNOLOGY, SULTANPUR",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "KATURI MEDICAL COLLEGE AND HOSPITAL",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "KAUSHIK COLLEGE OF ENGINEERING",
+            "state": "Telangana"
+        },
+        {
+            "name": "KCG COLLEGE OF TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "KEMPEGOWDA INSTITUTE OF MEDICAL SCIENCES",
+            "state": "Karnataka"
+        },
+        {
+            "name": "KDK COLLEGE OF ENGG, NAGPUR PROF. D.P. SINGH PRINCIPAL",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "KEMPEGOWDA INSTITUTE OF MEDICAL SCIENCES",
+            "state": "Karnataka"
+        },
+        {
+            "name": "KESHAV MEMORIAL INSTITUTE OF TECHNOLOGY",
+            "state": "Telangana"
+        },
+        {
+            "name": "KIET, GHAZIABAD",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "KIET",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "KING GEORGE MEDICAL UNIVERSITY",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "KIRORI MAL COLLEGE, DU",
+            "state": "Delhi"
+        },
+        {
+            "name": "KIT’S COLLEGE OF ENGINEERING, KOLHAPUR",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "KK WAGH COLLEGE OF ENGINEERING",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "KJ SOMAIYA",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "KLE INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "KKC COLLEGE OF LAW",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "KLN COLLEGE OF ENGINEERING",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "KMCT COLLEGE OF ENGINEERING",
+            "state": "Kerela"
+        },
+        {
+            "name": "KONASEEMA INSTITUTE OF MEDICAL SCIENCES & RESEARCH FOUNDATION",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "KUMARAGURU COLLEGE OF TECHNOLOGY,",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "KONGU INSTITUTE OF TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "KS RANGASAMY UNIVERSITY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "KUMARAGURU COLLEGE OF TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "KURNOOL MEDICAL COLLEGE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "KUPPAM ENGINEERING COLLEGE",
+            "state": "Telangana"
+        },
+        {
+            "name": "KVG COLLGE OF ENGINEERING , SULIA",
+            "state": "Karnataka"
+        },
+        {
+            "name": "KVG COLLEGE OF ENGINEERING,SULIA",
+            "state": "Karnataka"
+        },
+        {
+            "name": "LAKIREDDY BALI COLLEGE OF ENGINEERING",
+            "state": "Telangana"
+        },
+        {
+            "name": "LADY SHRI RAM COLLEGE, DU",
+            "state": "Delhi"
+        },
+        {
+            "name": "LATHA MATHAVAN ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "LAW COLLEGE CALICUT",
+            "state": "Kerela"
+        },
+        {
+            "name": "LAXMINARAYAN INSTITUTE OF TECHNOLOGY",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "LEGENDA ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "LENORA COLLEGE OF ENGINNERING",
+            "state": "Telangana"
+        },
+        {
+            "name": "LNM INSTITUTE OF INFORMATION TECHNOLOGY, JAIPUR",
+            "state": "Rajasthan"
+        },
+        {
+            "name": "LOKMANYA TILAK (LTCE)",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "LOVELY PROFESSIONAL UNIVERSITY",
+            "state": "Punjab"
+        },
+        {
+            "name": "LOYOLA – ICAM COLLEGE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "LOYOLA COLLEGE OF EDUCATION",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "LOYOLA INSTITUTE OF BUSINESS ADMINISTRATION",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "M H SABOO SIDDIK COLLEGE OF ENGINEERING",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "M.S RAMAIAH MEDICAL COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "M.V.J MEDICAL COLLEGE AND RESEARCH HOSPITAL",
+            "state": "Karnataka"
+        },
+        {
+            "name": "MADAN MOHAN MALVIYA, GORAKHPUR",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "MADANAPALLE INSTITUE OF COLLEGE OF ENGINEERING",
+            "state": "Telangana"
+        },
+        {
+            "name": "MADHA ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "MADRAS INSTITUTE OF FASHION TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "MADRAS INSTITUTE OF TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "MADURAI AYIRA VAISIA MANJAPUTTUR MAHAJANA ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "MADRAS INSTITUTE OF HOTEL MANAGEMENT AND CATERING TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "MADURAI INSTITUTE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "MADURAI MEDICAL COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "MAHAKAVI BHARATHIYAR COLLEGE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Puducherry"
+        },
+        {
+            "name": "MAHARAJA INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "MAHARAJA PRITHVI ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "MAHARASHTRA INSTITUTE OF TECH.",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "MAHARAJA SURAJMAL INSTITUTE OF TECHNOLOGY",
+            "state": "Delhi"
+        },
+        {
+            "name": "MAHARANA PRATAP UNIVERSITY OF AGRI & TECH, UDAIPUR",
+            "state": "Rajasthan"
+        },
+        {
+            "name": "MAHARAJAH'S INSTITUTE OF MEDICAL SCIENCES",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "MAHARANI  COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "MAHARANI COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "MAHATMA GANDHI DEGREE COLLEGE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "MAHARISHI MARKANDESHWAR UNIVERSITY",
+            "state": "Haryana"
+        },
+        {
+            "name": "MAHATMA GANDHI INSTITUTE OF TECHNOLOGY",
+            "state": "Telangana"
+        },
+        {
+            "name": "MAHATMA GANDHI MEDICAL COLLEGE AND RESEARCH INSTITUTE",
+            "state": "Puducherry"
+        },
+        {
+            "name": "MAHAVEER INSTITUTE OF SCIENCE AND TECHNOLOGY",
+            "state": "Telangana"
+        },
+        {
+            "name": "MAHATMA GANDHI MEMORIAL COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "MAHER UNIVERSITY (MU)",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "MALABAR CHRISTIAN COLLEGE",
+            "state": "Kerela"
+        },
+        {
+            "name": "MALNAD COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "MALLA REDDY ENGINEERING COLLEGE",
+            "state": "Telangana"
+        },
+        {
+            "name": "MANAV RACHNA COLLEGE OF ENGINEERING",
+            "state": "Haryana"
+        },
+        {
+            "name": "MANGALAM COLLEGE",
+            "state": "Kerela"
+        },
+        {
+            "name": "MANGALORE INSTITUTE OF TECHNOLOGY AND ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "MANIPAL COLLEGE OF DENTAL SCIENCES",
+            "state": "Karnataka",
+            "isMahe":true
+        },
+        {
+            "name": "MANIPAL UNIVERSITY JAIPUR",
+            "state": "Rajasthan"
+        },
+        {
+            "name": "MAR BASELIOS COLLEGE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Kerela"
+        },
+        {
+            "name": "MAR ATHANASIUS COLLEGE OF ENGINEERING",
+            "state": "Kerela"
+        },
+        {
+            "name": "MARG INSTITUTE OF DESIGN AND ARCHITECTURE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "MARIAN INSTITUTE OF HEALTH SECTOR MANAGEMENT",
+            "state": "Goa"
+        },
+        {
+            "name": "MARTHOMA COLLEGE THIRUVALLA",
+            "state": "Kerela"
+        },
+        {
+            "name": "MATURI VENKATA SUBBA RAO ENGINEERING COLLEGE",
+            "state": "Telangana"
+        },
+        {
+            "name": "MAULANA AZAD MEDICAL COLLEGE (MAMC)",
+            "state": "Delhi"
+        },
+        {
+            "name": "MEA ENGG COLLEGE,MALAPPURAM",
+            "state": "Kerela"
+        },
+        {
+            "name": "MERCURY INSTITUTE OF INFORMATION TECHNOLOGIES",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "MEENAKSHI SUNDARAJAN ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "MES ARTS AND SCIENCE COLLEGE",
+            "state": "Kerela"
+        },
+        {
+            "name": "MES COLLEGE OF ARTS AND COMMERCE",
+            "state": "Goa"
+        },
+        {
+            "name": "MG COLLEGE IRITTY",
+            "state": "Kerela"
+        },
+        {
+            "name": "MERCY COLLEGE PALLAKAD",
+            "state": "Kerela"
+        },
+        {
+            "name": "MG LAW COLLEGE",
+            "state": "Telangana"
+        },
+        {
+            "name": "MGR GOVERNMENT FILM AND TELEVISION INSTITUTE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "MIC COLLEGE OF TECHNOLOGY",
+            "state": "Telangana"
+        },
+        {
+            "name": "MGR INSTITUTE OF HOTEL MANAGEMENT AND CATERING TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "MISRIMAL NAVAJEE MUNOTH JAIN ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "MIRANDA HOUSE, DU",
+            "state": "Delhi"
+        },
+        {
+            "name": "MIT, PUNE",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "MODERN COLLEGE OF ENGG, PUNE",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "MODY UNIVERSITY OF SCIENCE AND TECHNOLOGY, SIKAR",
+            "state": "Rajasthan"
+        },
+        {
+            "name": "MOHAMED SATHAK ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "MOODLAKATTE INSTITUTE OF TECHNOLOGY,",
+            "state": "Karnataka"
+        },
+        {
+            "name": "MOODLAKATTE INSITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "MOP VAISHANAV",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "MOTILAL NEHRU GOVERNMENT POLYTECHNIC COLLEGE",
+            "state": "Puducherry"
+        },
+        {
+            "name": "MOUNT CARMEL COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "MS COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "MS RAMAIAH INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "MUNIYAL AYURVEDA COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "MUFFAKHAM JAH COLLEGE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Telangana"
+        },
+        {
+            "name": "MVJ COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "MVJ COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "NAGARJUNA COLLEGE OF ENGINEERING & TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "NALSAR UNIVERSITY OF LAW",
+            "state": "Telangana"
+        },
+        {
+            "name": "NAM COLLEGE KALLIKKANDY",
+            "state": "Kerela"
+        },
+        {
+            "name": "NATIONAL INSTITUTE OF TECHNOLOGY DELHI",
+            "state": "Delhi"
+        },
+        {
+            "name": "NATIONAL INSTITUTE OF FASHION TECHNOLOGY (NIFT)",
+            "state": "Delhi"
+        },
+        {
+            "name": "NATIONAL INSTITUTE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "NATIONAL INSTITUTE OF HYDROGRAPHY GOA",
+            "state": "Goa"
+        },
+        {
+            "name": "NATIONAL INSTITUTE OF FASHION TECHNOLOGY",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "NARAYANA ENGINEERING COLLEGE",
+            "state": "Telangana"
+        },
+        {
+            "name": "NATIONAL INSTITUTE OF TECHNOLOGY GOA",
+            "state": "Goa"
+        },
+        {
+            "name": "NATIONAL LAW UNIVERSITY (NLU)",
+            "state": "Delhi"
+        },
+        {
+            "name": "NB NAVALE SINHGAD COLLEGE OF ENGINEERING, KOREGAON",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "NEW HORIZON COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "NIFT, JODHPUR",
+            "state": "Rajasthan"
+        },
+        {
+            "name": "NIRMALAGIRI DEGREE COLLEGE",
+            "state": "Kerela"
+        },
+        {
+            "name": "NETAJI SUBHAS INSTITUTE OF TECHNOLOGY",
+            "state": "Delhi"
+        },
+        {
+            "name": "NCD (NATIONAL COLLEGE OF DESIGN)",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "NBKR INSTITUTE OF SCIENCE AND TECHNOLOGY",
+            "state": "Telangana"
+        },
+        {
+            "name": "NATIONAL MANAGEMENT COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "NIRMALA INSTITUTE OF TECHNOLOGY",
+            "state": "Goa"
+        },
+        {
+            "name": "NAGARJUNA INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "NALLA MALLA REDDY ENGINEERING COLLEGE",
+            "state": "Telangana"
+        },
+        {
+            "name": "NATIONAL INSTITUTE OF TECHNOLOGY,KURUKSHETRA",
+            "state": "Haryana"
+        },
+        {
+            "name": "NALANDA DEGREE COLLEGE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "MS ENGINEERING COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "NATIONAL INSTITUTE OF FASHION TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "NIT ALLAHABAD",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "NIT CALICUT",
+            "state": "Kerela"
+        },
+        {
+            "name": "NIT TRICHY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "NIT PUDUCHERRY",
+            "state": "Puducherry"
+        },
+        {
+            "name": "NITTE MEENAKSHI INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "NLS UNIVERSITY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "NLU",
+            "state": "Punjab"
+        },
+        {
+            "name": "NMAMIT , UDUPI",
+            "state": "Karnataka"
+        },
+        {
+            "name": "NMAMIT,UDUPI",
+            "state": "Karnataka"
+        },
+        {
+            "name": "NMS SERMATHAI VASAN COLLEGE FOR WOMEN",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "NOORUL ISLAM CENTER FOR HIGHER EDUCATION",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "NOIDA UNIVERSITY",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "NORTHERN INDIA ENGINEERING COLLEGE",
+            "state": "Delhi"
+        },
+        {
+            "name": "NRI MEDICAL COLLEGE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "NVP LAW COLLEGE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "OSMANIA UNIVERSITY",
+            "state": "Telangana"
+        },
+        {
+            "name": "OXFORD INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "P.A COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "P.B. COLLEGE OF ENGINEERING",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "P.E.S COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "P.T.R.COLLEGE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "PADALA RAMI REDDY LAW COLLEGE",
+            "state": "Telangana"
+        },
+        {
+            "name": "PANJAB UNIVERSITY",
+            "state": "Punjab"
+        },
+        {
+            "name": "PADMABHOOSHAN VASANTDADA PATIL INSTITUTE OF TECHNOLOGY, MIRAJ, SANGLI",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "PANIMALAR ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "PB SIDDHARTHA COLLEGE ARTS AND SCIENCE,",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "PARVATIBAI CHOWGULE COLLEGE",
+            "state": "Goa"
+        },
+        {
+            "name": "PCCE",
+            "state": "Goa"
+        },
+        {
+            "name": "PENDEKANTI LAW COLLEGE",
+            "state": "Telangana"
+        },
+        {
+            "name": "PERI INSTITUTE OF TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "PEC UNIVERSITY OF TECHNOLOGY",
+            "state": "Punjab"
+        },
+        {
+            "name": "PES COLLEGE OF EDUCATION",
+            "state": "Goa"
+        },
+        {
+            "name": "PERUNTHALAIVAR KAMARAJAR INSTITUTE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Puducherry"
+        },
+        {
+            "name": "PERUNTHALAIVAR KAMARAJAR GOVERNMENT ARTS COLLEGE",
+            "state": "Puducherry"
+        },
+        {
+            "name": "PES INSTITUTE OF TECHNOLOGY AND MANAGEMENT",
+            "state": "Karnataka"
+        },
+        {
+            "name": "PES INSTITUTE OF MEDICAL SCIENCES AND RESEARCH",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "PES INSTITUTE OF TECHNOLOGY , SHIMOGA",
+            "state": "Karnataka"
+        },
+        {
+            "name": "PES UNIVERSITY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "PESIT",
+            "state": "Karnataka"
+        },
+        {
+            "name": "PICT, PUNE",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "PILLAI COLLEGE OF ENGINEERING",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "POLLACHI INSTITUTE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "PONDICHERRY COLLEGE OF ENGINEERING",
+            "state": "Puducherry"
+        },
+        {
+            "name": "PPC DEGREE COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "PRAGATI COLLEGE OF ENGINEERING",
+            "state": "Telangana"
+        },
+        {
+            "name": "POPE JOHN PAUL II COLLEGE OF EDUCATION",
+            "state": "Puducherry"
+        },
+        {
+            "name": "PONDICHERRY UNIVERSITY",
+            "state": "Puducherry"
+        },
+        {
+            "name": "PSG INSTITUTE OF MANAGEMENT",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "PRESIDENCY UNIVERSITY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "PSG UNIVERSITY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "PS RAJU LAW COLLEGE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "PSIT KANPUR",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "PUNE VIDYARTHI GRIHA COLLEGE OF ENGINEERING",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "PUSHPAGIRI MED COLLEGE",
+            "state": "Kerela"
+        },
+        {
+            "name": "PVKN GOVT DEGREE COLLEGE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "PVPSIT",
+            "state": "Telangana"
+        },
+        {
+            "name": "PYDAH COLLEGE OF ENGINEERING",
+            "state": "Telangana"
+        },
+        {
+            "name": "QUANTUM SCHOOL OF TECHNOLOGY",
+            "state": "Uttarakhand"
+        },
+        {
+            "name": "RAGHU ENGINEERING COLLEGE",
+            "state": "Telangana"
+        },
+        {
+            "name": "RAJA COLLEGE OF ENGINEERING(SAME NO AS SOLAMALAI COLLEGE)",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "RAJAGIRI SCHOOL OF ENGINEERING AND TECHNOLOGLY",
+            "state": "Kerela"
+        },
+        {
+            "name": "RAJALAKSHMI ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "RAJARAMBAPU INSTITUTE OF TECHNOLOGY, SANGLI",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "RAJASTHAN TECHNICAL UNIVERSITY,KOTA",
+            "state": "Rajasthan"
+        },
+        {
+            "name": "RAJENDRA MANE COLLEGE OF ENGINEERING & TECHNOLOGY, DEVRUKH, RATNAGIRI",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "RAJIV GANDHI INSTITUE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "RAJIV GANDHI COLLEGE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Puducherry"
+        },
+        {
+            "name": "RAJIV GANDHI INSTITUTE OF PETROLEUM TECHNOLOGY",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "RAJIV GANDHI EDUCATIONAL INSTITUTE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "RAJIV GANDHI INSTITUTE OF TECHNOLOGY",
+            "state": "Kerela"
+        },
+        {
+            "name": "REGENCY INSTITUTE OF TECHNOLOGY",
+            "state": "Puducherry"
+        },
+        {
+            "name": "RAMJAS COLLEGE, DU",
+            "state": "Delhi"
+        },
+        {
+            "name": "REVA INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "RAMRAO ADIK INSTITUTE OF TECH",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "RAMANAND INSTITUTE OF PHARMACY MANAGEMENT AND TECHNOLOGY",
+            "state": "Uttarakhand"
+        },
+        {
+            "name": "RGMCET",
+            "state": "Telangana"
+        },
+        {
+            "name": "RL INSTITUTE OF NAUTICAL SCIENCES",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "RMK ENGINEERING  CLG",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "RNS INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "RMK ENGINEERING  CLG (SAME AS ABOVE)",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "ROORKEE INSTITUTE OF TECHNOLOGY - [RIT]",
+            "state": "Uttarakhand"
+        },
+        {
+            "name": "ROSARY COLLEGE OF COMMERCE & ARTS",
+            "state": "Goa"
+        },
+        {
+            "name": "RV COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "RV COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "RVS TECHNICAL CAMPUS",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "RVR AND JC COLLEGE OF ENGINEERING",
+            "state": "Telangana"
+        },
+        {
+            "name": "S.G.BALEKUNDRI INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "S.S.DEMPO COLLEGE",
+            "state": "Goa"
+        },
+        {
+            "name": "SACS M.A.V.M.M ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SAGI RAMAKRISHNAN RAJU ENGINEERING COLLEGE",
+            "state": "Telangana"
+        },
+        {
+            "name": "SAHYADRI COLLEGE OF ENGINEERING AND MANAGEMENT",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SAI VIDYA INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SAMBHRAM INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SAMS COLLEGE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SANT LONGOWAL INSTITUTE OF TECHNOLOGY",
+            "state": "Punjab"
+        },
+        {
+            "name": "SARASWAT VIDYALAYA'S COLLEGE",
+            "state": "Goa"
+        },
+        {
+            "name": "SAPTHAGIRI INSTITUTE OF MEDICAL SCIENCES",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SARANATHAN COLLEGE OF ENGINEERING",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SARASWATI COLLEGE OF ENGINEERING",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "SARDAR PATEL COLLEGE OF ENGG, MUM",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "SAROJINI NAIDU VANITA MAHA VIDYALAYA",
+            "state": "Telangana"
+        },
+        {
+            "name": "SARDAR VALLABHBHAI PATEL INTERNATIONAL SCHOOL OF TEXTILES & MANAGEMENT",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SATHYABAMA UNINIVERSITY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SASTRA UNIVERSITY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SAVEETHA ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SBMJCE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SCHOOL OF LEGAL STUDIES, PALAYAD",
+            "state": "Kerela"
+        },
+        {
+            "name": "SCHOOL OF PLANNING AND ARCHITECTURE",
+            "state": "Delhi"
+        },
+        {
+            "name": "SDM INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SDM MEDICAL COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SDM COLLEGE OF MANAGEMENT",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SETHU INSTITUTE OF TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SFS COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SG BALEKUNDRI INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SHAHEED BHAGAT SINGH COLLEGE, DU",
+            "state": "Delhi"
+        },
+        {
+            "name": "SHAH AND ANCHOR KUTCHHI ENGINEERING COLLEGE",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "SHAIKH COLLEGE OF ENGINEERING  AND TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SHAIK COLLEGE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SHARDA UNIVERSITY",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "SHARDA UNIVERSITY, GREATER NOIDA",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "SHASUN JAIN COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SHIV NADAR UNIVERSITY",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "SHIVAJIRAO JONDHALE COLLEGE OF ENGINEERING",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "SHIVAJI UNIVERSITY",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "SHIV NADAR UNIVERSITY, DADRI",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "SHREE DAMODAR COLLEGE OF COMMERCE",
+            "state": "Goa"
+        },
+        {
+            "name": "SHIVALIK COLLEGE OF ENGINEERING",
+            "state": "Uttarakhand"
+        },
+        {
+            "name": "SHREE MALLIKARJUN COLLEGE",
+            "state": "Goa"
+        },
+        {
+            "name": "SHRI ANDAL ALAGAR COLLEGE OF ENGINEERING",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SHREE MOTILAL KANHAIYALAL FOMRA INSTITUTE OF TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SHRI ANNASAHEB DANGE COLLEGE OF ENGINEERING & TECHNOLOGY, WALWA, SANGLI",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "SHRI RAMDEOBABA COLLEGE OF ENGINEERING AND MANAGEMENT, NAGPUR",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "SHRI DEVI COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SHRIDEVI INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SIDDAGANGA INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SHRI RAMKRISHNA COLLEGE OF ENGINEERING",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SIES GRADUATE SCHOOL OF ENGINEERING",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "SINDHI COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SINHGAD, PUNE",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "SIR C R REDDY COLLEGE OF ENGINEERING",
+            "state": "Telangana"
+        },
+        {
+            "name": "SIR M VISHVESHWARAYYA INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SIR M VISHWESHVARAYYA INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SJC INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SJB INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SJM INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SMS DEGREE COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SMT VELAGAPUDI DURGAMBA SIDDHARTHA LAW COLLEGE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "SMVITM,UDUPI",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SMVITM , UDUPI",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SN COLLEGE KANNUR",
+            "state": "Kerela"
+        },
+        {
+            "name": "SONA COLLEGE OF ENGINEERING",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SOLAMALAI COLLEGE OF ENGINEERING",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SNS COLLEGE OF ENGINEERING",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SR ENGINEERING COLLEGE",
+            "state": "Telangana"
+        },
+        {
+            "name": "SONA SCHOOL OF MANAGEMENT",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SREE CHITRA THIRUNAL COLLEGE OF ENGG",
+            "state": "Kerela"
+        },
+        {
+            "name": "SREE SAKTHI ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SREE VIDYANIKETHAN ENGINEERING COLLEGE",
+            "state": "Telangana"
+        },
+        {
+            "name": "SREE SASTHA INSTITUTE OF ENGINEERING & TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SREENARAYANA COLLEGE OF ENGINEERING",
+            "state": "Kerela"
+        },
+        {
+            "name": "SREENARAYANA INSTITUTE OF MEDICAL SCIENCES",
+            "state": "Kerela"
+        },
+        {
+            "name": "SRI CHAKRA MARITIME COLLEGE",
+            "state": "Puducherry"
+        },
+        {
+            "name": "SRI CHANDRASEKHARENDRA SARASWATHI VISWA MAHAVIDYALAYA",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SRI ESHWAR REDDY COLLEGE OF LAW",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "SRI GANESH COLLEGE OF ENGINEERING AND TECHNLOLOGY",
+            "state": "Puducherry"
+        },
+        {
+            "name": "SRI KRISHNA COLLEGE OF TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SRI KRISHNADEVEARAYA UNIVERSITY",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "SRI LAKSHMI NARAYANA INSTITUTE OF MEDICAL SCIENCES",
+            "state": "Puducherry"
+        },
+        {
+            "name": "SRI MANAKULA VINAYAGAR INSTITUTE OF TECHNOLOGY",
+            "state": "Puducherry"
+        },
+        {
+            "name": "SRI MUTHUKUMARAN INSTITUTE OF TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SRI MUTHUKUMARAN MEDICAL COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SRI RAM COLLEGE OF COMMERCE (SRCC), DU",
+            "state": "Delhi"
+        },
+        {
+            "name": "SRI RAMACHANDRA INSTITUTE OF HIGHER EDUCATION",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SRI RANGANATHAR INSTITUTE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SRI R.K.M. LAW COLLEGE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "SRI SAI RAM ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SRI SIVASUBRAMANIYA NADAR COLLEGE OF ENGINEERING",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SRI SIDDHARTHA INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SRI SRI INSTITUTE OF MANAGEMENT STUDIES",
+            "state": "Goa"
+        },
+        {
+            "name": "SRI VENKATESHWARAA MEDICAL COLLEGE HOSPITAL & RESEARCH CENTRE",
+            "state": "Puducherry"
+        },
+        {
+            "name": "SRI VENKATESWARA UNIVERSITY",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "SRI VINAYAK INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SRIEIT",
+            "state": "Goa"
+        },
+        {
+            "name": "SRINIVAS INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SRINIVAS INSTITUTE OF TECHNOLOGY, MANGALORE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SRINIVAS SCHOOL OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SRM UNIVERSITY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SRM UNIVERSITY, VADAPALANI CAMPUS",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SRM UNIVERSITY, KATTANKULATHUR CAMPUS",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SSM COLLEGE OF ARTS AND SCIENCE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "ST ALOYSIUS COLLEGE -MANAGEMENT",
+            "state": "Karnataka"
+        },
+        {
+            "name": "ST FRANCIS INSTITUTE OF TECHNOLOGY",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "ST JOSEPH COLLEGE OF ENGINEERING , MANGALORE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "ST PETERS ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "ST JOSEPHS COLLEGE OF ENGINEERING",
+            "state": "Kerela"
+        },
+        {
+            "name": "ST. FRANCIS COLLEGE FOR WOMEN",
+            "state": "Telangana"
+        },
+        {
+            "name": "ST. JOSEPH COLLEGE OF ENGINEERING",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "ST. JOSEPH'S INSTITUTE OF MANAGEMENT (JIM)",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "ST. STEPHEN'S COLLEGE, DU",
+            "state": "Delhi"
+        },
+        {
+            "name": "ST.JOSEPH COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "ST.JOHNS COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "ST.JOSEPHS COLLEGE OF COMMERCE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "ST.XAVIER'S COLLEGE",
+            "state": "Goa"
+        },
+        {
+            "name": "STELLA MARIS COLLEGE, CHENNAI",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "SURANA COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SWAMI KESHVANAND INSTITUTE OF TECH, MANAGEMENT AND GRAMOTHAN, JAIPUR",
+            "state": "Rajasthan"
+        },
+        {
+            "name": "SUVARNA COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "SWAMI VIVEKANANDA VIDYALAYA COLLEGE",
+            "state": "Goa"
+        },
+        {
+            "name": "SYMBIOSIS COLLEGE OF ENGG, PUNE",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "SYMBIOSIS LAW SCHOOL, NOIDA",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "SYMBIOSIS LAW SCHOOL HYDERABAD",
+            "state": "Telangana"
+        },
+        {
+            "name": "TAMIL NADU COLLEGE OF ENGINEERING",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "TERNA COLLEGE OF ENGG, MUMBAI",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "TAGORE ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "TEXTILE AND ENGINEERING INSTITUTE, HATKANANGALE, KOLHAPUR",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "TATYASAHEB KORE INSTITUTE OF ENGINEERING & TECHNOLOGY, WARANANAGAR, KOLHAPUR",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "THE OXFORD MEDICAL COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "THE NORTHCAP UNIVERSITY",
+            "state": "Haryana"
+        },
+        {
+            "name": "THANGAVELU ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "THAPAR UNIVERSITY",
+            "state": "Punjab"
+        },
+        {
+            "name": "THIAGARAJAR COLLAGE OF ENGINEERING",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "THOOTHUKUDI MEDICAL COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "TKM COLLEGE OF ENGINEERING",
+            "state": "Kerela"
+        },
+        {
+            "name": "TRIKARIPUR POLYTECHNIC",
+            "state": "Kerela"
+        },
+        {
+            "name": "TSEC, MUMBAI",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "TULA'S INSTITUTE, THE ENGG AND MANAGEMENT COLLEGE",
+            "state": "Uttarakhand"
+        },
+        {
+            "name": "UNITED INSTITUTE OF TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "UNIVERSAL COLLEGE OF ENGINEERING",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "UNIVERSITY B.D.T COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "UNIVERSITY B.D.T.COLLEGE  OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "UNIVERSITY COLLEGE OF MEDICAL SCIENCE (UCMS)",
+            "state": "Delhi"
+        },
+        {
+            "name": "UNIVERSITY COLLEGE OF LAW, OSMANIA",
+            "state": "Telangana"
+        },
+        {
+            "name": "UNIVERSITY COLLEGE OF TECHNOLOGY",
+            "state": "Telangana"
+        },
+        {
+            "name": "UNIVERSITY INSTITUTE OF ENGINEERING AND TECHNOLOGY, MAHARSHI DAYANAND UNIVERSITY",
+            "state": "Haryana"
+        },
+        {
+            "name": "UNIVERSITY INSTITUTE OF ENGINEERING AND TECHNOLOGY, KURUKSHETRA UNIVERSITY",
+            "state": "Haryana"
+        },
+        {
+            "name": "UNIVERSITY OF LUCKNOW",
+            "state": "Uttar Pradesh"
+        },
+        {
+            "name": "UPMC",
+            "state": "Karnataka"
+        },
+        {
+            "name": "UNIVERSITY VISVESVARAYYA COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "UNIVERSITY SCHOOL OF BIOTECHNOLOGY",
+            "state": "Delhi"
+        },
+        {
+            "name": "USHA MITTAL INSTITUTE OF TECHNOLOGY",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "UTTARANCHAL INSTITUTE OF TECHNOLOGY",
+            "state": "Uttarakhand"
+        },
+        {
+            "name": "V.M.SALGAOCAR COLLEGE OF LAW",
+            "state": "Goa"
+        },
+        {
+            "name": "VAISH COLLEGE OF ENGINEERING",
+            "state": "Haryana"
+        },
+        {
+            "name": "VAIKUNTA BALIGA COLLEGE OF LAW",
+            "state": "Karnataka"
+        },
+        {
+            "name": "VASANTDADA PATIL COLLEGE OF ENGINEERING",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "VASAVI COLLEGE OF ENGINEERING",
+            "state": "Telangana"
+        },
+        {
+            "name": "VARAHA COLLEGE OF ARCHITECTURE AND PLANNING",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "VASIREDDY VENKATADRI INSTITUTE OF TECHNOLOGY",
+            "state": "Telangana"
+        },
+        {
+            "name": "VEERAPPA NISTY ENGINEERING COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "VEERAVALLI COLLEGE OF LAW",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "VELAMMAL ENGINEERING COLLEGE",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "VELAMMAL COLLEGE OF ENGINEERING",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "VELTECH DR.RR & DR.SR UNIVERSITY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "VELS INSTITUTE OF SCIENCE, TECHNOLOGY",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "VIDYA ACADEMY OF SCIENCE AND TECHNOLOGY",
+            "state": "Kerela"
+        },
+        {
+            "name": "VIDYA JYOTI INSTITUTE OF TECHNOLOGY",
+            "state": "Telangana"
+        },
+        {
+            "name": "VIDYA VIKAS ACADEMY",
+            "state": "Goa"
+        },
+        {
+            "name": "VIDYA VARDHAKA COLLEGE OF ENGINEERING",
+            "state": "Karnataka"
+        },
+        {
+            "name": "VIDYA VIKAS INSTITUTE OF ENGINEERING AND TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "VIDYAVARDHINI COLLEGE OF ENGINEERING AND TECH.",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "VIMAL JYOTHI COLLEGE OF ENGINEERING",
+            "state": "Kerela"
+        },
+        {
+            "name": "VIGNAN'S INSTITUTE OF INFORMATION TECHNOLOGY",
+            "state": "Telangana"
+        },
+        {
+            "name": "VISAKHA LAW COLLEGE",
+            "state": "Andhra Pradesh"
+        },
+        {
+            "name": "VISWAJYOTHI ENGINEERING COLLEGE",
+            "state": "Kerela"
+        },
+        {
+            "name": "VIT, PUNE",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "VIT",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "VIVEKANAND EDUCATION SOCIETY'S INSTITUTE OF TECH.",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "VIVEKNANDA INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "VJTI",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "VSB COLLEGE OF ENGINEERING TECHNICAL CAMPUS",
+            "state": "Tamil Nadu"
+        },
+        {
+            "name": "VNIT NAGPUR",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "VSM COLLEGE OF ENGINEERING",
+            "state": "Telangana"
+        },
+        {
+            "name": "VSM INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "WADIA COLLEGE OF PUNE",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "YENEPOYA INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "WALCHAND COLLEGE OF ENGINEERING",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "YENOPOYA MEDICAL COLLEGE",
+            "state": "Karnataka"
+        },
+        {
+            "name": "YENOPOYA INSTITUTE OF TECHNOLOGY",
+            "state": "Karnataka"
+        },
+        {
+            "name": "YESHWANTRAO CHAVAN COLLEGE OF ENGINEERING, NAGPUR",
+            "state": "Maharashtra"
+        },
+        {
+            "name": "YMCA UNIVERSITY OF SCIENCE AND TECHNOLOGY",
+            "state": "Haryana"
+        },
+        {
+            "name": "ZAKIR HUSSAIN COLLEGE OF ENGINEERING AND TECHNOLOGY, ALIGARH MUSLIM UNIVERSITY, ALIGARH",
+            "state": "Uttar Pradesh"
+        }
+    ]
+}

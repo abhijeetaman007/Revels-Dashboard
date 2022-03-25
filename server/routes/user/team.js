@@ -308,27 +308,13 @@ const getEventTeam = async (req, res) => {
     let team = await Team.findOne({
       event: event_ID,
       'members.user': req.requestUser._id,
-    });
+    }).populate('members.user requestedMembers',{name:1});
     console.log('team', team);
     if (!team)
       return res.status(400).send({ success: false, msg: 'Invalid Team' });
-    let requests = [];
-    let teammembers = [];
-    for (let i = 0; i < team.requestedMembers.length; i++) {
-      let userr = await User.findById(team.requestedMembers[i]);
-      let user_id = userr._id;
-      let user_name = userr.name;
-      requests.push({ user_id, user_name });
-    }
-    for (let i = 0; i < team.members.length; i++) {
-      let userr = await User.findById(team.members[i].user.toString());
-      let user_id = userr._id;
-      let user_name = userr.name;
-      teammembers.push({ user_id, user_name });
-    }
     return res
       .status(200)
-      .send({ success: false, data: team, requests, teammembers });
+      .send({ success: false, data: team });
   } catch (err) {
     console.log(err);
     return res
