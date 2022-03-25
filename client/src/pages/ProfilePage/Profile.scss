@@ -122,6 +122,7 @@ $text-color: #c4c4c4;
       .back-btn:hover {
         cursor: pointer;
       }
+      padding-top: 20px;
       width: 83%;
       display: -webkit-box;
       display: -ms-flexbox;
@@ -203,7 +204,7 @@ $text-color: #c4c4c4;
         }
         .grid {
           margin: 10px 0;
-          width: 50%;
+          width: 80%;
           display: -ms-grid;
           display: grid;
           -ms-grid-columns: auto auto auto;
@@ -358,6 +359,7 @@ $text-color: #c4c4c4;
       .profile-content-area {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=5)";
         width: 100%;
         margin-top: 60px;
+        
         overflow-y: scroll;
         .text {
           width: 80%;
