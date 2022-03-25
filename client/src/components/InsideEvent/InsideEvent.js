@@ -30,6 +30,7 @@ const InsideEvent = () => {
   const [team, setTeam] = useState(null);
   const [teammembers, setTeammembers] = useState([]);
   const [teamIDInput, setTeamIDInput] = useState('');
+  const [teamCreator, setTeamCreator] = useState('');
 
   //MODAL STUFF
   let subtitle;
@@ -78,14 +79,18 @@ const InsideEvent = () => {
       setTeam(res.data.data);
       setRequests(res.data.requests);
       setTeammembers(res.data.teammembers);
+      setTeamCreator(res.data.data.createdBy);
       console.log('team', res);
       console.log('teamid', res.data.data.teamID);
+
+      console.log('teamcreateby', res.data.data.createdBy);
     } catch (err) {
       console.log(err);
     }
   };
 
   useEffect(() => {
+    console.log('auth', auth.user);
     getTeamDetails();
     callEventByID();
   }, []);
@@ -103,6 +108,9 @@ const InsideEvent = () => {
         { headers: header }
       );
       console.log('ress1', res);
+      console.log('tooast');
+      toast.success(res.data.msg);
+      window.location.reload(false);
     } catch (err) {
       console.log(err);
     }
@@ -295,43 +303,44 @@ const InsideEvent = () => {
                 <button className="font-heavy whiteinblue">Invite</button>
               </div>
             </div> */}
+            {auth.user._id == teamCreator ? (
+              <div className="ele">
+                <div className="font-heavy">REQUESTS</div>
 
-            <div className="ele">
-              <div className="font-heavy">REQUESTS</div>
-              {requests.length != 0 ? (
-                requests.map((x, idx) => (
-                  <div>
-                    {x.user_name}
-                    <button
-                      onClick={async () => {
-                        try {
-                          console.log({
-                            eventID: event.eventID,
-                            teamID: team.teamID,
-                            user_ID: requests[idx].user_id,
-                          });
-                          const res = await axios.post(
-                            '/api/user/team/add',
-                            {
+                {requests.length != 0 ? (
+                  requests.map((x, idx) => (
+                    <div>
+                      {x.user_name}
+                      <button
+                        onClick={async () => {
+                          try {
+                            console.log({
                               eventID: event.eventID,
                               teamID: team.teamID,
                               user_ID: requests[idx].user_id,
-                            },
-                            { headers: header }
-                          );
-                          console.log('ress3', res);
-                          if (res.data.success) {
-                            toast.success(res.data.msg);
-                            window.location.reload(false);
-                          } else toast.error(res.data.msg);
-                        } catch (err) {
-                          console.log(err);
-                        }
-                      }}
-                    >
-                      Add To team
-                    </button>
-                    {/* <button
+                            });
+                            const res = await axios.post(
+                              '/api/user/team/add',
+                              {
+                                eventID: event.eventID,
+                                teamID: team.teamID,
+                                user_ID: requests[idx].user_id,
+                              },
+                              { headers: header }
+                            );
+                            console.log('ress3', res);
+                            if (res.data.success) {
+                              toast.success(res.data.msg);
+                              window.location.reload(false);
+                            } else toast.error(res.data.msg);
+                          } catch (err) {
+                            console.log(err);
+                          }
+                        }}
+                      >
+                        Add To team
+                      </button>
+                      {/* <button
                         onClick={async () => {
                           try {
                             console.log({
@@ -359,12 +368,13 @@ const InsideEvent = () => {
                       >
                         REJECT
                       </button> */}
-                  </div>
-                ))
-              ) : (
-                <div className="font-light">No requests so far...</div>
-              )}
-            </div>
+                    </div>
+                  ))
+                ) : (
+                  <div className="font-light">No requests so far...</div>
+                )}
+              </div>
+            ) : null}
           </div>
         )}
         {/* <div className="ele">
