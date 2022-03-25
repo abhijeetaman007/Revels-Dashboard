@@ -8,38 +8,59 @@
         height: 100%;
         width: 100%;
         .gradient {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            flex-flow: column;
-            align-items: center;
-            justify-content: center;
+            -ms-flex-flow: column;
+                flex-flow: column;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
             border-radius: 10px;
             height: 100%;
             padding: 20px;
+            background: -webkit-linear-gradient(top, rgba(245, 115, 127, 0.08) 0.01%, rgba(0, 0, 0, 0.01) 0.02%, #F5737F 100%);
             background: linear-gradient(180deg, rgba(245, 115, 127, 0.08) 0.01%, rgba(0, 0, 0, 0.01) 0.02%, #F5737F 100%);
             .proshow-card-header {
                 color: white;
                 text-align: center;
                 h6 {
                     letter-spacing: 15px;
+                    font-size: 25.6px;
                     font-size: 1.6rem;
                 }
                 p {
+                    font-size: 22.4px;
                     font-size: 1.4rem;
                 }
             }
             .artist-name {
-                flex-grow: 1;
+                -webkit-box-flex: 1;
+                    -ms-flex-positive: 1;
+                        flex-grow: 1;
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
-                flex-flow: column;
-                align-items: center;
-                justify-content: center;
+                -ms-flex-flow: column;
+                    flex-flow: column;
+                -webkit-box-align: center;
+                    -ms-flex-align: center;
+                        align-items: center;
+                -webkit-box-pack: center;
+                    -ms-flex-pack: center;
+                        justify-content: center;
                 color: white;
                 h2 {
+                    font-size: 48px;
                     font-size: 3rem;
                     margin: 0;
                 }
                 p {
                     margin: 0;
+                    font-size: 32px;
                     font-size: 2rem;
                 }
             }
@@ -47,9 +68,14 @@
                 border: 0;
                 background-color: white;
                 color: black;
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
-                align-self: flex-end;
-                align-items: center;
+                -ms-flex-item-align: end;
+                    align-self: flex-end;
+                -webkit-box-align: center;
+                    -ms-flex-align: center;
+                        align-items: center;
                 padding: 10px;
                 border-radius: 10px;
                 font-weight: bold;

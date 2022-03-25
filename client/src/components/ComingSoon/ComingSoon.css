@@ -1,211 +1,454 @@
 @font-face {
-    font-family: Clip;
-    src: url("https://acupoftee.github.io/fonts/Clip.ttf");
-  }
-  
-  .sign {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50%;
-    height: 50%;
-    background-image: radial-gradient(
-      ellipse 50% 35% at 50% 50%,
-      #6b1839,
-      transparent
-    );
-    transform: translate(-50%, -50%);
-    letter-spacing: 2;
-    left: 50%;
-    top: 50%;
-    font-family: "Clip";
-    text-transform: uppercase;
-    font-size: 6em;
+  font-family: Clip;
+  src: url("https://acupoftee.github.io/fonts/Clip.ttf");
+}
+
+.sign {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 50%;
+  height: 50%;
+  background-image: -webkit-radial-gradient(
+    ellipse 50% 35% at 50% 50%,
+    #6b1839,
+    transparent
+  );
+  background-image: radial-gradient(
+    ellipse 50% 35% at 50% 50%,
+    #6b1839,
+    transparent
+  );
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  letter-spacing: 2;
+  left: 50%;
+  top: 50%;
+  font-family: "Clip";
+  text-transform: uppercase;
+  font-size: 6em;
+  color: #ffe6ff;
+  text-shadow: 0 0 9.6px #ffe6ff, 0 0 24px #E27A32,
+    -3.2px 1.6px 16px #E27A32, 3.2px 1.6px 16px #E27A32,
+    0 -8px 32px #E27A32, 0 8px 48px #E27A32;
+  text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #E27A32,
+    -0.2rem 0.1rem 1rem #E27A32, 0.2rem 0.1rem 1rem #E27A32,
+    0 -0.5rem 2rem #E27A32, 0 0.5rem 3rem #E27A32;
+  -webkit-animation: shine 2s forwards, flicker 3s infinite;
+          animation: shine 2s forwards, flicker 3s infinite;
+}
+
+@-webkit-keyframes blink {
+  0%,
+  22%,
+  36%,
+  75% {
     color: #ffe6ff;
-    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #E27A32,
-      -0.2rem 0.1rem 1rem #E27A32, 0.2rem 0.1rem 1rem #E27A32,
-      0 -0.5rem 2rem #E27A32, 0 0.5rem 3rem #E27A32;
-    animation: shine 2s forwards, flicker 3s infinite;
+    text-shadow: 0 0 0.6 #E27A32 #ffe6ff, 0 0 1.5rem #E27A32,
+      -0.2rem 0.1rem 1rem #D64F0B, 0.2rem 0.1rem 1rem #D64F0B,
+      0 -0.5rem 2rem #D64F0B, 0 0.5rem 3rem #E27A32;
   }
-  
-  @keyframes blink {
-    0%,
-    22%,
-    36%,
-    75% {
-      color: #ffe6ff;
-      text-shadow: 0 0 0.6 #E27A32 #ffe6ff, 0 0 1.5rem #E27A32,
-        -0.2rem 0.1rem 1rem #D64F0B, 0.2rem 0.1rem 1rem #D64F0B,
-        0 -0.5rem 2rem #D64F0B, 0 0.5rem 3rem #E27A32;
-    }
-    28%,
-    33% {
-      color: white;
-      text-shadow: none;
-    }
-    82%,
-    97% {
-      color: white;
-      text-shadow: none;
-    }
+  28%,
+  33% {
+    color: white;
+    text-shadow: none;
   }
-  
-  .flicker {
-    animation: shine 2s forwards, blink 3s 2s infinite;
+  82%,
+  97% {
+    color: white;
+    text-shadow: none;
   }
-  
-  .fast-flicker {
-    animation: shine 2s forwards, blink 5s 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  22%,
+  36%,
+  75% {
+    color: #ffe6ff;
+    text-shadow: 0 0 0.6 #E27A32 #ffe6ff, 0 0 1.5rem #E27A32,
+      -0.2rem 0.1rem 1rem #D64F0B, 0.2rem 0.1rem 1rem #D64F0B,
+      0 -0.5rem 2rem #D64F0B, 0 0.5rem 3rem #E27A32;
   }
-  
-  @keyframes shine {
-    0% {
-      color: white;
-      text-shadow: none;
-    }
-    100% {
-      color: #ffe6ff;
-      text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #114a5e,
-        -0.2rem 0.1rem 1rem #FFDD8C, 0.2rem 0.1rem 1rem #E27A32,
-        0 -0.5rem 2rem #E27A32, 0 0.5rem 3rem #D64F0B;
-    }
+  28%,
+  33% {
+    color: white;
+    text-shadow: none;
   }
-  
-  @keyframes flicker {
-    from {
-      opacity: 1;
-    }
-  
-    4% {
-      opacity: 0.9;
-    }
-  
-    6% {
-      opacity: 0.85;
-    }
-  
-    8% {
-      opacity: 0.95;
-    }
-  
-    10% {
-      opacity: 0.9;
-    }
-  
-    11% {
-      opacity: 0.922;
-    }
-  
-    12% {
-      opacity: 0.9;
-    }
-  
-    14% {
-      opacity: 0.95;
-    }
-  
-    16% {
-      opacity: 0.98;
-    }
-  
-    17% {
-      opacity: 0.9;
-    }
-  
-    19% {
-      opacity: 0.93;
-    }
-  
-    20% {
-      opacity: 0.99;
-    }
-  
-    24% {
-      opacity: 1;
-    }
-  
-    26% {
-      opacity: 0.94;
-    }
-  
-    28% {
-      opacity: 0.98;
-    }
-  
-    37% {
-      opacity: 0.93;
-    }
-  
-    38% {
-      opacity: 0.5;
-    }
-  
-    39% {
-      opacity: 0.96;
-    }
-  
-    42% {
-      opacity: 1;
-    }
-  
-    44% {
-      opacity: 0.97;
-    }
-  
-    46% {
-      opacity: 0.94;
-    }
-  
-    56% {
-      opacity: 0.9;
-    }
-  
-    58% {
-      opacity: 0.9;
-    }
-  
-    60% {
-      opacity: 0.99;
-    }
-  
-    68% {
-      opacity: 1;
-    }
-  
-    70% {
-      opacity: 0.9;
-    }
-  
-    72% {
-      opacity: 0.95;
-    }
-  
-    93% {
-      opacity: 0.93;
-    }
-  
-    95% {
-      opacity: 0.95;
-    }
-  
-    97% {
-      opacity: 0.93;
-    }
-  
-    to {
-      opacity: 1;
-    }
+  82%,
+  97% {
+    color: white;
+    text-shadow: none;
   }
+}
+
+.flicker {
+  -webkit-animation: shine 2s forwards, blink 3s 2s infinite;
+          animation: shine 2s forwards, blink 3s 2s infinite;
+}
+
+.fast-flicker {
+  -webkit-animation: shine 2s forwards, blink 5s 1s infinite;
+          animation: shine 2s forwards, blink 5s 1s infinite;
+}
+
+@-webkit-keyframes shine {
+  0% {
+    color: white;
+    text-shadow: none;
+  }
+  100% {
+    color: #ffe6ff;
+    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #114a5e,
+      -0.2rem 0.1rem 1rem #FFDD8C, 0.2rem 0.1rem 1rem #E27A32,
+      0 -0.5rem 2rem #E27A32, 0 0.5rem 3rem #D64F0B;
+  }
+}
+
+@keyframes shine {
+  0% {
+    color: white;
+    text-shadow: none;
+  }
+  100% {
+    color: #ffe6ff;
+    text-shadow: 0 0 0.6rem #ffe6ff, 0 0 1.5rem #114a5e,
+      -0.2rem 0.1rem 1rem #FFDD8C, 0.2rem 0.1rem 1rem #E27A32,
+      0 -0.5rem 2rem #E27A32, 0 0.5rem 3rem #D64F0B;
+  }
+}
+
+@-webkit-keyframes flicker {
+  from {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+
+  4% {
+    opacity: 0.9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  }
+
+  6% {
+    opacity: 0.85;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
+  }
+
+  8% {
+    opacity: 0.95;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=95)";
+  }
+
+  10% {
+    opacity: 0.9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  }
+
+  11% {
+    opacity: 0.922;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=92)";
+  }
+
+  12% {
+    opacity: 0.9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  }
+
+  14% {
+    opacity: 0.95;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=95)";
+  }
+
+  16% {
+    opacity: 0.98;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=98)";
+  }
+
+  17% {
+    opacity: 0.9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  }
+
+  19% {
+    opacity: 0.93;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=93)";
+  }
+
+  20% {
+    opacity: 0.99;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=99)";
+  }
+
+  24% {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+
+  26% {
+    opacity: 0.94;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=94)";
+  }
+
+  28% {
+    opacity: 0.98;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=98)";
+  }
+
+  37% {
+    opacity: 0.93;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=93)";
+  }
+
+  38% {
+    opacity: 0.5;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  }
+
+  39% {
+    opacity: 0.96;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=96)";
+  }
+
+  42% {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+
+  44% {
+    opacity: 0.97;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=97)";
+  }
+
+  46% {
+    opacity: 0.94;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=94)";
+  }
+
+  56% {
+    opacity: 0.9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  }
+
+  58% {
+    opacity: 0.9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  }
+
+  60% {
+    opacity: 0.99;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=99)";
+  }
+
+  68% {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+
+  70% {
+    opacity: 0.9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  }
+
+  72% {
+    opacity: 0.95;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=95)";
+  }
+
+  93% {
+    opacity: 0.93;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=93)";
+  }
+
+  95% {
+    opacity: 0.95;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=95)";
+  }
+
+  97% {
+    opacity: 0.93;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=93)";
+  }
+
+  to {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+}
+
+@keyframes flicker {
+  from {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+
+  4% {
+    opacity: 0.9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  }
+
+  6% {
+    opacity: 0.85;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
+  }
+
+  8% {
+    opacity: 0.95;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=95)";
+  }
+
+  10% {
+    opacity: 0.9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  }
+
+  11% {
+    opacity: 0.922;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=92)";
+  }
+
+  12% {
+    opacity: 0.9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  }
+
+  14% {
+    opacity: 0.95;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=95)";
+  }
+
+  16% {
+    opacity: 0.98;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=98)";
+  }
+
+  17% {
+    opacity: 0.9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  }
+
+  19% {
+    opacity: 0.93;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=93)";
+  }
+
+  20% {
+    opacity: 0.99;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=99)";
+  }
+
+  24% {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+
+  26% {
+    opacity: 0.94;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=94)";
+  }
+
+  28% {
+    opacity: 0.98;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=98)";
+  }
+
+  37% {
+    opacity: 0.93;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=93)";
+  }
+
+  38% {
+    opacity: 0.5;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  }
+
+  39% {
+    opacity: 0.96;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=96)";
+  }
+
+  42% {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+
+  44% {
+    opacity: 0.97;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=97)";
+  }
+
+  46% {
+    opacity: 0.94;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=94)";
+  }
+
+  56% {
+    opacity: 0.9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  }
+
+  58% {
+    opacity: 0.9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  }
+
+  60% {
+    opacity: 0.99;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=99)";
+  }
+
+  68% {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+
+  70% {
+    opacity: 0.9;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  }
+
+  72% {
+    opacity: 0.95;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=95)";
+  }
+
+  93% {
+    opacity: 0.93;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=93)";
+  }
+
+  95% {
+    opacity: 0.95;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=95)";
+  }
+
+  97% {
+    opacity: 0.93;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=93)";
+  }
+
+  to {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  }
+}
 .andaaz {
-    position: absolute;
-    left: 50%;
-    top: 60%;
-    transform: translate(-50%, -50%);
-    transition-duration: 1000ms;
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition-duration: 1000ms;
+          transition-duration: 1000ms;
 }
 @media only screen and (max-width: 812px) {
-    .sign {
-        font-size: 3em;
-    }
+  .sign {
+      font-size: 3em;
+  }
 }

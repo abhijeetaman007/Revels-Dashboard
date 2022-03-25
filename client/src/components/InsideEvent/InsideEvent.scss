@@ -2,10 +2,16 @@ $tile-color: #f5737f;
 $event-card-background: #c6a3ff;
 
 .event-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   color: white;
   button {
+    margin: 16px;
     margin: 1rem;
     margin-right: 3.5px;
     border: 1.5px solid $tile-color;
@@ -16,16 +22,24 @@ $event-card-background: #c6a3ff;
     color: $tile-color;
   }
   .event-grp {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     .compo {
+      padding-right: 16px;
       padding-right: 1rem;
     }
   }
   .ele {
+    margin: 16px;
     margin: 1rem;
     .split {
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
-      align-items: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
       .blueinwhite {
         font-weight: bold;
         border: none;
@@ -53,7 +67,14 @@ $event-card-background: #c6a3ff;
   width: 400px;
 }
 .btn-grp {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
