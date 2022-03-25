@@ -110,7 +110,7 @@ const userRegister = async (req, res) => {
       passwordResetToken,
     });
     await newUser.save();
-    message = `Please Click to verify ${process.env.FRONT_END_URL}verify/${passwordResetToken}`;
+    message = `Please Click to verify \n ${process.env.FRONT_END_URL}verify/${passwordResetToken} \n Regards,\nSystem Admin - AAgaz '22`;
     html = emailTemplate(
       newUser.name,
       "Please click the below to verify your account.",
@@ -119,6 +119,7 @@ const userRegister = async (req, res) => {
     );
 
     res.status(200).send({ success: true, msg: "User Registered" });
+    sendENotif(newUser.email, "Email Verification Revels", message)
     sendEmailNotif(newUser.email, "Email Verification Revels", html, message);
     return 0;
   } catch (err) {
