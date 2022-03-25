@@ -34,6 +34,12 @@ const joinTeam = async (req, res) => {
             });
         let newTeam = await Team.findOne({ eventID, teamID });
 
+        if (newTeam.createdBy.toString() == req.requestUser._id.toString())
+            return res.status(200).send({
+                success: false,
+                msg: 'Already in Team',
+            });
+
         // Invalid Team Code
         if (!newTeam)
             return res
@@ -152,6 +158,7 @@ const addToTeam = async (req, res) => {
             { event: event._id, 'members.user': member._id },
             { teamID: 1 }
         );
+        console.log('Found Team', team);
 
         if (team) return res.send({ success: false, msg: 'Already in a team' });
         let newTeam = await Team.findOne({ eventID, teamID });
@@ -228,6 +235,17 @@ const addToTeam = async (req, res) => {
             },
             { new: true }
         );
+
+        // Delete All Other Request
+        await Team.updateMany(
+            {},
+            {
+                $pull: {
+                    requestedMembers: user_ID,
+                },
+            }
+        );
+
         return res
             .status(200)
             .send({ success: true, msg: 'User Added to Team', data: team });
@@ -323,12 +341,46 @@ const getEventTeam = async (req, res) => {
     }
 };
 
+const deleteTeamRequest = async (req, res) => {
+    try {
+        let { teamID, user_ID } = req.body;
+        let team = await Team.findOne({ teamID });
+        if (!team)
+            return res
+                .status(400)
+                .send({ success: false, msg: 'Invalid Team' });
+        if (user_ID.toString() == req.requestUser._id.toString())
+            return res
+                .status(400)
+                .send({ success: false, msg: 'Cannot Delete' });
+        if (team.createdBy.toString() != req.requestUser._id.toString())
+            return res
+                .status(400)
+                .send({ success: false, msg: 'Access Denied' });
+
+        await Team.updateOne(
+            { teamID },
+            {
+                $pull: {
+                    requestedMembers: user_ID,
+                },
+            }
+        );
+        return res.status(200).send({ success: true, msg: 'Request Deleted' });
+    } catch (err) {
+        console.log(err);
+        return res
+            .status(500)
+            .send({ success: false, msg: 'Internal Server Error' });
+    }
+};
 module.exports = {
     addToTeam,
     joinTeam,
     leaveTeam,
     removeFromTeam,
     getEventTeam,
+    deleteTeamRequest,
 };
 
 //edge cases
