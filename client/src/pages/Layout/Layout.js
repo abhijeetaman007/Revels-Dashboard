@@ -55,11 +55,11 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
         <i className="fa fa-bell" onClick={handleBell}></i>
       </nav>
       <div className="dash-wrapper">
-        <div className="notif-wrapper">
+        {/* <div className="notif-wrapper">
           <div className="notif-box">
             <NotifTile />
           </div>
-        </div>
+        </div> */}
         <div className="sidebar">
           <div className="cross">
             <i className="fa fa-times" onClick={handleHamburger}></i>
@@ -142,8 +142,8 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <></>
           )}
           {/* change before pushing code */}
-          {children}
-          {/* <ComingSoonDash /> */}
+          {/* {children} */}
+          <ComingSoonDash />
         </div>
         {/* uncomment for proshow */}
         {/* {

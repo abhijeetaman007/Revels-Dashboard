@@ -1,28 +1,46 @@
 .andaaz {
   overflow:hidden;
   white-space:nowrap;
+  font-size:48px;
   font-size: 3rem;
 }
 
 .andaaz:first-of-type {   
-  animation: showup 7s infinite;
+  -webkit-animation: showup 7s infinite;   
+          animation: showup 7s infinite;
 }
 
 .andaaz:last-of-type {
   width:0px;
-  animation: reveal 7s infinite;
+  -webkit-animation: reveal 7s infinite;
+          animation: reveal 7s infinite;
 }
 
 .andaaz:last-of-type span {
   margin-left:-355px;
-  animation: slidein 7s infinite;
+  -webkit-animation: slidein 7s infinite;
+          animation: slidein 7s infinite;
+}
+
+@-webkit-keyframes showup {
+    0% {opacity:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";}
+    20% {opacity:1;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";}
+    80% {opacity:1;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";}
+    100% {opacity:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";}
 }
 
 @keyframes showup {
-    0% {opacity:0;}
-    20% {opacity:1;}
-    80% {opacity:1;}
-    100% {opacity:0;}
+    0% {opacity:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";}
+    20% {opacity:1;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";}
+    80% {opacity:1;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";}
+    100% {opacity:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";}
+}
+
+@-webkit-keyframes slidein {
+    0% { margin-left:-800px; }
+    20% { margin-left:-800px; }
+    35% { margin-left:0px; }
+    100% { margin-left:0px; }
 }
 
 @keyframes slidein {
@@ -32,10 +50,18 @@
     100% { margin-left:0px; }
 }
 
-@keyframes reveal {
-    0% {opacity:0;width:0px;}
-    20% {opacity:1;width:0px;}
+@-webkit-keyframes reveal {
+    0% {opacity:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";width:0px;}
+    20% {opacity:1;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";width:0px;}
     30% {width:355px;}
-    80% {opacity:1;}
-    100% {opacity:0;width:355px;}
+    80% {opacity:1;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";}
+    100% {opacity:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";width:355px;}
+}
+
+@keyframes reveal {
+    0% {opacity:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";width:0px;}
+    20% {opacity:1;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";width:0px;}
+    30% {width:355px;}
+    80% {opacity:1;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";}
+    100% {opacity:0;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";width:355px;}
 }

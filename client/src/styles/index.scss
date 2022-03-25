@@ -7,14 +7,25 @@
   height: 100vh;
   width: 50vw;
   margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   padding: 0 10%;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   .lottie-container{
     width: 100%;
     margin-left:-80px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     div:nth-child(1) {
       height: 50vh;
@@ -22,14 +33,17 @@
     div:nth-child(2) {
       width: 200%;
       height: 50vh;
+      margin-left: -64px;
       margin-left: -4rem;
     }
   }
   .ver-div {
+    margin-top: 32px;
     margin-top: 2rem;
     text-align: center;
     color: #c4515c;
     .anim-font {
+      font-size: 30.4px;
       font-size: 1.9rem;
       letter-spacing: 10px;
       margin-bottom: 10px;
@@ -42,7 +56,8 @@
       border-radius: 10px;
       color: white;
       &:hover {
-        transform: translateY(5px);
+        -webkit-transform: translateY(5px);
+                transform: translateY(5px);
       }
     }
   }
@@ -54,13 +69,25 @@
       width: 100%;
       margin: 0;
       text-align: center;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+                  -ms-grid-row-align: center;
+              align-items: center;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+              flex-direction: column;
       div:nth-child(1) {
+        height: -webkit-fit-content;
+        height: -moz-fit-content;
         height: fit-content;
       }
       div:nth-child(2) {
+        height: -webkit-fit-content;
+        height: -moz-fit-content;
         height: fit-content;
         width: 100%;
         margin: 0 auto;

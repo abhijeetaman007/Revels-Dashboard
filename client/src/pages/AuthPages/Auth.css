@@ -1,171 +1,181 @@
 .auth-wrapper {
-    height: 100vh;
-    width: 100vw;
+  height: 100vh;
+  width: 100vw;
 }
 .hello-area {
-    background-image: radial-gradient(circle, #f5737f, #e96a76, #dc626d, #d05965, #c4515c);
-    height: 100vh;
-    width: 100%;
+  background-image: -webkit-radial-gradient(circle, #f5737f, #e96a76, #dc626d, #d05965, #c4515c);
+  background-image: radial-gradient(circle, #f5737f, #e96a76, #dc626d, #d05965, #c4515c);
+  height: 100vh;
+  width: 100%;
 }
 .login-area {
-    background-color: #100B1B;
-    width: 100%;
+  background-color: #100B1B;
+  width: 100%;
 }
 .hello-box {
-    height: 400px;
-    width: 400px;
-    background-color: rgba(255, 255, 255, 0.75);
-    border-radius: 30px;
-    box-shadow: -19px 18px 0px 4px rgba(188,87,96,0.88);
-      -webkit-box-shadow: -19px 18px 0px 4px rgba(188,87,96,0.88);
-        -moz-box-shadow: -19px 18px 0px 4px rgba(188,87,96,0.88);
+  height: 400px;
+  width: 400px;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 30px;
+  box-shadow: -19px 18px 0px 4px rgba(188,87,96,0.88);
+    -webkit-box-shadow: -19px 18px 0px 4px rgba(188,87,96,0.88);
+      -moz-box-shadow: -19px 18px 0px 4px rgba(188,87,96,0.88);
 }
 .auth-revelry {
-  text-align: center;
-  padding: 10px;
-  margin-top: 50px;
-  mix-blend-mode: multiply;
-  font-size: 2rem;
-  color: #767676;
-  letter-spacing: 0.6rem;
+text-align: center;
+padding: 10px;
+margin-top: 50px;
+mix-blend-mode: multiply;
+font-size: 32px;
+font-size: 2rem;
+color: #767676;
+letter-spacing: 9.6px;
+letter-spacing: 0.6rem;
 }
 /* general auth styles */
 .form-wrapper {
-    width: 70%;
+  width: 70%;
 }
 .auth-heading {
-    font-size: 2.1rem;
-    letter-spacing: 5px;
-    text-align: center;
-    margin: 10px 0;
-    color: #c4515c;
+  font-size: 33.6px;
+  font-size: 2.1rem;
+  letter-spacing: 5px;
+  text-align: center;
+  margin: 10px 0;
+  color: #c4515c;
 }
 .form-wrapper div p {
-  text-decoration: none;
-  color: rgb(155, 155, 155);
+text-decoration: none;
+color: rgb(155, 155, 155);
 }
 .form-wrapper div p:hover {
-  color:#c4515c;
-  cursor: pointer;
+color:#c4515c;
+cursor: pointer;
 }
 /* text field styling */
 .user-box {
-    position: relative;
+  position: relative;
 }
 input,
 select {
-  width: 99%;
-  padding: 10px 5px;
-  font-size: 16px;
-  margin-bottom: 15px;
-  border: none;
-  color: white;
-  font-weight: 800;
-  border-bottom: 4px solid darkgray;
-  outline: none;
-  background: transparent;
+width: 99%;
+padding: 10px 5px;
+font-size: 16px;
+margin-bottom: 15px;
+border: none;
+color: white;
+font-weight: 800;
+border-bottom: 4px solid darkgray;
+outline: none;
+background: transparent;
 }
 .college-select option {
-  color: black;
-  background-color: lightgray;
+color: black;
+background-color: lightgray;
 }
 .college-select option:checked { display:none; }
 .college-select option:checked {
-  color: white;
+color: white;
 }
 .user-box label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 10px 0;
-  font-size: 16px;
-  color: lightgray;
-  pointer-events: none;
-  transition: 0.5s;
+position: absolute;
+top: 0;
+left: 0;
+padding: 10px 0;
+font-size: 16px;
+color: lightgray;
+pointer-events: none;
+-webkit-transition: 0.5s;
+transition: 0.5s;
 }
 .user-box input:focus ~ label {
-  top: -20px;
-  left: 0;
-  color: white;
-  font-size: 12px;
+top: -20px;
+left: 0;
+color: white;
+font-size: 12px;
 }
 .user-box input:valid ~ label {
-  top: -20px;
-  left: 0;
-  color: #dbdbdb;
-  font-size: 12px;
+top: -20px;
+left: 0;
+color: #dbdbdb;
+font-size: 12px;
 }
 .user-box input:focus,
 select:focus {
-  -o-border-image: linear-gradient(to right, #22B6E6 0%, #22B6E6 50%, #1a86aa 100%);
-  border-image: linear-gradient(to right, #22B6E6 0%, #22B6E6 50%, #1a86aa 100%);
-  -webkit-border-image: -webkit-linear-gradient(left, #22B6E6 0%, #22B6E6 50%, #1a86aa 100%);
-  border-image-slice: 1;
-  -webkit-border-image-slice: 1;
+-o-border-image: linear-gradient(to right, #22B6E6 0%, #22B6E6 50%, #1a86aa 100%);
+border-image: linear-gradient(to right, #22B6E6 0%, #22B6E6 50%, #1a86aa 100%);
+-webkit-border-image: -webkit-linear-gradient(left, #22B6E6 0%, #22B6E6 50%, #1a86aa 100%);
+border-image-slice: 1;
+-webkit-border-image-slice: 1;
 }
 .auth-form button {
-    width: 100%;
-    border: none;
-    background-image: linear-gradient(to bottom, #22b6e6, #20aad7, #1e9ec8, #1e9ec8, #1a86aa);
-    border-radius: 10px;
-    margin: 5px 0;
-    padding: 0.5rem;
-    color: white;
-    font-size: 1.4rem;
+  width: 100%;
+  border: none;
+  background-image: -webkit-linear-gradient(top, #22b6e6, #20aad7, #1e9ec8, #1e9ec8, #1a86aa);
+  background-image: linear-gradient(to bottom, #22b6e6, #20aad7, #1e9ec8, #1e9ec8, #1a86aa);
+  border-radius: 10px;
+  margin: 5px 0;
+  padding: 8px;
+  padding: 0.5rem;
+  color: white;
+  font-size: 22.4px;
+  font-size: 1.4rem;
 }
 /* eye styling */
 .eye {
-  margin-top: 3px;
-  padding: 5px 10px;
-  border-bottom: 4px solid darkgray;
-  cursor: pointer;
+margin-top: 3px;
+padding: 5px 10px;
+border-bottom: 4px solid darkgray;
+cursor: pointer;
 }
 /* mobile design */
 @media only screen and (max-width: 812px) {
-  .auth-wrapper {
-    min-height: 100vh;
-    width: 100vw;
-    background-color: #c4515c;
-    overflow-y: scroll;
-    overflow-x: hidden;
-  }
-  .hello-area {
-    height: 55vh;
-  }
-  .hello-box {
-    height: 15vh;
-    width: fit-content;
-    box-shadow: none;
-  }
-  .auth-revelry {
-    padding: 2% 15%;
-    margin-top: 40px;
-    font-size: 1rem;
-  }
-  .login-area {
-    min-height: 45vh;
-    width: 100vw;
-    padding: 0;
-    padding-top: 40px;
-    border-top-left-radius: 3rem;
-    border-top-right-radius: 3rem;
-  }
-  .form-wrapper {
-    width: 80%;
-    overflow-y: hidden;
-  }
-  .eye {
-    margin-top: 0px;
-  }
-  .auth-form button {
-    height: 40px;
-    padding: 0;
-    font-size: 1rem;
-  }
-  .form-wrapper div p {
-    font-size: 12px;
-  }
-  input, select, .user-box label {
-    font-size: 14px;
-  }
+.auth-wrapper {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #c4515c;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.hello-area {
+  height: 55vh;
+}
+.hello-box {
+  height: 15vh;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  box-shadow: none;
+}
+.auth-revelry {
+  padding: 2% 15%;
+  margin-top: 40px;
+  font-size: 1rem;
+}
+.login-area {
+  min-height: 45vh;
+  width: 100vw;
+  padding: 0;
+  padding-top: 40px;
+  border-top-left-radius: 3rem;
+  border-top-right-radius: 3rem;
+}
+.form-wrapper {
+  width: 80%;
+  overflow-y: hidden;
+}
+.eye {
+  margin-top: 0px;
+}
+.auth-form button {
+  height: 40px;
+  padding: 0;
+  font-size: 1rem;
+}
+.form-wrapper div p {
+  font-size: 12px;
+}
+input, select, .user-box label {
+  font-size: 14px;
+}
 }
