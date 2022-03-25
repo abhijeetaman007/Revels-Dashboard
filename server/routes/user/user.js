@@ -110,7 +110,7 @@ const userRegister = async (req, res) => {
       passwordResetToken,
     });
     await newUser.save();
-    message = `Please Click to verify \n ${process.env.FRONT_END_URL}verify/${passwordResetToken} \n Regards,\nSystem Admin - AAgaz '22`;
+    message = `Please Click to verify \n${process.env.FRONT_END_URL}verify/${passwordResetToken} \nRegards,\nSystem Admin - Aagaz | Revels '22`;
     html = emailTemplate(
       newUser.name,
       "Please click the below to verify your account.",

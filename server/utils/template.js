@@ -140,12 +140,12 @@ const emailTemplate = (title, description, url, Button) => {
                                                                                                                       href="https://www.instagram.com/revelsmit/"
                                                                                                                       className="button"><img
                                                                                                                           style="width:30px; height:30px;"
-                                                                                                                          src="https://test.revelsmit.in/instagram.png"></a><a
+                                                                                                                          src="https://revelsmit.in/instagram.png"></a><a
                                                                                                                       style="padding:0.6em 1em;border-radius:600px;color:#ffffff;font-size:14px;text-decoration:none;font-weight:bold"
                                                                                                                       href="https://twitter.com/revelsmit"
                                                                                                                       className="button"><img
                                                                                                                           style="width:30px; height:30px;"
-                                                                                                                          src="https://test.revelsmit.in/twitter.png"></a>
+                                                                                                                          src="https://revelsmit.in/twitter.png"></a>
                                                                                                               </div>
                                                                                                               <br>
   
@@ -186,7 +186,7 @@ const emailTemplate = (title, description, url, Button) => {
                                                                                               valign="middle" width="100%"
                                                                                               style="border-top:1px solid #00A8CC;padding:12px 0px 20px 0px;text-align:center;color:#4c4c4c;font-weight:200;font-size:12px;line-height:18px">
                                                                                               <img style="width:100%;height:100px;object-fit:contain;background: #1a1a1a"
-                                                                                                  src="https://test.revelsmit.in/static/media/aagaz.de02e9db11e773475475.png">
+                                                                                                  src="https://revelsmit.in/static/media/aagaz.de02e9db11e773475475.png">
                                                                                               <p
                                                                                                   style="margin: 0px 0 0px 0;font-size: 10px;text-align: center; color:#fff ;opacity: 0.7">
   
