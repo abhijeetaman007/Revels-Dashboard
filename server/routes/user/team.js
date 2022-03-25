@@ -314,7 +314,7 @@ const getEventTeam = async (req, res) => {
       return res.status(400).send({ success: false, msg: 'Invalid Team' });
     return res
       .status(200)
-      .send({ success: false, data: team });
+      .send({ success: true, data: team });
   } catch (err) {
     console.log(err);
     return res
