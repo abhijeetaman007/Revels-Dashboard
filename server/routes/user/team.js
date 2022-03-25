@@ -147,7 +147,7 @@ const addToTeam = async (req, res) => {
     if (!event) return res.status(404).json({ msg: 'Event not found' });
 
     let team = await Team.findOne(
-      { event: event.eventID, 'members.user': member._id },
+      { event: event._id, 'members.user': member._id },
       { teamID: 1 }
     );
 
@@ -223,10 +223,6 @@ const addToTeam = async (req, res) => {
       },
       { new: true }
     );
-
-    //Final Team
-    // team = await Team.findOne({ eventID, "members.user": { $in: user._id } });
-
     return res
       .status(200)
       .send({ success: true, msg: 'User Added to Team', data: team });
@@ -301,7 +297,6 @@ const removeFromTeam = async (req, res) => {
 
 const getEventTeam = async (req, res) => {
   try {
-    // $and:[{},
     let { event_ID } = req.body;
     console.log(event_ID);
     console.log(req.requestUser._id);
