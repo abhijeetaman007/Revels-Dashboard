@@ -6,7 +6,9 @@ const User = require('../../models/User');
 const joinTeam = async (req, res) => {
   try {
     const user = req.requestUser;
+    console.log('user', user);
     const { eventID, teamID } = req.body;
+    console.log(req.body);
     let event = await Event.findOne(
       { eventID },
       {
@@ -21,10 +23,15 @@ const joinTeam = async (req, res) => {
 
     //User is not registered for the event
     let team = await Team.findOne(
-      { eventID, 'members.user': user._id },
+      { event: event.eventID, 'members.user': user._id },
       { teamID: 1 }
     );
-
+    console.log('teamM12', team);
+    if (team)
+      return res.status(400).send({
+        success: false,
+        msg: 'User Already in a team!!',
+      });
     let newTeam = await Team.findOne({ eventID, teamID });
 
     // Invalid Team Code
@@ -32,15 +39,14 @@ const joinTeam = async (req, res) => {
       return res
         .status(400)
         .send({ success: false, msg: 'Request Team Code Invalid' });
+    // if (team && teamID == team.teamID)
+    //   return res.status(400).send({ success: false, msg: 'Already in team' });
 
-    if (team && teamID == team.teamID)
-      return res.status(400).send({ success: false, msg: 'Already in team' });
-
-    if (team)
-      return res.status(400).send({
-        success: false,
-        msg: 'User Already Registered !!',
-      });
+    // if (team)
+    //   return res.status(400).send({
+    //     success: false,
+    //     msg: 'User Already Registered !!',
+    //   });
 
     console.log(event);
     // Team Size Full
@@ -117,10 +123,11 @@ const joinTeam = async (req, res) => {
 const addToTeam = async (req, res) => {
   try {
     const user = req.requestUser;
-
-    const { eventID, teamID, userID } = req.body;
-
-    const member = await User.findOne({ userID }, { userID: 1 });
+    console.log('adddddddddddd');
+    const { eventID, teamID, user_ID } = req.body;
+    console.log(req.body);
+    // const member = await User.findByID({ userID }, { userID: 1 });
+    const member = await User.findById(user_ID);
     if (!member) {
       return res
         .status(400)
@@ -140,24 +147,26 @@ const addToTeam = async (req, res) => {
     if (!event) return res.status(404).json({ msg: 'Event not found' });
 
     let team = await Team.findOne(
-      { eventID, 'members.user': member._id },
+      { event: event.eventID, 'members.user': member._id },
       { teamID: 1 }
     );
 
+    if (team)
+      return res.status(400).send({ success: false, msg: 'Already in a team' });
     let newTeam = await Team.findOne({ eventID, teamID });
 
     //User is not registered for the event
     if (!newTeam)
       return res.status(400).send({ success: false, msg: 'Team Code Invalid' });
 
-    if (team && teamID == team.teamID)
-      return res.status(400).send({ success: false, msg: 'Already in team' });
+    // if (team && teamID == team.teamID)
+    //   return res.status(400).send({ success: false, msg: 'Already in team' });
 
-    if (team)
-      return res.status(400).send({
-        success: false,
-        msg: 'User Already Registered !!',
-      });
+    // if (team)
+    //   return res.status(400).send({
+    //     success: false,
+    //     msg: 'User Already Registered !!',
+    //   });
 
     // Team Size Full
     if (event.maxMembers == newTeam.members.length)
@@ -260,9 +269,9 @@ const leaveTeam = async (req, res) => {
 };
 const removeFromTeam = async (req, res) => {
   try {
-    let { teamID, userID } = req.body;
-
-    const member = await User.findOne({ userID }, { userID: 1 });
+    let { teamID, user_ID } = req.body;
+    const member = await User.findById(user_ID);
+    // const member = await User.findOne({ userID }, { userID: 1 });
     let user = req.requestUser;
     let team = await Team.findOne({ teamID, 'members.user': member._id });
     if (!team) return res.status(404).json({ msg: 'Team not found' });
@@ -290,13 +299,36 @@ const removeFromTeam = async (req, res) => {
   }
 };
 
-const getTeamByID = async (req, res) => {
+const getEventTeam = async (req, res) => {
   try {
-    let { teamID } = req.body;
-    let team = await Team.findOne({ teamID });
+    // $and:[{},
+    let { event_ID } = req.body;
+    console.log(event_ID);
+    console.log(req.requestUser._id);
+    let team = await Team.findOne({
+      event: event_ID,
+      'members.user': req.requestUser._id,
+    });
+    console.log('team', team);
     if (!team)
       return res.status(400).send({ success: false, msg: 'Invalid Team' });
-    return res.status(200).send({ success: false, data: team });
+    let requests = [];
+    let teammembers = [];
+    for (let i = 0; i < team.requestedMembers.length; i++) {
+      let userr = await User.findById(team.requestedMembers[i]);
+      let user_id = userr._id;
+      let user_name = userr.name;
+      requests.push({ user_id, user_name });
+    }
+    for (let i = 0; i < team.members.length; i++) {
+      let userr = await User.findById(team.members[i].user.toString());
+      let user_id = userr._id;
+      let user_name = userr.name;
+      teammembers.push({ user_id, user_name });
+    }
+    return res
+      .status(200)
+      .send({ success: false, data: team, requests, teammembers });
   } catch (err) {
     console.log(err);
     return res
@@ -310,7 +342,7 @@ module.exports = {
   joinTeam,
   leaveTeam,
   removeFromTeam,
-  getTeamByID,
+  getEventTeam,
 };
 
 //edge cases

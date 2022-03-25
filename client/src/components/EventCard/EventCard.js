@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './EventCard.scss';
 import { Link } from 'react-router-dom';
 const EventCard = ({ data }) => {
   const [eventPath, setEventPath] = React.useState(
     `/dashboard/event/${data._id}`
   );
-
+  useEffect(() => {
+    console.log('evnt card');
+    console.log(data);
+  }, []);
   return (
     <div className="event-card-wrapper">
       <div className="event-content">
@@ -24,14 +27,16 @@ const EventCard = ({ data }) => {
           </div>
         </div>
         <div className="tags-line">
-          {data.tags.map((val, index) => {
-            return (
-              <p key={index} className="font-light">
-                {val}
-                {index !== data.tags.length ? ' ◦' : ''}
-              </p>
-            );
-          })}
+          {data.tags != undefined
+            ? data.tags.map((val, index) => {
+                return (
+                  <p key={index} className="font-light">
+                    {val}
+                    {index !== data.tags.length ? ' ◦' : ''}
+                  </p>
+                );
+              })
+            : null}
         </div>
         <div className="description font-medium">{data.description}</div>
         <div className="data-area">

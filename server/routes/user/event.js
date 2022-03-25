@@ -45,10 +45,7 @@ const registerEvent = async (req, res) => {
       event: event._id,
       'members.user': user._id,
     });
-    if (team)
-      return res
-        .status(400)
-        .send({ success: false, msg: 'Already registered' });
+    if (team) return res.send({ success: false, msg: 'Already registered' });
 
     // Check on delegate cards
     event.delegateCards.forEach((delCard) => {

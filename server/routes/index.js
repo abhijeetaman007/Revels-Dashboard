@@ -55,7 +55,7 @@ const {
   leaveTeam,
   addToTeam,
   removeFromTeam,
-  getTeamByID,
+  getEventTeam,
 } = require('./user/team');
 const {
   registerOrder,
@@ -133,7 +133,12 @@ router.post(
   isVerifiedForRevels,
   removeFromTeam
 );
-router.post('/user/team/get', isUserLoggedIn, isVerifiedForRevels, getTeamByID);
+router.post(
+  '/user/team/get',
+  isUserLoggedIn,
+  isVerifiedForRevels,
+  getEventTeam
+);
 
 //Events:
 router.post(

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Layout.scss';
-import {useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import aagaz from './../../assets/aagaz.png';
 import events from './../../assets/icons/events.svg';
 import myEvents from './../../assets/icons/myEvents.svg';
@@ -26,14 +26,14 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
     document.querySelector('.dash-wrapper').classList.toggle('active');
   };
   const handleBell = () => {
-    document.querySelector(".notif-wrapper").classList.toggle('active');
-  }
+    document.querySelector('.notif-wrapper').classList.toggle('active');
+  };
   useEffect(() => {
-    if(!auth.loading) {
+    if (!auth.loading) {
       setLoading(false);
       if (!auth.user) {
         navigate('/');
-      }  
+      }
     }
     if (!loading)
       document.querySelector(`#${activeTab}`).classList.toggle('active');
@@ -142,8 +142,8 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <></>
           )}
           {/* change before pushing code */}
-          {/* {children} */}
-          <ComingSoonDash />
+          {children}
+          {/* <ComingSoonDash /> */}
         </div>
         {/* uncomment for proshow */}
         {/* {

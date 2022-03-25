@@ -26,7 +26,9 @@ const InsideEvent = () => {
   const { eventid } = useParams();
   const [eventID, setEventID] = useState(eventid);
   const [event, setEvent] = React.useState({});
-  const [team, setTeam] = useState([]);
+  const [requests, setRequests] = React.useState([]);
+  const [team, setTeam] = useState(null);
+  const [teammembers, setTeammembers] = useState([]);
   const [teamIDInput, setTeamIDInput] = useState('');
 
   //MODAL STUFF
@@ -67,13 +69,17 @@ const InsideEvent = () => {
   };
   const getTeamDetails = async () => {
     try {
+      console.log('get team details');
       const res = await axios.post(
         '/api/user/team/get',
-        { eventID: eventID },
+        { event_ID: eventID },
         { headers: header }
       );
       setTeam(res.data.data);
-      console.log(team, res);
+      setRequests(res.data.requests);
+      setTeammembers(res.data.teammembers);
+      console.log('team', res);
+      console.log('teamid', res.data.data.teamID);
     } catch (err) {
       console.log(err);
     }
@@ -90,15 +96,13 @@ const InsideEvent = () => {
 
   const joinTeam = async () => {
     try {
+      console.log(teamIDInput);
       const res = await axios.post(
         '/api/user/team/join',
         { eventID: event.eventID, teamID: teamIDInput },
         { headers: header }
       );
       console.log('ress1', res);
-      if (res.data.success) {
-        toast.success(res.msg, { position: 'bottom-center' });
-      }
     } catch (err) {
       console.log(err);
     }
@@ -111,11 +115,50 @@ const InsideEvent = () => {
         { headers: header }
       );
       console.log('ress2', res);
+      if (res.data.success) {
+        toast.success(res.data.msg);
+        window.location.reload(false);
+      } else toast.error(res.data.msg);
     } catch (err) {
       console.log(err);
     }
   };
-  const leaveTeam = async () => {};
+  // const addToTeam = async (idx) => {
+  //   try {
+  //     const res = await axios.post(
+  //       '/api/user/team/add',
+  //       {
+  //         eventID: event.eventID,
+  //         teamID: team.teamID,
+  //         user_ID: requests[idx].user_id,
+  //       },
+  //       { headers: header }
+  //     );
+  //     console.log('ress3', res);
+  //     if (res.data.success) {
+  //       toast.success(res.data.msg);
+  //       window.location.reload(false);
+  //     } else toast.error(res.data.msg);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  const leaveTeam = async () => {
+    try {
+      const res = await axios.post(
+        '/api/user/team/leave',
+        { teamID: team.teamID },
+        { headers: header }
+      );
+      console.log('ress4', res);
+      if (res.data.success) {
+        toast.success(res.data.msg);
+        window.location.reload(false);
+      } else toast.error(res.data.msg);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <Layout activeTab={'events'}>
       <div className="event-details">
@@ -211,6 +254,7 @@ const InsideEvent = () => {
           )}
         </Modal>
         {/* IF IN TEAM */}
+
         {team === null ? (
           <div>
             <button onClick={openModal} className="font-heavy blackingrey">
@@ -220,20 +264,24 @@ const InsideEvent = () => {
         ) : (
           <div>
             <div className="ele">
-              <div className="font-heavy">Team Members</div>
-              <div className="split">
-                <div>Rhea Adhikari</div>
-              </div>
-            </div>
-            <div className="ele">
               <div className="font-heavy">Team ID</div>
-              <div className="split">
-                <div>1223</div>
+              <div className="font-light">
+                {team != undefined ? <span>{team.teamID}</span> : null}
+
                 <button className="font-heavy blueinwhite" onClick={leaveTeam}>
                   Leave Team
                 </button>
               </div>
+              <div className="font-heavy">Team Members</div>
+              {teammembers.length != 0
+                ? teammembers.map((member) => (
+                    <span className="font-light">
+                      {member.user_name}&nbsp;.&nbsp;
+                    </span>
+                  ))
+                : null}
             </div>
+
             {/* IF CREATOR*/}
 
             {/* <div className="ele">
@@ -250,18 +298,72 @@ const InsideEvent = () => {
 
             <div className="ele">
               <div className="font-heavy">REQUESTS</div>
-              <div>
-                xyz<button>Allow</button>
-                <button>REJECT</button>
-              </div>
-              <div>
-                xyz<button>Allow</button>
-                <button>REJECT</button>
-              </div>
-              <div>
-                xyz<button>Allow</button>
-                <button>REJECT</button>
-              </div>
+              {requests.length != 0 ? (
+                requests.map((x, idx) => (
+                  <div>
+                    {x.user_name}
+                    <button
+                      onClick={async () => {
+                        try {
+                          console.log({
+                            eventID: event.eventID,
+                            teamID: team.teamID,
+                            user_ID: requests[idx].user_id,
+                          });
+                          const res = await axios.post(
+                            '/api/user/team/add',
+                            {
+                              eventID: event.eventID,
+                              teamID: team.teamID,
+                              user_ID: requests[idx].user_id,
+                            },
+                            { headers: header }
+                          );
+                          console.log('ress3', res);
+                          if (res.data.success) {
+                            toast.success(res.data.msg);
+                            window.location.reload(false);
+                          } else toast.error(res.data.msg);
+                        } catch (err) {
+                          console.log(err);
+                        }
+                      }}
+                    >
+                      Add To team
+                    </button>
+                    {/* <button
+                        onClick={async () => {
+                          try {
+                            console.log({
+                              teamID: team.teamID,
+                              user_ID: requests[idx].user_id,
+                            });
+                            const res = await axios.post(
+                              '/api/user/team/add',
+                              {
+                                eventID: event.eventID,
+                                teamID: team.teamID,
+                                user_ID: requests[idx].user_id,
+                              },
+                              { headers: header }
+                            );
+                            console.log('ress3', res);
+                            if (res.data.success) {
+                              toast.success(res.data.msg);
+                              window.location.reload(false);
+                            } else toast.error(res.data.msg);
+                          } catch (err) {
+                            console.log(err);
+                          }
+                        }}
+                      >
+                        REJECT
+                      </button> */}
+                  </div>
+                ))
+              ) : (
+                <div className="font-light">No requests so far...</div>
+              )}
             </div>
           </div>
         )}
