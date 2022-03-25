@@ -3,7 +3,7 @@ import "./ProshowCard.scss";
 
 const ProshowCard = ({data}) => {
     return (
-        <div className="proshow-card">
+        <div className="proshow-card card-up">
             <div className="image-wrapper">
                 <div className="gradient">
                     <div className="proshow-card-header">

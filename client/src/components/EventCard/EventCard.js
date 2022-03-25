@@ -10,7 +10,7 @@ const EventCard = ({ data }) => {
     console.log(data);
   }, []);
   return (
-    <div className="event-card-wrapper">
+    <div className="event-card-wrapper card-up">
       <div className="event-content">
         <div className="event-header">
           <div className="event-area">

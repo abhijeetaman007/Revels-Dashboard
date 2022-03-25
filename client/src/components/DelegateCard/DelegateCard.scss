@@ -1,0 +1,97 @@
+$delBlue: #22B6E6;
+$delPurple: #C6A3FF;
+.del-card {
+  width: 28%;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  &:hover {
+    -webkit-transform: scale(1.01);
+            transform: scale(1.01);
+    box-shadow: 0 0 10px 1px #1e1433;
+  }
+  h1 {
+    font-size: 25.6px;
+    font-size: 1.6rem;
+  }
+  .del-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    p {
+      font-size: 19.2px;
+      font-size: 1.2rem;
+    }
+    .price {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      gap: 10px;
+      .clg {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        margin: 10px 0;
+        gap: 10px;
+        width: 100%;
+        h3 {
+          font-size: 14.4px;
+          font-size: 0.9rem;
+        }
+        p {
+          font-size: 32px;
+          font-size: 2rem;
+        }
+      }
+    }
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 10px;
+      padding: 10px 0;
+      background-color: rgba(255, 255, 255, 0.418);
+      &:hover {
+        -webkit-transform: scale(0.98);
+                transform: scale(0.98);
+      }
+    }
+  }
+}
+.blue {
+  background-color: $delBlue;
+  border: 0.1px solid #54c7ee;
+}
+.purple {
+  background-color: $delPurple;
+  border: 0.1px solid #ebdeff;
+}
+.black {
+  background-color: black;
+  border: 0.1px solid rgb(39, 39, 39);
+  .price {
+    color: white;
+  }
+  button {
+    color: rgb(226, 226, 226);
+  }
+}
+.bought:not(span) {
+  cursor: default;
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+}
+@media only screen and (max-width: 812px) {
+  .del-card {
+    width: 100%;
+  }
+}

@@ -3,6 +3,10 @@ import { useEffect, useState } from 'react';
 import React from 'react';
 import Layout from '../Layout/Layout';
 import { TOKEN_ID } from '../../utils/constants';
+import { useAuth } from '../../context/AuthContext';
+import DelegateCard from '../../components/DelegateCard/DelegateCard';
+import Loader from '../Loader/Loader';
+
 function loadScript(src) {
   return new Promise((resolve) => {
     const script = document.createElement('script');
@@ -93,65 +97,47 @@ async function displayRazorpay(delegateCardID) {
 
 function DelegatePage() {
   const [delegateCard, setDelegateCard] = useState([]);
-
-  async function fetchDelegateCards() {
-    // To get all types of proshow and non proshow
-
-    //NOT WORKING WITH BASE URL HAD TO PUT BASE AS WELL
-    const resp = await axios.get(
-      'http://localhost:5000/api/user/delegatecard/getall'
-    );
-    console.log('DATA ', resp.data);
-    setDelegateCard(resp.data.data);
+  const auth = useAuth();
+  const user = auth.user; 
+  const isMyDelCard = (delCardId) => {
+    if(user.delegateCards.includes(delCardId)){
+      return true;
+    } else {
+      return false;
+    }
   }
-
   useEffect(() => {
+    // To get all types of proshow and non proshow
+    const fetchDelegateCards = async () => {
+      const resp = await axios.get(
+        '/api/user/delegatecard/getall'
+      );
+      console.log('DATA ', resp.data);
+      setDelegateCard(resp.data.data);
+    }
     fetchDelegateCards();
   }, []);
-  const colorArr = ['delcardblue', 'delcardpurple', 'delcardblack'];
+  const colorArr = ['blue', 'purple', 'black'];
   return (
+    auth.loading ? <Loader /> :
     <Layout activeTab={'delegate-card'}>
       <div className="delegate-container">
-        <p className="title">Delegate Cards</p>
-        <div className="del-flex">
-          {delegateCard.map((x, idx) => (
-            <div className={colorArr[idx % 3].toString()}>
-              <h1 style={{ color: 'white' }}>{x.name}</h1>
-              <div style={{ color: 'white', marginTop: '10px' }}>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s, when an unknown printer took
-                <div className="collegetype">
-                  <div className="clg">
-                    <center> MAHE STUDENTS</center>
-
-                    <center>{x.mahePrice}</center>
-                  </div>
-                  <div className="clg">
-                    NON-MAHE STUDENTS
-                    <center>{x.nonMahePrice}</center>
-                  </div>
-                </div>
-                <center>
-                  {x.isActive ? (
-                    <div style={{ color: 'green', fontWeight: 'bold' }}>
-                      ACTIVE
-                    </div>
-                  ) : (
-                    <div style={{ color: 'red', fontWeight: 'bold' }}>
-                      INACTIVE
-                    </div>
-                  )}
-                  <button onClick={() => displayRazorpay(x._id)}>
-                    BUY NOW
-                  </button>
-                </center>
-              </div>
-            </div>
-          ))}
+        <div className="d-flex flex-md-row flex-column flex-wrap m-0 p-0">
+          {delegateCard.map((data, index) => {
+            return (
+              <DelegateCard
+                key={index} 
+                colorArr={colorArr} 
+                idx={index} 
+                displayRazorpay={displayRazorpay} 
+                data={data} 
+                isMahe={user.isMahe}
+                isBought={isMyDelCard(data._id)}
+              />
+            );
+          })}
         </div>
       </div>
-      );
     </Layout>
   );
 }
