@@ -29,6 +29,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
     document.querySelector('.notif-wrapper').classList.toggle('active');
   };
   useEffect(() => {
+    console.log(auth.user)
     if (!auth.loading) {
       setLoading(false);
       if (!auth.user) {
@@ -49,7 +50,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
           <img alt="Revels Logo" src={logoWhite}></img>
           <div>
             <h4 className="font-medium">REVELS '22</h4>
-            <p className="font-light">Welcome back {user.name}</p>
+            <p className="font-light">Welcome back</p>
           </div>
         </div>
         <i className="fa fa-bell" onClick={handleBell}></i>
@@ -141,7 +142,9 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
           ) : (
             <></>
           )}
-          {/* change before pushing code */}
+          {/* !!!!!!!!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!!!!!!! */}
+          {/* change {children} to <ComingSoonDash /> before pushing code */}
+          {/* !!!!!!!!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!!!!!!! */}
           {/* {children} */}
           <ComingSoonDash />
         </div>
