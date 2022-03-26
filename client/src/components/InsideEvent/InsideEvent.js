@@ -10,6 +10,9 @@ import './InsideEvent.scss';
 import { useAuth } from '../../context/AuthContext';
 const customStyles = {
   content: {
+    backgroundColor: "#100b1b",
+    border: 0,
+    borderRadius: "10px",
     top: '50%',
     left: '50%',
     right: 'auto',
@@ -25,8 +28,8 @@ const InsideEvent = () => {
   };
   const { eventid } = useParams();
   const [eventID, setEventID] = useState(eventid);
-  const [event, setEvent] = React.useState({});
-  const [requests, setRequests] = React.useState([]);
+  const [event, setEvent] = useState({});
+  const [requests, setRequests] = useState([]);
   const [team, setTeam] = useState(null);
   const [teammembers, setTeammembers] = useState([]);
   const [teamIDInput, setTeamIDInput] = useState('');
@@ -45,7 +48,7 @@ const InsideEvent = () => {
   function closeModal() {
     setIsOpen(false);
   }
-
+  // function to get event by ID
   const callEventByID = async () => {
     try {
       const res = await axios.post(
@@ -61,7 +64,7 @@ const InsideEvent = () => {
       console.log(err);
     }
   };
-
+  // function to get team details
   const getTeamDetails = async () => {
     try {
       console.log('get team details');
@@ -85,13 +88,11 @@ const InsideEvent = () => {
       console.log(err);
     }
   };
-
   useEffect(() => {
-    console.log('auth', auth.user);
     getTeamDetails();
     callEventByID();
   }, []);
-
+  // function to handle join team
   const joinTeam = async () => {
     try {
       console.log(teamIDInput);
@@ -103,12 +104,11 @@ const InsideEvent = () => {
       console.log('ress1', res);
       console.log('tooast');
       toast.success(res.data.msg);
-      window.location.reload(false);
     } catch (err) {
       console.log(err);
     }
   };
-
+  // function to register as individual
   const registerIndividual = async () => {
     try {
       const res = await axios.post(
@@ -125,7 +125,7 @@ const InsideEvent = () => {
       console.log(err);
     }
   };
-
+  // function to handle leave team
   const leaveTeam = async () => {
     try {
       const res = await axios.post(
@@ -142,90 +142,85 @@ const InsideEvent = () => {
       console.log(err);
     }
   };
-
+  // component to render event details
+  const DataComponent = ({icon, heading, text}) => {
+    return (
+      <div className="event-data">
+        <div className="d-flex align-items-center">
+          <i className={`fa ${icon} mr-1`}></i>
+          <p className="font-heavy ml-1 pt-1">{heading}</p>
+        </div>
+        <p className="font-light">
+          {text}
+        </p>
+      </div>
+    )
+  }
   return (
-    <Layout activeTab={'events'}>
+    <Layout activeTab={'events'} isAagazVisible={true}>
       <div className="event-details">
-        <div className="ele">
+        <div className="cat-event">
           <p className="font-heavy">{event.eventType}</p>
           <p className="font-light">{event.name}</p>
         </div>
-        <div className="event-grp ele">
-          <div className="compo">
-            <p className="font-heavy">Team Size</p>
-            <p className="font-light">
-              {event.minMembers}&nbsp;-&nbsp;{event.maxMembers}
-            </p>
-          </div>
-          <div className="compo">
-            <p className="font-heavy">Event Date</p>
-            <p className="font-light">
-              {new Date(event.eventDateTime).getDate()}
-              &nbsp;/&nbsp;
-              {new Date(event.eventDateTime).getMonth()}
-            </p>
-          </div>
-          <div className="compo ">
-            <p className="font-heavy">Venue</p>
-            <p className="font-light">{event.eventVenue}</p>
-          </div>
-          <div className="compo ">
-            <p className="font-heavy">Registration Deadline</p>
-            <p className="font-light">
-              {new Date(event.registrationDeadline).getDate()}
-              &nbsp;/&nbsp;
-              {new Date(event.registrationDeadline).getMonth()}
-            </p>
-          </div>
+        <div className="event-group ele">
+          {DataComponent({ 
+            icon: "fa-users",
+            heading: "Team Size", 
+            text: event.minMembers === event.maxMembers ? "Individual event" : `${event.minMembers} - ${event.maxMembers}`
+          })}
+          {DataComponent({ 
+            icon: "fa-calendar-o",
+            heading: "Event Date",
+            text: `${new Date(event.eventDateTime).getDate()}/
+            ${new Date(event.eventDateTime).getMonth()}/
+            ${new Date(event.eventDateTime).getFullYear()}`
+          })}
+          {DataComponent({ 
+            icon: "fa-map-marker",
+            heading: "Event Venue",
+            text: `${event.eventVenue}`
+          })}
+          {DataComponent({ 
+            icon: "fa-calendar-check-o",
+            heading: "Registration Deadline",
+            text: `${new Date(event.registrationDeadline).getDate()}/
+            ${new Date(event.registrationDeadline).getMonth()}/
+            ${new Date(event.registrationDeadline).getFullYear()}`
+          })}
         </div>
         <div className="ele font-light">{event.description}</div>
-
         {/* POPUP FOR REGISTER */}
         <Modal
           isOpen={modalIsOpen}
           onAfterOpen={afterOpenModal}
           onRequestClose={closeModal}
           style={customStyles}
-          contentLabel="Example Modal"
+          contentLabel="Register Modal"
         >
-          <button
-            onClick={closeModal}
-            style={{
-              color: 'red',
-              textDecoration: 'none',
-              padding: '0.5rem',
-              border: 'none',
-              borderRadius: '0.5rem',
-            }}
-          >
-            X
-          </button>
-          <h2
-            ref={(_subtitle) => (subtitle = _subtitle)}
-            style={{ textAlign: 'center', margin: '1rem' }}
-            className="font-heavy blueinwhite"
-          >
-            Registration Type
-          </h2>
-          {event.maxMembers === 1 ? (
-            <button
-              className="font-heavy blueinwhite"
-              onClick={registerIndividual}
-            >
-              Join Individually
-            </button>
-          ) : (
-            <div className="btn-grp">
+          <div className="reg-modal-content">
+            <div className="close-bar">
+              <p className="font-medium">{event.name}</p>
+              <i className="fa fa-close ml-auto" onClick={closeModal}></i>
+            </div>
+            {event.maxMembers === 1 && <div className="reg-area">
               <button
-                className="font-heavy blueinwhite"
                 onClick={registerIndividual}
               >
                 Join Individually
               </button>
-              <hr />
-              OR
-              <hr />
+            </div>}
+            {event.maxMembers > 1 && 
+            <div className="reg-area">
+              <button  
+                className="font-heavy create" 
+                onClick={registerIndividual}
+              >
+                Create new team
+              </button>
+              <div className="w-100 my-4" style={{ backgroundColor: "grey", height: 0.5 }}></div>
               <input
+                className="input-team w-100"
                 type="text"
                 onChange={(e) => {
                   setTeamIDInput(e.target.value);
@@ -233,58 +228,46 @@ const InsideEvent = () => {
                 style={{ color: 'black' }}
                 placeholder="Team ID"
               />
-              <button className="font-heavy blackingrey" onClick={joinTeam}>
-                Join Team
+              <button className="font-heavy" onClick={joinTeam}>
+                Request to join team
               </button>
-            </div>
-          )}
-        </Modal>
-        {/* IF IN TEAM */}
-
-        {team === null ? (
-          <div>
-            <button onClick={openModal} className="font-heavy blackingrey">
-              Register
-            </button>
+            </div>}
+            <div className="team-reg"></div>
           </div>
+        </Modal>
+        {team === null ? (
+          <button onClick={openModal} className="font-heavy">
+            Register
+          </button>
         ) : (
           <div>
-            <div className="ele">
-              <div className="font-heavy">Team ID</div>
-              <div className="font-light">
-                {team != undefined ? <span>{team.teamID}</span> : null}
-
-                <button className="font-heavy blueinwhite" onClick={leaveTeam}>
-                  Leave Team
-                </button>
-              </div>
-              <div className="font-heavy">Team Members</div>
-              {teammembers.length != 0
-                ? teammembers.map((member) => (
+            <div className="event-group">
+              {DataComponent({
+                icon: "fa-info-circle",
+                heading: "Team ID",
+                text: team.teamID
+              })}
+              <div className="event-data">
+                <div className="d-flex align-items-center">
+                  <i className="fa fa-users mr-1"></i>
+                  <p className="font-heavy ml-1 pt-1">Team Members</p>
+                </div>
+                <div className="font-light d-flex">
+                {teammembers.length != 0
+                ? teammembers.map((member, index) => (
                     <span className="font-light">
-                      {member.user.name}&nbsp;.&nbsp;
+                      {auth.user._id == teamCreator && <span><i className="fa fa-star mr-1"></i></span>}
+                      {member.user.name}
+                      {index !== teammembers.length - 1 && ","}
                     </span>
                   ))
                 : null}
-            </div>
-
-            {/* IF CREATOR*/}
-
-            {/* <div className="ele">
-              <div className="font-heavy">Add to team</div>
-              <div className="split">
-                <input
-                  type="text"
-                  placeholder="Enter Delegate ID"
-                  className="input-team"
-                ></input>
-                <button className="font-heavy whiteinblue">Invite</button>
+                </div>
               </div>
-            </div> */}
+            </div>
             {auth.user._id == teamCreator ? (
               <div className="ele">
                 <div className="font-heavy">REQUESTS</div>
-
                 {requests.length != 0 ? (
                   requests.map((x, idx) => (
                     <div>
@@ -358,20 +341,11 @@ const InsideEvent = () => {
                 )}
               </div>
             ) : null}
+            <button className="font-heavy blueinwhite" onClick={leaveTeam}>
+              Leave Team
+            </button>
           </div>
         )}
-        {/* <div className="ele">
-          <div className="font-heavy">Join Team</div>
-          <div className="split">
-            <input
-              type="text"
-              placeholder="Enter Team Code"
-              className="input-team"
-            ></input>
-            <button className="font-heavy blueinwhite">Join</button>
-            <button className="font-heavy blackingrey">Cancel</button>
-          </div>
-        </div> */}
       </div>
     </Layout>
   );
