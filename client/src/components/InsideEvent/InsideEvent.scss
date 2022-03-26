@@ -11,62 +11,88 @@ $event-card-background: #c6a3ff;
           flex-direction: column;
   color: white;
   button {
-    margin: 16px;
-    margin: 1rem;
-    margin-right: 3.5px;
+    width: fit-content;
+    margin: 10px 0;
+    color: $tile-color;
     border: 1.5px solid $tile-color;
     border-radius: 10px;
     background-color: transparent;
-    padding: 6px 50px;
+    padding: 6px 20px;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
     text-transform: uppercase;
-    color: $tile-color;
+    &:hover {
+      background-color: $tile-color;
+      color: white;
+    }
   }
-  .event-grp {
+  .event-group {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    .compo {
-      padding-right: 16px;
-      padding-right: 1rem;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin: 10px 0;
+    .event-data {
+      div {
+        p {
+          font-size: 1.4rem;
+        }
+      }
+      p:last-child {
+        font-size: 1.2rem;
+      }
     }
   }
-  .ele {
-    margin: 16px;
-    margin: 1rem;
-    .split {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-align: center;
-          -ms-flex-align: center;
-              align-items: center;
-      .blueinwhite {
-        font-weight: bold;
-        border: none;
-        background-color: white;
-        color: #22b6e6;
+  .cat-event {
+    p:first-child {
+      font-size: 1.3rem;
+    }
+    p:last-child {
+      font-size: 1.8rem;
+    }
+  }
+}
+.reg-modal-content {
+  padding: 10px;
+  .close-bar {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    color: white;
+    i {
+      cursor: pointer;
+      &:hover { 
+        color: $tile-color;
       }
-      .whiteinblue {
-        font-weight: bold;
-        border: none;
-        background-color: #22b6e6;
-        color: white;
-      }
-      .blackingrey {
-        font-weight: bold;
-        border: none;
-        background-color: white;
-        color: black;
-      }
+    }
+  }
+  .reg-area {
+    margin: 15px 0;
+    button:not(.create) {
+      border: 0;
+      width: 100%;
+      border-radius: 10px;
+      padding: 10px 0;
+      background-color: white;
+    }
+    .create {
+      border: 0;
+      width: 100%;
+      border-radius: 10px;
+      padding: 10px 0;
+      margin: 10px 0;
+      color: white;
+      background-color: $tile-color;
     }
   }
 }
 .input-team {
   color: #dadada;
-  background-color: rgb(18, 28, 47);
+  background-color: rgba(37, 37, 37, 0.123);
   width: 400px;
 }
-.btn-grp {
+.team-reg {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -77,4 +103,12 @@ $event-card-background: #c6a3ff;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+.ReactModal__Content {
+  width: 25%;
+}
+@media screen and (max-width: 812px) {
+  .ReactModal__Content {
+    width: 97%;
+  }
 }
