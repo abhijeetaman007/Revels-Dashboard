@@ -1,25 +1,27 @@
-import "./styles/index.scss";
-import React from "react";
-import axios from "axios";
-import { Toaster } from "react-hot-toast";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import AuthProvider from "./context/AuthContext";
+import './styles/index.scss';
+import React from 'react';
+import axios from 'axios';
+import { Toaster } from 'react-hot-toast';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import AuthProvider from './context/AuthContext';
 
-import AuthPage from "./pages/AuthPages/AuthPage";
-import DelegatePage from "./pages/DelegatePage/DelegatePage";
-import Landing from "./pages/Landing/Landing";
-import PrivateRoute from "./utils/PrivateRoute";
-import ResetPassword from "./pages/ResetPassword";
+import AuthPage from './pages/AuthPages/AuthPage';
+import DelegatePage from './pages/DelegatePage/DelegatePage';
+import Landing from './pages/Landing/Landing';
+import PrivateRoute from './utils/PrivateRoute';
+import ResetPassword from './pages/ResetPassword';
 
-import Profile from "./pages/ProfilePage/Profile";
-import Events from "./pages/EventPage/EventPage";
-import MyEvents from "./pages/MyEvents/MyEvents";
-import Proshow from "./pages/Proshow/Proshow";
-import InsideEvent from "./components/InsideEvent/InsideEvent";
-import VerifyAnimation from "./components/VerifyAnimation/VerifyAnimation";
-import NotFound from "./components/NotFound";
-import VerifyEmail from "./pages/VerifyEmail/VerifyEmail";
-import OpenComingSoon from "./pages/OpenComingSoon";
+import Profile from './pages/ProfilePage/Profile';
+import Events from './pages/EventPage/EventPage';
+import MyEvents from './pages/MyEvents/MyEvents';
+import Proshow from './pages/Proshow/Proshow';
+import InsideEvent from './components/InsideEvent/InsideEvent';
+import VerifyAnimation from './components/VerifyAnimation/VerifyAnimation';
+import NotFound from './components/NotFound';
+import VerifyEmail from './pages/VerifyEmail/VerifyEmail';
+import OpenComingSoon from './pages/OpenComingSoon';
+import Login from '../src/admin/login/login';
+import Dashboard from './admin/category/dashboard/Dashboard';
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
@@ -82,8 +84,8 @@ function App() {
             <Route path="/events" element={<OpenComingSoon />} />
             <Route path="/tshirts" element={<OpenComingSoon />} />
             <Route path="/schedule" element={<OpenComingSoon />} />
-            {/* <Route path="/admin/:category" element={}/> */}
-            {/* <Route path="/admin/SYSADMIN" element={}/> */}
+            <Route path="/admin" element={<Login />} />
+            <Route path="/admin/:category" element={<Dashboard />} />
             <Route exact path="/" element={<Landing />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -71,6 +71,7 @@ const {
   addCategories,
   registerAdmin,
   addCollege,
+  sendEmail
 } = require('./admins/sysAdmin');
 const {
   getAllDelegateCards,
@@ -219,5 +220,6 @@ router.post('/sysadmin/role/add', addRole);
 router.post('/sysadmin/category/add', addCategories);
 router.post('/sysadmin/admin/register', registerAdmin);
 router.post('/sysadmin/college/add', addCollege);
+router.post('/sysadmin/sendemail', sendEmail)
 
 module.exports = router;

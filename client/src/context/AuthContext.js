@@ -1,7 +1,7 @@
-import axios from "axios";
-import React, { useContext, createContext, useState, useEffect } from "react";
-import { TOKEN_ID } from "../utils/constants";
-import { Navigate, useNavigate } from "react-router-dom";
+import axios from 'axios';
+import React, { useContext, createContext, useState, useEffect } from 'react';
+import { TOKEN_ID } from '../utils/constants';
+import { Navigate, useNavigate } from 'react-router-dom';
 const AuthContext = createContext(null);
 
 export const useAuth = () => {
@@ -18,7 +18,7 @@ export default function AuthProvider({ children }) {
     if (token) {
       try {
         const token = localStorage.getItem(TOKEN_ID);
-        const res = await axios.get("/api/user/getuser", {
+        const res = await axios.get('/api/user/getuser', {
           headers: {
             authorization: token,
           },
@@ -53,7 +53,7 @@ export default function AuthProvider({ children }) {
       let col = JSON.parse(college);
       const data = {
         name,
-        email: col.isMahe ? email + "@learner.manipal.edu" : email,
+        email: col.isMahe ? email + '@learner.manipal.edu' : email,
         password,
         mobileNumber,
         registrationNumber,
@@ -61,7 +61,7 @@ export default function AuthProvider({ children }) {
         college: col.name,
       };
       console.log(data);
-      const res = await axios.post("/api/user/register", data);
+      const res = await axios.post('/api/user/register', data);
       if (!res.data.success) return res.data;
       return res.data;
     } catch (err) {
@@ -72,7 +72,22 @@ export default function AuthProvider({ children }) {
   // method to handle user login
   const userLogin = async (email, password) => {
     try {
-      const res = await axios.post("/api/user/login", {
+      const res = await axios.post('/api/user/login', {
+        email,
+        password,
+      });
+      if (!res.data.success) return res.data;
+      localStorage.setItem(TOKEN_ID, res.data.data.token);
+      restoreUser();
+      return res.data;
+    } catch (err) {
+      throw err;
+    }
+  };
+  // method to handle admin login
+  const adminLogin = async (email, password) => {
+    try {
+      const res = await axios.post('/api/admin/login', {
         email,
         password,
       });
@@ -90,7 +105,7 @@ export default function AuthProvider({ children }) {
     try {
       setUser(null);
       localStorage.removeItem(TOKEN_ID);
-      navigate("/");
+      navigate('/');
     } catch (err) {
       throw err;
     }
@@ -99,7 +114,7 @@ export default function AuthProvider({ children }) {
   // method to handle category login
   const categoryLogin = async (categoryId, password) => {
     try {
-      const res = await axios.post("/category/login", {
+      const res = await axios.post('/category/login', {
         categoryId,
         password,
       });
@@ -118,6 +133,7 @@ export default function AuthProvider({ children }) {
     userRegister: userRegister,
     userLogout: logout,
     userLogin: userLogin,
+    adminLogin: adminLogin,
     categoryLogin: categoryLogin,
     loading,
   };

@@ -99,6 +99,9 @@ function Profile() {
           position: "bottom-center",
           id: toastId,
         });
+        setTimeout(() => {
+          window.location.reload();
+        }, 3000);
       }
       console.log(res.data.success);
     } catch (error) {
