@@ -185,7 +185,6 @@ const registerAdmin = async (req, res) => {
             'OM Portal'
         );
 
-        // res.status(200).send({ success: true, msg: 'User Registered' });
         
         // SES
         // let message = `You are registered as Admin you can access your category portal with following credentials \n <b>Email : </b> ${newAdmin.email} \n <b>Password : ${newAdmin.pass}</b>\nRegards,\nSystem Admin - Aagaz | Revels '22`;
@@ -198,7 +197,7 @@ const registerAdmin = async (req, res) => {
         // );
         
         // Node Mailer
-        await mailer(newAdmin.email,"Admin Credentials Revels'22 ",html)
+        // await mailer(newAdmin.email,"Admin Credentials Revels'22 ",html)
 
         return res
             .status(200)
@@ -214,8 +213,9 @@ const registerAdmin = async (req, res) => {
 const addCollege = async (req, res) => {
     try {
         let { name, state, isMahe } = req.body;
+        let collegeName = name.toUpperCase()         
         let college = new College({
-            name,
+            name:collegeName,
             state,
             isMahe,
         });
@@ -229,6 +229,33 @@ const addCollege = async (req, res) => {
     }
 };
 
+const sendEmail = async (req,res)=>{
+    try
+    {
+     
+        let email ="";
+        let subject ="";
+        let name ="";
+        let message="";
+        let url = "";
+        let buttonText="";
+        let html = emailTemplate(
+            name,
+            message,
+            url,
+            buttonText
+        );
+        // NodeMailer
+        await mailer(email,subject,html)
+        return res.send({msg:'Email Sent',success:true})
+    }
+    catch(err)
+    {
+        console.log(err)
+        return res.send({msg:'Internal Server Error',success:false})
+    }
+}
+
 module.exports = {
     addDelegateCard,
     deleteDelegateCard,
@@ -237,4 +264,5 @@ module.exports = {
     addRole,
     registerAdmin,
     addCollege,
+    sendEmail,
 };
