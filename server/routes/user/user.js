@@ -249,13 +249,22 @@ const userLogout = async (req, res) => {
 const userEmailVerify = async (req, res) => {
   try {
     let token = req.params.token;
-    let user = await User.exists({ passwordResetToken: token });
+    let user = await User.findOne({ passwordResetToken: token},{isMahe:1});
     if (!user) return res.send({ success: false, msg: "Token Invalid" });
-    console.log("user Email Verify");
-    await User.updateOne(
-      { passwordResetToken: token },
-      { $set: { passwordResetToken: null, isEmailVerified: true } }
-    );
+    if(user.isMahe != 0 )
+    {
+      await User.updateOne(
+        { passwordResetToken: token },
+        { $set: { passwordResetToken: null, isEmailVerified: true, status:"VERIFIED"} }
+      );
+    }
+    else
+    {
+      await User.updateOne(
+        { passwordResetToken: token },
+        { $set: { passwordResetToken: null, isEmailVerified: true } }
+      );
+    }
     return res.send({ success: true, msg: "User Verified" });
   } catch (err) {
     console.log(err);

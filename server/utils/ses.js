@@ -1,6 +1,7 @@
 const AWS = require("aws-sdk");
 const sendEmailNotif = async (email, mailSubject, body, textBody) => {
   try {
+    console.log("SES mailer HTML")
     const ses = new AWS.SES({
       accessKeyId: process.env.AWS_ACCESS_KEY_1,
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY_1,
@@ -45,6 +46,7 @@ const sendEmailNotif = async (email, mailSubject, body, textBody) => {
 };
 const sendENotif = async (email, mailSubject, textBody) => {
   try {
+    console.log("SES mailer Text")
     const ses = new AWS.SES({
       accessKeyId: process.env.AWS_ACCESS_KEY_1,
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY_1,
