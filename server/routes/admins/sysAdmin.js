@@ -4,6 +4,9 @@ const Role = require('../../models/Role');
 const Category = require('../../models/Category');
 const Admin = require('../../models/Admin');
 const College = require('../../models/College');
+const { sendEmailNotif, sendENotif } = require('../../utils/ses');
+const { emailTemplate } = require("../../utils/template");
+const {mailer }= require('../../utils/mailer')
 
 const addDelegateCard = async (req, res) => {
     try {
@@ -150,6 +153,7 @@ const registerAdmin = async (req, res) => {
                 .status(400)
                 .send({ success: false, msg: 'Category does not exists' });
         // console.log(category)
+
         let role = await Role.findOne(
             { accessLevel, type, category: category._id },
             { _id: 1 }
@@ -163,7 +167,7 @@ const registerAdmin = async (req, res) => {
             '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
             8
         );
-        const pass = nanoid()
+        const pass = nanoid();
         let newAdmin = new Admin({
             name,
             password: pass,
@@ -171,7 +175,31 @@ const registerAdmin = async (req, res) => {
             email,
             phoneNo,
         });
+        console.log("New Role ",role)
+        console.log("New Admin ",newAdmin)
         await newAdmin.save();
+        let html = emailTemplate(
+            newAdmin.name,
+            `Please use following credentials for your category related portal.<div><b>Email</b> : ${newAdmin.email} \n <b>Password : </b> ${newAdmin.password}</div>`,
+            `https://outstation.revelsmit.in/`,
+            'OM Portal'
+        );
+
+        // res.status(200).send({ success: true, msg: 'User Registered' });
+        
+        // SES
+        // let message = `You are registered as Admin you can access your category portal with following credentials \n <b>Email : </b> ${newAdmin.email} \n <b>Password : ${newAdmin.pass}</b>\nRegards,\nSystem Admin - Aagaz | Revels '22`;
+        // await sendENotif(newAdmin.email, "Admin Credentials Revels'22", message);
+        // await sendEmailNotif(
+        //     newAdmin.email,
+        //     'Email Verification Revels',
+        //     html,
+        //     message
+        // );
+        
+        // Node Mailer
+        await mailer(newAdmin.email,"Admin Credentials Revels'22 ",html)
+
         return res
             .status(200)
             .send({ success: true, msg: 'New Admin Registered' });
