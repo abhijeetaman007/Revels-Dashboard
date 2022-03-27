@@ -3,25 +3,25 @@ import Navbar from '../../../components/Navbar/Navbar';
 import './EventTitle.css';
 import Modal from 'react-modal';
 
-const events = [
-  {
-    name: 'Event-1',
-  },
-  {
-    name: 'Event-2',
-  },
-  {
-    name: 'Event-3',
-  },
-  {
-    name: 'Event-4',
-  },
-  {
-    name: 'Event-5',
-  },
-];
+// const events = [
+//   {
+//     name: 'Event-1',
+//   },
+//   {
+//     name: 'Event-2',
+//   },
+//   {
+//     name: 'Event-3',
+//   },
+//   {
+//     name: 'Event-4',
+//   },
+//   {
+//     name: 'Event-5',
+//   },
+// ];
 
-const EventTile = () => {
+const EventTile = ({ events }) => {
   const customStyles = {
     content: {
       top: '50%',
@@ -49,7 +49,7 @@ const EventTile = () => {
     return (
       <div className="main-wrapper font-light text-white m-1 rounded p-4">
         <div className="d-flex flex-row justify-content-between align-items-center">
-          {item.name}
+          Event name
           <Modal
             isOpen={modalIsOpen}
             onAfterOpen={afterOpenModal}

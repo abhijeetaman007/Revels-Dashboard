@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useContext, createContext, useState, useEffect } from 'react';
-import { TOKEN_ID } from '../utils/constants';
+import { TOKEN_ID, ADMIN_TOKEN_ID } from '../utils/constants';
 import { Navigate, useNavigate } from 'react-router-dom';
 const AuthContext = createContext(null);
 
@@ -10,6 +10,7 @@ export const useAuth = () => {
 
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [admin, setAdmin] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -17,12 +18,13 @@ export default function AuthProvider({ children }) {
     const token = localStorage.getItem(TOKEN_ID);
     if (token) {
       try {
-        const token = localStorage.getItem(TOKEN_ID);
         const res = await axios.get('/api/user/getuser', {
           headers: {
             authorization: token,
           },
         });
+
+        console.log('authcontext', res);
         if (res.data.success) {
           setUser(res.data.data);
           setLoading(false);
@@ -34,9 +36,37 @@ export default function AuthProvider({ children }) {
     }
     setLoading(false);
   };
+  const restoreAdmin = async () => {
+    console.log('restoreadmin');
+    const token = localStorage.getItem(ADMIN_TOKEN_ID);
+    console.log(token);
+    if (token) {
+      try {
+        console.log('in try');
+        const res = await axios.get('/api/admin/getadmin', {
+          headers: {
+            authorization: token,
+          },
+        });
+
+        console.log('restoreadminresult', res);
+        if (res.data.success) {
+          setAdmin(res.data.data);
+          setLoading(false);
+        }
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      }
+    }
+    setLoading(false);
+  };
 
   useEffect(() => {
-    restoreUser();
+    const admintoken = localStorage.getItem(ADMIN_TOKEN_ID);
+    const usertoken = localStorage.getItem(TOKEN_ID);
+    if (usertoken) restoreUser();
+    if (admintoken) restoreAdmin();
   }, []);
 
   // method to handle user registration
@@ -91,9 +121,10 @@ export default function AuthProvider({ children }) {
         email,
         password,
       });
+      console.log('admin', res);
       if (!res.data.success) return res.data;
-      localStorage.setItem(TOKEN_ID, res.data.data.token);
-      restoreUser();
+      localStorage.setItem(ADMIN_TOKEN_ID, res.data.data.token);
+      restoreAdmin();
       return res.data;
     } catch (err) {
       throw err;
@@ -106,6 +137,15 @@ export default function AuthProvider({ children }) {
       setUser(null);
       localStorage.removeItem(TOKEN_ID);
       navigate('/');
+    } catch (err) {
+      throw err;
+    }
+  };
+  const adminlogout = async () => {
+    try {
+      setUser(null);
+      localStorage.removeItem(ADMIN_TOKEN_ID);
+      navigate('/admin');
     } catch (err) {
       throw err;
     }
@@ -130,11 +170,13 @@ export default function AuthProvider({ children }) {
 
   const value = {
     user: user,
+    admin: admin,
     userRegister: userRegister,
     userLogout: logout,
     userLogin: userLogin,
     adminLogin: adminLogin,
-    categoryLogin: categoryLogin,
+    adminLogout: adminlogout,
+    // categoryLogin: categoryLogin,
     loading,
   };
 

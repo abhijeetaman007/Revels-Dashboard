@@ -3,18 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import revels from './../../assets/logos/logo_landing.png';
 import axios from 'axios';
-import { TOKEN_ID } from '../../../src/utils/constants';
 import { useAuth } from '../../context/AuthContext';
+
 const Login = ({ category }) => {
   const auth = useAuth();
   const navigate = useNavigate();
-
-  const [login, setLogin] = useState(true);
-  const header = {
-    authorization: localStorage.getItem(TOKEN_ID),
-  };
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   const validateForm = (toastId) => {
     if (email === '' || password === '') {
       toast.error('Please fill both the fields', {
@@ -24,9 +20,11 @@ const Login = ({ category }) => {
     }
     return true;
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const toastId = toast.loading('Loading...');
+
     if (validateForm(toastId)) {
       try {
         const res = await auth.adminLogin(email, password);
@@ -50,17 +48,19 @@ const Login = ({ category }) => {
 
   useEffect(() => {
     if (!auth.loading) {
-      if (auth.user) {
-        navigate('/admin');
+      if (auth.admin) {
+        console.log('why not working');
+        navigate('/admin/categoryid');
       }
     }
   }, [auth.loading]);
+
   return (
     <div>
       <div className="d-flex align-content-center justify-content-center text-light my-5">
         <div className="w-auto mb-3" style={{ lineHeight: '250%' }}>
           <div className="font-light" style={{ fontSize: '2rem' }}>
-            The
+            Admin
           </div>
           <div
             className="font-heavy text-center text-uppercase"
@@ -73,7 +73,7 @@ const Login = ({ category }) => {
             {category}
           </div>
           <div className="font-light text-right" style={{ fontSize: '2rem' }}>
-            Portal
+            Side
           </div>
         </div>
       </div>

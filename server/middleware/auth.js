@@ -23,7 +23,7 @@ const isUserLoggedIn = async (req, res, next) => {
         if (user) {
           if (user.token === token && user.isEmailVerified) {
             req.requestUser = user;
-            console.log("we are here 123 ", req.requestUser);
+            console.log('we are here 123 ', req.requestUser);
             next();
           } else {
             return res.status(400).send({
@@ -96,7 +96,7 @@ const isVerifiedForRevels = async (req, res, next) => {
 
 const isAdminLoggedIn = async (req, res, next) => {
   try {
-    console.log('Admin login');
+    console.log('is Admin login middleware');
     const token = req.headers['authorization'];
     console.log(token);
     if (typeof token !== 'undefined') {

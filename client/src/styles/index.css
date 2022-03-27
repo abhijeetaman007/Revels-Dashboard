@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -89,6 +90,11 @@ body {
   opacity: 0.5;
 }
 
+::-webkit-calendar-picker-indicator {
+  -webkit-filter: invert(1);
+          filter: invert(1);
+}
+
 button:active,
 button:focus {
   outline: none;
@@ -111,6 +117,11 @@ input::-webkit-inner-spin-button {
 
 input[type='number'] {
   -moz-appearance: textfield;
+}
+
+.ReactModal__Overlay {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  z-index: 200;
 }
 
 html,
@@ -248,111 +259,12 @@ input:after {
   user-select: initial;
 }
 
-.delegate-container p {
-  font-size: 15px;
-}
-
-.delegate-container .title {
-  font-size: 30px;
-  color: white;
-  margin-left: 20px;
-}
-
-.delegate-container .del-flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-}
-
-.delegate-container .del-flex .delcardblue {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 21%;
-          flex: 1 0 21%;
-  margin: 20px;
-  border-radius: 10px;
-  padding: 30px;
-  font-size: 24px;
-  background-color: #063858;
-  background-image: url("../assets/blue.png");
-  background-repeat: no-repeat;
-}
-
-.delegate-container .del-flex .delcardblue button {
-  margin: 10px;
-  padding: 10px 40px 10px 40px;
-  border-radius: 10px;
-  color: black;
-  font-weight: bold;
-  background: rgba(255, 255, 255, 0.85);
-  border: none;
-}
-
-.delegate-container .del-flex .delcardblack {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 21%;
-          flex: 1 0 21%;
-  margin: 20px;
-  border-radius: 10px;
-  padding: 30px;
-  font-size: 24px;
-  background-color: black;
-  background-image: url("../assets/black.png");
-  background-repeat: no-repeat;
-}
-
-.delegate-container .del-flex .delcardblack button {
-  margin: 10px;
-  padding: 10px 40px 10px 40px;
-  border-radius: 10px;
-  color: black;
-  font-weight: bold;
-  background: rgba(255, 255, 255, 0.85);
-  border: none;
-}
-
-.delegate-container .del-flex .delcardpurple {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 21%;
-          flex: 1 0 21%;
-  margin: 20px;
-  border-radius: 10px;
-  padding: 30px;
-  font-size: 24px;
-  background-color: #342749;
-  background-image: url("../assets/purple.png");
-  background-repeat: no-repeat;
-}
-
-.delegate-container .del-flex .delcardpurple button {
-  margin: 10px;
-  padding: 10px 40px 10px 40px;
-  border-radius: 10px;
-  color: black;
-  font-weight: bold;
-  background: rgba(255, 255, 255, 0.85);
-  border: none;
-}
-
-.collegetype {
-  margin-top: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: large;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  font-weight: bold;
-}
-
 .proshow {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -363,8 +275,8 @@ input:after {
   .proshow {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
   }
 }
 
@@ -378,25 +290,135 @@ input:after {
   padding: 0 10%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
-.lottie-anim .anim-font {
+.lottie-anim .lottie-container {
+  width: 100%;
+  margin-left: -80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.lottie-anim .lottie-container div:nth-child(1) {
+  height: 50vh;
+}
+
+.lottie-anim .lottie-container div:nth-child(2) {
+  width: 200%;
+  height: 50vh;
+  margin-left: -64px;
+  margin-left: -4rem;
+}
+
+.lottie-anim .ver-div {
+  margin-top: 32px;
+  margin-top: 2rem;
+  text-align: center;
+  color: #c4515c;
+}
+
+.lottie-anim .ver-div .anim-font {
+  font-size: 30.4px;
+  font-size: 1.9rem;
+  letter-spacing: 10px;
+  margin-bottom: 10px;
+}
+
+.lottie-anim .ver-div .lottie-button {
+  background-color: #261a3f;
+  width: 200px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
   color: white;
-  font-size: 2rem;
 }
 
-.lottie-anim .anim-btn {
-  padding: 1rem;
-  text-decoration: none;
-  border-radius: 1rem;
-  font-weight: bold;
+.lottie-anim .ver-div .lottie-button:hover {
+  -webkit-transform: translateY(5px);
+  transform: translateY(5px);
+}
+
+@media only screen and (max-width: 810px) {
+  .lottie-anim {
+    width: 90vw;
+  }
+  .lottie-anim .lottie-container {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -ms-grid-row-align: center;
+    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+  .lottie-anim .lottie-container div:nth-child(1) {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+  }
+  .lottie-anim .lottie-container div:nth-child(2) {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
+    height: fit-content;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .back_ {
+    width: 200%;
+    text-align: center;
+    font-size: 1rem !important;
+    font-weight: 300;
+  }
+}
+
+@-webkit-keyframes slide-up {
+  from {
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -webkit-transform: translateY(15px);
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -webkit-transform: translateY(15px);
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+.card-up {
+  -webkit-animation: slide-up 500ms ease-in;
+  animation: slide-up 500ms ease-in;
 }
 /*# sourceMappingURL=index.css.map */

@@ -9,6 +9,7 @@ import AuthPage from './pages/AuthPages/AuthPage';
 import DelegatePage from './pages/DelegatePage/DelegatePage';
 import Landing from './pages/Landing/Landing';
 import PrivateRoute from './utils/PrivateRoute';
+import AdminPrivateRoute from './utils/AdminPrivateRoute';
 import ResetPassword from './pages/ResetPassword';
 
 import Profile from './pages/ProfilePage/Profile';
@@ -85,7 +86,14 @@ function App() {
             <Route path="/tshirts" element={<OpenComingSoon />} />
             <Route path="/schedule" element={<OpenComingSoon />} />
             <Route path="/admin" element={<Login />} />
-            <Route path="/admin/:category" element={<Dashboard />} />
+            <Route
+              path="/admin/:category"
+              element={
+                <AdminPrivateRoute>
+                  <Dashboard />
+                </AdminPrivateRoute>
+              }
+            />
             <Route exact path="/" element={<Landing />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

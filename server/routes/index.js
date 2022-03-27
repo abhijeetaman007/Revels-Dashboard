@@ -49,6 +49,7 @@ const {
   getCategoryEvent,
   updateEvent,
   deleteEvent,
+  getCategory,
 } = require('./admins/category');
 const {
   joinTeam,
@@ -71,7 +72,7 @@ const {
   addCategories,
   registerAdmin,
   addCollege,
-  sendEmail
+  sendEmail,
 } = require('./admins/sysAdmin');
 const {
   getAllDelegateCards,
@@ -117,7 +118,7 @@ router.post('/user/resendlink', resendVerificationLink);
 router.post('/user/forgetpass/', userPassResetLink);
 router.post('/user/forgetpass/verify', userPassResetVerify);
 router.get('/user/getuser', isUserLoggedIn, getUserFromToken);
-
+router.get('/admin/getadmin', isAdminLoggedIn, getAdminFromToken);
 //College
 router.get('/colleges', getAllColleges);
 
@@ -146,7 +147,7 @@ router.post(
   isUserLoggedIn,
   isVerifiedForRevels,
   deleteTeamRequest
-)
+);
 
 //Events:
 router.post(
@@ -193,6 +194,7 @@ router.get(
   isAdminLoggedIn,
   getCategoryEvent
 );
+router.get('/admin/category', isAdminLoggedIn, getCategory);
 router.post('/admin/category/event/update', isAdminLoggedIn, updateEvent);
 router.post('/admin/category/event/delete', isAdminLoggedIn, deleteEvent);
 
@@ -220,6 +222,6 @@ router.post('/sysadmin/role/add', addRole);
 router.post('/sysadmin/category/add', addCategories);
 router.post('/sysadmin/admin/register', registerAdmin);
 router.post('/sysadmin/college/add', addCollege);
-router.post('/sysadmin/sendemail', sendEmail)
+router.post('/sysadmin/sendemail', sendEmail);
 
 module.exports = router;
