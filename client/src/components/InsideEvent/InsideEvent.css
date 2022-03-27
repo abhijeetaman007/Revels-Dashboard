@@ -4,82 +4,128 @@
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   color: white;
 }
 
 .event-details button {
-  margin: 1rem;
-  margin-right: 3.5px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 10px 0;
+  color: #f5737f;
   border: 1.5px solid #f5737f;
   border-radius: 10px;
   background-color: transparent;
-  padding: 6px 50px;
+  padding: 6px 20px;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  color: #f5737f;
 }
 
-.event-details .event-grp {
+.event-details button:hover {
+  background-color: #f5737f;
+  color: white;
+}
+
+.event-details .event-group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 2rem;
+  margin: 10px 0;
 }
 
-.event-details .event-grp .compo {
-  padding-right: 1rem;
+.event-details .event-group .event-data div p {
+  font-size: 1.4rem;
 }
 
-.event-details .ele {
-  margin: 1rem;
+.event-details .event-group .event-data p:last-child {
+  font-size: 1.2rem;
 }
 
-.event-details .ele .split {
+.event-details .cat-event p:first-child {
+  font-size: 1.3rem;
+}
+
+.event-details .cat-event p:last-child {
+  font-size: 1.8rem;
+}
+
+.reg-modal-content {
+  padding: 10px;
+}
+
+.reg-modal-content .close-bar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.event-details .ele .split .blueinwhite {
-  font-weight: bold;
-  border: none;
-  background-color: white;
-  color: #22b6e6;
-}
-
-.event-details .ele .split .whiteinblue {
-  font-weight: bold;
-  border: none;
-  background-color: #22b6e6;
+  font-size: 1.5rem;
   color: white;
 }
 
-.event-details .ele .split .blackingrey {
-  font-weight: bold;
-  border: none;
+.reg-modal-content .close-bar i {
+  cursor: pointer;
+}
+
+.reg-modal-content .close-bar i:hover {
+  color: #f5737f;
+}
+
+.reg-modal-content .reg-area {
+  margin: 15px 0;
+}
+
+.reg-modal-content .reg-area button:not(.create) {
+  border: 0;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px 0;
   background-color: white;
-  color: black;
+}
+
+.reg-modal-content .reg-area .create {
+  border: 0;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px 0;
+  margin: 10px 0;
+  color: white;
+  background-color: #f5737f;
 }
 
 .input-team {
   color: #dadada;
-  background-color: #121c2f;
+  background-color: rgba(37, 37, 37, 0.123);
   width: 400px;
 }
 
-.btn-grp {
+.team-reg {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.ReactModal__Content {
+  width: 25%;
+}
+
+@media screen and (max-width: 812px) {
+  .ReactModal__Content {
+    width: 97%;
+  }
 }
 /*# sourceMappingURL=InsideEvent.css.map */

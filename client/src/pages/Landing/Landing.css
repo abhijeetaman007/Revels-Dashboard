@@ -1,10 +1,29 @@
+@-webkit-keyframes sunrise {
+  from {
+    bottom: -50%;
+  }
+  to {
+    bottom: -7%;
+  }
+}
+
+@keyframes sunrise {
+  from {
+    bottom: -50%;
+  }
+  to {
+    bottom: -7%;
+  }
+}
+
 .landing-wrapper {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
   margin: 0;
   position: relative;
-  background: linear-gradient(358.51deg, #f1964f 20.07%, #1E84A5 120.93%);
+  background: -webkit-gradient(linear, left top, left bottom, from(#100b1b), color-stop(#155970d7), color-stop(#1c7b9be1), color-stop(#b96d33f8), to(#f1964f));
+  background: linear-gradient(to bottom, #100b1b, #155970d7, #1c7b9be1, #b96d33f8, #f1964f);
 }
 
 .landing-wrapper .svg-wrapper {
@@ -38,7 +57,9 @@
 
 .landing-wrapper .svg-wrapper img:nth-child(4) {
   right: 7%;
-  bottom: -5%;
+  bottom: -7%;
+  -webkit-animation: sunrise 2.5s;
+          animation: sunrise 2.5s;
   z-index: 1;
   width: -webkit-fit-content;
   width: -moz-fit-content;
@@ -56,15 +77,22 @@
 
 .landing-wrapper .svg-wrapper img:nth-child(6) {
   top: 20%;
+  right: 2%;
   z-index: 7;
-  width: 100%;
-  width: 100%;
+  width: 20%;
 }
 
 .landing-wrapper .svg-wrapper img:nth-child(7) {
   bottom: -25%;
   left: -3%;
   z-index: 3;
+}
+
+.landing-wrapper .svg-wrapper img:nth-child(8) {
+  top: 25%;
+  left: 2%;
+  z-index: 7;
+  width: 20%;
 }
 
 .landing-wrapper .content-wrapper {
@@ -74,73 +102,16 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.landing-wrapper .content-wrapper .landing-nav {
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  height: 12vh;
-  padding: 10px;
-  background-color: transparent;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.landing-wrapper .content-wrapper .landing-nav .landing-brand {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  text-align: left;
-  color: white;
-  font-size: 1.3rem;
-}
-
-.landing-wrapper .content-wrapper .landing-nav .landing-brand p {
-  font-size: 3rem;
-}
-
-.landing-wrapper .content-wrapper .landing-nav .landing-brand img {
-  height: 100%;
-}
-
-.landing-wrapper .content-wrapper .landing-nav .landing-brand div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.landing-wrapper .content-wrapper .landing-nav i:nth-child(1) {
-  display: none;
-}
-
-.landing-wrapper .content-wrapper .landing-nav .landing-nav-links {
-  height: 100%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  gap: 30px;
-  font-size: 2rem;
-  color: white;
 }
 
 .landing-wrapper .content-wrapper .landing-title {
@@ -155,14 +126,10 @@
           flex-direction: column;
 }
 
-.landing-wrapper .content-wrapper .landing-title .title {
-  font-size: 14rem;
-  margin: 0;
-}
-
 .landing-wrapper .content-wrapper .landing-title h5 {
-  font-size: 2rem;
   margin: 0;
+  font-family: 'Fira Sans', sans-serif;
+  font-size: 1.4rem;
 }
 
 .landing-wrapper .content-wrapper .landing-title h5:first-child {
@@ -174,10 +141,26 @@
 .landing-wrapper .content-wrapper .landing-title h5:last-child {
   -ms-flex-item-align: end;
       align-self: flex-end;
-  margin-top: -20px;
+  margin-top: -50px;
 }
 
 @media only screen and (max-width: 812px) {
+  @-webkit-keyframes sunrise {
+    from {
+      bottom: -50%;
+    }
+    to {
+      bottom: -24%;
+    }
+  }
+  @keyframes sunrise {
+    from {
+      bottom: -50%;
+    }
+    to {
+      bottom: -24%;
+    }
+  }
   .landing-wrapper .svg-wrapper {
     width: 100vw;
   }
@@ -187,51 +170,54 @@
   .landing-wrapper .svg-wrapper img:nth-child(1) {
     bottom: 5%;
   }
-  .landing-wrapper .svg-wrapper img:nth-child(2) {
-    bottom: 7%;
-  }
-  .landing-wrapper .svg-wrapper img:nth-child(3) {
-    -o-object-fit: contain;
-       object-fit: contain;
-    bottom: 17%;
-  }
-  .landing-wrapper .svg-wrapper img:nth-child(4) {
-    bottom: -7%;
-  }
+  .landing-wrapper .svg-wrapper img:nth-child(2),
+  .landing-wrapper .svg-wrapper img:nth-child(3),
   .landing-wrapper .svg-wrapper img:nth-child(5) {
     display: none;
+  }
+  .landing-wrapper .svg-wrapper img:nth-child(4) {
+    bottom: -24%;
   }
   .landing-wrapper .svg-wrapper img:nth-child(6) {
     top: 20%;
     left: -20%;
+    width: 70%;
   }
   .landing-wrapper .svg-wrapper img:nth-child(7) {
     bottom: -35%;
     left: -10%;
+  }
+  .landing-wrapper .svg-wrapper img:nth-child(8) {
+    display: none;
   }
   .landing-wrapper .content-wrapper .landing-title {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
   }
-  .landing-wrapper .content-wrapper .landing-title .title {
-    text-align: center;
-    font-size: 9rem;
+  .landing-wrapper .content-wrapper .landing-title img {
+    width: 85%;
+    margin: 10px auto;
   }
   .landing-wrapper .content-wrapper .landing-title h5 {
     text-align: center;
+    opacity: 0.8;
   }
   .landing-wrapper .content-wrapper .landing-title h5:first-child, .landing-wrapper .content-wrapper .landing-title h5:last-child {
     -ms-flex-item-align: center;
         -ms-grid-row-align: center;
         align-self: center;
   }
+  .landing-wrapper .content-wrapper .landing-title h5:last-child {
+    margin-top: -35px;
+  }
   .landing-wrapper .content-wrapper nav {
     z-index: 100;
-    -webkit-box-orient: vertical;
+    -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    background-color: transparent;
   }
   .landing-wrapper .content-wrapper nav i:first-child {
     margin: 0 20px;

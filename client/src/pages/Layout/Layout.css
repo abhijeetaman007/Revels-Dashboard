@@ -30,7 +30,7 @@
 }
 
 .layout-wrapper .layout-navbar .brand p {
-  font-size: 1rem;
+  font-size: 1.4rem;
 }
 
 .layout-wrapper .layout-navbar .brand img {
@@ -200,6 +200,7 @@
 }
 
 .layout-wrapper .dash-wrapper .sidebar .side-footer .buttons {
+  -webkit-appearance: none;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -210,6 +211,7 @@
 }
 
 .layout-wrapper .dash-wrapper .sidebar .side-footer .buttons button {
+  -webkit-appearance: none;
   border: 0;
   padding: 5px 15px;
   margin: 5px;

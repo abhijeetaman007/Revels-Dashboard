@@ -1,0 +1,114 @@
+.del-card {
+  width: 28%;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.del-card:hover {
+  -webkit-transform: scale(1.01);
+  transform: scale(1.01);
+  -webkit-box-shadow: 0 0 10px 1px #1e1433;
+          box-shadow: 0 0 10px 1px #1e1433;
+}
+
+.del-card h1 {
+  font-size: 25.6px;
+  font-size: 1.6rem;
+}
+
+.del-card .del-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.del-card .del-content p {
+  font-size: 19.2px;
+  font-size: 1.2rem;
+}
+
+.del-card .del-content .price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.del-card .del-content .price .clg {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px 0;
+  gap: 10px;
+  width: 100%;
+}
+
+.del-card .del-content .price .clg h3 {
+  font-size: 14.4px;
+  font-size: 0.9rem;
+}
+
+.del-card .del-content .price .clg p {
+  font-size: 32px;
+  font-size: 2rem;
+}
+
+.del-card .del-content button {
+  width: 100%;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 0;
+  background-color: rgba(255, 255, 255, 0.418);
+}
+
+.del-card .del-content button:hover {
+  -webkit-transform: scale(0.98);
+  transform: scale(0.98);
+}
+
+.blue {
+  background-color: #22B6E6;
+  border: 0.1px solid #54c7ee;
+}
+
+.purple {
+  background-color: #C6A3FF;
+  border: 0.1px solid #ebdeff;
+}
+
+.black {
+  background-color: black;
+  border: 0.1px solid #272727;
+}
+
+.black .price {
+  color: white;
+}
+
+.black button {
+  color: #e2e2e2;
+}
+
+.bought:not(span) {
+  cursor: default;
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+}
+
+@media only screen and (max-width: 812px) {
+  .del-card {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=DelegateCard.css.map */
