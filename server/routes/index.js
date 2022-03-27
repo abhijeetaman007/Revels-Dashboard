@@ -117,7 +117,7 @@ router.post('/user/resendlink', resendVerificationLink);
 router.post('/user/forgetpass/', userPassResetLink);
 router.post('/user/forgetpass/verify', userPassResetVerify);
 router.get('/user/getuser', isUserLoggedIn, getUserFromToken);
-
+router.get('/admin/getadmin', isAdminLoggedIn, getAdminFromToken);
 //College
 router.get('/colleges', getAllColleges);
 
@@ -146,7 +146,7 @@ router.post(
   isUserLoggedIn,
   isVerifiedForRevels,
   deleteTeamRequest
-)
+);
 
 //Events:
 router.post(
