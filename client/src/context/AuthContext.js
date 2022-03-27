@@ -141,6 +141,15 @@ export default function AuthProvider({ children }) {
       throw err;
     }
   };
+  const adminlogout = async () => {
+    try {
+      setUser(null);
+      localStorage.removeItem(ADMIN_TOKEN_ID);
+      navigate('/admin');
+    } catch (err) {
+      throw err;
+    }
+  };
 
   // method to handle category login
   const categoryLogin = async (categoryId, password) => {
@@ -166,6 +175,7 @@ export default function AuthProvider({ children }) {
     userLogout: logout,
     userLogin: userLogin,
     adminLogin: adminLogin,
+    adminLogout: adminlogout,
     // categoryLogin: categoryLogin,
     loading,
   };

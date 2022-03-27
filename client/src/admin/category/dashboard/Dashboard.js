@@ -1,10 +1,18 @@
 import Navbar from '../../components/Navbar/Navbar';
 import EventTile from '../components/EventTile.js/EventTile';
-
+import { useAuth } from '../../../context/AuthContext';
 const Dashboard = () => {
+  const auth = useAuth();
+  const AdminLogout = () => {
+    auth.adminLogout();
+    console.log('logout');
+    // reload window
+    window.location.reload();
+  };
   return (
     <div>
       <Navbar />
+      <button onClick={AdminLogout}>Logout</button>
       <div className="d-flex flex-column align-items-center justify-content-center">
         <div className="font-heavy text-light my-3 d-flex align-items-center">
           <div style={{ fontSize: '2rem' }}>CATEGORY NAME</div>
