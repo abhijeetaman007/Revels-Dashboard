@@ -78,8 +78,8 @@ const addEvent = async (req, res) => {
       }
       delCards.push(validCard._id)
     }
-    
-    console.log("test: ",req.requestAdmin.role.categoryId)
+    // console.log("test: ",req.requestAdmin.role.categoryId)
+    // console.log("Test DelCard",delCards)
     let newEvent = new Event({
       eventID,
       name,

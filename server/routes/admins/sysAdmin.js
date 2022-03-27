@@ -17,7 +17,8 @@ const addDelegateCard = async (req, res) => {
                 .status(400)
                 .send({ success: false, msg: 'Please fill all the fields' });
 
-        let card = DelCard.exists({ name });
+        let card = await DelCard.exists({ name });
+        console.log("Card ",card)
         if (card)
             return res.status(400).send({
                 success: false,
