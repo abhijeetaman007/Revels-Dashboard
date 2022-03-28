@@ -490,7 +490,7 @@ export default Event = ({ eventdata }) => {
         </button>
       </Modal>
       <div className="main-wrapper font-light text-white m-1 rounded p-4">
-        <div className="dy-flex flex-row justify-content-between align-items-center">
+        <div className="d-flex flex-row justify-content-between align-items-center">
           {data.name}&nbsp;
           <i
             onClick={openModal}
