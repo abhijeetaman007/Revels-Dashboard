@@ -43,6 +43,7 @@ const {
   getEventById,
   getEventStatus,
   getEventTags,
+  filterEvents,
 } = require('./user/event');
 const {
   addEvent,
@@ -166,6 +167,7 @@ router.get('/user/event/getallevents', getAllEvents);
 router.post('/user/event/getbyid', getEventById);
 router.post('/user/event/gettags', getEventTags);
 router.post('/user/event/getstatus', isUserLoggedIn, getEventStatus);
+router.post('/user/event/filter',filterEvents)
 //Delegate Cards
 router.get('/user/delegatecard/getall', getAllDelegateCards);
 router.get(

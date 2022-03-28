@@ -2,6 +2,7 @@ const User = require('../../models/User');
 const Event = require('../../models/Event');
 const Team = require('../../models/Team');
 const { nanoid } = require('nanoid');
+const { categories } = require('../../utils/categories');
 
 const registerEvent = async (req, res) => {
     try {
@@ -194,6 +195,28 @@ const getEventStatus = async (req, res) => {
     }
 };
 
+const filterEvents = async(req,res) =>{
+    try
+    {
+        let {category_ID,mode,eventType} = req.body
+        let condition={};
+        if(category_ID)
+            condition.category_ID = category_ID 
+        if(eventType)
+            condition.eventType = eventType
+        if(mode)
+            condition.mode = mode
+        let events =  await Event.find(condition)
+        return res.status(200).send({data:events,success:false})
+    }
+    catch(err)
+    {
+        console.log(err)
+        return res.send({success:false,msg:'Internal Server Error'})
+    }
+}
+
+
 module.exports = {
     registerEvent,
     getUserTeams,
@@ -201,4 +224,5 @@ module.exports = {
     getEventById,
     getEventStatus,
     getEventTags,
+    filterEvents,
 };
