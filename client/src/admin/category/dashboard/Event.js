@@ -35,18 +35,20 @@ export default Event = ({ eventdata }) => {
     authorization: localStorage.getItem(ADMIN_TOKEN_ID),
   };
 
-  //update state for all the fields in data
   const [t1, setT1] = useState('');
   const [t2, setT2] = useState('');
   const [t3, setT3] = useState('');
   const [t4, setT4] = useState('');
+  //update state for all the fields in data
+  const [eventlen, setEventlen] = useState(eventdata.tags.length);
 
   const [head1N, setHead1N] = useState('');
   const [head2N, setHead2N] = useState('');
   const [head1E, setHead1E] = useState('');
   const [head2E, setHead2E] = useState('');
-  const [head1P, setHead1P] = useState('');
-  const [head2P, setHead2P] = useState('');
+  const [head1P, setHead1P] = useState(0);
+  const [head2P, setHead2P] = useState(0);
+  const [headlen, setHeadlen] = useState(eventdata.eventHeads.length);
 
   const [data, setData] = useState({
     eventID: eventdata.eventID,
@@ -81,8 +83,33 @@ export default Event = ({ eventdata }) => {
     }
     return true;
   };
+  useEffect(() => {
+    if (eventlen > 0) {
+      setT1(eventdata.tags[0]);
+    }
+    if (eventlen > 1) {
+      setT2(eventdata.tags[1]);
+    }
+    if (eventlen > 2) {
+      setT3(eventdata.tags[2]);
+    }
+    if (eventlen > 3) {
+      setT4(eventdata.tags[3]);
+    }
+    if (headlen > 0) {
+      setHead1N(eventdata.eventHeads[0].name);
+      setHead1E(eventdata.eventHeads[0].email);
+      setHead1P(eventdata.eventHeads[0].phoneNo);
+    }
+    if (headlen > 1) {
+      setHead2N(eventdata.eventHeads[1].name);
+      setHead2E(eventdata.eventHeads[1].email);
+      setHead2P(eventdata.eventHeads[1].phoneNo);
+    }
+  }, []);
   const updateEvent = async () => {
     let tagsarr = [];
+
     console.log('t1', t1);
     console.log(t2);
     console.log(t3);
@@ -285,7 +312,10 @@ export default Event = ({ eventdata }) => {
           maxLength={100}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="Event prize Here"
-          onChange={(e) => setData({ ...data, prize: e.target.value })}
+          value={data.prize}
+          onChange={(e) =>
+            setData({ ...data, prize: parseInt(e.target.value) })
+          }
         />
         <label className="font-medium mt-2">Participation Criteria</label>
         <input
@@ -295,6 +325,7 @@ export default Event = ({ eventdata }) => {
           maxLength={1000}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="Event participation criteria Here"
+          value={data.participationCriteria}
           onChange={(e) =>
             setData({ ...data, participationCriteria: e.target.value })
           }
@@ -309,6 +340,7 @@ export default Event = ({ eventdata }) => {
           className="m-1 h-25 rounded mx-0 text-dark font-light"
           placeholder="Tag 1"
           style={{ width: '20%' }}
+          value={t1}
           onChange={(e) => setT1(e.target.value)}
         />
         <input
@@ -319,6 +351,7 @@ export default Event = ({ eventdata }) => {
           className="m-1 h-25 rounded mx-0 text-dark font-light"
           placeholder="Tag 2"
           style={{ width: '20%' }}
+          value={t2}
           onChange={(e) => setT2(e.target.value)}
         />
         <input
@@ -329,6 +362,7 @@ export default Event = ({ eventdata }) => {
           className="m-1 h-25 rounded mx-0 text-dark font-light"
           placeholder="Tag 3"
           style={{ width: '20%' }}
+          value={t3}
           onChange={(e) => setT3(e.target.value)}
         />
         <input
@@ -339,6 +373,7 @@ export default Event = ({ eventdata }) => {
           className="m-1 h-25 rounded mx-0 text-dark font-light"
           placeholder="Tag 4"
           style={{ width: '20%' }}
+          value={t4}
           onChange={(e) => setT4(e.target.value)}
         />
 
@@ -351,6 +386,7 @@ export default Event = ({ eventdata }) => {
           maxLength={100}
           className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="13/04/2022"
+          value={data.eventDateTime}
           onChange={(e) => setData({ ...data, eventDateTime: e.target.value })}
         />
 
@@ -363,6 +399,7 @@ export default Event = ({ eventdata }) => {
           maxLength={100}
           className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="AB5 203"
+          value={data.eventVenue}
           onChange={(e) => setData({ ...data, eventVenue: e.target.value })}
         />
 
@@ -377,9 +414,10 @@ export default Event = ({ eventdata }) => {
           maxLength={100}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="Event Head Name Here"
+          value={head1N}
           onChange={(e) => setHead1N(e.target.value)}
         />
-        <label className="font-medium mt-2">Phone number</label>
+        <label className="font-medium mt-2">phoneNo number</label>
         <input
           type="number"
           name=""
@@ -387,8 +425,9 @@ export default Event = ({ eventdata }) => {
           required
           maxLength={10}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event Head phone number Here"
-          onChange={(e) => setHead1P(e.target.value)}
+          placeholder="Event Head phoneNo number Here"
+          value={head1P}
+          onChange={(e) => setHead1P(parseInt(e.target.value))}
         />
         <label className="font-medium mt-2">Email ID</label>
         <input
@@ -399,10 +438,11 @@ export default Event = ({ eventdata }) => {
           maxLength={100}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="Event Head Email ID Here"
+          value={head1E}
           onChange={(e) => setHead1E(e.target.value)}
         />
         {/* event head 2 */}
-        <div className="font-heavy mt-4 h6">Event Head 2:</div>
+        <div className="font-heavy mt-4 h6">Event Head 2 (optional):</div>
         <label className="font-medium mt-2">Name</label>
         <input
           type="text"
@@ -412,9 +452,10 @@ export default Event = ({ eventdata }) => {
           maxLength={100}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="Event Head Name Here"
+          value={head2N}
           onChange={(e) => setHead2N(e.target.value)}
         />
-        <label className="font-medium mt-2">Phone number</label>
+        <label className="font-medium mt-2">phoneNo number</label>
         <input
           type="number"
           name=""
@@ -422,8 +463,9 @@ export default Event = ({ eventdata }) => {
           required
           maxLength={10}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event Head phone number Here"
-          onChange={(e) => setHead2P(e.target.value)}
+          placeholder="Event Head phoneNo number Here"
+          value={head2P}
+          onChange={(e) => setHead2P(parseInt(e.target.value))}
         />
         <label className="font-medium mt-2">Email ID</label>
         <input
@@ -434,6 +476,7 @@ export default Event = ({ eventdata }) => {
           maxLength={100}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="Event Head Email ID Here"
+          value={head2E}
           onChange={(e) => setHead2E(e.target.value)}
         />
 
