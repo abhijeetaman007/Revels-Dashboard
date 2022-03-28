@@ -29,7 +29,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
     document.querySelector('.notif-wrapper').classList.toggle('active');
   };
   useEffect(() => {
-    console.log(auth.user)
+    console.log(auth.user);
     if (!auth.loading) {
       setLoading(false);
       if (!auth.user) {

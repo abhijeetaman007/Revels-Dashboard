@@ -5,6 +5,7 @@ const Category = require('../../models/Category');
 
 const addEvent = async (req, res) => {
   console.log('Adding Event');
+  console.log(req.body);
   try {
     //TODO : Add validations
     let {
