@@ -22,7 +22,7 @@ const EventCard = ({ data }) => {
               {data.mode === 'OFFLINE' ? 'Offline' : 'Online'} Event
             </button>
             <Link to={eventPath} className="font-medium">
-              <button className="font-medium">Details</button>
+              {/* <button className="font-medium">Details</button> */}
             </Link>
           </div>
         </div>
