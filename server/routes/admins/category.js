@@ -147,8 +147,9 @@ const updateEvent = async (req, res) => {
       //   eventVenue,
       tags,
     } = req.body;
-
+    console.log('9876', req.body);
     let event = await Event.exists({ eventID });
+    console.log(event);
     if (!event)
       return res.status(400).send({
         success: false,

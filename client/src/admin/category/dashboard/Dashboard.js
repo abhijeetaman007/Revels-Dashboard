@@ -523,8 +523,8 @@ const Dashboard = () => {
           Create Event
         </button>
         <div className="d-flex flex-wrap" style={{ margin: '4rem 5rem' }}>
-          {events.map((event) => (
-            <Event data={event} />
+          {events.map((eventdata) => (
+            <Event eventdata={eventdata} />
           ))}
         </div>
       </div>
