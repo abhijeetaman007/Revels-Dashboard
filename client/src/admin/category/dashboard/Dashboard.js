@@ -222,7 +222,7 @@ const Dashboard = () => {
         overlayClassName="overlay"
       >
         <div className="cross" onClick={closeModal}>
-          X
+          <i class="fa fa-times" aria-hidden="true"></i>
         </div>
         <label className="font-medium mt-2">Event Name</label>
         <input
