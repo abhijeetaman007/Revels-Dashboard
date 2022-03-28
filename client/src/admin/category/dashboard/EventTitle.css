@@ -29,7 +29,7 @@ body {
 
 .ReactModal__Overlay {
   position: fixed;
-  z-index: 999999;
+  /* z-index: 999999; */
   top: 0;
   left: 0;
   width: 100vw;
@@ -92,4 +92,7 @@ input[type='date']:before {
   top: 12px;
   right: 6px;
   color: #999;
+}
+.Toastify__toast-container {
+  z-index: 200000;
 }

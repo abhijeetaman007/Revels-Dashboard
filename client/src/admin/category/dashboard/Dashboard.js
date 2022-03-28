@@ -6,8 +6,26 @@ import axios from 'axios';
 import { ADMIN_TOKEN_ID } from '../../../utils/constants';
 import './EventTitle.css';
 import Modal from 'react-modal';
+import Event from './Event';
 const Dashboard = () => {
   //add validation in frontend
+  const validateForm = () => {
+    if (
+      data.name === '' ||
+      data.description === '' ||
+      data.eventType === '' ||
+      data.mode === '' ||
+      data.participationCriteria === '' ||
+      data.prize === '' ||
+      data.minMembers === '' ||
+      data.maxMembers === '' ||
+      data.eventDateTime === '' ||
+      data.eventVenue === ''
+    ) {
+      return false;
+    }
+    return true;
+  };
   const customStyles = {
     content: {
       top: '50%',
@@ -122,39 +140,74 @@ const Dashboard = () => {
     console.log(t1);
     console.log(tagsarr);
     console.log(headsarr);
-    try {
-      const eventData = {
-        name: data.name,
-        description: data.description,
-        eventType: data.eventType,
-        mode: data.mode,
-        participationCriteria: data.participationCriteria,
-        prize: data.prize,
-        minMembers: data.minMembers,
-        maxMembers: data.maxMembers,
-        eventHeads: headsarr,
-        eventDateTime: data.eventDateTime,
-        eventVenue: data.eventVenue,
-        tags: tagsarr,
-        // registeration deadline put later
-        //isActive later
-        // teamDelegateCard
-      };
-      console.log(eventData);
-      const res = await axios.post(
-        '/api/admin/category/event/add',
-        {
-          eventData,
-        },
-        {
-          headers: {
-            authorization: localStorage.getItem(ADMIN_TOKEN_ID),
+    if (!validateForm()) {
+      toast.error('Please fill in all the fields');
+    } else {
+      try {
+        const eventData = {
+          name: data.name,
+          description: data.description,
+          eventType: data.eventType,
+          mode: data.mode,
+          participationCriteria: data.participationCriteria,
+          prize: data.prize,
+          minMembers: data.minMembers,
+          maxMembers: data.maxMembers,
+          eventHeads: headsarr,
+          eventDateTime: data.eventDateTime,
+          eventVenue: data.eventVenue,
+          tags: tagsarr,
+          // registeration deadline put later
+          //isActive later
+          // teamDelegateCard
+        };
+        console.log('eventdata', eventData);
+        const res = await axios.post(
+          '/api/admin/category/event/add',
+          {
+            name: eventData.name,
+            description: eventData.description,
+            eventType: eventData.eventType,
+            mode: eventData.mode,
+            participationCriteria: eventData.participationCriteria,
+            prize: eventData.prize,
+            minMembers: eventData.minMembers,
+            maxMembers: eventData.maxMembers,
+            eventHeads: headsarr,
+            eventDateTime: eventData.eventDateTime,
+            eventVenue: eventData.eventVenue,
+            tags: tagsarr,
           },
-        }
-      );
-      console.log(res);
-    } catch (err) {
-      console.log(err);
+          {
+            headers: {
+              authorization: localStorage.getItem(ADMIN_TOKEN_ID),
+            },
+          }
+        );
+        console.log('dddddddd', res);
+        //clear eventdata array
+        setData({
+          eventID: '',
+          name: '',
+          description: '',
+          eventType: '',
+          mode: '',
+          participationCriteria: '',
+          prize: '',
+          minMembers: '',
+          maxMembers: '',
+          // eventHeads: [],
+          teamDelegateCardWorks: '',
+          delegateCards: '',
+          eventDateTime: '',
+          eventVenue: '',
+          // tags: [],});
+        });
+        //reload window
+        window.location.reload();
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
   useEffect(() => {
@@ -187,17 +240,6 @@ const Dashboard = () => {
           placeholder="Event Name Here"
           onChange={(e) => setData({ ...data, name: e.target.value })}
         />
-        <label className="font-medium mt-2">Max Members</label>
-        <input
-          type="number"
-          name=""
-          autoComplete="off"
-          required
-          maxLength={100}
-          className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event Name Here"
-          onChange={(e) => setData({ ...data, maxMembers: e.target.value })}
-        />
         <label className="font-medium mt-2">Min Members</label>
         <input
           type="number"
@@ -209,6 +251,18 @@ const Dashboard = () => {
           placeholder="Event Name Here"
           onChange={(e) => setData({ ...data, minMembers: e.target.value })}
         />
+        <label className="font-medium mt-2">Max Members</label>
+        <input
+          type="number"
+          name=""
+          autoComplete="off"
+          required
+          maxLength={100}
+          className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
+          placeholder="Event Name Here"
+          onChange={(e) => setData({ ...data, maxMembers: e.target.value })}
+        />
+
         <label className="font-medium mt-3">Event Description</label>
         <textarea
           rows="4"
@@ -329,6 +383,7 @@ const Dashboard = () => {
           maxLength={100}
           className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="13/04/2022"
+          onChange={(e) => setData({ ...data, eventDateTime: e.target.value })}
         />
 
         <label className="font-medium mt-3">Event Venue</label>
@@ -469,16 +524,7 @@ const Dashboard = () => {
         </button>
         <div className="d-flex flex-wrap" style={{ margin: '4rem 5rem' }}>
           {events.map((event) => (
-            <div className="main-wrapper font-light text-white m-1 rounded p-4">
-              <div className="dy-flex flex-row justify-content-between align-items-center">
-                Event name
-                <i
-                  onClick={openModal}
-                  className="edit fa fa-pencil"
-                  aria-hidden="true"
-                ></i>
-              </div>
-            </div>
+            <Event data={event} />
           ))}
         </div>
       </div>
