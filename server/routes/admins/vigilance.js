@@ -10,7 +10,7 @@ const getUserFromID = async(req,res) =>{
     try
     {
         let {userID} = req.body
-        let user = await User.findOne({userID},{password:0,passwordResetToken:0,token:0})
+        let user = await User.findOne({userID},{password:0,passwordResetToken:0,token:0}).populate('role delegateCards')
         if(!user)
             return res.status(400).send({success:false,msg:'No user Found'})
         return res.send({success:true,data:user}) 
@@ -34,7 +34,7 @@ const isEventRegistered = async(req,res) =>{
             return res.status(400).send({success:false,msg:'No Event Found'})
         console.log("Event ",event)
 
-        let team = await Team.findOne({event:event._id,'members.user':user._id})
+        let team = await Team.findOne({event:event._id,'members.user':user._id}).populate('members.user event',{password:0,token:0,passwordResetToken:0,accommodation:0})
         if(!team)
             return res.status(400).send({success:false,msg:'No Team Found'})
         console.log("Team ",team)
@@ -49,8 +49,16 @@ const isEventRegistered = async(req,res) =>{
 const hasDelegateCard = async(req,res) =>{
     try
     {
-        let {userID,delegateCard_ID} = req.body
+        let {userID,cardID} = req.body
+        let delegateCard_ID = await DelCard.findOne({cardID},{_id:1})
+        console.log(delegateCard_ID)
+        if(!delegateCard_ID)
+            return res.status(400).send({success:false,msg:'No Delegate Card Found'})
         let user = await User.findOne({userID,'delegateCards':delegateCard_ID},{password:0,passwordResetToken:0,token:0})
+        console.log("User ",user)
+        if(!user)
+            return res.status(400).send({success:false,msg:'Delegate Card not found'})
+        return res.status(200).send({success:true,msg:'User has required Delegate Card/Ticket '})
     }
     catch(err)
     {
