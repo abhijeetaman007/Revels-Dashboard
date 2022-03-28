@@ -161,7 +161,7 @@ const Dashboard = () => {
           //isActive later
           // teamDelegateCard
         };
-        console.log('eventdata', eventData);
+        console.log('eventdata', data.eventDateTime);
         const res = await axios.post(
           '/api/admin/category/event/add',
           {
@@ -376,13 +376,14 @@ const Dashboard = () => {
 
         <label className="font-medium mt-3 w-100">Event Date</label>
         <input
-          type="date"
+          type="datetime"
           name=""
           autoComplete="off"
           required
           maxLength={100}
           className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="13/04/2022"
+          value={data.eventDateTime}
           onChange={(e) => setData({ ...data, eventDateTime: e.target.value })}
         />
 
@@ -478,7 +479,9 @@ const Dashboard = () => {
           Save
         </button>
       </Modal>
-      <button onClick={AdminLogout}>Logout</button>
+      <div className='d-flex justify-content-center'>
+        <button className='logout-button' onClick={AdminLogout}>Logout</button>
+      </div>
       <div className="d-flex flex-column align-items-center justify-content-center">
         <div className="font-heavy text-light my-3 d-flex align-items-center">
           <div style={{ fontSize: '2rem' }}>{category.category}</div>
