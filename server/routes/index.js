@@ -1,115 +1,120 @@
 const express = require('express');
 const router = express.Router();
 const {
-  userRegistrationValidation,
-  userValidate,
-  loginValidation,
+    userRegistrationValidation,
+    userValidate,
+    loginValidation,
 } = require('../middleware/validate');
 const {
-  isUserLoggedIn,
-  isVerifiedForRevels,
-  isAdminLoggedIn,
+    isUserLoggedIn,
+    isVerifiedForRevels,
+    isAdminLoggedIn,
 } = require('../middleware/auth');
 const {
-  isCategory,
-  isOM,
-  isVigilance,
-  isOperation,
-  isSysAdmin,
-  isCulturalCategory,
+    isCategory,
+    isOM,
+    isVigilance,
+    isOperation,
+    isSysAdmin,
+    isCulturalCategory,
 } = require('../middleware/category');
 const {
-  hasReadAccess,
-  hasReadWriteAccess,
-  hasCategorySuperAdminAccess,
-  hasSuperAdminAccess,
+    hasReadAccess,
+    hasReadWriteAccess,
+    hasCategorySuperAdminAccess,
+    hasSuperAdminAccess,
 } = require('../middleware/accessLevel');
 const {
-  userRegister,
-  userLogin,
-  userLogout,
-  userEmailVerify,
-  userPassResetLink,
-  userPassResetVerify,
-  resendVerificationLink,
-  getUserFromToken,
-  updateAccommodation,
-  updateUser,
+    userRegister,
+    userLogin,
+    userLogout,
+    userEmailVerify,
+    userPassResetLink,
+    userPassResetVerify,
+    resendVerificationLink,
+    getUserFromToken,
+    updateAccommodation,
+    updateUser,
 } = require('./user/user');
 const {
-  registerEvent,
-  getUserTeams,
-  getAllEvents,
-  getEventById,
-  getEventStatus,
-  getEventTags,
-  filterEvents,
+    registerEvent,
+    getUserTeams,
+    getAllEvents,
+    getEventById,
+    getEventStatus,
+    getEventTags,
+    filterEvents,
 } = require('./user/event');
 const {
-  addEvent,
-  getCategoryEvent,
-  updateEvent,
-  deleteEvent,
-  getCategory,
+    addEvent,
+    getCategoryEvent,
+    updateEvent,
+    deleteEvent,
+    getCategory,
 } = require('./admins/category');
 const {
-  joinTeam,
-  leaveTeam,
-  addToTeam,
-  removeFromTeam,
-  getEventTeam,
-  deleteTeamRequest,
+    joinTeam,
+    leaveTeam,
+    addToTeam,
+    removeFromTeam,
+    getEventTeam,
+    deleteTeamRequest,
 } = require('./user/team');
 const {
-  registerOrder,
-  verifyPayment,
-  verifyPaymentAlternate,
+    registerOrder,
+    verifyPayment,
+    verifyPaymentAlternate,
 } = require('./user/razorpay');
 const {
-  addDelegateCard,
-  deleteDelegateCard,
-  viewAllDelegateCards,
-  addRole,
-  addCategories,
-  registerAdmin,
-  addCollege,
-  sendEmail,
+    addDelegateCard,
+    deleteDelegateCard,
+    viewAllDelegateCards,
+    addRole,
+    addCategories,
+    registerAdmin,
+    addCollege,
+    sendEmail,
 } = require('./admins/sysAdmin');
 const {
-  getAllDelegateCards,
-  getMyDelegateCards,
-  getAllMyTransactions,
+    getAllDelegateCards,
+    getMyDelegateCards,
+    getAllMyTransactions,
 } = require('./user/delegateCard');
 const { getAllColleges } = require('./user/college');
 const { setEventScheldule } = require('./admins/operations');
 const {
-  adminRegister,
-  categoryRegister,
-  adminLogin,
-  adminLogout,
-  getAdminFromToken,
+    adminRegister,
+    categoryRegister,
+    adminLogin,
+    adminLogout,
+    getAdminFromToken,
 } = require('./admins/auth');
+const {
+    getUserFromID,
+    isEventRegistered,
+    hasDelegateCard,
+} = require('./admins/vigilance');
 const { upload, multipleUpload } = require('../config/aws-s3/multer.config');
 
 //Routes:
 router.get(
-  '/test',
-  isAdminLoggedIn,
-  hasCategorySuperAdminAccess,
-  (req, res) => {
-    let date = new Date();
-    // console.log(date);
-    res.send('Testing ');
-  }
+    '/test',
+    isAdminLoggedIn,
+    hasCategorySuperAdminAccess,
+    (req, res) => {
+        let date = new Date();
+        // console.log(date);
+        res.send('Testing ');
+    }
 );
 
 //@User Routes:
 // Auth:
 router.post(
-  '/user/register',
-  userRegistrationValidation(),
-  userValidate,
-  userRegister
+    '/user/register',
+    userRegistrationValidation(),
+    userValidate,
+    userRegister
 );
 router.post('/user/login', loginValidation(), userValidate, userLogin);
 router.get('/user/logout', userLogout);
@@ -132,53 +137,53 @@ router.post('/user/team/join', isUserLoggedIn, isVerifiedForRevels, joinTeam);
 router.post('/user/team/leave', isUserLoggedIn, isVerifiedForRevels, leaveTeam);
 router.post('/user/team/add', isUserLoggedIn, isVerifiedForRevels, addToTeam);
 router.post(
-  '/user/team/remove',
-  isUserLoggedIn,
-  isVerifiedForRevels,
-  removeFromTeam
+    '/user/team/remove',
+    isUserLoggedIn,
+    isVerifiedForRevels,
+    removeFromTeam
 );
 router.post(
-  '/user/team/get',
-  isUserLoggedIn,
-  isVerifiedForRevels,
-  getEventTeam
+    '/user/team/get',
+    isUserLoggedIn,
+    isVerifiedForRevels,
+    getEventTeam
 );
 router.post(
-  '/user/team/deleterequest',
-  isUserLoggedIn,
-  isVerifiedForRevels,
-  deleteTeamRequest
+    '/user/team/deleterequest',
+    isUserLoggedIn,
+    isVerifiedForRevels,
+    deleteTeamRequest
 );
 
 //Events:
 router.post(
-  '/user/event/register',
-  isUserLoggedIn,
-  isVerifiedForRevels,
-  registerEvent
+    '/user/event/register',
+    isUserLoggedIn,
+    isVerifiedForRevels,
+    registerEvent
 );
 router.get(
-  '/user/event/getevents',
-  isUserLoggedIn,
-  isVerifiedForRevels,
-  getUserTeams
+    '/user/event/getevents',
+    isUserLoggedIn,
+    isVerifiedForRevels,
+    getUserTeams
 );
 router.get('/user/event/getallevents', getAllEvents);
 router.post('/user/event/getbyid', getEventById);
 router.post('/user/event/gettags', getEventTags);
 router.post('/user/event/getstatus', isUserLoggedIn, getEventStatus);
-router.post('/user/event/filter',filterEvents)
+router.post('/user/event/filter', filterEvents);
 //Delegate Cards
 router.get('/user/delegatecard/getall', getAllDelegateCards);
 router.get(
-  '/user/delegatecard/getmydelegatecards',
-  isUserLoggedIn,
-  getMyDelegateCards
+    '/user/delegatecard/getmydelegatecards',
+    isUserLoggedIn,
+    getMyDelegateCards
 );
 router.get(
-  '/user/delegatecard/getalltransactions',
-  isUserLoggedIn,
-  getAllMyTransactions
+    '/user/delegatecard/getalltransactions',
+    isUserLoggedIn,
+    getAllMyTransactions
 );
 // Razorpay - Payment
 // TODO : put middleware after testing
@@ -192,9 +197,9 @@ router.get('/admin/logout', adminLogout); //changed
 //Events
 router.post('/admin/category/event/add', isAdminLoggedIn, addEvent);
 router.get(
-  '/admin/category/event/getevents',
-  isAdminLoggedIn,
-  getCategoryEvent
+    '/admin/category/event/getevents',
+    isAdminLoggedIn,
+    getCategoryEvent
 );
 router.get('/admin/category', isAdminLoggedIn, getCategory);
 router.post('/admin/category/event/update', isAdminLoggedIn, updateEvent);
@@ -202,17 +207,24 @@ router.post('/admin/category/event/delete', isAdminLoggedIn, deleteEvent);
 
 //@Operations Route
 router.post(
-  '/admin/operations/seteventschedule',
-  isAdminLoggedIn,
-  // isOperations,
-  setEventScheldule
+    '/admin/operations/seteventschedule',
+    isAdminLoggedIn,
+    // isOperations,
+    setEventScheldule
 );
 router.get(
-  '/admin/operations/getallevents',
-  isAdminLoggedIn,
-  // isOperations,
-  getAllEvents
+    '/admin/operations/getallevents',
+    isAdminLoggedIn,
+    // isOperations,
+    getAllEvents
 );
+
+// @Vigilance Routes
+router.post('/admin/vigilance/user',getUserFromID)
+router.post('/admin/vigilance/user/event',isEventRegistered)
+router.post('/admin/vigilance/user/delegatecard',hasDelegateCard)
+
+
 
 //@SysAdmin Routes - Private Routes for internal use - No frontend needed
 // router.get('/sysadmin/register/category', categoryRegister);  //changed

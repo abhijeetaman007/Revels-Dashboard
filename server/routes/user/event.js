@@ -125,7 +125,7 @@ const getUserTeams = async (req, res) => {
 };
 const getAllEvents = async (req, res) => {
     try {
-        let events = await Event.find().populate('category');
+        let events = await Event.find().populate('category delegateCards');
         return res.status(200).send({ success: false, data: events });
     } catch (err) {
         console.log(err);
