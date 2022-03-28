@@ -180,7 +180,6 @@ export default Event = ({ eventdata }) => {
             },
           }
         );
-        console.log('eeeeeeeeee', res);
         //clear eventdata array
         // setData({
         //   eventID: '',
@@ -200,7 +199,9 @@ export default Event = ({ eventdata }) => {
         //   // tags: [],});
         // });
         //reload window
+
         window.location.reload();
+        toast.success('Event Updated');
       } catch (err) {
         console.log(err);
       }

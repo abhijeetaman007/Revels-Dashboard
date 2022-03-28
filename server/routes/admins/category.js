@@ -143,11 +143,10 @@ const updateEvent = async (req, res) => {
       eventHeads,
       teamDelegateCardWorks,
       delegateCards, //List of Delegate CardIDs
-      eventDateTime,
-      eventVenue,
+      // eventDateTime,
+      // eventVenue,
       tags,
     } = req.body;
-    console.log('9876', req.body);
     let event = await Event.exists({ eventID });
     console.log(event);
     if (!event)
@@ -165,17 +164,17 @@ const updateEvent = async (req, res) => {
           });
       }
     }
-    if (eventDateTime) {
-      let dateTime = new Date(eventDateTime);
-      eventDateTime = dateTime;
-      registrationDeadline = eventDateTime;
-      if (eventDateTime.toString() == 'Invalid Date') {
-        return res.status(400).send({
-          success: false,
-          msg: 'Valid DataTime in IST is required',
-        });
-      }
-    }
+    // if (eventDateTime) {
+    //   let dateTime = new Date(eventDateTime);
+    //   eventDateTime = dateTime;
+    //   registrationDeadline = eventDateTime;
+    //   if (eventDateTime.toString() == 'Invalid Date') {
+    //     return res.status(400).send({
+    //       success: false,
+    //       msg: 'Valid DataTime in IST is required',
+    //     });
+    //   }
+    // }
 
     //Check for more validations
     let newDelegateCards = [];
@@ -202,8 +201,8 @@ const updateEvent = async (req, res) => {
         minMembers,
         maxMembers,
         eventHeads,
-        eventDateTime,
-        eventVenue,
+        // eventDateTime,
+        // eventVenue,
         // registrationDeadline,
         tags,
         delegateCards: newDelegateCards,

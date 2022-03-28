@@ -8,19 +8,16 @@ import './EventTitle.css';
 import Modal from 'react-modal';
 import Event from './Event';
 const Dashboard = () => {
-  //add validation in frontend
   const validateForm = () => {
     if (
       data.name === '' ||
+      data.minMembers === '' ||
+      data.maxMembers === '' ||
       data.description === '' ||
       data.eventType === '' ||
       data.mode === '' ||
-      data.participationCriteria === '' ||
       data.prize === '' ||
-      data.minMembers === '' ||
-      data.maxMembers === '' ||
-      data.eventDateTime === '' ||
-      data.eventVenue === ''
+      data.participationCriteria === ''
     ) {
       return false;
     }
@@ -109,8 +106,8 @@ const Dashboard = () => {
     // eventHeads: [],
     teamDelegateCardWorks: '',
     delegateCards: '',
-    eventDateTime: '',
-    eventVenue: '',
+    // eventDateTime: '',
+    // eventVenue: '',
     // tags: [],
   });
 
@@ -154,8 +151,8 @@ const Dashboard = () => {
           minMembers: data.minMembers,
           maxMembers: data.maxMembers,
           eventHeads: headsarr,
-          eventDateTime: data.eventDateTime,
-          eventVenue: data.eventVenue,
+          // eventDateTime: data.eventDateTime,
+          // eventVenue: data.eventVenue,
           tags: tagsarr,
           // registeration deadline put later
           //isActive later
@@ -174,8 +171,8 @@ const Dashboard = () => {
             minMembers: eventData.minMembers,
             maxMembers: eventData.maxMembers,
             eventHeads: headsarr,
-            eventDateTime: eventData.eventDateTime,
-            eventVenue: eventData.eventVenue,
+            // eventDateTime: eventData.eventDateTime,
+            // eventVenue: eventData.eventVenue,
             tags: tagsarr,
           },
           {
@@ -184,8 +181,6 @@ const Dashboard = () => {
             },
           }
         );
-        console.log('dddddddd', res);
-        //clear eventdata array
         setData({
           eventID: '',
           name: '',
@@ -199,8 +194,8 @@ const Dashboard = () => {
           // eventHeads: [],
           teamDelegateCardWorks: '',
           delegateCards: '',
-          eventDateTime: '',
-          eventVenue: '',
+          // eventDateTime: '',
+          // eventVenue: '',
           // tags: [],});
         });
         //reload window
@@ -290,7 +285,7 @@ const Dashboard = () => {
           </option>
           <option value="CULTURAL">Cultural</option>
           <option value="SPORTS">Sports</option>
-          <option value="MISC">Miscellaneous</option>
+          {/* <option value="MISC">Miscellaneous</option> */}
         </select>
         <label for="mode" className="font-medium mt-3">
           Mode
@@ -332,7 +327,7 @@ const Dashboard = () => {
           }
         />
 
-        <label className="font-medium mt-2 w-100">Tags</label>
+        <label className="font-medium mt-2 w-100">Tags(optional)</label>
         <input
           type="text"
           name=""
@@ -374,7 +369,7 @@ const Dashboard = () => {
           onChange={(e) => setT4(e.target.value)}
         />
 
-        <label className="font-medium mt-3 w-100">Event Date</label>
+        {/* <label className="font-medium mt-3 w-100">Event Date</label>
         <input
           type="datetime"
           name=""
@@ -397,8 +392,10 @@ const Dashboard = () => {
           className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="AB5 203"
           onChange={(e) => setData({ ...data, eventVenue: e.target.value })}
-        />
-
+        /> */}
+        <label className="font-medium mt-3">Delegate Card Required</label>
+        {/* multiple select required */}
+        {/* TODO */}
         <div className="font-heavy mt-4 h5">Event Head details:</div>
         <div className="font-heavy mt-4 h6">Event Head 1:</div>
         <label className="font-medium mt-2">Name</label>
@@ -435,7 +432,7 @@ const Dashboard = () => {
           onChange={(e) => setHead1E(e.target.value)}
         />
         {/* event head 2 */}
-        <div className="font-heavy mt-4 h6">Event Head 2:</div>
+        <div className="font-heavy mt-4 h6">Event Head 2 (optional):</div>
         <label className="font-medium mt-2">Name</label>
         <input
           type="text"
@@ -479,8 +476,15 @@ const Dashboard = () => {
           Save
         </button>
       </Modal>
-      <div className='d-flex justify-content-center'>
-        <button className='logout-button' onClick={AdminLogout}>Logout</button>
+      <div className="d-flex justify-content-center">
+        <button
+          type="button"
+          className="btn m-2 text-white"
+          style={{ backgroundColor: '#F4737E', width: '200px' }}
+          onClick={AdminLogout}
+        >
+          Logout
+        </button>
       </div>
       <div className="d-flex flex-column align-items-center justify-content-center">
         <div className="font-heavy text-light my-3 d-flex align-items-center">
