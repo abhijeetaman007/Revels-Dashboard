@@ -5,6 +5,7 @@ import axios from 'axios';
 import { ADMIN_TOKEN_ID } from '../../../utils/constants';
 import './EventTitle.css';
 import Modal from 'react-modal';
+import Tag from '../components/Tag/Tag';
 
 export default Event = ({ eventdata }) => {
   const customStyles = {
@@ -13,19 +14,12 @@ export default Event = ({ eventdata }) => {
       left: '50%',
       right: 'auto',
       bottom: 'auto',
-      marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
-      width: '40vmax',
     },
   };
-  let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
     setIsOpen(true);
-  }
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
   }
   function closeModal() {
     setIsOpen(false);
@@ -49,6 +43,7 @@ export default Event = ({ eventdata }) => {
   const [head1P, setHead1P] = useState(0);
   const [head2P, setHead2P] = useState(0);
   const [headlen, setHeadlen] = useState(eventdata.eventHeads.length);
+  const [numTags, setNumTags] = useState(eventdata.tags.length ? eventdata.tags.length : 1);
 
   const [data, setData] = useState({
     eventID: eventdata.eventID,
@@ -61,7 +56,7 @@ export default Event = ({ eventdata }) => {
     minMembers: eventdata.minMembers,
     maxMembers: eventdata.maxMembers,
     eventHeads: eventdata.eventHeads,
-    eventDateTime: eventdata.eventDateTime,
+    eventDateTime: new Date(eventdata.eventDateTime),
     eventVenue: eventdata.eventVenue,
     tags: eventdata.tags,
     // isActive: data.isActive,
@@ -84,18 +79,20 @@ export default Event = ({ eventdata }) => {
     return true;
   };
   useEffect(() => {
-    if (eventlen > 0) {
+    // set tags data
+    if (numTags > 0) {
       setT1(eventdata.tags[0]);
     }
-    if (eventlen > 1) {
+    if (numTags > 1) {
       setT2(eventdata.tags[1]);
     }
-    if (eventlen > 2) {
+    if (numTags > 2) {
       setT3(eventdata.tags[2]);
     }
-    if (eventlen > 3) {
+    if (numTags > 3) {
       setT4(eventdata.tags[3]);
     }
+    // set event head information 
     if (headlen > 0) {
       setHead1N(eventdata.eventHeads[0].name);
       setHead1E(eventdata.eventHeads[0].email);
@@ -109,16 +106,13 @@ export default Event = ({ eventdata }) => {
   }, []);
   const updateEvent = async () => {
     let tagsarr = [];
-
-    console.log('t1', t1);
-    console.log(t2);
-    console.log(t3);
-    if (t1 != '') tagsarr.push(t1.toUpperCase().trim());
-    if (t2 != '') tagsarr.push(t2.toUpperCase().trim());
-    if (t3 != '') tagsarr.push(t3.toUpperCase().trim());
-    if (t4 != '') tagsarr.push(t4.toUpperCase().trim());
+    if(tagsarr.length !== 0){
+      if (t1 !== '') tagsarr.push(t1.toUpperCase().trim());
+      if (t2 !== '') tagsarr.push(t2.toUpperCase().trim());
+      if (t3 !== '') tagsarr.push(t3.toUpperCase().trim());
+      if (t4 !== '') tagsarr.push(t4.toUpperCase().trim());
+    }
     let headsarr = [];
-    console.log(head1N);
     if (head1N != '')
       headsarr.push({
         name: head1N.toUpperCase().trim(),
@@ -131,9 +125,6 @@ export default Event = ({ eventdata }) => {
         phoneNo: head2P,
         email: head2E,
       });
-    console.log(t1);
-    console.log(tagsarr);
-    console.log(headsarr);
     if (!validateForm()) {
       toast.error('Please fill in all the fields');
     } else {
@@ -149,7 +140,7 @@ export default Event = ({ eventdata }) => {
           minMembers: data.minMembers,
           maxMembers: data.maxMembers,
           eventHeads: headsarr,
-          eventDateTime: data.eventDateTime,
+          eventDateTime: new Date(data.eventDateTime),
           eventVenue: data.eventVenue,
           tags: tagsarr,
           // registeration deadline put later
@@ -180,42 +171,26 @@ export default Event = ({ eventdata }) => {
             },
           }
         );
-        //clear eventdata array
-        // setData({
-        //   eventID: '',
-        //   name: '',
-        //   description: '',
-        //   eventType: '',
-        //   mode: '',
-        //   participationCriteria: '',
-        //   prize: '',
-        //   minMembers: '',
-        //   maxMembers: '',
-        //   // eventHeads: [],
-        //   teamDelegateCardWorks: '',
-        //   delegateCards: '',
-        //   eventDateTime: '',
-        //   eventVenue: '',
-        //   // tags: [],});
-        // });
-        //reload window
 
-        window.location.reload();
-        toast.success('Event Updated');
+        if(res.data.success) { 
+          toast.success('Event updated successfully');
+          closeModal();
+        }
       } catch (err) {
         console.log(err);
       }
     }
   };
-
+  const addTagElement = () => {
+    setNumTags(numTags+1);
+  }
   return (
     <div>
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
-        contentLabel="Example Modal"
+        contentLabel="Event Modal"
         overlayClassName="overlay"
       >
         <div className="cross" onClick={closeModal}>
@@ -233,31 +208,35 @@ export default Event = ({ eventdata }) => {
           value={data.name}
           onChange={(e) => setData({ ...data, name: e.target.value })}
         />
-        <label className="font-medium mt-2">Min Members</label>
-        <input
-          type="number"
-          name=""
-          autoComplete="off"
-          required
-          maxLength={100}
-          className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event Name Here"
-          value={data.minMembers}
-          onChange={(e) => setData({ ...data, minMembers: e.target.value })}
-        />
-        <label className="font-medium mt-2">Max Members</label>
-        <input
-          type="number"
-          name=""
-          autoComplete="off"
-          required
-          maxLength={100}
-          className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event Name Here"
-          value={data.maxMembers}
-          onChange={(e) => setData({ ...data, maxMembers: e.target.value })}
-        />
-
+        <div className="d-flex flex-md-row flex-column">
+          <div className="w-md-50 w-100 mx-md-1">
+            <label className="font-medium mt-2">Min Members</label>
+            <input
+              type="number"
+              name=""
+              autoComplete="off"
+              required
+              maxLength={100}
+              className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
+              placeholder="Minimum number of members"
+              value={data.minMembers}
+              onChange={(e) => setData({ ...data, minMembers: e.target.value })}
+            />
+          </div>
+          <div className="w-md-50 w-100 mx-md-1">
+            <label className="font-medium mt-2">Max Members</label>
+            <input
+              type="number"
+              autoComplete="off"
+              required
+              maxLength={100}
+              className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
+              placeholder="Maximum number of members"
+              value={data.maxMembers}
+              onChange={(e) => setData({ ...data, maxMembers: e.target.value })}
+            />
+          </div>
+        </div>
         <label className="font-medium mt-3">Event Description</label>
         <textarea
           rows="4"
@@ -271,39 +250,42 @@ export default Event = ({ eventdata }) => {
           value={data.description}
           onChange={(e) => setData({ ...data, description: e.target.value })}
         />
-
-        <label for="mode" className="font-medium mt-3">
-          Event Type
-        </label>
-        <select
-          name=""
-          id="mode"
-          className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          onChange={(e) => setData({ ...data, eventType: e.target.value })}
-        >
-          <option selected="true" disabled="disabled" value="">
-            Select Option
-          </option>
-          <option value="CULTURAL">Cultural</option>
-          <option value="SPORTS">Sports</option>
-          <option value="MISC">Miscellaneous</option>
-        </select>
-        <label for="mode" className="font-medium mt-3">
-          Mode
-        </label>
-        <select
-          name=""
-          id="mode"
-          className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          onChange={(e) => setData({ ...data, mode: e.target.value })}
-        >
-          <option selected="true" disabled="disabled" value="">
-            Select Option
-          </option>
-          <option value="ONLINE">Online</option>
-          <option value="OFFLINE">Offline</option>
-        </select>
-
+        <div className="d-flex flex-md-row flex-column">
+          <div className="w-md-50 w-100 mx-md-1">
+            <label for="mode" className="font-medium mt-3">
+              Event Type
+            </label>
+            <select
+              value={data.eventType}
+              id="type"
+              className="my-1 h-50 rounded mx-0 w-100 text-dark font-light"
+              onChange={(e) => setData({ ...data, eventType: e.target.value })}
+            >
+              <option selected="true" disabled="disabled" value="">
+                Select Option
+              </option>
+              <option value="CULTURAL">Cultural</option>
+              <option value="SPORTS">Sports</option>
+            </select>
+          </div>
+          <div className="w-md-50 w-100 mx-md-1">
+            <label for="mode" className="font-medium mt-3">
+              Mode
+            </label>
+            <select
+              value={data.mode}
+              id="mode"
+              className="my-1 h-50 rounded mx-0 w-100 text-dark font-light"
+              onChange={(e) => setData({ ...data, mode: e.target.value })}
+            >
+              <option selected="true" disabled="disabled" value="">
+                Select Option
+              </option>
+              <option value="ONLINE">Online</option>
+              <option value="OFFLINE">Offline</option>
+            </select>
+          </div>
+        </div>
         <label className="font-medium mt-2">Prize</label>
         <input
           type="number"
@@ -333,50 +315,27 @@ export default Event = ({ eventdata }) => {
         />
 
         <label className="font-medium mt-2 w-100">Tags</label>
-        <input
-          type="text"
-          name=""
-          autoComplete="off"
-          maxLength={100}
-          className="m-1 h-25 rounded mx-0 text-dark font-light"
-          placeholder="Tag 1"
-          style={{ width: '20%' }}
+        <Tag 
+          placeholder={"Tag 1"}
+          setTag={setT1}
           value={t1}
-          onChange={(e) => setT1(e.target.value)}
         />
-        <input
-          type="text"
-          name=""
-          autoComplete="off"
-          maxLength={100}
-          className="m-1 h-25 rounded mx-0 text-dark font-light"
-          placeholder="Tag 2"
-          style={{ width: '20%' }}
+        {numTags >= 2 && <Tag 
+          placeholder={"Tag 2"}
+          setTag={setT2}
           value={t2}
-          onChange={(e) => setT2(e.target.value)}
-        />
-        <input
-          type="text"
-          name=""
-          autoComplete="off"
-          maxLength={100}
-          className="m-1 h-25 rounded mx-0 text-dark font-light"
-          placeholder="Tag 3"
-          style={{ width: '20%' }}
+        />}
+        {numTags >= 3 && <Tag 
+          placeholder={"Tag 3"}
+          setTag={setT3}
           value={t3}
-          onChange={(e) => setT3(e.target.value)}
-        />
-        <input
-          type="text"
-          name=""
-          autoComplete="off"
-          maxLength={100}
-          className="m-1 h-25 rounded mx-0 text-dark font-light"
-          placeholder="Tag 4"
-          style={{ width: '20%' }}
+        />}
+        {numTags >= 4 && <Tag 
+          placeholder={"Tag 4"}
+          setTag={setT4}
           value={t4}
-          onChange={(e) => setT4(e.target.value)}
-        />
+        />}
+        {numTags !== 4 && <i className="fa fa-plus-square" onClick={addTagElement}></i>}
 
         <label className="font-medium mt-3 w-100">Event Date</label>
         <input
@@ -404,8 +363,8 @@ export default Event = ({ eventdata }) => {
           onChange={(e) => setData({ ...data, eventVenue: e.target.value })}
         />
 
-        <div className="font-heavy mt-4 h5">Event Head details:</div>
-        <div className="font-heavy mt-4 h6">Event Head 1:</div>
+        <div className="font-heavy mt-4 h5">Event Head details</div>
+        <div className="font-heavy mt-4 h6">Event Head 1</div>
         <label className="font-medium mt-2">Name</label>
         <input
           type="text"
@@ -414,11 +373,11 @@ export default Event = ({ eventdata }) => {
           required
           maxLength={100}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event Head Name Here"
+          placeholder="Event Head name"
           value={head1N}
           onChange={(e) => setHead1N(e.target.value)}
         />
-        <label className="font-medium mt-2">phoneNo number</label>
+        <label className="font-medium mt-2">Phone Number</label>
         <input
           type="number"
           name=""
@@ -426,7 +385,7 @@ export default Event = ({ eventdata }) => {
           required
           maxLength={10}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event Head phoneNo number Here"
+          placeholder="Event Head phone number"
           value={head1P}
           onChange={(e) => setHead1P(parseInt(e.target.value))}
         />
@@ -438,12 +397,12 @@ export default Event = ({ eventdata }) => {
           required
           maxLength={100}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event Head Email ID Here"
+          placeholder="Event Head email ID"
           value={head1E}
           onChange={(e) => setHead1E(e.target.value)}
         />
         {/* event head 2 */}
-        <div className="font-heavy mt-4 h6">Event Head 2 (optional):</div>
+        <div className="font-heavy mt-4 h6">Event Head 2 (optional)</div>
         <label className="font-medium mt-2">Name</label>
         <input
           type="text"
@@ -452,7 +411,7 @@ export default Event = ({ eventdata }) => {
           required
           maxLength={100}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event Head Name Here"
+          placeholder="Event Head name"
           value={head2N}
           onChange={(e) => setHead2N(e.target.value)}
         />
@@ -464,7 +423,7 @@ export default Event = ({ eventdata }) => {
           required
           maxLength={10}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event Head phoneNo number Here"
+          placeholder="Event Head phone number"
           value={head2P}
           onChange={(e) => setHead2P(parseInt(e.target.value))}
         />
@@ -476,11 +435,10 @@ export default Event = ({ eventdata }) => {
           required
           maxLength={100}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event Head Email ID Here"
+          placeholder="Event Head email ID"
           value={head2E}
           onChange={(e) => setHead2E(e.target.value)}
         />
-
         <button
           type="button"
           className="btn my-2 w-100 text-light"

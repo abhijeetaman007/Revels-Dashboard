@@ -23,8 +23,6 @@ export default function AuthProvider({ children }) {
             authorization: token,
           },
         });
-
-        console.log('authcontext', res);
         if (res.data.success) {
           setUser(res.data.data);
           setLoading(false);
@@ -37,19 +35,14 @@ export default function AuthProvider({ children }) {
     setLoading(false);
   };
   const restoreAdmin = async () => {
-    console.log('restoreadmin');
     const token = localStorage.getItem(ADMIN_TOKEN_ID);
-    console.log(token);
     if (token) {
       try {
-        console.log('in try');
         const res = await axios.get('/api/admin/getadmin', {
           headers: {
             authorization: token,
           },
         });
-
-        console.log('restoreadminresult', res);
         if (res.data.success) {
           setAdmin(res.data.data);
           setLoading(false);
@@ -61,14 +54,12 @@ export default function AuthProvider({ children }) {
     }
     setLoading(false);
   };
-
   useEffect(() => {
     const admintoken = localStorage.getItem(ADMIN_TOKEN_ID);
     const usertoken = localStorage.getItem(TOKEN_ID);
-    if (usertoken) restoreUser();
-    if (admintoken) restoreAdmin();
+    if (user) restoreUser();
+    if (admin) restoreAdmin();
   }, []);
-
   // method to handle user registration
   const userRegister = async (
     name,
@@ -90,7 +81,6 @@ export default function AuthProvider({ children }) {
         course,
         college: col.name,
       };
-      console.log(data);
       const res = await axios.post('/api/user/register', data);
       if (!res.data.success) return res.data;
       return res.data;
@@ -98,7 +88,6 @@ export default function AuthProvider({ children }) {
       throw err;
     }
   };
-
   // method to handle user login
   const userLogin = async (email, password) => {
     try {
@@ -121,7 +110,6 @@ export default function AuthProvider({ children }) {
         email,
         password,
       });
-      console.log('admin', res);
       if (!res.data.success) return res.data;
       localStorage.setItem(ADMIN_TOKEN_ID, res.data.data.token);
       restoreAdmin();
@@ -130,7 +118,6 @@ export default function AuthProvider({ children }) {
       throw err;
     }
   };
-
   // method to handle user logout
   const logout = async () => {
     try {
@@ -141,28 +128,12 @@ export default function AuthProvider({ children }) {
       throw err;
     }
   };
+  // method to handle admin logout
   const adminlogout = async () => {
     try {
       setUser(null);
       localStorage.removeItem(ADMIN_TOKEN_ID);
       navigate('/admin');
-    } catch (err) {
-      throw err;
-    }
-  };
-
-  // method to handle category login
-  const categoryLogin = async (categoryId, password) => {
-    try {
-      const res = await axios.post('/category/login', {
-        categoryId,
-        password,
-      });
-      if (!res.data.success) return res.data;
-
-      localStorage.setItem(TOKEN_ID, res.data.data.token);
-      restoreUser();
-      return res.data;
     } catch (err) {
       throw err;
     }
@@ -176,7 +147,6 @@ export default function AuthProvider({ children }) {
     userLogin: userLogin,
     adminLogin: adminLogin,
     adminLogout: adminlogout,
-    // categoryLogin: categoryLogin,
     loading,
   };
 

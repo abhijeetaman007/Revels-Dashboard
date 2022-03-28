@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import Navbar from '../../components/Navbar/Navbar';
-import { useAuth } from '../../../context/AuthContext';
+import Tag from '../components/Tag/Tag';
 import axios from 'axios';
 import { ADMIN_TOKEN_ID } from '../../../utils/constants';
 import './EventTitle.css';
 import Modal from 'react-modal';
 import Event from './Event';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../context/AuthContext';
+import Loader from '../../../pages/Loader/Loader';
 const Dashboard = () => {
+  const navigate = useNavigate();
+  const auth = useAuth();
   const validateForm = () => {
     if (
       data.name === '' ||
@@ -29,41 +34,27 @@ const Dashboard = () => {
       left: '50%',
       right: 'auto',
       bottom: 'auto',
-      marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
-      width: '40vmax',
     },
   };
-  let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
     setIsOpen(true);
   }
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
-  }
   function closeModal() {
     setIsOpen(false);
   }
-  const auth = useAuth();
   const header = {
     authorization: localStorage.getItem(ADMIN_TOKEN_ID),
   };
   const [category, setCategory] = useState({});
   const [events, setEvents] = useState([]);
-  const AdminLogout = () => {
-    auth.adminLogout();
-    console.log('logout');
-    // reload window
-    window.location.reload();
-  };
+  const [loading, setLoading] = useState(true)
   const getEvents = async () => {
     try {
       const res = await axios.get('/api/admin/category/event/getevents', {
         headers: header,
       });
-      console.log(res);
       setEvents(res.data.data);
     } catch (err) {
       console.log(err);
@@ -74,8 +65,11 @@ const Dashboard = () => {
       const res = await axios.get('/api/admin/category', {
         headers: header,
       });
-      console.log(res);
-      setCategory(res.data.data);
+      if(res.data.success) {
+        setCategory(res.data.data);
+      } else {
+        toast.error("Error setting category!");
+      }
     } catch (err) {
       console.log(err);
     }
@@ -85,14 +79,14 @@ const Dashboard = () => {
   const [t2, setT2] = useState('');
   const [t3, setT3] = useState('');
   const [t4, setT4] = useState('');
-
   const [head1N, setHead1N] = useState('');
   const [head2N, setHead2N] = useState('');
   const [head1E, setHead1E] = useState('');
   const [head2E, setHead2E] = useState('');
   const [head1P, setHead1P] = useState('');
   const [head2P, setHead2P] = useState('');
-
+  const [numTags, setNumTags] = useState(1);
+  
   const [data, setData] = useState({
     eventID: '',
     name: '',
@@ -103,25 +97,21 @@ const Dashboard = () => {
     prize: '',
     minMembers: '',
     maxMembers: '',
-    // eventHeads: [],
+    eventHeads: [],
     teamDelegateCardWorks: '',
     delegateCards: '',
-    // eventDateTime: '',
-    // eventVenue: '',
-    // tags: [],
+    tags: [],
   });
-
+  const addTagElement = () => {
+    setNumTags(numTags+1);
+  }
   const addEvent = async () => {
     let tagsarr = [];
-    console.log('t1', t1);
-    console.log(t2);
-    console.log(t3);
     if (t1 != '') tagsarr.push(t1.toUpperCase().trim());
     if (t2 != '') tagsarr.push(t2.toUpperCase().trim());
     if (t3 != '') tagsarr.push(t3.toUpperCase().trim());
     if (t4 != '') tagsarr.push(t4.toUpperCase().trim());
     let headsarr = [];
-    console.log(head1N);
     if (head1N != '')
       headsarr.push({
         name: head1N.toUpperCase().trim(),
@@ -134,9 +124,6 @@ const Dashboard = () => {
         phoneNo: head2P,
         email: head2E,
       });
-    console.log(t1);
-    console.log(tagsarr);
-    console.log(headsarr);
     if (!validateForm()) {
       toast.error('Please fill in all the fields');
     } else {
@@ -151,14 +138,8 @@ const Dashboard = () => {
           minMembers: data.minMembers,
           maxMembers: data.maxMembers,
           eventHeads: headsarr,
-          // eventDateTime: data.eventDateTime,
-          // eventVenue: data.eventVenue,
           tags: tagsarr,
-          // registeration deadline put later
-          //isActive later
-          // teamDelegateCard
         };
-        console.log('eventdata', data.eventDateTime);
         const res = await axios.post(
           '/api/admin/category/event/add',
           {
@@ -171,8 +152,6 @@ const Dashboard = () => {
             minMembers: eventData.minMembers,
             maxMembers: eventData.maxMembers,
             eventHeads: headsarr,
-            // eventDateTime: eventData.eventDateTime,
-            // eventVenue: eventData.eventVenue,
             tags: tagsarr,
           },
           {
@@ -191,15 +170,12 @@ const Dashboard = () => {
           prize: '',
           minMembers: '',
           maxMembers: '',
-          // eventHeads: [],
+          eventHeads: [],
           teamDelegateCardWorks: '',
           delegateCards: '',
-          // eventDateTime: '',
-          // eventVenue: '',
-          // tags: [],});
+          tags: []
         });
-        //reload window
-        window.location.reload();
+        closeModal();
       } catch (err) {
         console.log(err);
       }
@@ -215,7 +191,6 @@ const Dashboard = () => {
       <Navbar />
       <Modal
         isOpen={modalIsOpen}
-        onAfterOpen={afterOpenModal}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
@@ -232,32 +207,37 @@ const Dashboard = () => {
           required
           maxLength={100}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event Name Here"
+          placeholder="Event Name"
           onChange={(e) => setData({ ...data, name: e.target.value })}
         />
-        <label className="font-medium mt-2">Min Members</label>
-        <input
-          type="number"
-          name=""
-          autoComplete="off"
-          required
-          maxLength={100}
-          className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event Name Here"
-          onChange={(e) => setData({ ...data, minMembers: e.target.value })}
-        />
-        <label className="font-medium mt-2">Max Members</label>
-        <input
-          type="number"
-          name=""
-          autoComplete="off"
-          required
-          maxLength={100}
-          className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event Name Here"
-          onChange={(e) => setData({ ...data, maxMembers: e.target.value })}
-        />
-
+        <div className="d-flex flex-md-row flex-column">
+          <div className="w-md-50 w-100 mx-md-1">
+            <label className="font-medium mt-2">Min Members</label>
+            <input
+              type="number"
+              name=""
+              autoComplete="off"
+              required
+              maxLength={100}
+              className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
+              placeholder="Minimum number of members"
+              onChange={(e) => setData({ ...data, minMembers: e.target.value })}
+            />
+          </div>
+          <div className="w-md-50 w-100 mx-md-1">
+            <label className="font-medium mt-2">Max Members</label>
+            <input
+              type="number"
+              name=""
+              autoComplete="off"
+              required
+              maxLength={100}
+              className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
+              placeholder="Maximum number of members"
+              onChange={(e) => setData({ ...data, maxMembers: e.target.value })}
+            />
+          </div>
+        </div>
         <label className="font-medium mt-3">Event Description</label>
         <textarea
           rows="4"
@@ -267,7 +247,7 @@ const Dashboard = () => {
           required
           maxLength={2000}
           className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event description Here"
+          placeholder="Event description"
           onChange={(e) => setData({ ...data, description: e.target.value })}
         />
 
@@ -285,7 +265,6 @@ const Dashboard = () => {
           </option>
           <option value="CULTURAL">Cultural</option>
           <option value="SPORTS">Sports</option>
-          {/* <option value="MISC">Miscellaneous</option> */}
         </select>
         <label for="mode" className="font-medium mt-3">
           Mode
@@ -311,7 +290,7 @@ const Dashboard = () => {
           required
           maxLength={100}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event prize Here"
+          placeholder="Event prize"
           onChange={(e) => setData({ ...data, prize: e.target.value })}
         />
         <label className="font-medium mt-2">Participation Criteria</label>
@@ -321,83 +300,36 @@ const Dashboard = () => {
           autoComplete="off"
           maxLength={1000}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event participation criteria Here"
+          placeholder="Event participation criteria"
           onChange={(e) =>
             setData({ ...data, participationCriteria: e.target.value })
           }
         />
 
-        <label className="font-medium mt-2 w-100">Tags(optional)</label>
-        <input
-          type="text"
-          name=""
-          autoComplete="off"
-          maxLength={100}
-          className="m-1 h-25 rounded mx-0 text-dark font-light"
-          placeholder="Tag 1"
-          style={{ width: '20%' }}
-          onChange={(e) => setT1(e.target.value)}
+        <label className="font-medium mt-2 w-100">Tags (optional)</label>
+        <Tag 
+          placeholder={"Tag 1"}
+          setTag={setT1}
+          value={t1}
         />
-        <input
-          type="text"
-          name=""
-          autoComplete="off"
-          maxLength={100}
-          className="m-1 h-25 rounded mx-0 text-dark font-light"
-          placeholder="Tag 2"
-          style={{ width: '20%' }}
-          onChange={(e) => setT2(e.target.value)}
-        />
-        <input
-          type="text"
-          name=""
-          autoComplete="off"
-          maxLength={100}
-          className="m-1 h-25 rounded mx-0 text-dark font-light"
-          placeholder="Tag 3"
-          style={{ width: '20%' }}
-          onChange={(e) => setT3(e.target.value)}
-        />
-        <input
-          type="text"
-          name=""
-          autoComplete="off"
-          maxLength={100}
-          className="m-1 h-25 rounded mx-0 text-dark font-light"
-          placeholder="Tag 4"
-          style={{ width: '20%' }}
-          onChange={(e) => setT4(e.target.value)}
-        />
-
-        {/* <label className="font-medium mt-3 w-100">Event Date</label>
-        <input
-          type="datetime"
-          name=""
-          autoComplete="off"
-          required
-          maxLength={100}
-          className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="13/04/2022"
-          value={data.eventDateTime}
-          onChange={(e) => setData({ ...data, eventDateTime: e.target.value })}
-        />
-
-        <label className="font-medium mt-3">Event Venue</label>
-        <input
-          type="text"
-          name=""
-          autoComplete="off"
-          required
-          maxLength={100}
-          className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="AB5 203"
-          onChange={(e) => setData({ ...data, eventVenue: e.target.value })}
-        /> */}
-        <label className="font-medium mt-3">Delegate Card Required</label>
-        {/* multiple select required */}
-        {/* TODO */}
-        <div className="font-heavy mt-4 h5">Event Head details:</div>
-        <div className="font-heavy mt-4 h6">Event Head 1:</div>
+        {numTags >= 2 && <Tag 
+          placeholder={"Tag 2"}
+          setTag={setT2}
+          value={t2}
+        />}
+        {numTags >= 3 && <Tag 
+          placeholder={"Tag 3"}
+          setTag={setT3}
+          value={t3}
+        />}
+        {numTags >= 4 && <Tag 
+          placeholder={"Tag 4"}
+          setTag={setT4}
+          value={t4}
+        />}
+        {numTags !== 4 && <i className="fa fa-plus-square" onClick={addTagElement}></i>}
+        <div className="font-heavy mt-4 h5">Event Head details</div>
+        <div className="font-heavy mt-4 h6">Event Head 1</div>
         <label className="font-medium mt-2">Name</label>
         <input
           type="text"
@@ -406,7 +338,7 @@ const Dashboard = () => {
           required
           maxLength={100}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event Head Name Here"
+          placeholder="Event Head Name"
           onChange={(e) => setHead1N(e.target.value)}
         />
         <label className="font-medium mt-2">Phone number</label>
@@ -417,7 +349,7 @@ const Dashboard = () => {
           required
           maxLength={10}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event Head phone number Here"
+          placeholder="Event Head phone number"
           onChange={(e) => setHead1P(e.target.value)}
         />
         <label className="font-medium mt-2">Email ID</label>
@@ -428,11 +360,11 @@ const Dashboard = () => {
           required
           maxLength={100}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event Head Email ID Here"
+          placeholder="Event Head Email ID "
           onChange={(e) => setHead1E(e.target.value)}
         />
         {/* event head 2 */}
-        <div className="font-heavy mt-4 h6">Event Head 2 (optional):</div>
+        <div className="font-heavy mt-4 h6">Event Head 2 (optional)</div>
         <label className="font-medium mt-2">Name</label>
         <input
           type="text"
@@ -441,7 +373,7 @@ const Dashboard = () => {
           required
           maxLength={100}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event Head Name Here"
+          placeholder="Event Head name"
           onChange={(e) => setHead2N(e.target.value)}
         />
         <label className="font-medium mt-2">Phone number</label>
@@ -452,7 +384,7 @@ const Dashboard = () => {
           required
           maxLength={10}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event Head phone number Here"
+          placeholder="Event Head phone number"
           onChange={(e) => setHead2P(e.target.value)}
         />
         <label className="font-medium mt-2">Email ID</label>
@@ -463,7 +395,7 @@ const Dashboard = () => {
           required
           maxLength={100}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="Event Head Email ID Here"
+          placeholder="Event Head Email ID"
           onChange={(e) => setHead2E(e.target.value)}
         />
 
@@ -476,18 +408,8 @@ const Dashboard = () => {
           Save
         </button>
       </Modal>
-      <div className="d-flex justify-content-center">
-        <button
-          type="button"
-          className="btn m-2 text-white"
-          style={{ backgroundColor: '#F4737E', width: '200px' }}
-          onClick={AdminLogout}
-        >
-          Logout
-        </button>
-      </div>
       <div className="d-flex flex-column align-items-center justify-content-center">
-        <div className="font-heavy text-light my-3 d-flex align-items-center">
+        <div className="font-heavy text-light my-3 px-5 d-flex align-items-center">
           <div style={{ fontSize: '2rem' }}>{category.category}</div>
           <div
             className="text-secondary pl-3 ml-3 border-left"
@@ -501,24 +423,6 @@ const Dashboard = () => {
           style={{ width: '70%' }}
         >
           {category.description}
-        </div>
-        <div className="text-light mt-3 d-flex flex-column flex-md-row align-items-center justify-content-center">
-          {/* <input
-            type="text"
-            name=""
-            autoComplete="off"
-            maxLength={100}
-            className="rounded p-2 mb-0"
-            placeholder="Edit category description"
-            style={{ width: '300px', backgroundColor: 'white', color: 'black' }}
-          /> */}
-          {/* <button
-            type="button"
-            className="btn m-2 text-white"
-            style={{ backgroundColor: '#000' }}
-          >
-            Save
-          </button> */}
         </div>
 
         <button

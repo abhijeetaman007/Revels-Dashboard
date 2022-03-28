@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import revels from './../../assets/logos/logo_landing.png';
-import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
 
 const Login = ({ category }) => {
@@ -10,7 +9,6 @@ const Login = ({ category }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const validateForm = (toastId) => {
     if (email === '' || password === '') {
       toast.error('Please fill both the fields', {
@@ -20,17 +18,15 @@ const Login = ({ category }) => {
     }
     return true;
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const toastId = toast.loading('Loading...');
-
     if (validateForm(toastId)) {
       try {
         const res = await auth.adminLogin(email, password);
         if (res.success) {
           toast.success(res.msg, { position: 'bottom-center', id: toastId });
-          navigate('/admin/categoryid');
+          navigate('/admin/dashboard');
         } else {
           toast.error(res.msg[0][Object.keys(res.msg[0])[0]], {
             position: 'bottom-center',
@@ -45,16 +41,13 @@ const Login = ({ category }) => {
       }
     }
   };
-
   useEffect(() => {
     if (!auth.loading) {
       if (auth.admin) {
-        console.log('why not working');
-        navigate('/admin/categoryid');
+        navigate('/admin/dashboard');
       }
     }
-  }, [auth.loading]);
-
+  }, []);
   return (
     <div>
       <div className="d-flex align-content-center justify-content-center text-light my-5">

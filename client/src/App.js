@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import AuthProvider from './context/AuthContext';
+import { Worker } from '@react-pdf-viewer/core';
 
 import AuthPage from './pages/AuthPages/AuthPage';
 import DelegatePage from './pages/DelegatePage/DelegatePage';
@@ -23,6 +24,7 @@ import VerifyEmail from './pages/VerifyEmail/VerifyEmail';
 import OpenComingSoon from './pages/OpenComingSoon';
 import Login from '../src/admin/login/login';
 import Dashboard from './admin/category/dashboard/Dashboard';
+import Rulebook from './pages/Rulebook/Rulebook';
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
@@ -82,12 +84,21 @@ function App() {
             />
             <Route path="/verify/:token" element={<VerifyEmail />} />
             <Route path="/verified" element={<VerifyAnimation />} />
-            <Route path="/events" element={<OpenComingSoon />} />
-            <Route path="/tshirts" element={<OpenComingSoon />} />
-            <Route path="/schedule" element={<OpenComingSoon />} />
-            <Route path="/admin" element={<Login />} />
+            <Route 
+              path="/rulebook" 
+              element={
+                <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.13.216/build/pdf.worker.min.js">
+                  <Rulebook />
+                </Worker>
+              } 
+            />
+            <Route exact path="/events" element={<OpenComingSoon />} />
+            <Route exact path="/tshirts" element={<OpenComingSoon />} />
+            <Route exact path="/schedule" element={<OpenComingSoon />} />
+            <Route exact path="/admin" element={<Login />} />
             <Route
-              path="/admin/:category"
+              exact
+              path="/admin/dashboard"
               element={
                 <AdminPrivateRoute>
                   <Dashboard />
