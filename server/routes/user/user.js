@@ -212,7 +212,7 @@ const userLogin = async (req, res) => {
       { new: true }
     )
       .select({ password: 0 })
-      .populate('delegateCards');
+      .populate('delegateCards role');
     res.status(200).send({
       success: true,
       msg: 'Login Successful',
