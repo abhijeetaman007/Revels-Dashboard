@@ -96,3 +96,12 @@ input[type='date']:before {
 .Toastify__toast-container {
   z-index: 200000;
 }
+
+.logout-button{
+  background-color: rgb(255, 115, 126);
+  color: white;
+  padding: 0.3rem 2rem;
+  border: none;
+  border-radius: 100rem;
+  margin: 0 auto;
+}
