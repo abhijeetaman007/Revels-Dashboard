@@ -5,5 +5,9 @@ import Loader from '../pages/Loader/Loader';
 
 export default function AdminPrivateRoute({ children }) {
   const auth = useAuth();
+  React.useEffect(() => {
+    console.log(auth.admin);
+  });
+
   return auth.admin ? children : <Loader />;
 }

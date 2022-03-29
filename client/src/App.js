@@ -24,7 +24,7 @@ import VerifyEmail from './pages/VerifyEmail/VerifyEmail';
 import OpenComingSoon from './pages/OpenComingSoon';
 import Login from '../src/admin/login/login';
 import Dashboard from './admin/category/dashboard/Dashboard';
-import Rulebook from './pages/Rulebook/Rulebook';
+// import Rulebook from './pages/Rulebook/Rulebook';
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
@@ -84,14 +84,14 @@ function App() {
             />
             <Route path="/verify/:token" element={<VerifyEmail />} />
             <Route path="/verified" element={<VerifyAnimation />} />
-            <Route 
-              path="/rulebook" 
+            {/* <Route
+              path="/rulebook"
               element={
                 <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.13.216/build/pdf.worker.min.js">
                   <Rulebook />
                 </Worker>
-              } 
-            />
+              }
+            /> */}
             <Route exact path="/events" element={<OpenComingSoon />} />
             <Route exact path="/tshirts" element={<OpenComingSoon />} />
             <Route exact path="/schedule" element={<OpenComingSoon />} />

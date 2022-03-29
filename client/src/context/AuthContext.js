@@ -57,9 +57,9 @@ export default function AuthProvider({ children }) {
   useEffect(() => {
     const admintoken = localStorage.getItem(ADMIN_TOKEN_ID);
     const usertoken = localStorage.getItem(TOKEN_ID);
-    if (user) restoreUser();
-    if (admin) restoreAdmin();
-  }, []);
+    if (usertoken) restoreUser();
+    if (admintoken) restoreAdmin();
+  });
   // method to handle user registration
   const userRegister = async (
     name,
@@ -131,7 +131,7 @@ export default function AuthProvider({ children }) {
   // method to handle admin logout
   const adminlogout = async () => {
     try {
-      setUser(null);
+      setAdmin(null);
       localStorage.removeItem(ADMIN_TOKEN_ID);
       navigate('/admin');
     } catch (err) {

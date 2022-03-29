@@ -45,7 +45,7 @@ const addEvent = async (req, res) => {
       !name ||
       !eventType ||
       !mode ||
-      !participationCriteria ||
+      // !participationCriteria ||
       !minMembers ||
       !maxMembers
     ) {
@@ -53,9 +53,9 @@ const addEvent = async (req, res) => {
         .status(400)
         .send({ success: false, msg: 'Please fill required fields' });
     }
-
+    console.log(minMembers + ',' + maxMembers);
     if (Number(minMembers) > Number(maxMembers) || Number(minMembers) < 1)
-      return res.status(400).send({ success: false, msg: 'Invalid Members' });
+      return res.send({ success: false, msg: 'Invalid Members' });
     // let dateTime = new Date(eventDateTime);
     // eventDateTime = dateTime;
     // if (eventDateTime.toString() == 'Invalid Date') {
@@ -164,6 +164,8 @@ const updateEvent = async (req, res) => {
           });
       }
     }
+    if (Number(minMembers) > Number(maxMembers) || Number(minMembers) < 1)
+      return res.send({ success: false, msg: 'Invalid Members' });
     // if (eventDateTime) {
     //   let dateTime = new Date(eventDateTime);
     //   eventDateTime = dateTime;

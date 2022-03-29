@@ -22,6 +22,11 @@ export default Event = ({ eventdata }) => {
     setIsOpen(true);
   }
   function closeModal() {
+    setT1('');
+    setT2('');
+    setT3('');
+    setT4('');
+
     setIsOpen(false);
   }
   const auth = useAuth();
@@ -43,7 +48,9 @@ export default Event = ({ eventdata }) => {
   const [head1P, setHead1P] = useState(0);
   const [head2P, setHead2P] = useState(0);
   const [headlen, setHeadlen] = useState(eventdata.eventHeads.length);
-  const [numTags, setNumTags] = useState(eventdata.tags.length ? eventdata.tags.length : 1);
+  const [numTags, setNumTags] = useState(
+    eventdata.tags.length ? eventdata.tags.length : 1
+  );
 
   const [data, setData] = useState({
     eventID: eventdata.eventID,
@@ -62,17 +69,18 @@ export default Event = ({ eventdata }) => {
     // isActive: data.isActive,
   });
   const validateForm = () => {
+    console.log(data);
     if (
       data.name === '' ||
+      data.minMembers === 0 ||
+      data.maxMembers === 0 ||
       data.description === '' ||
       data.eventType === '' ||
-      data.mode === '' ||
-      data.participationCriteria === '' ||
-      data.prize === '' ||
-      data.minMembers === '' ||
-      data.maxMembers === '' ||
-      data.eventDateTime === '' ||
-      data.eventVenue === ''
+      data.mode === ''
+      // data.participationCriteria === '' ||
+      // data.prize === '' ||
+      // data.eventDateTime === '' ||
+      // data.eventVenue === ''
     ) {
       return false;
     }
@@ -92,7 +100,7 @@ export default Event = ({ eventdata }) => {
     if (numTags > 3) {
       setT4(eventdata.tags[3]);
     }
-    // set event head information 
+    // set event head information
     if (headlen > 0) {
       setHead1N(eventdata.eventHeads[0].name);
       setHead1E(eventdata.eventHeads[0].email);
@@ -106,7 +114,7 @@ export default Event = ({ eventdata }) => {
   }, []);
   const updateEvent = async () => {
     let tagsarr = [];
-    if(tagsarr.length !== 0){
+    if (tagsarr.length !== 0) {
       if (t1 !== '') tagsarr.push(t1.toUpperCase().trim());
       if (t2 !== '') tagsarr.push(t2.toUpperCase().trim());
       if (t3 !== '') tagsarr.push(t3.toUpperCase().trim());
@@ -126,7 +134,7 @@ export default Event = ({ eventdata }) => {
         email: head2E,
       });
     if (!validateForm()) {
-      toast.error('Please fill in all the fields');
+      toast.error('Please fill in all the fields ');
     } else {
       try {
         const eventData = {
@@ -172,9 +180,11 @@ export default Event = ({ eventdata }) => {
           }
         );
 
-        if(res.data.success) { 
+        if (res.data.success) {
           toast.success('Event updated successfully');
           closeModal();
+        } else {
+          toast.error(res.data.msg);
         }
       } catch (err) {
         console.log(err);
@@ -182,8 +192,8 @@ export default Event = ({ eventdata }) => {
     }
   };
   const addTagElement = () => {
-    setNumTags(numTags+1);
-  }
+    setNumTags(numTags + 1);
+  };
   return (
     <div>
       <Modal
@@ -194,9 +204,11 @@ export default Event = ({ eventdata }) => {
         overlayClassName="overlay"
       >
         <div className="cross" onClick={closeModal}>
-        <i class="fa fa-times" aria-hidden="true"></i>
+          <i class="fa fa-times" aria-hidden="true"></i>
         </div>
-        <label className="font-medium mt-2">Event Name</label>
+        <label className="font-medium mt-2">
+          Event Name<span style={{ color: 'red' }}>*</span>
+        </label>
         <input
           type="text"
           name=""
@@ -210,7 +222,9 @@ export default Event = ({ eventdata }) => {
         />
         <div className="d-flex flex-md-row flex-column">
           <div className="w-md-50 w-100 mx-md-1">
-            <label className="font-medium mt-2">Min Members</label>
+            <label className="font-medium mt-2">
+              Min Members<span style={{ color: 'red' }}>*</span>
+            </label>
             <input
               type="number"
               name=""
@@ -220,11 +234,15 @@ export default Event = ({ eventdata }) => {
               className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
               placeholder="Minimum number of members"
               value={data.minMembers}
-              onChange={(e) => setData({ ...data, minMembers: e.target.value })}
+              onChange={(e) =>
+                setData({ ...data, minMembers: parseInt(e.target.value) })
+              }
             />
           </div>
           <div className="w-md-50 w-100 mx-md-1">
-            <label className="font-medium mt-2">Max Members</label>
+            <label className="font-medium mt-2">
+              Max Members<span style={{ color: 'red' }}>*</span>
+            </label>
             <input
               type="number"
               autoComplete="off"
@@ -233,11 +251,15 @@ export default Event = ({ eventdata }) => {
               className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
               placeholder="Maximum number of members"
               value={data.maxMembers}
-              onChange={(e) => setData({ ...data, maxMembers: e.target.value })}
+              onChange={(e) =>
+                setData({ ...data, maxMembers: parseInt(e.target.value) })
+              }
             />
           </div>
         </div>
-        <label className="font-medium mt-3">Event Description</label>
+        <label className="font-medium mt-3">
+          Event Description<span style={{ color: 'red' }}>*</span>
+        </label>
         <textarea
           rows="4"
           type="text"
@@ -253,7 +275,7 @@ export default Event = ({ eventdata }) => {
         <div className="d-flex flex-md-row flex-column">
           <div className="w-md-50 w-100 mx-md-1">
             <label for="mode" className="font-medium mt-3">
-              Event Type
+              Event Type<span style={{ color: 'red' }}>*</span>
             </label>
             <select
               value={data.eventType}
@@ -270,7 +292,7 @@ export default Event = ({ eventdata }) => {
           </div>
           <div className="w-md-50 w-100 mx-md-1">
             <label for="mode" className="font-medium mt-3">
-              Mode
+              Mode<span style={{ color: 'red' }}>*</span>
             </label>
             <select
               value={data.mode}
@@ -315,42 +337,35 @@ export default Event = ({ eventdata }) => {
         />
 
         <label className="font-medium mt-2 w-100">Tags</label>
-        <Tag 
-          placeholder={"Tag 1"}
-          setTag={setT1}
-          value={t1}
-        />
-        {numTags >= 2 && <Tag 
-          placeholder={"Tag 2"}
-          setTag={setT2}
-          value={t2}
-        />}
-        {numTags >= 3 && <Tag 
-          placeholder={"Tag 3"}
-          setTag={setT3}
-          value={t3}
-        />}
-        {numTags >= 4 && <Tag 
-          placeholder={"Tag 4"}
-          setTag={setT4}
-          value={t4}
-        />}
-        {numTags !== 4 && <i className="fa fa-plus-square" onClick={addTagElement}></i>}
+        <Tag placeholder={'Tag 1'} setTag={setT1} value={t1} />
+        {numTags >= 2 && (
+          <Tag placeholder={'Tag 2'} setTag={setT2} value={t2} />
+        )}
+        {numTags >= 3 && (
+          <Tag placeholder={'Tag 3'} setTag={setT3} value={t3} />
+        )}
+        {numTags >= 4 && (
+          <Tag placeholder={'Tag 4'} setTag={setT4} value={t4} />
+        )}
+        {numTags !== 4 && (
+          <i className="fa fa-plus-square" onClick={addTagElement}></i>
+        )}
 
-        <label className="font-medium mt-3 w-100">Event Date</label>
+        <label className="font-medium mt-3 w-100">Event Date (Read Only)</label>
         <input
           type="date"
           name=""
           autoComplete="off"
-          required
+          // required
           maxLength={100}
           className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="13/04/2022"
           value={data.eventDateTime}
-          onChange={(e) => setData({ ...data, eventDateTime: e.target.value })}
+          readOnly
+          // onChange={(e) => setData({ ...data, eventDateTime: e.target.value })}
         />
 
-        <label className="font-medium mt-3">Event Venue</label>
+        <label className="font-medium mt-3">Event Venue (Read Only)</label>
         <input
           type="text"
           name=""
@@ -360,12 +375,15 @@ export default Event = ({ eventdata }) => {
           className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="AB5 203"
           value={data.eventVenue}
-          onChange={(e) => setData({ ...data, eventVenue: e.target.value })}
+          readOnly
+          // onChange={(e) => setData({ ...data, eventVenue: e.target.value })}
         />
 
         <div className="font-heavy mt-4 h5">Event Head details</div>
         <div className="font-heavy mt-4 h6">Event Head 1</div>
-        <label className="font-medium mt-2">Name</label>
+        <label className="font-medium mt-2">
+          Name<span style={{ color: 'red' }}>*</span>
+        </label>
         <input
           type="text"
           name=""
@@ -377,7 +395,9 @@ export default Event = ({ eventdata }) => {
           value={head1N}
           onChange={(e) => setHead1N(e.target.value)}
         />
-        <label className="font-medium mt-2">Phone Number</label>
+        <label className="font-medium mt-2">
+          Phone Number<span style={{ color: 'red' }}>*</span>
+        </label>
         <input
           type="number"
           name=""
@@ -389,7 +409,9 @@ export default Event = ({ eventdata }) => {
           value={head1P}
           onChange={(e) => setHead1P(parseInt(e.target.value))}
         />
-        <label className="font-medium mt-2">Email ID</label>
+        <label className="font-medium mt-2">
+          Email ID<span style={{ color: 'red' }}>*</span>
+        </label>
         <input
           type="email"
           name=""
