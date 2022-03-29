@@ -1,8 +1,9 @@
 import React from 'react';
 import './EventCard.scss';
-const EventCard = ({ data }) => {
+const EventCard = ({ data, index }) => {
+  const eventCardColours = ["event-back-1", "event-back-2"];
   return (
-    <div className="event-card-wrapper card-up">
+    <div className={`event-card-wrapper card-up ${eventCardColours[index % 2]}`}>
       <div className="event-content">
         <div className="event-header">
           <div className="event-area">

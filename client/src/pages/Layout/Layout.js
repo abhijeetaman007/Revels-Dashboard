@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Layout.scss';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import aagaz from './../../assets/aagaz.png';
 import events from './../../assets/icons/events.svg';
 import myEvents from './../../assets/icons/myEvents.svg';
@@ -9,9 +9,8 @@ import delegateCard from './../../assets/icons/delegateCard.svg';
 import logoWhite from './.././../assets/logos/logo_white.png';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
-import NotifTile from '../../components/NotifTile';
 import Loader from './../Loader/Loader';
-import ComingSoonDash from '../../components/ComingSoon/ComingSoon2';
+import ComingSoonDash from "./../../components/ComingSoon/ComingSoon2";
 
 const Layout = ({ children, isAagazVisible = false, activeTab }) => {
   const navigate = useNavigate();
@@ -145,6 +144,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
           {/* !!!!!!!!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!!!!!!! */}
           {/* change {children} to <ComingSoonDash /> before pushing code */}
           {/* !!!!!!!!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!!!!!!! */}
+          {/* {children} */}
           { activeTab.toUpperCase() === "EVENTS" || activeTab.toUpperCase() === "MY-EVENTS" ? children : <ComingSoonDash /> }
         </div>
         {/* uncomment for proshow */}

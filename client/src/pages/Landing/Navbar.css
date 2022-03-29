@@ -51,6 +51,9 @@
     margin-left: 5rem;
     cursor: pointer;
 }
+.nav-active {
+    color: #d8cfc7;
+}
 .nav-link{
     font-size: 1.6rem;
     text-transform: uppercase;
@@ -60,7 +63,7 @@
     cursor: pointer;
 }
 .nav-link:hover{
-    color: #f1964f;
+    color: #d8cfc7;
     cursor: pointer;
     transform: translateY(-3px);
     transition-duration: 500ms;

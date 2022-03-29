@@ -120,25 +120,23 @@ function DelegatePage() {
   const colorArr = ['blue', 'purple', 'black'];
   return (
     auth.loading ? <Loader /> :
-    <Layout activeTab={'delegate-card'}>
-      <div className="delegate-container">
-        <div className="d-flex flex-md-row flex-column flex-wrap m-0 p-0">
-          {delegateCard.map((data, index) => {
-            return (
-              <DelegateCard
-                key={index} 
-                colorArr={colorArr} 
-                idx={index} 
-                displayRazorpay={displayRazorpay} 
-                data={data} 
-                isMahe={user.isMahe}
-                isBought={isMyDelCard(data._id)}
-              />
-            );
-          })}
-        </div>
+    <div className="delegate-container">
+      <div className="d-flex flex-md-row flex-column flex-wrap m-0 p-0">
+        {delegateCard.map((data, index) => {
+          return (
+            <DelegateCard
+              key={index} 
+              colorArr={colorArr} 
+              idx={index} 
+              displayRazorpay={displayRazorpay} 
+              data={data} 
+              isMahe={user.isMahe}
+              isBought={isMyDelCard(data._id)}
+            />
+          );
+        })}
       </div>
-    </Layout>
+    </div>
   );
 }
 

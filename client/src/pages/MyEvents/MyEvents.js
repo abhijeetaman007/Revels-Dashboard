@@ -25,7 +25,7 @@ const MyEvents = () => {
         getRegEvents();
     }, []);
     return (
-        <Layout activeTab='my-events'>
+        <div>
             {
                 events.length > 0 
                 ? events.map((eventData, index) => {
@@ -36,7 +36,7 @@ const MyEvents = () => {
                   <h3 className="font-heavy" style={{ color: "#c4515c", fontSize: "2rem" }}>REGISTRATIONS OPENING SOON!</h3>
                 </div>
             }
-        </Layout>
+        </div>
     );
 };
 

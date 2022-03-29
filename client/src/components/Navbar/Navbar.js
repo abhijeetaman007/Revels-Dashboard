@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "./../../assets/logos/logo_landing.png"
 import { useAuth } from "../../context/AuthContext";
 
@@ -20,7 +21,9 @@ const Navbar = ({ isBackground }) => {
     return (
         <nav className={`navbar ${isBackground ? "colour-back" : ""}`}>
           <div className="nav-logo">
-            <img src={logo} alt="Revels Logo"></img>
+            <Link to="/">
+                <img src={logo} alt="Revels Logo"></img>
+            </Link>
           </div>
           <ul className="nav-menu">
               {auth.user && <li className="nav-item" onClick={closeNav}>
