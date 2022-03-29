@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import EventCard from '../../components/EventCard/EventCard';
-import Layout from '../Layout/Layout';
 import Lottie from 'lottie-react';
 import noEvents from '../../assets/noEvents.json';
 import Loader from '../Loader/Loader';
@@ -31,7 +30,7 @@ const Events = () => {
         height: 'fit-content',
       }}
     >
-      {events.length > 0
+      {events
         ? events.map((eventData, index) => {
             return <EventCard key={index} index={index} data={eventData} />;
           })
