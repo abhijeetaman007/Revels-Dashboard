@@ -8,8 +8,13 @@ $event-card-background: #c6a3ff;
   min-height: 300px;
   padding: 25px;
   background-color: $event-card-background;
+  background-image: url("./../../assets/swivel.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
   border-radius: 0.5rem;
   .event-content {
+    z-index: 100;
     .event-header {
       display: -webkit-box;
       display: -ms-flexbox;
@@ -59,7 +64,8 @@ $event-card-background: #c6a3ff;
         //   pointer-events: none;
         // }
         button:last-child {
-          @include button-hover;
+          // @include button-hover;
+          pointer-events: none;
           border: 0;
           width: 100%;
           margin-top: 2.5px;

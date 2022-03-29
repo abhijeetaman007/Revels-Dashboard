@@ -1,11 +1,6 @@
 import React from 'react';
 import './EventCard.scss';
-import { Link } from 'react-router-dom';
 const EventCard = ({ data }) => {
-  console.log(data)
-  const [eventPath, setEventPath] = React.useState(
-    `/dashboard/event/${data._id}`
-  );
   return (
     <div className="event-card-wrapper card-up">
       <div className="event-content">
@@ -50,18 +45,18 @@ const EventCard = ({ data }) => {
               <h3 className="font-light">1</h3>
             </div>
           )}
-          <div className="box">
+          {data.eventDateTime && <div className="box">
             <p className="font-heavy">DATE</p>
             <h3 className="font-light">
               {new Date(data.eventDateTime).getDate()}/
               {new Date(data.eventDateTime).getMonth()}/
               {new Date(data.eventDateTime).getFullYear()}
             </h3>
-          </div>
-          <div className="box">
+          </div>}
+          {data.eventVenue && <div className="box">
             <p className="font-heavy">VENUE</p>
             <h3 className="font-light">{data.eventVenue}</h3>
-          </div>
+          </div>}
         </div>
       </div>
     </div>
