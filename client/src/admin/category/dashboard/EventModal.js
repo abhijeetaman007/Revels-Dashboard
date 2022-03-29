@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useAuth } from '../../../context/AuthContext';
 import axios from 'axios';
 import { ADMIN_TOKEN_ID } from '../../../utils/constants';
 import './EventTitle.css';
 import Modal from 'react-modal';
 import Tag from '../components/Tag/Tag';
 
-export default Event = ({ eventdata }) => {
+const EventModal = ({ eventdata }) => {
   const customStyles = {
     content: {
       top: '50%',
@@ -18,10 +17,10 @@ export default Event = ({ eventdata }) => {
     },
   };
   const [modalIsOpen, setIsOpen] = React.useState(false);
-  function openModal() {
+  const openModal = () => {
     setIsOpen(true);
   }
-  function closeModal() {
+  const closeModal = () => {
     setT1('');
     setT2('');
     setT3('');
@@ -29,18 +28,10 @@ export default Event = ({ eventdata }) => {
 
     setIsOpen(false);
   }
-  const auth = useAuth();
-  const header = {
-    authorization: localStorage.getItem(ADMIN_TOKEN_ID),
-  };
-
   const [t1, setT1] = useState('');
   const [t2, setT2] = useState('');
   const [t3, setT3] = useState('');
   const [t4, setT4] = useState('');
-  //update state for all the fields in data
-  const [eventlen, setEventlen] = useState(eventdata.tags.length);
-
   const [head1N, setHead1N] = useState('');
   const [head2N, setHead2N] = useState('');
   const [head1E, setHead1E] = useState('');
@@ -121,13 +112,13 @@ export default Event = ({ eventdata }) => {
       if (t4 !== '') tagsarr.push(t4.toUpperCase().trim());
     }
     let headsarr = [];
-    if (head1N != '')
+    if (head1N !== '')
       headsarr.push({
         name: head1N.toUpperCase().trim(),
         phoneNo: head1P,
         email: head1E,
       });
-    if (head2N != '')
+    if (head2N !== '')
       headsarr.push({
         name: head2N.toUpperCase().trim(),
         phoneNo: head2P,
@@ -150,10 +141,7 @@ export default Event = ({ eventdata }) => {
           eventHeads: headsarr,
           eventDateTime: new Date(data.eventDateTime),
           eventVenue: data.eventVenue,
-          tags: tagsarr,
-          // registeration deadline put later
-          //isActive later
-          // teamDelegateCard
+          tags: tagsarr
         };
         console.log('eventdata', eventData);
         const res = await axios.post(
@@ -483,3 +471,5 @@ export default Event = ({ eventdata }) => {
     </div>
   );
 };
+
+export default EventModal;

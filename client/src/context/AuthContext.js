@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useContext, createContext, useState, useEffect } from 'react';
 import { TOKEN_ID, ADMIN_TOKEN_ID } from '../utils/constants';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 const AuthContext = createContext(null);
 
 export const useAuth = () => {
@@ -59,7 +59,7 @@ export default function AuthProvider({ children }) {
     const usertoken = localStorage.getItem(TOKEN_ID);
     if (usertoken) restoreUser();
     if (admintoken) restoreAdmin();
-  });
+  }, []);
   // method to handle user registration
   const userRegister = async (
     name,

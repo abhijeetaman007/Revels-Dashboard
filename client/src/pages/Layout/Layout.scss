@@ -166,10 +166,10 @@ $notif-tile: #ffccd1;
             overflow-y: scroll;
             .aagaz-wrapper {
                 position: absolute;
-                top: 45%;
-                right: 0;
+                top: 40%;
                 transform: rotate(90deg);
                 z-index: -10;
+                right: 0;
                 img {
                     filter: opacity(7%)
                 }
@@ -209,6 +209,9 @@ $notif-tile: #ffccd1;
                 left: 0;
                 width: 100%;
                 flex-direction: column;
+                .aagaz-wrapper {
+                    right: -150px;
+                }
             }
         }
         .dash-wrapper.active {

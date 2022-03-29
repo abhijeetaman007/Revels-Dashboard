@@ -1,15 +1,12 @@
+@import './../../styles/index.scss';
 $delBlue: #22B6E6;
 $delPurple: #C6A3FF;
 .del-card {
+  @include card-hover;
   width: 28%;
   padding: 20px;
   border-radius: 10px;
   cursor: pointer;
-  &:hover {
-    -webkit-transform: scale(1.01);
-            transform: scale(1.01);
-    box-shadow: 0 0 10px 1px #1e1433;
-  }
   h1 {
     font-size: 25.6px;
     font-size: 1.6rem;
@@ -55,15 +52,12 @@ $delPurple: #C6A3FF;
       }
     }
     button {
+      @include button-hover;
       width: 100%;
       border: 0;
       border-radius: 10px;
       padding: 10px 0;
-      background-color: rgba(255, 255, 255, 0.418);
-      &:hover {
-        -webkit-transform: scale(0.98);
-                transform: scale(0.98);
-      }
+      background-color: rgba(255, 255, 255, 0.418);      
     }
   }
 }

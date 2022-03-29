@@ -1,29 +1,26 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './EventCard.scss';
 import { Link } from 'react-router-dom';
 const EventCard = ({ data }) => {
+  console.log(data)
   const [eventPath, setEventPath] = React.useState(
     `/dashboard/event/${data._id}`
   );
-  useEffect(() => {
-    console.log('evnt card');
-    console.log(data);
-  }, []);
   return (
     <div className="event-card-wrapper card-up">
       <div className="event-content">
         <div className="event-header">
           <div className="event-area">
-            <p className="font-heavy">CATEGORY NAME</p>
+            <p className="font-heavy">{data.category.category}</p>
             <h3 className="font-light">{data.name}</h3>
           </div>
           <div className="button-area">
             <button className="font-heavy">
               {data.mode === 'OFFLINE' ? 'Offline' : 'Online'} Event
             </button>
-            <Link to={eventPath} className="font-medium">
-              {/* <button className="font-medium">Details</button> */}
-            </Link>
+            {/* <Link to={eventPath} className="font-medium">
+              <button className="font-medium">Details</button>
+            </Link> */}
           </div>
         </div>
         <div className="tags-line">
@@ -32,7 +29,7 @@ const EventCard = ({ data }) => {
                 return (
                   <p key={index} className="font-light">
                     {val}
-                    {index !== data.tags.length ? ' ◦' : ''}
+                    {index !== data.tags.length - 1 ? ' ◦' : ''}
                   </p>
                 );
               })
@@ -56,8 +53,9 @@ const EventCard = ({ data }) => {
           <div className="box">
             <p className="font-heavy">DATE</p>
             <h3 className="font-light">
-              {new Date(data.eventDateTime).getDate()}&nbsp;/&nbsp;
-              {new Date(data.eventDateTime).getUTCMonth()}
+              {new Date(data.eventDateTime).getDate()}/
+              {new Date(data.eventDateTime).getMonth()}/
+              {new Date(data.eventDateTime).getFullYear()}
             </h3>
           </div>
           <div className="box">

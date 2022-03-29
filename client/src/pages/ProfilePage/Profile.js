@@ -30,9 +30,9 @@ function Profile() {
 
   const checkFileType = (type) => {
     if (
-      type == "image/jpeg" ||
-      type == "image/png" ||
-      type == "application/pdf"
+      type === "image/jpeg" ||
+      type === "image/png" ||
+      type === "application/pdf"
     )
       return true;
     return false;
@@ -63,7 +63,7 @@ function Profile() {
     if(collegeId)len++;
     if(vaccination)len++;
     if(undertaking)len++;
-    if (len==0) {
+    if (len===0) {
       toast.error("No document selected", {
         position: "bottom-center",
         id: toastId,
@@ -146,7 +146,7 @@ function Profile() {
       return;
     }
 
-    if (accomodation == "1" && arrivalDateTime == undefined) {
+    if (accomodation === "1" && arrivalDateTime === undefined) {
       toast.error("Select Arrival Date", {
         position: "bottom-center",
         id: toastId,
@@ -382,7 +382,7 @@ function Profile() {
                             <label htmlFor="no">No</label>
                           </div>
                         </div>
-                        {accomodation == "1" && (
+                        {accomodation === "1" && (
                           <div className="w-100 mt-2">
                             <p>Date of Arrival</p>
                             <input

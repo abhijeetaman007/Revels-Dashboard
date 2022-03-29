@@ -24,7 +24,7 @@ import VerifyEmail from './pages/VerifyEmail/VerifyEmail';
 import OpenComingSoon from './pages/OpenComingSoon';
 import Login from '../src/admin/login/login';
 import Dashboard from './admin/category/dashboard/Dashboard';
-// import Rulebook from './pages/Rulebook/Rulebook';
+import Rulebook from './pages/Rulebook/Rulebook';
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;

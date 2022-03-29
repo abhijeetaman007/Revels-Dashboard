@@ -6,13 +6,8 @@ import axios from 'axios';
 import { ADMIN_TOKEN_ID } from '../../../utils/constants';
 import './EventTitle.css';
 import Modal from 'react-modal';
-import Event from './Event';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../../context/AuthContext';
-import Loader from '../../../pages/Loader/Loader';
+import EventModal from './EventModal';
 const Dashboard = () => {
-  const navigate = useNavigate();
-  const auth = useAuth();
   const validateForm = () => {
     if (
       data.name === '' ||
@@ -55,7 +50,6 @@ const Dashboard = () => {
   };
   const [category, setCategory] = useState({});
   const [events, setEvents] = useState([]);
-  const [loading, setLoading] = useState(true);
   const getEvents = async () => {
     try {
       const res = await axios.get('/api/admin/category/event/getevents', {
@@ -113,18 +107,18 @@ const Dashboard = () => {
   };
   const addEvent = async () => {
     let tagsarr = [];
-    if (t1 != '') tagsarr.push(t1.toUpperCase().trim());
-    if (t2 != '') tagsarr.push(t2.toUpperCase().trim());
-    if (t3 != '') tagsarr.push(t3.toUpperCase().trim());
-    if (t4 != '') tagsarr.push(t4.toUpperCase().trim());
+    if (t1 !== '') tagsarr.push(t1.toUpperCase().trim());
+    if (t2 !== '') tagsarr.push(t2.toUpperCase().trim());
+    if (t3 !== '') tagsarr.push(t3.toUpperCase().trim());
+    if (t4 !== '') tagsarr.push(t4.toUpperCase().trim());
     let headsarr = [];
-    if (head1N != '')
+    if (head1N !== '')
       headsarr.push({
         name: head1N.toUpperCase().trim(),
         phoneNo: head1P,
         email: head1E,
       });
-    if (head2N != '')
+    if (head2N !== '')
       headsarr.push({
         name: head2N.toUpperCase().trim(),
         phoneNo: head2P,
@@ -196,7 +190,7 @@ const Dashboard = () => {
   useEffect(() => {
     getCategory();
     getEvents();
-  }, [events]);
+  }, []);
 
   return (
     <div>
@@ -451,9 +445,9 @@ const Dashboard = () => {
         >
           Create Event
         </button>
-        <div className="d-flex flex-wrap" style={{ margin: '4rem 5rem' }}>
+        <div className="d-flex flex-wrap justify-content-center align-items-center" style={{ margin: '4rem 5rem' }}>
           {events.map((eventdata) => (
-            <Event eventdata={eventdata} />
+            <EventModal eventdata={eventdata} />
           ))}
         </div>
       </div>

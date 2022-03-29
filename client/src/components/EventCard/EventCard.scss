@@ -1,10 +1,11 @@
+@import './../../styles/index.scss';
 $event-card-background: #c6a3ff;
-
 .event-card-wrapper {
+  @include card-hover;
   width: calc(83% / 2.6);
   height: -webkit-fit-content;
   height: -moz-fit-content;
-  height: fit-content;
+  min-height: 300px;
   padding: 25px;
   background-color: $event-card-background;
   border-radius: 0.5rem;
@@ -13,6 +14,7 @@ $event-card-background: #c6a3ff;
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
+      gap: 10px;
       -webkit-box-pack: justify;
           -ms-flex-pack: justify;
               justify-content: space-between;
@@ -21,16 +23,15 @@ $event-card-background: #c6a3ff;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
+        flex-wrap: wrap;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
             -ms-flex-direction: column;
                 flex-direction: column;
         p {
-          font-size: 15.2px;
           font-size: 0.95rem;
         }
         h3 {
-          font-size: 22.4px;
           font-size: 1.4rem;
         }
       }
@@ -38,33 +39,37 @@ $event-card-background: #c6a3ff;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
+        width: 30%;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
             -ms-flex-direction: column;
                 flex-direction: column;
-        -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
-        button:first-child {
-          border: 1.5px solid white;
-          margin-bottom: 2.5px;
-          border-radius: 10px;
-          background-color: transparent;
-          padding: 2px 4px;
-          text-transform: uppercase;
-          color: white;
-          pointer-events: none;
-        }
+        -webkit-box-pack: flex-start;
+            -ms-flex-pack: flex-start;
+                justify-content: flex-start;
+        // uncomment for details button 
+        // button:first-child {
+        //   border: 1.5px solid white;
+        //   margin-bottom: 2.5px;
+        //   border-radius: 10px;
+        //   background-color: transparent;
+        //   padding: 2px 4px;
+        //   text-transform: uppercase;
+        //   color: white;
+        //   pointer-events: none;
+        // }
         button:last-child {
+          @include button-hover;
           border: 0;
           width: 100%;
           margin-top: 2.5px;
+          border: 1px solid black;
           border-radius: 10px;
           background-color: transparent;
           padding: 2px 4px;
-          background-color: black;
+          // background-color: black;
           text-transform: uppercase;
-          color: white;
+          color: black;
         }
       }
     }
@@ -103,5 +108,16 @@ $event-card-background: #c6a3ff;
 @media only screen and (max-width: 812px) {
   .event-card-wrapper {
     width: 100%;
+    padding: 15px;
+    .event-content {
+      .event-header {
+        .button-area{ 
+          width: 40%;
+          button:first-child {
+            font-size: 0.9rem;
+          }
+        }
+      }
+    }
   }
 }

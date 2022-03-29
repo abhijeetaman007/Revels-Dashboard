@@ -2,7 +2,7 @@ import React from "react";
 import logo from "./../../assets/logos/logo_landing.png"
 import { useAuth } from "../../context/AuthContext";
 
-const Navbar = () => {
+const Navbar = ({ isBackground }) => {
     const auth = useAuth();
     // handles hamburger click on mobiles
     const mobileNav = () => {
@@ -18,7 +18,7 @@ const Navbar = () => {
         navMenu.classList.remove("active");
     }
     return (
-        <nav className="navbar">
+        <nav className={`navbar ${isBackground ? "colour-back" : ""}`}>
           <div className="nav-logo">
             <img src={logo} alt="Revels Logo"></img>
           </div>
@@ -26,6 +26,9 @@ const Navbar = () => {
               {auth.user && <li className="nav-item" onClick={closeNav}>
                   <a href="/dashboard" className="nav-link">Dashboard</a>
               </li>}
+              {/* <li className="nav-item" onClick={closeNav}>
+                  <a href="/rulebook" className="nav-link">Rulebook</a>
+              </li> */}
               <li className="nav-item" onClick={closeNav}>
                   <a href="/events" className="nav-link">Events</a>
               </li>

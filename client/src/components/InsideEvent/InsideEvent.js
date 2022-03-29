@@ -160,8 +160,11 @@ const InsideEvent = () => {
     <Layout activeTab={'events'} isAagazVisible={true}>
       <div className="event-details">
         <div className="cat-event">
-          <p className="font-heavy">{event.eventType}</p>
-          <p className="font-light">{event.name}</p>
+          <img className="category-logo" src="https://qph.fs.quoracdn.net/main-qimg-a5b5639f84c719c9d7a861a1cf7d62aa-lq"></img>
+          <div className="name-type">
+            <p className="font-heavy">{event.eventType}</p>
+            <p className="font-light">{event.name}</p>
+          </div>
         </div>
         <div className="event-group ele">
           {DataComponent({ 
