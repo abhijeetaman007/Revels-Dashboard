@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import EventCard from '../../components/EventCard/EventCard';
 import Layout from '../Layout/Layout';
+import Lottie from 'lottie-react';
+import noEvents from '../../assets/noEvents.json';
 
 const Events = () => {
   const [events, setEvents] = useState([]);
@@ -21,7 +23,6 @@ const Events = () => {
   return (
     <Layout activeTab="events">
       <div
-        className="events-wrapper"
         style={{
           display: 'flex',
           flexWrap: 'wrap',
@@ -33,7 +34,12 @@ const Events = () => {
           ? events.map((eventData, index) => {
               return <EventCard key={index} data={eventData} />;
             })
-          : 'Loader'}
+          : 
+          <div className="py-5 w-md-100 w-50 mx-auto text-center d-flex flex-column justify-content-center align-items-center">
+            <Lottie animationData={noEvents} loop/>
+            <h3 className="font-heavy" style={{ color: "#c4515c", fontSize: "2rem" }}>NO EVENTS FOUND!</h3>
+          </div>
+        }
       </div>
     </Layout>
   );
