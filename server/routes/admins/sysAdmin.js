@@ -127,7 +127,7 @@ const addCategories = async (req, res) => {
         let categories = req.body;
         let flag = false;
         for (let i = 0; i < categories.length; i++) {
-            let { categoryId, category, description, type } = categories[0];
+            let { categoryId, category, description, type } = categories[i];
             let newCategory = new Category({
                 categoryId,
                 category,
@@ -135,6 +135,7 @@ const addCategories = async (req, res) => {
                 type,
             });
             await newCategory.save();
+            console.log(newCategory.category," added to db")
         }
         return res.status(200).send({ success: true, msg: 'Categories Added' });
     } catch (err) {
@@ -179,12 +180,18 @@ const registerAdmin = async (req, res) => {
         console.log("New Role ",role)
         console.log("New Admin ",newAdmin)
         await newAdmin.save();
+        // let html = emailTemplate(
+        //     newAdmin.name,
+        //     `Please use following credentials for your category related portal.<div><b>Email</b> : ${newAdmin.email} \n <b>Password : </b> ${newAdmin.password}</div>`,
+        //     `https://outstation.revelsmit.in/`,
+        //     'OM Portal'
+        // );
         let html = emailTemplate(
-            newAdmin.name,
-            `Please use following credentials for your category related portal.<div><b>Email</b> : ${newAdmin.email} \n <b>Password : </b> ${newAdmin.password}</div>`,
-            `https://outstation.revelsmit.in/`,
-            'OM Portal'
-        );
+                newAdmin.name,
+                `Please use following credentials for your category related portal.<div><b>Email</b> : ${newAdmin.email} \n <b>Password : </b> ${newAdmin.password}</div>`,
+                `https://revelsmit.in/admin`,
+                'Category portal'
+            );
 
         
         // SES
@@ -198,7 +205,7 @@ const registerAdmin = async (req, res) => {
         // );
         
         // Node Mailer
-        // await mailer(newAdmin.email,"Admin Credentials Revels'22 ",html)
+        await mailer(newAdmin.email,"Admin Credentials Revels'22 ",html)
 
         return res
             .status(200)

@@ -51,6 +51,7 @@ const {
     updateEvent,
     deleteEvent,
     getCategory,
+    getAllCategories,
 } = require('./admins/category');
 const {
     joinTeam,
@@ -204,6 +205,7 @@ router.get(
 router.get('/admin/category', isAdminLoggedIn, getCategory);
 router.post('/admin/category/event/update', isAdminLoggedIn, updateEvent);
 router.post('/admin/category/event/delete', isAdminLoggedIn, deleteEvent);
+router.get('/category/getall',getAllCategories)
 
 //@Operations Route
 router.post(

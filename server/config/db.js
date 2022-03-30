@@ -7,6 +7,10 @@ const connectDB = async () => {
             useUnifiedTopology: true,
         });
         console.log(`MongoDB Connected`);
+        if(connection.connection.name == "Revels22TestingDashboard")
+        {
+            console.log('Connected to PRODUCTION DB')
+        }
     } catch (error) {
         console.log(`Error Connectiing DB : ${error}`);
     }

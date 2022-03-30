@@ -247,10 +247,23 @@ const getCategory = async (req, res) => {
     res.status(500).send({ success: false, msg: 'Internal Server Error' });
   }
 };
+const getAllCategories = async (req,res)=>{
+  try
+  {
+    let categories = await Category.find();
+    return res.send({data:categories,success:true})
+  }
+  catch(err)
+  {
+    console.log(err)
+    return res.status(500).send({success:false,msg:'Internal Server Error'})
+  }
+}
 module.exports = {
   addEvent,
   getCategoryEvent,
   updateEvent,
   deleteEvent,
   getCategory,
+  getAllCategories
 };
