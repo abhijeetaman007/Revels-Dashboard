@@ -67,7 +67,10 @@ const EventModal = ({ eventdata, deleteEvent }) => {
       data.maxMembers === 0 ||
       data.description === '' ||
       data.eventType === '' ||
-      data.mode === ''
+      data.mode === '' ||
+      head1N === '' ||
+      head1P === 0 ||
+      head1E === ''
       // data.participationCriteria === '' ||
       // data.prize === '' ||
       // data.eventDateTime === '' ||
@@ -103,6 +106,11 @@ const EventModal = ({ eventdata, deleteEvent }) => {
       setHead2P(eventdata.eventHeads[1].phoneNo);
     }
   }, []);
+  const validateEmail = (email) => {
+    return email.match(
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+  };
   const updateEvent = async () => {
     let tagsarr = [];
     if (tagsarr.length !== 0) {
@@ -125,9 +133,27 @@ const EventModal = ({ eventdata, deleteEvent }) => {
         email: head2E,
       });
     if (!validateForm()) {
-      toast.error('Please fill in all the fields ');
-    } else if (head1P.toString().length !== 10) {
-      toast.error('Please enter valid phone number');
+      toast.error('Please fill in all the fields');
+    }
+    // else if (
+    //   head1P.toString().length !== 10 ||
+    //   (head2P.toString().length !== 0 && head2P.toString().length !== 10)
+    // ) {
+    //   toast.error('Please enter valid phone number');
+    // } else if (validateEmail(head1E.toString()) === false) {
+    //   toast.error('Please enter valid email for Head 1');
+    // } else if (
+    //   head2E.toString().length !== 0 &&
+    //   validateEmail(head2E) === false
+    // ) {
+    //   toast.error('Please enter valid email for Head 2');
+    // }
+    else if (
+      (head2E != '' && (head2P == '' || head2N == 0)) ||
+      (head2N != 0 && (head2P == '' || head2E == '')) ||
+      (head2P != '' && (head2E == '' || head2N == 0))
+    ) {
+      toast.error("Please complete Event Head 2's details");
     } else {
       try {
         const eventData = {
@@ -327,7 +353,9 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           }
         />
 
-        <label className="font-medium mt-2 w-100">Tags</label>
+        <label className="font-medium mt-2 w-100">
+          Tags (no space in between a tag)
+        </label>
         <Tag placeholder={'Tag 1'} setTag={setT1} value={t1} />
         {numTags >= 2 && (
           <Tag placeholder={'Tag 2'} setTag={setT2} value={t2} />

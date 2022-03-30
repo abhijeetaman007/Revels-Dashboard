@@ -112,6 +112,7 @@ const Dashboard = () => {
   };
   const addEvent = async () => {
     let tagsarr = [];
+
     if (t1 !== '') tagsarr.push(t1.toUpperCase().trim());
     if (t2 !== '') tagsarr.push(t2.toUpperCase().trim());
     if (t3 !== '') tagsarr.push(t3.toUpperCase().trim());
@@ -131,19 +132,21 @@ const Dashboard = () => {
       });
     if (!validateForm()) {
       toast.error('Please fill in all the fields');
-    } else if (
-      head1P.toString().length !== 10 ||
-      (head2P.toString().length !== 0 && head2P.toString().length !== 10)
-    ) {
-      toast.error('Please enter valid phone number');
-    } else if (validateEmail(head1E.toString()) === false) {
-      toast.error('Please enter valid email for Head 1');
-    } else if (
-      head2E.toString().length !== 0 &&
-      validateEmail(head2E) === false
-    ) {
-      toast.error('Please enter valid email for Head 2');
-    } else if (
+    }
+    // else if (
+    //   head1P.toString().length !== 10 ||
+    //   (head2P.toString().length !== 0 && head2P.toString().length !== 10)
+    // ) {
+    //   toast.error('Please enter valid phone number');
+    // } else if (validateEmail(head1E.toString()) === false) {
+    //   toast.error('Please enter valid email for Head 1');
+    // } else if (
+    //   head2E.toString().length !== 0 &&
+    //   validateEmail(head2E) === false
+    // ) {
+    //   toast.error('Please enter valid email for Head 2');
+    // }
+    else if (
       (head2E != '' && (head2P == '' || head2N == 0)) ||
       (head2N != 0 && (head2P == '' || head2E == '')) ||
       (head2P != '' && (head2E == '' || head2N == 0))
@@ -198,6 +201,16 @@ const Dashboard = () => {
             teamDelegateCardWorks: '',
             delegateCards: '',
             tags: [],
+            head1P: 0,
+            head2P: 0,
+            head1E: '',
+            head2E: '',
+            head1N: '',
+            head2N: '',
+            t1: '',
+            t2: '',
+            t3: '',
+            t4: '',
           });
           closeModal();
           toast.success('Event added successfully');
@@ -365,7 +378,9 @@ const Dashboard = () => {
           }
         />
 
-        <label className="font-medium mt-2 w-100">Tags (optional)</label>
+        <label className="font-medium mt-2 w-100">
+          Tags (no space in between a tag)
+        </label>
         <Tag placeholder={'Tag 1'} setTag={setT1} value={t1} />
         {numTags >= 2 && (
           <Tag placeholder={'Tag 2'} setTag={setT2} value={t2} />
