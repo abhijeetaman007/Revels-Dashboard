@@ -6,7 +6,7 @@ import './EventTitle.css';
 import Modal from 'react-modal';
 import Tag from '../components/Tag/Tag';
 
-const EventModal = ({ eventdata }) => {
+const EventModal = ({ eventdata, deleteEvent }) => {
   const customStyles = {
     content: {
       top: '50%',
@@ -19,7 +19,7 @@ const EventModal = ({ eventdata }) => {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const openModal = () => {
     setIsOpen(true);
-  }
+  };
   const closeModal = () => {
     setT1('');
     setT2('');
@@ -27,7 +27,7 @@ const EventModal = ({ eventdata }) => {
     setT4('');
 
     setIsOpen(false);
-  }
+  };
   const [t1, setT1] = useState('');
   const [t2, setT2] = useState('');
   const [t3, setT3] = useState('');
@@ -126,6 +126,8 @@ const EventModal = ({ eventdata }) => {
       });
     if (!validateForm()) {
       toast.error('Please fill in all the fields ');
+    } else if (head1P.toString().length !== 10) {
+      toast.error('Please enter valid phone number');
     } else {
       try {
         const eventData = {
@@ -141,7 +143,7 @@ const EventModal = ({ eventdata }) => {
           eventHeads: headsarr,
           eventDateTime: new Date(data.eventDateTime),
           eventVenue: data.eventVenue,
-          tags: tagsarr
+          tags: tagsarr,
         };
         console.log('eventdata', eventData);
         const res = await axios.post(
@@ -182,6 +184,7 @@ const EventModal = ({ eventdata }) => {
   const addTagElement = () => {
     setNumTags(numTags + 1);
   };
+
   return (
     <div>
       <Modal
@@ -461,11 +464,20 @@ const EventModal = ({ eventdata }) => {
       <div className="main-wrapper font-light text-white m-1 rounded p-4">
         <div className="d-flex flex-row justify-content-between align-items-center">
           {data.name}&nbsp;
-          <i
-            onClick={openModal}
-            className="edit fa fa-pencil"
-            aria-hidden="true"
-          ></i>
+          <div>
+            <i
+              onClick={openModal}
+              className="edit fa fa-pencil"
+              aria-hidden="true"
+              style={{ marginRight: '1rem', color: '#F4737E' }}
+            ></i>
+            <i
+              onClick={() => deleteEvent(data.eventID)}
+              className="edit fa fa-trash"
+              aria-hidden="true"
+              style={{ marginRight: '1rem', color: '#F4737E' }}
+            ></i>
+          </div>
         </div>
       </div>
     </div>

@@ -105,6 +105,11 @@ const Dashboard = () => {
   const addTagElement = () => {
     setNumTags(numTags + 1);
   };
+  const validateEmail = (email) => {
+    return email.match(
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+  };
   const addEvent = async () => {
     let tagsarr = [];
     if (t1 !== '') tagsarr.push(t1.toUpperCase().trim());
@@ -126,6 +131,24 @@ const Dashboard = () => {
       });
     if (!validateForm()) {
       toast.error('Please fill in all the fields');
+    } else if (
+      head1P.toString().length !== 10 ||
+      (head2P.toString().length !== 0 && head2P.toString().length !== 10)
+    ) {
+      toast.error('Please enter valid phone number');
+    } else if (validateEmail(head1E.toString()) === false) {
+      toast.error('Please enter valid email for Head 1');
+    } else if (
+      head2E.toString().length !== 0 &&
+      validateEmail(head2E) === false
+    ) {
+      toast.error('Please enter valid email for Head 2');
+    } else if (
+      (head2E != '' && (head2P == '' || head2N == 0)) ||
+      (head2N != 0 && (head2P == '' || head2E == '')) ||
+      (head2P != '' && (head2E == '' || head2N == 0))
+    ) {
+      toast.error("Please complete Event Head 2's details");
     } else {
       try {
         const eventData = {
@@ -178,6 +201,7 @@ const Dashboard = () => {
           });
           closeModal();
           toast.success('Event added successfully');
+          getEvents();
         } else {
           toast.error(res.data.msg);
         }
@@ -191,7 +215,28 @@ const Dashboard = () => {
     getCategory();
     getEvents();
   }, []);
-
+  const deleteEvent = async (id) => {
+    const toastId = toast.loading('Deleting...');
+    try {
+      const res = await axios.post(
+        '/api/admin/category/event/delete',
+        {
+          eventID: id,
+        },
+        {
+          headers: {
+            authorization: localStorage.getItem(ADMIN_TOKEN_ID),
+          },
+        }
+      );
+      toast.dismiss(toastId);
+      if (res.data.success) {
+        window.location.reload();
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div>
       <Navbar />
@@ -445,9 +490,12 @@ const Dashboard = () => {
         >
           Create Event
         </button>
-        <div className="d-flex flex-wrap justify-content-center align-items-center" style={{ margin: '4rem 5rem' }}>
+        <div
+          className="d-flex flex-wrap justify-content-center align-items-center"
+          style={{ margin: '4rem 5rem' }}
+        >
           {events.map((eventdata) => (
-            <EventModal eventdata={eventdata} />
+            <EventModal eventdata={eventdata} deleteEvent={deleteEvent} />
           ))}
         </div>
       </div>
