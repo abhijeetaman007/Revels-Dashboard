@@ -1,0 +1,11 @@
+.btn{
+    border: 2px solid #F4737E;
+    color: #F4737E;
+    min-width: 5% ;
+    font-size: 1.5rem;
+    background-color: black;
+}
+
+.react-tabs__tab--selected{
+    background-color: rgb(128, 128, 128);
+}
