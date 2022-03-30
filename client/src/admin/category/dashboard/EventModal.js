@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useAuth } from '../../../context/AuthContext';
 import axios from 'axios';
 import { ADMIN_TOKEN_ID } from '../../../utils/constants';
 import './EventTitle.css';
 import Modal from 'react-modal';
 import Tag from '../components/Tag/Tag';
 
-export default Event = ({ eventdata }) => {
+const EventModal = ({ eventdata, deleteEvent }) => {
   const customStyles = {
     content: {
       top: '50%',
@@ -18,29 +17,21 @@ export default Event = ({ eventdata }) => {
     },
   };
   const [modalIsOpen, setIsOpen] = React.useState(false);
-  function openModal() {
+  const openModal = () => {
     setIsOpen(true);
-  }
-  function closeModal() {
+  };
+  const closeModal = () => {
     setT1('');
     setT2('');
     setT3('');
     setT4('');
 
     setIsOpen(false);
-  }
-  const auth = useAuth();
-  const header = {
-    authorization: localStorage.getItem(ADMIN_TOKEN_ID),
   };
-
   const [t1, setT1] = useState('');
   const [t2, setT2] = useState('');
   const [t3, setT3] = useState('');
   const [t4, setT4] = useState('');
-  //update state for all the fields in data
-  const [eventlen, setEventlen] = useState(eventdata.tags.length);
-
   const [head1N, setHead1N] = useState('');
   const [head2N, setHead2N] = useState('');
   const [head1E, setHead1E] = useState('');
@@ -76,7 +67,10 @@ export default Event = ({ eventdata }) => {
       data.maxMembers === 0 ||
       data.description === '' ||
       data.eventType === '' ||
-      data.mode === ''
+      data.mode === '' ||
+      head1N === '' ||
+      head1P === 0 ||
+      head1E === ''
       // data.participationCriteria === '' ||
       // data.prize === '' ||
       // data.eventDateTime === '' ||
@@ -112,6 +106,11 @@ export default Event = ({ eventdata }) => {
       setHead2P(eventdata.eventHeads[1].phoneNo);
     }
   }, []);
+  const validateEmail = (email) => {
+    return email.match(
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+  };
   const updateEvent = async () => {
     let tagsarr = [];
     if (tagsarr.length !== 0) {
@@ -121,20 +120,40 @@ export default Event = ({ eventdata }) => {
       if (t4 !== '') tagsarr.push(t4.toUpperCase().trim());
     }
     let headsarr = [];
-    if (head1N != '')
+    if (head1N !== '')
       headsarr.push({
         name: head1N.toUpperCase().trim(),
         phoneNo: head1P,
         email: head1E,
       });
-    if (head2N != '')
+    if (head2N !== '')
       headsarr.push({
         name: head2N.toUpperCase().trim(),
         phoneNo: head2P,
         email: head2E,
       });
     if (!validateForm()) {
-      toast.error('Please fill in all the fields ');
+      toast.error('Please fill in all the fields');
+    }
+    // else if (
+    //   head1P.toString().length !== 10 ||
+    //   (head2P.toString().length !== 0 && head2P.toString().length !== 10)
+    // ) {
+    //   toast.error('Please enter valid phone number');
+    // } else if (validateEmail(head1E.toString()) === false) {
+    //   toast.error('Please enter valid email for Head 1');
+    // } else if (
+    //   head2E.toString().length !== 0 &&
+    //   validateEmail(head2E) === false
+    // ) {
+    //   toast.error('Please enter valid email for Head 2');
+    // }
+    else if (
+      (head2E != '' && (head2P == '' || head2N == 0)) ||
+      (head2N != 0 && (head2P == '' || head2E == '')) ||
+      (head2P != '' && (head2E == '' || head2N == 0))
+    ) {
+      toast.error("Please complete Event Head 2's details");
     } else {
       try {
         const eventData = {
@@ -151,9 +170,6 @@ export default Event = ({ eventdata }) => {
           eventDateTime: new Date(data.eventDateTime),
           eventVenue: data.eventVenue,
           tags: tagsarr,
-          // registeration deadline put later
-          //isActive later
-          // teamDelegateCard
         };
         console.log('eventdata', eventData);
         const res = await axios.post(
@@ -194,6 +210,7 @@ export default Event = ({ eventdata }) => {
   const addTagElement = () => {
     setNumTags(numTags + 1);
   };
+
   return (
     <div>
       <Modal
@@ -336,7 +353,9 @@ export default Event = ({ eventdata }) => {
           }
         />
 
-        <label className="font-medium mt-2 w-100">Tags</label>
+        <label className="font-medium mt-2 w-100">
+          Tags (no space in between a tag)
+        </label>
         <Tag placeholder={'Tag 1'} setTag={setT1} value={t1} />
         {numTags >= 2 && (
           <Tag placeholder={'Tag 2'} setTag={setT2} value={t2} />
@@ -473,13 +492,24 @@ export default Event = ({ eventdata }) => {
       <div className="main-wrapper font-light text-white m-1 rounded p-4">
         <div className="d-flex flex-row justify-content-between align-items-center">
           {data.name}&nbsp;
-          <i
-            onClick={openModal}
-            className="edit fa fa-pencil"
-            aria-hidden="true"
-          ></i>
+          <div>
+            <i
+              onClick={openModal}
+              className="edit fa fa-pencil"
+              aria-hidden="true"
+              style={{ marginRight: '1rem', color: '#F4737E' }}
+            ></i>
+            <i
+              onClick={() => deleteEvent(data.eventID)}
+              className="edit fa fa-trash"
+              aria-hidden="true"
+              style={{ marginRight: '1rem', color: '#F4737E' }}
+            ></i>
+          </div>
         </div>
       </div>
     </div>
   );
 };
+
+export default EventModal;

@@ -5,16 +5,13 @@ import ProshowCard from "../../components/ProshowCard/ProshowCard";
 import proshowdata from "../../utils/proshow.json";
 const Proshow = () => {
   return (
-    <Layout activeTab="proshow">
-      <div className="proshow">
-        {proshowdata.map((data, ind) => {
-          return (
-            <ProshowCard data={data}/>
-          );
-        })}
-        
-      </div>
-    </Layout>
+    <div className="proshow">
+      {proshowdata.map((data, ind) => {
+        return (
+          <ProshowCard data={data}/>
+        );
+      })}
+    </div>
   );
 };
 

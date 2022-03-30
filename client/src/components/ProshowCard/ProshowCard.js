@@ -11,7 +11,7 @@ const ProshowCard = ({data}) => {
                         <p className="font-heavy">{data.date}</p>
                     </div>
                     <div className="artist-name">
-                        <h2 className="font-heavy">{data.name}</h2>
+                        <h2 className="font-heavy text-center">{data.name}</h2>
                         <p className="font-light text-center">{data.description}</p>
                     </div>
                 </div>

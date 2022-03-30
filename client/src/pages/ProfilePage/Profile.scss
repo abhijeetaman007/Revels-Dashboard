@@ -7,6 +7,7 @@ $text-color: #c4c4c4;
 }
 .border-box {
   font-size: 16px;
+  font-size: 16px;
   font-size: 1rem;
   padding: 5px 5px;
   color: #c6a3ff;
@@ -36,8 +37,10 @@ $text-color: #c4c4c4;
       text-align: left;
       color: white;
       font-size: 20.8px;
+      font-size: 20.8px;
       font-size: 1.3rem;
       p {
+        font-size: 16px;
         font-size: 16px;
         font-size: 1rem;
       }
@@ -52,6 +55,7 @@ $text-color: #c4c4c4;
       background-color: transparent;
       margin: auto 0;
       color: white;
+      font-size: 20.8px;
       font-size: 20.8px;
       font-size: 1.3rem;
       margin-right: 10px;
@@ -107,6 +111,7 @@ $text-color: #c4c4c4;
         top: 12vh;
         left: 100px;
         font-size: 17.6px;
+        font-size: 17.6px;
         font-size: 1.1rem;
         font-weight: 600;
         display: -webkit-box;
@@ -139,6 +144,7 @@ $text-color: #c4c4c4;
         height: -moz-fit-content;
         height: fit-content;
         font-size: 19.2px;
+        font-size: 19.2px;
         font-size: 1.2rem;
         font-weight: 200;
         margin-left: 100px;
@@ -153,6 +159,7 @@ $text-color: #c4c4c4;
             -ms-flex-pack: center;
                 justify-content: center;
         gap: 32px;
+        gap: 32px;
         gap: 2rem;
 
         padding-bottom: 8%;
@@ -160,6 +167,7 @@ $text-color: #c4c4c4;
           border-left: 5px solid lightgray;
           padding-left: 20px;
           h1 {
+            font-size: 44.8px;
             font-size: 44.8px;
             font-size: 2.8rem;
             color: #c4515c;
@@ -182,10 +190,12 @@ $text-color: #c4c4c4;
             color: #c4515c;
             font-weight: 700;
             font-size: 25.6px;
+            font-size: 25.6px;
             font-size: 1.6rem;
             margin: 5px auto;
             span {
               color: black;
+              font-size: 40px;
               font-size: 40px;
               font-size: 2.5rem;
             }
@@ -211,6 +221,7 @@ $text-color: #c4c4c4;
               grid-template-columns: auto auto auto;
           div {
             h1 {
+              font-size: 16px;
               font-size: 16px;
               font-size: 1rem;
               font-weight: 700;
@@ -254,6 +265,7 @@ $text-color: #c4c4c4;
               width: 40%;
             }
             input[type="file"]::file-selector-button {
+              font-size: 16px;
               font-size: 16px;
               font-size: 1rem;
               color: $text-color;
@@ -309,6 +321,7 @@ $text-color: #c4c4c4;
             padding: 5px 15px;
             width: 15%;
             font-size: 16px;
+            font-size: 16px;
             font-size: 1rem;
             font-weight: 600;
             background-color: #22b6e6;
@@ -318,9 +331,7 @@ $text-color: #c4c4c4;
         }
       }
       .aagaz {
-        
           opacity: 0.05;
-        
           -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=5)";
           position: absolute; /* new */
           top: 50%;
@@ -414,6 +425,7 @@ $text-color: #c4c4c4;
         }
         .text {
           width: 80%;
+          padding-top: 80px;
           padding-top: 80px;
           padding-top: 5rem;
           margin: 0 auto;

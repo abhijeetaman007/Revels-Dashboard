@@ -3,6 +3,7 @@
 @import './proshow';
 @import './lottie';
 
+// slide up animation for cards
 @-webkit-keyframes slide-up {
     from {
         opacity: 0;
@@ -32,4 +33,18 @@
 .card-up {
     -webkit-animation: slide-up 500ms ease-in;
             animation: slide-up 500ms ease-in;
+}
+// hover animation for cards
+@mixin card-hover {
+    &:hover {
+        -webkit-transform: scale(1.01);
+                transform: scale(1.01);
+        box-shadow: 0 0 10px 1px #1e1433;
+    }
+}
+@mixin button-hover {
+    &:hover {
+        -webkit-transform: scale(0.98);
+                transform: scale(0.98);
+    }
 }
