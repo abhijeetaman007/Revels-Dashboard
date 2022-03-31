@@ -10,9 +10,9 @@ const {mailer }= require('../../utils/mailer')
 
 const addDelegateCard = async (req, res) => {
     try {
-        let { name, type, mahePrice, nonMahePrice, description } = req.body;
-        console.log(name, type, mahePrice, nonMahePrice, description);
-        if (!name || !mahePrice || !nonMahePrice || !description || !type)
+        let { name, type,mitPrice, mahePrice, nonMahePrice, description } = req.body;
+        console.log("Delegate Card Added: ",name, type,mitPrice, mahePrice, nonMahePrice, description);
+        if (!name || !mahePrice || !nonMahePrice || !description || !type || !mitPrice)
             return res
                 .status(400)
                 .send({ success: false, msg: 'Please fill all the fields' });
@@ -39,6 +39,7 @@ const addDelegateCard = async (req, res) => {
             cardID,
             name,
             type,
+            mitPrice,
             mahePrice,
             nonMahePrice,
             nonMahePrice,
@@ -217,6 +218,24 @@ const registerAdmin = async (req, res) => {
             .send({ success: false, msg: 'Internal Server Error' });
     }
 };
+const getAllRoles = async (req,res)=>{
+    try
+    {
+        console.log("Roles")
+        let roles = await Role.find({}).populate('categoryId')
+        return res
+            .status(500)
+            .send({ success: true, data:roles });
+    }
+    catch(err)
+    {   
+        console.log(err)
+        return res
+            .status(500)
+            .send({ success: false, msg: 'Internal Server Error' });
+    }
+}
+
 
 const addCollege = async (req, res) => {
     try {
@@ -273,4 +292,5 @@ module.exports = {
     registerAdmin,
     addCollege,
     sendEmail,
+    getAllRoles
 };

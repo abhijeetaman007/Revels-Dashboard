@@ -10,10 +10,16 @@ const DelCardSchema = new mongoose.Schema(
     },
     name: {
       type: String,
+      required:true,
     },
     type: {
       type: String,
       enum: ["PROSHOW", "INF", "GAMING", "WORKSHOPS","GENERAL"],
+      required:true,
+    },
+    mitPrice:{
+      type:Number,
+      required:true
     },
     mahePrice: {
       type: Number,
@@ -28,9 +34,11 @@ const DelCardSchema = new mongoose.Schema(
     //Contains Info about the type of delegate card
     description: {
       type: String,
+      required:true
     },
     maxCount: {
       type: Number,
+      default:null
     },
   },
   { timestamps: true }

@@ -1,0 +1,414 @@
+{
+    "success": true,
+    "data": [
+        {
+            "_id": "623772f52eedab77d0cd9b51",
+            "type": 0,
+            "accessLevel": 3,
+            "categoryId": {
+                "_id": "6237700a7f25b5501f0af032",
+                "categoryId": "OM",
+                "category": "OUTSTATION MANAGEMENT",
+                "description": "Handling all outstation related work",
+                "type": "SUPPORTING",
+                "createdAt": "2022-03-20T18:18:50.152Z",
+                "updatedAt": "2022-03-20T18:18:50.152Z",
+                "__v": 0
+            },
+            "isActive": true,
+            "createdAt": "2022-03-20T19:11:58.424Z",
+            "updatedAt": "2022-03-20T19:11:58.424Z",
+            "__v": 0
+        },
+        {
+            "_id": "6238505395a7c4d80febf617",
+            "type": 0,
+            "accessLevel": 0,
+            "categoryId": null,
+            "isActive": true,
+            "createdAt": "2022-03-21T10:15:47.894Z",
+            "updatedAt": "2022-03-21T10:15:47.894Z",
+            "__v": 0
+        },
+        {
+            "_id": "623c74e699fbe123ee9634f9",
+            "type": 0,
+            "accessLevel": 4,
+            "categoryId": {
+                "_id": "623c747d55836b90b6bfaec7",
+                "categoryId": "SYS",
+                "category": "SYSTEM ADMIN",
+                "description": "As we welcome various participants not only from our own college but also from different colleges to be a part of Revels, it’ll be your job to help maintain the database for each participant throughout as a part of the system admin team while also assisting with the the front-end and back-end development of the different payment procedures and Gateways. You need to create and maintain portals to ensure the smooth working of other committees.",
+                "type": "SUPPORTING",
+                "createdAt": "2022-03-24T13:39:09.188Z",
+                "updatedAt": "2022-03-24T13:39:09.188Z",
+                "__v": 0
+            },
+            "isActive": true,
+            "createdAt": "2022-03-24T13:40:54.505Z",
+            "updatedAt": "2022-03-24T13:40:54.505Z",
+            "__v": 0
+        },
+        {
+            "_id": "62433ca24a3b93ee1c001590",
+            "type": 0,
+            "accessLevel": 3,
+            "categoryId": {
+                "_id": "62433b574a3b93ee1c00158d",
+                "categoryId": "SPORTS",
+                "category": "Sports",
+                "description": "The sports Category is responsible for coordinating and ensuring a seamless flow of the 20 sporting events conducted during the Revels. We also tackle any issue that emerges during the course of an event, such as an injury or a conflict between two sides. In the true spirit of the game, we pledge to provide ample opportunity to rising sporting talents. We envision and strive to instill true sportsmanship spirit amongst all the young and upcoming.",
+                "type": "SPORTS",
+                "createdAt": "2022-03-29T17:01:11.183Z",
+                "updatedAt": "2022-03-29T17:01:11.183Z",
+                "__v": 0
+            },
+            "isActive": true,
+            "createdAt": "2022-03-29T17:06:42.729Z",
+            "updatedAt": "2022-03-29T17:06:42.729Z",
+            "__v": 0
+        },
+        {
+            "_id": "62433f3e4a3b93ee1c001593",
+            "type": 1,
+            "accessLevel": 3,
+            "categoryId": {
+                "_id": "62433b574a3b93ee1c00158d",
+                "categoryId": "SPORTS",
+                "category": "Sports",
+                "description": "The sports Category is responsible for coordinating and ensuring a seamless flow of the 20 sporting events conducted during the Revels. We also tackle any issue that emerges during the course of an event, such as an injury or a conflict between two sides. In the true spirit of the game, we pledge to provide ample opportunity to rising sporting talents. We envision and strive to instill true sportsmanship spirit amongst all the young and upcoming.",
+                "type": "SPORTS",
+                "createdAt": "2022-03-29T17:01:11.183Z",
+                "updatedAt": "2022-03-29T17:01:11.183Z",
+                "__v": 0
+            },
+            "isActive": true,
+            "createdAt": "2022-03-29T17:17:50.533Z",
+            "updatedAt": "2022-03-29T17:17:50.533Z",
+            "__v": 0
+        },
+        {
+            "_id": "62434a296ab1a9cf4f4cdb43",
+            "type": 1,
+            "accessLevel": 3,
+            "categoryId": {
+                "_id": "62432c10c55f63cba2c724f1",
+                "categoryId": "ANUB",
+                "category": "Anubhuti",
+                "description": "Write. Speak. Guess. We're proud to be artists and we're proud to be Hindi. Give freedom to your creative impulse by being a part of Anubhuti.",
+                "type": "CULTURAL",
+                "createdAt": "2022-03-29T15:56:00.620Z",
+                "updatedAt": "2022-03-29T15:56:00.620Z",
+                "__v": 0
+            },
+            "isActive": true,
+            "createdAt": "2022-03-29T18:04:25.247Z",
+            "updatedAt": "2022-03-29T18:04:25.247Z",
+            "__v": 0
+        },
+        {
+            "_id": "62434a356ab1a9cf4f4cdb46",
+            "type": 1,
+            "accessLevel": 3,
+            "categoryId": {
+                "_id": "62432c10c55f63cba2c724f3",
+                "categoryId": "AMP",
+                "category": "Ampersand",
+                "description": "Where words find a voice and cultures stir up commotion, Ampersand is where you flaunt your verbal and written skills with a zeal like no other.",
+                "type": "CULTURAL",
+                "createdAt": "2022-03-29T15:56:00.693Z",
+                "updatedAt": "2022-03-29T15:56:00.693Z",
+                "__v": 0
+            },
+            "isActive": true,
+            "createdAt": "2022-03-29T18:04:37.783Z",
+            "updatedAt": "2022-03-29T18:04:37.783Z",
+            "__v": 0
+        },
+        {
+            "_id": "62434a436ab1a9cf4f4cdb49",
+            "type": 1,
+            "accessLevel": 3,
+            "categoryId": {
+                "_id": "62432c10c55f63cba2c724f5",
+                "categoryId": "ERGO",
+                "category": "Ergo",
+                "description": "Ergo is an open category for those who have a flair for general knowledge, answering riddles, figuring out puzzles, and weaving interesting plots!",
+                "type": "CULTURAL",
+                "createdAt": "2022-03-29T15:56:00.749Z",
+                "updatedAt": "2022-03-29T15:56:00.749Z",
+                "__v": 0
+            },
+            "isActive": true,
+            "createdAt": "2022-03-29T18:04:51.556Z",
+            "updatedAt": "2022-03-29T18:04:51.556Z",
+            "__v": 0
+        },
+        {
+            "_id": "62434a526ab1a9cf4f4cdb4c",
+            "type": 1,
+            "accessLevel": 3,
+            "categoryId": {
+                "_id": "62432c10c55f63cba2c724f7",
+                "categoryId": "PSY",
+                "category": "Psychus",
+                "description": "For those of you who have an affinity for looking past hurdles of delusion, acuity and psychology, put on your thinking caps as Psychus takes you on an adrenaline-fuelled adventure.",
+                "type": "CULTURAL",
+                "createdAt": "2022-03-29T15:56:00.806Z",
+                "updatedAt": "2022-03-29T15:56:00.806Z",
+                "__v": 0
+            },
+            "isActive": true,
+            "createdAt": "2022-03-29T18:05:06.678Z",
+            "updatedAt": "2022-03-29T18:05:06.678Z",
+            "__v": 0
+        },
+        {
+            "_id": "62434a7a6ab1a9cf4f4cdb4f",
+            "type": 1,
+            "accessLevel": 3,
+            "categoryId": {
+                "_id": "62432c10c55f63cba2c724f9",
+                "categoryId": "KLK",
+                "category": "Kalakriti",
+                "description": "Kalakriti brings you a stage to showcase your finesse in art, be it creating an album cover or doodling, and gives you the opportunity to fully express yourself and fall in love with art all over again!",
+                "type": "CULTURAL",
+                "createdAt": "2022-03-29T15:56:00.861Z",
+                "updatedAt": "2022-03-29T15:56:00.861Z",
+                "__v": 0
+            },
+            "isActive": true,
+            "createdAt": "2022-03-29T18:05:46.016Z",
+            "updatedAt": "2022-03-29T18:05:46.016Z",
+            "__v": 0
+        },
+        {
+            "_id": "62434a846ab1a9cf4f4cdb52",
+            "type": 1,
+            "accessLevel": 3,
+            "categoryId": {
+                "_id": "62432c10c55f63cba2c724fb",
+                "categoryId": "CRES",
+                "category": "Crescendo",
+                "description": "For those of you who want to showcase your musical knowledge and prowess, collaborate with talented musicians, and grow as artists, Crescendo is the place for you! Come join us to perform, learn and explore the intricacies of music!",
+                "type": "CULTURAL",
+                "createdAt": "2022-03-29T15:56:00.919Z",
+                "updatedAt": "2022-03-29T15:56:00.919Z",
+                "__v": 0
+            },
+            "isActive": true,
+            "createdAt": "2022-03-29T18:05:56.634Z",
+            "updatedAt": "2022-03-29T18:05:56.634Z",
+            "__v": 0
+        },
+        {
+            "_id": "62434b7a6ab1a9cf4f4cdb55",
+            "type": 1,
+            "accessLevel": 3,
+            "categoryId": {
+                "_id": "62432c10c55f63cba2c724fd",
+                "categoryId": "FTL",
+                "category": "Footloose",
+                "description": " When you dance, your purpose is not to get to a certain place in the floor, it’s to enjoy each step along the way. Revels'22 presents FOOTLOOSE, a chance for you to show off your moves.",
+                "type": "CULTURAL",
+                "createdAt": "2022-03-29T15:56:00.976Z",
+                "updatedAt": "2022-03-29T15:56:00.976Z",
+                "__v": 0
+            },
+            "isActive": true,
+            "createdAt": "2022-03-29T18:10:02.775Z",
+            "updatedAt": "2022-03-29T18:10:02.775Z",
+            "__v": 0
+        },
+        {
+            "_id": "62434b856ab1a9cf4f4cdb58",
+            "type": 1,
+            "accessLevel": 3,
+            "categoryId": {
+                "_id": "62432c11c55f63cba2c724ff",
+                "categoryId": "HAUTE",
+                "category": "Haute Couture",
+                "description": "Fashion brings out the designer in us, an expressionist beaming with confidence. To test the same, Revels’22 brings you HAUTE COUTURE, a gala of glamour and grace.",
+                "type": "CULTURAL",
+                "createdAt": "2022-03-29T15:56:01.031Z",
+                "updatedAt": "2022-03-29T15:56:01.031Z",
+                "__v": 0
+            },
+            "isActive": true,
+            "createdAt": "2022-03-29T18:10:13.161Z",
+            "updatedAt": "2022-03-29T18:10:13.161Z",
+            "__v": 0
+        },
+        {
+            "_id": "62434b906ab1a9cf4f4cdb5b",
+            "type": 1,
+            "accessLevel": 3,
+            "categoryId": {
+                "_id": "62432c11c55f63cba2c72501",
+                "categoryId": "ANI",
+                "category": "Animania",
+                "description": "The ultimate dream for all Otakus and K-drama bingers; Animania is a collection of adrenaline-pumping events recreated from your favourite Anime and Korean dramas. Your only goal? Be the last one standing.",
+                "type": "CULTURAL",
+                "createdAt": "2022-03-29T15:56:01.088Z",
+                "updatedAt": "2022-03-29T15:56:01.088Z",
+                "__v": 0
+            },
+            "isActive": true,
+            "createdAt": "2022-03-29T18:10:24.392Z",
+            "updatedAt": "2022-03-29T18:10:24.392Z",
+            "__v": 0
+        },
+        {
+            "_id": "62434b996ab1a9cf4f4cdb5e",
+            "type": 1,
+            "accessLevel": 3,
+            "categoryId": {
+                "_id": "62432c11c55f63cba2c72503",
+                "categoryId": "XVENT",
+                "category": "Xventure",
+                "description": "Fuel your adrenaline! Xventure allows you to tap into your inner adrenaline junkie and feel every second run the course through your body.",
+                "type": "CULTURAL",
+                "createdAt": "2022-03-29T15:56:01.143Z",
+                "updatedAt": "2022-03-29T15:56:01.143Z",
+                "__v": 0
+            },
+            "isActive": true,
+            "createdAt": "2022-03-29T18:10:33.209Z",
+            "updatedAt": "2022-03-29T18:10:33.209Z",
+            "__v": 0
+        },
+        {
+            "_id": "62434ba46ab1a9cf4f4cdb61",
+            "type": 1,
+            "accessLevel": 3,
+            "categoryId": {
+                "_id": "62432c11c55f63cba2c72505",
+                "categoryId": "HUMLIB",
+                "category": "Human Library",
+                "description": "Human Library strives to encourage dialogue around stereotypes and prejudices in our communities through a unique event. Participate and learn how to unjudge the person behind the cover.",
+                "type": "CULTURAL",
+                "createdAt": "2022-03-29T15:56:01.200Z",
+                "updatedAt": "2022-03-29T15:56:01.200Z",
+                "__v": 0
+            },
+            "isActive": true,
+            "createdAt": "2022-03-29T18:10:44.387Z",
+            "updatedAt": "2022-03-29T18:10:44.387Z",
+            "__v": 0
+        },
+        {
+            "_id": "62434bb06ab1a9cf4f4cdb64",
+            "type": 1,
+            "accessLevel": 3,
+            "categoryId": {
+                "_id": "62432c11c55f63cba2c72507",
+                "categoryId": "LNS",
+                "category": "Lensation",
+                "description": "Transcend the boundary of language and let your creativity speak through the nuances of photography and videography",
+                "type": "CULTURAL",
+                "createdAt": "2022-03-29T15:56:01.259Z",
+                "updatedAt": "2022-03-29T15:56:01.259Z",
+                "__v": 0
+            },
+            "isActive": true,
+            "createdAt": "2022-03-29T18:10:56.353Z",
+            "updatedAt": "2022-03-29T18:10:56.353Z",
+            "__v": 0
+        },
+        {
+            "_id": "62434bb86ab1a9cf4f4cdb67",
+            "type": 1,
+            "accessLevel": 3,
+            "categoryId": {
+                "_id": "62432c11c55f63cba2c72509",
+                "categoryId": "IRD",
+                "category": "Iridescent",
+                "description": "Discover the true creative geek inside you with games that rattle your mind and test how much attention to detail you're willing to pay in the games we plan for our trivia and logic based events.",
+                "type": "CULTURAL",
+                "createdAt": "2022-03-29T15:56:01.316Z",
+                "updatedAt": "2022-03-29T15:56:01.316Z",
+                "__v": 0
+            },
+            "isActive": true,
+            "createdAt": "2022-03-29T18:11:04.851Z",
+            "updatedAt": "2022-03-29T18:11:04.851Z",
+            "__v": 0
+        },
+        {
+            "_id": "62434bc36ab1a9cf4f4cdb6a",
+            "type": 1,
+            "accessLevel": 3,
+            "categoryId": {
+                "_id": "62432c11c55f63cba2c7250b",
+                "categoryId": "ALT",
+                "category": "Altaebir",
+                "description": "Fancy of yourself as a director, a writer or even an actor? We bring to you Revel's Film Festival. Essentially, we're gonna give you an offer you can't refuse!",
+                "type": "CULTURAL",
+                "createdAt": "2022-03-29T15:56:01.371Z",
+                "updatedAt": "2022-03-29T15:56:01.371Z",
+                "__v": 0
+            },
+            "isActive": true,
+            "createdAt": "2022-03-29T18:11:15.835Z",
+            "updatedAt": "2022-03-29T18:11:15.835Z",
+            "__v": 0
+        },
+        {
+            "_id": "62434bec6ab1a9cf4f4cdb6d",
+            "type": 1,
+            "accessLevel": 3,
+            "categoryId": {
+                "_id": "62432c11c55f63cba2c7250d",
+                "categoryId": "CON",
+                "category": "Consulere",
+                "description": "A compendium of events that test your analytical wits and real-world knowledge. A platform designed to bring out the creative, cautious genius in you - Suit up and make your case to take home not just the prize money but also tonnes of acuity! It is time to incubate your unique perspective and solve problems that pester everyone ranging from behemoth corporations to your modest sabziwala in day-to-day life.",
+                "type": "CULTURAL",
+                "createdAt": "2022-03-29T15:56:01.425Z",
+                "updatedAt": "2022-03-29T15:56:01.425Z",
+                "__v": 0
+            },
+            "isActive": true,
+            "createdAt": "2022-03-29T18:11:56.747Z",
+            "updatedAt": "2022-03-29T18:11:56.747Z",
+            "__v": 0
+        },
+        {
+            "_id": "62434bfc6ab1a9cf4f4cdb70",
+            "type": 1,
+            "accessLevel": 3,
+            "categoryId": {
+                "_id": "62432c11c55f63cba2c7250f",
+                "categoryId": "DBZ",
+                "category": "Dramebaaz",
+                "description": "Dramebaaz is a category of Revels where you get to experience all the spheres and of this artform be it mime, nukkad naatak, center stage and everything more you can think about. It  aims to include something fun to do for everyone interested in the art of dramatics through our numerous events.",
+                "type": "CULTURAL",
+                "createdAt": "2022-03-29T15:56:01.479Z",
+                "updatedAt": "2022-03-29T15:56:01.479Z",
+                "__v": 0
+            },
+            "isActive": true,
+            "createdAt": "2022-03-29T18:12:12.573Z",
+            "updatedAt": "2022-03-29T18:12:12.573Z",
+            "__v": 0
+        },
+        {
+            "_id": "62434c046ab1a9cf4f4cdb73",
+            "type": 1,
+            "accessLevel": 3,
+            "categoryId": {
+                "_id": "62433b574a3b93ee1c00158d",
+                "categoryId": "SPORTS",
+                "category": "Sports",
+                "description": "The sports Category is responsible for coordinating and ensuring a seamless flow of the 20 sporting events conducted during the Revels. We also tackle any issue that emerges during the course of an event, such as an injury or a conflict between two sides. In the true spirit of the game, we pledge to provide ample opportunity to rising sporting talents. We envision and strive to instill true sportsmanship spirit amongst all the young and upcoming.",
+                "type": "SPORTS",
+                "createdAt": "2022-03-29T17:01:11.183Z",
+                "updatedAt": "2022-03-29T17:01:11.183Z",
+                "__v": 0
+            },
+            "isActive": true,
+            "createdAt": "2022-03-29T18:12:20.510Z",
+            "updatedAt": "2022-03-29T18:12:20.510Z",
+            "__v": 0
+        }
+    ]
+}
