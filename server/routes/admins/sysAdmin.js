@@ -147,6 +147,7 @@ const addCategories = async (req, res) => {
     }
 };
 
+// let newOM = []
 const registerAdmin = async (req, res) => {
     try {
         let { name, type, accessLevel, categoryId, email, phoneNo } = req.body;
@@ -181,18 +182,24 @@ const registerAdmin = async (req, res) => {
         console.log("New Role ",role)
         console.log("New Admin ",newAdmin)
         await newAdmin.save();
+        // newOM.push(newAdmin);
+
+
+
+
+
         // let html = emailTemplate(
         //     newAdmin.name,
         //     `Please use following credentials for your category related portal.<div><b>Email</b> : ${newAdmin.email} \n <b>Password : </b> ${newAdmin.password}</div>`,
         //     `https://outstation.revelsmit.in/`,
         //     'OM Portal'
         // );
-        let html = emailTemplate(
-                newAdmin.name,
-                `Please use following credentials for your category related portal.<div><b>Email</b> : ${newAdmin.email} \n <b>Password : </b> ${newAdmin.password}</div>`,
-                `https://revelsmit.in/admin`,
-                'Category portal'
-            );
+        // let html = emailTemplate(
+        //         newAdmin.name,
+        //         `Please use following credentials for your category related portal.<div><b>Email</b> : ${newAdmin.email} \n <b>Password : </b> ${newAdmin.password}</div>`,
+        //         `https://revelsmit.in/admin`,
+        //         'Category portal'
+        //     );
 
         
         // SES
@@ -206,7 +213,7 @@ const registerAdmin = async (req, res) => {
         // );
         
         // Node Mailer
-        await mailer(newAdmin.email,"Admin Credentials Revels'22 ",html)
+        // await mailer(newAdmin.email,"Admin Credentials Revels'22 ",html)
 
         return res
             .status(200)
