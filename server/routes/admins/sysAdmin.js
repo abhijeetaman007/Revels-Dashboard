@@ -95,6 +95,7 @@ const viewAllDelegateCards = async (req, res) => {
 
 const addRole = async (req, res) => {
     try {
+        console.log(" Adding Role")
         let { accessLevel, categoryId, type } = req.body;
         let category;
         if (categoryId) {
@@ -147,21 +148,20 @@ const addCategories = async (req, res) => {
     }
 };
 
-// let newOM = []
 const registerAdmin = async (req, res) => {
     try {
         let { name, type, accessLevel, categoryId, email, phoneNo } = req.body;
-        let category = await Category.findOne({ categoryId }, { _id: 1 });
+        let category = await Category.findOne({ categoryId });
         if (!category)
             return res
                 .status(400)
                 .send({ success: false, msg: 'Category does not exists' });
-        // console.log(category)
+        console.log(category)
 
+        console.log("Category _ID",category._id)
         let role = await Role.findOne(
-            { accessLevel, type, category: category._id },
-            { _id: 1 }
-        );
+            {type, accessLevel,categoryId: category._id }
+        ).populate('categoryId');
         if (!role)
             return res
                 .status(400)
@@ -182,7 +182,6 @@ const registerAdmin = async (req, res) => {
         console.log("New Role ",role)
         console.log("New Admin ",newAdmin)
         await newAdmin.save();
-        // newOM.push(newAdmin);
 
 
 
@@ -194,12 +193,12 @@ const registerAdmin = async (req, res) => {
         //     `https://outstation.revelsmit.in/`,
         //     'OM Portal'
         // );
-        // let html = emailTemplate(
-        //         newAdmin.name,
-        //         `Please use following credentials for your category related portal.<div><b>Email</b> : ${newAdmin.email} \n <b>Password : </b> ${newAdmin.password}</div>`,
-        //         `https://revelsmit.in/admin`,
-        //         'Category portal'
-        //     );
+        let html = emailTemplate(
+                newAdmin.name,
+                `Please use following credentials for your category related portal.<div><b>Email</b> : ${newAdmin.email} \n <b>Password : </b> ${newAdmin.password}</div>`,
+                `https://revelsmit.in/admin`,
+                'Category portal'
+            );
 
         
         // SES
@@ -214,6 +213,7 @@ const registerAdmin = async (req, res) => {
         
         // Node Mailer
         // await mailer(newAdmin.email,"Admin Credentials Revels'22 ",html)
+        // await mailer("","Admin Credentials Revels'22 ",html)
 
         return res
             .status(200)
