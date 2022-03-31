@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import EventCard from '../../components/EventCard/EventCard';
-import Lottie from 'lottie-react';
-import noEvents from '../../assets/noEvents.json';
-import Loader from '../Loader/Loader';
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import EventCard from "../../components/EventCard/EventCard";
+import Lottie from "lottie-react";
+import noEvents from "../../assets/noEvents.json";
+import Loader from "../Loader/Loader";
+import "./EventPage.css";
 const Events = () => {
   const [events, setEvents] = useState([]);
+  const [tab, settab] = useState(0);
   const getAllEvents = async () => {
     try {
-      const res = await axios.get('/api/user/event/getallevents');
+      const res = await axios.get("/api/user/event/getallevents");
       setEvents(res.data.data);
+      console.log(res.data.data)
     } catch (error) {
       console.log(error);
     }
@@ -20,7 +22,18 @@ const Events = () => {
   }, []);
 
   return (
-    <div
+    <>
+      <div className="tabs-wrapper">
+        <div className={ tab ==0 ? "taeb-switch left text-center" : "taeb-switch right text-center"}>
+          <div className={tab == 0 ? "taeb active" : "taeb"} taeb-direction="left" onClick={()=>settab(0)}>
+            Sports
+          </div>
+          <div className={tab == 1 ? "taeb active" : "taeb"} taeb-direction="right" onClick={()=>settab(1)}>
+            Cultural
+          </div>
+        </div>
+      </div>
+      <div
       style={{
         display: 'flex',
         justifyContent: "center",
@@ -30,8 +43,14 @@ const Events = () => {
       }}
     >
       {events
-        ? events.map((eventData, index) => {
-            return <EventCard key={index} index={index} data={eventData} />;
+        ? events.filter((event)=>{
+          
+          return tab ===0 ?  event.eventType === "SPORTS" :  event.eventType === "CULTURAL"
+        }).map((eventData, index) => {
+            return (<>
+            <EventCard key={index} index={index} data={eventData} />
+            
+            </>);
           })
         : 
         <Loader />
@@ -42,6 +61,7 @@ const Events = () => {
           <h3 className="font-heavy" style={{ color: "#c4515c", fontSize: "2rem" }}>NO EVENTS FOUND!</h3>
         </div>}
     </div>
+    </>
   );
 };
 
