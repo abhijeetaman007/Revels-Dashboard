@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,kBAAkB,CAAC;EACf,UAAU,EAAE,KAAK;EACjB,OAAO,EAAE,MAAM;CAClB;;AACD,MAAM,MAAM,MAAM,MAAM,SAAS,EAAE,KAAK;EACpC,AAAA,kBAAkB,CAAC;IACf,WAAW,EAAE,GAAG;GACnB",
+    "sources": [
+        "OpenPages.scss"
+    ],
+    "names": [],
+    "file": "OpenPages.css"
+}

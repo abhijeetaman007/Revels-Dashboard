@@ -85,7 +85,7 @@ const adminLogin = async (req, res) => {
         .status(401)
         .json({ success: false, msg: 'Invalid Admin Email' });
 
-    if (!password == admin.password)
+    if (password !== admin.password)
       return res.status(401).json({ success: false, msg: 'Invalid password' });
     let payload = {
       admin_Id: admin._id,
