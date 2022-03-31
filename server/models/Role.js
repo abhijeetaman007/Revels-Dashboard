@@ -7,6 +7,7 @@ const RoleSchema = new mongoose.Schema(
       enum: [0, 1],
       type: Number,
     },
+    // -1 - Category HR
     // 0 - User Roles;
     // 1 - Category Read Only; 2 - Category Read/Write; 3 - Category SuperAdmin;
     // 4 - SuperAdmin
