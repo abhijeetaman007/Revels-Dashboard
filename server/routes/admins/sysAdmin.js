@@ -217,7 +217,7 @@ const registerAdmin = async (req, res) => {
 
         return res
             .status(200)
-            .send({ success: true, msg: 'New Admin Registered' });
+            .send({ success: true, msg: 'New Admin Registered',data:newAdmin });
     } catch (err) {
         console.log(err);
         return res
