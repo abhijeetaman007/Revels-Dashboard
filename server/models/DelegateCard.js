@@ -14,7 +14,7 @@ const DelCardSchema = new mongoose.Schema(
     },
     type: {
       type: String,
-      enum: ["PROSHOW", "INF", "GAMING", "WORKSHOPS","GENERAL"],
+      enum: ["PROSHOW", "INF", "GAMING", "WORKSHOPS","GENERAL","SPORTS"],
       required:true,
     },
     mitPrice:{
