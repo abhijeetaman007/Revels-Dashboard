@@ -10,7 +10,6 @@
     display: flex;
     position: fixed;
     width: 100%;
-    /* background-color: #100b1b; */
     top: 0;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
@@ -51,11 +50,8 @@
     margin-left: 5rem;
     cursor: pointer;
 }
-.nav-active {
-    color: #d8cfc7;
-}
 .nav-link{
-    font-size: 1.6rem;
+    font-size: 1.3rem;
     text-transform: uppercase;
     font-weight: 400;
     color: white;
@@ -63,7 +59,7 @@
     cursor: pointer;
 }
 .nav-link:hover{
-    color: #d8cfc7;
+    color: #ff9233;
     cursor: pointer;
     transform: translateY(-3px);
     transition-duration: 500ms;

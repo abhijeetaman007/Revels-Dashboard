@@ -1,5 +1,19 @@
-.proshow {
-    padding-bottom: 70px;    
+.proshow-wrapper {
+    padding: 7rem;    
+    display: block;
+    // text-align: center;
+    h1 {
+        margin: 50px 0;
+        font-size: 3rem;
+        letter-spacing: 1rem;
+    }
+}
+.proshow-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 .button-bar{
     width: 83%;

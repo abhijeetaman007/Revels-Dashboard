@@ -58,7 +58,7 @@ const ResetPassword = () => {
       <div className="row">
         <div className="col-md-8 p-0 col-12 hello-area d-flex flex-column justify-content-center align-items-center">
           <div className="hello-box">
-            <img src={logoBlack} style={{ height: "100%" }}></img>
+            <img alt="Logo" src={logoBlack} style={{ height: "100%" }}></img>
           </div>
           <h4 className="auth-revelry">LET THE REVELRY BEGIN</h4>
         </div>

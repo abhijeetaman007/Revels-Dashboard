@@ -168,10 +168,10 @@ const Register = (props) => {
             required
             value={college}
             onChange={(e) => {
-              console.log(college);
+              e.preventDefault();
               let val = JSON.parse(e.target.value);
               setCollege(e.target.value);
-              setIsMahe(val.isMahe);
+              setIsMahe(val.name === "MANIPAL INSTITUTE OF TECHNOLOGY");
               setEmail("");
               setRegNum("");
             }}
@@ -212,7 +212,7 @@ const Register = (props) => {
                 onChange={(e) => setEmail(e.target.value.trim())}
                 maxLength={100}
               />
-              <div className="mb-2 eye">
+              <div className="learner-eye">
                 <p>@learner.manipal.edu</p>
               </div>
               <label>Learner ID</label>

@@ -1,13 +1,17 @@
 import React from 'react';
 import './EventCard.scss';
+import {Link} from "react-router-dom";
 const EventCard = ({ data, index }) => {
+  const [eventPath, setEventPath] = React.useState(
+    `/dashboard/event/${data._id}`
+  );
   const eventCardColours = ["event-back-1", "event-back-2"];
   return (
     <div className={`event-card-wrapper card-up ${eventCardColours[index % 2]}`}>
       <div className="event-content">
         <div className="event-header">
           <div className="event-area">
-            <p className="font-heavy">{data.category.category}</p>
+            <p className="font-heavy">{data.category.category.toUpperCase()}</p>
             <h3 className="font-light">{data.name}</h3>
           </div>
           <div className="button-area">

@@ -3,6 +3,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import Events from "../EventPage/EventPage";
 import ComingSoonDash from "../../components/ComingSoon/ComingSoon2";
 import "./OpenPages.scss";
+import Proshow from "../Proshow/Proshow";
 
 const OpenPages = ({ pageType }) => {
     return (
@@ -13,6 +14,7 @@ const OpenPages = ({ pageType }) => {
                 <Events />
             </div>}
             {pageType === "coming-soon" && <ComingSoonDash />}
+            {pageType === "proshow" && <Proshow isPublicProshow={true}/>}
         </div>
     )
 }

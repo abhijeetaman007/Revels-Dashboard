@@ -29,9 +29,9 @@ const Navbar = ({ isBackground }) => {
               {auth.user && <li className="nav-item" onClick={closeNav}>
                   <a href="/dashboard" className="nav-link">Dashboard</a>
               </li>}
-              {/* <li className="nav-item" onClick={closeNav}>
+              <li className="nav-item" onClick={closeNav}>
                   <a href="/rulebook" className="nav-link">Rulebook</a>
-              </li> */}
+              </li>
               <li className="nav-item" onClick={closeNav}>
                   <a href="/events" className="nav-link">Events</a>
               </li>

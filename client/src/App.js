@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Toaster } from 'react-hot-toast';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import AuthProvider from './context/AuthContext';
+import { Worker } from '@react-pdf-viewer/core';
 
 import Layout from './pages/Layout/Layout';
 import AuthPage from './pages/AuthPages/AuthPage';
@@ -103,17 +104,18 @@ function App() {
             />
             <Route path="/verify/:token" element={<VerifyEmail />} />
             <Route path="/verified" element={<VerifyAnimation />} />
-            {/* <Route
+            <Route
               path="/rulebook"
               element={
                 <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.13.216/build/pdf.worker.min.js">
                   <Rulebook />
                 </Worker>
               }
-            /> */}
+            />
             <Route exact path="/events" element={<OpenPages pageType="events"/>} />
             <Route exact path="/tshirts" element={<OpenPages pageType="coming-soon"/>} />
             <Route exact path="/schedule" element={<OpenPages pageType="coming-soon"/>} />
+            {/* <Route exact path="/proshow" element={<OpenPages pageType="proshow"/>} /> */}
             <Route exact path="/admin" element={<Login />} />
             <Route
               exact
@@ -132,43 +134,6 @@ function App() {
       <Toaster />
     </div>
   );
-  // return (
-  //   <div className="App">
-  //     <BrowserRouter>
-  //       <AuthProvider>
-  //         <Routes>
-  //           <Route path="/" element={<Landing />} />
-  //           <Route
-  //             exact
-  //             path="/login"
-  //             element={
-  //               <AuthPage />
-  //             }
-  //           />
-  //           <Route
-  //             exact
-  //             path="/dashboard"
-  //             element={
-  //               <PrivateRoute>
-  //                 <Dashboard />
-  //               </PrivateRoute>
-  //             }
-  //           />
-  //           <Route
-  //             exact
-  //             path="/forgetpass/:passtoken"
-  //             element={
-  //               <ResetPassword />
-  //             }
-  //           />
-  //           {/* <Route path="/admin/:category" element={}/> */}
-  //           {/* <Route path="/admin/SYSADMIN" element={}/> */}
-  //         </Routes>
-  //       </AuthProvider>
-  //     </BrowserRouter>
-  //     <Toaster />
-  //   </div>
-  // );
 }
 
 export default App;

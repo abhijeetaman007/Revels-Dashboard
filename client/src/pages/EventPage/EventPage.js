@@ -4,7 +4,7 @@ import EventCard from "../../components/EventCard/EventCard";
 import Lottie from "lottie-react";
 import noEvents from "../../assets/noEvents.json";
 import Loader from "../Loader/Loader";
-import "./EventPage.css";
+import "./TabSwitch.css";
 const Events = () => {
   const [events, setEvents] = useState([]);
   const [tab, settab] = useState(0);
@@ -12,7 +12,6 @@ const Events = () => {
     try {
       const res = await axios.get("/api/user/event/getallevents");
       setEvents(res.data.data);
-      console.log(res.data.data)
     } catch (error) {
       console.log(error);
     }
@@ -23,12 +22,12 @@ const Events = () => {
 
   return (
     <>
-      <div className="tabs-wrapper">
-        <div className={ tab ==0 ? "taeb-switch left text-center" : "taeb-switch right text-center"}>
-          <div className={tab == 0 ? "taeb active" : "taeb"} taeb-direction="left" onClick={()=>settab(0)}>
+      <div className="tabs-wrapper font-medium">
+        <div className={ tab === 0 ? "taeb-switch left text-center" : "taeb-switch right text-center"}>
+          <div className={tab === 0 ? "taeb active font-heavy" : "taeb"} taeb-direction="left" onClick={()=>settab(0)}>
             Sports
           </div>
-          <div className={tab == 1 ? "taeb active" : "taeb"} taeb-direction="right" onClick={()=>settab(1)}>
+          <div className={tab === 1 ? "taeb active font-heavy" : "taeb"} taeb-direction="right" onClick={()=>settab(1)}>
             Cultural
           </div>
         </div>
@@ -36,7 +35,7 @@ const Events = () => {
       <div
       style={{
         display: 'flex',
-        justifyContent: "center",
+        justifyContent: "start",
         flexWrap: 'wrap',
         gap: '10px',
         height: 'fit-content',
@@ -44,12 +43,10 @@ const Events = () => {
     >
       {events
         ? events.filter((event)=>{
-          
-          return tab ===0 ?  event.eventType === "SPORTS" :  event.eventType === "CULTURAL"
+          return tab === 0 ?  event.eventType === "SPORTS" :  event.eventType === "CULTURAL"
         }).map((eventData, index) => {
             return (<>
-            <EventCard key={index} index={index} data={eventData} />
-            
+              <EventCard key={index} index={index} data={eventData} />
             </>);
           })
         : 
