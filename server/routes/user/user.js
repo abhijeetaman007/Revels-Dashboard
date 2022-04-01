@@ -21,6 +21,7 @@ const userRegister = async (req, res) => {
       course,
       college,
     } = req.body;
+    email = email.toLowerCase();
     console.log(req.body);
     let collegeExists = await College.findOne({ name: college }, { isMahe: 1 });
     if (!collegeExists) {
@@ -180,6 +181,7 @@ const userLogin = async (req, res) => {
   try {
     console.log("User Login");
     let { email, password } = req.body;
+    email = email.toLowerCase();
     let user = await User.findOne(
       { email },
       { password: 1, role: 1, isEmailVerified: 1 }
