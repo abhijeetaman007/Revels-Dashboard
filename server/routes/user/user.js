@@ -1,17 +1,17 @@
-const User = require('../../models/User');
-const College = require('../../models/College');
-var jwt = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
-const { mailer } = require('../../utils/mailer');
-const Role = require('../../models/Role');
-const { File } = require('../../models/file');
-const { doUpload } = require('../../utils/file-upload/upload-controller');
-const { emailTemplate } = require('../../utils/template');
-const { sendEmailNotif, sendENotif } = require('../../utils/ses');
+const User = require("../../models/User");
+const College = require("../../models/College");
+var jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
+const { mailer } = require("../../utils/mailer");
+const Role = require("../../models/Role");
+const { File } = require("../../models/file");
+const { doUpload } = require("../../utils/file-upload/upload-controller");
+const { emailTemplate } = require("../../utils/template");
+const { sendEmailNotif, sendENotif } = require("../../utils/ses");
 
 const userRegister = async (req, res) => {
   try {
-    console.log('Register User route');
+    console.log("Register User route");
     let {
       name,
       email,
@@ -26,7 +26,7 @@ const userRegister = async (req, res) => {
     if (!collegeExists) {
       return res
         .status(400)
-        .send({ success: false, msg: 'College Not allowed' });
+        .send({ success: false, msg: "College Not allowed" });
     }
     // let isMahe = college.isMahe
     // let isMIT = false
@@ -50,11 +50,11 @@ const userRegister = async (req, res) => {
     if (user) {
       return res
         .status(400)
-        .send({ success: false, msg: 'User already exists.' });
+        .send({ success: false, msg: "User already exists." });
     }
 
     let isMahe = collegeExists.isMahe;
-    if (college == 'MANIPAL INSTITUTE OF TECHNOLOGY') {
+    if (college == "MANIPAL INSTITUTE OF TECHNOLOGY") {
       isMahe = 1;
     }
 
@@ -73,12 +73,12 @@ const userRegister = async (req, res) => {
       { userEmail: email },
       process.env.JWT_SECRET,
       {
-        expiresIn: '3d',
+        expiresIn: "3d",
       }
     );
 
-    let verified = 'UNVERIFIED';
-    if (isMahe) verified = 'VERIFIED';
+    let verified = "UNVERIFIED";
+    if (isMahe) verified = "VERIFIED";
 
     // const date = new Date();
     // offset = (60 * 5 + 30) * 60 * 1000;
@@ -91,7 +91,7 @@ const userRegister = async (req, res) => {
       categoryId: null,
     });
     if (!role)
-      return res.status(500).send({ success: false, msg: 'Role Not Created' });
+      return res.status(500).send({ success: false, msg: "Role Not Created" });
 
     const newUser = new User({
       name,
@@ -112,20 +112,20 @@ const userRegister = async (req, res) => {
     message = `Please Click to verify \n${process.env.FRONT_END_URL}verify/${passwordResetToken} \nRegards,\nSystem Admin - Aagaz | Revels '22`;
     html = emailTemplate(
       newUser.name,
-      'Please click the below to verify your account.',
+      "Please click the below to verify your account.",
       `${process.env.FRONT_END_URL}verify/${passwordResetToken}`,
-      'Verify'
+      "Verify"
     );
 
-    res.status(200).send({ success: true, msg: 'User Registered' });
-    sendENotif(newUser.email, 'Email Verification Revels', message);
-    sendEmailNotif(newUser.email, 'Email Verification Revels', html, message);
+    res.status(200).send({ success: true, msg: "User Registered" });
+    sendENotif(newUser.email, "Email Verification Revels", message);
+    sendEmailNotif(newUser.email, "Email Verification Revels", html, message);
     return 0;
   } catch (err) {
     console.log(err);
     res.status(500).send({
       success: false,
-      msg: 'Internal Server Error',
+      msg: "Internal Server Error",
     });
   }
 };
@@ -135,7 +135,7 @@ const resendVerificationLink = async (req, res) => {
     if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(req.body.email))
       return res
         .status(400)
-        .send({ success: false, msg: 'Please enter a valid email' });
+        .send({ success: false, msg: "Please enter a valid email" });
 
     let user = await User.exists({
       email: req.body.email,
@@ -144,13 +144,13 @@ const resendVerificationLink = async (req, res) => {
     if (!user)
       return res.status(400).send({
         success: false,
-        msg: 'Email already verified or Inavlid Email',
+        msg: "Email already verified or Inavlid Email",
       });
     const passwordResetToken = jwt.sign(
       { userEmail: req.body.email },
       process.env.JWT_SECRET,
       {
-        expiresIn: '3d',
+        expiresIn: "3d",
       }
     );
     const userDetails = await User.findOneAndUpdate(
@@ -160,24 +160,25 @@ const resendVerificationLink = async (req, res) => {
     message = `Please Click to verify ${process.env.FRONT_END_URL}verify/${passwordResetToken}`;
     html = emailTemplate(
       userDetails.name,
-      'Please click the below button to verify your account.',
+      "Please click the below button to verify your account.",
       `${process.env.FRONT_END_URL}verify/${passwordResetToken}`,
-      'Verify'
+      "Verify"
     );
-    res.status(200).send({ success: true, msg: 'Email Resent' });
-    sendEmailNotif(req.body.email, 'Email Verification Revels', html, message);
+    res.status(200).send({ success: true, msg: "Email Resent" });
+    sendEmailNotif(req.body.email, "Email Verification Revels", html, message);
+    sendENotif(req.body.email, "Email Verification Revels", message);
     return 0;
   } catch (err) {
     console.log(err);
     return res
       .status(500)
-      .send({ success: false, msg: 'Internal Server Error' });
+      .send({ success: false, msg: "Internal Server Error" });
   }
 };
 
 const userLogin = async (req, res) => {
   try {
-    console.log('User Login');
+    console.log("User Login");
     let { email, password } = req.body;
     let user = await User.findOne(
       { email },
@@ -186,16 +187,16 @@ const userLogin = async (req, res) => {
     if (!user)
       return res
         .status(401)
-        .send({ success: false, msg: 'Invalid Credentials' });
+        .send({ success: false, msg: "Invalid Credentials" });
     if (!user.isEmailVerified)
       return res
         .status(403)
-        .send({ success: false, msg: 'Please Verify Email to login' });
+        .send({ success: false, msg: "Please Verify Email to login" });
     let passwordMatches = await bcrypt.compare(password, user.password);
     if (!passwordMatches)
       return res
         .status(401)
-        .send({ success: false, msg: 'Invalid Credentials' });
+        .send({ success: false, msg: "Invalid Credentials" });
 
     //Password matches,generating token
     const payload = {
@@ -212,36 +213,36 @@ const userLogin = async (req, res) => {
       { new: true }
     )
       .select({ password: 0 })
-      .populate('delegateCards role');
+      .populate("delegateCards role");
     res.status(200).send({
       success: true,
-      msg: 'Login Successful',
+      msg: "Login Successful",
       data: user,
     });
   } catch (err) {
     console.log(err);
     res.status(500).send({
       success: false,
-      msg: 'Internal Server Error',
+      msg: "Internal Server Error",
     });
   }
 };
 const userLogout = async (req, res) => {
   try {
-    let token = req.headers['authorization'];
+    let token = req.headers["authorization"];
     let user = await User.exists({ token });
     if (!user)
-      return res.status(400).send({ success: false, msg: 'User not LoggedIn' });
+      return res.status(400).send({ success: false, msg: "User not LoggedIn" });
     await User.updateOne({ token }, { $set: { token: null } });
     res.status(200).send({
       success: true,
-      msg: 'Successfully LoggedOut',
+      msg: "Successfully LoggedOut",
     });
   } catch (err) {
     console.log(err);
     res.status(500).send({
       success: false,
-      msg: 'Internal Server Error',
+      msg: "Internal Server Error",
     });
   }
 };
@@ -250,7 +251,7 @@ const userEmailVerify = async (req, res) => {
   try {
     let token = req.params.token;
     let user = await User.findOne({ passwordResetToken: token }, { isMahe: 1 });
-    if (!user) return res.send({ success: false, msg: 'Token Invalid' });
+    if (!user) return res.send({ success: false, msg: "Token Invalid" });
     if (user.isMahe != 0) {
       await User.updateOne(
         { passwordResetToken: token },
@@ -258,7 +259,7 @@ const userEmailVerify = async (req, res) => {
           $set: {
             passwordResetToken: null,
             isEmailVerified: true,
-            status: 'VERIFIED',
+            status: "VERIFIED",
           },
         }
       );
@@ -268,10 +269,10 @@ const userEmailVerify = async (req, res) => {
         { $set: { passwordResetToken: null, isEmailVerified: true } }
       );
     }
-    return res.send({ success: true, msg: 'User Verified' });
+    return res.send({ success: true, msg: "User Verified" });
   } catch (err) {
     console.log(err);
-    return res.send({ success: false, msg: 'Internal Server Error' });
+    return res.send({ success: false, msg: "Internal Server Error" });
   }
 };
 
@@ -281,12 +282,12 @@ const userPassResetLink = async (req, res) => {
     if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
       return res
         .status(400)
-        .send({ success: false, msg: 'Please enter a valid email' });
+        .send({ success: false, msg: "Please enter a valid email" });
     let user = await User.exists({ email });
     if (!user) {
       return res.send({
         success: false,
-        msg: 'User does not exists,Please register ',
+        msg: "User does not exists,Please register ",
       });
     }
     const payload = {
@@ -306,16 +307,17 @@ const userPassResetLink = async (req, res) => {
     let message = `Click here to change yout password ${resetLink}`;
     html = emailTemplate(
       userDetails.name,
-      'Please click below to reset your account password.',
+      "Please click below to reset your account password.",
       resetLink,
-      'Reset Password'
+      "Reset Password"
     );
-    res.send({ success: true, msg: 'Password Reset Link emailed' });
-    sendEmailNotif(email, 'Revels Reset Password', html, message);
+    res.send({ success: true, msg: "Password Reset Link emailed" });
+    sendEmailNotif(email, "Revels Reset Password", html, message);
+    sendENotif(email, "Revels Reset Password", message);
     return 0;
   } catch (err) {
     console.log(err);
-    return res.send({ success: false, msg: 'Internal Server Error' });
+    return res.send({ success: false, msg: "Internal Server Error" });
   }
 };
 const userPassResetVerify = async (req, res) => {
@@ -326,18 +328,18 @@ const userPassResetVerify = async (req, res) => {
     if (!user) {
       return res
         .status(400)
-        .send({ success: false, msg: 'Email Not Registered' });
+        .send({ success: false, msg: "Email Not Registered" });
     }
     if (newPassword.length < 8) {
       return res.status(400).send({
         success: false,
-        msg: 'Password of minimum 8 characters is required',
+        msg: "Password of minimum 8 characters is required",
       });
     }
     if (user.passwordResetToken != token) {
       return res.status(400).send({
         success: false,
-        msg: 'Password Reset Failed',
+        msg: "Password Reset Failed",
       });
     }
     const salt = await bcrypt.genSalt(10);
@@ -348,33 +350,33 @@ const userPassResetVerify = async (req, res) => {
     );
     return res.send({
       success: true,
-      msg: 'Password Changed Successfully',
+      msg: "Password Changed Successfully",
     });
   } catch (err) {
     console.log(err);
-    return res.send({ success: false, msg: 'Internal Server Error' });
+    return res.send({ success: false, msg: "Internal Server Error" });
   }
 };
 
 const getUserFromToken = async (req, res) => {
   try {
     let user = req.requestUser;
-    console.log('user', user);
+    console.log("user", user);
     if (user) return res.send({ success: true, data: user });
-    else return res.status(400).send({ success: false, data: 'Invalid Token' });
+    else return res.status(400).send({ success: false, data: "Invalid Token" });
   } catch (error) {
     return res
       .status(500)
-      .send({ success: false, message: 'Internal Server Error' });
+      .send({ success: false, message: "Internal Server Error" });
   }
 };
 
 const updateAccommodation = async (req, res) => {
   try {
     console.log(
-      'checking accom : ' +
+      "checking accom : " +
         req.body.required +
-        ' and date ' +
+        " and date " +
         req.body.arrivalDateTime
     );
     let { required, arrivalDateTime } = req.body;
@@ -383,14 +385,14 @@ const updateAccommodation = async (req, res) => {
     if (user.isMahe) {
       return res.status(400).send({
         success: false,
-        msg: 'Accomodation only for Outside Participants',
+        msg: "Accomodation only for Outside Participants",
       });
     }
     // Already Applied
     if (user.accommodation.required) {
       return res
         .status(200)
-        .send({ success: true, msg: 'Already applied for Accommodation' });
+        .send({ success: true, msg: "Already applied for Accommodation" });
     }
     if (!required) {
       arrivalDateTime = null;
@@ -408,17 +410,17 @@ const updateAccommodation = async (req, res) => {
     );
     return res
       .status(200)
-      .send({ success: true, msg: 'Accommodation Status Updated' });
+      .send({ success: true, msg: "Accommodation Status Updated" });
   } catch (err) {
     console.log(err);
     return res
       .status(500)
-      .send({ success: false, msg: 'Internal Server Error' });
+      .send({ success: false, msg: "Internal Server Error" });
   }
 };
 
 const updateUser = async (req, res) => {
-  console.log('updated');
+  console.log("updated");
   try {
     let user = req.requestUser;
     console.log(req.files.aadhar);
@@ -460,20 +462,20 @@ const getFile = (file, user) => {
   const randomID =
     Math.random()
       .toString(36)
-      .replace(/[^a-z]+/g, '')
-      .substr(0, 5) + '_';
+      .replace(/[^a-z]+/g, "")
+      .substr(0, 5) + "_";
   const newFile = new File({
     fileName: file.originalname,
     url:
-      'https://' +
+      "https://" +
       process.env.BUCKET +
-      '.s3.amazonaws.com/users/' +
+      ".s3.amazonaws.com/users/" +
       user._id +
-      '/' +
+      "/" +
       randomID +
       file.originalname,
     type: file.mimetype,
-    key: 'users/' + user._id + '/' + randomID + file.originalname,
+    key: "users/" + user._id + "/" + randomID + file.originalname,
   });
   doUpload(newFile.key, file);
   console.log(newFile);

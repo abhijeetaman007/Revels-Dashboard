@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const Event = require('./Event');
-const DelCard = require('./DelegateCard');
-const file = require('./file').FileSchema;
+const mongoose = require("mongoose");
+const Event = require("./Event");
+const DelCard = require("./DelegateCard");
+const file = require("./file").FileSchema;
 
 const UserSchema = new mongoose.Schema(
   {
@@ -13,7 +13,7 @@ const UserSchema = new mongoose.Schema(
     },
     role: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Role',
+      ref: "Role",
     },
     token: {
       type: String,
@@ -87,8 +87,8 @@ const UserSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      enum: ['VERIFIED', 'REJECTED', 'UNVERIFIED', 'BANNED'],
-      default: 'UNVERIFIED',
+      enum: ["VERIFIED", "REJECTED", "UNVERIFIED", "BANNED"],
+      default: "UNVERIFIED",
     },
     // regEvents: [
     //   {
@@ -118,11 +118,17 @@ const UserSchema = new mongoose.Schema(
     delegateCards: [
       {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'DelCard',
+        ref: "DelCard",
+      },
+    ],
+    pendingDelegateCards: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "DelCard",
       },
     ],
   },
   { timestamps: true }
 );
 
-module.exports = User = mongoose.model('User', UserSchema);
+module.exports = User = mongoose.model("User", UserSchema);

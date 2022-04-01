@@ -74,6 +74,7 @@ const Register = (props) => {
     const toastId = toast.loading("Loading...");
     if (validateForm(toastId)) {
       try {
+        setEmail(email.toLowerCase());
         const res = await auth.userRegister(
           name.trim(),
           email,
