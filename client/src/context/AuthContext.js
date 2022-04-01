@@ -50,7 +50,8 @@ export default function AuthProvider({ children }) {
           setadminPayment(res.data.data);
           console.log(adminPayment);
           setLoading(false);
-        } else if (res.data.success) {
+        }
+        if (res.data.success) {
           setAdmin(res.data.data);
           setLoading(false);
         } else {
@@ -152,7 +153,9 @@ export default function AuthProvider({ children }) {
   // method to handle admin logout
   const adminlogout = async () => {
     try {
+      console.log("admin logout");
       setAdmin(null);
+      setadminPayment(null);
       localStorage.removeItem(ADMIN_TOKEN_ID);
       navigate("/admin");
     } catch (err) {

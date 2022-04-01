@@ -46,10 +46,10 @@ const Login = ({ category }) => {
     if (!auth.loading) {
       if (auth.adminPayment) {
         navigate("/admin/payment");
-      }
-      if (auth.admin) {
+      } else if (auth.admin) {
+        console.log("here");
         navigate("/admin/dashboard");
-      }
+      } else navigate("/admin");
     }
   }, [navigate, auth]);
   return (

@@ -7,7 +7,12 @@ import { ADMIN_TOKEN_ID } from '../../../utils/constants';
 import './EventTitle.css';
 import Modal from 'react-modal';
 import EventModal from './EventModal';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../context/AuthContext';
 const Dashboard = () => {
+  const navigate = useNavigate();
+  const auth =useAuth();
+
   const validateForm = () => {
     if (
       data.name === '' ||
@@ -225,6 +230,7 @@ const Dashboard = () => {
     }
   };
   useEffect(() => {
+    if(auth.adminPayment)navigate('/admin/payment');
     getCategory();
     getEvents();
   }, []);

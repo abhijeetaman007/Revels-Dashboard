@@ -119,6 +119,7 @@ function Card({ info, user, searchUser }) {
   );
 }
 function TicketDashboard() {
+  const auth = useAuth();
   const [delegateId, setdelegateId] = useState();
   const [user, setuser] = useState();
   const searchUser = async (e) => {
@@ -160,7 +161,7 @@ function TicketDashboard() {
         <h1>Payment Verify</h1>
       </div>
       <p>
-        <button className="tick-btn">
+        <button className="tick-btn" onClick={auth.adminLogout}>
           Log Out <i className="fa fa-power-off"></i>
         </button>
       </p>
