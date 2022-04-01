@@ -10,9 +10,9 @@ import './InsideEvent.scss';
 import { useAuth } from '../../context/AuthContext';
 const customStyles = {
   content: {
-    backgroundColor: "#100b1b",
+    backgroundColor: '#100b1b',
     border: 0,
-    borderRadius: "10px",
+    borderRadius: '10px',
     top: '50%',
     left: '50%',
     right: 'auto',
@@ -143,53 +143,57 @@ const InsideEvent = () => {
     }
   };
   // component to render event details
-  const DataComponent = ({icon, heading, text}) => {
+  const DataComponent = ({ icon, heading, text }) => {
     return (
       <div className="event-data">
         <div className="d-flex align-items-center">
           <i className={`fa ${icon} mr-1`}></i>
           <p className="ml-1 grey small-font">{heading}</p>
         </div>
-        <p className="font-light">
-          {text}
-        </p>
+        <p className="font-light">{text}</p>
       </div>
-    )
-  }
+    );
+  };
   return (
     <Layout activeTab={'events'} isAagazVisible={true}>
       <div className="event-details">
         <div className="cat-event">
-          <img className="category-logo" src="https://qph.fs.quoracdn.net/main-qimg-a5b5639f84c719c9d7a861a1cf7d62aa-lq"></img>
+          <img
+            className="category-logo"
+            src="https://qph.fs.quoracdn.net/main-qimg-a5b5639f84c719c9d7a861a1cf7d62aa-lq"
+          ></img>
           <div className="name-type">
             <p className="font-heavy">{event.eventType} </p>
             <p className="font-light">{event.name}</p>
           </div>
         </div>
         <div className="event-group ele">
-          {DataComponent({ 
-            icon: "fa-users",
-            heading: "Team Size", 
-            text: event.minMembers === event.maxMembers ? "Individual event" : `${event.minMembers} - ${event.maxMembers}`
+          {DataComponent({
+            icon: 'fa-users',
+            heading: 'Team Size',
+            text:
+              event.minMembers === event.maxMembers
+                ? 'Individual event'
+                : `${event.minMembers} - ${event.maxMembers}`,
           })}
-          {DataComponent({ 
-            icon: "fa-calendar-o",
-            heading: "Event Date",
+          {DataComponent({
+            icon: 'fa-calendar-o',
+            heading: 'Event Date',
             text: `${new Date(event.eventDateTime).getDate()}/
             ${new Date(event.eventDateTime).getMonth()}/
-            ${new Date(event.eventDateTime).getFullYear()}`
+            ${new Date(event.eventDateTime).getFullYear()}`,
           })}
-          {DataComponent({ 
-            icon: "fa-map-marker",
-            heading: "Event Venue",
-            text: `${event.eventVenue}`
+          {DataComponent({
+            icon: 'fa-map-marker',
+            heading: 'Event Venue',
+            text: `${event.eventVenue}`,
           })}
-          {DataComponent({ 
-            icon: "fa-calendar-check-o",
-            heading: "Registration Deadline",
+          {DataComponent({
+            icon: 'fa-calendar-check-o',
+            heading: 'Registration Deadline',
             text: `${new Date(event.registrationDeadline).getDate()}/
             ${new Date(event.registrationDeadline).getMonth()}/
-            ${new Date(event.registrationDeadline).getFullYear()}`
+            ${new Date(event.registrationDeadline).getFullYear()}`,
           })}
         </div>
         <div className="ele font-light">{event.description}</div>
@@ -206,35 +210,37 @@ const InsideEvent = () => {
               <p className="font-medium">{event.name}</p>
               <i className="fa fa-close ml-auto" onClick={closeModal}></i>
             </div>
-            {event.maxMembers === 1 && <div className="reg-area">
-              <button
-                onClick={registerIndividual}
-              >
-                Join Individually
-              </button>
-            </div>}
-            {event.maxMembers > 1 && 
-            <div className="reg-area">
-              <button  
-                className="font-heavy create" 
-                onClick={registerIndividual}
-              >
-                Create new team
-              </button>
-              <div className="w-100 my-4" style={{ backgroundColor: "grey", height: 0.5 }}></div>
-              <input
-                className="input-team w-100"
-                type="text"
-                onChange={(e) => {
-                  setTeamIDInput(e.target.value);
-                }}
-                style={{ color: 'black' }}
-                placeholder="Team ID"
-              />
-              <button className="font-heavy" onClick={joinTeam}>
-                Request to join team
-              </button>
-            </div>}
+            {event.maxMembers === 1 && (
+              <div className="reg-area">
+                <button onClick={registerIndividual}>Join Individually</button>
+              </div>
+            )}
+            {event.maxMembers > 1 && (
+              <div className="reg-area">
+                <button
+                  className="font-heavy create"
+                  onClick={registerIndividual}
+                >
+                  Create new team
+                </button>
+                <div
+                  className="w-100 my-4"
+                  style={{ backgroundColor: 'grey', height: 0.5 }}
+                ></div>
+                <input
+                  className="input-team w-100"
+                  type="text"
+                  onChange={(e) => {
+                    setTeamIDInput(e.target.value);
+                  }}
+                  style={{ color: 'white' }}
+                  placeholder="Team ID"
+                />
+                <button className="font-heavy" onClick={joinTeam}>
+                  Request to join team
+                </button>
+              </div>
+            )}
             <div className="team-reg"></div>
           </div>
         </Modal>
@@ -246,9 +252,9 @@ const InsideEvent = () => {
           <div>
             <div className="event-group">
               {DataComponent({
-                icon: "fa-info-circle",
-                heading: "Team ID",
-                text: team.teamID
+                icon: 'fa-info-circle',
+                heading: 'Team ID',
+                text: team.teamID,
               })}
               <div className="event-data">
                 <div className="d-flex align-items-center">
@@ -256,15 +262,19 @@ const InsideEvent = () => {
                   <p className="font-heavy ml-1 pt-1">Team Members</p>
                 </div>
                 <div className="font-light d-flex">
-                {teammembers.length != 0
-                ? teammembers.map((member, index) => (
-                    <span className="font-light">
-                      {auth.user._id == teamCreator && <span><i className="fa fa-star mr-1"></i></span>}
-                      {member.user.name}
-                      {index !== teammembers.length - 1 && ","}
-                    </span>
-                  ))
-                : null}
+                  {teammembers.length != 0
+                    ? teammembers.map((member, index) => (
+                        <span className="font-light">
+                          {auth.user._id == teamCreator && (
+                            <span>
+                              <i className="fa fa-star mr-1"></i>
+                            </span>
+                          )}
+                          {member.user.name}
+                          {index !== teammembers.length - 1 && ','}
+                        </span>
+                      ))
+                    : null}
                 </div>
               </div>
             </div>
