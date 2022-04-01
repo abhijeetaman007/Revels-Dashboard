@@ -55,14 +55,14 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route 
-              exact 
-              path="/dashboard/events" 
+            <Route
+              exact
+              path="/dashboard/events"
               element={
-                <Layout activeTab="events">  
+                <Layout activeTab="events">
                   <Events />
                 </Layout>
-              } 
+              }
             />
             <Route
               exact
@@ -84,13 +84,13 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route 
-              path="/dashboard/delegatecard" 
+            <Route
+              path="/dashboard/delegatecard"
               element={
                 <Layout activeTab="delegate-card">
                   <DelegatePage />
                 </Layout>
-              } 
+              }
             />
             <Route
               exact
@@ -112,9 +112,21 @@ function App() {
                 </Worker>
               }
             />
-            <Route exact path="/events" element={<OpenPages pageType="events"/>} />
-            <Route exact path="/tshirts" element={<OpenPages pageType="coming-soon"/>} />
-            <Route exact path="/schedule" element={<OpenPages pageType="coming-soon"/>} />
+            <Route
+              exact
+              path="/events"
+              element={<OpenPages pageType="events" />}
+            />
+            <Route
+              exact
+              path="/tshirts"
+              element={<OpenPages pageType="coming-soon" />}
+            />
+            <Route
+              exact
+              path="/schedule"
+              element={<OpenPages pageType="coming-soon" />}
+            />
             {/* <Route exact path="/proshow" element={<OpenPages pageType="proshow"/>} /> */}
             <Route exact path="/admin" element={<Login />} />
             <Route
