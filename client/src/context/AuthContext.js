@@ -44,10 +44,11 @@ export default function AuthProvider({ children }) {
             authorization: token,
           },
         });
-        if(res.data.data.accessLevel ==5){
+        console.log(res.data.data.role.accessLevel);
+        if(res.data.data.role.accessLevel ===5){
           setadminPayment(res.data.data);
           setLoading(false);
-          return
+          
         }
         if (res.data.success) {
           setAdmin(res.data.data);
@@ -137,9 +138,13 @@ export default function AuthProvider({ children }) {
   // method to handle admin logout
   const adminlogout = async () => {
     try {
+      console.log('admin logout');
       setAdmin(null);
+      setadminPayment(null);
       localStorage.removeItem(ADMIN_TOKEN_ID);
       navigate('/admin');
+      console.log('admin after');
+      
     } catch (err) {
       throw err;
     }

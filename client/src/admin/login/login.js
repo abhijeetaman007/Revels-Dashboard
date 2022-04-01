@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import revels from './../../assets/logos/logo_landing.png';
 import { useAuth } from '../../context/AuthContext';
@@ -26,7 +26,8 @@ const Login = ({ category }) => {
         const res = await auth.adminLogin(email, password);
         if (res.success) {
           toast.success(res.msg, { position: 'bottom-center', id: toastId });
-          navigate('/admin/dashboard');
+          navigate('/admin/dashboard')
+          
         } else {
           toast.error(res.msg[0][Object.keys(res.msg[0])[0]], {
             position: 'bottom-center',
@@ -43,12 +44,15 @@ const Login = ({ category }) => {
   };
   useEffect(() => {
     if (!auth.loading) {
+      console.log("loadingg")
       if(auth.adminPayment){
         navigate('/admin/payment');
       }
-      if (auth.admin) {
+      else if (auth.admin) {
+        console.log("here")
         navigate('/admin/dashboard');
       }
+      else navigate('/admin');
     }
   }, []);
   return (

@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import logo from "../../assets/logos/logo_white.png";
 import "./TicketDashboard.scss";
+import { useAuth } from "../../context/AuthContext";
 function TicketDashboard() {
+  const auth = useAuth();
   const [delegateId, setdelegateId] = useState();
 
   const [receiptID, setreceiptID] = useState();
@@ -10,6 +12,8 @@ function TicketDashboard() {
   const [user, setuser] = useState();
   const [mode, setmode] = useState();
   const confirmPayment = async (e ,delegateId ) => {
+    const token = localStorage.getItem("adminid=");
+
     e.preventDefault();
     try {
       const data = { delegateId, receiptID, amount, mode ,user: user._id};
@@ -54,7 +58,7 @@ function TicketDashboard() {
       </div>
 
       <p>
-        <button className="tick-btn">
+        <button className="tick-btn" onClick={auth.adminLogout}>
           Log Out <i className="fa fa-power-off"></i>
         </button>
       </p>
