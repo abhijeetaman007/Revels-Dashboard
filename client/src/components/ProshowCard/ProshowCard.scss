@@ -4,7 +4,10 @@
     border-radius: 10px;
     .image-wrapper {
         border-radius: 10px;
-        background-image: url("./../../assets/Kuhad.png");
+        // background-image: url("./../../assets/Kuhad.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
         height: 100%;
         width: 100%;
         .gradient {
@@ -22,8 +25,8 @@
             border-radius: 10px;
             height: 100%;
             padding: 20px;
-            background: -webkit-linear-gradient(top, rgba(245, 115, 127, 0.08) 0.01%, rgba(0, 0, 0, 0.01) 0.02%, #F5737F 100%);
-            background: linear-gradient(180deg, rgba(245, 115, 127, 0.08) 0.01%, rgba(0, 0, 0, 0.01) 0.02%, #F5737F 100%);
+            background: -webkit-linear-gradient(top, rgba(245, 115, 127, 0.08) 0.01%, rgba(0, 0, 0, 0.01) 0.02%  #E1460D 100%);
+            background: linear-gradient(135deg, rgba(245, 115, 127, 0.08) 0.01%, rgba(0, 0, 0, 0.01) 20%, #E1460D 90%);
             .proshow-card-header {
                 color: white;
                 text-align: center;

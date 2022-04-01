@@ -145,7 +145,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
           {/* change {children} to <ComingSoonDash /> before pushing code */}
           {/* !!!!!!!!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!!!!!!! */}
           {/* {children} */}
-          { activeTab.toUpperCase() === "EVENTS" || activeTab.toUpperCase() === "MY-EVENTS" ? children : <ComingSoonDash /> }
+          { activeTab.toUpperCase() === "EVENTS" || activeTab.toUpperCase() === "MY-EVENTS" || activeTab.toUpperCase() === "PROSHOW" ? children : <ComingSoonDash /> }
         </div>
         {/* uncomment for proshow */}
         {/* {

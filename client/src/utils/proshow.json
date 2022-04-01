@@ -2,37 +2,50 @@
     {
         "day" : "DAY ONE",
         "date" : "13 April 2022",
-        "name" : "Akash Agarwal",
-        "description" : "Indian Song Writer"
+        "name" : "KK",
+        "description" : "Playback Singer",
+        "src" : "/proshow/kk.jpeg"
     },
     {
         "day" : "DAY ONE",
         "date" : "13 April 2022",
-        "name" : "Parthiv Menon",
-        "description" : "Sunburn DJ"
+        "name" : "Kenny Sebastin",
+        "description" : "Standup Comedian",
+        "src" : "/proshow/kenny.jpeg"
     },
     {
         "day" : "DAY TWO",
         "date" : "14 April 2022",
-        "name" : "Abhijeet",
-        "description" : "Hollywood Director"
+        "name" : "Nikhil D'souza",
+        "description" : "Singer and songwriter",
+        "src" : "/proshow/nikhil.jpeg"
     },
     {
         "day" : "DAY TWO",
         "date" : "14 April 2022",
-        "name" : "Rhea",
-        "description" : "Indie Band"
+        "name" : "Akash Mehta",
+        "description" : "Standup Comedian",
+        "src" : "/proshow/akash.jpg"
     },
     {
         "day" : "DAY THREE",
         "date" : "15 April 2022",
-        "name" : "Pal Chedhha",
-        "description" : "Bollywood Singer"
+        "name" : "Naalayak",
+        "description" : "Indie Band",
+        "src" : "/proshow/naalayak.jpg"
     },
     {
         "day" : "DAY THREE",
         "date" : "15 April 2022",
-        "name" : "Akash Agarwal",
-        "description" : "Indian Song Writer"
+        "name" : "Sruti Prakash",
+        "description" : "Fashion Model",
+        "src" : "/proshow/shruti.jpg"
+    },
+    {
+        "day" : "DAY THREE",
+        "date" : "15 April 2022",
+        "name" : "Tribhukti",
+        "description" : "Classical Jugalbandi",
+        "src" : "/proshow/tribhukti.jpg"
     }
 ]
