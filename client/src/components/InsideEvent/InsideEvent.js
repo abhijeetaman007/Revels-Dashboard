@@ -148,7 +148,7 @@ const InsideEvent = () => {
       <div className="event-data">
         <div className="d-flex align-items-center">
           <i className={`fa ${icon} mr-1`}></i>
-          <p className="font-heavy ml-1 pt-1">{heading}</p>
+          <p className="ml-1 grey small-font">{heading}</p>
         </div>
         <p className="font-light">
           {text}
@@ -162,7 +162,7 @@ const InsideEvent = () => {
         <div className="cat-event">
           <img className="category-logo" src="https://qph.fs.quoracdn.net/main-qimg-a5b5639f84c719c9d7a861a1cf7d62aa-lq"></img>
           <div className="name-type">
-            <p className="font-heavy">{event.eventType}</p>
+            <p className="font-heavy">{event.eventType} </p>
             <p className="font-light">{event.name}</p>
           </div>
         </div>
@@ -344,7 +344,7 @@ const InsideEvent = () => {
                 )}
               </div>
             ) : null}
-            <button className="font-heavy blueinwhite" onClick={leaveTeam}>
+            <button className="font-heavy border-box" onClick={leaveTeam}>
               Leave Team
             </button>
           </div>

@@ -26,6 +26,8 @@ import VerifyEmail from './pages/VerifyEmail/VerifyEmail';
 import Login from '../src/admin/login/login';
 import Dashboard from './admin/category/dashboard/Dashboard';
 import Rulebook from './pages/Rulebook/Rulebook';
+import TicketDashboard from './admin/tickets/TicketDashboard';
+
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
@@ -126,6 +128,11 @@ function App() {
                 </AdminPrivateRoute>
               }
             />
+            <Route exact path="/admin/payment" element={
+                <AdminPrivateRoute>
+                  <TicketDashboard />
+                </AdminPrivateRoute>
+              } />
             <Route exact path="/" element={<Landing />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -43,6 +43,9 @@ const Login = ({ category }) => {
   };
   useEffect(() => {
     if (!auth.loading) {
+      if(auth.adminPayment){
+        navigate('/admin/payment');
+      }
       if (auth.admin) {
         navigate('/admin/dashboard');
       }
