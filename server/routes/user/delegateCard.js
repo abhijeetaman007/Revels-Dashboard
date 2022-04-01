@@ -55,7 +55,7 @@ const getMyDelegateCards = async (req, res) => {
 const getPendingDelegateCards = async (req, res) => {
   try {
     let delegateCards = await User.findOne(
-      { _id: req.requestUser._id },
+      { userID: req.body.delegateID },
       { pendingDelegateCards: 1 }
     ).populate("pendingDelegateCards");
     return res.status(200).send({ success: true, data: delegateCards });
@@ -94,9 +94,39 @@ const getAllMyTransactions = async (req, res) => {
   }
 };
 
+const approvedPendingDelegateCard = async (req, res) => {
+  try {
+    const { delegateCard, userID, mode, reciept, amount } = req.body;
+    let newTransaction = new Transaction({
+      user: req.requestUser._id,
+      delegateCard: delegateCard,
+      name: mode,
+      recieptId: reciept,
+      amount: amount,
+      isPaymentConfirmed: true,
+    });
+    await newTransaction.save();
+    await User.updateOne(
+      { userID },
+      {
+        $pull: { pendingDelegateCards: delegateCard },
+        $addToSet: { delegateCard: delegateCard },
+      }
+    );
+    return res.status(200).send({ success: true, data: newTransaction });
+  } catch (err) {
+    console.log(err);
+    return res
+      .status(500)
+      .send({ success: false, msg: "Internal Server Error" });
+  }
+};
+
 module.exports = {
   getAllDelegateCards,
   getMyDelegateCards,
   getAllMyTransactions,
   getPendingDelegateCards,
+  requestDelegateCard,
+  approvedPendingDelegateCard,
 };

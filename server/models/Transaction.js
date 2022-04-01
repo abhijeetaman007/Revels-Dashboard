@@ -18,6 +18,9 @@ const transactionSchema = new mongoose.Schema(
     orderId: {
       type: String,
     },
+    recieptId: {
+      type: String,
+    },
     transactionData: {
       type: Object,
     },
