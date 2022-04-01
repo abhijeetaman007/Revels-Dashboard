@@ -187,7 +187,7 @@ router.get(
 );
 router.get(
   "/user/delegatecard/getpendingdelegatecards",
-  isUserLoggedIn,
+  isAdminLoggedIn,
   getPendingDelegateCards
 );
 router.get(
@@ -200,7 +200,7 @@ router.get(
 router.post("/user/payment/cash", isUserLoggedIn, requestDelegateCard);
 router.post(
   "/user/payment/approve",
-  isUserLoggedIn,
+  isAdminLoggedIn,
   approvedPendingDelegateCard
 );
 router.post("/user/payment", isUserLoggedIn, registerOrder);

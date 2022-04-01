@@ -42,12 +42,16 @@ const Login = ({ category }) => {
     }
   };
   useEffect(() => {
+    console.log(auth, auth.adminPayment);
     if (!auth.loading) {
+      if (auth.adminPayment) {
+        navigate("/admin/payment");
+      }
       if (auth.admin) {
         navigate("/admin/dashboard");
       }
     }
-  }, []);
+  }, [navigate, auth]);
   return (
     <div>
       <div className="d-flex align-content-center justify-content-center text-light my-5">

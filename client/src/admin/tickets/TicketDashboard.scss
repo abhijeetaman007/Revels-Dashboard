@@ -1,0 +1,93 @@
+.ticket-dash {
+  color: white;
+  height: 100%;
+  text-align: center;
+  .search-box {
+    display: flex;
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 50px;
+    input {
+      margin-bottom: 0;
+    }
+    button {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+.ticket-dash h1 {
+  font-size: 40px;
+  text-shadow: 2px 2px 0px #c31432;
+  mix-blend-mode: screen;
+  animation: fadeIn 2.5s linear forwards;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+.ticket-dash p {
+  font-size: 20px;
+  color: rgb(201, 201, 201);
+}
+.ticket-dash p span {
+  color: #c31432;
+}
+.tick-btn {
+  background-color: transparent;
+  color: white;
+  padding: 8px 20px;
+  margin-left: 25px;
+  font-size: 16px;
+  border-radius: 5px white;
+  border: 1px solid white;
+  cursor: pointer;
+}
+.tick-btn:hover {
+  background-color: white;
+  color: black;
+}
+.top {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  width: 100%;
+}
+
+.top img {
+  height: 100%;
+  margin-right: 20px;
+}
+
+.user-pay {
+  width: 60%;
+  margin: 10px auto;
+  background-color: black;
+  padding: 1px 0;
+  border-radius: 20px;
+}
+
+.user-pay-header h2 {
+  font-size: 1.3rem;
+  margin-left: 30px;
+}
+.user-pay-header .fa {
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: 30px;
+  color: red;
+}
+.pending-cards{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    padding: 10px;
+}

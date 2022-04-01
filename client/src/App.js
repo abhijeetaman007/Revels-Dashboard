@@ -1,31 +1,32 @@
-import './styles/index.scss';
-import React from 'react';
-import axios from 'axios';
-import { Toaster } from 'react-hot-toast';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import AuthProvider from './context/AuthContext';
-import { Worker } from '@react-pdf-viewer/core';
+import "./styles/index.scss";
+import React from "react";
+import axios from "axios";
+import { Toaster } from "react-hot-toast";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import AuthProvider from "./context/AuthContext";
+import { Worker } from "@react-pdf-viewer/core";
 
-import Layout from './pages/Layout/Layout';
-import AuthPage from './pages/AuthPages/AuthPage';
-import DelegatePage from './pages/DelegatePage/DelegatePage';
-import Landing from './pages/Landing/Landing';
-import PrivateRoute from './utils/PrivateRoute';
-import AdminPrivateRoute from './utils/AdminPrivateRoute';
-import ResetPassword from './pages/ResetPassword';
-import OpenPages from './pages/OpenPages/OpenPages';
+import Layout from "./pages/Layout/Layout";
+import AuthPage from "./pages/AuthPages/AuthPage";
+import DelegatePage from "./pages/DelegatePage/DelegatePage";
+import Landing from "./pages/Landing/Landing";
+import PrivateRoute from "./utils/PrivateRoute";
+import AdminPrivateRoute from "./utils/AdminPrivateRoute";
+import ResetPassword from "./pages/ResetPassword";
+import OpenPages from "./pages/OpenPages/OpenPages";
 
-import Profile from './pages/ProfilePage/Profile';
-import Events from './pages/EventPage/EventPage';
-import MyEvents from './pages/MyEvents/MyEvents';
-import Proshow from './pages/Proshow/Proshow';
-import InsideEvent from './components/InsideEvent/InsideEvent';
-import VerifyAnimation from './components/VerifyAnimation/VerifyAnimation';
-import NotFound from './components/NotFound';
-import VerifyEmail from './pages/VerifyEmail/VerifyEmail';
-import Login from '../src/admin/login/login';
-import Dashboard from './admin/category/dashboard/Dashboard';
-import Rulebook from './pages/Rulebook/Rulebook';
+import Profile from "./pages/ProfilePage/Profile";
+import Events from "./pages/EventPage/EventPage";
+import MyEvents from "./pages/MyEvents/MyEvents";
+import Proshow from "./pages/Proshow/Proshow";
+import InsideEvent from "./components/InsideEvent/InsideEvent";
+import VerifyAnimation from "./components/VerifyAnimation/VerifyAnimation";
+import NotFound from "./components/NotFound";
+import VerifyEmail from "./pages/VerifyEmail/VerifyEmail";
+import Login from "../src/admin/login/login";
+import Dashboard from "./admin/category/dashboard/Dashboard";
+import Rulebook from "./pages/Rulebook/Rulebook";
+import TicketDashboard from "./admin/tickets/TicketDashboard";
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
@@ -55,14 +56,14 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route 
-              exact 
-              path="/dashboard/events" 
+            <Route
+              exact
+              path="/dashboard/events"
               element={
-                <Layout activeTab="events">  
+                <Layout activeTab="events">
                   <Events />
                 </Layout>
-              } 
+              }
             />
             <Route
               exact
@@ -84,13 +85,13 @@ function App() {
                 </PrivateRoute>
               }
             />
-            <Route 
-              path="/dashboard/delegatecard" 
+            <Route
+              path="/dashboard/delegatecard"
               element={
                 <Layout activeTab="delegate-card">
                   <DelegatePage />
                 </Layout>
-              } 
+              }
             />
             <Route
               exact
@@ -112,9 +113,21 @@ function App() {
                 </Worker>
               }
             />
-            <Route exact path="/events" element={<OpenPages pageType="events"/>} />
-            <Route exact path="/tshirts" element={<OpenPages pageType="coming-soon"/>} />
-            <Route exact path="/schedule" element={<OpenPages pageType="coming-soon"/>} />
+            <Route
+              exact
+              path="/events"
+              element={<OpenPages pageType="events" />}
+            />
+            <Route
+              exact
+              path="/tshirts"
+              element={<OpenPages pageType="coming-soon" />}
+            />
+            <Route
+              exact
+              path="/schedule"
+              element={<OpenPages pageType="coming-soon" />}
+            />
             {/* <Route exact path="/proshow" element={<OpenPages pageType="proshow"/>} /> */}
             <Route exact path="/admin" element={<Login />} />
             <Route
@@ -126,6 +139,7 @@ function App() {
                 </AdminPrivateRoute>
               }
             />
+            <Route exact path="/admin/payment" element={<TicketDashboard />} />
             <Route exact path="/" element={<Landing />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

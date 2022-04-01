@@ -11,6 +11,7 @@ export const useAuth = () => {
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [admin, setAdmin] = useState(null);
+  const [adminPayment, setadminPayment] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -43,8 +44,16 @@ export default function AuthProvider({ children }) {
             authorization: token,
           },
         });
-        if (res.data.success) {
+        console.log(res.data.data.role.accessLevel);
+
+        if (res.data.data.role.accessLevel === 5) {
+          setadminPayment(res.data.data);
+          console.log(adminPayment);
+          setLoading(false);
+        } else if (res.data.success) {
           setAdmin(res.data.data);
+          setLoading(false);
+        } else {
           setLoading(false);
         }
       } catch (error) {
@@ -160,6 +169,7 @@ export default function AuthProvider({ children }) {
     adminLogin: adminLogin,
     adminLogout: adminlogout,
     resendVerif: resendVerif,
+    adminPayment: adminPayment,
     loading,
   };
 
