@@ -55,12 +55,11 @@ const registerEvent = async (req, res) => {
             return res.send({ success: false, msg: 'Already registered' });
 
         // Check on delegate cards
-        let flag=0;
+        let flag = 0;
         event.delegateCards.forEach((delCard) => {
             
             if ((user.delegateCards.indexOf(delCard) == -1)&&(user.pendingDelegateCards.indexOf(delCard) == -1)) {
-                flag=1;  
-                
+                flag = 1;
             }
             
         });
@@ -68,7 +67,11 @@ const registerEvent = async (req, res) => {
             success: false,
             msg: 'Please buy event specific delegate card(s)',
         });
-
+        if(flag == 1)
+        return res.status(400).send({
+            success: false,
+            msg: 'Please buy event specific delegate card(s)',
+        });
         // TODO:Check on collision of nanoids
         let teamID = nanoid(8);
         team = await new Team({
@@ -146,7 +149,7 @@ const getEventById = async (req, res) => {
     try {
         let { event_Id } = req.body;
         console.log(event_Id);
-        let event = await Event.findOne({ _id: event_Id }).populate('category');
+        let event = await Event.findOne({ _id: event_Id }).populate('category delegateCards');
         console.log('event', event);
         if (!event)
             return res

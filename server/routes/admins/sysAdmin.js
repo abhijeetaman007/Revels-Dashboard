@@ -301,3 +301,21 @@ module.exports = {
     sendEmail,
     getAllRoles
 };
+
+// const fixbug = (req,res) =>{
+//     try
+//     {
+//         await College.findOneAndUpdate({isMahe:1},{
+//             isMahe:2,
+//         });
+//         await College.findOneAndUpdate({name:"MANIPAL INSTITUTE OF TECHNOLOGY"},{
+//             isMahe:1
+//         }) 
+//       return res.send("DONE")
+//     }
+//     catch(err)
+//     {
+//         console.log(err);
+//         return res.status(500)
+//     }
+// }
