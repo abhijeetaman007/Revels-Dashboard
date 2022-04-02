@@ -117,7 +117,7 @@ const approvedPendingDelegateCard = async (req, res) => {
       { _id: user },
       {
         $pull: { pendingDelegateCards: delegateId },
-        $addToSet: { delegateCard: delegateId },
+        $addToSet: { delegateCards: delegateId },
       }
     );
     return res.status(200).send({ success: true, data: newTransaction });
