@@ -3,8 +3,6 @@ import "./DelegateCard.scss";
 import { useState } from "react";
 
 const DelegateCard = ({
-  colorArr,
-  idx,
   displayRazorpay,
   data,
   isMahe,
@@ -13,6 +11,7 @@ const DelegateCard = ({
 }) => {
   const [bought, setBought] = useState(isBought);
   return (
+    data.isActive &&
     <div
       className={`del-card card-up m-1 ${data.type.toLowerCase()} font-medium`}
     >
@@ -32,11 +31,11 @@ const DelegateCard = ({
               )
             )}
           </h1>
-          <p className={`font-light text-white ${bought && "bought"}`}>
+          {/* <p className={`font-light text-white ${bought && "bought"}`}>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s, when an unknown printer took
-          </p>
+          </p> */}
         </div>
         <div className="blank"></div>
         <div className={`price ${bought && "bought"}`}>
