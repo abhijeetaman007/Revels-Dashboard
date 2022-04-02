@@ -70,7 +70,9 @@ const InsideEvent = () => {
       );
       setTeam(res.data.data);
       setRequests(res.data.data.requestedMembers);
+      console.log(res.data.data.members);
       setTeammembers(res.data.data.members);
+      console.log("here ",res.data.data.createdBy);
       setTeamCreator(res.data.data.createdBy);
     } catch (err) {
       console.log(err);
@@ -205,7 +207,7 @@ const InsideEvent = () => {
             icon: "fa-calendar-o",
             heading: "Event Date",
             text: `${new Date(event.eventDateTime).getDate()}/
-            ${new Date(event.eventDateTime).getMonth()}/
+            ${new Date(event.eventDateTime).getMonth()+1}/
             ${new Date(event.eventDateTime).getFullYear()}`,
           })}
           </> }
@@ -222,7 +224,7 @@ const InsideEvent = () => {
             icon: "fa-calendar-check-o",
             heading: "Registration Deadline",
             text: `${new Date(event.registrationDeadline).getDate()}/
-            ${new Date(event.registrationDeadline).getMonth()}/
+            ${new Date(event.registrationDeadline).getMonth()+1}/
             ${new Date(event.registrationDeadline).getFullYear()}`,
           })}
           </>}
@@ -257,7 +259,7 @@ const InsideEvent = () => {
                     icon: "fa-calendar-o",
                     heading: "Event Date",
                     text: `${new Date(event.eventDateTime).getDate()}/
-                    ${new Date(event.eventDateTime).getMonth()}/
+                    ${new Date(event.eventDateTime).getMonth()+1}/
                     ${new Date(event.eventDateTime).getFullYear()}`,
                   })}
                   </> }
@@ -274,7 +276,7 @@ const InsideEvent = () => {
                     icon: "fa-calendar-check-o",
                     heading: "Registration Deadline",
                     text: `${new Date(event.registrationDeadline).getDate()}/
-                    ${new Date(event.registrationDeadline).getMonth()}/
+                    ${new Date(event.registrationDeadline).getMonth()+1}/
                     ${new Date(event.registrationDeadline).getFullYear()}`,
                   })}
                   </>}
@@ -283,7 +285,7 @@ const InsideEvent = () => {
                     icon: "fa-calendar-check-o",
                     heading: "Registration Deadline",
                     text: `${new Date(event.registrationDeadline).getDate()}/
-                    ${new Date(event.registrationDeadline).getMonth()}/
+                    ${new Date(event.registrationDeadline).getMonth()+1}/
                     ${new Date(event.registrationDeadline).getFullYear()}`,
                   })}
                   </>}
@@ -307,7 +309,7 @@ const InsideEvent = () => {
                     icon: "fa-calendar-o",
                     heading: "Event Date",
                     text: `${new Date(event.eventDateTime).getDate()}/
-                    ${new Date(event.eventDateTime).getMonth()}/
+                    ${new Date(event.eventDateTime).getMonth()+1}/
                     ${new Date(event.eventDateTime).getFullYear()}`,
                   })}
                   </> }
@@ -324,7 +326,7 @@ const InsideEvent = () => {
                     icon: "fa-calendar-check-o",
                     heading: "Registration Deadline",
                     text: `${new Date(event.registrationDeadline).getDate()}/
-                    ${new Date(event.registrationDeadline).getMonth()}/
+                    ${new Date(event.registrationDeadline).getMonth()+1}/
                     ${new Date(event.registrationDeadline).getFullYear()}`,
                   })}
                   </>}
@@ -377,13 +379,13 @@ const InsideEvent = () => {
                   {teammembers.length != 0
                     ? teammembers.map((member, index) => (
                         <span className="font-light">
-                          {auth.user._id == teamCreator && (
+                          {member.user._id == teamCreator && (
                             <span>
                               <i className="fa fa-star mr-1"></i>
                             </span>
                           )}
                           {member.user.name}
-                          {index !== teammembers.length - 1 && ","}
+                          {index !== teammembers.length - 1 && ", "}
                         </span>
                       ))
                     : null}

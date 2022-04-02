@@ -161,6 +161,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
     );
   };
   const updateEvent = async () => {
+    const toastId = toast.loading("Updating Event");
     const delArr = [];
     for (let i = 0; i < filteredDel.length; i++) {
       delArr.push({ cardID: filteredDel[i].value });
@@ -188,7 +189,10 @@ const EventModal = ({ eventdata, deleteEvent }) => {
         email: head2E,
       });
     if (!validateForm()) {
-      toast.error('Please fill in all the fields');
+      toast.error('Please fill in all the fields', {
+        id: toastId,
+      });
+      
     }
     // else if (
     //   head1P.toString().length !== 10 ||
@@ -208,7 +212,10 @@ const EventModal = ({ eventdata, deleteEvent }) => {
       (head2N != 0 && (head2P == '' || head2E == '')) ||
       (head2P != '' && (head2E == '' || head2N == 0))
     ) {
-      toast.error("Please complete Event Head 2's details");
+      toast.error("Please complete Event Head 2's details", {
+        id: toastId,
+      });
+     
     } else {
       try {
         const eventData = {
@@ -256,13 +263,22 @@ const EventModal = ({ eventdata, deleteEvent }) => {
         );
 
         if (res.data.success) {
-          toast.success('Event updated successfully');
+          toast.success('Event updated successfully', {
+            id: toastId,
+          });
+          
           closeModal();
         } else {
-          toast.error(res.data.msg);
+          toast.error(res.data.msg, {
+            id: toastId,
+          });
+       
         }
       } catch (err) {
-        console.log(err);
+        toast.error('Something Went Wrong', {
+          id: toastId,
+        });
+       
       }
     }
   };
@@ -398,8 +414,8 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           </div>
         </div>
         <div className="delcard">
-          <label className="font-medium mt-2">
-            Only team leader has delegate card
+          <label className="font-heavy mt-2">
+            Delegate Card Required by only Team Leader?
           </label>
           <input
             type="checkbox"
@@ -464,8 +480,8 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="13/04/2022"
           value={data.eventDateTime}
-          readOnly
-          // onChange={(e) => setData({ ...data, eventDateTime: e.target.value })}
+          //readOnly
+           onChange={(e) => setData({ ...data, eventDateTime: e.target.value })}
         />
 
         <label className="font-medium mt-3">Event Venue (Read Only)</label>
@@ -478,8 +494,8 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="AB5 203"
           value={data.eventVenue}
-          readOnly
-          // onChange={(e) => setData({ ...data, eventVenue: e.target.value })}
+          //readOnly
+           onChange={(e) => setData({ ...data, eventVenue: e.target.value })}
         />
 
         <div className="font-heavy mt-4 h5">Event Head details</div>
