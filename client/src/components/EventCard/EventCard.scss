@@ -80,17 +80,28 @@ $event-card-background-2: #8e49fc;
                 border: 1px solid #ffffff;
               }
         // uncomment for details button 
-        // button:first-child {
-        //   border: 1.5px solid white;
-        //   margin-bottom: 2.5px;
-        //   border-radius: 10px;
-        //   background-color: transparent;
-        //   padding: 2px 4px;
-        //   text-transform: uppercase;
-        //   color: white;
-        //   pointer-events: none;
-        // }
-       
+        button:first-child {
+          border: 1.5px solid white;
+          margin-bottom: 2.5px;
+          border-radius: 10px;
+          background-color: transparent;
+          padding: 2px 4px;
+          text-transform: uppercase;
+          color: white;
+          pointer-events: none;
+        }
+        button:last-child {
+          pointer-events: none;
+          border: 0;
+          width: 100%;
+          margin-top: 2.5px;
+          border-radius: 10px;
+          background-color: transparent;
+          padding: 2px 4px;
+          text-transform: uppercase;
+          background-color: #181027;
+          color: white;
+        }
       }
     }
     .tags-line {

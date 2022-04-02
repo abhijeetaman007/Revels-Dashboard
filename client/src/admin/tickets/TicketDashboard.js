@@ -153,7 +153,7 @@ function TicketDashboard() {
   };
 
   const color =
-    user.isMahe == 2 ? "yellow" : user.isMahe == 1 ? "orange" : "lightblue";
+    user ? (user.isMahe == 2 ? "yellow" : user.isMahe == 1 ? "orange" : "lightblue"): "white";
   return (
     <div className="ticket-dash">
       <div className="top">
@@ -206,9 +206,11 @@ function TicketDashboard() {
                 </>
               );
             })}
-          {user.pendingDelegateCards.length == 0 && (
+          {user && <>
+            {user.pendingDelegateCards.length == 0 && (
             <p>No Delegate Cards requested for offline payment</p>
           )}
+          </>}
         </div>
       </div>
     </div>

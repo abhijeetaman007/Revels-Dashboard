@@ -1,9 +1,11 @@
 import React from 'react';
 import './EventCard.scss';
 import { Link } from 'react-router-dom';
-const EventCard = ({ data, index }) => {
+const EventCard = ({ data, index, isMyEvents }) => {
   const [eventPath, setEventPath] = React.useState(
-    `/dashboard/event/${data._id}`
+    isMyEvents 
+    ? `/dashboard/myevents/${data._id}` 
+    : `/dashboard/event/${data._id}`
   );
   const eventCardColours = ['event-back-1', 'event-back-2'];
   return (

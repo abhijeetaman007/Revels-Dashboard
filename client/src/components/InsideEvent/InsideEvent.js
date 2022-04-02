@@ -43,7 +43,7 @@ const InsideEvent = () => {
   }
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    subtitle.style.color = "#f00";
+    // subtitle.style.color = '#f00';
   }
   function closeModal() {
     setIsOpen(false);
@@ -256,11 +256,83 @@ const InsideEvent = () => {
             </div>
             {event.maxMembers === 1 && (
               <div className="reg-area">
+                <div className="event-group ele text-white">
+                  {DataComponent({
+                    icon: "fa-users",
+                    heading: "Team Size",
+                    text:
+                      event.minMembers === event.maxMembers
+                        ? "Individual event"
+                        : `${event.minMembers} - ${event.maxMembers}`,
+                  })}
+                  {event.eventDateTime && <>
+                    {DataComponent({
+                    icon: "fa-calendar-o",
+                    heading: "Event Date",
+                    text: `${new Date(event.eventDateTime).getDate()}/
+                    ${new Date(event.eventDateTime).getMonth()}/
+                    ${new Date(event.eventDateTime).getFullYear()}`,
+                  })}
+                  </> }
+
+                  {event.eventVenue && <>
+                    {DataComponent({
+                    icon: "fa-map-marker",
+                    heading: "Event Venue",
+                    text: `${event.eventVenue}`,
+                  })}
+                  </>}
+                  {event.registrationDeadline &&<>
+                    {DataComponent({
+                    icon: "fa-calendar-check-o",
+                    heading: "Registration Deadline",
+                    text: `${new Date(event.registrationDeadline).getDate()}/
+                    ${new Date(event.registrationDeadline).getMonth()}/
+                    ${new Date(event.registrationDeadline).getFullYear()}`,
+                  })}
+                  </>}
+                </div>
                 <button onClick={registerIndividual}>Join Individually</button>
               </div>
             )}
             {event.maxMembers > 1 && (
               <div className="reg-area">
+                <div className="event-group ele text-white">
+                  {DataComponent({
+                    icon: "fa-users",
+                    heading: "Team Size",
+                    text:
+                      event.minMembers === event.maxMembers
+                        ? "Individual event"
+                        : `${event.minMembers} - ${event.maxMembers}`,
+                  })}
+                  {event.eventDateTime && <>
+                    {DataComponent({
+                    icon: "fa-calendar-o",
+                    heading: "Event Date",
+                    text: `${new Date(event.eventDateTime).getDate()}/
+                    ${new Date(event.eventDateTime).getMonth()}/
+                    ${new Date(event.eventDateTime).getFullYear()}`,
+                  })}
+                  </> }
+
+                  {event.eventVenue && <>
+                    {DataComponent({
+                    icon: "fa-map-marker",
+                    heading: "Event Venue",
+                    text: `${event.eventVenue}`,
+                  })}
+                  </>}
+                  {event.registrationDeadline &&<>
+                    {DataComponent({
+                    icon: "fa-calendar-check-o",
+                    heading: "Registration Deadline",
+                    text: `${new Date(event.registrationDeadline).getDate()}/
+                    ${new Date(event.registrationDeadline).getMonth()}/
+                    ${new Date(event.registrationDeadline).getFullYear()}`,
+                  })}
+                  </>}
+                </div>
                 <button
                   className="font-heavy create"
                   onClick={registerIndividual}
@@ -394,7 +466,9 @@ const InsideEvent = () => {
                     </div>
                   ))
                 ) : (
-                  <div className="font-light">No requests so far...</div>
+                  <div className="font-light">
+                    <span><i className="fa fa-exclamation-triangle text-danger mr-2"></i></span>No requests so far...
+                  </div>
                 )}
               </div>
             ) : null}
