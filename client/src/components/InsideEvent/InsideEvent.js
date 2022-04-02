@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 import Layout from "../../pages/Layout/Layout";
 import Modal from "react-modal";
 import axios from "axios";
-import moment from "moment";
 import "./InsideEvent.scss";
 import { useAuth } from "../../context/AuthContext";
 const customStyles = {
@@ -34,7 +33,6 @@ const InsideEvent = () => {
   const [teammembers, setTeammembers] = useState([]);
   const [teamIDInput, setTeamIDInput] = useState("");
   const [teamCreator, setTeamCreator] = useState("");
-
   //MODAL STUFF
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -50,16 +48,14 @@ const InsideEvent = () => {
   }
   // function to get event by ID
   const callEventByID = async () => {
-    console.log("event b id", eventID);
     try {
       const res = await axios.post(
         "/api/user/event/getbyid",
-        { event_Id: eventID },
+        { event_Id: eventid },
         { headers: header }
       );
       setEvent(res.data.data);
-      setEventID(res.data.eventID);
-      console.log(res.data);
+      setEventID(res.data.eventid);
     } catch (err) {
       console.log(err);
     }
@@ -76,10 +72,6 @@ const InsideEvent = () => {
       setRequests(res.data.data.requestedMembers);
       setTeammembers(res.data.data.members);
       setTeamCreator(res.data.data.createdBy);
-
-      console.log("teamid", res.data.data.teamID);
-
-      console.log("teamcreateby", res.data.data.createdBy);
     } catch (err) {
       console.log(err);
     }
