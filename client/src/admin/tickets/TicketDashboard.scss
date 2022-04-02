@@ -91,3 +91,19 @@
     align-items: center;
     padding: 10px;
 }
+@media only screen and (max-width: 600px) {
+  .ticket-dash{
+    .search-box {
+      flex-direction: column;
+      width: 100%;
+      input{
+        width: 90%;
+        margin : 0 auto;
+      }
+      button{
+        margin: 0 auto;
+        margin-top: 20px;
+      }
+    }
+  }
+}

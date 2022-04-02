@@ -91,18 +91,16 @@ $event-card-background-2: #8e49fc;
           pointer-events: none;
         }
         button:last-child {
-          @include button-hover;
           pointer-events: none;
           border: 0;
           width: 100%;
           margin-top: 2.5px;
-          border: 1px solid black;
           border-radius: 10px;
           background-color: transparent;
           padding: 2px 4px;
-          // background-color: black;
           text-transform: uppercase;
-          color: black;
+          background-color: #181027;
+          color: white;
         }
       }
     }

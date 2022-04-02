@@ -5,10 +5,12 @@ import Lottie from "lottie-react";
 import noEvents from "../../assets/noEvents.json";
 import Loader from "../Loader/Loader";
 import "./TabSwitch.css";
-import "./Dropdown.scss"
+import "./search.scss"
 const Events = () => {
   const [events, setEvents] = useState([]);
   const [tab, settab] = useState(0);
+  const [isShuffle, setIsShuffle] = useState(true);
+  // method to fetch all the events
   const getAllEvents = async () => {
     try {
       const res = await axios.get("/api/user/event/getallevents");
@@ -20,12 +22,33 @@ const Events = () => {
   useEffect(() => {
     getAllEvents();
   }, []);
+  // method to filter the array
+  const filterEvents = async (e, category, name) => {
+    setIsShuffle(false);
+    if(e.target.value === "") {
+      getAllEvents();
+      setIsShuffle(true);
+    }
+    let filteredEvents = events.filter(
+      (event) => event.category.category.toLowerCase().includes(e.target.value.toLowerCase())
+    )
+    setEvents(filteredEvents)
+  }
+  // method to shuffle the events array 
+  const shuffleArray = (array) => {
+    return array.map(value => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value)
+    .filter((event)=>{
+      return tab === 0 ?  event.eventType === "SPORTS" :  event.eventType === "CULTURAL"
+    })
+  }
   return (
     <>
       <div className="d-flex flex-md-row flex-column align-items-center">
         <div class="search-box font-medium">
           <button class="btn-search"><i class="fa fa-search text-white"></i></button>
-          <input type="text" class="input-search" placeholder="Type to Search..." />
+          <input type="text" class="input-search" onChange={(e) => filterEvents(e)} placeholder="Type to Search..." />
         </div>
         <div className="tabs-wrapper font-medium">
           <div className={tab === 0 ? "taeb-switch left text-center" : "taeb-switch right text-center"}>
@@ -39,27 +62,28 @@ const Events = () => {
         </div>
       </div>
       <div
-      style={{
-        display: 'flex',
-        justifyContent: "start",
-        flexWrap: 'wrap',
-        gap: '10px',
-        height: 'fit-content',
-      }}
-    >
+        style={{
+          display: 'flex',
+          justifyContent: "start",
+          flexWrap: 'wrap',
+          gap: '10px',
+          height: 'fit-content',
+        }}
+      >
       {events
-        ? events
-        .map(value => ({ value, sort: Math.random() }))
-        .sort((a, b) => a.sort - b.sort)
-        .map(({ value }) => value)
-        .filter((event)=>{
-          return tab === 0 ?  event.eventType === "SPORTS" :  event.eventType === "CULTURAL"
-        }).map((eventData, index) => {
-            return (<>
+        ? (isShuffle ? shuffleArray(events).map((eventData, index) => {
+            return (
               <EventCard key={index} index={index} data={eventData} isMyEvents={false} />
-            </>);
+            );
+          }) : 
+            events.filter((event)=>{
+              return tab === 0 ?  event.eventType === "SPORTS" :  event.eventType === "CULTURAL"
+            }).map((eventData, index) => {
+            return (
+              <EventCard key={index} index={index} data={eventData} isMyEvents={false} />
+            );
           })
-        : 
+        ): 
         <Loader />
       }
       {events.length === 0 && 

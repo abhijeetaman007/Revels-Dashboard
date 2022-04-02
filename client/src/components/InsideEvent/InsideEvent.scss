@@ -1,8 +1,5 @@
 $tile-color: #f5737f;
 $purple: #a974ff;
-.fa{
-  color: $purple;
-}
 .small-font{
   font-size: 0.8rem;
 }
@@ -44,6 +41,9 @@ $event-card-background: #c6a3ff;
     gap: 2rem;
     margin: 10px 0;
     .event-data {
+      .fa{
+        color: $purple;
+      }
       div {
         p {
           font-size: 1.4rem;
