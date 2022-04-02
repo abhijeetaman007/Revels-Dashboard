@@ -48,27 +48,30 @@ const MyEvents = () => {
             height: 'fit-content',
           }}
         >
-            {
-                events.length > 0
-                ? 
-                events
-                    .filter((event)=>{
-                        return tab === 0 ?  event.eventType === "SPORTS" :  event.eventType === "CULTURAL"
-                    })
-                    .map((eventData, index) => {
-                      return <EventCard 
-                        index={index} 
-                        data={eventData.event} 
-                        key={index} 
-                        isMyEvents={true} 
-                      />;
+            { events
+              &&
+              events
+                .filter((event)=>{
+                  console.log(event)
+                    return tab === 0 ?  event.event.eventType === "SPORTS" :  event.event.eventType === "CULTURAL"
                 })
-                : 
-                <div className="py-5 w-md-100 w-50 mx-auto text-center d-flex flex-column justify-content-center align-items-center">
-                  <Lottie animationData={noEvents} loop/>
-                  <h3 className="font-heavy" style={{ color: "#c4515c", fontSize: "2rem" }}>REGISTRATIONS OPENING SOON!</h3>
-                </div>
+                .map((eventData, index) => {
+                  return <EventCard 
+                    index={index} 
+                    data={eventData.event} 
+                    key={index} 
+                    isMyEvents={true} 
+                  />;
+              })
             }
+            {events
+              .filter((event)=>{
+                console.log(event)
+                  return tab === 0 ?  event.event.eventType === "SPORTS" :  event.event.eventType === "CULTURAL"
+              }).length === 0 && <div className="py-5 w-md-100 w-50 mx-auto text-center d-flex flex-column justify-content-center align-items-center">
+              <Lottie animationData={noEvents} loop/>
+              <h3 className="font-heavy" style={{ color: "#c4515c", fontSize: "2rem" }}>NO EVENTS HERE!</h3>
+            </div>}
         </div>
         </div>
     );

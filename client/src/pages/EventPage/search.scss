@@ -3,6 +3,9 @@ $search-back: #F5737F;
   width: fit-content;
   height: fit-content;
   position: relative;
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 .input-search{
   height: 50px;
