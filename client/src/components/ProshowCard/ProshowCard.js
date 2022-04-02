@@ -7,8 +7,8 @@ const ProshowCard = ({data}) => {
             <div className="image-wrapper" style={{ backgroundImage: `url(${data.src})` }}>
                 <div className="gradient">
                     <div className="proshow-card-header">
-                        {/* <h6 className="font-light">{data.day}</h6> */}
-                        {/* <p className="font-heavy">{data.date}</p> */}
+                        <h6 className="font-light">{data.day}</h6>
+                        <p className="font-heavy">{data.date}</p>
                     </div>
                     <div className="artist-name">
                         <h2 className="font-heavy text-center">{data.name}</h2>

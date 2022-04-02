@@ -81,13 +81,14 @@ $event-card-background-2: #8e49fc;
               }
         // uncomment for details button 
         button:first-child {
-          border: 1.5px solid white;
+          border: 1.5px solid #181027;
+          color: #181027;
           margin-bottom: 2.5px;
           border-radius: 10px;
           background-color: transparent;
           padding: 2px 4px;
           text-transform: uppercase;
-          color: white;
+          
           pointer-events: none;
         }
         button:last-child {

@@ -9,9 +9,34 @@ import Modal from 'react-modal';
 import EventModal from './EventModal';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../context/AuthContext';
+import MultiSelect from './MultiSelect';
 const Dashboard = () => {
+  const [isChecked, setIsChecked] = useState(false);
+  const [delCards, setDelCards] = useState([]);
+  const [options, setOptions] = useState([]);
+  const getDelCards = async () => {
+    try {
+      const res = await axios.get('/api/user/delegatecard/getall');
+      console.log(res.data.data);
+      setDelCards(res.data.data);
+      const arr = [];
+      res.data.data.map((x) => {
+        console.log(x);
+        arr.push({ value: x._id, label: x.name });
+      });
+      console.log('arr', arr);
+      setOptions(arr);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const handleOnChange = (e) => {
+    e.preventDefault();
+    console.log('click');
+    setIsChecked(!isChecked);
+  };
   const navigate = useNavigate();
-  const auth =useAuth();
+  const auth = useAuth();
 
   const validateForm = () => {
     if (
@@ -48,6 +73,7 @@ const Dashboard = () => {
     setT2('');
     setT3('');
     setT4('');
+    setIsChecked(false);
     setIsOpen(false);
   }
   const header = {
@@ -103,7 +129,7 @@ const Dashboard = () => {
     minMembers: 0,
     maxMembers: 0,
     eventHeads: [],
-    teamDelegateCardWorks: '',
+    teamDelegateCard: false,
     delegateCards: '',
     tags: [],
   });
@@ -116,6 +142,7 @@ const Dashboard = () => {
     );
   };
   const addEvent = async () => {
+    console.log('add', isChecked);
     let tagsarr = [];
 
     if (t1 !== '') tagsarr.push(t1.toUpperCase().trim());
@@ -170,7 +197,9 @@ const Dashboard = () => {
           maxMembers: data.maxMembers,
           eventHeads: headsarr,
           tags: tagsarr,
+          teamDelegateCard: isChecked,
         };
+        console.log(eventData);
         const res = await axios.post(
           '/api/admin/category/event/add',
           {
@@ -184,6 +213,7 @@ const Dashboard = () => {
             maxMembers: eventData.maxMembers,
             eventHeads: headsarr,
             tags: tagsarr,
+            teamDelegateCard: eventData.teamDelegateCard,
           },
           {
             headers: {
@@ -203,7 +233,7 @@ const Dashboard = () => {
             minMembers: 0,
             maxMembers: 0,
             eventHeads: [],
-            teamDelegateCardWorks: '',
+            teamDelegateCard: '',
             delegateCards: '',
             tags: [],
             head1P: 0,
@@ -230,7 +260,8 @@ const Dashboard = () => {
     }
   };
   useEffect(() => {
-    if(auth.adminPayment)navigate('/admin/payment');
+    if (auth.adminPayment) navigate('/admin/payment');
+    getDelCards();
     getCategory();
     getEvents();
   }, []);
@@ -328,7 +359,7 @@ const Dashboard = () => {
           placeholder="Event description"
           onChange={(e) => setData({ ...data, description: e.target.value })}
         />
-
+        <MultiSelect data={options} />
         <label for="mode" className="font-medium mt-3">
           Event Type<span style={{ color: 'red' }}>*</span>
         </label>
@@ -359,7 +390,16 @@ const Dashboard = () => {
           <option value="ONLINE">Online</option>
           <option value="OFFLINE">Offline</option>
         </select>
-
+        <div className="delcard">
+          <label className="font-medium mt-2">
+            Only team leader has delegate card
+          </label>
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={(e) => handleOnChange(e)}
+          ></input>
+        </div>
         <label className="font-medium mt-2">Prize</label>
         <input
           type="number"
