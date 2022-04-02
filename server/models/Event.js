@@ -95,6 +95,12 @@ const EventSchema = new mongoose.Schema(
             ref: "Judge",
           },
         ],
+        eventDateTime:{
+          type:Date
+        },
+        eventVenue:{
+          type:String
+        }
       },
     ],
   },
