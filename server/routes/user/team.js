@@ -69,7 +69,7 @@ const joinTeam = async (req, res) => {
     if (!event.teamDelegateCard) {
       // Check on delegate cards
       event.delegateCards.forEach((delCard) => {
-        if (user.delegateCards.indexOf(delCard) == -1) {
+        if ((user.delegateCards.indexOf(delCard) == -1)&&(user.pendingDelegateCards.indexOf(delCard) == -1)) {
           return res.status(400).send({
             success: false,
             msg: 'Please buy event specific delegate card(s)',

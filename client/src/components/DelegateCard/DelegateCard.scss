@@ -61,15 +61,15 @@ $delPurple: #C6A3FF;
     }
   }
 }
-.blue {
+.proshow {
   background-color: $delBlue;
   border: 0.1px solid #54c7ee;
 }
-.purple {
+.gaming {
   background-color: $delPurple;
   border: 0.1px solid #ebdeff;
 }
-.black {
+.inf {
   background-color: black;
   border: 0.1px solid rgb(39, 39, 39);
   .price {
@@ -78,6 +78,15 @@ $delPurple: #C6A3FF;
   button {
     color: rgb(226, 226, 226);
   }
+}
+.workshops {
+  background-color: rebeccapurple;
+}
+.general {
+  background-color: #a123db;
+}
+.sports {
+  background-color: rgb(243, 88, 88);
 }
 .bought:not(span) {
   cursor: default;

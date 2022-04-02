@@ -14,21 +14,19 @@ const DelegateCard = ({
   const [bought, setBought] = useState(isBought);
   return (
     <div
-      className={`del-card card-up m-1 ${colorArr[
-        idx % 3
-      ].toString()} font-medium`}
+      className={`del-card card-up m-1 ${data.type.toLowerCase()} font-medium`}
     >
       <div className="del-content">
         <div>
           <h1 className="text-white">
             {data.name}
             {bought === 1 ? (
-              <span style={{ color: "green" }}>
+              <span style={{ color: "white" }}>
                 <i className="fa fa-check-circle mx-2"></i>
               </span>
             ) : (
               bought === 2 && (
-                <span style={{ color: "yellow" }}>
+                <span style={{ color: "white" }}>
                   <i className="fa fa-clock-o mx-2"></i>
                 </span>
               )

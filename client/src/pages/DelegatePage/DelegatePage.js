@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import React from "react";
-import Layout from "../Layout/Layout";
 import { TOKEN_ID } from "../../utils/constants";
 import { useAuth } from "../../context/AuthContext";
 import DelegateCard from "../../components/DelegateCard/DelegateCard";
@@ -134,7 +133,8 @@ function DelegatePage() {
     };
     fetchDelegateCards();
   }, []);
-  const colorArr = ["blue", "purple", "black"];
+  // const colorArr = ["blue", "purple", "black", "pink", "white", "light-pink"];
+  const colorArr = ["proshow", "inf", "gaming", "workshops", "general", "sports"];
   return auth.loading ? (
     <Loader />
   ) : (

@@ -241,18 +241,18 @@ router.post("/admin/vigilance/user", getUserFromID);
 router.post("/admin/vigilance/user/event", isEventRegistered);
 router.post("/admin/vigilance/user/delegatecard", hasDelegateCard);
 
-// // --------------------------INTERNAL ROUTES-----------------------------------
-// //@SysAdmin Routes - Private Routes for internal use - No frontend needed
-// // router.get('/sysadmin/register/category', categoryRegister);  //changed
-// router.post('/sysadmin/delegatecard/add', addDelegateCard);
-// router.post('/sysadmin/delegatecard/delete', deleteDelegateCard);
-// router.get('/sysadmin/delegatecard/view', viewAllDelegateCards);
-// // router.post('/sysadmin/register/admin', isSysAdmin,adminRegister);
-// router.post('/sysadmin/role/add', addRole);
-// router.post('/sysadmin/category/add', addCategories);
-// router.post('/sysadmin/admin/register', registerAdmin);
-// router.post('/sysadmin/college/add', addCollege);
-// router.post('/sysadmin/sendemail', sendEmail);
-// router.get('/sysadmin/role/getall',getAllRoles)
+// --------------------------INTERNAL ROUTES-----------------------------------
+//@SysAdmin Routes - Private Routes for internal use - No frontend needed
+// router.get('/sysadmin/register/category', categoryRegister);  //changed
+router.post('/sysadmin/delegatecard/add', addDelegateCard);
+router.post('/sysadmin/delegatecard/delete', deleteDelegateCard);
+router.get('/sysadmin/delegatecard/view', viewAllDelegateCards);
+// router.post('/sysadmin/register/admin', isSysAdmin,adminRegister);
+router.post('/sysadmin/role/add', addRole);
+router.post('/sysadmin/category/add', addCategories);
+router.post('/sysadmin/admin/register', registerAdmin);
+router.post('/sysadmin/college/add', addCollege);
+router.post('/sysadmin/sendemail', sendEmail);
+router.get('/sysadmin/role/getall',getAllRoles)
 
 module.exports = router;

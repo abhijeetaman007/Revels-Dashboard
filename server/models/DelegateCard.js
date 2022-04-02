@@ -29,7 +29,7 @@ const DelCardSchema = new mongoose.Schema(
     },
     isActive: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     //Contains Info about the type of delegate card
     description: {
