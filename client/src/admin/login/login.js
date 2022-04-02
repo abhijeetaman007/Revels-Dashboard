@@ -45,13 +45,14 @@ const Login = ({ category }) => {
     console.log(auth, auth.adminPayment);
     if (!auth.loading) {
       if (auth.adminPayment) {
+        console.log("adminPayment");
         navigate("/admin/payment");
       } else if (auth.admin) {
-        console.log("here");
+        console.log("admin");
         navigate("/admin/dashboard");
       } else navigate("/admin");
     }
-  }, [navigate, auth]);
+  }, []);
   return (
     <div>
       <div className="d-flex align-content-center justify-content-center text-light my-5">
