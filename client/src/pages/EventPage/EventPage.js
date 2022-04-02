@@ -29,10 +29,18 @@ const Events = () => {
       getAllEvents();
       setIsShuffle(true);
     }
-    let filteredEvents = events.filter(
+    let filteredEventsByCategory = events.filter(
       (event) => event.category.category.toLowerCase().includes(e.target.value.toLowerCase())
     )
-    setEvents(filteredEvents)
+    let filteredEventsByName = events.filter(
+      (event) => event.name.toLowerCase().includes(e.target.value.toLowerCase())
+    )
+    if(filteredEventsByCategory.length !== 0){
+      setEvents(filteredEventsByCategory)
+    }
+    if(filteredEventsByName.length !== 0) {
+      setEvents(filteredEventsByName)
+    }
   }
   // method to shuffle the events array 
   const shuffleArray = (array) => {
