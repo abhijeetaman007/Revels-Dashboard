@@ -141,7 +141,7 @@ const getEventById = async (req, res) => {
     try {
         let { event_Id } = req.body;
         console.log(event_Id);
-        let event = await Event.findOne({ _id: event_Id }).populate('category');
+        let event = await Event.findOne({ _id: event_Id }).populate('category delegateCards');
         console.log('event', event);
         if (!event)
             return res
