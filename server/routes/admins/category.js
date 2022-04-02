@@ -84,13 +84,13 @@ const addEvent = async (req, res) => {
     }
     // console.log("test: ",req.requestAdmin.role.categoryId)
     // console.log("Test DelCard",delCards)
-    
+
     // let rounds = [{
-        // roundNumber:1,
-        // judges:[],
-        // eventDateTime:
+    // roundNumber:1,
+    // judges:[],
+    // eventDateTime:
     // }]
-    
+
     let newEvent = new Event({
       eventID,
       name,
@@ -125,7 +125,9 @@ const getCategoryEvent = async (req, res) => {
   try {
     let category_Id = req.requestAdmin.role.categoryId;
     console.log('catid', category_Id);
-    let events = await Event.find({ category: category_Id });
+    let events = await Event.find({ category: category_Id }).populate(
+      'delegateCards'
+    );
     console.log('events', events);
     return res.status(200).send({ success: true, data: events });
   } catch {
@@ -264,7 +266,7 @@ const getAllCategories = async (req, res) => {
       .status(500)
       .send({ success: false, msg: 'Internal Server Error' });
   }
-}
+};
 
 // const addRound = async(req,res) =>{
 //   try
@@ -273,7 +275,7 @@ const getAllCategories = async (req, res) => {
 //      let judgeEmail = judgeEmail.toString().toLowerCase()
 //      if(!judgeEmail.endsWith('@manipal.edu'))
 //       return res.send({msg:'Invalid Judge',success:false});
-    
+
 //   }
 //   catch(err)
 //   {
@@ -283,9 +285,8 @@ const getAllCategories = async (req, res) => {
 // }
 
 // deleteRound
-//  - lastRound Can be deleted 
+//  - lastRound Can be deleted
 // updateRound
-
 
 module.exports = {
   addEvent,

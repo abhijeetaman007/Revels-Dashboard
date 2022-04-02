@@ -92,7 +92,7 @@ const adminLogin = async (req, res) => {
     };
     // console.log(payload);
     let token = jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: 1 * 60 * 60,
+      expiresIn: 2 * 60 * 60,
     });
     // console.log(token);
     await Admin.updateOne({ _id: admin._id }, { token });
