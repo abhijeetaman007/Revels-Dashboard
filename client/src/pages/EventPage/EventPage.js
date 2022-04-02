@@ -29,18 +29,19 @@ const Events = () => {
       getAllEvents();
       setIsShuffle(true);
     }
-    let filteredEventsByCategory = events.filter(
-      (event) => event.category.category.toLowerCase().includes(e.target.value.toLowerCase())
-    )
+    // let filteredEventsByCategory = events.filter(
+    //   (event) => event.category.category.toLowerCase().includes(e.target.value.toLowerCase())
+    // )
     let filteredEventsByName = events.filter(
       (event) => event.name.toLowerCase().includes(e.target.value.toLowerCase())
     )
-    if(filteredEventsByCategory.length !== 0){
-      setEvents(filteredEventsByCategory)
-    }
+    // if(filteredEventsByCategory.length !== 0){
+    //   setEvents(filteredEventsByCategory)
+    // }
     if(filteredEventsByName.length !== 0) {
       setEvents(filteredEventsByName)
     }
+    console.log(filteredEventsByName)
   }
   // method to shuffle the events array 
   const shuffleArray = (array) => {
@@ -79,20 +80,20 @@ const Events = () => {
         }}
       >
       {events
-        ? (isShuffle ? shuffleArray(events).map((eventData, index) => {
-            return (
-              <EventCard key={index} index={index} data={eventData} isMyEvents={false} />
-            );
-          }) : 
+        ? 
+        // (isShuffle ? shuffleArray(events).map((eventData, index) => {
+        //     return (
+        //       <EventCard key={index} index={index} data={eventData} isMyEvents={false} />
+        //     );
+        //   }) 
+           
             events.filter((event)=>{
               return tab === 0 ?  event.eventType === "SPORTS" :  event.eventType === "CULTURAL"
             }).map((eventData, index) => {
             return (
               <EventCard key={index} index={index} data={eventData} isMyEvents={false} />
             );
-          })
-        ): 
-        <Loader />
+          }) : <Loader />
       }
       {events.length === 0 && 
       <div className="py-5 w-md-100 w-50 mx-auto text-center d-flex flex-column justify-content-center align-items-center">

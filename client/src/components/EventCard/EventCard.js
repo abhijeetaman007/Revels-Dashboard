@@ -2,7 +2,6 @@ import React from 'react';
 import './EventCard.scss';
 import { Link } from 'react-router-dom';
 const EventCard = ({ data, index, isMyEvents }) => {
-  console.log(data)
   const [eventPath, setEventPath] = React.useState(
     isMyEvents 
     ? `/dashboard/myevents/${data._id}` 

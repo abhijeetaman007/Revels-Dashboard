@@ -59,6 +59,7 @@ const InsideEvent = () => {
       );
       setEvent(res.data.data);
       setEventID(res.data.eventID);
+      console.log(res.data);
     } catch (err) {
       console.log(err);
     }
