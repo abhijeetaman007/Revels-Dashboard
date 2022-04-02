@@ -23,6 +23,7 @@ const MyEvents = () => {
             }
         };
         getRegEvents();
+        console.log(events)
     }, []);
     return (
         <div>
@@ -48,23 +49,21 @@ const MyEvents = () => {
           }}
         >
             {
-                events.length > 0 
-                ? events
-                    .map(value => ({ value, sort: Math.random() }))
-                    .sort((a, b) => a.sort - b.sort)
-                    .map(({ value }) => value)
+                events.length > 0
+                ? 
+                events
                     .filter((event)=>{
-
-                        return tab === 0 ?  event.event.eventType === "SPORTS" :  event.event.eventType === "CULTURAL"
+                        return tab === 0 ?  event.eventType === "SPORTS" :  event.eventType === "CULTURAL"
                     })
                     .map((eventData, index) => {
-                    return <EventCard 
+                      return <EventCard 
                         index={index} 
                         data={eventData.event} 
                         key={index} 
                         isMyEvents={true} 
-                    />;
-                }): 
+                      />;
+                })
+                : 
                 <div className="py-5 w-md-100 w-50 mx-auto text-center d-flex flex-column justify-content-center align-items-center">
                   <Lottie animationData={noEvents} loop/>
                   <h3 className="font-heavy" style={{ color: "#c4515c", fontSize: "2rem" }}>REGISTRATIONS OPENING SOON!</h3>

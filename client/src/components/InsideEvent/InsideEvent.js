@@ -57,8 +57,6 @@ const InsideEvent = () => {
         { event_Id: eventID },
         { headers: header }
       );
-      console.log("event now");
-      console.log(res.data.data);
       setEvent(res.data.data);
       setEventID(res.data.eventID);
     } catch (err) {
@@ -68,15 +66,11 @@ const InsideEvent = () => {
   // function to get team details
   const getTeamDetails = async () => {
     try {
-      console.log("get team details");
       const res = await axios.post(
         "/api/user/team/get",
         { event_ID: eventID },
         { headers: header }
       );
-      console.log("====================================");
-      console.log("team", res.data.data);
-      console.log("====================================");
       setTeam(res.data.data);
       setRequests(res.data.data.requestedMembers);
       setTeammembers(res.data.data.members);
@@ -280,6 +274,15 @@ const InsideEvent = () => {
                     icon: "fa-map-marker",
                     heading: "Event Venue",
                     text: `${event.eventVenue}`,
+                  })}
+                  </>}
+                  {event.registrationDeadline &&<>
+                    {DataComponent({
+                    icon: "fa-calendar-check-o",
+                    heading: "Registration Deadline",
+                    text: `${new Date(event.registrationDeadline).getDate()}/
+                    ${new Date(event.registrationDeadline).getMonth()}/
+                    ${new Date(event.registrationDeadline).getFullYear()}`,
                   })}
                   </>}
                   {event.registrationDeadline &&<>
