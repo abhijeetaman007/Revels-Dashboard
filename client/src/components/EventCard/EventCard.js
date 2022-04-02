@@ -28,7 +28,7 @@ const EventCard = ({ data, index, isMyEvents }) => {
           </div>
           
         </div>
-        <div className="tags-line">
+        <div className="tags-line flex-wrap mt-1">
           {data.tags != undefined
             ? data.tags.map((val, index) => {
                 return (
