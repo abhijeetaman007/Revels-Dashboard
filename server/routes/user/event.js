@@ -55,15 +55,17 @@ const registerEvent = async (req, res) => {
             return res.send({ success: false, msg: 'Already registered' });
 
         // Check on delegate cards
+        let flag = 0;
         event.delegateCards.forEach((delCard) => {
             if ((user.delegateCards.indexOf(delCard) == -1)&&(user.pendingDelegateCards.indexOf(delCard) == -1)) {
-                return res.status(400).send({
-                    success: false,
-                    msg: 'Please buy event specific delegate card(s)',
-                });
+                flag = 1;
             }
         });
-
+        if(flag == 1)
+        return res.status(400).send({
+            success: false,
+            msg: 'Please buy event specific delegate card(s)',
+        });
         // TODO:Check on collision of nanoids
         let teamID = nanoid(8);
         team = await new Team({
