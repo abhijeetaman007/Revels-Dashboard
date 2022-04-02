@@ -7,6 +7,11 @@ import Modal from 'react-modal';
 import Tag from '../components/Tag/Tag';
 
 const EventModal = ({ eventdata, deleteEvent }) => {
+  const [isChecked, setIsChecked] = useState(eventdata.teamDelegateCard);
+
+  const handleOnChange = () => {
+    setIsChecked(!isChecked);
+  };
   const customStyles = {
     content: {
       top: '50%',
@@ -57,6 +62,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
     eventDateTime: new Date(eventdata.eventDateTime),
     eventVenue: eventdata.eventVenue,
     tags: eventdata.tags,
+    teamDelegateCard: isChecked,
     // isActive: data.isActive,
   });
   const validateForm = () => {
@@ -170,6 +176,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           eventDateTime: new Date(data.eventDateTime),
           eventVenue: data.eventVenue,
           tags: tagsarr,
+          teamDelegateCard: isChecked,
         };
         console.log('eventdata', eventData);
         const res = await axios.post(
@@ -188,6 +195,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
             eventDateTime: eventData.eventDateTime,
             eventVenue: eventData.eventVenue,
             tags: tagsarr,
+            teamDelegateCard: isChecked,
           },
           {
             headers: {
@@ -237,6 +245,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           value={data.name}
           onChange={(e) => setData({ ...data, name: e.target.value })}
         />
+
         <div className="d-flex flex-md-row flex-column">
           <div className="w-md-50 w-100 mx-md-1">
             <label className="font-medium mt-2">
@@ -325,6 +334,18 @@ const EventModal = ({ eventdata, deleteEvent }) => {
             </select>
           </div>
         </div>
+        <div className="delcard">
+          <label className="font-medium mt-2">
+            Only team leader has delegate card
+          </label>
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={handleOnChange}
+            value=""
+          ></input>
+        </div>
+
         <label className="font-medium mt-2">Prize</label>
         <input
           type="number"

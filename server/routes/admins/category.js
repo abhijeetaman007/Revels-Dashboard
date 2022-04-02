@@ -22,7 +22,7 @@ const addEvent = async (req, res) => {
       //   eventDateTime, (To be set by operations)
       //   eventVenue,
       tags,
-      teamDelegateCardWorks, //If team leader delegate Card is sufficient for registration
+      teamDelegateCard, //If team leader delegate Card is sufficient for registration
     } = req.body;
 
     let eventName = await Event.exists({ name });
@@ -100,7 +100,7 @@ const addEvent = async (req, res) => {
       //   eventVenue,
       //   registrationDeadline,
       tags,
-      teamDelegateCardWorks,
+      teamDelegateCard,
       delegateCards: delCards, //TODO: Check on delegate Cards
     });
 
@@ -141,7 +141,7 @@ const updateEvent = async (req, res) => {
       minMembers,
       maxMembers,
       eventHeads,
-      teamDelegateCardWorks,
+      teamDelegateCard,
       delegateCards, //List of Delegate CardIDs
       // eventDateTime,
       // eventVenue,
@@ -208,7 +208,7 @@ const updateEvent = async (req, res) => {
         // registrationDeadline,
         tags,
         delegateCards: newDelegateCards,
-        teamDelegateCardWorks,
+        teamDelegateCard,
       }
     );
     return res.status(200).send({ success: true, msg: 'Event Updated' });
@@ -247,23 +247,22 @@ const getCategory = async (req, res) => {
     res.status(500).send({ success: false, msg: 'Internal Server Error' });
   }
 };
-const getAllCategories = async (req,res)=>{
-  try
-  {
+const getAllCategories = async (req, res) => {
+  try {
     let categories = await Category.find();
-    return res.send({data:categories,success:true})
+    return res.send({ data: categories, success: true });
+  } catch (err) {
+    console.log(err);
+    return res
+      .status(500)
+      .send({ success: false, msg: 'Internal Server Error' });
   }
-  catch(err)
-  {
-    console.log(err)
-    return res.status(500).send({success:false,msg:'Internal Server Error'})
-  }
-}
+};
 module.exports = {
   addEvent,
   getCategoryEvent,
   updateEvent,
   deleteEvent,
   getCategory,
-  getAllCategories
+  getAllCategories,
 };

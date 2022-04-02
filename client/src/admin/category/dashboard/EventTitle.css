@@ -126,3 +126,8 @@ input[type='date']:before {
 .remove:hover {
   background-color: rgb(187, 43, 43);
 }
+.delcard{
+  display:flex;
+  align-items: center;
+  width:300px;
+}
