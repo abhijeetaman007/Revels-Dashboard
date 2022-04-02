@@ -42,19 +42,13 @@ const EventCard = ({ data, index, isMyEvents }) => {
         </div>
         <div className="description font-medium">{data.description}</div>
         <div className="data-area">
-          {data.maxMembers > 1 ? (
-            <div className="box">
-              <p className="font-heavy">TEAM SIZE</p>
-              <h3 className="font-light">
-                {data.minMembers} - {data.maxMembers}
-              </h3>
-            </div>
-          ) : (
-            <div className="box">
-              <p className="font-heavy">TEAM SIZE</p>
-              <h3 className="font-light">1</h3>
-            </div>
-          )}
+          <div className="box">
+            <p className="font-heavy">TEAM SIZE</p>
+            <h3 className="font-light">
+              {(data.minMembers === 1 && data.maxMembers === 1) ? "Individual Event" :
+              <>{data.minMembers} - {data.maxMembers}</>}
+            </h3>
+          </div>
           {data.eventDateTime && (
             <div className="box">
               <p className="font-heavy">DATE</p>

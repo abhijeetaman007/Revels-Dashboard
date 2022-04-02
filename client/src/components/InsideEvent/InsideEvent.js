@@ -55,6 +55,7 @@ const InsideEvent = () => {
         { headers: header }
       );
       setEvent(res.data.data);
+      console.log(res.data.data);
       setEventID(res.data.eventid);
     } catch (err) {
       console.log(err);
@@ -226,6 +227,15 @@ const InsideEvent = () => {
             ${new Date(event.registrationDeadline).getFullYear()}`,
           })}
           </>}
+          {event.delegateCards && <>
+            {DataComponent({
+            icon: "fa-ticket",
+            heading: "Delegate Cards Required",
+            text: `${event.delegateCards.map((del, index) => 
+              {return del.name}
+            )}`
+          })}
+          </>}
         </div>
         <div className="ele font-light">{event.description}</div>
         {/* POPUP FOR REGISTER */}
@@ -261,7 +271,6 @@ const InsideEvent = () => {
                     ${new Date(event.eventDateTime).getFullYear()}`,
                   })}
                   </> }
-
                   {event.eventVenue && <>
                     {DataComponent({
                     icon: "fa-map-marker",
@@ -278,13 +287,13 @@ const InsideEvent = () => {
                     ${new Date(event.registrationDeadline).getFullYear()}`,
                   })}
                   </>}
-                  {event.registrationDeadline &&<>
+                  {event.delegateCards && <>
                     {DataComponent({
-                    icon: "fa-calendar-check-o",
-                    heading: "Registration Deadline",
-                    text: `${new Date(event.registrationDeadline).getDate()}/
-                    ${new Date(event.registrationDeadline).getMonth()}/
-                    ${new Date(event.registrationDeadline).getFullYear()}`,
+                    icon: "fa-ticket",
+                    heading: "Delegate Cards Required",
+                    text: `${event.delegateCards.map((del, index) => 
+                      {return + del.name}
+                    )}`
                   })}
                   </>}
                 </div>
@@ -326,6 +335,15 @@ const InsideEvent = () => {
                     text: `${new Date(event.registrationDeadline).getDate()}/
                     ${new Date(event.registrationDeadline).getMonth()}/
                     ${new Date(event.registrationDeadline).getFullYear()}`,
+                  })}
+                  </>}
+                  {event.delegateCards && <>
+                    {DataComponent({
+                    icon: "fa-ticket",
+                    heading: "Delegate Cards Required",
+                    text: `${event.delegateCards.map((del, index) => 
+                      {return del.name}
+                    )}`
                   })}
                   </>}
                 </div>
@@ -390,7 +408,7 @@ const InsideEvent = () => {
                 </div>
               </div>
             </div>
-            {auth.user._id == teamCreator ? (
+            {(auth.user._id == teamCreator && event.maxMembers !== 1 ) ? (
               <div className="ele">
                 <div className="font-heavy">REQUESTS</div>
                 {requests.length != 0 ? (
