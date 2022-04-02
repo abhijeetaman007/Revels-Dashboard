@@ -80,7 +80,7 @@ const Login = ({ category }) => {
           name=""
           autoComplete="off"
           required
-          value={email}
+           //value={email}
           onChange={(e) => setEmail(e.target.value.trim())}
           maxLength={100}
           className="bg-light my-1 h-25 p-2 rounded mx-0 w-100 text-dark"
@@ -91,7 +91,7 @@ const Login = ({ category }) => {
           name=""
           autoComplete="off"
           required
-          value={password}
+           //value={password}
           onChange={(e) => setPassword(e.target.value.trim())}
           maxLength={100}
           className="bg-light my-1 h-25 p-2 rounded mx-0 w-100 text-dark"

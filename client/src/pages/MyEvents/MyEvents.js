@@ -29,7 +29,7 @@ const MyEvents = () => {
             {
                 events.length > 0 
                 ? events.map((eventData, index) => {
-                    return <EventCard data={eventData.event} key={index} />;
+                    return <EventCard data={eventData.event} key={index} index={index}/>;
                 }): 
                 <div className="py-5 w-md-100 w-50 mx-auto text-center d-flex flex-column justify-content-center align-items-center">
                   <Lottie animationData={noEvents} loop/>

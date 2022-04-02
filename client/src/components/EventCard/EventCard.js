@@ -17,13 +17,14 @@ const EventCard = ({ data, index }) => {
             <h3 className="font-light">{data.name}</h3>
           </div>
           <div className="button-area">
-            <button className="font-heavy">
-              {data.mode === 'OFFLINE' ? 'Offline' : 'Online'} Event
+            <button className="mode">
+              {data.mode === 'OFFLINE' ? 'Offline' : 'Online'}
             </button>
-          </div>
-          <Link to={eventPath} className="button-area">
-            <button className="font-heavy">Details</button>
+            <Link to={eventPath}>
+            <button className="det">Details</button>
           </Link>
+          </div>
+          
         </div>
         <div className="tags-line">
           {data.tags != undefined

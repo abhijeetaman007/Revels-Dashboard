@@ -21,10 +21,10 @@ const EventModal = ({ eventdata, deleteEvent }) => {
     setIsOpen(true);
   };
   const closeModal = () => {
-    setT1('');
-    setT2('');
-    setT3('');
-    setT4('');
+    // setT1('');
+    // setT2('');
+    // setT3('');
+    // setT4('');
 
     setIsOpen(false);
   };
