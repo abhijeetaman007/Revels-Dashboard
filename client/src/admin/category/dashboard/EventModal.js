@@ -5,13 +5,43 @@ import { ADMIN_TOKEN_ID } from '../../../utils/constants';
 import './EventTitle.css';
 import Modal from 'react-modal';
 import Tag from '../components/Tag/Tag';
-
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
 const EventModal = ({ eventdata, deleteEvent }) => {
   const [isChecked, setIsChecked] = useState(eventdata.teamDelegateCard);
+  const [selDel, setSelDel] = useState(null);
+  const [filteredDel, setFilteredDel] = useState([]);
+
+  const handleChange = async (e) => {
+    console.log('e', e);
+    setFilteredDel(e);
+  };
+
+  const [delCards, setDelCards] = useState([]);
+
+  const [options, setOptions] = useState([]);
+
+  const getDelCards = async () => {
+    try {
+      const res = await axios.get('/api/user/delegatecard/getall');
+      // console.log('uhhhhhh', res.data.data);
+      setDelCards(res.data.data);
+      const arr = [];
+      res.data.data.map((x) => {
+        // console.log(x);
+        arr.push({ value: x.cardID, label: x.name });
+      });
+      // console.log('arr', arr);
+      setOptions(arr);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleOnChange = () => {
     setIsChecked(!isChecked);
   };
+
   const customStyles = {
     content: {
       top: '50%',
@@ -21,6 +51,19 @@ const EventModal = ({ eventdata, deleteEvent }) => {
       transform: 'translate(-50%, -50%)',
     },
   };
+
+  useEffect(() => {
+    getDelCards();
+    let filterArray = [];
+    for (let i = 0; i < eventdata.delegateCards.length; i++) {
+      filterArray.push({
+        value: eventdata.delegateCards[i].cardID,
+        label: eventdata.delegateCards[i].name,
+      });
+    }
+    setFilteredDel(filterArray);
+  }, []);
+
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const openModal = () => {
     setIsOpen(true);
@@ -118,6 +161,12 @@ const EventModal = ({ eventdata, deleteEvent }) => {
     );
   };
   const updateEvent = async () => {
+    const delArr = [];
+    for (let i = 0; i < filteredDel.length; i++) {
+      delArr.push({ cardID: filteredDel[i].value });
+    }
+    console.log('ooooooffff');
+    console.log(delArr);
     let tagsarr = [];
     if (tagsarr.length !== 0) {
       if (t1 !== '') tagsarr.push(t1.toUpperCase().trim());
@@ -177,6 +226,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           eventVenue: data.eventVenue,
           tags: tagsarr,
           teamDelegateCard: isChecked,
+          delegateCards: delArr,
         };
         console.log('eventdata', eventData);
         const res = await axios.post(
@@ -196,6 +246,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
             eventVenue: eventData.eventVenue,
             tags: tagsarr,
             teamDelegateCard: isChecked,
+            delegateCards: delArr,
           },
           {
             headers: {
@@ -297,6 +348,18 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           placeholder="Event description Here"
           value={data.description}
           onChange={(e) => setData({ ...data, description: e.target.value })}
+        />
+        <label className="font-medium mt-3">
+          Delegate Cards Needed for Event
+          <span style={{ color: 'red' }}>*</span>
+        </label>
+        <Select
+          closeMenuOnSelect={false}
+          components={makeAnimated}
+          isMulti
+          options={options}
+          value={filteredDel}
+          onChange={(e) => handleChange(e)}
         />
         <div className="d-flex flex-md-row flex-column">
           <div className="w-md-50 w-100 mx-md-1">

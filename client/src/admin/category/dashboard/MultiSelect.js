@@ -14,12 +14,16 @@ const animatedComponents = makeAnimated();
 
 export default function MultiSelect({ data }) {
   const [options, setOptions] = useState(data);
+  const handleChange = (e) => {
+    console.log(e);
+  };
   return (
     <Select
       closeMenuOnSelect={false}
       components={animatedComponents}
       isMulti
       options={options}
+      onChange={(e) => handleChange(e)}
     />
   );
 }

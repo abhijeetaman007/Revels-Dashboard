@@ -118,7 +118,9 @@ const getCategoryEvent = async (req, res) => {
   try {
     let category_Id = req.requestAdmin.role.categoryId;
     console.log('catid', category_Id);
-    let events = await Event.find({ category: category_Id });
+    let events = await Event.find({ category: category_Id }).populate(
+      'delegateCards'
+    );
     console.log('events', events);
     return res.status(200).send({ success: true, data: events });
   } catch {
@@ -258,6 +260,7 @@ const getAllCategories = async (req, res) => {
       .send({ success: false, msg: 'Internal Server Error' });
   }
 };
+
 module.exports = {
   addEvent,
   getCategoryEvent,

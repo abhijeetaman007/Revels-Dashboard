@@ -9,10 +9,19 @@ import Modal from 'react-modal';
 import EventModal from './EventModal';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../../context/AuthContext';
-import MultiSelect from './MultiSelect';
+// import MultiSelect from './MultiSelect';
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
+
 const Dashboard = () => {
+  const [selDel, setSelDel] = useState([]);
+  const handleChange = async (e) => {
+    console.log(e);
+    setSelDel(e);
+  };
   const [isChecked, setIsChecked] = useState(false);
   const [delCards, setDelCards] = useState([]);
+
   const [options, setOptions] = useState([]);
   const getDelCards = async () => {
     try {
@@ -22,7 +31,7 @@ const Dashboard = () => {
       const arr = [];
       res.data.data.map((x) => {
         console.log(x);
-        arr.push({ value: x._id, label: x.name });
+        arr.push({ value: x.cardID, label: x.name });
       });
       console.log('arr', arr);
       setOptions(arr);
@@ -130,7 +139,7 @@ const Dashboard = () => {
     maxMembers: 0,
     eventHeads: [],
     teamDelegateCard: false,
-    delegateCards: '',
+    delegateCards: [],
     tags: [],
   });
   const addTagElement = () => {
@@ -142,6 +151,13 @@ const Dashboard = () => {
     );
   };
   const addEvent = async () => {
+    const delcardsselected = [];
+    if (selDel.length > 0) {
+      selDel.map((x) => {
+        delcardsselected.push(x.value);
+      });
+    }
+    console.log('ffff', delcardsselected);
     console.log('add', isChecked);
     let tagsarr = [];
 
@@ -198,6 +214,7 @@ const Dashboard = () => {
           eventHeads: headsarr,
           tags: tagsarr,
           teamDelegateCard: isChecked,
+          delegateCards: delcardsselected,
         };
         console.log(eventData);
         const res = await axios.post(
@@ -214,6 +231,7 @@ const Dashboard = () => {
             eventHeads: headsarr,
             tags: tagsarr,
             teamDelegateCard: eventData.teamDelegateCard,
+            delegateCards: eventData.delegateCards,
           },
           {
             headers: {
@@ -233,8 +251,8 @@ const Dashboard = () => {
             minMembers: 0,
             maxMembers: 0,
             eventHeads: [],
-            teamDelegateCard: '',
-            delegateCards: '',
+            teamDelegateCard: false,
+            delegateCards: [],
             tags: [],
             head1P: 0,
             head2P: 0,
@@ -359,7 +377,17 @@ const Dashboard = () => {
           placeholder="Event description"
           onChange={(e) => setData({ ...data, description: e.target.value })}
         />
-        <MultiSelect data={options} />
+        <label className="font-medium mt-3">
+          Delegate Cards Needed for Event
+          <span style={{ color: 'red' }}>*</span>
+        </label>
+        <Select
+          closeMenuOnSelect={false}
+          components={makeAnimated}
+          isMulti
+          options={options}
+          onChange={(e) => handleChange(e)}
+        />
         <label for="mode" className="font-medium mt-3">
           Event Type<span style={{ color: 'red' }}>*</span>
         </label>
@@ -563,4 +591,5 @@ const Dashboard = () => {
     </div>
   );
 };
+
 export default Dashboard;
