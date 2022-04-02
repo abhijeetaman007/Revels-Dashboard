@@ -10,6 +10,7 @@ const SignIn = (props) => {
   const [isEyeOpen, setIsEyeOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [sendVerif, setVerifMail] = useState(false);
   // handles input field validation
   const validateForm = (toastId) => {
     if (email === "" || password === "") {
@@ -38,6 +39,10 @@ const SignIn = (props) => {
           });
         }
       } catch (error) {
+        if (error.response.data.msg === "Please Verify Email to login") {
+          setVerifMail(true);
+        }
+        console.log(error.response.data.msg, "lol");
         toast.error(error.response.data.msg, {
           position: "bottom-center",
           id: toastId,
@@ -106,6 +111,23 @@ const SignIn = (props) => {
           Create Account
         </p>
       </div>
+      {sendVerif && (
+        <div className="user-box d-flex justify-content-center align-items-center">
+          <p
+            onClick={async () => {
+              toast.success("Verification Mail Sent Successfully", {
+                position: "bottom-center",
+                id: toast.loading("Loading..."),
+              });
+              setVerifMail(false);
+              const res = await auth.resendVerif(email, password);
+            }}
+            className="font-medium"
+          >
+            Resend Verification Mail
+          </p>
+        </div>
+      )}
     </div>
   );
 };

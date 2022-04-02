@@ -1,6 +1,17 @@
 $tile-color: #f5737f;
+$purple: #a974ff;
+.fa{
+  color: $purple;
+}
+.small-font{
+  font-size: 0.8rem;
+}
+.grey{
+  color: #c4c4c4;
+}
+
 $event-card-background: #c6a3ff;
-.event-details {
+.event-details, .reg-area {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12,8 +23,8 @@ $event-card-background: #c6a3ff;
   button {
     width: fit-content;
     margin: 10px 0;
-    color: $tile-color;
-    border: 1.5px solid $tile-color;
+    color: $purple;
+    border: 1.5px solid $purple;
     border-radius: 10px;
     background-color: transparent;
     padding: 6px 20px;
@@ -21,8 +32,8 @@ $event-card-background: #c6a3ff;
     letter-spacing: 2px;
     text-transform: uppercase;
     &:hover {
-      background-color: $tile-color;
-      color: white;
+      background-color: $purple;
+      color: #100b1b;
     }
   }
   .event-group {

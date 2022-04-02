@@ -54,9 +54,10 @@ const getMyDelegateCards = async (req, res) => {
 
 const getPendingDelegateCards = async (req, res) => {
   try {
+    console.log(req.query);
     let delegateCards = await User.findOne(
-      { _id: req.requestUser._id },
-      { pendingDelegateCards: 1 }
+      { userID: req.query.delegateID },
+      { pendingDelegateCards: 1, name: 1, userID: 1, isMahe: 1 }
     ).populate("pendingDelegateCards");
     return res.status(200).send({ success: true, data: delegateCards });
   } catch (err) {
@@ -94,9 +95,45 @@ const getAllMyTransactions = async (req, res) => {
   }
 };
 
+const approvedPendingDelegateCard = async (req, res) => {
+  try {
+    const { delegateId, user, mode, receiptID, amount, adminID } =
+      req.body.data;
+
+    const recieptExists = await Transaction.exists({ orderId: receiptID });
+    if (recieptExists)
+      return res.status(200).send({ success: false, msg: "Duplicate Reciept" });
+    let newTransaction = new Transaction({
+      user: user,
+      delegateCard: delegateId,
+      name: mode,
+      orderId: receiptID,
+      amount: amount,
+      recievedBy: adminID,
+      isPaymentConfirmed: true,
+    });
+    await newTransaction.save();
+    await User.updateOne(
+      { _id: user },
+      {
+        $pull: { pendingDelegateCards: delegateId },
+        $addToSet: { delegateCard: delegateId },
+      }
+    );
+    return res.status(200).send({ success: true, data: newTransaction });
+  } catch (err) {
+    console.log(err);
+    return res
+      .status(500)
+      .send({ success: false, msg: "Internal Server Error" });
+  }
+};
+
 module.exports = {
   getAllDelegateCards,
   getMyDelegateCards,
   getAllMyTransactions,
   getPendingDelegateCards,
+  requestDelegateCard,
+  approvedPendingDelegateCard,
 };

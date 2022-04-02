@@ -1,9 +1,11 @@
 import React from 'react';
 import './EventCard.scss';
 import { Link } from 'react-router-dom';
-const EventCard = ({ data, index }) => {
+const EventCard = ({ data, index, isMyEvents }) => {
   const [eventPath, setEventPath] = React.useState(
-    `/dashboard/event/${data._id}`
+    isMyEvents 
+    ? `/dashboard/myevents/${data._id}` 
+    : `/dashboard/event/${data._id}`
   );
   const eventCardColours = ['event-back-1', 'event-back-2'];
   return (
@@ -17,13 +19,14 @@ const EventCard = ({ data, index }) => {
             <h3 className="font-light">{data.name}</h3>
           </div>
           <div className="button-area">
-            <button className="font-heavy">
-              {data.mode === 'OFFLINE' ? 'Offline' : 'Online'} Event
+            <button className="mode">
+              {data.mode === 'OFFLINE' ? 'Offline' : 'Online'}
             </button>
-          </div>
-          <Link to={eventPath} className="button-area">
-            <button className="font-heavy">Details</button>
+            <Link to={eventPath}>
+            <button className="det">Details</button>
           </Link>
+          </div>
+          
         </div>
         <div className="tags-line">
           {data.tags != undefined

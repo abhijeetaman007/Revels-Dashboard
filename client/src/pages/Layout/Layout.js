@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import './Layout.scss';
-import { useNavigate } from 'react-router-dom';
-import aagaz from './../../assets/aagaz.png';
-import events from './../../assets/icons/events.svg';
-import myEvents from './../../assets/icons/myEvents.svg';
-import proshow from './../../assets/icons/proshow.svg';
-import delegateCard from './../../assets/icons/delegateCard.svg';
-import logoWhite from './.././../assets/logos/logo_white.png';
-import { Link } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
-import Loader from './../Loader/Loader';
+import React, { useEffect, useState } from "react";
+import "./Layout.scss";
+import { useNavigate } from "react-router-dom";
+import aagaz from "./../../assets/aagaz.png";
+import events from "./../../assets/icons/events.svg";
+import myEvents from "./../../assets/icons/myEvents.svg";
+import proshow from "./../../assets/icons/proshow.svg";
+import delegateCard from "./../../assets/icons/delegateCard.svg";
+import logoWhite from "./.././../assets/logos/logo_white.png";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import Loader from "./../Loader/Loader";
 import ComingSoonDash from "./../../components/ComingSoon/ComingSoon2";
 
 const Layout = ({ children, isAagazVisible = false, activeTab }) => {
@@ -22,21 +22,21 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
 
   // handles hamburger click on mobiles
   const handleHamburger = () => {
-    document.querySelector('.dash-wrapper').classList.toggle('active');
+    document.querySelector(".dash-wrapper").classList.toggle("active");
   };
   const handleBell = () => {
-    document.querySelector('.notif-wrapper').classList.toggle('active');
+    document.querySelector(".notif-wrapper").classList.toggle("active");
   };
   useEffect(() => {
     console.log(auth.user);
     if (!auth.loading) {
       setLoading(false);
       if (!auth.user) {
-        navigate('/');
+        navigate("/");
       }
     }
     if (!loading)
-      document.querySelector(`#${activeTab}`).classList.toggle('active');
+      document.querySelector(`#${activeTab}`).classList.toggle("active");
   }, [auth.loading]);
 
   return loading ? (
@@ -68,10 +68,10 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <Link to="/dashboard/events">
               <div
                 className={`side-nav-link ${
-                  active === 'events' ? 'active' : ''
+                  active === "events" ? "active" : ""
                 }`}
                 id="events"
-                onClick={() => setActive('events')}
+                onClick={() => setActive("events")}
               >
                 <span>
                   <img src={events} alt="Events Icons"></img>
@@ -82,10 +82,10 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <Link to="/dashboard/myevents">
               <div
                 className={`side-nav-link ${
-                  active === 'my-events' ? 'active' : ''
+                  active === "my-events" ? "active" : ""
                 }`}
                 id="my-events"
-                onClick={() => setActive('my-events')}
+                onClick={() => setActive("my-events")}
               >
                 <span>
                   <img src={myEvents} alt="my Events Icon"></img>
@@ -96,10 +96,10 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <Link to="/dashboard/proshow">
               <div
                 className={`side-nav-link ${
-                  active === 'proshow' ? 'active' : ''
+                  active === "proshow" ? "active" : ""
                 }`}
                 id="proshow"
-                onClick={() => setActive('proshow')}
+                onClick={() => setActive("proshow")}
               >
                 <span>
                   <img src={proshow} alt="Proshow Icon"></img>
@@ -110,10 +110,10 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <Link to="/dashboard/delegatecard">
               <div
                 className={`side-nav-link ${
-                  active === 'delegate-card' ? 'active' : ''
+                  active === "delegate-card" ? "active" : ""
                 }`}
                 id="delegate-card"
-                onClick={() => setActive('delegate-card')}
+                onClick={() => setActive("delegate-card")}
               >
                 <span>
                   <img src={delegateCard} alt="Delegate Card Icon"></img>
@@ -144,8 +144,13 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
           {/* !!!!!!!!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!!!!!!! */}
           {/* change {children} to <ComingSoonDash /> before pushing code */}
           {/* !!!!!!!!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!!!!!!! */}
-          {/* {children} */}
-          { activeTab.toUpperCase() === "EVENTS" || activeTab.toUpperCase() === "MY-EVENTS" || activeTab.toUpperCase() === "PROSHOW" ? children : <ComingSoonDash /> }
+          {children}
+          {/* {activeTab.toUpperCase() === "EVENTS" ||
+          activeTab.toUpperCase() === "MY-EVENTS" ? (
+            children
+          ) : (
+            <ComingSoonDash />
+          )} */}
         </div>
         {/* uncomment for proshow */}
         {/* {

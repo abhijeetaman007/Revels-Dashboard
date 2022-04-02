@@ -1,7 +1,7 @@
-import axios from 'axios';
-import React, { useContext, createContext, useState, useEffect } from 'react';
-import { TOKEN_ID, ADMIN_TOKEN_ID } from '../utils/constants';
-import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import React, { useContext, createContext, useState, useEffect } from "react";
+import { TOKEN_ID, ADMIN_TOKEN_ID } from "../utils/constants";
+import { useNavigate } from "react-router-dom";
 const AuthContext = createContext(null);
 
 export const useAuth = () => {
@@ -11,6 +11,7 @@ export const useAuth = () => {
 export default function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [admin, setAdmin] = useState(null);
+  const [adminPayment, setadminPayment] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -18,7 +19,7 @@ export default function AuthProvider({ children }) {
     const token = localStorage.getItem(TOKEN_ID);
     if (token) {
       try {
-        const res = await axios.get('/api/user/getuser', {
+        const res = await axios.get("/api/user/getuser", {
           headers: {
             authorization: token,
           },
@@ -38,13 +39,22 @@ export default function AuthProvider({ children }) {
     const token = localStorage.getItem(ADMIN_TOKEN_ID);
     if (token) {
       try {
-        const res = await axios.get('/api/admin/getadmin', {
+        const res = await axios.get("/api/admin/getadmin", {
           headers: {
             authorization: token,
           },
         });
+        console.log(res.data.data.role.accessLevel);
+
+        if (res.data.data.role.accessLevel === 5) {
+          setadminPayment(res.data.data);
+          console.log(adminPayment);
+          setLoading(false);
+        }
         if (res.data.success) {
           setAdmin(res.data.data);
+          setLoading(false);
+        } else {
           setLoading(false);
         }
       } catch (error) {
@@ -74,14 +84,14 @@ export default function AuthProvider({ children }) {
       let col = JSON.parse(college);
       const data = {
         name,
-        email: col.isMahe ? email + '@learner.manipal.edu' : email,
+        email: col.isMahe ? email + "@learner.manipal.edu" : email,
         password,
         mobileNumber,
         registrationNumber,
         course,
         college: col.name,
       };
-      const res = await axios.post('/api/user/register', data);
+      const res = await axios.post("/api/user/register", data);
       if (!res.data.success) return res.data;
       return res.data;
     } catch (err) {
@@ -91,7 +101,7 @@ export default function AuthProvider({ children }) {
   // method to handle user login
   const userLogin = async (email, password) => {
     try {
-      const res = await axios.post('/api/user/login', {
+      const res = await axios.post("/api/user/login", {
         email,
         password,
       });
@@ -104,9 +114,21 @@ export default function AuthProvider({ children }) {
     }
   };
   // method to handle admin login
+  const resendVerif = async (email, password) => {
+    try {
+      const res = await axios.post("/api/user/resendlink", {
+        email,
+      });
+      if (!res.data.success) return res.data;
+      return res.data;
+    } catch (err) {
+      throw err;
+    }
+  };
+  // method to handle admin login
   const adminLogin = async (email, password) => {
     try {
-      const res = await axios.post('/api/admin/login', {
+      const res = await axios.post("/api/admin/login", {
         email,
         password,
       });
@@ -123,7 +145,7 @@ export default function AuthProvider({ children }) {
     try {
       setUser(null);
       localStorage.removeItem(TOKEN_ID);
-      navigate('/');
+      navigate("/");
     } catch (err) {
       throw err;
     }
@@ -131,9 +153,11 @@ export default function AuthProvider({ children }) {
   // method to handle admin logout
   const adminlogout = async () => {
     try {
+      console.log("admin logout");
       setAdmin(null);
+      setadminPayment(null);
       localStorage.removeItem(ADMIN_TOKEN_ID);
-      navigate('/admin');
+      navigate("/admin");
     } catch (err) {
       throw err;
     }
@@ -147,6 +171,8 @@ export default function AuthProvider({ children }) {
     userLogin: userLogin,
     adminLogin: adminLogin,
     adminLogout: adminlogout,
+    resendVerif: resendVerif,
+    adminPayment: adminPayment,
     loading,
   };
 

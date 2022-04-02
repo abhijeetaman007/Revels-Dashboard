@@ -15,6 +15,10 @@ const transactionSchema = new mongoose.Schema(
       type: mongoose.Types.ObjectId,
       ref: "User",
     },
+    recievedBy: {
+      type: mongoose.Types.ObjectId,
+      ref: "Admin",
+    },
     orderId: {
       type: String,
     },
