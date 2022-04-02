@@ -1,51 +1,59 @@
 [
     {
-        "day" : "DAY ONE",
-        "date" : "13 April 2022",
-        "name" : "KK",
-        "description" : "Playback Singer",
-        "src" : "/proshow/kk.jpeg"
+        "day" : "Tribhukti",
+        "date" : "11 April 2022",
+        "name" : "Classical Night",
+        "description" : "Classical Jugalbandi",
+        "src" : "/proshow/classical.png"
     },
     {
         "day" : "DAY ONE",
         "date" : "13 April 2022",
         "name" : "Kenny Sebastin",
         "description" : "Standup Comedian",
-        "src" : "/proshow/kenny.jpeg"
+        "src" : "/proshow/kenny.png"
     },
     {
-        "day" : "DAY TWO",
-        "date" : "14 April 2022",
-        "name" : "Nikhil D'souza",
-        "description" : "Singer and songwriter",
-        "src" : "/proshow/nikhil.jpeg"
-    },
-    {
-        "day" : "DAY TWO",
-        "date" : "14 April 2022",
-        "name" : "Akash Mehta",
+        "day" : "DAY ONE",
+        "date" : "13 April 2022",
+        "name" : "Aakash Mehta",
         "description" : "Standup Comedian",
-        "src" : "/proshow/akash.jpg"
+        "src" : "/proshow/aakash.JPG"
+    },
+    {
+        "day" : "DAY TWO",
+        "date" : "14 April 2022",
+        "name" : "Shruti Prakash",
+        "description" : "Actress and Model",
+        "src" : "/proshow/shruti.jpeg"
+    },
+    {
+        "day" : "DAY THREE",
+        "date" : "15 April 2022",
+        "name" : "KK",
+        "description" : "Indian Playback Singer",
+        "src" : "/proshow/kk.jpg"
     },
     {
         "day" : "DAY THREE",
         "date" : "15 April 2022",
         "name" : "Naalayak",
-        "description" : "Indie Band",
-        "src" : "/proshow/naalayak.jpg"
+        "description" : "Indie Rock Band",
+        "src" : "/proshow/naalayak.JPG"
+    },
+    
+    {
+        "day" : "DAY FOUR",
+        "date" : "16 April 2022",
+        "name" : "Nikhil D'souza",
+        "description" : "Singer-songwriter",
+        "src" : "/proshow/nikhil.jpg"
     },
     {
-        "day" : "DAY THREE",
-        "date" : "15 April 2022",
-        "name" : "Sruti Prakash",
-        "description" : "Fashion Model",
-        "src" : "/proshow/shruti.jpg"
-    },
-    {
-        "day" : "DAY THREE",
-        "date" : "15 April 2022",
-        "name" : "Tribhukti",
-        "description" : "Classical Jugalbandi",
-        "src" : "/proshow/tribhukti.jpg"
+        "day" : "DAY FOUR",
+        "date" : "16 April 2022",
+        "name" : "Zephyrtone",
+        "description" : "Producer + Vocalist",
+        "src" : "/proshow/zephyrtone.jpg"
     }
 ]
