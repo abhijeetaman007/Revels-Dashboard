@@ -131,12 +131,12 @@ $event-card-background-2: #8e49fc;
       display: -ms-flexbox;
       display: flex;
       gap: 10px;
+
       .box {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
         color: white;
-        
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
             -ms-flex-direction: column;

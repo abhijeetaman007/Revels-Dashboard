@@ -161,7 +161,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
     );
   };
   const updateEvent = async () => {
-    const toastId = toast.loading("Updating Event");
+    const toastId = toast.loading('Updating Event');
     const delArr = [];
     for (let i = 0; i < filteredDel.length; i++) {
       delArr.push({ cardID: filteredDel[i].value });
@@ -194,7 +194,6 @@ const EventModal = ({ eventdata, deleteEvent }) => {
       toast.error('Please fill in all the fields', {
         id: toastId,
       });
-      
     }
     // else if (
     //   head1P.toString().length !== 10 ||
@@ -217,7 +216,6 @@ const EventModal = ({ eventdata, deleteEvent }) => {
       toast.error("Please complete Event Head 2's details", {
         id: toastId,
       });
-     
     } else {
       try {
         console.log(tagsarr);
@@ -269,19 +267,17 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           toast.success('Event updated successfully', {
             id: toastId,
           });
-          
+
           closeModal();
         } else {
           toast.error(res.data.msg, {
             id: toastId,
           });
-       
         }
       } catch (err) {
         toast.error('Something Went Wrong', {
           id: toastId,
         });
-       
       }
     }
   };
@@ -473,7 +469,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           <i className="fa fa-plus-square" onClick={addTagElement}></i>
         )}
 
-        <label className="font-medium mt-3 w-100">Event Date (Read Only)</label>
+        <label className="font-medium mt-3 w-100">Event Date</label>
         <input
           type="date"
           name=""
@@ -481,24 +477,24 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           // required
           maxLength={100}
           className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="13/04/2022"
+          placeholder="Date"
           value={data.eventDateTime}
           //readOnly
-           onChange={(e) => setData({ ...data, eventDateTime: e.target.value })}
+          onChange={(e) => setData({ ...data, eventDateTime: e.target.value })}
         />
 
-        <label className="font-medium mt-3">Event Venue (Read Only)</label>
+        <label className="font-medium mt-3">Event Venue</label>
         <input
           type="text"
           name=""
           autoComplete="off"
-          required
+          // required
           maxLength={100}
           className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
-          placeholder="AB5 203"
-          value={data.eventVenue}
+          placeholder="Venue"
+          value={new Date(data.eventVenue)}
           //readOnly
-           onChange={(e) => setData({ ...data, eventVenue: e.target.value })}
+          onChange={(e) => setData({ ...data, eventVenue: e.target.value })}
         />
 
         <div className="font-heavy mt-4 h5">Event Head details</div>

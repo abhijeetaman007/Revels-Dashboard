@@ -7,7 +7,7 @@ import { ADMIN_TOKEN_ID } from '../../../utils/constants';
 import './EventTitle.css';
 import Modal from 'react-modal';
 import EventModal from './EventModal';
-import { useNavigate,Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../../../context/AuthContext';
 // import MultiSelect from './MultiSelect';
 import Select from 'react-select';
@@ -217,6 +217,8 @@ const Dashboard = () => {
           tags: tagsarr,
           teamDelegateCard: isChecked,
           delegateCards: delcardsselected,
+          eventDateTime: data.eventDateTime,
+          eventVenue: data.eventVenue,
         };
         console.log(eventData);
         const res = await axios.post(
@@ -234,6 +236,8 @@ const Dashboard = () => {
             tags: tagsarr,
             teamDelegateCard: eventData.teamDelegateCard,
             delegateCards: eventData.delegateCards,
+            eventDateTime: eventData.eventDateTime,
+            eventVenue: eventData.eventVenue,
           },
           {
             headers: {
@@ -470,6 +474,31 @@ const Dashboard = () => {
         {numTags !== 4 && (
           <i className="fa fa-plus-square" onClick={addTagElement}></i>
         )}
+        <label className="font-medium mt-3 w-100">Event Date</label>
+        <input
+          type="date"
+          name=""
+          autoComplete="off"
+          // required
+          maxLength={100}
+          className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
+          placeholder="Date"
+          //readOnly
+          onChange={(e) => setData({ ...data, eventDateTime: e.target.value })}
+        />
+
+        <label className="font-medium mt-3">Event Venue</label>
+        <input
+          type="text"
+          name=""
+          autoComplete="off"
+          // required
+          maxLength={100}
+          className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
+          placeholder="Venue"
+          //readOnly
+          onChange={(e) => setData({ ...data, eventVenue: e.target.value })}
+        />
         <div className="font-heavy mt-4 h5">Event Head details</div>
         <div className="font-heavy mt-4 h6">Event Head 1</div>
         <label className="font-medium mt-2">
@@ -572,40 +601,41 @@ const Dashboard = () => {
         >
           {category.description}
         </div>
-         {category.categoryId === "INF" && <>
-         <>
-         <Link to="/admin/payment">
-         <button
-          type="button"
-          className="btn m-2 text-white"
-          style={{ backgroundColor: '#F4737E', width: '200px' }}
-          
-        >
-          Update Payment
-        </button>
-         </Link>
-
-         
-         </>
-         </>}
-        {(category.type === "CULTURAL" || category.type === "SPORTS") && <>
-        <button
-          type="button"
-          className="btn m-2 text-white"
-          style={{ backgroundColor: '#F4737E', width: '200px' }}
-          onClick={openModal}
-        >
-          Create Event
-        </button>
-        <div
-          className="d-flex flex-wrap justify-content-center align-items-center"
-          style={{ margin: '4rem 5rem' }}
-        >
-          {events.map((eventdata) => (
-            <EventModal eventdata={eventdata} deleteEvent={deleteEvent} />
-          ))}
-        </div>
-        </>}
+        {category.categoryId === 'INF' && (
+          <>
+            <>
+              <Link to="/admin/payment">
+                <button
+                  type="button"
+                  className="btn m-2 text-white"
+                  style={{ backgroundColor: '#F4737E', width: '200px' }}
+                >
+                  Update Payment
+                </button>
+              </Link>
+            </>
+          </>
+        )}
+        {(category.type === 'CULTURAL' || category.type === 'SPORTS') && (
+          <>
+            <button
+              type="button"
+              className="btn m-2 text-white"
+              style={{ backgroundColor: '#F4737E', width: '200px' }}
+              onClick={openModal}
+            >
+              Create Event
+            </button>
+            <div
+              className="d-flex flex-wrap justify-content-center align-items-center"
+              style={{ margin: '4rem 5rem' }}
+            >
+              {events.map((eventdata) => (
+                <EventModal eventdata={eventdata} deleteEvent={deleteEvent} />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
