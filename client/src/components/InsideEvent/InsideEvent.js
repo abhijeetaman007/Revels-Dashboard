@@ -181,7 +181,7 @@ const InsideEvent = () => {
       </div>
     );
   };
-  if(loading)return <Loader />
+  if (loading) return <Loader />;
   return (
     <Layout activeTab={"events"} isAagazVisible={true}>
       <div className="event-details">
@@ -434,7 +434,7 @@ const InsideEvent = () => {
           </div>
         </Modal>
         {team === null ? (
-          <button disabled onClick={openModal} className="font-heavy">
+          <button onClick={openModal} className="font-heavy">
             Register
           </button>
         ) : (
