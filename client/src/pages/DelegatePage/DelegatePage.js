@@ -45,9 +45,7 @@ async function displayRazorpay(delegateCardID) {
   //   alert("Razorpay SDK failed to load.");
   //   return;
   // }
-
-  //Helps start an order and register order with razorpay
-  const resp = await axios.post("/api/Atom", {
+  const data = {
     login: "192",
     pass: "Test@123",
     ttype: "NBFundTransfer",
@@ -63,11 +61,27 @@ async function displayRazorpay(delegateCardID) {
     udf2: "ankit.sharma@atomtech.in",
     udf3: "8446320942",
     udf4: "Ft tower, Andheri, Mumbai",
-    ru: "http://localhost:3000/api/Response",
-  });
+    ru: "https://revelmit.in/api/Response",
+  };
+  // Object.keys(data).forEach((element) => {
+  //   bodyFormData.append(element, data[element]);
+  // });
+  //Helps start an order and register order with razorpay
+  const resp = await axios.post("/api/Atom", data);
+  // fetch("http://localhost:3000/api/Atom", {
+  //   method: "POST",
+  //   body: JSON.stringify(data),
+  //   mode: "no-cors",
+  //   redirect: "follow",
+  //   headers: {
+  //     "Content-Type": "application/json",
+  //   },
+  // })
+  //   .then((res) => res.json())
+  //   .then((res) => console.log(res));
 
-  let data = resp.data;
-  // resp = await axios.get(resp.data.url);
+  // let d = resp.json;
+  console.log(resp.data);
 
   // console.log("POST DATA : ", data);
 }
@@ -95,7 +109,14 @@ function DelegatePage() {
     fetchDelegateCards();
   }, []);
   // const colorArr = ["blue", "purple", "black", "pink", "white", "light-pink"];
-  const colorArr = ["proshow", "inf", "gaming", "workshops", "general", "sports"];
+  const colorArr = [
+    "proshow",
+    "inf",
+    "gaming",
+    "workshops",
+    "general",
+    "sports",
+  ];
   return auth.loading ? (
     <Loader />
   ) : (

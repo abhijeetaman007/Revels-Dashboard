@@ -90,9 +90,10 @@ const requestAtom = (req, resp) => {
       path: "/paynetz/epi/fts?login=" + data.login + "&encdata=" + encdata + "",
     };
     url = options["host"] + options["path"];
-    return resp.status(200).json({ url: url });
+    resp.redirect(url);
   } catch (error) {
-    return res
+    console.log(error);
+    return resp
       .status(500)
       .send({ success: false, msg: "Internal Server Error" });
   }
