@@ -1,0 +1,27 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.mit.mitrevels22",
+    "sha256_cert_fingerprints":
+    ["4A:98:6A:9B:12:D7:B0:CB:30:6B:05:1D:17:46:A8:41:08:85:D8:0E:A1:D3:C0:05:82:CC:15:9B:DD:B6:FA:1A",
+    "B2:D6:A5:5C:ED:DA:8A:8B:0F:49:F3:E8:85:E6:F4:4F:C1:E4:16:6E:4A:38:DD:A9:94:1E:5F:0D:D2:12:58:74"]
+  }
+},
+{
+  "relation": ["delegate_permission/common.get_login_creds"],
+  "target": {
+    "namespace": "web",
+    "site": "https://revelsmit.in"
+  }
+},
+{
+  "relation": ["delegate_permission/common.get_login_creds"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.mit.mitrevels22",
+    "sha256_cert_fingerprints":
+    ["4A:98:6A:9B:12:D7:B0:CB:30:6B:05:1D:17:46:A8:41:08:85:D8:0E:A1:D3:C0:05:82:CC:15:9B:DD:B6:FA:1A",
+    "B2:D6:A5:5C:ED:DA:8A:8B:0F:49:F3:E8:85:E6:F4:4F:C1:E4:16:6E:4A:38:DD:A9:94:1E:5F:0D:D2:12:58:74"]
+  }
+}]
