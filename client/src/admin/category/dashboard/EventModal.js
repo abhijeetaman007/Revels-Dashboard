@@ -478,11 +478,10 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           maxLength={100}
           className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="Date"
-          value={data.eventDateTime}
           //readOnly
           onChange={(e) => setData({ ...data, eventDateTime: e.target.value })}
         />
-
+        <p>Previous selected date: {eventdata.eventDateTime}</p>
         <label className="font-medium mt-3">Event Venue</label>
         <input
           type="text"
@@ -492,7 +491,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           maxLength={100}
           className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="Venue"
-          value={new Date(data.eventVenue)}
+          value={data.eventVenue}
           //readOnly
           onChange={(e) => setData({ ...data, eventVenue: e.target.value })}
         />
