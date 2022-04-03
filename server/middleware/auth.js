@@ -108,7 +108,7 @@ const isAdminLoggedIn = async (req, res, next) => {
           _id: payload.admin_Id,
           token,
         }).populate('role');
-        console.log('here ', admin);
+        //console.log('here ', admin);
         if (admin) {
           req.requestAdmin = admin;
           next();

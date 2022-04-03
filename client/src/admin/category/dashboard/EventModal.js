@@ -169,12 +169,14 @@ const EventModal = ({ eventdata, deleteEvent }) => {
     console.log('ooooooffff');
     console.log(delArr);
     let tagsarr = [];
-    if (tagsarr.length !== 0) {
+    console.log(t1);
+    if (numTags.length !== 0) {
       if (t1 !== '') tagsarr.push(t1.toUpperCase().trim());
       if (t2 !== '') tagsarr.push(t2.toUpperCase().trim());
       if (t3 !== '') tagsarr.push(t3.toUpperCase().trim());
       if (t4 !== '') tagsarr.push(t4.toUpperCase().trim());
     }
+    console.log(tagsarr);
     let headsarr = [];
     if (head1N !== '')
       headsarr.push({
@@ -218,6 +220,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
      
     } else {
       try {
+        console.log(tagsarr);
         const eventData = {
           eventID: data.eventID,
           name: data.name,
