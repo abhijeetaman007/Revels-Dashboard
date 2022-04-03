@@ -39,19 +39,19 @@ const EventCard = ({ data, index, isMyEvents }) => {
         </div>
         <div className="description font-medium">{data.description}</div>
         <div className="data-area">
-          {/* <div className="box">
+          <div className='box-wrapper'>
+          <div className="box">
             <p className="font-heavy">TEAM SIZE</p>
             <h3 className="font-light">
               {data.minMembers === 1 && data.maxMembers === 1 ? (
-                'Individual Event'
+                'Individual'
               ) : (
                 <>
                   {data.minMembers} - {data.maxMembers}
                 </>
               )}
             </h3>
-          </div> */}
-
+          </div>
           {data.eventDateTime && (
             <div className="box">
               <p className="font-heavy">DATE</p>
@@ -68,6 +68,7 @@ const EventCard = ({ data, index, isMyEvents }) => {
               <h3 className="font-light">{data.eventVenue}</h3>
             </div>
           )}
+          </div>
         </div>
       </div>
     </div>
