@@ -80,7 +80,7 @@ async function displayRazorpay(delegateCardID, amount, user) {
     udf2: user.email,
     udf3: user.mobileNumber,
     udf4: delegateCardID,
-    ru: "https://revelsmit.in/api/Response",
+    ru: "https://revelsm.n/api/Response",
     delegateCardID: delegateCardID,
   };
   // Object.keys(data).forEach((element) => {
