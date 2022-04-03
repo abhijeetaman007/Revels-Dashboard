@@ -1,8 +1,10 @@
 var crypto = require("crypto");
+const User = require("../../models/User");
 
 const requestAtom = (req, resp) => {
   try {
     var data = req.body;
+    console.log(data);
     var cc = req.body.clientcode;
     var final = new Buffer(cc).toString("base64");
     var url = data.ru == "" ? null : data.ru;
@@ -10,9 +12,9 @@ const requestAtom = (req, resp) => {
     var udf2 = data.udf2 == "" ? null : data.udf2;
     var udf3 = data.udf3 == "" ? null : data.udf3;
     var udf4 = data.udf4 == "" ? null : data.udf4;
-    var key = "KEY123657234";
-    var req_enc_key = "8E41C78439831010F81F61C344B7BFC7";
-    var req_salt = "8E41C78439831010F81F61C344B7BFC7";
+    var key = "process.env.key";
+    var req_enc_key = "process.env.req_enc_key";
+    var req_salt = "process.env.req_salt";
     var sign =
       data.login +
       data.pass +
@@ -86,11 +88,11 @@ const requestAtom = (req, resp) => {
     var encdata = encrypt(text);
 
     var options = {
-      host: "https://paynetzuat.atomtech.in",
+      host: "https://payment.atomtech.in",
       path: "/paynetz/epi/fts?login=" + data.login + "&encdata=" + encdata + "",
     };
     url = options["host"] + options["path"];
-    resp.redirect(url);
+    resp.json({ url: url });
   } catch (error) {
     console.log(error);
     return resp
@@ -99,10 +101,10 @@ const requestAtom = (req, resp) => {
   }
 };
 
-const responseAtom = (req, resp) => {
+const responseAtom = async (req, resp) => {
   try {
-    var res_enc_key = "8E41C78439831010F81F61C344B7BFC7";
-    var res_salt = "8E41C78439831010F81F61C344B7BFC7";
+    var res_enc_key = "process.env.res_enc_key";
+    var res_salt = "process.env.res_salt";
     const algorithm = "aes-256-cbc";
     const password = Buffer.from(res_enc_key, "utf8");
     const salt = Buffer.from(res_salt, "utf8");
@@ -130,11 +132,35 @@ const responseAtom = (req, resp) => {
 
     console.log("Response");
     console.log(data);
-    resp.json(data);
+    // resp.json(data);
+    if (data.desc == "SUCCESS") {
+      await User.updateOne(
+        { email: data.udf2 },
+        {
+          $pull: { delegateCards: data.udf4 },
+        }
+      );
+      let user = await User.findOneAndUpdate(
+        { email: data.udf2 },
+        {
+          $addToSet: { delegateCards: data.udf4 },
+        }
+      );
+      console.log(user);
+    }
+    if (data.desc == "SUCCESS")
+      return resp.redirect(
+        "http://localhost:4102/dashboard/delegatecard/success"
+      );
+    if (data.desc == "FAILED")
+      return resp.redirect("http://localhost:4102/dashboard/delegatecard/fail");
+    if (data.desc == "TRANSACTION IS CANCELLED BY USER ON PAYMENT PAGE.")
+      return resp.redirect(
+        "http://localhost:4102/dashboard/delegatecard/cancelled"
+      );
+    else return resp.redirect("http://localhost:4102/dashboard/delegatecard");
   } catch (error) {
-    return res
-      .status(500)
-      .send({ success: false, msg: "Internal Server Error" });
+    return resp.status(500).send({ success: false, msg: error.toString() });
   }
 };
 

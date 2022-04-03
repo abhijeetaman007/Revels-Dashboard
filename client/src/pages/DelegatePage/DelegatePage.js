@@ -38,30 +38,50 @@ async function cashPayment(delegateCardID) {
   return resp;
 }
 
-async function displayRazorpay(delegateCardID) {
+async function displayRazorpay(delegateCardID, amount, user) {
   // const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
   // console.log("Load Script ", res);
   // if (!res) {
   //   alert("Razorpay SDK failed to load.");
   //   return;
   // }
+  // const data = {
+  //   login: "192",
+  //   pass: "Test@123",
+  //   ttype: "NBFundTransfer",
+  //   prodid: "NSE",
+  //   amt: amount.toString() + ".00",
+  //   txncur: "INR",
+  //   txnamt: amount.toString() + ".00",
+  //   clientcode: "NAVIN",
+  //   transid: "1000",
+  //   datepick: "01/03/2019 16:20:00",
+  //   custacc: "100000036600",
+  //   udf1: user.name,
+  //   udf2: user.email,
+  //   udf3: user.mobileNumber,
+  //   udf4: delegateCardID,
+  //   ru: "http://localhost:3000/api/Response",
+  //   delegateCardID: delegateCardID,
+  // };
   const data = {
-    login: "192",
-    pass: "Test@123",
+    login: "332432",
+    pass: process.env.REACT_APP_ATOM_PASS,
     ttype: "NBFundTransfer",
-    prodid: "NSE",
-    amt: "50.00",
+    prodid: "REVEL",
+    amt: amount.toString() + ".00",
     txncur: "INR",
-    txnamt: "50.00",
-    clientcode: "NAVIN",
+    txnamt: amount.toString() + ".00",
+    clientcode: "Akash",
     transid: "1000",
     datepick: "01/03/2019 16:20:00",
     custacc: "100000036600",
-    udf1: "Rakesh Gosawami",
-    udf2: "ankit.sharma@atomtech.in",
-    udf3: "8446320942",
-    udf4: "Ft tower, Andheri, Mumbai",
-    ru: "https://revelmit.in/api/Response",
+    udf1: user.name,
+    udf2: user.email,
+    udf3: user.mobileNumber,
+    udf4: delegateCardID,
+    ru: "https://revelsmit.in/api/Response",
+    delegateCardID: delegateCardID,
   };
   // Object.keys(data).forEach((element) => {
   //   bodyFormData.append(element, data[element]);
@@ -81,7 +101,8 @@ async function displayRazorpay(delegateCardID) {
   //   .then((res) => console.log(res));
 
   // let d = resp.json;
-  console.log(resp.data);
+  console.log(resp);
+  window.open(resp.data.url, "_self");
 
   // console.log("POST DATA : ", data);
 }
@@ -130,7 +151,13 @@ function DelegatePage() {
               idx={index}
               displayRazorpay={displayRazorpay}
               data={data}
-              isMahe={user.isMahe}
+              isMahe={
+                user.college === "MANIPAL INSTITUTE OF TECHNOLOGY"
+                  ? 1
+                  : user.isMahe
+                  ? 2
+                  : 0
+              }
               cashPay={cashPayment}
               isBought={isMyDelCard(data._id)}
             />

@@ -1,9 +1,17 @@
 import React from "react";
 import "./DelegateCard.scss";
 import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 
 const DelegateCard = ({ displayRazorpay, data, isMahe, cashPay, isBought }) => {
   const [bought, setBought] = useState(isBought);
+  const auth = useAuth();
+  const cardPrice =
+    isMahe === 1
+      ? data.mitPrice
+      : isMahe === 2
+      ? data.mahePrice
+      : data.nonMahePrice;
   return (
     data.isActive && (
       <div
@@ -35,13 +43,21 @@ const DelegateCard = ({ displayRazorpay, data, isMahe, cashPay, isBought }) => {
           <div className="blank"></div>
           <div className={`price ${bought && "bought"}`}>
             <div className="clg px-1">
-              <p>&#x20B9;{isMahe ? data.mahePrice : data.nonMahePrice}</p>
+              <p>&#x20B9;{cardPrice}</p>
               {bought == 1 ? (
                 <button disabled={true}>Purchased</button>
               ) : bought == 2 ? (
-                <button disabled={true}>
-                  Payment Pending (Visit the nearest infodesk)
-                </button>
+                <>
+                  <button disabled={true}>Payment pending via cash </button>
+                  <button
+                    disabled={false}
+                    onClick={() =>
+                      displayRazorpay(data._id, cardPrice, auth.user)
+                    }
+                  >
+                    Pay Online
+                  </button>
+                </>
               ) : (
                 <>
                   <button
@@ -55,7 +71,9 @@ const DelegateCard = ({ displayRazorpay, data, isMahe, cashPay, isBought }) => {
                   </button>{" "}
                   <button
                     disabled={bought}
-                    onClick={() => displayRazorpay(data._id)}
+                    onClick={() =>
+                      displayRazorpay(data._id, cardPrice, auth.user)
+                    }
                   >
                     Pay Online
                   </button>
