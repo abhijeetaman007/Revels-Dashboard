@@ -13,7 +13,7 @@ $event-card-background-2: #8e49fc;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   min-height: 350px;
-  padding: 25px;
+  padding: 18px 25px;
   background-image: url("./../../assets/swivel.svg");
   background-repeat: no-repeat;
   background-position: right;
@@ -131,11 +131,18 @@ $event-card-background-2: #8e49fc;
       display: -ms-flexbox;
       display: flex;
       gap: 10px;
-
+      .box-wrapper{
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+      }
       .box {
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
+        margin: 0 0.7rem 0 0 ;
         color: white;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
@@ -144,8 +151,7 @@ $event-card-background-2: #8e49fc;
         -webkit-box-align: start;
             -ms-flex-align: start;
                 align-items: flex-start;
-        position: absolute;
-        bottom: 0;
+       
       }
     }
   }
