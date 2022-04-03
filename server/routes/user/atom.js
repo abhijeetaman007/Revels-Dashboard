@@ -12,9 +12,12 @@ const requestAtom = (req, resp) => {
     var udf2 = data.udf2 == "" ? null : data.udf2;
     var udf3 = data.udf3 == "" ? null : data.udf3;
     var udf4 = data.udf4 == "" ? null : data.udf4;
-    var key = "process.env.key";
-    var req_enc_key = "process.env.req_enc_key";
-    var req_salt = "process.env.req_salt";
+    // var key = "process.env.key";
+    // var req_enc_key = "process.env.req_enc_key";
+    // var req_salt = "process.env.req_salt";
+    var key = "KEY123657234";
+    var req_enc_key = "8E41C78439831010F81F61C344B7BFC7";
+    var req_salt = "8E41C78439831010F81F61C344B7BFC7";
     var sign =
       data.login +
       data.pass +
@@ -88,7 +91,7 @@ const requestAtom = (req, resp) => {
     var encdata = encrypt(text);
 
     var options = {
-      host: "https://payment.atomtech.in",
+      host: "https://paynetzuat.atomtech.in",
       path: "/paynetz/epi/fts?login=" + data.login + "&encdata=" + encdata + "",
     };
     url = options["host"] + options["path"];
@@ -103,8 +106,10 @@ const requestAtom = (req, resp) => {
 
 const responseAtom = async (req, resp) => {
   try {
-    var res_enc_key = "process.env.res_enc_key";
-    var res_salt = "process.env.res_salt";
+    // var res_enc_key = "process.env.res_enc_key";
+    // var res_salt = "process.env.res_salt";
+    var res_enc_key = "8E41C78439831010F81F61C344B7BFC7";
+    var res_salt = "8E41C78439831010F81F61C344B7BFC7";
     const algorithm = "aes-256-cbc";
     const password = Buffer.from(res_enc_key, "utf8");
     const salt = Buffer.from(res_salt, "utf8");

@@ -50,7 +50,7 @@ const DelegateCard = ({ displayRazorpay, data, isMahe, cashPay, isBought }) => {
                 <>
                   <button disabled={true}>Payment pending via cash </button>
                   <button
-                    disabled={false}
+                    disabled={true}
                     onClick={() =>
                       displayRazorpay(data._id, cardPrice, auth.user)
                     }
@@ -70,7 +70,7 @@ const DelegateCard = ({ displayRazorpay, data, isMahe, cashPay, isBought }) => {
                     Pay Via Cash
                   </button>{" "}
                   <button
-                    disabled={bought}
+                    disabled={true}
                     onClick={() =>
                       displayRazorpay(data._id, cardPrice, auth.user)
                     }
