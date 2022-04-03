@@ -137,7 +137,7 @@ function App() {
               path="/schedule"
               element={<OpenPages pageType="coming-soon" />}
             />
-            {/* <Route exact path="/proshow" element={<OpenPages pageType="proshow"/>} /> */}
+            <Route exact path="/proshow" element={<OpenPages pageType="proshow"/>} />
             <Route exact path="/admin" element={<Login />} />
             <Route
               exact

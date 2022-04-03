@@ -10,7 +10,6 @@ import logoWhite from "./.././../assets/logos/logo_white.png";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import Loader from "./../Loader/Loader";
-import ComingSoonDash from "./../../components/ComingSoon/ComingSoon2";
 
 const Layout = ({ children, isAagazVisible = false, activeTab }) => {
   const navigate = useNavigate();
@@ -131,12 +130,23 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
               </button>
               <button onClick={auth.userLogout}>Logout</button>
             </div>
+            <div className="font-light w-auto text-center mt-5">
+              <div className="text-light" style={{ fontSize: "13px" }}>
+                Made with{" "}
+                <i
+                  className="fa fa-heart mx-1"
+                  style={{ fontSize: "13px", color: "red" }}
+                ></i>{" "}
+                by SysAdmin and Web '22
+              </div>
+              <div className="text-secondary" style={{ fontSize: "13px" }}>sysadrevels22@gmail.com</div>
+            </div>
           </div>
         </div>
         <div className="content-area">
           {isAagazVisible ? (
             <div className="aagaz-wrapper">
-              <img src={aagaz}></img>
+              <img src={aagaz} alt="Aagaz"></img>
             </div>
           ) : (
             <></>

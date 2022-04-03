@@ -33,6 +33,9 @@ const Navbar = ({ isBackground }) => {
                   <a href="/rulebook" className="nav-link">Rulebook</a>
               </li>
               <li className="nav-item" onClick={closeNav}>
+                  <a href="/proshow" className="nav-link">Proshow</a>
+              </li>
+              <li className="nav-item" onClick={closeNav}>
                   <a href="/events" className="nav-link">Events</a>
               </li>
               <li className="nav-item" onClick={closeNav}>
