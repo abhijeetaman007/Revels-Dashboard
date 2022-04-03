@@ -144,13 +144,13 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
           {/* !!!!!!!!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!!!!!!! */}
           {/* change {children} to <ComingSoonDash /> before pushing code */}
           {/* !!!!!!!!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!!!!!!! */}
-          {/* {children} */}
-          {activeTab.toUpperCase() === "EVENTS" ||
+          {children}
+          {/* {activeTab.toUpperCase() === "EVENTS" ||
           activeTab.toUpperCase() === "MY-EVENTS" ? (
             children
           ) : (
             <ComingSoonDash />
-          )}
+          )} */}
         </div>
         {/* uncomment for proshow */}
         {/* {

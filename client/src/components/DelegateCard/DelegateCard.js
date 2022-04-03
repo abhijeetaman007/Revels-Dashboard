@@ -62,7 +62,7 @@ const DelegateCard = ({
                   Pay Via Cash
                 </button>{" "}
                 <button
-                  disabled={true}
+                  disabled={bought}
                   onClick={() => displayRazorpay(data._id)}
                 >
                   Pay Online

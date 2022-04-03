@@ -100,6 +100,7 @@ const {
   hasDelegateCard,
 } = require("./admins/vigilance");
 const { upload, multipleUpload } = require("../config/aws-s3/multer.config");
+const { requestAtom, responseAtom } = require("./user/atom");
 
 //Routes:
 router.get(
@@ -197,6 +198,9 @@ router.get(
 );
 // Razorpay - Payment
 // TODO : put middleware after testing
+router.post("/Atom", requestAtom);
+router.post("/Response", responseAtom);
+
 router.post("/user/payment/cash", isUserLoggedIn, requestDelegateCard);
 router.post(
   "/user/payment/approve",
