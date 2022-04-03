@@ -91,7 +91,7 @@ const requestAtom = (req, resp) => {
     var encdata = encrypt(text);
 
     var options = {
-      host: "https://paynet.atomtech.in",
+      host: "https://payment.atomtech.in",
       path: "/paynetz/epi/fts?login=" + data.login + "&encdata=" + encdata + "",
     };
     url = options["host"] + options["path"];
