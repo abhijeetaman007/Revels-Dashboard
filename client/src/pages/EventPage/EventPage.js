@@ -62,7 +62,7 @@ const Events = () => {
         <div className="tabs-wrapper font-medium">
           <div className={tab === 0 ? "taeb-switch left text-center" : "taeb-switch right text-center"}>
             <div className={tab === 0 ? "taeb active font-heavy" : "taeb"} taeb-direction="left" onClick={()=>settab(0)}>
-              Sports
+              Sports + Gaming
             </div>
             <div className={tab === 1 ? "taeb active font-heavy" : "taeb"} taeb-direction="right" onClick={()=>settab(1)}>
               Cultural
