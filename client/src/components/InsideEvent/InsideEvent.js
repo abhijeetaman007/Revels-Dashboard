@@ -377,7 +377,7 @@ const InsideEvent = () => {
           </div>
         </Modal>
         {team === null ? (
-          <button onClick={openModal} className="font-heavy">
+          <button disabled onClick={openModal} className="font-heavy">
             Register
           </button>
         ) : (
