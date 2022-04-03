@@ -54,7 +54,7 @@ const EventCard = ({ data, index, isMyEvents }) => {
               <p className="font-heavy">DATE</p>
               <h3 className="font-light">
                 {new Date(data.eventDateTime).getDate()}/
-                {new Date(data.eventDateTime).getMonth()}/
+                {new Date(data.eventDateTime).getMonth()+1}/
                 {new Date(data.eventDateTime).getFullYear()}
               </h3>
             </div>

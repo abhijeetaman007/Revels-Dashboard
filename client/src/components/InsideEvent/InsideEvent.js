@@ -229,7 +229,8 @@ const InsideEvent = () => {
             ${new Date(event.registrationDeadline).getFullYear()}`,
           })}
           </>}
-          {event.delegateCards > 1 && <>
+          {event.delegateCards && <>
+            {event.delegateCards.length > 1 && <>
             {DataComponent({
             icon: "fa-ticket",
             heading: "Delegate Cards Required",
@@ -237,6 +238,7 @@ const InsideEvent = () => {
               {return del.name}
             )}`
           })}
+          </>}
           </>}
         </div>
         <div className="ele font-light">{event.description}</div>
@@ -289,7 +291,8 @@ const InsideEvent = () => {
                     ${new Date(event.registrationDeadline).getFullYear()}`,
                   })}
                   </>}
-                  {event.delegateCards.length > 1 && <>
+                  {event.delegateCards && <>
+                    {event.delegateCards.length > 1 && <>
                     {DataComponent({
                     icon: "fa-ticket",
                     heading: "Delegate Cards Required",
@@ -297,6 +300,7 @@ const InsideEvent = () => {
                       {return + del.name}
                     )}`
                   })}
+                  </>}
                   </>}
                 </div>
                 <button onClick={registerIndividual}>Join Individually</button>
