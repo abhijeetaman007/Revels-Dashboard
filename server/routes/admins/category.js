@@ -124,11 +124,11 @@ const addEvent = async (req, res) => {
 const getCategoryEvent = async (req, res) => {
   try {
     let category_Id = req.requestAdmin.role.categoryId;
-    console.log("catid", category_Id);
+    //console.log("catid", category_Id);
     let events = await Event.find({ category: category_Id }).populate(
       "delegateCards"
     );
-    console.log("events", events);
+    //console.log("events", events);
     return res.status(200).send({ success: true, data: events });
   } catch {
     console.log(err);
@@ -156,6 +156,7 @@ const updateEvent = async (req, res) => {
       eventVenue,
       tags,
     } = req.body;
+    console.log("tags" , tags);
     let event = await Event.exists({ eventID });
     console.log(event);
     if (!event)
@@ -247,9 +248,9 @@ const deleteEvent = async (req, res) => {
 const getCategory = async (req, res) => {
   try {
     let category_Id = req.requestAdmin.role.categoryId;
-    console.log("catid", category_Id);
+    //console.log("catid", category_Id);
     let category = await Category.findById(category_Id);
-    console.log("category", category);
+    //console.log("category", category);
     return res.status(200).send({ success: true, data: category });
   } catch {
     console.log(err);

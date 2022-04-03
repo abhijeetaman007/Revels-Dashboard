@@ -85,7 +85,7 @@ const getPendingDelegateCards = async (req, res) => {
 const getAllDelegateCards = async (req, res) => {
     try {
         let delCards = await DelCard.find({ isActive: true });
-        console.log('All Cards ', delCards);
+        //console.log('All Cards ', delCards);
         return res.status(200).send({ success: true, data: delCards });
     } catch (err) {
         console.log(err);
