@@ -19,7 +19,7 @@
             align-items: center;
     padding: 16px 24px;
     padding: 1rem 1.5rem;
-    z-index: 300;
+    z-index: 500;
     font-family: 'Fira Sans', sans-serif;
 }
 .hamburger {
@@ -74,7 +74,7 @@
 }
 @media only screen and (max-width: 768px) {
     .navbar {
-        z-index: 100;
+        z-index: 300;
         width: 100%;
         background-color: #050404;
         position: fixed;
