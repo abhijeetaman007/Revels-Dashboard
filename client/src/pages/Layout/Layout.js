@@ -10,7 +10,7 @@ import logoWhite from "./.././../assets/logos/logo_white.png";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import Loader from "./../Loader/Loader";
-
+import ComingSoonDash from "../../components/ComingSoon/ComingSoon2";
 const Layout = ({ children, isAagazVisible = false, activeTab }) => {
   const navigate = useNavigate();
   const auth = useAuth();
@@ -139,7 +139,9 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
                 ></i>{" "}
                 by SysAdmin and Web '22
               </div>
-              <div className="text-secondary" style={{ fontSize: "13px" }}>sysadrevels22@gmail.com</div>
+              <div className="text-secondary" style={{ fontSize: "13px" }}>
+                sysadrevels22@gmail.com
+              </div>
             </div>
           </div>
         </div>
@@ -154,7 +156,8 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
           {/* !!!!!!!!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!!!!!!! */}
           {/* change {children} to <ComingSoonDash /> before pushing code */}
           {/* !!!!!!!!!!!!!!!!!!!! IMPORTANT !!!!!!!!!!!!!!!!!!!! */}
-          {children}
+          {/* {children} */}
+          <ComingSoonDash />
           {/* {activeTab.toUpperCase() === "EVENTS" ||
           activeTab.toUpperCase() === "MY-EVENTS" ? (
             children
