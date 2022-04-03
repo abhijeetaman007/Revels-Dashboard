@@ -45,34 +45,15 @@ async function displayRazorpay(delegateCardID, amount, user) {
   //   alert("Razorpay SDK failed to load.");
   //   return;
   // }
-  const data = {
-    login: "192",
-    pass: "Test@123",
-    ttype: "NBFundTransfer",
-    prodid: "NSE",
-    amt: amount.toString() + ".00",
-    txncur: "INR",
-    txnamt: amount.toString() + ".00",
-    clientcode: "NAVIN",
-    transid: "1000",
-    datepick: "01/03/2019 16:20:00",
-    custacc: "100000036600",
-    udf1: user.name,
-    udf2: user.email,
-    udf3: user.mobileNumber,
-    udf4: delegateCardID,
-    ru: "http://localhost:8000/api/Response",
-    delegateCardID: delegateCardID,
-  };
   // const data = {
-  //   login: "332432",
-  //   pass: process.env.REACT_APP_ATOM_PASS,
+  //   login: "192",
+  //   pass: "Test@123",
   //   ttype: "NBFundTransfer",
-  //   prodid: "REVEL",
+  //   prodid: "NSE",
   //   amt: amount.toString() + ".00",
   //   txncur: "INR",
   //   txnamt: amount.toString() + ".00",
-  //   clientcode: "Akash",
+  //   clientcode: "NAVIN",
   //   transid: "1000",
   //   datepick: "01/03/2019 16:20:00",
   //   custacc: "100000036600",
@@ -80,9 +61,28 @@ async function displayRazorpay(delegateCardID, amount, user) {
   //   udf2: user.email,
   //   udf3: user.mobileNumber,
   //   udf4: delegateCardID,
-  //   ru: "https://revelsmit.in/api/Response",
+  //   ru: "http://localhost:3000/api/Response",
   //   delegateCardID: delegateCardID,
   // };
+  const data = {
+    login: "332432",
+    pass: process.env.REACT_APP_ATOM_PASS,
+    ttype: "NBFundTransfer",
+    prodid: "REVEL",
+    amt: amount.toString() + ".00",
+    txncur: "INR",
+    txnamt: amount.toString() + ".00",
+    clientcode: "Akash",
+    transid: "1000",
+    datepick: "01/03/2019 16:20:00",
+    custacc: "100000036600",
+    udf1: user.name,
+    udf2: user.email,
+    udf3: user.mobileNumber,
+    udf4: delegateCardID,
+    ru: "https://revelsmit.in/api/Response",
+    delegateCardID: delegateCardID,
+  };
   // Object.keys(data).forEach((element) => {
   //   bodyFormData.append(element, data[element]);
   // });

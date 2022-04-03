@@ -73,7 +73,7 @@ const InsideEvent = () => {
       setRequests(res.data.data.requestedMembers);
       console.log(res.data.data.members);
       setTeammembers(res.data.data.members);
-      console.log("here ",res.data.data.createdBy);
+      console.log("here ", res.data.data.createdBy);
       setTeamCreator(res.data.data.createdBy);
     } catch (err) {
       console.log(err);
@@ -88,7 +88,6 @@ const InsideEvent = () => {
     const toastId = toast.loading("Joining Team");
 
     try {
-      
       const res = await axios.post(
         "/api/user/team/join",
         { eventID: event.eventID, teamID: teamIDInput },
@@ -100,7 +99,6 @@ const InsideEvent = () => {
         id: toastId,
       });
       setIsOpen(false);
-      
     } catch (err) {
       toast.error(err.response.data.msg, {
         position: "bottom-center",
@@ -117,7 +115,7 @@ const InsideEvent = () => {
         { eventID: event.eventID },
         { headers: header }
       );
-      
+
       if (res.data.success) {
         toast.success(res.data.msg, {
           position: "bottom-center",
@@ -148,7 +146,7 @@ const InsideEvent = () => {
         { teamID: team.teamID },
         { headers: header }
       );
-      
+
       if (res.data.success) {
         toast.success(res.data.msg, {
           position: "bottom-center",
@@ -203,45 +201,74 @@ const InsideEvent = () => {
                 ? "Individual event"
                 : `${event.minMembers} - ${event.maxMembers}`,
           })}
-          {event.eventDateTime && <>
-            {DataComponent({
-            icon: "fa-calendar-o",
-            heading: "Event Date",
-            text: `${new Date(event.eventDateTime).getDate()}/
-            ${new Date(event.eventDateTime).getMonth()+1}/
+          {event.eventDateTime && (
+            <>
+              {DataComponent({
+                icon: "fa-calendar-o",
+                heading: "Event Date",
+                text: `${new Date(event.eventDateTime).getDate()}/
+            ${new Date(event.eventDateTime).getMonth() + 1}/
             ${new Date(event.eventDateTime).getFullYear()}`,
-          })}
-          </> }
-          
-          {event.eventVenue && <>
-            {DataComponent({
-            icon: "fa-map-marker",
-            heading: "Event Venue",
-            text: `${event.eventVenue}`,
-          })}
-          </>}
-          {event.registrationDeadline &&<>
-            {DataComponent({
-            icon: "fa-calendar-check-o",
-            heading: "Registration Deadline",
-            text: `${new Date(event.registrationDeadline).getDate()}/
-            ${new Date(event.registrationDeadline).getMonth()+1}/
+              })}
+            </>
+          )}
+
+          {event.eventVenue && (
+            <>
+              {DataComponent({
+                icon: "fa-map-marker",
+                heading: "Event Venue",
+                text: `${event.eventVenue}`,
+              })}
+            </>
+          )}
+          {event.registrationDeadline && (
+            <>
+              {DataComponent({
+                icon: "fa-calendar-check-o",
+                heading: "Registration Deadline",
+                text: `${new Date(event.registrationDeadline).getDate()}/
+            ${new Date(event.registrationDeadline).getMonth() + 1}/
             ${new Date(event.registrationDeadline).getFullYear()}`,
-          })}
-          </>}
-          {event.delegateCards && <>
-            {event.delegateCards.length > 1 && <>
-            {DataComponent({
-            icon: "fa-ticket",
-            heading: "Delegate Cards Required",
-            text: `${event.delegateCards.map((del, index) => 
-              {return del.name}
-            )}`
-          })}
-          </>}
-          </>}
+              })}
+            </>
+          )}
+          {event.delegateCards && (
+            <>
+              {event.delegateCards.length > 1 && (
+                <>
+                  {DataComponent({
+                    icon: "fa-ticket",
+                    heading: "Delegate Cards Required",
+                    text: `${event.delegateCards.map((del, index) => {
+                      return del.name;
+                    })}`,
+                  })}
+                </>
+              )}
+            </>
+          )}
         </div>
         <div className="ele font-light">{event.description}</div>
+        <br />
+        {event.delegateCards.length > 0 ? (
+          <p className="ele font-heavy" style={{ fontSize: "1.5rem" }}>
+            {" "}
+            Required Delegate Cards
+          </p>
+        ) : (
+          <p className="ele font-light" style={{ fontSize: "1.5rem" }}>
+            {" "}
+            : No Delegate Card Required
+          </p>
+        )}
+        <ul>
+          {event.delegateCards.map((delegateCard) => (
+            <li className="ele font-light" style={{ fontSize: "1.2rem" }}>
+              &nbsp; ◦ {delegateCard.name}
+            </li>
+          ))}
+        </ul>
         {/* POPUP FOR REGISTER */}
         <Modal
           isOpen={modalIsOpen}
@@ -266,42 +293,54 @@ const InsideEvent = () => {
                         ? "Individual event"
                         : `${event.minMembers} - ${event.maxMembers}`,
                   })}
-                  {event.eventDateTime && <>
-                    {DataComponent({
-                    icon: "fa-calendar-o",
-                    heading: "Event Date",
-                    text: `${new Date(event.eventDateTime).getDate()}/
-                    ${new Date(event.eventDateTime).getMonth()+1}/
+                  {event.eventDateTime && (
+                    <>
+                      {DataComponent({
+                        icon: "fa-calendar-o",
+                        heading: "Event Date",
+                        text: `${new Date(event.eventDateTime).getDate()}/
+                    ${new Date(event.eventDateTime).getMonth() + 1}/
                     ${new Date(event.eventDateTime).getFullYear()}`,
-                  })}
-                  </> }
-                  {event.eventVenue && <>
-                    {DataComponent({
-                    icon: "fa-map-marker",
-                    heading: "Event Venue",
-                    text: `${event.eventVenue}`,
-                  })}
-                  </>}
-                  {event.registrationDeadline &&<>
-                    {DataComponent({
-                    icon: "fa-calendar-check-o",
-                    heading: "Registration Deadline",
-                    text: `${new Date(event.registrationDeadline).getDate()}/
-                    ${new Date(event.registrationDeadline).getMonth()+1}/
+                      })}
+                    </>
+                  )}
+                  {event.eventVenue && (
+                    <>
+                      {DataComponent({
+                        icon: "fa-map-marker",
+                        heading: "Event Venue",
+                        text: `${event.eventVenue}`,
+                      })}
+                    </>
+                  )}
+                  {event.registrationDeadline && (
+                    <>
+                      {DataComponent({
+                        icon: "fa-calendar-check-o",
+                        heading: "Registration Deadline",
+                        text: `${new Date(
+                          event.registrationDeadline
+                        ).getDate()}/
+                    ${new Date(event.registrationDeadline).getMonth() + 1}/
                     ${new Date(event.registrationDeadline).getFullYear()}`,
-                  })}
-                  </>}
-                  {event.delegateCards && <>
-                    {event.delegateCards.length > 1 && <>
-                    {DataComponent({
-                    icon: "fa-ticket",
-                    heading: "Delegate Cards Required",
-                    text: `${event.delegateCards.map((del, index) => 
-                      {return + del.name}
-                    )}`
-                  })}
-                  </>}
-                  </>}
+                      })}
+                    </>
+                  )}
+                  {event.delegateCards && (
+                    <>
+                      {event.delegateCards.length > 1 && (
+                        <>
+                          {DataComponent({
+                            icon: "fa-ticket",
+                            heading: "Delegate Cards Required",
+                            text: `${event.delegateCards.map((del, index) => {
+                              return +del.name;
+                            })}`,
+                          })}
+                        </>
+                      )}
+                    </>
+                  )}
                 </div>
                 <button onClick={registerIndividual}>Join Individually</button>
               </div>
@@ -317,41 +356,51 @@ const InsideEvent = () => {
                         ? "Individual event"
                         : `${event.minMembers} - ${event.maxMembers}`,
                   })}
-                  {event.eventDateTime && <>
-                    {DataComponent({
-                    icon: "fa-calendar-o",
-                    heading: "Event Date",
-                    text: `${new Date(event.eventDateTime).getDate()}/
-                    ${new Date(event.eventDateTime).getMonth()+1}/
+                  {event.eventDateTime && (
+                    <>
+                      {DataComponent({
+                        icon: "fa-calendar-o",
+                        heading: "Event Date",
+                        text: `${new Date(event.eventDateTime).getDate()}/
+                    ${new Date(event.eventDateTime).getMonth() + 1}/
                     ${new Date(event.eventDateTime).getFullYear()}`,
-                  })}
-                  </> }
+                      })}
+                    </>
+                  )}
 
-                  {event.eventVenue && <>
-                    {DataComponent({
-                    icon: "fa-map-marker",
-                    heading: "Event Venue",
-                    text: `${event.eventVenue}`,
-                  })}
-                  </>}
-                  {event.registrationDeadline &&<>
-                    {DataComponent({
-                    icon: "fa-calendar-check-o",
-                    heading: "Registration Deadline",
-                    text: `${new Date(event.registrationDeadline).getDate()}/
-                    ${new Date(event.registrationDeadline).getMonth()+1}/
+                  {event.eventVenue && (
+                    <>
+                      {DataComponent({
+                        icon: "fa-map-marker",
+                        heading: "Event Venue",
+                        text: `${event.eventVenue}`,
+                      })}
+                    </>
+                  )}
+                  {event.registrationDeadline && (
+                    <>
+                      {DataComponent({
+                        icon: "fa-calendar-check-o",
+                        heading: "Registration Deadline",
+                        text: `${new Date(
+                          event.registrationDeadline
+                        ).getDate()}/
+                    ${new Date(event.registrationDeadline).getMonth() + 1}/
                     ${new Date(event.registrationDeadline).getFullYear()}`,
-                  })}
-                  </>}
-                  {event.delegateCards.length > 1 && <>
-                    {DataComponent({
-                    icon: "fa-ticket",
-                    heading: "Delegate Cards Required",
-                    text: `${event.delegateCards.map((del, index) => 
-                      {return del.name}
-                    )}`
-                  })}
-                  </>}
+                      })}
+                    </>
+                  )}
+                  {event.delegateCards.length > 1 && (
+                    <>
+                      {DataComponent({
+                        icon: "fa-ticket",
+                        heading: "Delegate Cards Required",
+                        text: `${event.delegateCards.map((del, index) => {
+                          return del.name;
+                        })}`,
+                      })}
+                    </>
+                  )}
                 </div>
                 <button
                   className="font-heavy create"
@@ -414,7 +463,7 @@ const InsideEvent = () => {
                 </div>
               </div>
             </div>
-            {(auth.user._id === teamCreator && event.maxMembers !== 1 ) ? (
+            {auth.user._id === teamCreator && event.maxMembers !== 1 ? (
               <div className="ele">
                 <div className="font-heavy">REQUESTS</div>
                 {requests.length !== 0 ? (
@@ -487,7 +536,10 @@ const InsideEvent = () => {
                   ))
                 ) : (
                   <div className="font-light">
-                    <span><i className="fa fa-exclamation-triangle text-danger mr-2"></i></span>No requests so far...
+                    <span>
+                      <i className="fa fa-exclamation-triangle text-danger mr-2"></i>
+                    </span>
+                    No requests so far...
                   </div>
                 )}
               </div>
