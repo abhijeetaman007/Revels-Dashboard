@@ -14,7 +14,7 @@ const Category = require("../models/Category");
 // - isINF (For InfoDesk Portal)
 // - isCNF (For CNF Portal)
 const isSystemAdminCC = (user,category) =>{
-    return (user.role.accessLevel>=4 && category.categoryId=="SYS")
+    return (user.role.accessLevel==4 && category.categoryId=="SYS")
 }
 
 const isCategory = async (req, res, next) => {
@@ -117,6 +117,35 @@ const isOperation = async (req, res, next) => {
   }
 };
 
+const isINF = async (req, res, next) => {
+    try {
+        let admin = req.requestAdmin;
+        console.log('Category ', admin);
+        let category = await Category.findOne(
+            { _id: admin.role.categoryId },
+            { type: 1, categoryId: 1 }
+        );
+        console.log('category is ', category);
+        if(isSystemAdminCC(admin,category))
+        {
+            next()
+            return; 
+        }
+        if (!(category.type == 'SUPPORTING' && category.categoryId == 'INF')) {
+            return res
+                .status(403)
+                .send({ msg: 'Access Denied', success: false });
+        }
+        next();
+    } catch (err) {
+        console.log(err);
+        return res
+            .status(500)
+            .send({ msg: 'Internal Server Error', success: false });
+    }
+  };
+
+
 const isSysAdmin = async (req, res, next) => {
   try {
       let admin = req.requestAdmin;
@@ -180,4 +209,5 @@ module.exports = {
   isOperation,
   isSysAdmin,
   isCulturalCategory,
+  isINF,
 };
