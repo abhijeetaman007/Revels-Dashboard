@@ -96,6 +96,7 @@ const Dashboard = () => {
       const res = await axios.get('/api/admin/category/event/getevents', {
         headers: header,
       });
+      console.log(res.data.data);
       setEvents(res.data.data);
     } catch (err) {
       console.log(err);
