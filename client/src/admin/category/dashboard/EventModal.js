@@ -103,6 +103,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
     maxMembers: eventdata.maxMembers,
     eventHeads: eventdata.eventHeads,
     eventDateTime: new Date(eventdata.eventDateTime),
+    registrationDeadline : new Date(eventdata.registrationDeadline),
     eventVenue: eventdata.eventVenue,
     tags: eventdata.tags,
     teamDelegateCard: isChecked,
@@ -231,6 +232,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           maxMembers: data.maxMembers,
           eventHeads: headsarr,
           eventDateTime: new Date(data.eventDateTime),
+          registrationDeadline : new Date(data.registrationDeadline),
           eventVenue: data.eventVenue,
           tags: tagsarr,
           teamDelegateCard: isChecked,
@@ -251,6 +253,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
             maxMembers: eventData.maxMembers,
             eventHeads: headsarr,
             eventDateTime: eventData.eventDateTime,
+            registrationDeadline: eventData.registrationDeadline,
             eventVenue: eventData.eventVenue,
             tags: tagsarr,
             teamDelegateCard: isChecked,
@@ -474,14 +477,29 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           type="date"
           name=""
           autoComplete="off"
+          value={data.eventDateTime.toISOString().substr(0, 10)}
           // required
           maxLength={100}
           className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="Date"
           //readOnly
-          onChange={(e) => setData({ ...data, eventDateTime: e.target.value })}
+          onChange={(e) => setData({ ...data, eventDateTime:new Date(e.target.value) })}
         />
-        <p>Previous selected date: {eventdata.eventDateTime}</p>
+        {/* <p>Previous selected date: {eventdata.eventDateTime}</p> */}
+        <label className="font-medium mt-3 w-100">Registration Deadline</label>
+        <input
+          type="date"
+          name=""
+          autoComplete="off"
+          value={data.registrationDeadline.toISOString().substr(0, 10)}
+          // required
+          maxLength={100}
+          className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
+          placeholder="Date"
+          //readOnly
+          onChange={(e) => setData({ ...data, registrationDeadline: new Date(e.target.value) })}
+        />
+        {/* <p>Previous selected date: {eventdata.registrationDeadline}</p> */}
         <label className="font-medium mt-3">Event Venue</label>
         <input
           type="text"
