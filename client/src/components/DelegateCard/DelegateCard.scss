@@ -10,6 +10,14 @@ $delPurple: #C6A3FF;
   h1 {
     font-size: 1.9rem;
   }
+  .del-type {
+    border: 1px solid black;
+    width: fit-content;
+    padding: 0 5px;
+    border-radius: 10px;
+    padding-top: 5px;
+    margin-bottom: 5px;
+  }
   .del-content {
     display: -webkit-box;
     display: -ms-flexbox;

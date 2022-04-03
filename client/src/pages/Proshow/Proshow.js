@@ -4,7 +4,7 @@ import ProshowCard from "../../components/ProshowCard/ProshowCard";
 import proshowdata from "../../utils/proshow.json";
 const Proshow = ({ isPublicProshow=false }) => {
   return (
-    <div className="proshow-wrapper">
+    <div className="proshow-wrapper pb-4">
       {
         isPublicProshow &&
         <div className="d-flex align-items-center">

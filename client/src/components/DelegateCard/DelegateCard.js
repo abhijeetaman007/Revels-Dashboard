@@ -17,6 +17,7 @@ const DelegateCard = ({
     >
       <div className="del-content">
         <div>
+          <p className="del-type">{data.type}</p>
           <h1 className="text-white">
             {data.name}
             {bought === 1 ? (

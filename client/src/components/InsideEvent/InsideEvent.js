@@ -229,7 +229,7 @@ const InsideEvent = () => {
             ${new Date(event.registrationDeadline).getFullYear()}`,
           })}
           </>}
-          {event.delegateCards && <>
+          {event.delegateCards > 1 && <>
             {DataComponent({
             icon: "fa-ticket",
             heading: "Delegate Cards Required",
@@ -289,7 +289,7 @@ const InsideEvent = () => {
                     ${new Date(event.registrationDeadline).getFullYear()}`,
                   })}
                   </>}
-                  {event.delegateCards && <>
+                  {event.delegateCards.length > 1 && <>
                     {DataComponent({
                     icon: "fa-ticket",
                     heading: "Delegate Cards Required",
@@ -339,7 +339,7 @@ const InsideEvent = () => {
                     ${new Date(event.registrationDeadline).getFullYear()}`,
                   })}
                   </>}
-                  {event.delegateCards && <>
+                  {event.delegateCards.length > 1 && <>
                     {DataComponent({
                     icon: "fa-ticket",
                     heading: "Delegate Cards Required",
@@ -394,10 +394,10 @@ const InsideEvent = () => {
                   <p className="font-heavy ml-1 pt-1">Team Members</p>
                 </div>
                 <div className="font-light d-flex">
-                  {teammembers.length != 0
+                  {teammembers.length !== 0
                     ? teammembers.map((member, index) => (
                         <span className="font-light">
-                          {member.user._id == teamCreator && (
+                          {member.user._id === teamCreator && (
                             <span>
                               <i className="fa fa-star mr-1"></i>
                             </span>
@@ -410,10 +410,10 @@ const InsideEvent = () => {
                 </div>
               </div>
             </div>
-            {(auth.user._id == teamCreator && event.maxMembers !== 1 ) ? (
+            {(auth.user._id === teamCreator && event.maxMembers !== 1 ) ? (
               <div className="ele">
                 <div className="font-heavy">REQUESTS</div>
-                {requests.length != 0 ? (
+                {requests.length !== 0 ? (
                   requests.map((x, idx) => (
                     <div>
                       {x.name}
