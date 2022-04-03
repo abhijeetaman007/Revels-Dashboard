@@ -7,11 +7,12 @@ import { ADMIN_TOKEN_ID } from '../../../utils/constants';
 import './EventTitle.css';
 import Modal from 'react-modal';
 import EventModal from './EventModal';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import { useAuth } from '../../../context/AuthContext';
 // import MultiSelect from './MultiSelect';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
+//import TicketDashboard from '../../tickets/TicketDashboard';
 
 const Dashboard = () => {
   const [selDel, setSelDel] = useState([]);
@@ -26,14 +27,14 @@ const Dashboard = () => {
   const getDelCards = async () => {
     try {
       const res = await axios.get('/api/user/delegatecard/getall');
-      console.log(res.data.data);
+      //console.log(res.data.data);
       setDelCards(res.data.data);
       const arr = [];
       res.data.data.map((x) => {
-        console.log(x);
+        //console.log(x);
         arr.push({ value: x.cardID, label: x.name });
       });
-      console.log('arr', arr);
+      //console.log('arr', arr);
       setOptions(arr);
     } catch (err) {
       console.log(err);
@@ -106,6 +107,7 @@ const Dashboard = () => {
         headers: header,
       });
       if (res.data.success) {
+        console.log(res.data.data);
         setCategory(res.data.data);
       } else {
         toast.error('Error setting category!');
@@ -570,7 +572,23 @@ const Dashboard = () => {
         >
           {category.description}
         </div>
+         {category.categoryId === "INF" && <>
+         <>
+         <Link to="/admin/payment">
+         <button
+          type="button"
+          className="btn m-2 text-white"
+          style={{ backgroundColor: '#F4737E', width: '200px' }}
+          
+        >
+          Update Payment
+        </button>
+         </Link>
 
+         
+         </>
+         </>}
+        {(category.type === "CULTURAL" || category.type === "SPORTS") && <>
         <button
           type="button"
           className="btn m-2 text-white"
@@ -587,6 +605,7 @@ const Dashboard = () => {
             <EventModal eventdata={eventdata} deleteEvent={deleteEvent} />
           ))}
         </div>
+        </>}
       </div>
     </div>
   );
