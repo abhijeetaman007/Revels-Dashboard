@@ -4,7 +4,7 @@ import "./ProshowCard.scss";
 const ProshowCard = ({data}) => {
     return (
         <div className="proshow-card card-up">
-            <div className="image-wrapper">
+            <div className="image-wrapper" style={{ backgroundImage: `url(${data.src})` }}>
                 <div className="gradient">
                     <div className="proshow-card-header">
                         <h6 className="font-light">{data.day}</h6>

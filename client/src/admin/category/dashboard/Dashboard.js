@@ -7,11 +7,46 @@ import { ADMIN_TOKEN_ID } from '../../../utils/constants';
 import './EventTitle.css';
 import Modal from 'react-modal';
 import EventModal from './EventModal';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
 import { useAuth } from '../../../context/AuthContext';
+// import MultiSelect from './MultiSelect';
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
+//import TicketDashboard from '../../tickets/TicketDashboard';
+
 const Dashboard = () => {
+  const [selDel, setSelDel] = useState([]);
+  const handleChange = async (e) => {
+    console.log(e);
+    setSelDel(e);
+  };
+  const [isChecked, setIsChecked] = useState(false);
+  const [delCards, setDelCards] = useState([]);
+
+  const [options, setOptions] = useState([]);
+  const getDelCards = async () => {
+    try {
+      const res = await axios.get('/api/user/delegatecard/getall');
+      //console.log(res.data.data);
+      setDelCards(res.data.data);
+      const arr = [];
+      res.data.data.map((x) => {
+        //console.log(x);
+        arr.push({ value: x.cardID, label: x.name });
+      });
+      //console.log('arr', arr);
+      setOptions(arr);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const handleOnChange = (e) => {
+    e.preventDefault();
+    console.log('click');
+    setIsChecked(!isChecked);
+  };
   const navigate = useNavigate();
-  const auth =useAuth();
+  const auth = useAuth();
 
   const validateForm = () => {
     if (
@@ -48,6 +83,7 @@ const Dashboard = () => {
     setT2('');
     setT3('');
     setT4('');
+    setIsChecked(false);
     setIsOpen(false);
   }
   const header = {
@@ -71,6 +107,7 @@ const Dashboard = () => {
         headers: header,
       });
       if (res.data.success) {
+        console.log(res.data.data);
         setCategory(res.data.data);
       } else {
         toast.error('Error setting category!');
@@ -103,8 +140,8 @@ const Dashboard = () => {
     minMembers: 0,
     maxMembers: 0,
     eventHeads: [],
-    teamDelegateCardWorks: '',
-    delegateCards: '',
+    teamDelegateCard: false,
+    delegateCards: [],
     tags: [],
   });
   const addTagElement = () => {
@@ -116,6 +153,14 @@ const Dashboard = () => {
     );
   };
   const addEvent = async () => {
+    const delcardsselected = [];
+    if (selDel.length > 0) {
+      selDel.map((x) => {
+        delcardsselected.push(x.value);
+      });
+    }
+    console.log('ffff', delcardsselected);
+    console.log('add', isChecked);
     let tagsarr = [];
 
     if (t1 !== '') tagsarr.push(t1.toUpperCase().trim());
@@ -170,7 +215,10 @@ const Dashboard = () => {
           maxMembers: data.maxMembers,
           eventHeads: headsarr,
           tags: tagsarr,
+          teamDelegateCard: isChecked,
+          delegateCards: delcardsselected,
         };
+        console.log(eventData);
         const res = await axios.post(
           '/api/admin/category/event/add',
           {
@@ -184,6 +232,8 @@ const Dashboard = () => {
             maxMembers: eventData.maxMembers,
             eventHeads: headsarr,
             tags: tagsarr,
+            teamDelegateCard: eventData.teamDelegateCard,
+            delegateCards: eventData.delegateCards,
           },
           {
             headers: {
@@ -203,8 +253,8 @@ const Dashboard = () => {
             minMembers: 0,
             maxMembers: 0,
             eventHeads: [],
-            teamDelegateCardWorks: '',
-            delegateCards: '',
+            teamDelegateCard: false,
+            delegateCards: [],
             tags: [],
             head1P: 0,
             head2P: 0,
@@ -230,7 +280,8 @@ const Dashboard = () => {
     }
   };
   useEffect(() => {
-    if(auth.adminPayment)navigate('/admin/payment');
+    if (auth.adminPayment) navigate('/admin/payment');
+    getDelCards();
     getCategory();
     getEvents();
   }, []);
@@ -328,7 +379,17 @@ const Dashboard = () => {
           placeholder="Event description"
           onChange={(e) => setData({ ...data, description: e.target.value })}
         />
-
+        <label className="font-medium mt-3">
+          Delegate Cards Needed for Event
+          <span style={{ color: 'red' }}>*</span>
+        </label>
+        <Select
+          closeMenuOnSelect={false}
+          components={makeAnimated}
+          isMulti
+          options={options}
+          onChange={(e) => handleChange(e)}
+        />
         <label for="mode" className="font-medium mt-3">
           Event Type<span style={{ color: 'red' }}>*</span>
         </label>
@@ -359,7 +420,16 @@ const Dashboard = () => {
           <option value="ONLINE">Online</option>
           <option value="OFFLINE">Offline</option>
         </select>
-
+        <div className="delcard">
+          <label className="font-medium mt-2">
+            Only team leader has delegate card
+          </label>
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={(e) => handleOnChange(e)}
+          ></input>
+        </div>
         <label className="font-medium mt-2">Prize</label>
         <input
           type="number"
@@ -502,7 +572,23 @@ const Dashboard = () => {
         >
           {category.description}
         </div>
+         {category.categoryId === "INF" && <>
+         <>
+         <Link to="/admin/payment">
+         <button
+          type="button"
+          className="btn m-2 text-white"
+          style={{ backgroundColor: '#F4737E', width: '200px' }}
+          
+        >
+          Update Payment
+        </button>
+         </Link>
 
+         
+         </>
+         </>}
+        {(category.type === "CULTURAL" || category.type === "SPORTS") && <>
         <button
           type="button"
           className="btn m-2 text-white"
@@ -519,8 +605,10 @@ const Dashboard = () => {
             <EventModal eventdata={eventdata} deleteEvent={deleteEvent} />
           ))}
         </div>
+        </>}
       </div>
     </div>
   );
 };
+
 export default Dashboard;

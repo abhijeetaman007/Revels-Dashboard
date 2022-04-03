@@ -20,6 +20,7 @@ const userRegister = async (req, res) => {
       registrationNumber,
       course,
       college,
+      gender
     } = req.body;
     email = email.toLowerCase();
     console.log(req.body);
@@ -108,6 +109,7 @@ const userRegister = async (req, res) => {
       status: verified,
       role: role._id,
       passwordResetToken,
+      gender,
     });
     await newUser.save();
     message = `Please Click to verify \n${process.env.FRONT_END_URL}verify/${passwordResetToken} \nRegards,\nSystem Admin - Aagaz | Revels '22`;

@@ -126,8 +126,9 @@ function TicketDashboard() {
     e.preventDefault();
     const token = localStorage.getItem("adminid=");
     console.log(token);
+    const toastId = toast.loading("Loading...");
     try {
-      const toastId = toast.loading("Loading...");
+      
       console.log({ delegateID: delegateId });
       const res = await axios.get(
         "/api/user/delegatecard/getpendingdelegatecards?delegateID=" +
@@ -141,19 +142,25 @@ function TicketDashboard() {
       );
       if (res.data.success) {
         setuser(res.data.data);
+        toast.success("User Fetched", {
+          id: toastId,
+        });
 
-        if (user == null)
+        if (res.data.data == null)
           toast.error("No User Found", {
             id: toastId,
           });
       }
     } catch (error) {
+      toast.error(error.response.data.msg, {
+        id: toastId,
+      });
       console.log(error);
     }
   };
 
   const color =
-    user.isMahe == 2 ? "yellow" : user.isMahe == 1 ? "orange" : "lightblue";
+    user ? (user.isMahe == 2 ? "yellow" : user.isMahe == 1 ? "orange" : "lightblue"): "white";
   return (
     <div className="ticket-dash">
       <div className="top">
@@ -206,9 +213,13 @@ function TicketDashboard() {
                 </>
               );
             })}
-          {user.pendingDelegateCards.length == 0 && (
-            <p>No Delegate Cards requested for offline payment</p>
+          {user && <>
+            {user.pendingDelegateCards.length == 0 && (
+            <>
+            <p>No Delegate Cards requested for offline payment</p><br />
+            </>
           )}
+          </>}
         </div>
       </div>
     </div>

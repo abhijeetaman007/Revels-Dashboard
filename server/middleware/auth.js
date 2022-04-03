@@ -19,11 +19,11 @@ const isUserLoggedIn = async (req, res, next) => {
       console.log('Payload ', payload);
       if (payload) {
         let user = await User.findById(payload.userID).populate('role');
-        console.log('Our User ', user);
+        //console.log('Our User ', user);
         if (user) {
           if (user.token === token && user.isEmailVerified) {
             req.requestUser = user;
-            console.log('we are here 123 ', req.requestUser);
+            //console.log('we are here 123 ', req.requestUser);
             next();
           } else {
             return res.status(400).send({

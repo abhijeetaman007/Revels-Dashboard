@@ -38,5 +38,8 @@ Access Level Middleware:(All Portals)
 
 _______________________________________________________________________________
 
-
+@Backend :
+Not allow on non mahe proshow
+Not allow on pending payments
+Not allow on incompete team Size
 

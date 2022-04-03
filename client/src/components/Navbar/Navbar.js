@@ -27,11 +27,14 @@ const Navbar = ({ isBackground }) => {
           </div>
           <ul className="nav-menu">
               {auth.user && <li className="nav-item" onClick={closeNav}>
-                  <a href="/dashboard" className="nav-link">Dashboard</a>
+                  <a href="/dashboard/profile" className="nav-link">Dashboard</a>
               </li>}
               <li className="nav-item" onClick={closeNav}>
                   <a href="/rulebook" className="nav-link">Rulebook</a>
               </li>
+              {/* <li className="nav-item" onClick={closeNav}>
+                  <a href="/proshow" className="nav-link">Proshow</a>
+              </li> */}
               <li className="nav-item" onClick={closeNav}>
                   <a href="/events" className="nav-link">Events</a>
               </li>

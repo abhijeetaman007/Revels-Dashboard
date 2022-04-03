@@ -45,13 +45,14 @@ const Login = ({ category }) => {
     console.log(auth, auth.adminPayment);
     if (!auth.loading) {
       if (auth.adminPayment) {
+        console.log("adminPayment");
         navigate("/admin/payment");
       } else if (auth.admin) {
-        console.log("here");
+        console.log("admin");
         navigate("/admin/dashboard");
       } else navigate("/admin");
     }
-  }, [navigate, auth]);
+  }, []);
   return (
     <div>
       <div className="d-flex align-content-center justify-content-center text-light my-5">
@@ -80,7 +81,7 @@ const Login = ({ category }) => {
           name=""
           autoComplete="off"
           required
-          value={email}
+           //value={email}
           onChange={(e) => setEmail(e.target.value.trim())}
           maxLength={100}
           className="bg-light my-1 h-25 p-2 rounded mx-0 w-100 text-dark"
@@ -91,7 +92,7 @@ const Login = ({ category }) => {
           name=""
           autoComplete="off"
           required
-          value={password}
+           //value={password}
           onChange={(e) => setPassword(e.target.value.trim())}
           maxLength={100}
           className="bg-light my-1 h-25 p-2 rounded mx-0 w-100 text-dark"

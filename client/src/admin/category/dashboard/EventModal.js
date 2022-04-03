@@ -5,8 +5,43 @@ import { ADMIN_TOKEN_ID } from '../../../utils/constants';
 import './EventTitle.css';
 import Modal from 'react-modal';
 import Tag from '../components/Tag/Tag';
-
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
 const EventModal = ({ eventdata, deleteEvent }) => {
+  const [isChecked, setIsChecked] = useState(eventdata.teamDelegateCard);
+  const [selDel, setSelDel] = useState(null);
+  const [filteredDel, setFilteredDel] = useState([]);
+
+  const handleChange = async (e) => {
+    console.log('e', e);
+    setFilteredDel(e);
+  };
+
+  const [delCards, setDelCards] = useState([]);
+
+  const [options, setOptions] = useState([]);
+
+  const getDelCards = async () => {
+    try {
+      const res = await axios.get('/api/user/delegatecard/getall');
+      // console.log('uhhhhhh', res.data.data);
+      setDelCards(res.data.data);
+      const arr = [];
+      res.data.data.map((x) => {
+        // console.log(x);
+        arr.push({ value: x.cardID, label: x.name });
+      });
+      // console.log('arr', arr);
+      setOptions(arr);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleOnChange = () => {
+    setIsChecked(!isChecked);
+  };
+
   const customStyles = {
     content: {
       top: '50%',
@@ -16,15 +51,28 @@ const EventModal = ({ eventdata, deleteEvent }) => {
       transform: 'translate(-50%, -50%)',
     },
   };
+
+  useEffect(() => {
+    getDelCards();
+    let filterArray = [];
+    for (let i = 0; i < eventdata.delegateCards.length; i++) {
+      filterArray.push({
+        value: eventdata.delegateCards[i].cardID,
+        label: eventdata.delegateCards[i].name,
+      });
+    }
+    setFilteredDel(filterArray);
+  }, []);
+
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const openModal = () => {
     setIsOpen(true);
   };
   const closeModal = () => {
-    setT1('');
-    setT2('');
-    setT3('');
-    setT4('');
+    // setT1('');
+    // setT2('');
+    // setT3('');
+    // setT4('');
 
     setIsOpen(false);
   };
@@ -57,6 +105,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
     eventDateTime: new Date(eventdata.eventDateTime),
     eventVenue: eventdata.eventVenue,
     tags: eventdata.tags,
+    teamDelegateCard: isChecked,
     // isActive: data.isActive,
   });
   const validateForm = () => {
@@ -112,6 +161,13 @@ const EventModal = ({ eventdata, deleteEvent }) => {
     );
   };
   const updateEvent = async () => {
+    const toastId = toast.loading("Updating Event");
+    const delArr = [];
+    for (let i = 0; i < filteredDel.length; i++) {
+      delArr.push({ cardID: filteredDel[i].value });
+    }
+    console.log('ooooooffff');
+    console.log(delArr);
     let tagsarr = [];
     if (tagsarr.length !== 0) {
       if (t1 !== '') tagsarr.push(t1.toUpperCase().trim());
@@ -133,7 +189,10 @@ const EventModal = ({ eventdata, deleteEvent }) => {
         email: head2E,
       });
     if (!validateForm()) {
-      toast.error('Please fill in all the fields');
+      toast.error('Please fill in all the fields', {
+        id: toastId,
+      });
+      
     }
     // else if (
     //   head1P.toString().length !== 10 ||
@@ -153,7 +212,10 @@ const EventModal = ({ eventdata, deleteEvent }) => {
       (head2N != 0 && (head2P == '' || head2E == '')) ||
       (head2P != '' && (head2E == '' || head2N == 0))
     ) {
-      toast.error("Please complete Event Head 2's details");
+      toast.error("Please complete Event Head 2's details", {
+        id: toastId,
+      });
+     
     } else {
       try {
         const eventData = {
@@ -170,6 +232,8 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           eventDateTime: new Date(data.eventDateTime),
           eventVenue: data.eventVenue,
           tags: tagsarr,
+          teamDelegateCard: isChecked,
+          delegateCards: delArr,
         };
         console.log('eventdata', eventData);
         const res = await axios.post(
@@ -188,6 +252,8 @@ const EventModal = ({ eventdata, deleteEvent }) => {
             eventDateTime: eventData.eventDateTime,
             eventVenue: eventData.eventVenue,
             tags: tagsarr,
+            teamDelegateCard: isChecked,
+            delegateCards: delArr,
           },
           {
             headers: {
@@ -197,13 +263,22 @@ const EventModal = ({ eventdata, deleteEvent }) => {
         );
 
         if (res.data.success) {
-          toast.success('Event updated successfully');
+          toast.success('Event updated successfully', {
+            id: toastId,
+          });
+          
           closeModal();
         } else {
-          toast.error(res.data.msg);
+          toast.error(res.data.msg, {
+            id: toastId,
+          });
+       
         }
       } catch (err) {
-        console.log(err);
+        toast.error('Something Went Wrong', {
+          id: toastId,
+        });
+       
       }
     }
   };
@@ -237,6 +312,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           value={data.name}
           onChange={(e) => setData({ ...data, name: e.target.value })}
         />
+
         <div className="d-flex flex-md-row flex-column">
           <div className="w-md-50 w-100 mx-md-1">
             <label className="font-medium mt-2">
@@ -289,6 +365,18 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           value={data.description}
           onChange={(e) => setData({ ...data, description: e.target.value })}
         />
+        <label className="font-medium mt-3">
+          Delegate Cards Needed for Event
+          <span style={{ color: 'red' }}>*</span>
+        </label>
+        <Select
+          closeMenuOnSelect={false}
+          components={makeAnimated}
+          isMulti
+          options={options}
+          value={filteredDel}
+          onChange={(e) => handleChange(e)}
+        />
         <div className="d-flex flex-md-row flex-column">
           <div className="w-md-50 w-100 mx-md-1">
             <label for="mode" className="font-medium mt-3">
@@ -325,6 +413,18 @@ const EventModal = ({ eventdata, deleteEvent }) => {
             </select>
           </div>
         </div>
+        <div className="delcard">
+          <label className="font-heavy mt-2">
+            Delegate Card Required by only Team Leader?
+          </label>
+          <input
+            type="checkbox"
+            checked={isChecked}
+            onChange={handleOnChange}
+            value=""
+          ></input>
+        </div>
+
         <label className="font-medium mt-2">Prize</label>
         <input
           type="number"
@@ -380,8 +480,8 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="13/04/2022"
           value={data.eventDateTime}
-          readOnly
-          // onChange={(e) => setData({ ...data, eventDateTime: e.target.value })}
+          //readOnly
+           onChange={(e) => setData({ ...data, eventDateTime: e.target.value })}
         />
 
         <label className="font-medium mt-3">Event Venue (Read Only)</label>
@@ -394,8 +494,8 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="AB5 203"
           value={data.eventVenue}
-          readOnly
-          // onChange={(e) => setData({ ...data, eventVenue: e.target.value })}
+          //readOnly
+           onChange={(e) => setData({ ...data, eventVenue: e.target.value })}
         />
 
         <div className="font-heavy mt-4 h5">Event Head details</div>

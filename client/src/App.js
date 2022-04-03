@@ -86,6 +86,15 @@ function App() {
               }
             />
             <Route
+              exact
+              path="/dashboard/myevents/:eventid"
+              element={
+                <PrivateRoute>
+                  <InsideEvent />
+                </PrivateRoute>
+              }
+            />
+            <Route
               path="/dashboard/delegatecard"
               element={
                 <Layout activeTab="delegate-card">

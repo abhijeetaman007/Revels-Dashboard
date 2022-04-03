@@ -1,38 +1,59 @@
 [
     {
-        "day" : "DAY ONE",
-        "date" : "13 April 2022",
-        "name" : "Akash Agarwal",
-        "description" : "Indian Song Writer"
+        "day" : "Tribhukti",
+        "date" : "11 April 2022",
+        "name" : "Classical Night",
+        "description" : "Classical Jugalbandi",
+        "src" : "/proshow/classical.png"
     },
     {
         "day" : "DAY ONE",
         "date" : "13 April 2022",
-        "name" : "Parthiv Menon",
-        "description" : "Sunburn DJ"
+        "name" : "Kenny Sebastin",
+        "description" : "Standup Comedian",
+        "src" : "/proshow/kenny.png"
+    },
+    {
+        "day" : "DAY ONE",
+        "date" : "13 April 2022",
+        "name" : "Aakash Mehta",
+        "description" : "Standup Comedian",
+        "src" : "/proshow/aakash.JPG"
     },
     {
         "day" : "DAY TWO",
         "date" : "14 April 2022",
-        "name" : "Abhijeet",
-        "description" : "Hollywood Director"
-    },
-    {
-        "day" : "DAY TWO",
-        "date" : "14 April 2022",
-        "name" : "Rhea",
-        "description" : "Indie Band"
+        "name" : "Shruti Prakash",
+        "description" : "Actress and Model",
+        "src" : "/proshow/shruti.jpeg"
     },
     {
         "day" : "DAY THREE",
         "date" : "15 April 2022",
-        "name" : "Pal Chedhha",
-        "description" : "Bollywood Singer"
+        "name" : "KK",
+        "description" : "Indian Playback Singer",
+        "src" : "/proshow/kk.jpg"
     },
     {
         "day" : "DAY THREE",
         "date" : "15 April 2022",
-        "name" : "Akash Agarwal",
-        "description" : "Indian Song Writer"
+        "name" : "Naalayak",
+        "description" : "Indie Rock Band",
+        "src" : "/proshow/naalayak.JPG"
+    },
+    
+    {
+        "day" : "DAY FOUR",
+        "date" : "16 April 2022",
+        "name" : "Nikhil D'souza",
+        "description" : "Singer-songwriter",
+        "src" : "/proshow/nikhil.jpg"
+    },
+    {
+        "day" : "DAY FOUR",
+        "date" : "16 April 2022",
+        "name" : "Zephyrtone",
+        "description" : "Producer + Vocalist",
+        "src" : "/proshow/zephyrtone.jpg"
     }
 ]
