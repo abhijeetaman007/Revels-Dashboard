@@ -139,7 +139,7 @@ const responseAtom = async (req, resp) => {
     console.log("Response");
     console.log(data);
     // resp.json(data);
-    if (data.desc == "SUCCESS" || data.amt == "0.00") {
+    if (data.f_code == "OK" || data.amt == "0.00") {
       await User.updateOne(
         { email: data.udf2 },
         {
@@ -154,13 +154,15 @@ const responseAtom = async (req, resp) => {
       );
       console.log(user);
     }
-    if (data.desc == "SUCCESS" || data.amt == "0.00")
+    if (data.f_code == "OK" || data.amt == "0.00")
       return resp.redirect("https://revelsmit.in/dashboard/delegatecard/");
-    if (data.desc == "FAILED")
+    if (data.f_code == "F")
       return resp.redirect("https://revelsmit.in/dashboard/delegatecard/");
-    if (data.desc == "TRANSACTION IS CANCELLED BY USER ON PAYMENT PAGE.")
-      return resp.redirect("https://revelsmit.in/dashboard/delegatecard/");
-    else return resp.redirect("https://revelsmit.in/dashboard/delegatecard");
+    if (data.f_code == "C")
+      return resp.redirect(
+        "https://revelsmit.in/dashboard/delegatecard/cancelled"
+      );
+    else return resp.redirect("http://localhost:4102/dashboard/delegatecard");
   } catch (error) {
     return resp.status(500).send({ success: false, msg: error.toString() });
   }
