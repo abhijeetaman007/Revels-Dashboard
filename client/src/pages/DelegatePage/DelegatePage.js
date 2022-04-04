@@ -20,11 +20,12 @@ function loadScript(src) {
   });
 }
 
-async function cashPayment(delegateCardID) {
+async function cashPayment(delegateCardID, price) {
   const resp = await axios.post(
     "/api/user/payment/cash",
     {
       delegateCard: delegateCardID,
+      amount: price
     },
     {
       headers: {

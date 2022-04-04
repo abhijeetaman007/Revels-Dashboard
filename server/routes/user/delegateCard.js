@@ -5,12 +5,26 @@ const User = require('../../models/User');
 
 const requestDelegateCard = async (req, res) => {
     try {
-        let { delegateCard } = req.body;
+        let { delegateCard, amount } = req.body;
         let card = await DelCard.exists({ _id: delegateCard, isActive: true });
         if (!card)
             return res
                 .status(400)
                 .send({ msg: 'Delegate Card Invalid', success: false });
+        if(amount == 0){
+            await User.updateOne(
+                { _id: req.requestUser._id },
+                { $addToSet: { delegateCards: delegateCard } }
+            );
+            return res
+            .status(200)
+            .send({
+                success: true,
+                msg: 'Delegate Card Successfully Purchased',
+            });
+        }
+        
+        
         let delegateCardExists = await User.exists({
             _id: req.requestUser._id,
             delegateCards: delegateCard,
