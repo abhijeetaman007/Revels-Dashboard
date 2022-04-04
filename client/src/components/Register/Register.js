@@ -171,8 +171,9 @@ const Register = (props) => {
             onChange={(e) => {
               e.preventDefault();
               let val = JSON.parse(e.target.value);
+              console.log(val)
               setCollege(e.target.value);
-              setIsMahe(val.name === "MANIPAL INSTITUTE OF TECHNOLOGY");
+              setIsMahe(val.isMahe);
               setEmail("");
               setRegNum("");
             }}
