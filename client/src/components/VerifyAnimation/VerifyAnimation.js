@@ -1,7 +1,7 @@
-import React from 'react';
-import Lottie from 'lottie-react';
-import { Link } from 'react-router-dom';
-import verifiedAnimation from '../../assets/verified.json';
+import React from "react";
+import Lottie from "lottie-react";
+import { Link } from "react-router-dom";
+import verifiedAnimation from "../../assets/verified.json";
 
 const VerifyAnimation = () => {
   return (
@@ -10,9 +10,7 @@ const VerifyAnimation = () => {
       <div className="ver-div">
         <div className="anim-font font-medium">EMAIL VERIFIED</div>
         <Link to="/login">
-          <button className="lottie-button font-medium">
-            Sign In
-          </button>
+          <button className="lottie-button font-medium">Sign In</button>
         </Link>
       </div>
     </div>

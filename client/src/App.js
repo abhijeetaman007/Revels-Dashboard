@@ -27,10 +27,13 @@ import Login from "../src/admin/login/login";
 import Dashboard from "./admin/category/dashboard/Dashboard";
 import Rulebook from "./pages/Rulebook/Rulebook";
 import TicketDashboard from "./admin/tickets/TicketDashboard";
+import SuccessAnimation from "./components/VerifyAnimation/successAnimation";
+import FailedAnimation from "./components/VerifyAnimation/failedAnimation";
+import CancelledAnimation from "./components/VerifyAnimation/cancelledAnimation";
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
-  // console.log = () => {};
+  console.log = () => {};
   return (
     <div className="App">
       <BrowserRouter>
@@ -115,6 +118,9 @@ function App() {
             />
             <Route path="/verify/:token" element={<VerifyEmail />} />
             <Route path="/verified" element={<VerifyAnimation />} />
+            <Route path="/success" element={<SuccessAnimation />} />
+            <Route path="/failed" element={<FailedAnimation />} />
+            <Route path="/cancelled" element={<CancelledAnimation />} />
             <Route
               path="/rulebook"
               element={
