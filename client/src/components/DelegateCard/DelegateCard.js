@@ -46,11 +46,13 @@ const DelegateCard = ({ displayRazorpay, data, isMahe, cashPay, isBought }) => {
               <p>&#x20B9;{cardPrice}</p>
               {bought == 1 ? (
                 <button disabled={true}>Purchased</button>
-              ) : bought == 2 ? (
+              ) : bought == 2 && cardPrice !=0 ? (
                 <>
-                  <button disabled={true}>Payment pending via cash </button>
+                  <button disabled={true}>
+                    Payment pending (Or Pay via Cash){" "}
+                  </button>
                   <button
-                    disabled={false}
+                    disabled={auth.user.email == "akash.agarwal@learner.manipal.edu" ? false :true}
                     onClick={() =>
                       displayRazorpay(data._id, cardPrice, auth.user)
                     }
@@ -63,20 +65,22 @@ const DelegateCard = ({ displayRazorpay, data, isMahe, cashPay, isBought }) => {
                   <button
                     disabled={bought}
                     onClick={async () => {
-                      const d = await cashPay(data._id);
-                      if (d.status == 200) setBought(2);
+                      const d = await cashPay(data._id, cardPrice);
+                      if(d.status == 200 && cardPrice ==0)
+                      setBought(1)
+                      else if (d.status == 200 ) setBought(2);
                     }}
                   >
-                    Pay Via Cash
-                  </button>{" "}
-                  <button
-                    disabled={bought}
+                   {cardPrice ==0 ? "Buy Now" : "Pay Later"}
+                   </button>{" "}
+                 {cardPrice !=0 && <button
+                    disabled={auth.user.email == "akash.agarwal@learner.manipal.edu" ? false :true}
                     onClick={() =>
                       displayRazorpay(data._id, cardPrice, auth.user)
                     }
                   >
                     Pay Online
-                  </button>
+                  </button>}
                 </>
               )}
             </div>

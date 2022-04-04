@@ -153,6 +153,7 @@ const updateEvent = async (req, res) => {
       teamDelegateCard,
       delegateCards, //List of Delegate CardIDs
       eventDateTime,
+      registrationDeadline,
       eventVenue,
       tags,
     } = req.body;
@@ -179,7 +180,9 @@ const updateEvent = async (req, res) => {
     if (eventDateTime) {
       let dateTime = new Date(eventDateTime);
       eventDateTime = dateTime;
-      registrationDeadline = eventDateTime;
+      let dateTimeDead = new Date(registrationDeadline);
+      registrationDeadline = dateTimeDead;
+      
       if (eventDateTime.toString() == 'Invalid Date') {
         return res.status(400).send({
           success: false,

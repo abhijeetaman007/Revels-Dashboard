@@ -1,9 +1,20 @@
 var crypto = require("crypto");
+const Transaction = require("../../models/Transaction");
 const User = require("../../models/User");
 
-const requestAtom = (req, resp) => {
+const requestAtom = async (req, resp) => {
   try {
     var data = req.body;
+    let ids = await Transaction.find({}, { orderId: 1, _id: 0 })
+      .sort({ orderId: -1 })
+      .limit(1);
+    let orderId = 10001;
+    if (ids[0]) {
+      orderId = ids[0].orderId + 1;
+    }
+
+    data.transid = orderId;
+
     console.log(data);
     var cc = req.body.clientcode;
     var final = new Buffer(cc).toString("base64");
@@ -12,9 +23,10 @@ const requestAtom = (req, resp) => {
     var udf2 = data.udf2 == "" ? null : data.udf2;
     var udf3 = data.udf3 == "" ? null : data.udf3;
     var udf4 = data.udf4 == "" ? null : data.udf4;
-    var key = "process.env.key";
-    var req_enc_key = "process.env.req_enc_key";
-    var req_salt = "process.env.req_salt";
+    var udf5 = data.udf5 == "" ? null : data.udf5;
+    var key = process.env.key;
+    var req_enc_key = process.env.req_enc_key;
+    var req_salt = process.env.req_salt;
     // var key = "KEY123657234";
     // var req_enc_key = "8E41C78439831010F81F61C344B7BFC7";
     // var req_salt = "8E41C78439831010F81F61C344B7BFC7";
@@ -66,6 +78,8 @@ const requestAtom = (req, resp) => {
       udf3 +
       "&udf4=" +
       udf4 +
+      "&udf5=" +
+      udf5 +
       "&ru=" +
       url +
       "&signature=" +
@@ -106,8 +120,8 @@ const requestAtom = (req, resp) => {
 
 const responseAtom = async (req, resp) => {
   try {
-    var res_enc_key = "process.env.res_enc_key";
-    var res_salt = "process.env.res_salt";
+    var res_enc_key = process.env.res_enc_key;
+    var res_salt = process.env.res_salt;
     // var res_enc_key = "8E41C78439831010F81F61C344B7BFC7";
     // var res_salt = "8E41C78439831010F81F61C344B7BFC7";
     const algorithm = "aes-256-cbc";
@@ -135,10 +149,21 @@ const responseAtom = async (req, resp) => {
       data[val[0]] = val[1];
     }
 
-    console.log("Response");
-    console.log(data);
-    // resp.json(data);
-    if (data.desc == "SUCCESS" || data.amt == "0.00") {
+    // console.log("Response");
+    // console.log(data);
+    // // resp.json(data);
+
+    let newTransaction = new Transaction({
+      user: data.udf5,
+      delegateCard: data.udf4,
+      name: "atom_" + data.mmp_txn.toString(),
+      transactionData: data,
+      orderId: parseInt(data.mer_txn),
+      amount: data.amt,
+      isPaymentConfirmed: data.f_code == "OK" ? true : false,
+    });
+    await newTransaction.save();
+    if (data.f_code == "OK" || data.amt == "0.00") {
       await User.updateOne(
         { email: data.udf2 },
         {
@@ -153,17 +178,12 @@ const responseAtom = async (req, resp) => {
       );
       console.log(user);
     }
-    if (data.desc == "SUCCESS" || data.amt == "0.00")
-      return resp.redirect(
-        "http://localhost:4102/dashboard/delegatecard/success"
-      );
-    if (data.desc == "FAILED")
-      return resp.redirect("http://localhost:4102/dashboard/delegatecard/fail");
-    if (data.desc == "TRANSACTION IS CANCELLED BY USER ON PAYMENT PAGE.")
-      return resp.redirect(
-        "http://localhost:4102/dashboard/delegatecard/cancelled"
-      );
-    else return resp.redirect("http://localhost:4102/dashboard/delegatecard");
+    if (data.f_code == "OK" || data.amt == "0.00")
+      return resp.redirect("http://revelsmit.in/success");
+    if (data.f_code == "F") return resp.redirect("https://revelsmit.in/failed");
+    if (data.f_code == "C")
+      return resp.redirect("https://revelsmit.in/cancelled");
+    else return resp.redirect("https://revelsmit.in/dashboard/delegatecard");
   } catch (error) {
     return resp.status(500).send({ success: false, msg: error.toString() });
   }

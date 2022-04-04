@@ -7,6 +7,7 @@ import Modal from "react-modal";
 import axios from "axios";
 import "./InsideEvent.scss";
 import { useAuth } from "../../context/AuthContext";
+import Loader from "../../pages/Loader/Loader";
 const customStyles = {
   content: {
     backgroundColor: "#100b1b",
@@ -33,6 +34,7 @@ const InsideEvent = () => {
   const [teammembers, setTeammembers] = useState([]);
   const [teamIDInput, setTeamIDInput] = useState("");
   const [teamCreator, setTeamCreator] = useState("");
+  const [loading, setloading] = useState(true);
   //MODAL STUFF
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -55,6 +57,7 @@ const InsideEvent = () => {
         { headers: header }
       );
       setEvent(res.data.data);
+      setloading(false);
       console.log(res.data.data);
       setEventID(res.data.eventid);
     } catch (err) {
@@ -178,6 +181,7 @@ const InsideEvent = () => {
       </div>
     );
   };
+  if (loading) return <Loader />;
   return (
     <Layout activeTab={"events"} isAagazVisible={true}>
       <div className="event-details">
@@ -233,7 +237,7 @@ const InsideEvent = () => {
               })}
             </>
           )}
-          {event.delegateCards && (
+          {/* {event.delegateCards && (
             <>
               {event.delegateCards.length > 1 && (
                 <>
@@ -247,19 +251,19 @@ const InsideEvent = () => {
                 </>
               )}
             </>
-          )}
+          )} */}
         </div>
         <div className="ele font-light">{event.description}</div>
         <br />
         {event.delegateCards.length > 0 ? (
           <p className="ele font-heavy" style={{ fontSize: "1.5rem" }}>
             {" "}
-            Required Delegate Cards
+            <i className={`fa fa-ticket mr-1`}></i> Required Delegate Cards
           </p>
         ) : (
           <p className="ele font-light" style={{ fontSize: "1.5rem" }}>
             {" "}
-            : No Delegate Card Required
+            No Delegate Card Required
           </p>
         )}
         <ul>
@@ -430,7 +434,7 @@ const InsideEvent = () => {
           </div>
         </Modal>
         {team === null ? (
-          <button disabled onClick={openModal} className="font-heavy">
+          <button onClick={openModal} className="font-heavy">
             Register
           </button>
         ) : (

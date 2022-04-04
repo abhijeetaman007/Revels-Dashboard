@@ -20,11 +20,12 @@ function loadScript(src) {
   });
 }
 
-async function cashPayment(delegateCardID) {
+async function cashPayment(delegateCardID, price) {
   const resp = await axios.post(
     "/api/user/payment/cash",
     {
       delegateCard: delegateCardID,
+      amount: price,
     },
     {
       headers: {
@@ -73,12 +74,12 @@ async function displayRazorpay(delegateCardID, amount, user) {
     txncur: "INR",
     txnamt: amount.toString() + ".00",
     clientcode: "Akash",
-    transid: "1000",
     datepick: "01/03/2019 16:20:00",
     custacc: "100000036600",
     udf1: user.name,
     udf2: user.email,
     udf3: user.mobileNumber,
+    udf5: user._id,
     udf4: delegateCardID,
     ru: "https://revelsmit.in/api/Response",
     delegateCardID: delegateCardID,
