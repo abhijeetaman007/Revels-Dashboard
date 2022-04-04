@@ -12,7 +12,6 @@ const requestAtom = async (req, resp) => {
     if (ids[0]) {
       orderId = ids[0].orderId + 1;
     }
-    console.log(orderId);
 
     data.transid = orderId;
 
@@ -159,7 +158,7 @@ const responseAtom = async (req, resp) => {
       delegateCard: data.udf4,
       name: "atom_" + data.mmp_txn.toString(),
       transactionData: data,
-      orderId: data.mer_txn,
+      orderId: parseInt(data.mer_txn),
       amount: data.amt,
       isPaymentConfirmed: data.f_code == "OK" ? true : false,
     });

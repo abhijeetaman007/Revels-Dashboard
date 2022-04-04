@@ -20,7 +20,7 @@ const transactionSchema = new mongoose.Schema(
       ref: "Admin",
     },
     orderId: {
-      type: String,
+      type: Number,
     },
     transactionData: {
       type: Object,
