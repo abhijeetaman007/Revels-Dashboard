@@ -118,9 +118,12 @@ const registerEvent = async (req, res) => {
 const getUserTeams = async (req, res) => {
     try {
         let user = req.requestUser;
-        let teams = await Team.find({ 'members.user': user._id }).populate(
-            'event'
-        );
+        let teams = await Team.find({ 'members.user': user._id }).populate({
+            path:'event',
+            populate:{
+                path:'category',
+            }}
+        ).populate('members.user requestedMembers').select({pasword:0});
         // let events = [];
         // teams.forEach((team) => {
         //   events.push(team.event);
