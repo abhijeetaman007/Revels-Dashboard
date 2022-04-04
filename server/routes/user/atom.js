@@ -12,9 +12,9 @@ const requestAtom = (req, resp) => {
     var udf2 = data.udf2 == "" ? null : data.udf2;
     var udf3 = data.udf3 == "" ? null : data.udf3;
     var udf4 = data.udf4 == "" ? null : data.udf4;
-    var key = "process.env.key";
-    var req_enc_key = "process.env.req_enc_key";
-    var req_salt = "process.env.req_salt";
+    var key = process.env.key;
+    var req_enc_key = process.env.req_enc_key;
+    var req_salt = process.env.req_salt;
     // var key = "KEY123657234";
     // var req_enc_key = "8E41C78439831010F81F61C344B7BFC7";
     // var req_salt = "8E41C78439831010F81F61C344B7BFC7";
@@ -94,6 +94,7 @@ const requestAtom = (req, resp) => {
       host: "https://payment.atomtech.in",
       path: "/paynetz/epi/fts?login=" + data.login + "&encdata=" + encdata + "",
     };
+    console.log(options["host"] + "/paynetz/epi/fts?" + text);
     url = options["host"] + options["path"];
     resp.json({ url: url });
   } catch (error) {
@@ -106,8 +107,8 @@ const requestAtom = (req, resp) => {
 
 const responseAtom = async (req, resp) => {
   try {
-    var res_enc_key = "process.env.res_enc_key";
-    var res_salt = "process.env.res_salt";
+    var res_enc_key = process.env.res_enc_key;
+    var res_salt = process.env.res_salt;
     // var res_enc_key = "8E41C78439831010F81F61C344B7BFC7";
     // var res_salt = "8E41C78439831010F81F61C344B7BFC7";
     const algorithm = "aes-256-cbc";
@@ -154,16 +155,12 @@ const responseAtom = async (req, resp) => {
       console.log(user);
     }
     if (data.desc == "SUCCESS" || data.amt == "0.00")
-      return resp.redirect(
-        "http://localhost:4102/dashboard/delegatecard/success"
-      );
+      return resp.redirect("https://revelsmit.in/dashboard/delegatecard/");
     if (data.desc == "FAILED")
-      return resp.redirect("http://localhost:4102/dashboard/delegatecard/fail");
+      return resp.redirect("https://revelsmit.in/dashboard/delegatecard/");
     if (data.desc == "TRANSACTION IS CANCELLED BY USER ON PAYMENT PAGE.")
-      return resp.redirect(
-        "http://localhost:4102/dashboard/delegatecard/cancelled"
-      );
-    else return resp.redirect("http://localhost:4102/dashboard/delegatecard");
+      return resp.redirect("https://revelsmit.in/dashboard/delegatecard/");
+    else return resp.redirect("https://revelsmit.in/dashboard/delegatecard");
   } catch (error) {
     return resp.status(500).send({ success: false, msg: error.toString() });
   }

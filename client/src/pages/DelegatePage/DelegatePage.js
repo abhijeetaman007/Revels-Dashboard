@@ -25,7 +25,7 @@ async function cashPayment(delegateCardID, price) {
     "/api/user/payment/cash",
     {
       delegateCard: delegateCardID,
-      amount: price
+      amount: price,
     },
     {
       headers: {
@@ -81,7 +81,7 @@ async function displayRazorpay(delegateCardID, amount, user) {
     udf2: user.email,
     udf3: user.mobileNumber,
     udf4: delegateCardID,
-    ru: "https://revelsm.n/api/Response",
+    ru: "https://revelsmit.in/api/Response",
     delegateCardID: delegateCardID,
   };
   // Object.keys(data).forEach((element) => {
