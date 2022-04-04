@@ -19,7 +19,7 @@ const joinTeam = async (req, res) => {
         maxMembers: 1,
       }
     );
-    if (!event) return res.status(404).json({ msg: 'Event not found' });
+    if (!event) return res.status(404).json({ success:false, msg: 'Event not found' });
     console.log('event', event);
     console.log(event._id);
     //User is not registered for the event
