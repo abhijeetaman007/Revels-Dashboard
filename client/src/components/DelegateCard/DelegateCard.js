@@ -52,7 +52,7 @@ const DelegateCard = ({ displayRazorpay, data, isMahe, cashPay, isBought }) => {
                     Pay via cash at the nearest Infodesk
                   </button>
                   <button
-                    disabled={bought}
+                    disabled={false}
                     onClick={() =>
                       displayRazorpay(data._id, cardPrice, auth.user)
                     }
