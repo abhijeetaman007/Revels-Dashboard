@@ -19,7 +19,8 @@ const joinTeam = async (req, res) => {
         maxMembers: 1,
       }
     );
-    if (!event) return res.status(404).json({ success:false, msg: 'Event not found' });
+    if (!event)
+      return res.status(404).json({ success: false, msg: 'Event not found' });
     console.log('event', event);
     console.log(event._id);
     //User is not registered for the event
@@ -68,17 +69,23 @@ const joinTeam = async (req, res) => {
 
     if (!event.teamDelegateCard) {
       // Check on delegate cards
-      let flag=0;
+      let flag = 0;
       event.delegateCards.forEach((delCard) => {
-        if ((user.delegateCards.indexOf(delCard) == -1)&&(user.pendingDelegateCards.indexOf(delCard) == -1)) {
-          flag=1;
+        if (
+          user.delegateCards.indexOf(delCard) == -1 &&
+          user.pendingDelegateCards.indexOf(delCard) == -1
+        ) {
+          flag = 1;
         }
       });
-      if(flag==1)return res.status(400).send({
-        success: false,
-        msg: 'Please buy event specific delegate card(s)',
-      });
+      if (flag == 1)
+        return res.status(400).send({
+          success: false,
+          msg: 'Please buy event specific delegate card(s)',
+        });
     }
+
+    //check that teammembers are from same college
 
     // console.log("team details");
     // console.log(team.members.length);
@@ -148,7 +155,7 @@ const addToTeam = async (req, res) => {
         .status(400)
         .send({ success: false, msg: 'User does not exist' });
     }
-
+    console.log('mem', member);
     let event = await Event.findOne(
       { eventID },
       {
@@ -159,21 +166,29 @@ const addToTeam = async (req, res) => {
         maxMembers: 1,
       }
     );
+    console.log('event', event);
     if (!event) return res.status(404).json({ msg: 'Event not found' });
 
     let team = await Team.findOne(
-      { event: event._id, 'members.user': member._id },
-      { teamID: 1 }
+      {
+        event: event._id,
+        'members.user': member._id,
+      },
+      {
+        teamID: 1,
+      }
     );
     console.log('Found Team', team);
 
     if (team) return res.send({ success: false, msg: 'Already in a team' });
-    let newTeam = await Team.findOne({ eventID, teamID });
-
+    console.log('1');
+    let newTeam = await Team.findOne({ eventID, teamID }).populate('createdBy');
+    console.log(newTeam.createdBy.college);
+    console.log('2');
     //User is not registered for the event
     if (!newTeam)
       return res.status(400).send({ success: false, msg: 'Team Code Invalid' });
-
+    console.log('3');
     // if (team && teamID == team.teamID)
     //   return res.status(400).send({ success: false, msg: 'Already in team' });
 
@@ -188,18 +203,33 @@ const addToTeam = async (req, res) => {
       return res
         .status(400)
         .send({ success: false, msg: 'Request Team is full' });
-
-    if (newTeam.createdBy.toString() != user._id.toString())
+    console.log('4');
+    if (newTeam.createdBy._id.toString() != user._id.toString())
       return res.status(400).send({ success: false, msg: 'Access Denied' });
+    console.log('5');
+    console.log('here123456');
     if (!event.teamDelegateCard) {
       // Check on delegate cards
       event.delegateCards.forEach((delCard) => {
-        if (user.delegateCards.indexOf(delCard) == -1) {
+        if (
+          user.delegateCards.indexOf(delCard) == -1 &&
+          user.pendingDelegateCards.indexOf(delCard) == -1
+        ) {
           return res.status(400).send({
             success: false,
             msg: 'Event specific delegate card(s) missing. Cannot add user.',
           });
         }
+      });
+    }
+    console.log('here1234567');
+    //check that teammembers are from same college
+    console.log(member.college);
+    console.log(newTeam.createdBy.college);
+    if (newTeam.createdBy.college != member.college) {
+      return res.send({
+        success: false,
+        msg: 'User is not from same college as team creator',
       });
     }
 
@@ -223,7 +253,7 @@ const addToTeam = async (req, res) => {
     //     { $pull: { members: user._id } }
     //   );
     // }
-
+    console.log('8');
     //Add To Team
     team = await Team.findOneAndUpdate(
       { teamID: teamID },
@@ -238,7 +268,7 @@ const addToTeam = async (req, res) => {
       },
       { new: true }
     );
-
+    console.log('here12345678');
     // Delete All Other Request
     await Team.updateMany(
       {},
@@ -248,7 +278,7 @@ const addToTeam = async (req, res) => {
         },
       }
     );
-
+    console.log('here123456789');
     return res
       .status(200)
       .send({ success: true, msg: 'User Added to Team', data: team });

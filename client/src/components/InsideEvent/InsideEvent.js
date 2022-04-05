@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from "react";
-import toast from "react-hot-toast";
-import { TOKEN_ID } from "../../utils/constants";
-import { useParams } from "react-router-dom";
-import Layout from "../../pages/Layout/Layout";
-import Modal from "react-modal";
-import axios from "axios";
-import "./InsideEvent.scss";
-import { useAuth } from "../../context/AuthContext";
-import Loader from "../../pages/Loader/Loader";
+import React, { useEffect, useState } from 'react';
+import copy from 'copy-to-clipboard';
+import toast from 'react-hot-toast';
+import { TOKEN_ID } from '../../utils/constants';
+import { useParams } from 'react-router-dom';
+import Layout from '../../pages/Layout/Layout';
+import Modal from 'react-modal';
+import axios from 'axios';
+import './InsideEvent.scss';
+import { useAuth } from '../../context/AuthContext';
+import Loader from '../../pages/Loader/Loader';
 const customStyles = {
   content: {
-    backgroundColor: "#100b1b",
+    backgroundColor: '#100b1b',
     border: 0,
-    borderRadius: "10px",
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
+    borderRadius: '10px',
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
   },
 };
 const InsideEvent = () => {
@@ -32,8 +33,8 @@ const InsideEvent = () => {
   const [requests, setRequests] = useState([]);
   const [team, setTeam] = useState(null);
   const [teammembers, setTeammembers] = useState([]);
-  const [teamIDInput, setTeamIDInput] = useState("");
-  const [teamCreator, setTeamCreator] = useState("");
+  const [teamIDInput, setTeamIDInput] = useState('');
+  const [teamCreator, setTeamCreator] = useState('');
   const [loading, setloading] = useState(true);
   //MODAL STUFF
   let subtitle;
@@ -52,7 +53,7 @@ const InsideEvent = () => {
   const callEventByID = async () => {
     try {
       const res = await axios.post(
-        "/api/user/event/getbyid",
+        '/api/user/event/getbyid',
         { event_Id: eventid },
         { headers: header }
       );
@@ -68,7 +69,7 @@ const InsideEvent = () => {
   const getTeamDetails = async () => {
     try {
       const res = await axios.post(
-        "/api/user/team/get",
+        '/api/user/team/get',
         { event_ID: eventID },
         { headers: header }
       );
@@ -76,7 +77,7 @@ const InsideEvent = () => {
       setRequests(res.data.data.requestedMembers);
       console.log(res.data.data.members);
       setTeammembers(res.data.data.members);
-      console.log("here ", res.data.data.createdBy);
+      console.log('here ', res.data.data.createdBy);
       setTeamCreator(res.data.data.createdBy);
     } catch (err) {
       console.log(err);
@@ -88,40 +89,40 @@ const InsideEvent = () => {
   }, []);
   // function to handle join team
   const joinTeam = async () => {
-    const toastId = toast.loading("Joining Team");
+    const toastId = toast.loading('Joining Team');
 
     try {
       const res = await axios.post(
-        "/api/user/team/join",
+        '/api/user/team/join',
         { eventID: event.eventID, teamID: teamIDInput },
         { headers: header }
       );
 
       toast.success(res.data.msg, {
-        position: "bottom-center",
+        position: 'bottom-center',
         id: toastId,
       });
       setIsOpen(false);
     } catch (err) {
       toast.error(err.response.data.msg, {
-        position: "bottom-center",
+        position: 'bottom-center',
         id: toastId,
       });
     }
   };
   // function to register as individual
   const registerIndividual = async () => {
-    const toastId = toast.loading("Creating Team");
+    const toastId = toast.loading('Creating Team');
     try {
       const res = await axios.post(
-        "/api/user/event/register",
+        '/api/user/event/register',
         { eventID: event.eventID },
         { headers: header }
       );
 
       if (res.data.success) {
         toast.success(res.data.msg, {
-          position: "bottom-center",
+          position: 'bottom-center',
           id: toastId,
         });
         setIsOpen(false);
@@ -129,42 +130,47 @@ const InsideEvent = () => {
         //window.location.reload(false);
       } else {
         toast.error(res.data.msg, {
-          position: "bottom-center",
+          position: 'bottom-center',
           id: toastId,
         });
       }
     } catch (err) {
       toast.error(err.response.data.msg, {
-        position: "bottom-center",
+        position: 'bottom-center',
         id: toastId,
       });
     }
   };
+  const copyTextFunc = (id) => {
+    copy(id);
+    console.log(id);
+    toast.success('Copied to clipboard');
+  };
   // function to handle leave team
   const leaveTeam = async () => {
-    const toastId = toast.loading("Leaving Team");
+    const toastId = toast.loading('Leaving Team');
     try {
       const res = await axios.post(
-        "/api/user/team/leave",
+        '/api/user/team/leave',
         { teamID: team.teamID },
         { headers: header }
       );
 
       if (res.data.success) {
         toast.success(res.data.msg, {
-          position: "bottom-center",
+          position: 'bottom-center',
           id: toastId,
         });
         setTimeout(() => window.location.reload(), 2000);
       } else {
         toast.error(res.data.msg, {
-          position: "bottom-center",
+          position: 'bottom-center',
           id: toastId,
         });
       }
     } catch (err) {
       toast.error(err.response.data.msg, {
-        position: "bottom-center",
+        position: 'bottom-center',
         id: toastId,
       });
     }
@@ -183,7 +189,7 @@ const InsideEvent = () => {
   };
   if (loading) return <Loader />;
   return (
-    <Layout activeTab={"events"} isAagazVisible={true}>
+    <Layout activeTab={'events'} isAagazVisible={true}>
       <div className="event-details">
         <div className="cat-event">
           {/* <img
@@ -198,18 +204,18 @@ const InsideEvent = () => {
         </div>
         <div className="event-group ele">
           {DataComponent({
-            icon: "fa-users",
-            heading: "Team Size",
+            icon: 'fa-users',
+            heading: 'Team Size',
             text:
               event.minMembers === event.maxMembers
-                ? "Individual event"
+                ? 'Individual event'
                 : `${event.minMembers} - ${event.maxMembers}`,
           })}
           {event.eventDateTime && (
             <>
               {DataComponent({
-                icon: "fa-calendar-o",
-                heading: "Event Date",
+                icon: 'fa-calendar-o',
+                heading: 'Event Date',
                 text: `${new Date(event.eventDateTime).getDate()}/
             ${new Date(event.eventDateTime).getMonth() + 1}/
             ${new Date(event.eventDateTime).getFullYear()}`,
@@ -220,8 +226,8 @@ const InsideEvent = () => {
           {event.eventVenue && (
             <>
               {DataComponent({
-                icon: "fa-map-marker",
-                heading: "Event Venue",
+                icon: 'fa-map-marker',
+                heading: 'Event Venue',
                 text: `${event.eventVenue}`,
               })}
             </>
@@ -229,8 +235,8 @@ const InsideEvent = () => {
           {event.registrationDeadline && (
             <>
               {DataComponent({
-                icon: "fa-calendar-check-o",
-                heading: "Registration Deadline",
+                icon: 'fa-calendar-check-o',
+                heading: 'Registration Deadline',
                 text: `${new Date(event.registrationDeadline).getDate()}/
             ${new Date(event.registrationDeadline).getMonth() + 1}/
             ${new Date(event.registrationDeadline).getFullYear()}`,
@@ -256,19 +262,30 @@ const InsideEvent = () => {
         <div className="ele font-light">{event.description}</div>
         <br />
         {event.delegateCards.length > 0 ? (
-          <p className="ele font-heavy" style={{ fontSize: "1.5rem" }}>
-            {" "}
+          <p className="ele font-heavy" style={{ fontSize: '1.5rem' }}>
+            {' '}
             <i className={`fa fa-ticket mr-1`}></i> Required Delegate Cards
           </p>
         ) : (
-          <p className="ele font-light" style={{ fontSize: "1.5rem" }}>
-            {" "}
+          // check if delegateteamcard required by only team leader
+
+          <p className="ele font-light" style={{ fontSize: '1.5rem' }}>
+            {' '}
             No Delegate Card Required
+          </p>
+        )}
+        {event.teamDelegateCard ? (
+          <p style={{ fontSize: 'small', color: 'red' }}>
+            Team Delegate Cards required to be purchased only by team leader.
+          </p>
+        ) : (
+          <p style={{ fontSize: 'small', color: 'red' }}>
+            All members need to purchase the required delegate cards.
           </p>
         )}
         <ul>
           {event.delegateCards.map((delegateCard) => (
-            <li className="ele font-light" style={{ fontSize: "1.2rem" }}>
+            <li className="ele font-light" style={{ fontSize: '1.2rem' }}>
               &nbsp; ◦ {delegateCard.name}
             </li>
           ))}
@@ -290,18 +307,18 @@ const InsideEvent = () => {
               <div className="reg-area">
                 <div className="event-group ele text-white">
                   {DataComponent({
-                    icon: "fa-users",
-                    heading: "Team Size",
+                    icon: 'fa-users',
+                    heading: 'Team Size',
                     text:
                       event.minMembers === event.maxMembers
-                        ? "Individual event"
+                        ? 'Individual event'
                         : `${event.minMembers} - ${event.maxMembers}`,
                   })}
                   {event.eventDateTime && (
                     <>
                       {DataComponent({
-                        icon: "fa-calendar-o",
-                        heading: "Event Date",
+                        icon: 'fa-calendar-o',
+                        heading: 'Event Date',
                         text: `${new Date(event.eventDateTime).getDate()}/
                     ${new Date(event.eventDateTime).getMonth() + 1}/
                     ${new Date(event.eventDateTime).getFullYear()}`,
@@ -311,8 +328,8 @@ const InsideEvent = () => {
                   {event.eventVenue && (
                     <>
                       {DataComponent({
-                        icon: "fa-map-marker",
-                        heading: "Event Venue",
+                        icon: 'fa-map-marker',
+                        heading: 'Event Venue',
                         text: `${event.eventVenue}`,
                       })}
                     </>
@@ -320,8 +337,8 @@ const InsideEvent = () => {
                   {event.registrationDeadline && (
                     <>
                       {DataComponent({
-                        icon: "fa-calendar-check-o",
-                        heading: "Registration Deadline",
+                        icon: 'fa-calendar-check-o',
+                        heading: 'Registration Deadline',
                         text: `${new Date(
                           event.registrationDeadline
                         ).getDate()}/
@@ -335,8 +352,8 @@ const InsideEvent = () => {
                       {event.delegateCards.length > 1 && (
                         <>
                           {DataComponent({
-                            icon: "fa-ticket",
-                            heading: "Delegate Cards Required",
+                            icon: 'fa-ticket',
+                            heading: 'Delegate Cards Required',
                             text: `${event.delegateCards.map((del, index) => {
                               return +del.name;
                             })}`,
@@ -353,18 +370,18 @@ const InsideEvent = () => {
               <div className="reg-area">
                 <div className="event-group ele text-white">
                   {DataComponent({
-                    icon: "fa-users",
-                    heading: "Team Size",
+                    icon: 'fa-users',
+                    heading: 'Team Size',
                     text:
                       event.minMembers === event.maxMembers
-                        ? "Individual event"
+                        ? 'Individual event'
                         : `${event.minMembers} - ${event.maxMembers}`,
                   })}
                   {event.eventDateTime && (
                     <>
                       {DataComponent({
-                        icon: "fa-calendar-o",
-                        heading: "Event Date",
+                        icon: 'fa-calendar-o',
+                        heading: 'Event Date',
                         text: `${new Date(event.eventDateTime).getDate()}/
                     ${new Date(event.eventDateTime).getMonth() + 1}/
                     ${new Date(event.eventDateTime).getFullYear()}`,
@@ -375,8 +392,8 @@ const InsideEvent = () => {
                   {event.eventVenue && (
                     <>
                       {DataComponent({
-                        icon: "fa-map-marker",
-                        heading: "Event Venue",
+                        icon: 'fa-map-marker',
+                        heading: 'Event Venue',
                         text: `${event.eventVenue}`,
                       })}
                     </>
@@ -384,8 +401,8 @@ const InsideEvent = () => {
                   {event.registrationDeadline && (
                     <>
                       {DataComponent({
-                        icon: "fa-calendar-check-o",
-                        heading: "Registration Deadline",
+                        icon: 'fa-calendar-check-o',
+                        heading: 'Registration Deadline',
                         text: `${new Date(
                           event.registrationDeadline
                         ).getDate()}/
@@ -397,8 +414,8 @@ const InsideEvent = () => {
                   {event.delegateCards.length > 1 && (
                     <>
                       {DataComponent({
-                        icon: "fa-ticket",
-                        heading: "Delegate Cards Required",
+                        icon: 'fa-ticket',
+                        heading: 'Delegate Cards Required',
                         text: `${event.delegateCards.map((del, index) => {
                           return del.name;
                         })}`,
@@ -414,7 +431,7 @@ const InsideEvent = () => {
                 </button>
                 <div
                   className="w-100 my-4"
-                  style={{ backgroundColor: "grey", height: 0.5 }}
+                  style={{ backgroundColor: 'grey', height: 0.5 }}
                 ></div>
                 <input
                   className="input-team w-100"
@@ -422,7 +439,7 @@ const InsideEvent = () => {
                   onChange={(e) => {
                     setTeamIDInput(e.target.value);
                   }}
-                  style={{ color: "white" }}
+                  style={{ color: 'white' }}
                   placeholder="Team ID"
                 />
                 <button className="font-heavy" onClick={joinTeam}>
@@ -440,15 +457,32 @@ const InsideEvent = () => {
         ) : (
           <div>
             <div className="event-group">
+              <button
+                style={{ fontSize: 'small', fontWeight: 'bold' }}
+                onClick={() => copyTextFunc(team.teamID)}
+              >
+                <i className="fa fa-copy mr-1"></i>
+              </button>
+
               {DataComponent({
-                icon: "fa-info-circle",
-                heading: "Team ID",
+                icon: 'fa-info-circle',
+                heading: 'Team ID',
                 text: team.teamID,
               })}
+              {/* fa-copy */}
+
               <div className="event-data">
                 <div className="d-flex align-items-center">
                   <i className="fa fa-users mr-1"></i>
-                  <p className="font-heavy ml-1 pt-1">Team Members</p>
+                  <p className="ml-1 grey small-font">Team Members</p>
+                  {/* if team members length is less than minimum  */}
+                  {team.members.length < event.minMembers && (
+                    <p className="font-light ml-auto">
+                      &nbsp;({event.minMembers - team.members.length} more
+                      required in team)
+                    </p>
+                  )}
+                  <p></p>
                 </div>
                 <div className="font-light d-flex">
                   {teammembers.length !== 0
@@ -460,7 +494,7 @@ const InsideEvent = () => {
                             </span>
                           )}
                           {member.user.name}
-                          {index !== teammembers.length - 1 && ", "}
+                          {index !== teammembers.length - 1 && ', '}
                         </span>
                       ))
                     : null}
@@ -483,7 +517,7 @@ const InsideEvent = () => {
                               user_ID: x._id,
                             });
                             const res = await axios.post(
-                              "/api/user/team/add",
+                              '/api/user/team/add',
                               {
                                 eventID: event.eventID,
                                 teamID: team.teamID,
@@ -493,11 +527,12 @@ const InsideEvent = () => {
                                 headers: header,
                               }
                             );
-                            console.log("ress3", res);
+                            console.log('ress3', res);
                             if (res.data.success) {
                               toast.success(res.data.msg);
                               window.location.reload(false);
                             } else {
+                              console.log('hakuan');
                               toast.error(res.data.msg);
                             }
                           } catch (err) {
@@ -515,7 +550,7 @@ const InsideEvent = () => {
                               user_ID: x._id,
                             });
                             const res = await axios.post(
-                              "/api/user/team/deleterequest",
+                              '/api/user/team/deleterequest',
                               {
                                 teamID: team.teamID,
                                 user_ID: x._id,
@@ -524,7 +559,7 @@ const InsideEvent = () => {
                                 headers: header,
                               }
                             );
-                            console.log("ress3", res);
+                            console.log('ress3', res);
                             if (res.data.success) {
                               toast.success(res.data.msg);
                               window.location.reload(false);
