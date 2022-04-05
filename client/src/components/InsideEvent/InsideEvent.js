@@ -266,6 +266,15 @@ const InsideEvent = () => {
             No Delegate Card Required
           </p>
         )}
+        <span style={{ fontWeight: "600" }}>
+          <em>
+            &nbsp; -{" "}
+            {event.teamDelegateCard
+              ? "This delegate card should be purchased by only one team member."
+              : event.minMembers !== event.maxMembers &&
+                "This delegate card should be purchased by all team members."}
+          </em>
+        </span>
         <ul>
           {event.delegateCards.map((delegateCard) => (
             <li className="ele font-light" style={{ fontSize: "1.2rem" }}>

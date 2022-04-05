@@ -23,19 +23,20 @@ const requestDelegateCard = async (req, res) => {
       if (ids[0]) {
         orderId = ids[0].orderId + 1;
       }
+      let r = (Math.random() + 1).toString(36).substring(7);
       let newTransaction = new Transaction({
         user: req.requestUser._id,
         delegateCard: delegateCard,
         orderId: orderId,
-        name: receiptID,
+        name: "0_" + r,
         amount: amount,
         isPaymentConfirmed: true,
       });
       await User.updateOne(
-        { _id: user },
+        { _id: req.requestUser._id },
         {
-          $pull: { pendingDelegateCards: delegateId },
-          $addToSet: { delegateCards: delegateId },
+          $pull: { pendingDelegateCards: delegateCard },
+          $addToSet: { delegateCards: delegateCard },
         }
       );
       await newTransaction.save();
