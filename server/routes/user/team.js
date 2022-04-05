@@ -34,7 +34,9 @@ const joinTeam = async (req, res) => {
         success: false,
         msg: 'User Already in a team!!',
       });
-    let newTeam = await Team.findOne({ event: event._id, teamID });
+    let newTeam = await Team.findOne({ event: event._id, teamID }).populate(
+      'createdBy'
+    );
     console.log('newteam', newTeam);
     if (!newTeam) {
       return res.status(400).send({
@@ -42,7 +44,7 @@ const joinTeam = async (req, res) => {
         msg: 'Team not found',
       });
     }
-    if (newTeam.createdBy.toString() == req.requestUser._id.toString())
+    if (newTeam.createdBy._id.toString() == req.requestUser._id.toString())
       return res.status(200).send({
         success: false,
         msg: 'Already in Team',
@@ -115,6 +117,14 @@ const joinTeam = async (req, res) => {
     // );
     // newTeam.members.push(user._id);
     // await newTeam.save();
+    console.log(user.college);
+    console.log(newTeam.createdBy.college);
+    if (newTeam.createdBy.college != user.college) {
+      return res.status(400).send({
+        success: false,
+        msg: 'User is not from same college as team creator',
+      });
+    }
 
     //Sending Team Request
     team = await Team.findOneAndUpdate(
