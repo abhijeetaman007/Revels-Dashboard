@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
-import Navbar from '../../components/Navbar/Navbar';
-import Tag from '../components/Tag/Tag';
-import axios from 'axios';
-import { ADMIN_TOKEN_ID } from '../../../utils/constants';
-import './EventTitle.css';
-import Modal from 'react-modal';
-import EventModal from './EventModal';
-import { useNavigate, Link } from 'react-router-dom';
-import { useAuth } from '../../../context/AuthContext';
+import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import Navbar from "../../components/Navbar/Navbar";
+import Tag from "../components/Tag/Tag";
+import axios from "axios";
+import { ADMIN_TOKEN_ID } from "../../../utils/constants";
+import "./EventTitle.css";
+import Modal from "react-modal";
+import EventModal from "./EventModal";
+import { useNavigate, Link } from "react-router-dom";
+import { useAuth } from "../../../context/AuthContext";
 // import MultiSelect from './MultiSelect';
-import Select from 'react-select';
-import makeAnimated from 'react-select/animated';
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
 //import TicketDashboard from '../../tickets/TicketDashboard';
 
 const Dashboard = () => {
   const [selDel, setSelDel] = useState([]);
+  const [teams, setTeams] = useState([]);
   const handleChange = async (e) => {
     console.log(e);
     setSelDel(e);
@@ -26,7 +27,7 @@ const Dashboard = () => {
   const [options, setOptions] = useState([]);
   const getDelCards = async () => {
     try {
-      const res = await axios.get('/api/user/delegatecard/getall');
+      const res = await axios.get("/api/user/delegatecard/getall");
       //console.log(res.data.data);
       setDelCards(res.data.data);
       const arr = [];
@@ -42,7 +43,7 @@ const Dashboard = () => {
   };
   const handleOnChange = (e) => {
     e.preventDefault();
-    console.log('click');
+    console.log("click");
     setIsChecked(!isChecked);
   };
   const navigate = useNavigate();
@@ -50,15 +51,15 @@ const Dashboard = () => {
 
   const validateForm = () => {
     if (
-      data.name === '' ||
+      data.name === "" ||
       data.minMembers === 0 ||
       data.maxMembers === 0 ||
-      data.description === '' ||
-      data.eventType === '' ||
-      data.mode === '' ||
-      head1N === '' ||
+      data.description === "" ||
+      data.eventType === "" ||
+      data.mode === "" ||
+      head1N === "" ||
       head1P === 0 ||
-      head1E === ''
+      head1E === ""
     ) {
       return false;
     }
@@ -66,11 +67,11 @@ const Dashboard = () => {
   };
   const customStyles = {
     content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      transform: 'translate(-50%, -50%)',
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      transform: "translate(-50%, -50%)",
     },
   };
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -79,10 +80,10 @@ const Dashboard = () => {
   }
   function closeModal() {
     setNumTags(1);
-    setT1('');
-    setT2('');
-    setT3('');
-    setT4('');
+    setT1("");
+    setT2("");
+    setT3("");
+    setT4("");
     setIsChecked(false);
     setIsOpen(false);
   }
@@ -93,7 +94,7 @@ const Dashboard = () => {
   const [events, setEvents] = useState([]);
   const getEvents = async () => {
     try {
-      const res = await axios.get('/api/admin/category/event/getevents', {
+      const res = await axios.get("/api/admin/category/event/getevents", {
         headers: header,
       });
       console.log(res.data.data);
@@ -104,40 +105,63 @@ const Dashboard = () => {
   };
   const getCategory = async () => {
     try {
-      const res = await axios.get('/api/admin/category', {
+      const res = await axios.get("/api/admin/category", {
         headers: header,
       });
       if (res.data.success) {
         console.log(res.data.data);
         setCategory(res.data.data);
       } else {
-        toast.error('Error setting category!');
+        toast.error("Error setting category!");
       }
     } catch (err) {
       console.log(err);
     }
   };
+  // const getTeams = async (event, name, id) => {
+  //   try {
+  //     await axios.get(
+  //       "/api/admin/category/event/participants/" +
+  //         event +
+  //         "/" +
+  //         name +
+  //         "/" +
+  //         id,
+  //       {
+  //         headers: header,
+  //       }
+  //     );
+  //     // if (res.data.success) {
+  //     //   console.log(res.data.data);
+  //     //   setTeams(res.data.data);
+  //     // } else {
+  //     //   toast.error("Error setting category!");
+  //     // }
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
   //add state for all the fields in data
-  const [t1, setT1] = useState('');
-  const [t2, setT2] = useState('');
-  const [t3, setT3] = useState('');
-  const [t4, setT4] = useState('');
-  const [head1N, setHead1N] = useState('');
-  const [head2N, setHead2N] = useState('');
-  const [head1E, setHead1E] = useState('');
-  const [head2E, setHead2E] = useState('');
-  const [head1P, setHead1P] = useState('');
-  const [head2P, setHead2P] = useState('');
+  const [t1, setT1] = useState("");
+  const [t2, setT2] = useState("");
+  const [t3, setT3] = useState("");
+  const [t4, setT4] = useState("");
+  const [head1N, setHead1N] = useState("");
+  const [head2N, setHead2N] = useState("");
+  const [head1E, setHead1E] = useState("");
+  const [head2E, setHead2E] = useState("");
+  const [head1P, setHead1P] = useState("");
+  const [head2P, setHead2P] = useState("");
   const [numTags, setNumTags] = useState(1);
 
   const [data, setData] = useState({
-    eventID: '',
-    name: '',
-    description: '',
-    eventType: '',
-    mode: '',
-    participationCriteria: '',
-    prize: '',
+    eventID: "",
+    name: "",
+    description: "",
+    eventType: "",
+    mode: "",
+    participationCriteria: "",
+    prize: "",
     minMembers: 0,
     maxMembers: 0,
     eventHeads: [],
@@ -160,29 +184,29 @@ const Dashboard = () => {
         delcardsselected.push(x.value);
       });
     }
-    console.log('ffff', delcardsselected);
-    console.log('add', isChecked);
+    console.log("ffff", delcardsselected);
+    console.log("add", isChecked);
     let tagsarr = [];
 
-    if (t1 !== '') tagsarr.push(t1.toUpperCase().trim());
-    if (t2 !== '') tagsarr.push(t2.toUpperCase().trim());
-    if (t3 !== '') tagsarr.push(t3.toUpperCase().trim());
-    if (t4 !== '') tagsarr.push(t4.toUpperCase().trim());
+    if (t1 !== "") tagsarr.push(t1.toUpperCase().trim());
+    if (t2 !== "") tagsarr.push(t2.toUpperCase().trim());
+    if (t3 !== "") tagsarr.push(t3.toUpperCase().trim());
+    if (t4 !== "") tagsarr.push(t4.toUpperCase().trim());
     let headsarr = [];
-    if (head1N !== '')
+    if (head1N !== "")
       headsarr.push({
         name: head1N.toUpperCase().trim(),
         phoneNo: head1P,
         email: head1E,
       });
-    if (head2N !== '')
+    if (head2N !== "")
       headsarr.push({
         name: head2N.toUpperCase().trim(),
         phoneNo: head2P,
         email: head2E,
       });
     if (!validateForm()) {
-      toast.error('Please fill in all the fields');
+      toast.error("Please fill in all the fields");
     }
     // else if (
     //   head1P.toString().length !== 10 ||
@@ -198,9 +222,9 @@ const Dashboard = () => {
     //   toast.error('Please enter valid email for Head 2');
     // }
     else if (
-      (head2E != '' && (head2P == '' || head2N == 0)) ||
-      (head2N != 0 && (head2P == '' || head2E == '')) ||
-      (head2P != '' && (head2E == '' || head2N == 0))
+      (head2E != "" && (head2P == "" || head2N == 0)) ||
+      (head2N != 0 && (head2P == "" || head2E == "")) ||
+      (head2P != "" && (head2E == "" || head2N == 0))
     ) {
       toast.error("Please complete Event Head 2's details");
     } else {
@@ -223,7 +247,7 @@ const Dashboard = () => {
         };
         console.log(eventData);
         const res = await axios.post(
-          '/api/admin/category/event/add',
+          "/api/admin/category/event/add",
           {
             name: eventData.name,
             description: eventData.description,
@@ -248,13 +272,13 @@ const Dashboard = () => {
         );
         if (res.data.success) {
           setData({
-            eventID: '',
-            name: '',
-            description: '',
-            eventType: '',
-            mode: '',
-            participationCriteria: '',
-            prize: '',
+            eventID: "",
+            name: "",
+            description: "",
+            eventType: "",
+            mode: "",
+            participationCriteria: "",
+            prize: "",
             minMembers: 0,
             maxMembers: 0,
             eventHeads: [],
@@ -263,38 +287,39 @@ const Dashboard = () => {
             tags: [],
             head1P: 0,
             head2P: 0,
-            head1E: '',
-            head2E: '',
-            head1N: '',
-            head2N: '',
-            t1: '',
-            t2: '',
-            t3: '',
-            t4: '',
+            head1E: "",
+            head2E: "",
+            head1N: "",
+            head2N: "",
+            t1: "",
+            t2: "",
+            t3: "",
+            t4: "",
           });
           closeModal();
-          toast.success('Event added successfully');
+          toast.success("Event added successfully");
           getEvents();
         } else {
           toast.error(res.data.msg);
         }
       } catch (err) {
-        toast.error('err');
+        toast.error("err");
         console.log(err);
       }
     }
   };
   useEffect(() => {
-    if (auth.adminPayment) navigate('/admin/payment');
+    if (auth.adminPayment) navigate("/admin/payment");
     getDelCards();
     getCategory();
     getEvents();
+    // getTeams();
   }, []);
   const deleteEvent = async (id) => {
-    const toastId = toast.loading('Deleting...');
+    const toastId = toast.loading("Deleting...");
     try {
       const res = await axios.post(
-        '/api/admin/category/event/delete',
+        "/api/admin/category/event/delete",
         {
           eventID: id,
         },
@@ -326,7 +351,7 @@ const Dashboard = () => {
           <i class="fa fa-times" aria-hidden="true"></i>
         </div>
         <label className="font-medium mt-2">
-          Event Name<span style={{ color: 'red' }}>*</span>
+          Event Name<span style={{ color: "red" }}>*</span>
         </label>
         <input
           type="text"
@@ -341,7 +366,7 @@ const Dashboard = () => {
         <div className="d-flex flex-md-row flex-column">
           <div className="w-md-50 w-100 mx-md-1">
             <label className="font-medium mt-2">
-              Min Members<span style={{ color: 'red' }}>*</span>
+              Min Members<span style={{ color: "red" }}>*</span>
             </label>
             <input
               type="number"
@@ -356,7 +381,7 @@ const Dashboard = () => {
           </div>
           <div className="w-md-50 w-100 mx-md-1">
             <label className="font-medium mt-2">
-              Max Members<span style={{ color: 'red' }}>*</span>
+              Max Members<span style={{ color: "red" }}>*</span>
             </label>
             <input
               type="number"
@@ -371,7 +396,7 @@ const Dashboard = () => {
           </div>
         </div>
         <label className="font-medium mt-3">
-          Event Description<span style={{ color: 'red' }}>*</span>
+          Event Description<span style={{ color: "red" }}>*</span>
         </label>
         <textarea
           rows="4"
@@ -386,7 +411,7 @@ const Dashboard = () => {
         />
         <label className="font-medium mt-3">
           Delegate Cards Needed for Event
-          <span style={{ color: 'red' }}>*</span>
+          <span style={{ color: "red" }}>*</span>
         </label>
         <Select
           closeMenuOnSelect={false}
@@ -396,7 +421,7 @@ const Dashboard = () => {
           onChange={(e) => handleChange(e)}
         />
         <label for="mode" className="font-medium mt-3">
-          Event Type<span style={{ color: 'red' }}>*</span>
+          Event Type<span style={{ color: "red" }}>*</span>
         </label>
         <select
           name=""
@@ -411,7 +436,7 @@ const Dashboard = () => {
           <option value="SPORTS">Sports</option>
         </select>
         <label for="mode" className="font-medium mt-3">
-          Mode<span style={{ color: 'red' }}>*</span>
+          Mode<span style={{ color: "red" }}>*</span>
         </label>
         <select
           name=""
@@ -462,15 +487,15 @@ const Dashboard = () => {
         <label className="font-medium mt-2 w-100">
           Tags (no space in between a tag)
         </label>
-        <Tag placeholder={'Tag 1'} setTag={setT1} value={t1} />
+        <Tag placeholder={"Tag 1"} setTag={setT1} value={t1} />
         {numTags >= 2 && (
-          <Tag placeholder={'Tag 2'} setTag={setT2} value={t2} />
+          <Tag placeholder={"Tag 2"} setTag={setT2} value={t2} />
         )}
         {numTags >= 3 && (
-          <Tag placeholder={'Tag 3'} setTag={setT3} value={t3} />
+          <Tag placeholder={"Tag 3"} setTag={setT3} value={t3} />
         )}
         {numTags >= 4 && (
-          <Tag placeholder={'Tag 4'} setTag={setT4} value={t4} />
+          <Tag placeholder={"Tag 4"} setTag={setT4} value={t4} />
         )}
         {numTags !== 4 && (
           <i className="fa fa-plus-square" onClick={addTagElement}></i>
@@ -503,7 +528,7 @@ const Dashboard = () => {
         <div className="font-heavy mt-4 h5">Event Head details</div>
         <div className="font-heavy mt-4 h6">Event Head 1</div>
         <label className="font-medium mt-2">
-          Name<span style={{ color: 'red' }}>*</span>
+          Name<span style={{ color: "red" }}>*</span>
         </label>
         <input
           type="text"
@@ -516,7 +541,7 @@ const Dashboard = () => {
           onChange={(e) => setHead1N(e.target.value)}
         />
         <label className="font-medium mt-2">
-          Phone number<span style={{ color: 'red' }}>*</span>
+          Phone number<span style={{ color: "red" }}>*</span>
         </label>
         <input
           type="number"
@@ -529,7 +554,7 @@ const Dashboard = () => {
           onChange={(e) => setHead1P(e.target.value)}
         />
         <label className="font-medium mt-2">
-          Email ID<span style={{ color: 'red' }}>*</span>
+          Email ID<span style={{ color: "red" }}>*</span>
         </label>
         <input
           type="email"
@@ -580,7 +605,7 @@ const Dashboard = () => {
         <button
           type="button"
           className="btn my-2 w-100 text-light"
-          style={{ backgroundColor: '#100B1B' }}
+          style={{ backgroundColor: "#100B1B" }}
           onClick={addEvent}
         >
           Save
@@ -588,28 +613,28 @@ const Dashboard = () => {
       </Modal>
       <div className="d-flex flex-column align-items-center justify-content-center">
         <div className="font-heavy text-light my-3 px-5 d-flex align-items-center">
-          <div style={{ fontSize: '2rem' }}>{category.category}</div>
+          <div style={{ fontSize: "2rem" }}>{category.category}</div>
           <div
             className="text-secondary pl-3 ml-3 border-left"
-            style={{ fontSize: '1.2rem' }}
+            style={{ fontSize: "1.2rem" }}
           >
             {events.length} events
           </div>
         </div>
         <div
           className="font-light border border-light rounded text-light p-2 text-center"
-          style={{ width: '70%' }}
+          style={{ width: "70%" }}
         >
           {category.description}
         </div>
-        {category.categoryId === 'INF' && (
+        {category.categoryId === "INF" && (
           <>
             <>
               <Link to="/admin/payment">
                 <button
                   type="button"
                   className="btn m-2 text-white"
-                  style={{ backgroundColor: '#F4737E', width: '200px' }}
+                  style={{ backgroundColor: "#F4737E", width: "200px" }}
                 >
                   Update Payment
                 </button>
@@ -617,19 +642,19 @@ const Dashboard = () => {
             </>
           </>
         )}
-        {(category.type === 'CULTURAL' || category.type === 'SPORTS') && (
+        {(category.type === "CULTURAL" || category.type === "SPORTS") && (
           <>
             <button
               type="button"
               className="btn m-2 text-white"
-              style={{ backgroundColor: '#F4737E', width: '200px' }}
+              style={{ backgroundColor: "#F4737E", width: "200px" }}
               onClick={openModal}
             >
               Create Event
             </button>
             <div
               className="d-flex flex-wrap justify-content-center align-items-center"
-              style={{ margin: '4rem 5rem' }}
+              style={{ margin: "4rem 5rem" }}
             >
               {events.map((eventdata) => (
                 <EventModal eventdata={eventdata} deleteEvent={deleteEvent} />

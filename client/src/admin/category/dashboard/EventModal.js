@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
-import axios from 'axios';
-import { ADMIN_TOKEN_ID } from '../../../utils/constants';
-import './EventTitle.css';
-import Modal from 'react-modal';
-import Tag from '../components/Tag/Tag';
-import Select from 'react-select';
-import makeAnimated from 'react-select/animated';
-const EventModal = ({ eventdata, deleteEvent }) => {
+import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { ADMIN_TOKEN_ID } from "../../../utils/constants";
+import "./EventTitle.css";
+import Modal from "react-modal";
+import Tag from "../components/Tag/Tag";
+import Select from "react-select";
+import makeAnimated from "react-select/animated";
+const EventModal = ({ eventdata, deleteEvent, downloadTeams }) => {
   const [isChecked, setIsChecked] = useState(eventdata.teamDelegateCard);
   const [selDel, setSelDel] = useState(null);
   const [filteredDel, setFilteredDel] = useState([]);
 
   const handleChange = async (e) => {
-    console.log('e', e);
+    console.log("e", e);
     setFilteredDel(e);
   };
 
@@ -23,7 +23,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
 
   const getDelCards = async () => {
     try {
-      const res = await axios.get('/api/user/delegatecard/getall');
+      const res = await axios.get("/api/user/delegatecard/getall");
       // console.log('uhhhhhh', res.data.data);
       setDelCards(res.data.data);
       const arr = [];
@@ -44,11 +44,11 @@ const EventModal = ({ eventdata, deleteEvent }) => {
 
   const customStyles = {
     content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      transform: 'translate(-50%, -50%)',
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      transform: "translate(-50%, -50%)",
     },
   };
 
@@ -76,14 +76,14 @@ const EventModal = ({ eventdata, deleteEvent }) => {
 
     setIsOpen(false);
   };
-  const [t1, setT1] = useState('');
-  const [t2, setT2] = useState('');
-  const [t3, setT3] = useState('');
-  const [t4, setT4] = useState('');
-  const [head1N, setHead1N] = useState('');
-  const [head2N, setHead2N] = useState('');
-  const [head1E, setHead1E] = useState('');
-  const [head2E, setHead2E] = useState('');
+  const [t1, setT1] = useState("");
+  const [t2, setT2] = useState("");
+  const [t3, setT3] = useState("");
+  const [t4, setT4] = useState("");
+  const [head1N, setHead1N] = useState("");
+  const [head2N, setHead2N] = useState("");
+  const [head1E, setHead1E] = useState("");
+  const [head2E, setHead2E] = useState("");
   const [head1P, setHead1P] = useState(0);
   const [head2P, setHead2P] = useState(0);
   const [headlen, setHeadlen] = useState(eventdata.eventHeads.length);
@@ -92,6 +92,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
   );
 
   const [data, setData] = useState({
+    _id: eventdata._id,
     eventID: eventdata.eventID,
     name: eventdata.name,
     description: eventdata.description,
@@ -103,24 +104,26 @@ const EventModal = ({ eventdata, deleteEvent }) => {
     maxMembers: eventdata.maxMembers,
     eventHeads: eventdata.eventHeads,
     eventDateTime: new Date(eventdata.eventDateTime),
-    registrationDeadline : new Date(eventdata.registrationDeadline),
+    registrationDeadline: new Date(eventdata.registrationDeadline),
     eventVenue: eventdata.eventVenue,
     tags: eventdata.tags,
     teamDelegateCard: isChecked,
+    delegateCards: eventdata.delegateCards,
     // isActive: data.isActive,
   });
+
   const validateForm = () => {
     console.log(data);
     if (
-      data.name === '' ||
+      data.name === "" ||
       data.minMembers === 0 ||
       data.maxMembers === 0 ||
-      data.description === '' ||
-      data.eventType === '' ||
-      data.mode === '' ||
-      head1N === '' ||
+      data.description === "" ||
+      data.eventType === "" ||
+      data.mode === "" ||
+      head1N === "" ||
       head1P === 0 ||
-      head1E === ''
+      head1E === ""
       // data.participationCriteria === '' ||
       // data.prize === '' ||
       // data.eventDateTime === '' ||
@@ -162,37 +165,37 @@ const EventModal = ({ eventdata, deleteEvent }) => {
     );
   };
   const updateEvent = async () => {
-    const toastId = toast.loading('Updating Event');
+    const toastId = toast.loading("Updating Event");
     const delArr = [];
     for (let i = 0; i < filteredDel.length; i++) {
       delArr.push({ cardID: filteredDel[i].value });
     }
-    console.log('ooooooffff');
+    console.log("ooooooffff");
     console.log(delArr);
     let tagsarr = [];
     console.log(t1);
     if (numTags.length !== 0) {
-      if (t1 !== '') tagsarr.push(t1.toUpperCase().trim());
-      if (t2 !== '') tagsarr.push(t2.toUpperCase().trim());
-      if (t3 !== '') tagsarr.push(t3.toUpperCase().trim());
-      if (t4 !== '') tagsarr.push(t4.toUpperCase().trim());
+      if (t1 !== "") tagsarr.push(t1.toUpperCase().trim());
+      if (t2 !== "") tagsarr.push(t2.toUpperCase().trim());
+      if (t3 !== "") tagsarr.push(t3.toUpperCase().trim());
+      if (t4 !== "") tagsarr.push(t4.toUpperCase().trim());
     }
     console.log(tagsarr);
     let headsarr = [];
-    if (head1N !== '')
+    if (head1N !== "")
       headsarr.push({
         name: head1N.toUpperCase().trim(),
         phoneNo: head1P,
         email: head1E,
       });
-    if (head2N !== '')
+    if (head2N !== "")
       headsarr.push({
         name: head2N.toUpperCase().trim(),
         phoneNo: head2P,
         email: head2E,
       });
     if (!validateForm()) {
-      toast.error('Please fill in all the fields', {
+      toast.error("Please fill in all the fields", {
         id: toastId,
       });
     }
@@ -210,9 +213,9 @@ const EventModal = ({ eventdata, deleteEvent }) => {
     //   toast.error('Please enter valid email for Head 2');
     // }
     else if (
-      (head2E != '' && (head2P == '' || head2N == 0)) ||
-      (head2N != 0 && (head2P == '' || head2E == '')) ||
-      (head2P != '' && (head2E == '' || head2N == 0))
+      (head2E != "" && (head2P == "" || head2N == 0)) ||
+      (head2N != 0 && (head2P == "" || head2E == "")) ||
+      (head2P != "" && (head2E == "" || head2N == 0))
     ) {
       toast.error("Please complete Event Head 2's details", {
         id: toastId,
@@ -232,15 +235,15 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           maxMembers: data.maxMembers,
           eventHeads: headsarr,
           eventDateTime: new Date(data.eventDateTime),
-          registrationDeadline : new Date(data.registrationDeadline),
+          registrationDeadline: new Date(data.registrationDeadline),
           eventVenue: data.eventVenue,
           tags: tagsarr,
           teamDelegateCard: isChecked,
           delegateCards: delArr,
         };
-        console.log('eventdata', eventData);
+        console.log("eventdata", eventData);
         const res = await axios.post(
-          '/api/admin/category/event/update',
+          "/api/admin/category/event/update",
           {
             eventID: eventData.eventID,
             name: eventData.name,
@@ -267,7 +270,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
         );
 
         if (res.data.success) {
-          toast.success('Event updated successfully', {
+          toast.success("Event updated successfully", {
             id: toastId,
           });
 
@@ -278,7 +281,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           });
         }
       } catch (err) {
-        toast.error('Something Went Wrong', {
+        toast.error("Something Went Wrong", {
           id: toastId,
         });
       }
@@ -287,7 +290,6 @@ const EventModal = ({ eventdata, deleteEvent }) => {
   const addTagElement = () => {
     setNumTags(numTags + 1);
   };
-
   return (
     <div>
       <Modal
@@ -301,7 +303,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           <i class="fa fa-times" aria-hidden="true"></i>
         </div>
         <label className="font-medium mt-2">
-          Event Name<span style={{ color: 'red' }}>*</span>
+          Event Name<span style={{ color: "red" }}>*</span>
         </label>
         <input
           type="text"
@@ -318,7 +320,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
         <div className="d-flex flex-md-row flex-column">
           <div className="w-md-50 w-100 mx-md-1">
             <label className="font-medium mt-2">
-              Min Members<span style={{ color: 'red' }}>*</span>
+              Min Members<span style={{ color: "red" }}>*</span>
             </label>
             <input
               type="number"
@@ -336,7 +338,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           </div>
           <div className="w-md-50 w-100 mx-md-1">
             <label className="font-medium mt-2">
-              Max Members<span style={{ color: 'red' }}>*</span>
+              Max Members<span style={{ color: "red" }}>*</span>
             </label>
             <input
               type="number"
@@ -353,7 +355,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           </div>
         </div>
         <label className="font-medium mt-3">
-          Event Description<span style={{ color: 'red' }}>*</span>
+          Event Description<span style={{ color: "red" }}>*</span>
         </label>
         <textarea
           rows="4"
@@ -369,7 +371,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
         />
         <label className="font-medium mt-3">
           Delegate Cards Needed for Event
-          <span style={{ color: 'red' }}>*</span>
+          <span style={{ color: "red" }}>*</span>
         </label>
         <Select
           closeMenuOnSelect={false}
@@ -382,7 +384,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
         <div className="d-flex flex-md-row flex-column">
           <div className="w-md-50 w-100 mx-md-1">
             <label for="mode" className="font-medium mt-3">
-              Event Type<span style={{ color: 'red' }}>*</span>
+              Event Type<span style={{ color: "red" }}>*</span>
             </label>
             <select
               value={data.eventType}
@@ -399,7 +401,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           </div>
           <div className="w-md-50 w-100 mx-md-1">
             <label for="mode" className="font-medium mt-3">
-              Mode<span style={{ color: 'red' }}>*</span>
+              Mode<span style={{ color: "red" }}>*</span>
             </label>
             <select
               value={data.mode}
@@ -458,15 +460,15 @@ const EventModal = ({ eventdata, deleteEvent }) => {
         <label className="font-medium mt-2 w-100">
           Tags (no space in between a tag)
         </label>
-        <Tag placeholder={'Tag 1'} setTag={setT1} value={t1} />
+        <Tag placeholder={"Tag 1"} setTag={setT1} value={t1} />
         {numTags >= 2 && (
-          <Tag placeholder={'Tag 2'} setTag={setT2} value={t2} />
+          <Tag placeholder={"Tag 2"} setTag={setT2} value={t2} />
         )}
         {numTags >= 3 && (
-          <Tag placeholder={'Tag 3'} setTag={setT3} value={t3} />
+          <Tag placeholder={"Tag 3"} setTag={setT3} value={t3} />
         )}
         {numTags >= 4 && (
-          <Tag placeholder={'Tag 4'} setTag={setT4} value={t4} />
+          <Tag placeholder={"Tag 4"} setTag={setT4} value={t4} />
         )}
         {numTags !== 4 && (
           <i className="fa fa-plus-square" onClick={addTagElement}></i>
@@ -483,7 +485,9 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="Date"
           //readOnly
-          onChange={(e) => setData({ ...data, eventDateTime:new Date(e.target.value) })}
+          onChange={(e) =>
+            setData({ ...data, eventDateTime: new Date(e.target.value) })
+          }
         />
         {/* <p>Previous selected date: {eventdata.eventDateTime}</p> */}
         <label className="font-medium mt-3 w-100">Registration Deadline</label>
@@ -497,7 +501,9 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="Date"
           //readOnly
-          onChange={(e) => setData({ ...data, registrationDeadline: new Date(e.target.value) })}
+          onChange={(e) =>
+            setData({ ...data, registrationDeadline: new Date(e.target.value) })
+          }
         />
         {/* <p>Previous selected date: {eventdata.registrationDeadline}</p> */}
         <label className="font-medium mt-3">Event Venue</label>
@@ -517,7 +523,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
         <div className="font-heavy mt-4 h5">Event Head details</div>
         <div className="font-heavy mt-4 h6">Event Head 1</div>
         <label className="font-medium mt-2">
-          Name<span style={{ color: 'red' }}>*</span>
+          Name<span style={{ color: "red" }}>*</span>
         </label>
         <input
           type="text"
@@ -531,7 +537,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           onChange={(e) => setHead1N(e.target.value)}
         />
         <label className="font-medium mt-2">
-          Phone Number<span style={{ color: 'red' }}>*</span>
+          Phone Number<span style={{ color: "red" }}>*</span>
         </label>
         <input
           type="number"
@@ -545,7 +551,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
           onChange={(e) => setHead1P(parseInt(e.target.value))}
         />
         <label className="font-medium mt-2">
-          Email ID<span style={{ color: 'red' }}>*</span>
+          Email ID<span style={{ color: "red" }}>*</span>
         </label>
         <input
           type="email"
@@ -599,7 +605,7 @@ const EventModal = ({ eventdata, deleteEvent }) => {
         <button
           type="button"
           className="btn my-2 w-100 text-light"
-          style={{ backgroundColor: '#100B1B' }}
+          style={{ backgroundColor: "#100B1B" }}
           onClick={updateEvent}
         >
           Save
@@ -613,14 +619,36 @@ const EventModal = ({ eventdata, deleteEvent }) => {
               onClick={openModal}
               className="edit fa fa-pencil"
               aria-hidden="true"
-              style={{ marginRight: '1rem', color: '#F4737E' }}
+              style={{ marginRight: "1rem", color: "#F4737E" }}
             ></i>
             <i
               onClick={() => deleteEvent(data.eventID)}
               className="edit fa fa-trash"
               aria-hidden="true"
-              style={{ marginRight: '1rem', color: '#F4737E' }}
+              style={{ marginRight: "1rem", color: "#F4737E" }}
             ></i>
+            <a
+              href={
+                "https://revelsmit.in/api/admin/category/event/participants/" +
+                data._id +
+                "/" +
+                data.eventID +
+                "/" +
+                data.name +
+                "/" +
+                data.maxMembers +
+                "/" +
+                localStorage.getItem(ADMIN_TOKEN_ID) +
+                "/" +
+                data.delegateCards[0]._id
+              }
+            >
+              <i
+                className="edit fa fa-download"
+                aria-hidden="true"
+                style={{ marginRight: "1rem", color: "#F4737E" }}
+              ></i>
+            </a>
           </div>
         </div>
       </div>

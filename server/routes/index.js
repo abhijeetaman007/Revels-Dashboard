@@ -45,6 +45,7 @@ const {
   getEventStatus,
   getEventTags,
   filterEvents,
+  getAllParticipants,
 } = require("./user/event");
 const {
   addEvent,
@@ -228,6 +229,10 @@ router.get(
 router.get("/admin/category", isAdminLoggedIn, getCategory);
 router.post("/admin/category/event/update", isAdminLoggedIn, updateEvent);
 router.post("/admin/category/event/delete", isAdminLoggedIn, deleteEvent);
+router.get(
+  "/admin/category/event/participants/:event/:name/:id/:max/:token/:delCard",
+  getAllParticipants
+);
 router.get("/category/getall", getAllCategories);
 
 //@Operations Route
