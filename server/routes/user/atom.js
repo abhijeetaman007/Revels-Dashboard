@@ -160,10 +160,10 @@ const responseAtom = async (req, resp) => {
       transactionData: data,
       orderId: parseInt(data.mer_txn),
       amount: data.amt,
-      isPaymentConfirmed: data.f_code == "OK" ? true : false,
+      isPaymentConfirmed: data.f_code == "Ok" ? true : false,
     });
     await newTransaction.save();
-    if (data.f_code == "OK" || data.amt == "0.00") {
+    if (data.f_code == "Ok" || data.amt == "0.00") {
       await User.updateOne(
         { email: data.udf2 },
         {
@@ -178,7 +178,7 @@ const responseAtom = async (req, resp) => {
       );
       console.log(user);
     }
-    if (data.f_code == "OK" || data.amt == "0.00")
+    if (data.f_code == "Ok" || data.amt == "0.00")
       return resp.redirect("http://revelsmit.in/success");
     if (data.f_code == "F") return resp.redirect("https://revelsmit.in/failed");
     if (data.f_code == "C")

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import copy from "copy-to-clipboard";
 import toast from "react-hot-toast";
 import { TOKEN_ID } from "../../utils/constants";
 import { useParams } from "react-router-dom";
@@ -140,6 +141,11 @@ const InsideEvent = () => {
       });
     }
   };
+  const copyTextFunc = (id) => {
+    copy(id);
+    console.log(id);
+    toast.success("Copied to clipboard");
+  };
   // function to handle leave team
   const leaveTeam = async () => {
     const toastId = toast.loading("Leaving Team");
@@ -261,9 +267,20 @@ const InsideEvent = () => {
             <i className={`fa fa-ticket mr-1`}></i> Required Delegate Cards
           </p>
         ) : (
+          // check if delegateteamcard required by only team leader
+
           <p className="ele font-light" style={{ fontSize: "1.5rem" }}>
             {" "}
             No Delegate Card Required
+          </p>
+        )}
+        {event.teamDelegateCard ? (
+          <p style={{ fontSize: "small", color: "red" }}>
+            Team Delegate Cards required to be purchased only by team leader.
+          </p>
+        ) : (
+          <p style={{ fontSize: "small", color: "red" }}>
+            All members need to purchase the required delegate cards.
           </p>
         )}
         <ul>
@@ -440,15 +457,32 @@ const InsideEvent = () => {
         ) : (
           <div>
             <div className="event-group">
+              <button
+                style={{ fontSize: "small", fontWeight: "bold" }}
+                onClick={() => copyTextFunc(team.teamID)}
+              >
+                <i className="fa fa-copy mr-1"></i>
+              </button>
+
               {DataComponent({
                 icon: "fa-info-circle",
                 heading: "Team ID",
                 text: team.teamID,
               })}
+              {/* fa-copy */}
+
               <div className="event-data">
                 <div className="d-flex align-items-center">
                   <i className="fa fa-users mr-1"></i>
-                  <p className="font-heavy ml-1 pt-1">Team Members</p>
+                  <p className="ml-1 grey small-font">Team Members</p>
+                  {/* if team members length is less than minimum  */}
+                  {team.members.length < event.minMembers && (
+                    <p className="font-light ml-auto">
+                      &nbsp;({event.minMembers - team.members.length} more
+                      required in team)
+                    </p>
+                  )}
+                  <p></p>
                 </div>
                 <div className="font-light d-flex">
                   {teammembers.length !== 0
@@ -498,6 +532,7 @@ const InsideEvent = () => {
                               toast.success(res.data.msg);
                               window.location.reload(false);
                             } else {
+                              console.log("hakuan");
                               toast.error(res.data.msg);
                             }
                           } catch (err) {

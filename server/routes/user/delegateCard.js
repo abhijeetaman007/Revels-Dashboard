@@ -16,6 +16,30 @@ const requestDelegateCard = async (req, res) => {
         { _id: req.requestUser._id },
         { $addToSet: { delegateCards: delegateCard } }
       );
+      let ids = await Transaction.find({}, { orderId: 1, _id: 0 })
+        .sort({ orderId: -1 })
+        .limit(1);
+      let orderId = 10001;
+      if (ids[0]) {
+        orderId = ids[0].orderId + 1;
+      }
+      let r = (Math.random() + 1).toString(36).substring(7);
+      let newTransaction = new Transaction({
+        user: req.requestUser._id,
+        delegateCard: delegateCard,
+        orderId: orderId,
+        name: "0_" + r,
+        amount: amount,
+        isPaymentConfirmed: true,
+      });
+      await User.updateOne(
+        { _id: req.requestUser._id },
+        {
+          $pull: { pendingDelegateCards: delegateCard },
+          $addToSet: { delegateCards: delegateCard },
+        }
+      );
+      await newTransaction.save();
       return res.status(200).send({
         success: true,
         msg: "Delegate Card Successfully Purchased",
