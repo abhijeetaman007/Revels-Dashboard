@@ -634,7 +634,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams }) => {
                 "/" +
                 data.eventID +
                 "/" +
-                data.name +
+                data.name.split("/")[0] +
                 "/" +
                 data.maxMembers +
                 "/" +
