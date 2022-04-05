@@ -1,0 +1,4182 @@
+[
+    {
+        "category": "Sports",
+        "type": "SPORTS",
+        "events": [
+            {
+                "name": "Basketball (Men)",
+                "teams": [
+                    {
+                        "teamID": "JblbmB-B",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1179,
+                                    "name": "Bathrinath G",
+                                    "email": "bathrinath.dpcma11@learner.manipal.edu",
+                                    "mobileNumber": 6382486483
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "PolHC2E5",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2246,
+                                    "name": "Dunna Sai Dileep",
+                                    "email": "dunna.dileep@learner.manipal.edu",
+                                    "mobileNumber": 9500153285
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "HTjHA-j_",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1182,
+                                    "name": "Abhinav Aithal",
+                                    "email": "abhinavaithal.191ee203@nitk.edu.in",
+                                    "mobileNumber": 9880611319
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "fJXk0P4H",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2550,
+                                    "name": "Tanmay",
+                                    "email": "tanmaypujari36@gmail.com",
+                                    "mobileNumber": 6364506237
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1842,
+                                    "name": "Rahul Dombar",
+                                    "email": "rahuldombar4@gmail.com",
+                                    "mobileNumber": 9880846540
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2592,
+                                    "name": "Sami Ahmed",
+                                    "email": "2gi19ae034@students.git.edu",
+                                    "mobileNumber": 9535728131
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "50HzYOA7",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2486,
+                                    "name": "Pranav Kheny",
+                                    "email": "pranav.kheny@learner.manipal.edu",
+                                    "mobileNumber": 9606555351
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2507,
+                                    "name": "Surya Narne",
+                                    "email": "surya.narne@learner.manipal.edu",
+                                    "mobileNumber": 7032161976
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2797,
+                                    "name": "kovvuri veereddu",
+                                    "email": "kovvuri.veereddy@learner.manipal.edu",
+                                    "mobileNumber": 9618966785
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2539,
+                                    "name": "Sparsh agarwalla",
+                                    "email": "sparsh.agarwalla@learner.manipal.edu",
+                                    "mobileNumber": 8638490601
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2571,
+                                    "name": "NISHANTH",
+                                    "email": "nishanth.yadav@learner.manipal.edu",
+                                    "mobileNumber": 9663966843
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2807,
+                                    "name": "dhruv sethi",
+                                    "email": "dhruv.sethi@learner.manipal.edu",
+                                    "mobileNumber": 9811155205
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2541,
+                                    "name": "Sanchit Gupta",
+                                    "email": "sanchit.gupta5@learner.manipal.edu",
+                                    "mobileNumber": 9714441519
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2547,
+                                    "name": "Santosh Reddy",
+                                    "email": "santosh.reddy@learner.manipal.edu",
+                                    "mobileNumber": 9148690461
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Basketball (Women)",
+                "teams": [
+                    {
+                        "teamID": "ZnY5exb7",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1003,
+                                    "name": "Harini T",
+                                    "email": "harinithiru.191it221@nitk.edu.in",
+                                    "mobileNumber": 6381739582
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1077,
+                                    "name": "Vandana kamal v",
+                                    "email": "vandanakamalv.201cv259@nitk.edu.in",
+                                    "mobileNumber": 9390394130
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1074,
+                                    "name": "Saumya Karri",
+                                    "email": "saumya.181me273@nitk.edu.in",
+                                    "mobileNumber": 9535043555
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1078,
+                                    "name": "Gayatri Gundawar",
+                                    "email": "gayatrisatishgundawar.191me230@nitk.edu.in",
+                                    "mobileNumber": 7028941294
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1085,
+                                    "name": "Poorvi Joshi",
+                                    "email": "poorvijoshi.201ee140@nitk.edu.in",
+                                    "mobileNumber": 8792044924
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1072,
+                                    "name": "Abhilasha R Teli",
+                                    "email": "abhilasharteli.201it202@nitk.edu.in",
+                                    "mobileNumber": 9945410289
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1079,
+                                    "name": "Nakshatra Gopi",
+                                    "email": "nakshatragopi.191ee228@nitk.edu.in",
+                                    "mobileNumber": 9360205861
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1075,
+                                    "name": "Likhita J",
+                                    "email": "likhita.191ee221@nitk.edu.in",
+                                    "mobileNumber": 8073359908
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1073,
+                                    "name": "Sathvika B Mahesh",
+                                    "email": "sathvikabmahesh.181cv141@nitk.edu.in",
+                                    "mobileNumber": 9986180522
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1080,
+                                    "name": "Sadhana Jayakumar",
+                                    "email": "sadhanajayakumar.191ee240@nitk.edu.in",
+                                    "mobileNumber": 9995347759
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1081,
+                                    "name": "Anuja Goyal",
+                                    "email": "anujagoyal.191ec206@nitk.edu.in",
+                                    "mobileNumber": 9650034676
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "Gon9Mdze",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2765,
+                                    "name": "Shrividya",
+                                    "email": "shrividya.o@learner.manipal.edu",
+                                    "mobileNumber": 8431849318
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2811,
+                                    "name": "Prisha B",
+                                    "email": "prisha.bandyopadhay@learner.manipal.edu",
+                                    "mobileNumber": 9886512338
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2812,
+                                    "name": "Saanjhi Kejriwal",
+                                    "email": "saanjhi.kejriwal@learner.manipal.edu",
+                                    "mobileNumber": 9163938522
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1455,
+                                    "name": "Raksha Vijay",
+                                    "email": "raksha.vijay@learner.manipal.edu",
+                                    "mobileNumber": 9341012247
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2805,
+                                    "name": "Swathi",
+                                    "email": "swathi.annambhotla@learner.manipal.edu",
+                                    "mobileNumber": 9182449687
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2863,
+                                    "name": "Rashi Shetty",
+                                    "email": "rashi.shetty@learner.manipal.edu",
+                                    "mobileNumber": 9008990491
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2849,
+                                    "name": "Vidhi Haldia",
+                                    "email": "vidhi.haldia@learner.manipal.edu",
+                                    "mobileNumber": 9521082106
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2869,
+                                    "name": "Lael Ann Balu",
+                                    "email": "lael.balu@learner.manipal.edu",
+                                    "mobileNumber": 8431726566
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2866,
+                                    "name": "VIOLA D' SOUZA",
+                                    "email": "viola.dsouza3@learner.manipal.edu",
+                                    "mobileNumber": 9108729772
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2901,
+                                    "name": "Anjali shyam sudhir",
+                                    "email": "anjali.sudhir@learner.manipal.edu",
+                                    "mobileNumber": 9945024021
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2923,
+                                    "name": "Mahi garg",
+                                    "email": "mahi.garg@learner.manipal.edu",
+                                    "mobileNumber": 8949209787
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2925,
+                                    "name": "Manasa Praveen",
+                                    "email": "manasa.praveen@learner.manipal.edu",
+                                    "mobileNumber": 9480985259
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Badminton (Men)",
+                "teams": [
+                    {
+                        "teamID": "iHK8X7EG",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1153,
+                                    "name": "Aditya R S",
+                                    "email": "rsvaditya@gmail.com",
+                                    "mobileNumber": 9980681503
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2250,
+                                    "name": "Devdatt N Mahida",
+                                    "email": "devdatt.mahida@learner.manipal.edu",
+                                    "mobileNumber": 8306578718
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2248,
+                                    "name": "Kanav sharma",
+                                    "email": "kanav.sharma@learner.manipal.edu",
+                                    "mobileNumber": 9650193309
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2249,
+                                    "name": "Jaidivya Kumar Lohani",
+                                    "email": "jaidivya.lohani@learner.manipal.edu",
+                                    "mobileNumber": 9717122889
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2247,
+                                    "name": "karthik obillaneni",
+                                    "email": "obillaneni.karthik@learner.manipal.edu",
+                                    "mobileNumber": 6301184815
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1196,
+                                    "name": "RITURAJ",
+                                    "email": "maheshritu555@gmail.com",
+                                    "mobileNumber": 7488606388
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "q4rYEegR",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2107,
+                                    "name": "Uzair Chilwan",
+                                    "email": "uzairchilwan@gmail.com",
+                                    "mobileNumber": 9820115178
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2014,
+                                    "name": "Himal Karkal",
+                                    "email": "karkalhimal@gmail.com",
+                                    "mobileNumber": 9789628043
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2388,
+                                    "name": "Supreet Singh",
+                                    "email": "supreet.singh3@learner.manipal.edu",
+                                    "mobileNumber": 8839112671
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2452,
+                                    "name": "Hariharan v s",
+                                    "email": "hariharan.solai@learner.manipal.edu",
+                                    "mobileNumber": 7619346215
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2544,
+                                    "name": "Navaneeth P",
+                                    "email": "navaneeth.p1@learner.manipal.edu",
+                                    "mobileNumber": 7259200634
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2725,
+                                    "name": "Rahul Kapoor",
+                                    "email": "chilwan.uzair@learner.manipal.edu",
+                                    "mobileNumber": 9815334290
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "ngJMjv1i",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2402,
+                                    "name": "Karukonda Mayur",
+                                    "email": "karukonda.mayur@learner.manipal.edu",
+                                    "mobileNumber": 9959953044
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2419,
+                                    "name": "Monish Anne",
+                                    "email": "anne.monish@learner.manipal.edu",
+                                    "mobileNumber": 7702767716
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1544,
+                                    "name": "Aadit Limaye",
+                                    "email": "aadit.limaye@learner.manipal.edu",
+                                    "mobileNumber": 9080658204
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2435,
+                                    "name": "Bhuvan",
+                                    "email": "bhuvan.mitma@learner.manipal.edu",
+                                    "mobileNumber": 8762746331
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2439,
+                                    "name": "Yuvraj bhaia",
+                                    "email": "yuvraj.bhaia@learner.manipal.edu",
+                                    "mobileNumber": 9073305656
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2700,
+                                    "name": "Shivam Patel",
+                                    "email": "shivam.patel@learner.manipal.edu",
+                                    "mobileNumber": 8320912154
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2788,
+                                    "name": "Akhil Bonagiri",
+                                    "email": "akhil.bonagiri1@learner.manipal.edu",
+                                    "mobileNumber": 8008682787
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "BB0zYs-4",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2441,
+                                    "name": "Prakhar Agrawal",
+                                    "email": "prakhar.agrawal@learner.manipal.edu",
+                                    "mobileNumber": 8235338307
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2462,
+                                    "name": "Chinmay Ayyagari",
+                                    "email": "chinmay.ayyagari@learner.manipal.edu",
+                                    "mobileNumber": 9945992796
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2463,
+                                    "name": "Karthik akula",
+                                    "email": "akula.karthik@learner.manipal.edu",
+                                    "mobileNumber": 8523855555
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "4fUQESIW",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1658,
+                                    "name": "Akash Yadav",
+                                    "email": "akash.yadav2@learner.manipal.edu",
+                                    "mobileNumber": 8175913792
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "jCwuYMxU",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2464,
+                                    "name": "Punith JS",
+                                    "email": "punith.suvarna@learner.manipal.edu",
+                                    "mobileNumber": 9972817155
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1701,
+                                    "name": "Aditya Shiralkar",
+                                    "email": "aditya.shiralkar@learner.manipal.edu",
+                                    "mobileNumber": 8007814110
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2467,
+                                    "name": "Harshith shetty",
+                                    "email": "harshith.shetty1@learner.manipal.edu",
+                                    "mobileNumber": 9110410684
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2473,
+                                    "name": "Tanay Jha",
+                                    "email": "tanay.jha@learner.manipal.edu",
+                                    "mobileNumber": 8951586997
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2416,
+                                    "name": "Mr Ankit Goyal",
+                                    "email": "ankit.goyal@learner.manipal.edu",
+                                    "mobileNumber": 7888594513
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2556,
+                                    "name": "Rishab M S",
+                                    "email": "rishab.s2@learner.manipal.edu",
+                                    "mobileNumber": 9964414966
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "yxWdKmdn",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1017,
+                                    "name": "Avinash",
+                                    "email": "avinashs20k@gmail.com",
+                                    "mobileNumber": 9980411207
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1020,
+                                    "name": "Ashwin J",
+                                    "email": "ashwinj234@gmail.com",
+                                    "mobileNumber": 8431869319
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1048,
+                                    "name": "Rahul P Sanni",
+                                    "email": "rahulssanni2002@gmail.com",
+                                    "mobileNumber": 7259819310
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Badminton (Women)",
+                "teams": [
+                    {
+                        "teamID": "-tljPw5M",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2201,
+                                    "name": "Aashima Srivastava",
+                                    "email": "aashima.srivastava@learner.manipal.edu",
+                                    "mobileNumber": 9695537977
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "RU9Ryuur",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2252,
+                                    "name": "Kamya Dayanidhi",
+                                    "email": "kamya.dayanidhi@learner.manipal.edu",
+                                    "mobileNumber": 8431302984
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2409,
+                                    "name": "Allankiishani@gmail.com",
+                                    "email": "ishani.allanki@learner.manipal.edu",
+                                    "mobileNumber": 9493440303
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2407,
+                                    "name": "Lakshita Sre",
+                                    "email": "lakshita.sre@learner.manipal.edu",
+                                    "mobileNumber": 9686319681
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2364,
+                                    "name": "Hima varshini",
+                                    "email": "hima.varshini@learner.manipal.edu",
+                                    "mobileNumber": 9392499334
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "ZWq4mbTA",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2208,
+                                    "name": "DimitraShenoy",
+                                    "email": "dimitra.shenoy@learner.manipal.edu",
+                                    "mobileNumber": 6290931131
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "lwmTexoe",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2792,
+                                    "name": "Yashaswini Birjerane",
+                                    "email": "birjerane.anantsagar@learner.manipal.edu",
+                                    "mobileNumber": 7558242294
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "r2nGfcPg",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2723,
+                                    "name": "Neha Harish",
+                                    "email": "neha.harish1@learner.manipal.edu",
+                                    "mobileNumber": 9880845122
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2227,
+                                    "name": "Sukanya Dubey",
+                                    "email": "sukanya.dubey@learner.manipal.edu",
+                                    "mobileNumber": 8130502164
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Chess (Men & Women)",
+                "teams": [
+                    {
+                        "teamID": "bEYFsMXD",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2737,
+                                    "name": "Abdul Zubeir",
+                                    "email": "mohd.zubeir@learner.manipal.edu",
+                                    "mobileNumber": 9121067421
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Cricket (Men)",
+                "teams": [
+                    {
+                        "teamID": "yvt3gOT2",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1171,
+                                    "name": "Ishan",
+                                    "email": "itsik159@gmail.com",
+                                    "mobileNumber": 9430470186
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "QZD8CipO",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1001,
+                                    "name": "Tharun Bhaskar",
+                                    "email": "tharun.bhaskar@learner.manipal.edu",
+                                    "mobileNumber": 8431526430
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "lrLX9RbF",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1492,
+                                    "name": "Mohit Verma",
+                                    "email": "mohitverma3917@gmail.com",
+                                    "mobileNumber": 9981420020
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1377,
+                                    "name": "Hardik Harti",
+                                    "email": "hardikharti.181co220@nitk.edu.in",
+                                    "mobileNumber": 6362971686
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1348,
+                                    "name": "Avula Kiran Kumar",
+                                    "email": "kirankumaravula44@gmail.com",
+                                    "mobileNumber": 8106032861
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1412,
+                                    "name": "Ishan Bhattacharya",
+                                    "email": "ishan23301@gmail.com",
+                                    "mobileNumber": 6363661297
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1420,
+                                    "name": "SOMESH SHARMA",
+                                    "email": "somesh.201ee254@nitk.edu.in",
+                                    "mobileNumber": 6353898912
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1409,
+                                    "name": "Chhandak Patra",
+                                    "email": "saikatpatra.21@gmail.com",
+                                    "mobileNumber": 8981217517
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1382,
+                                    "name": "Shivaprasad Nayak",
+                                    "email": "shivaprasad65t@gmail.com",
+                                    "mobileNumber": 9741098265
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2472,
+                                    "name": "j.v.Anand",
+                                    "email": "jvanand9618@gmail.com",
+                                    "mobileNumber": 9618293490
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1623,
+                                    "name": "Ayush Tripathi",
+                                    "email": "tripathiayush20001@gmail.com",
+                                    "mobileNumber": 9649042357
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1367,
+                                    "name": "Varun S",
+                                    "email": "varun895s@gmail.com",
+                                    "mobileNumber": 9741237669
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1436,
+                                    "name": "Manish Rathore",
+                                    "email": "manishpat2003@gmail.com",
+                                    "mobileNumber": 7980137183
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1992,
+                                    "name": "sahil",
+                                    "email": "sahil.nitk@gmx.fit",
+                                    "mobileNumber": 7983073401
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "bH_KIO-E",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2251,
+                                    "name": "Niranjan Pravin",
+                                    "email": "niranjan.pullaniparambath@learner.manipal.edu",
+                                    "mobileNumber": 9633266283
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2312,
+                                    "name": "S. Rakshith Reddy",
+                                    "email": "sama.reddy1@learner.manipal.edu",
+                                    "mobileNumber": 9380286072
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2310,
+                                    "name": "Rohith Augustine",
+                                    "email": "rohith.dhanapal@learner.manipal.edu",
+                                    "mobileNumber": 9108932238
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2382,
+                                    "name": "V. Hari Haran",
+                                    "email": "hariharan.msap@learner.manipal.edu",
+                                    "mobileNumber": 9497826951
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2384,
+                                    "name": "GURUPRASAD R G",
+                                    "email": "guruprasad.g@learner.manipal.edu",
+                                    "mobileNumber": 9790945730
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2315,
+                                    "name": "Soundarya Sahoo",
+                                    "email": "soundarya.sahoo@learner.manipal.edu",
+                                    "mobileNumber": 7250899054
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2415,
+                                    "name": "STEVE ALEX CHRISTOPHER",
+                                    "email": "steve.christopher@learner.manipal.edu",
+                                    "mobileNumber": 7795897727
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2313,
+                                    "name": "RITAM BHABAK",
+                                    "email": "ritam.bhabak1@learner.manipal.edu",
+                                    "mobileNumber": 7596854601
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2311,
+                                    "name": "Jana C.P",
+                                    "email": "jana.cp@learner.manipal.edu",
+                                    "mobileNumber": 8270085707
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2314,
+                                    "name": "Kundan Raj Sirohi",
+                                    "email": "kundan.sirohi@learner.manipal.edu",
+                                    "mobileNumber": 9599048562
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2246,
+                                    "name": "Dunna Sai Dileep",
+                                    "email": "dunna.dileep@learner.manipal.edu",
+                                    "mobileNumber": 9500153285
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2371,
+                                    "name": "Nikhil",
+                                    "email": "nikhil.b5@learner.manipal.edu",
+                                    "mobileNumber": 9148886927
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2383,
+                                    "name": "Pratham Agrawal",
+                                    "email": "pratham.agrawal@learner.manipal.edu",
+                                    "mobileNumber": 9354539470
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2433,
+                                    "name": "Manda Sai Preetham Reddy",
+                                    "email": "manda.reddy@learner.manipal.edu",
+                                    "mobileNumber": 9133778833
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2904,
+                                    "name": "Sanketh",
+                                    "email": "sanketh.msapma1@learner.manipal.edu",
+                                    "mobileNumber": 9972701149
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "T7iTLsZd",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1193,
+                                    "name": "Joel Salins",
+                                    "email": "joelsalins84@gmail.com",
+                                    "mobileNumber": 7795069824
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2391,
+                                    "name": "Rakshit dixit",
+                                    "email": "rakshit.dixit@learner.manipal.edu",
+                                    "mobileNumber": 8619065298
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2522,
+                                    "name": "seshaguri",
+                                    "email": "mandava.seshagiri@learner.manipal.edu",
+                                    "mobileNumber": 9966666730
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2086,
+                                    "name": "Ben Varghese Abraham",
+                                    "email": "ben.abraham3@learner.manipal.edu",
+                                    "mobileNumber": 7902997857
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2386,
+                                    "name": "Aashish Satish",
+                                    "email": "aashish.satish@learner.manipal.edu",
+                                    "mobileNumber": 7795455379
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2536,
+                                    "name": "Shainal Mendonca",
+                                    "email": "shainal.mendonca@learner.manipal.edu",
+                                    "mobileNumber": 9880762182
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2019,
+                                    "name": "Tejas Chougule",
+                                    "email": "tejaschougule45@gmail.com",
+                                    "mobileNumber": 7020290698
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2554,
+                                    "name": "Harsh pandit",
+                                    "email": "harsh.pandit@learner.manipal.edu",
+                                    "mobileNumber": 8893420932
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2555,
+                                    "name": "Taranjeet Dhariwal",
+                                    "email": "taranjeet.dhariwal@learner.manipal.edu",
+                                    "mobileNumber": 9520113333
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2587,
+                                    "name": "Jeevan Varghese",
+                                    "email": "jeevan.varghese@learner.manipal.edu",
+                                    "mobileNumber": 8921693215
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2696,
+                                    "name": "Varun",
+                                    "email": "varun.reddy2@learner.manipal.edu",
+                                    "mobileNumber": 6281119070
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2698,
+                                    "name": "DS Sakketha",
+                                    "email": "ds.sakketha@learner.manipal.edu",
+                                    "mobileNumber": 8884969555
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2567,
+                                    "name": "Vinyas Poojari",
+                                    "email": "vinyas.poojari@learner.manipal.edu",
+                                    "mobileNumber": 9108724726
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2828,
+                                    "name": "Pranay Maru",
+                                    "email": "maru.amit@learner.manipal.edu",
+                                    "mobileNumber": 8104336379
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2552,
+                                    "name": "Jahagir Husan",
+                                    "email": "jahagir.husan@learner.manipal.edu",
+                                    "mobileNumber": 7547976358
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "mRzyCaTK",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2373,
+                                    "name": "Kamalapuri Naga Hari Navaneeth",
+                                    "email": "kamalapuri.navaneeth@learner.manipal.edu",
+                                    "mobileNumber": 7386153146
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2399,
+                                    "name": "Krithik Koushal",
+                                    "email": "krithik.koushal@learner.manipal.edu",
+                                    "mobileNumber": 9849650683
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1032,
+                                    "name": "M sai saketh",
+                                    "email": "sai.goud@learner.manipal.edu",
+                                    "mobileNumber": 8179809146
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "RioG5XNl",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2262,
+                                    "name": "Neeraj R",
+                                    "email": "neerajr45600@gmail.com",
+                                    "mobileNumber": 9535274803
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2258,
+                                    "name": "Ankith Bopanna",
+                                    "email": "ankith.bopanna2002@gmail.com",
+                                    "mobileNumber": 6362879434
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2295,
+                                    "name": "Tanay Shrivastava",
+                                    "email": "tanayshrivastava17@gmail.com",
+                                    "mobileNumber": 8839548083
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2272,
+                                    "name": "Adarsh M A",
+                                    "email": "mathihalliadarsh@gmail.com",
+                                    "mobileNumber": 7795747566
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2257,
+                                    "name": "Mohit R Hosmath",
+                                    "email": "mohithosmath03@gmail.com",
+                                    "mobileNumber": 9632285743
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2271,
+                                    "name": "Ayush Raj Singh",
+                                    "email": "raj.ayush10@gmail.com",
+                                    "mobileNumber": 7050081249
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2275,
+                                    "name": "Adarsh R",
+                                    "email": "adarshrajmohan@gmail.com",
+                                    "mobileNumber": 8095853109
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2273,
+                                    "name": "Vishruth K",
+                                    "email": "vishruthkaran@icloud.com",
+                                    "mobileNumber": 7892849048
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2276,
+                                    "name": "Kushal YS",
+                                    "email": "kushalsanthosh06@gmail.com",
+                                    "mobileNumber": 8073567562
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2397,
+                                    "name": "R Aditya ram",
+                                    "email": "adityaram82@gmail.com",
+                                    "mobileNumber": 7795458680
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2128,
+                                    "name": "Chandan",
+                                    "email": "chandankadam1811@gmail.com",
+                                    "mobileNumber": 9482852603
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2279,
+                                    "name": "Bahushruth",
+                                    "email": "bahushruth555@gmail.com",
+                                    "mobileNumber": 8217579891
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "LiltqvNt",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2030,
+                                    "name": "Prayaag Sengupta",
+                                    "email": "prayaag.sengupta@learner.manipal.edu",
+                                    "mobileNumber": 8897600089
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2028,
+                                    "name": "Pratheek S",
+                                    "email": "pratheek.s@learner.manipal.edu",
+                                    "mobileNumber": 9353799120
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2085,
+                                    "name": "Gaurav Das",
+                                    "email": "gaurav.das@learner.manipal.edu",
+                                    "mobileNumber": 8003839046
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2300,
+                                    "name": "Sriteja Telaprolu",
+                                    "email": "sriteja.telaprolu@learner.manipal.edu",
+                                    "mobileNumber": 7032466063
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2140,
+                                    "name": "Harsh Vardhan Raj Singh",
+                                    "email": "harsh.singh12@learner.manipal.edu",
+                                    "mobileNumber": 9410669900
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2076,
+                                    "name": "Vishnu K",
+                                    "email": "vishnu.k7@learner.manipal.edu",
+                                    "mobileNumber": 9074650374
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2546,
+                                    "name": "Aman Shukla",
+                                    "email": "aman.shukla@learner.manipal.edu",
+                                    "mobileNumber": 9621066977
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2101,
+                                    "name": "Ahan Rai",
+                                    "email": "ahan.rai@learner.manipal.edu",
+                                    "mobileNumber": 8197373044
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2389,
+                                    "name": "Vedantt Puri",
+                                    "email": "vedantt.puri@learner.manipal.edu",
+                                    "mobileNumber": 9899988175
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2095,
+                                    "name": "Soumyadeep Ganguly",
+                                    "email": "soumyadeep.ganguly@learner.manipal.edu",
+                                    "mobileNumber": 6290171385
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "eqYzLcB6",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2586,
+                                    "name": "Amruth K",
+                                    "email": "amruth.k1@learner.manipal.edu",
+                                    "mobileNumber": 7337590518
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2566,
+                                    "name": "Akshay Bangera",
+                                    "email": "akshaya.bangera1@learner.manipal.edu",
+                                    "mobileNumber": 8151818006
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1775,
+                                    "name": "Aditya pandey",
+                                    "email": "aditya.pandey2@learner.manipal.edu",
+                                    "mobileNumber": 9553545701
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1719,
+                                    "name": "Anurag Jaiswal",
+                                    "email": "anurag.jaiswal@learner.manipal.edu",
+                                    "mobileNumber": 9422181819
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2022,
+                                    "name": "Aman Kumar",
+                                    "email": "aman.kumar20@learner.manipal.edu",
+                                    "mobileNumber": 9867752491
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2604,
+                                    "name": "Arnav Roy",
+                                    "email": "arnav.roy@learner.manipal.edu",
+                                    "mobileNumber": 9810881388
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2606,
+                                    "name": "R Shri Aravind Manikandan",
+                                    "email": "shri.r@learner.manipal.edu",
+                                    "mobileNumber": 7299913570
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2603,
+                                    "name": "Anish Mhaddolkar",
+                                    "email": "anish.mhaddolkar@learner.manipal.edu",
+                                    "mobileNumber": 9527021607
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2638,
+                                    "name": "Neelabh Somani",
+                                    "email": "neelabh.somani@learner.manipal.edu",
+                                    "mobileNumber": 8589925170
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2582,
+                                    "name": "Aman Boobna",
+                                    "email": "aman.boobna1@learner.manipal.edu",
+                                    "mobileNumber": 8340618734
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "eCdvm-Jx",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2710,
+                                    "name": "Yash Nipunge",
+                                    "email": "yash.nipunge@learner.manipal.edu",
+                                    "mobileNumber": 9657480510
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2577,
+                                    "name": "Prajwal B K",
+                                    "email": "prajwal.k4@learner.manipal.edu",
+                                    "mobileNumber": 9380057127
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2579,
+                                    "name": "Pabitra Mohan Nayak",
+                                    "email": "pabitra.nayak@learner.manipal.edu",
+                                    "mobileNumber": 6380667163
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2576,
+                                    "name": "Adwait Mangrule",
+                                    "email": "adwait.mangrule@learner.manipal.edu",
+                                    "mobileNumber": 9518911083
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2721,
+                                    "name": "Aryan Irani",
+                                    "email": "aryan.irani@learner.manipal.edu",
+                                    "mobileNumber": 9892210463
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2621,
+                                    "name": "Lakshya Narain",
+                                    "email": "lakshya.narain@learner.manipal.edu",
+                                    "mobileNumber": 9810158233
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2349,
+                                    "name": "kaustubh",
+                                    "email": "kaustubh.r@learner.manipal.edu",
+                                    "mobileNumber": 9731894586
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2470,
+                                    "name": "Saksham Verma",
+                                    "email": "saksham.verma@learner.manipal.edu",
+                                    "mobileNumber": 7710908047
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2727,
+                                    "name": "Shriyansh Pancholi",
+                                    "email": "shriyansh.pancholi@learner.manipal.edu",
+                                    "mobileNumber": 7020593568
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2747,
+                                    "name": "Sanjai Dharshan",
+                                    "email": "sanjai.m@learner.manipal.edu",
+                                    "mobileNumber": 8778788553
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2750,
+                                    "name": "Rathnam Nayak",
+                                    "email": "rathnam.nayak@learner.manipal.edu",
+                                    "mobileNumber": 9819581280
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2737,
+                                    "name": "Abdul Zubeir",
+                                    "email": "mohd.zubeir@learner.manipal.edu",
+                                    "mobileNumber": 9121067421
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2581,
+                                    "name": "Shashank H",
+                                    "email": "shashank.h2@learner.manipal.edu",
+                                    "mobileNumber": 9483879128
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2269,
+                                    "name": "Vansh Mishra",
+                                    "email": "vansh.mishra@learner.manipal.edu",
+                                    "mobileNumber": 6392409906
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2826,
+                                    "name": "Tejas Kittur",
+                                    "email": "tejas.kittur@learner.manipal.edu",
+                                    "mobileNumber": 9049059220
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "o8W-Qa4F",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2138,
+                                    "name": "Arsh Krishanater",
+                                    "email": "arshkrishanater8@gmail.com",
+                                    "mobileNumber": 9137065537
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2851,
+                                    "name": "Sathvik Murarishetty",
+                                    "email": "murarishetty.sathvik@learner.manipal.edu",
+                                    "mobileNumber": 9493741718
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1153,
+                                    "name": "Aditya R S",
+                                    "email": "rsvaditya@gmail.com",
+                                    "mobileNumber": 9980681503
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2854,
+                                    "name": "Sankeerth kohirkar",
+                                    "email": "sankeerth.k@learner.manipal.edu",
+                                    "mobileNumber": 9440027630
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2858,
+                                    "name": "Anagh Deshpande",
+                                    "email": "anagh.deshpande@learner.manipal.edu",
+                                    "mobileNumber": 7974455655
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2247,
+                                    "name": "karthik obillaneni",
+                                    "email": "obillaneni.karthik@learner.manipal.edu",
+                                    "mobileNumber": 6301184815
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2848,
+                                    "name": "Ujjwal Surabhi",
+                                    "email": "ujjwal.surabhi@learner.manipal.edu",
+                                    "mobileNumber": 8639932320
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1124,
+                                    "name": "Vinay reddy",
+                                    "email": "vinay.reddy1@learner.manipal.edu",
+                                    "mobileNumber": 9237999999
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2877,
+                                    "name": "N. Hruthik",
+                                    "email": "neelam.babu@learner.manipal.edu",
+                                    "mobileNumber": 6300961913
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2879,
+                                    "name": "Anand sai guthi",
+                                    "email": "anand.guthi@learner.manipal.edu",
+                                    "mobileNumber": 7337837180
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2878,
+                                    "name": "CH SaiNikhil",
+                                    "email": "sai.nikhil@learner.manipal.edu",
+                                    "mobileNumber": 7093242342
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2880,
+                                    "name": "Nishanth Reddy",
+                                    "email": "chennupalli.nishanth@learner.manipal.edu",
+                                    "mobileNumber": 7657808080
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2884,
+                                    "name": "Pabba Saiteja",
+                                    "email": "pabba.saiteja@learner.manipal.edu",
+                                    "mobileNumber": 6304683106
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2890,
+                                    "name": "Dhruv Gupta",
+                                    "email": "dhruv.gupta@learner.manipal.edu",
+                                    "mobileNumber": 7982979353
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2891,
+                                    "name": "Vishal B",
+                                    "email": "vishal.b@learner.manipal.edu",
+                                    "mobileNumber": 6380295660
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2900,
+                                    "name": "Prakul R Pathange",
+                                    "email": "prakul.pathange@learner.manipal.edu",
+                                    "mobileNumber": 7760962794
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2902,
+                                    "name": "Karan Agrawal",
+                                    "email": "karan.agrawal@learner.manipal.edu",
+                                    "mobileNumber": 8105077864
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Football (Men)",
+                "teams": [
+                    {
+                        "teamID": "bKZbmCV1",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1070,
+                                    "name": "ARKO HAZRA",
+                                    "email": "arko1232@gmail.com",
+                                    "mobileNumber": 9035896235
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2664,
+                                    "name": "Akshaj Bakhle",
+                                    "email": "akshaj.bakhle@learner.manipal.edu",
+                                    "mobileNumber": 9518548184
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2618,
+                                    "name": "Vedanth krishna",
+                                    "email": "vedanth.krishna@learner.manipal.edu",
+                                    "mobileNumber": 6360819749
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2614,
+                                    "name": "Daniel Kane Estibeiro",
+                                    "email": "daniel.estibeiro@learner.manipal.edu",
+                                    "mobileNumber": 8308813860
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2626,
+                                    "name": "Karan G",
+                                    "email": "karan.g@learner.manipal.edu",
+                                    "mobileNumber": 9880646618
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2644,
+                                    "name": "Muhammed Hashir Mahamood",
+                                    "email": "muhammed.mahamood11@learner.manipal.edu",
+                                    "mobileNumber": 8075137256
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2629,
+                                    "name": "Dean liu",
+                                    "email": "dean.liu@learner.manipal.edu",
+                                    "mobileNumber": 8309448751
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2631,
+                                    "name": "Tanmay",
+                                    "email": "tanmay.dpcma@learner.manipal.edu",
+                                    "mobileNumber": 9380112510
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2646,
+                                    "name": "Aryan Saxena",
+                                    "email": "aryan.saxena@learner.manipal.edu",
+                                    "mobileNumber": 8860409663
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2624,
+                                    "name": "Soham Biswas",
+                                    "email": "soham.biswas3@learner.manipal.edu",
+                                    "mobileNumber": 6290370623
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2681,
+                                    "name": "Arunim Agarwal",
+                                    "email": "arunim.agarwal@learner.manipal.edu",
+                                    "mobileNumber": 9807675095
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2617,
+                                    "name": "Rohith Rajesh",
+                                    "email": "rohith.rajesh@learner.manipal.edu",
+                                    "mobileNumber": 8281699296
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "ZTs1EbgY",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2251,
+                                    "name": "Niranjan Pravin",
+                                    "email": "niranjan.pullaniparambath@learner.manipal.edu",
+                                    "mobileNumber": 9633266283
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2381,
+                                    "name": "Melvin Panicker",
+                                    "email": "melvin.juancy@learner.manipal.edu",
+                                    "mobileNumber": 8447430484
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2379,
+                                    "name": "Arun KJ",
+                                    "email": "arun.jayaprakashan@learner.manipal.edu",
+                                    "mobileNumber": 9544615378
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2380,
+                                    "name": "Joshua Alex Sequeira",
+                                    "email": "joshua.sequeira@learner.manipal.edu",
+                                    "mobileNumber": 9741479042
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2390,
+                                    "name": "Aniketh Krishnan",
+                                    "email": "aniketh.m1@learner.manipal.edu",
+                                    "mobileNumber": 9746045135
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2394,
+                                    "name": "SWAPNIL BOLOOR",
+                                    "email": "swapnil.boloor@learner.manipal.edu",
+                                    "mobileNumber": 8296113966
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2396,
+                                    "name": "Gautam Pradeep",
+                                    "email": "gautam.pradeep@learner.manipal.edu",
+                                    "mobileNumber": 9072329661
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2414,
+                                    "name": "Devansh Kande",
+                                    "email": "devansh.kande@learner.manipal.edu",
+                                    "mobileNumber": 7093205650
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2418,
+                                    "name": "ROSHAN NAJAR",
+                                    "email": "roshan.najar1@learner.manipal.edu",
+                                    "mobileNumber": 8888561784
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2420,
+                                    "name": "Abhinav Reddy",
+                                    "email": "abhinav.venuganti@learner.manipal.edu",
+                                    "mobileNumber": 9550932223
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2387,
+                                    "name": "umair",
+                                    "email": "muhammed.umair1@learner.manipal.edu",
+                                    "mobileNumber": 9946422666
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2428,
+                                    "name": "Souhan Abbas",
+                                    "email": "souhan.abbas@learner.manipal.edu",
+                                    "mobileNumber": 9611287212
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2398,
+                                    "name": "Atul Antony",
+                                    "email": "atul.antony@learner.manipal.edu",
+                                    "mobileNumber": 7483426834
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2442,
+                                    "name": "adel ashraf",
+                                    "email": "adel.ashraf@learner.manipal.edu",
+                                    "mobileNumber": 9916020422
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2453,
+                                    "name": "Joshua Tom Jacob",
+                                    "email": "joshua.jacob1@learner.manipal.edu",
+                                    "mobileNumber": 9496669406
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2382,
+                                    "name": "V. Hari Haran",
+                                    "email": "hariharan.msap@learner.manipal.edu",
+                                    "mobileNumber": 9497826951
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2682,
+                                    "name": "Amar Okram",
+                                    "email": "amar.okram@learner.manipal.edu",
+                                    "mobileNumber": 8837214415
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2392,
+                                    "name": "Abhiram Sanath",
+                                    "email": "abhiram.sanath1@learner.manipal.edu",
+                                    "mobileNumber": 9946589011
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "29gEWf8h",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2127,
+                                    "name": "Anjishnu basu",
+                                    "email": "anjishnu.basu@learner.manipal.edu",
+                                    "mobileNumber": 7400481701
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2601,
+                                    "name": "Adish Sood",
+                                    "email": "adish.sood@learner.manipal.edu",
+                                    "mobileNumber": 9900155461
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2612,
+                                    "name": "Bhoodan rath",
+                                    "email": "bhoodan.rath@learner.manipal.edu",
+                                    "mobileNumber": 7077068240
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2619,
+                                    "name": "Shreyas Srivastava",
+                                    "email": "shreyas.srivastava@learner.manipal.edu",
+                                    "mobileNumber": 9717332392
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "tLuVfhFs",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1203,
+                                    "name": "Tomthin Yumnam",
+                                    "email": "tomthin123yumnam@gmail.com",
+                                    "mobileNumber": 9366443027
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1452,
+                                    "name": "ABSAR UL HASAN A K",
+                                    "email": "abzar3006@gmail.com",
+                                    "mobileNumber": 9645343894
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1190,
+                                    "name": "Kunal Paul",
+                                    "email": "paulkunal13leo@gmail.com",
+                                    "mobileNumber": 9918456279
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1189,
+                                    "name": "Raghav Rao",
+                                    "email": "raghav.rao3@learner.manipal.edu",
+                                    "mobileNumber": 9880407628
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1352,
+                                    "name": "Saketh c sen",
+                                    "email": "sakethsen11@gmail.com",
+                                    "mobileNumber": 7353613536
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1188,
+                                    "name": "Joshua joy Varghese",
+                                    "email": "joyjoshua00@gmail.com",
+                                    "mobileNumber": 8129127587
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1300,
+                                    "name": "Aditya Jayaraj",
+                                    "email": "adityajayaraj196@gmail.com",
+                                    "mobileNumber": 7306038576
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1429,
+                                    "name": "George Baby Thomas",
+                                    "email": "gbt5401@gmail.com",
+                                    "mobileNumber": 8111932032
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1621,
+                                    "name": "Albert Joy",
+                                    "email": "albert.joy@learner.manipal.edu",
+                                    "mobileNumber": 7356020656
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1392,
+                                    "name": "omkar",
+                                    "email": "omkar.shahi@learner.manipal.edu",
+                                    "mobileNumber": 7977925766
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1221,
+                                    "name": "AASISH OJHA",
+                                    "email": "aasish.ojha1234@gmail.com",
+                                    "mobileNumber": 9372952979
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1355,
+                                    "name": "Shubh",
+                                    "email": "shubhg79@gmail.com",
+                                    "mobileNumber": 9650426659
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1223,
+                                    "name": "Skanda",
+                                    "email": "skanda.janardhan@learner.manipal.edu",
+                                    "mobileNumber": 9742083440
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1193,
+                                    "name": "Joel Salins",
+                                    "email": "joelsalins84@gmail.com",
+                                    "mobileNumber": 7795069824
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1255,
+                                    "name": "KARAN V",
+                                    "email": "karanv24cr7@gmail.com",
+                                    "mobileNumber": 9446772323
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1293,
+                                    "name": "Godwin Thomas",
+                                    "email": "godwinthomas12a@gmail.com",
+                                    "mobileNumber": 9562964568
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1192,
+                                    "name": "Mohammed alhadi",
+                                    "email": "moodyalhadi99@gmail.com",
+                                    "mobileNumber": 6366720555
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1527,
+                                    "name": "Shane Martin Lasrado",
+                                    "email": "lasrado17@gmail.com",
+                                    "mobileNumber": 7483741384
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "nmMEn22j",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2340,
+                                    "name": "Aashutosh Sathe",
+                                    "email": "aashutosh.sathe@learner.manipal.edu",
+                                    "mobileNumber": 7045999209
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2147,
+                                    "name": "Eashan Achar",
+                                    "email": "eashan.achar@learner.manipal.edu",
+                                    "mobileNumber": 8898581666
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2355,
+                                    "name": "Aaditya Rathore",
+                                    "email": "aaditya.rathore@learner.manipal.edu",
+                                    "mobileNumber": 9821011893
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2359,
+                                    "name": "Ninad Deshmukh",
+                                    "email": "ninad.deshmukh@learner.manipal.edu",
+                                    "mobileNumber": 8879462501
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2361,
+                                    "name": "Akshaj Jauhri",
+                                    "email": "akshaj.jauhri@learner.manipal.edu",
+                                    "mobileNumber": 9653148458
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2354,
+                                    "name": "Aniruddan",
+                                    "email": "aniruddan.mcisma@learner.manipal.edu",
+                                    "mobileNumber": 9363573153
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2360,
+                                    "name": "Siddharth Nagepalli",
+                                    "email": "siddharth.nagepalli@learner.manipal.edu",
+                                    "mobileNumber": 9773860566
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2358,
+                                    "name": "Siddharth Ravi",
+                                    "email": "siddharth.ravi@learner.manipal.edu",
+                                    "mobileNumber": 7045097584
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2362,
+                                    "name": "Aditya chouhan",
+                                    "email": "aditya.chouhan@learner.manipal.edu",
+                                    "mobileNumber": 9314070225
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2366,
+                                    "name": "Sanjay ganesh",
+                                    "email": "sanjay.ganesh@learner.manipal.edu",
+                                    "mobileNumber": 9819876680
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2357,
+                                    "name": "Mayank Madhwal",
+                                    "email": "mayank.madhwal@learner.manipal.edu",
+                                    "mobileNumber": 9818381844
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2365,
+                                    "name": "Aditya Batwal",
+                                    "email": "aditya.batwal@learner.manipal.edu",
+                                    "mobileNumber": 9136385150
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1607,
+                                    "name": "Sarin Kunnoth",
+                                    "email": "sarin.kunnoth@learner.manipal.edu",
+                                    "mobileNumber": 9156945854
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2697,
+                                    "name": "Abhishek Pai",
+                                    "email": "pai.deepak1@learner.manipal.edu",
+                                    "mobileNumber": 8828220365
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2695,
+                                    "name": "Siddhant Nair",
+                                    "email": "siddhant.nair1@learner.manipal.edu",
+                                    "mobileNumber": 9028056450
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "wAKuAUHJ",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2009,
+                                    "name": "Shreyash Patil",
+                                    "email": "shreyashpatil3699@gmail.com",
+                                    "mobileNumber": 9945349369
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "-7MEt3rf",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2480,
+                                    "name": "Aryan Dhaka",
+                                    "email": "aryan.dhaka@learner.manipal.edu",
+                                    "mobileNumber": 8949490412
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2476,
+                                    "name": "Reuben",
+                                    "email": "reuben.joseph@learner.manipal.edu",
+                                    "mobileNumber": 9799613015
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2481,
+                                    "name": "Pranav",
+                                    "email": "pranav.icas@learner.manipal.edu",
+                                    "mobileNumber": 9074530419
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2507,
+                                    "name": "Surya Narne",
+                                    "email": "surya.narne@learner.manipal.edu",
+                                    "mobileNumber": 7032161976
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "i5jxpC4M",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1150,
+                                    "name": "Vaibhav Vohra",
+                                    "email": "vaibhav.vohra@learner.manipal.edu",
+                                    "mobileNumber": 9871749626
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Handball (Men)",
+                "teams": []
+            },
+            {
+                "name": "Hockey (Men)",
+                "teams": []
+            },
+            {
+                "name": "Squash (Men)",
+                "teams": [
+                    {
+                        "teamID": "eqPfGrA-",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2088,
+                                    "name": "Zahaan Ladak",
+                                    "email": "zahaan.ladak@learner.manipal.edu",
+                                    "mobileNumber": 8296887114
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "VaKhPW0G",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1463,
+                                    "name": "Utkarsh Tawakley",
+                                    "email": "utkarsh.tawakley@learner.manipal.edu",
+                                    "mobileNumber": 9663709891
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Squash (Women)",
+                "teams": []
+            },
+            {
+                "name": "Table Tennis (Men)",
+                "teams": [
+                    {
+                        "teamID": "vM7_z9LM",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1104,
+                                    "name": "Sriram",
+                                    "email": "sriram.181ec131@nitk.edu.in",
+                                    "mobileNumber": 7815008939
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "PinfMphH",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1150,
+                                    "name": "Vaibhav Vohra",
+                                    "email": "vaibhav.vohra@learner.manipal.edu",
+                                    "mobileNumber": 9871749626
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2265,
+                                    "name": "Priyansh Jain",
+                                    "email": "priyansh.jain@learner.manipal.edu",
+                                    "mobileNumber": 9167973298
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2266,
+                                    "name": "Mrenank Rastogi",
+                                    "email": "mrenank.rastogi@learner.manipal.edu",
+                                    "mobileNumber": 9140692361
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "WnfvU8Mg",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2065,
+                                    "name": "Anup Silvan Mascarenhas",
+                                    "email": "anup.mascarenhas@learner.manipal.edu",
+                                    "mobileNumber": 7996188109
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2284,
+                                    "name": "Vikram Nayak",
+                                    "email": "vikram.nayak@learner.manipal.edu",
+                                    "mobileNumber": 6361190630
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2588,
+                                    "name": "Vinith V",
+                                    "email": "vinith.v@learner.manipal.edu",
+                                    "mobileNumber": 8754115492
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "mtwt9GBO",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2096,
+                                    "name": "Sarthak",
+                                    "email": "sarthak.gupta8@learner.manipal.edu",
+                                    "mobileNumber": 9833914120
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "7_jIZCwE",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1677,
+                                    "name": "Debjeet Chakravorty",
+                                    "email": "debjeet.chakravorty@learner.manipal.edu",
+                                    "mobileNumber": 9594416803
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Football (Women)",
+                "teams": [
+                    {
+                        "teamID": "KeiSvzZ_",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2763,
+                                    "name": "Serah Mathew",
+                                    "email": "serah.panicker@learner.manipal.edu",
+                                    "mobileNumber": 9633622976
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Table Tennis (Women)",
+                "teams": [
+                    {
+                        "teamID": "chQ1Rnsy",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2941,
+                                    "name": "Numa Shaikh",
+                                    "email": "numa.shaikh@learner.manipal.edu",
+                                    "mobileNumber": 9022198193
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Volleyball (Men)",
+                "teams": [
+                    {
+                        "teamID": "cvC3jhR3",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1013,
+                                    "name": "sagar",
+                                    "email": "sagarbuntyror@gmail.com",
+                                    "mobileNumber": 8930808729
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1992,
+                                    "name": "sahil",
+                                    "email": "sahil.nitk@gmx.fit",
+                                    "mobileNumber": 7983073401
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1922,
+                                    "name": "Ram Janam Yadav",
+                                    "email": "ramjanamjnvj1972@gmail.com",
+                                    "mobileNumber": 7378393643
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 1985,
+                                    "name": "MOHAMMED MANSOOR",
+                                    "email": "mansoormansoor1043@gmail.com",
+                                    "mobileNumber": 7204033794
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "uRDuAFyb",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2608,
+                                    "name": "Kushal A S",
+                                    "email": "kushal.s@learner.manipal.edu",
+                                    "mobileNumber": 9900634897
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Volleyball (Women)",
+                "teams": []
+            },
+            {
+                "name": "Throwball (Women)",
+                "teams": [
+                    {
+                        "teamID": "CB6G2IWI",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2052,
+                                    "name": "Sharvari Ramesh",
+                                    "email": "sharvari.ramesh@learner.manipal.edu",
+                                    "mobileNumber": 9945861903
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Tennis (Men)",
+                "teams": [
+                    {
+                        "teamID": "q6nSi1d8",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1266,
+                                    "name": "Sudarshan Sivakumar",
+                                    "email": "sudarshan.sivakumar@learner.manipal.edu",
+                                    "mobileNumber": 8056043866
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "-eRcE7ae",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2397,
+                                    "name": "R Aditya ram",
+                                    "email": "adityaram82@gmail.com",
+                                    "mobileNumber": 7795458680
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Tennis (Women)",
+                "teams": []
+            },
+            {
+                "name": "Athletics (100m Men)",
+                "teams": [
+                    {
+                        "teamID": "oBdwRf_v",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1223,
+                                    "name": "Skanda",
+                                    "email": "skanda.janardhan@learner.manipal.edu",
+                                    "mobileNumber": 9742083440
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "PEByvAU_",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1255,
+                                    "name": "KARAN V",
+                                    "email": "karanv24cr7@gmail.com",
+                                    "mobileNumber": 9446772323
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "QLYG2Oex",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2127,
+                                    "name": "Anjishnu basu",
+                                    "email": "anjishnu.basu@learner.manipal.edu",
+                                    "mobileNumber": 7400481701
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "R9xchINs",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2773,
+                                    "name": "Adnan Lokhandwala",
+                                    "email": "adnan.lokhandwala@learner.manipal.edu",
+                                    "mobileNumber": 9967008697
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "2GQjE11a",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2732,
+                                    "name": "Chaitanya",
+                                    "email": "chaitanya.a4@learner.manipal.edu",
+                                    "mobileNumber": 9845116946
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "FJr8CEln",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2779,
+                                    "name": "Shravan",
+                                    "email": "shravan.k@learner.manipal.edu",
+                                    "mobileNumber": 8762539102
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "ACfmA-RM",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2920,
+                                    "name": "Ujjwal somani",
+                                    "email": "ujjwal.somani@learner.manipal.edu",
+                                    "mobileNumber": 9530101234
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (100m Women)",
+                "teams": [
+                    {
+                        "teamID": "JWpMTyb6",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2223,
+                                    "name": "madhavi munnaluri",
+                                    "email": "madhavi.munnaluri@learner.manipal.edu",
+                                    "mobileNumber": 7760513283
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "vWjS8w3D",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2052,
+                                    "name": "Sharvari Ramesh",
+                                    "email": "sharvari.ramesh@learner.manipal.edu",
+                                    "mobileNumber": 9945861903
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "Rw96Dag6",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2911,
+                                    "name": "Sagarika Seshagiri",
+                                    "email": "sagarika.seshagiri@learner.manipal.edu",
+                                    "mobileNumber": 7406393736
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (200m Men)",
+                "teams": [
+                    {
+                        "teamID": "UeoF1KUy",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1223,
+                                    "name": "Skanda",
+                                    "email": "skanda.janardhan@learner.manipal.edu",
+                                    "mobileNumber": 9742083440
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "H1xaVvwF",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1253,
+                                    "name": "rishikesh",
+                                    "email": "rishikeshrmenon3@gmail.com",
+                                    "mobileNumber": 9778746776
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "c0IxaITM",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1255,
+                                    "name": "KARAN V",
+                                    "email": "karanv24cr7@gmail.com",
+                                    "mobileNumber": 9446772323
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "Tx4IzTPT",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2773,
+                                    "name": "Adnan Lokhandwala",
+                                    "email": "adnan.lokhandwala@learner.manipal.edu",
+                                    "mobileNumber": 9967008697
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "ENBMLwrO",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2732,
+                                    "name": "Chaitanya",
+                                    "email": "chaitanya.a4@learner.manipal.edu",
+                                    "mobileNumber": 9845116946
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "6cvH07ZB",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2761,
+                                    "name": "Harshil Patel",
+                                    "email": "harshil.patel@learner.manipal.edu",
+                                    "mobileNumber": 6354483965
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (200m Women)",
+                "teams": [
+                    {
+                        "teamID": "E18ktuNb",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2436,
+                                    "name": "Prajna",
+                                    "email": "prajna.dpcma1@learner.manipal.edu",
+                                    "mobileNumber": 8867485035
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (400m Men)",
+                "teams": [
+                    {
+                        "teamID": "qLINJLLW",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1253,
+                                    "name": "rishikesh",
+                                    "email": "rishikeshrmenon3@gmail.com",
+                                    "mobileNumber": 9778746776
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "M-i_Jc_K",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1255,
+                                    "name": "KARAN V",
+                                    "email": "karanv24cr7@gmail.com",
+                                    "mobileNumber": 9446772323
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "ga2tZcrc",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2301,
+                                    "name": "Devansh",
+                                    "email": "devansh.lala@learner.manipal.edu",
+                                    "mobileNumber": 7222920717
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "Rbinqs70",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2732,
+                                    "name": "Chaitanya",
+                                    "email": "chaitanya.a4@learner.manipal.edu",
+                                    "mobileNumber": 9845116946
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "zueyAz9c",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2799,
+                                    "name": "Ragav Rajan S",
+                                    "email": "ragav.s@learner.manipal.edu",
+                                    "mobileNumber": 7892242922
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "ku2gICa3",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2761,
+                                    "name": "Harshil Patel",
+                                    "email": "harshil.patel@learner.manipal.edu",
+                                    "mobileNumber": 6354483965
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (400m Women)",
+                "teams": [
+                    {
+                        "teamID": "yqIWuTsO",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2067,
+                                    "name": "Anjali Dinesh",
+                                    "email": "anjalidinesh82@gmail.com",
+                                    "mobileNumber": 8279735932
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "NBPXUAaj",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2448,
+                                    "name": "Mayuri S Naik",
+                                    "email": "mayuri.naik@learner.manipal.edu",
+                                    "mobileNumber": 9108731986
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "epY6KZiJ",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1723,
+                                    "name": "Isheeta Ketan Dhruv",
+                                    "email": "isheeta.dhruv@learner.manipal.edu",
+                                    "mobileNumber": 9108749504
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "bMGv3ZOK",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2865,
+                                    "name": "Pooja Hegde",
+                                    "email": "pooja.hegde@learner.manipal.edu",
+                                    "mobileNumber": 9741762602
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (800m Men)",
+                "teams": [
+                    {
+                        "teamID": "aiChGit4",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2014,
+                                    "name": "Himal Karkal",
+                                    "email": "karkalhimal@gmail.com",
+                                    "mobileNumber": 9789628043
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "EO4wcm9a",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2799,
+                                    "name": "Ragav Rajan S",
+                                    "email": "ragav.s@learner.manipal.edu",
+                                    "mobileNumber": 7892242922
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "eTpDoqZR",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2738,
+                                    "name": "Shrey Deshmukh",
+                                    "email": "shrey.deshmukh@learner.manipal.edu",
+                                    "mobileNumber": 8451815875
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (800m Women)",
+                "teams": [
+                    {
+                        "teamID": "OitQM1iZ",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2067,
+                                    "name": "Anjali Dinesh",
+                                    "email": "anjalidinesh82@gmail.com",
+                                    "mobileNumber": 8279735932
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "lDomYqKq",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2448,
+                                    "name": "Mayuri S Naik",
+                                    "email": "mayuri.naik@learner.manipal.edu",
+                                    "mobileNumber": 9108731986
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "79aBL0Ns",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1723,
+                                    "name": "Isheeta Ketan Dhruv",
+                                    "email": "isheeta.dhruv@learner.manipal.edu",
+                                    "mobileNumber": 9108749504
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "m3mq3k9M",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2865,
+                                    "name": "Pooja Hegde",
+                                    "email": "pooja.hegde@learner.manipal.edu",
+                                    "mobileNumber": 9741762602
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (1500m Men)",
+                "teams": [
+                    {
+                        "teamID": "3uLUI2mO",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2014,
+                                    "name": "Himal Karkal",
+                                    "email": "karkalhimal@gmail.com",
+                                    "mobileNumber": 9789628043
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "j7mTVnrI",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1205,
+                                    "name": "Athul Madhu Nambiar",
+                                    "email": "athulnambiar2002@gmail.com",
+                                    "mobileNumber": 9319937778
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "s2ZvbINb",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2660,
+                                    "name": "Lohit Ramachandran",
+                                    "email": "lohit.ramachandran@learner.manipal.edu",
+                                    "mobileNumber": 9791040120
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "OT_UCrC4",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2799,
+                                    "name": "Ragav Rajan S",
+                                    "email": "ragav.s@learner.manipal.edu",
+                                    "mobileNumber": 7892242922
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "V5T0CpdC",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2738,
+                                    "name": "Shrey Deshmukh",
+                                    "email": "shrey.deshmukh@learner.manipal.edu",
+                                    "mobileNumber": 8451815875
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (1500m Women)",
+                "teams": [
+                    {
+                        "teamID": "T17HRoDG",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2448,
+                                    "name": "Mayuri S Naik",
+                                    "email": "mayuri.naik@learner.manipal.edu",
+                                    "mobileNumber": 9108731986
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "6kaq-L96",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1723,
+                                    "name": "Isheeta Ketan Dhruv",
+                                    "email": "isheeta.dhruv@learner.manipal.edu",
+                                    "mobileNumber": 9108749504
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "DFC3pkNe",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2865,
+                                    "name": "Pooja Hegde",
+                                    "email": "pooja.hegde@learner.manipal.edu",
+                                    "mobileNumber": 9741762602
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (5000m Men)",
+                "teams": [
+                    {
+                        "teamID": "V6MvWBKw",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2014,
+                                    "name": "Himal Karkal",
+                                    "email": "karkalhimal@gmail.com",
+                                    "mobileNumber": 9789628043
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "a4Z_l5co",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1205,
+                                    "name": "Athul Madhu Nambiar",
+                                    "email": "athulnambiar2002@gmail.com",
+                                    "mobileNumber": 9319937778
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "r1y-1xt3",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2799,
+                                    "name": "Ragav Rajan S",
+                                    "email": "ragav.s@learner.manipal.edu",
+                                    "mobileNumber": 7892242922
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "Rj4InwDD",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2738,
+                                    "name": "Shrey Deshmukh",
+                                    "email": "shrey.deshmukh@learner.manipal.edu",
+                                    "mobileNumber": 8451815875
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (Discus Throw Women)",
+                "teams": [
+                    {
+                        "teamID": "wBUumN5q",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2201,
+                                    "name": "Aashima Srivastava",
+                                    "email": "aashima.srivastava@learner.manipal.edu",
+                                    "mobileNumber": 9695537977
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "r6CJXEtW",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2911,
+                                    "name": "Sagarika Seshagiri",
+                                    "email": "sagarika.seshagiri@learner.manipal.edu",
+                                    "mobileNumber": 7406393736
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (Discus Throw Men) ",
+                "teams": [
+                    {
+                        "teamID": "jznanyd8",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2076,
+                                    "name": "Vishnu K",
+                                    "email": "vishnu.k7@learner.manipal.edu",
+                                    "mobileNumber": 9074650374
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "_kJ5FWf4",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2804,
+                                    "name": "Sumanth",
+                                    "email": "sumanth.mitma2@learner.manipal.edu",
+                                    "mobileNumber": 9148757652
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "uo925zXm",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2921,
+                                    "name": "Tanay Kauntia",
+                                    "email": "tanay.kauntia@learner.manipal.edu",
+                                    "mobileNumber": 7543042577
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (3000m Women)",
+                "teams": [
+                    {
+                        "teamID": "7P4y2xDT",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2201,
+                                    "name": "Aashima Srivastava",
+                                    "email": "aashima.srivastava@learner.manipal.edu",
+                                    "mobileNumber": 9695537977
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "Z89mWLL5",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1723,
+                                    "name": "Isheeta Ketan Dhruv",
+                                    "email": "isheeta.dhruv@learner.manipal.edu",
+                                    "mobileNumber": 9108749504
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "3zdP3GyF",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2865,
+                                    "name": "Pooja Hegde",
+                                    "email": "pooja.hegde@learner.manipal.edu",
+                                    "mobileNumber": 9741762602
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (Shot Put Men)",
+                "teams": [
+                    {
+                        "teamID": "TqRexYRf",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2076,
+                                    "name": "Vishnu K",
+                                    "email": "vishnu.k7@learner.manipal.edu",
+                                    "mobileNumber": 9074650374
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "vA--v8Ez",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2019,
+                                    "name": "Tejas Chougule",
+                                    "email": "tejaschougule45@gmail.com",
+                                    "mobileNumber": 7020290698
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "iOgcrNX-",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2804,
+                                    "name": "Sumanth",
+                                    "email": "sumanth.mitma2@learner.manipal.edu",
+                                    "mobileNumber": 9148757652
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "kYwBaTvi",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2921,
+                                    "name": "Tanay Kauntia",
+                                    "email": "tanay.kauntia@learner.manipal.edu",
+                                    "mobileNumber": 7543042577
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (Shot Put Women)",
+                "teams": [
+                    {
+                        "teamID": "GMb7Nyje",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2911,
+                                    "name": "Sagarika Seshagiri",
+                                    "email": "sagarika.seshagiri@learner.manipal.edu",
+                                    "mobileNumber": 7406393736
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (Long Jump Men)",
+                "teams": [
+                    {
+                        "teamID": "yMzz_oHL",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2779,
+                                    "name": "Shravan",
+                                    "email": "shravan.k@learner.manipal.edu",
+                                    "mobileNumber": 8762539102
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "Lz0H94U_",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2853,
+                                    "name": "Arunabh Anand",
+                                    "email": "arunabh.anand@learner.manipal.edu",
+                                    "mobileNumber": 7541939752
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "16xq2M4H",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2920,
+                                    "name": "Ujjwal somani",
+                                    "email": "ujjwal.somani@learner.manipal.edu",
+                                    "mobileNumber": 9530101234
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (Long Jump Women)",
+                "teams": [
+                    {
+                        "teamID": "QTBzF4jk",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2223,
+                                    "name": "madhavi munnaluri",
+                                    "email": "madhavi.munnaluri@learner.manipal.edu",
+                                    "mobileNumber": 7760513283
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "mYkczE0p",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1776,
+                                    "name": "Himani Khaire",
+                                    "email": "himani.khaire@learner.manipal.edu",
+                                    "mobileNumber": 9322542746
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (High Jump Men)",
+                "teams": []
+            },
+            {
+                "name": "Athletics (Triple Jump Men)",
+                "teams": [
+                    {
+                        "teamID": "c-DMFgGN",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2779,
+                                    "name": "Shravan",
+                                    "email": "shravan.k@learner.manipal.edu",
+                                    "mobileNumber": 8762539102
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "JOO4ht6t",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2853,
+                                    "name": "Arunabh Anand",
+                                    "email": "arunabh.anand@learner.manipal.edu",
+                                    "mobileNumber": 7541939752
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (Triple Jump Women)",
+                "teams": [
+                    {
+                        "teamID": "nMYtLER4",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2223,
+                                    "name": "madhavi munnaluri",
+                                    "email": "madhavi.munnaluri@learner.manipal.edu",
+                                    "mobileNumber": 7760513283
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (4x100m Relay Men)",
+                "teams": [
+                    {
+                        "teamID": "J6VmAEBY",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2732,
+                                    "name": "Chaitanya",
+                                    "email": "chaitanya.a4@learner.manipal.edu",
+                                    "mobileNumber": 9845116946
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2779,
+                                    "name": "Shravan",
+                                    "email": "shravan.k@learner.manipal.edu",
+                                    "mobileNumber": 8762539102
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2773,
+                                    "name": "Adnan Lokhandwala",
+                                    "email": "adnan.lokhandwala@learner.manipal.edu",
+                                    "mobileNumber": 9967008697
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "BC_6tthh",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2933,
+                                    "name": "Aditya Amar",
+                                    "email": "aditya.amar@learner.manipal.edu",
+                                    "mobileNumber": 7762828041
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Swimming (66m Butterfly Men)",
+                "teams": []
+            },
+            {
+                "name": "Swimming (66m Backstroke Men)",
+                "teams": []
+            },
+            {
+                "name": "Swimming (66m Backstroke Women)",
+                "teams": []
+            },
+            {
+                "name": "Swimming ( 66m Freestyle men ) ",
+                "teams": [
+                    {
+                        "teamID": "pql9sSqR",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1668,
+                                    "name": "Nish Kalpeshbhai Patel",
+                                    "email": "nish.patel@learner.manipal.edu",
+                                    "mobileNumber": 7874392129
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Swimming ( 100m Freestyle men ) ",
+                "teams": []
+            },
+            {
+                "name": "Swimming ( 200m Freestyle men ) ",
+                "teams": []
+            },
+            {
+                "name": "Swimming ( 400m Freestyle men )",
+                "teams": []
+            },
+            {
+                "name": "Swimming ( 800m Freestyle men ) ",
+                "teams": []
+            },
+            {
+                "name": "Swimming ( 1500m Freestyle men ) ",
+                "teams": []
+            },
+            {
+                "name": "Swimming ( 66m Freestyle women ) ",
+                "teams": [
+                    {
+                        "teamID": "s0ywO7ZT",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2885,
+                                    "name": "Harshita Srivastava",
+                                    "email": "harshita.srivastava@learner.manipal.edu",
+                                    "mobileNumber": 9136118128
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Swimming ( 100m freestyle women ) ",
+                "teams": [
+                    {
+                        "teamID": "2wwMY8_f",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1252,
+                                    "name": "Poojitha G Murthy",
+                                    "email": "pgm6777@gmail.com",
+                                    "mobileNumber": 7899573574
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Swimming ( 200m Freestyle women ) ",
+                "teams": [
+                    {
+                        "teamID": "qQzqk1Nk",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2067,
+                                    "name": "Anjali Dinesh",
+                                    "email": "anjalidinesh82@gmail.com",
+                                    "mobileNumber": 8279735932
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "dcNF_xU5",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1252,
+                                    "name": "Poojitha G Murthy",
+                                    "email": "pgm6777@gmail.com",
+                                    "mobileNumber": 7899573574
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Swimming ( 400m Freestyle women ) ",
+                "teams": [
+                    {
+                        "teamID": "ni0os-DK",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2067,
+                                    "name": "Anjali Dinesh",
+                                    "email": "anjalidinesh82@gmail.com",
+                                    "mobileNumber": 8279735932
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "7E4P7ZpU",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1252,
+                                    "name": "Poojitha G Murthy",
+                                    "email": "pgm6777@gmail.com",
+                                    "mobileNumber": 7899573574
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Swimming ( 800m Freestyle women ) ",
+                "teams": [
+                    {
+                        "teamID": "4b4yHPIB",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2067,
+                                    "name": "Anjali Dinesh",
+                                    "email": "anjalidinesh82@gmail.com",
+                                    "mobileNumber": 8279735932
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Swimming ( 4x33m Freestyle relay men ) ",
+                "teams": []
+            },
+            {
+                "name": "Swimming ( 4x66m Freestyle relay men ) ",
+                "teams": []
+            },
+            {
+                "name": "Swimming ( 4x33m Freestyle relay women ) ",
+                "teams": []
+            },
+            {
+                "name": "Swimming ( 4x66m Freestyle relay women ) ",
+                "teams": []
+            },
+            {
+                "name": "Athletics ( 4x100m relay women ) ",
+                "teams": [
+                    {
+                        "teamID": "3_ePZSMV",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2448,
+                                    "name": "Mayuri S Naik",
+                                    "email": "mayuri.naik@learner.manipal.edu",
+                                    "mobileNumber": 9108731986
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics ( 4x400m relay men ) ",
+                "teams": [
+                    {
+                        "teamID": "CKuDtiVq",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2732,
+                                    "name": "Chaitanya",
+                                    "email": "chaitanya.a4@learner.manipal.edu",
+                                    "mobileNumber": 9845116946
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2761,
+                                    "name": "Harshil Patel",
+                                    "email": "harshil.patel@learner.manipal.edu",
+                                    "mobileNumber": 6354483965
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2799,
+                                    "name": "Ragav Rajan S",
+                                    "email": "ragav.s@learner.manipal.edu",
+                                    "mobileNumber": 7892242922
+                                }
+                            },
+                            {
+                                "user": {
+                                    "userID": 2738,
+                                    "name": "Shrey Deshmukh",
+                                    "email": "shrey.deshmukh@learner.manipal.edu",
+                                    "mobileNumber": 8451815875
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (Javelin Men)",
+                "teams": [
+                    {
+                        "teamID": "3LDInVqo",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2019,
+                                    "name": "Tejas Chougule",
+                                    "email": "tejaschougule45@gmail.com",
+                                    "mobileNumber": 7020290698
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "EQMpRbtz",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2804,
+                                    "name": "Sumanth",
+                                    "email": "sumanth.mitma2@learner.manipal.edu",
+                                    "mobileNumber": 9148757652
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "wdSvK1RZ",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2921,
+                                    "name": "Tanay Kauntia",
+                                    "email": "tanay.kauntia@learner.manipal.edu",
+                                    "mobileNumber": 7543042577
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (Javelin Women)",
+                "teams": []
+            },
+            {
+                "name": "Athletics (Cross Country Men)",
+                "teams": [
+                    {
+                        "teamID": "eEIohdP-",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2127,
+                                    "name": "Anjishnu basu",
+                                    "email": "anjishnu.basu@learner.manipal.edu",
+                                    "mobileNumber": 7400481701
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "kUUo3juo",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2799,
+                                    "name": "Ragav Rajan S",
+                                    "email": "ragav.s@learner.manipal.edu",
+                                    "mobileNumber": 7892242922
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "dEfW1F3n",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2738,
+                                    "name": "Shrey Deshmukh",
+                                    "email": "shrey.deshmukh@learner.manipal.edu",
+                                    "mobileNumber": 8451815875
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Athletics (Cross Country Women)",
+                "teams": [
+                    {
+                        "teamID": "He1Lkq4_",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1723,
+                                    "name": "Isheeta Ketan Dhruv",
+                                    "email": "isheeta.dhruv@learner.manipal.edu",
+                                    "mobileNumber": 9108749504
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "teamID": "ZVHi9jSp",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2865,
+                                    "name": "Pooja Hegde",
+                                    "email": "pooja.hegde@learner.manipal.edu",
+                                    "mobileNumber": 9741762602
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Swimming (66m Butterfly Women)",
+                "teams": [
+                    {
+                        "teamID": "ByXw7Rva",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1252,
+                                    "name": "Poojitha G Murthy",
+                                    "email": "pgm6777@gmail.com",
+                                    "mobileNumber": 7899573574
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Swimming (100m Backstroke Men)",
+                "teams": []
+            },
+            {
+                "name": "Swimming (100m Backstroke Women)",
+                "teams": []
+            },
+            {
+                "name": "Swimming (200m Backstroke Men)",
+                "teams": []
+            },
+            {
+                "name": "Swimming (200m Backstroke Women)",
+                "teams": []
+            },
+            {
+                "name": "Swimming (4x33m Individual Medley Men)",
+                "teams": []
+            },
+            {
+                "name": "Swimming (4x33m Individual Medley Women)",
+                "teams": [
+                    {
+                        "teamID": "YQzdP6gX",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2293,
+                                    "name": "Shalmali Saraswate",
+                                    "email": "saraswate.vivek@learner.manipal.edu",
+                                    "mobileNumber": 7798445350
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Swimming (4X66m Individual Medley Men)",
+                "teams": []
+            },
+            {
+                "name": "Swimming (4X66m Individual Medley Women)",
+                "teams": []
+            },
+            {
+                "name": "Swimming (4x33m Medley Relay Men)",
+                "teams": [
+                    {
+                        "teamID": "JW09Buus",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1767,
+                                    "name": "Atideepth Bharadwaj",
+                                    "email": "atideepth@gmail.com",
+                                    "mobileNumber": 8861192803
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Swimming (4x33m Medley Relay Women)",
+                "teams": []
+            },
+            {
+                "name": "Swimming (4x66m Medley Relay Men)",
+                "teams": []
+            },
+            {
+                "name": "Swimming (4x66m Medley Relay Women)",
+                "teams": []
+            },
+            {
+                "name": "Swimming ( 66m Breaststroke men ) ",
+                "teams": []
+            },
+            {
+                "name": "Swimming ( 66m Breaststroke women ) ",
+                "teams": [
+                    {
+                        "teamID": "I7s6oANS",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 2885,
+                                    "name": "Harshita Srivastava",
+                                    "email": "harshita.srivastava@learner.manipal.edu",
+                                    "mobileNumber": 9136118128
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Swimming ( 100m Breaststroke men ) ",
+                "teams": [
+                    {
+                        "teamID": "7HW91TKt",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1767,
+                                    "name": "Atideepth Bharadwaj",
+                                    "email": "atideepth@gmail.com",
+                                    "mobileNumber": 8861192803
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Swimming ( 100m Breaststroke women ) ",
+                "teams": []
+            },
+            {
+                "name": "Swimming ( 200m Breaststroke men ) ",
+                "teams": [
+                    {
+                        "teamID": "OnNZrFfQ",
+                        "members": [
+                            {
+                                "user": {
+                                    "userID": 1767,
+                                    "name": "Atideepth Bharadwaj",
+                                    "email": "atideepth@gmail.com",
+                                    "mobileNumber": 8861192803
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Swimming ( 200m Breaststroke women ) ",
+                "teams": []
+            }
+        ]
+    }
+]
