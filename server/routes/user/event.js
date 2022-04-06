@@ -253,7 +253,7 @@ const getAllParticipants = async (req, res) => {
     }
     let teams = await Team.find({ event: event }).populate(
       "members.user",
-      "name userID delegateCards pendingDelegateCards"
+      "name userID delegateCards pendingDelegateCards college"
     );
     console.log(teams);
     if (teams) {
