@@ -243,48 +243,6 @@ const filterEvents = async (req, res) => {
 };
 
 const getAllParticipants = async (req, res) => {
-<<<<<<< HEAD
-    try {
-        let { event, name, id, token, max, delCard } = req.params;
-        if (typeof token !== 'undefined') {
-            let payload = await jwt.verify(token, process.env.JWT_SECRET);
-            console.log('Payload ', payload);
-            if (payload) {
-                console.log('id:', payload.admin_Id);
-                let admin = await Admin.findOne({
-                    _id: payload.admin_Id,
-                    token,
-                }).populate('role');
-                //console.log('here ', admin);
-                if (!admin) {
-                    return res.status(401).send({
-                        success: false,
-                        msg: 'Token Invalid,Please Login',
-                    });
-                }
-            } else {
-                return res.status(401).send({
-                    success: false,
-                    msg: 'Token Expired,Please Login',
-                });
-            }
-        } else {
-            return res.status(401).send({
-                success: false,
-                msg: 'Token Invalid,Please Login',
-            });
-        }
-        let teams = await Team.find({ event: event }).populate(
-            'members.user',
-            'name userID delegateCards pendingDelegateCards'
-        );
-        console.log(teams);
-        if (teams) {
-            createSheet(teams, name, id, max, delCard).then((file) => {
-                return file.write(id + '_teams.xlsx', res);
-            });
-        }
-=======
   try {
     let { event, name, id, token, max, delCard } = req.params;
 
@@ -327,7 +285,6 @@ const getAllParticipants = async (req, res) => {
         return file.write(id + "_teams.xlsx", res);
       });
     }
->>>>>>> 2f9fc89bc0e1e65fe0809fdb9db5cdf379285a1c
 
         // return res.status(200).send({ data: teams, success: true });
     } catch (err) {
