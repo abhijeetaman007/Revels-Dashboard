@@ -223,6 +223,7 @@ const filterEvents = async (req, res) => {
 const getAllParticipants = async (req, res) => {
   try {
     let { event, name, id, token, max, delCard } = req.params;
+
     if (typeof token !== "undefined") {
       let payload = await jwt.verify(token, process.env.JWT_SECRET);
       console.log("Payload ", payload);
@@ -251,6 +252,7 @@ const getAllParticipants = async (req, res) => {
         msg: "Token Invalid,Please Login",
       });
     }
+    if (delCard == "none") delCard = null;
     let teams = await Team.find({ event: event }).populate(
       "members.user",
       "name userID delegateCards pendingDelegateCards college"

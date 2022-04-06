@@ -629,16 +629,19 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams }) => {
             <a
               href={
                 "https://revelsmit.in/api/admin/category/event/participants/" +
-                data._id +
-                "/" +
-                data.eventID +
-                "/" +
-                data.name.split("/")[0] +
-                "/" +
-                data.maxMembers +
-                "/" +
-                localStorage.getItem(ADMIN_TOKEN_ID) +
-                `/${data.delegateCards[0] ? data.delegateCards[0]._id : ""}`
+                  data._id +
+                  "/" +
+                  data.eventID +
+                  "/" +
+                  data.name.split("/")[0] +
+                  "/" +
+                  data.maxMembers +
+                  "/" +
+                  localStorage.getItem(ADMIN_TOKEN_ID) +
+                  data.delegateCards.length >
+                0
+                  ? `/${data.delegateCards[0] ? data.delegateCards[0]._id : ""}`
+                  : "none"
               }
             >
               <i

@@ -274,14 +274,18 @@ const InsideEvent = () => {
             No Delegate Card Required
           </p>
         )}
-        {event.teamDelegateCard ? (
-          <p style={{ fontSize: "small", color: "red" }}>
-            Team Delegate Cards required to be purchased only by team leader.
-          </p>
+        {event.delegateCards.length > 0 ? (
+          event.teamDelegateCard ? (
+            <p style={{ fontSize: "small", color: "red" }}>
+              Team Delegate Cards required to be purchased only by team leader.
+            </p>
+          ) : (
+            <p style={{ fontSize: "small", color: "red" }}>
+              All members need to purchase the required delegate cards.
+            </p>
+          )
         ) : (
-          <p style={{ fontSize: "small", color: "red" }}>
-            All members need to purchase the required delegate cards.
-          </p>
+          <></>
         )}
         <ul>
           {event.delegateCards.map((delegateCard) => (
