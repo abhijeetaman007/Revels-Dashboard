@@ -90,7 +90,6 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams }) => {
   const [numTags, setNumTags] = useState(
     eventdata.tags.length ? eventdata.tags.length : 1
   );
-
   const [data, setData] = useState({
     _id: eventdata._id,
     eventID: eventdata.eventID,
@@ -639,8 +638,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams }) => {
                 data.maxMembers +
                 "/" +
                 localStorage.getItem(ADMIN_TOKEN_ID) +
-                "/" +
-                data.delegateCards[0]._id
+                `/${data.delegateCards[0] ? data.delegateCards[0]._id : ""}`
               }
             >
               <i
