@@ -28,15 +28,14 @@ const addEvent = async (req, res) => {
         } = req.body;
 
         let eventName = await Event.exists({ name });
-        console.log("here1")
-        if (eventName){
-          console.log("same found")
-          return res.status(400).send({
-            success: false,
-            msg: 'Event with same name is already registered',
-        });
+        console.log('here1');
+        if (eventName) {
+            console.log('same found');
+            return res.status(400).send({
+                success: false,
+                msg: 'Event with same name is already registered',
+            });
         }
-            
 
         let ids = await Event.find({}, { eventID: 1, _id: 0 })
             .sort({ eventID: -1 })
@@ -55,8 +54,6 @@ const addEvent = async (req, res) => {
             !minMembers ||
             !maxMembers
         ) {
-        console.log("here2")
-
             return res
                 .status(400)
                 .send({ success: false, msg: 'Please fill required fields' });
@@ -84,8 +81,6 @@ const addEvent = async (req, res) => {
                 { _id: 1 }
             );
             if (!validCard) {
-        console.log("here3")
-
                 return res
                     .status(400)
                     .send({ success: false, msg: 'Invalid Delegate Card' });
@@ -100,7 +95,29 @@ const addEvent = async (req, res) => {
         // judges:[],
         // eventDateTime:
         // }]
-        console.log("here4")
+
+        // Validation on event heads
+        if (
+            !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
+                req.body.email
+            )
+        )
+            for (let i = 0; i < eventHeads.length; i++) {
+                if (
+                    eventHeads[i].name < 3 ||
+                    eventHeads[i].phoneNo.length != 10 ||
+                    !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
+                        eventHeads[i].email
+                    )
+                ){
+                  console.log("Invalid Event Head")
+                  return res.status(400).send({
+                    msg: 'Enter valid event Head details',
+                    success: false,
+                });
+                }
+                    
+            }
 
         let newEvent = new Event({
             eventID,
@@ -123,7 +140,7 @@ const addEvent = async (req, res) => {
         });
 
         await newEvent.save();
-        console.log("New Event Added")
+        console.log('New Event Added');
         return res
             .status(200)
             .send({ success: true, msg: 'Event Added', data: newEvent });
@@ -395,7 +412,7 @@ const getTeamByCategory = async (req, res) => {
     try {
         let { type } = req.body;
         let currentCategory = await Category.find({ type });
-        let finaldata =[];  
+        let finaldata = [];
         for (let k = 0; k < currentCategory.length; k++) {
             // console.log('category ', currentCategory);
             let type, events;
@@ -406,9 +423,9 @@ const getTeamByCategory = async (req, res) => {
             };
             console.log('Current', currentCategory);
             // if (!currentCategory)
-                // return res
-                    // .status(400)
-                    // .send({ success: false, msg: 'No Category Found' });
+            // return res
+            // .status(400)
+            // .send({ success: false, msg: 'No Category Found' });
             // data.category= category.category;
             // data.type = category.type
             console.log('Id ', currentCategory[k].category);
@@ -426,7 +443,13 @@ const getTeamByCategory = async (req, res) => {
                     { teamID: 1, _id: 0 }
                 ).populate({
                     path: 'members.user',
-                    select: { userID: 1, name: 1, _id: 0,email:1,mobileNumber:1 },
+                    select: {
+                        userID: 1,
+                        name: 1,
+                        _id: 0,
+                        email: 1,
+                        mobileNumber: 1,
+                    },
                 });
                 (eventData.name = events[i].name), (eventData.teams = teams);
                 data.events.push(eventData);
