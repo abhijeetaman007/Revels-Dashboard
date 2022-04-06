@@ -54,7 +54,7 @@ const {
   deleteEvent,
   getCategory,
   getAllCategories,
-  getTeamByCategory
+  getTeamByCategory,
 } = require("./admins/category");
 const {
   joinTeam,

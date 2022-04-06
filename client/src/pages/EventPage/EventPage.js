@@ -23,7 +23,7 @@ const Events = () => {
     getAllEvents();
   }, []);
   // method to filter the array
-  const filterEvents = async (e, category, name) => {
+  const filterEvents = async (e) => {    
     setIsShuffle(false);
     if(e.target.value === "") {
       getAllEvents();
@@ -41,7 +41,6 @@ const Events = () => {
     if(filteredEventsByName.length !== 0) {
       setEvents(filteredEventsByName)
     }
-    console.log(filteredEventsByName)
   }
   // method to shuffle the events array 
   const shuffleArray = (array) => {
@@ -70,6 +69,13 @@ const Events = () => {
           </div>
         </div>
       </div>
+      {/* work on the text to display while searching! */}
+      {/* {isSearch && <div className="mb-3" style={{ color: "#F5737F", fontSize: "1.2rem" }}>
+        <h5 className="font-medium">
+          <span><i class="fa fa-filter mx-2"></i></span>
+          Searching for events...
+        </h5>
+      </div>} */}
       <div
         style={{
           display: 'flex',
@@ -81,20 +87,21 @@ const Events = () => {
       >
       {events
         ? 
-        // (isShuffle ? shuffleArray(events).map((eventData, index) => {
-        //     return (
-        //       <EventCard key={index} index={index} data={eventData} isMyEvents={false} />
-        //     );
-        //   }) 
+        (isShuffle ? shuffleArray(events).map((eventData, index) => {
+            return (
+              <EventCard key={index} index={index} data={eventData} isMyEvents={false} />
+            );
+          }) :
            
             events.filter((event)=>{
               return tab === 0 ?  event.eventType === "SPORTS" :  event.eventType === "CULTURAL"
             }).map((eventData, index) => {
-            return (
-              <EventCard key={index} index={index} data={eventData} isMyEvents={false} />
-            );
-          }) : <Loader />
-      }
+              return (
+                <EventCard key={index} index={index} data={eventData} isMyEvents={false} />
+              );
+            }
+          )
+      ): <Loader />}
       {events.length === 0 && 
       <div className="py-5 w-md-100 w-50 mx-auto text-center d-flex flex-column justify-content-center align-items-center">
           <Lottie animationData={noEvents} loop/>

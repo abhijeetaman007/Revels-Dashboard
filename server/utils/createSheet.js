@@ -13,7 +13,9 @@ const createSheet = async (response, name, id, max, delCard) => {
       const row = i + 1;
       ws.cell(1, headingColumnIndex++).string("userID_" + row);
       ws.cell(1, headingColumnIndex++).string("name_" + row);
-      ws.cell(1, headingColumnIndex++).string("status_" + row);
+      ws.cell(1, headingColumnIndex++).string("college_" + row);
+      if (delCard != null)
+        ws.cell(1, headingColumnIndex++).string("status_" + row);
     }
 
     let rowIndex = 2;
@@ -25,14 +27,17 @@ const createSheet = async (response, name, id, max, delCard) => {
       resp.members.forEach((member) => {
         ws.cell(rowIndex, columnIndex++).string(member.user.userID.toString());
         ws.cell(rowIndex, columnIndex++).string(member.user.name.toString());
-        var x = member.user.delegateCards.includes(delCard)
-          ? 1
-          : member.user.pendingDelegateCards.includes(delCard)
-          ? 2
-          : 0;
-        ws.cell(rowIndex, columnIndex++).string(
-          x == 1 ? "Purchased" : x == 2 ? "Payment Pending" : "Not Purchased"
-        );
+        ws.cell(rowIndex, columnIndex++).string(member.user.college.toString());
+        if (delCard != null) {
+          var x = member.user.delegateCards.includes(delCard)
+            ? 1
+            : member.user.pendingDelegateCards.includes(delCard)
+            ? 2
+            : 0;
+          ws.cell(rowIndex, columnIndex++).string(
+            x == 1 ? "Purchased" : x == 2 ? "Payment Pending" : "Not Purchased"
+          );
+        }
       });
       rowIndex++;
     });

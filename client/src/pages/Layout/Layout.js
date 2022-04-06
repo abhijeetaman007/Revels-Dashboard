@@ -26,7 +26,6 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
     document.querySelector(".notif-wrapper").classList.toggle("active");
   };
   useEffect(() => {
-    console.log(auth.user);
     if (!auth.loading) {
       setLoading(false);
       if (!auth.user) {
@@ -63,7 +62,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <i className="fa fa-times" onClick={handleHamburger}></i>
           </div>
           <div className="side-nav font-medium">
-            <Link to="/dashboard/events">
+            <Link to="/dashboard/events" onClick={handleHamburger}>
               <div
                 className={`side-nav-link ${
                   active === "events" ? "active" : ""
@@ -77,7 +76,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
                 Events
               </div>
             </Link>
-            <Link to="/dashboard/myevents">
+            <Link to="/dashboard/myevents" onClick={handleHamburger}>
               <div
                 className={`side-nav-link ${
                   active === "my-events" ? "active" : ""
@@ -91,7 +90,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
                 My Events
               </div>
             </Link>
-            <Link to="/dashboard/proshow">
+            <Link to="/dashboard/proshow" onClick={handleHamburger}>
               <div
                 className={`side-nav-link ${
                   active === "proshow" ? "active" : ""
@@ -105,7 +104,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
                 Proshow
               </div>
             </Link>
-            <Link to="/dashboard/delegatecard">
+            <Link to="/dashboard/delegatecard" onClick={handleHamburger}>
               <div
                 className={`side-nav-link ${
                   active === "delegate-card" ? "active" : ""
@@ -130,7 +129,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
               <button onClick={auth.userLogout}>Logout</button>
             </div>
             <div className="font-light w-auto text-center mt-5">
-              <div className="text-light" style={{ fontSize: "13px" }}>
+              <div className="text-light" style={{ fontSize: "12px" }}>
                 Made with{" "}
                 <i
                   className="fa fa-heart mx-1"
