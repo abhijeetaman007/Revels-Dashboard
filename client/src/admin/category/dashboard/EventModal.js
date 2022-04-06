@@ -90,6 +90,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams }) => {
   const [numTags, setNumTags] = useState(
     eventdata.tags.length ? eventdata.tags.length : 1
   );
+
   const [data, setData] = useState({
     _id: eventdata._id,
     eventID: eventdata.eventID,
@@ -628,20 +629,30 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams }) => {
             ></i>
             <a
               href={
-                "https://revelsmit.in/api/admin/category/event/participants/" +
-                  data._id +
-                  "/" +
-                  data.eventID +
-                  "/" +
-                  data.name.split("/")[0] +
-                  "/" +
-                  data.maxMembers +
-                  "/" +
-                  localStorage.getItem(ADMIN_TOKEN_ID) +
-                  data.delegateCards.length >
-                0
-                  ? `/${data.delegateCards[0] ? data.delegateCards[0]._id : ""}`
-                  : "none"
+                data.delegateCards.length > 0
+                  ? "https://revelsmit.in/api/admin/category/event/participants/" +
+                    data._id +
+                    "/" +
+                    data.eventID +
+                    "/" +
+                    data.name.split("/")[0] +
+                    "/" +
+                    data.maxMembers +
+                    "/" +
+                    localStorage.getItem(ADMIN_TOKEN_ID) +
+                    "/" +
+                    data.delegateCards[0]._id
+                  : "https://revelsmit.in/api/admin/category/event/participants/" +
+                    data._id +
+                    "/" +
+                    data.eventID +
+                    "/" +
+                    data.name.split("/")[0] +
+                    "/" +
+                    data.maxMembers +
+                    "/" +
+                    localStorage.getItem(ADMIN_TOKEN_ID) +
+                    "/none"
               }
             >
               <i
