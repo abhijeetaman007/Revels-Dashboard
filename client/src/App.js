@@ -144,7 +144,7 @@ function App() {
               path="/schedule"
               element={<OpenPages pageType="coming-soon" />}
             />
-            {/* <Route exact path="/proshow" element={<OpenPages pageType="proshow"/>} /> */}
+            {/* admin routes */}
             <Route exact path="/admin" element={<Login />} />
             <Route
               exact
@@ -156,7 +156,9 @@ function App() {
               }
             />
             <Route exact path="/admin/payment" element={<TicketDashboard />} />
+            {/* landing page route */}
             <Route exact path="/" element={<Landing />} />
+            {/* error 404 route */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>

@@ -37,14 +37,12 @@ const InsideEvent = () => {
   const [teamCreator, setTeamCreator] = useState("");
   const [loading, setloading] = useState(true);
   //MODAL STUFF
-  let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
   function openModal() {
     setIsOpen(true);
   }
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
-    // subtitle.style.color = '#f00';
   }
   function closeModal() {
     setIsOpen(false);
@@ -59,7 +57,6 @@ const InsideEvent = () => {
       );
       setEvent(res.data.data);
       setloading(false);
-      console.log(res.data.data);
       setEventID(res.data.eventid);
     } catch (err) {
       console.log(err);
@@ -75,9 +72,7 @@ const InsideEvent = () => {
       );
       setTeam(res.data.data);
       setRequests(res.data.data.requestedMembers);
-      console.log(res.data.data.members);
       setTeammembers(res.data.data.members);
-      console.log("here ", res.data.data.createdBy);
       setTeamCreator(res.data.data.createdBy);
     } catch (err) {
       console.log(err);
@@ -189,14 +184,9 @@ const InsideEvent = () => {
   };
   if (loading) return <Loader />;
   return (
-    <Layout activeTab={"events"} isAagazVisible={true}>
+    <Layout activeTab="events" isAagazVisible={true}>
       <div className="event-details">
         <div className="cat-event">
-          {/* <img
-            className="category-logo"
-            alt="category-logo"
-            src="https://qph.fs.quoracdn.net/main-qimg-a5b5639f84c719c9d7a861a1cf7d62aa-lq"
-          ></img> */}
           <div className="name-type">
             <p className="font-heavy">{event.eventType} </p>
             <p className="font-light">{event.name}</p>
@@ -222,7 +212,6 @@ const InsideEvent = () => {
               })}
             </>
           )}
-
           {event.eventVenue && (
             <>
               {DataComponent({
@@ -243,21 +232,6 @@ const InsideEvent = () => {
               })}
             </>
           )}
-          {/* {event.delegateCards && (
-            <>
-              {event.delegateCards.length > 1 && (
-                <>
-                  {DataComponent({
-                    icon: "fa-ticket",
-                    heading: "Delegate Cards Required",
-                    text: `${event.delegateCards.map((del, index) => {
-                      return del.name;
-                    })}`,
-                  })}
-                </>
-              )}
-            </>
-          )} */}
         </div>
         <div className="ele font-light">{event.description}</div>
         <br />
@@ -268,9 +242,8 @@ const InsideEvent = () => {
           </p>
         ) : (
           // check if delegateteamcard required by only team leader
-
           <p className="ele font-light" style={{ fontSize: "1.5rem" }}>
-            {" "}
+            {" "} <span><i className="fa fa-ticket mr-2"></i></span>
             No Delegate Card Required
           </p>
         )}
@@ -461,20 +434,15 @@ const InsideEvent = () => {
         ) : (
           <div>
             <div className="event-group">
-              <button
-                style={{ fontSize: "small", fontWeight: "bold" }}
-                onClick={() => copyTextFunc(team.teamID)}
-              >
-                <i className="fa fa-copy mr-1"></i>
-              </button>
-
-              {DataComponent({
-                icon: "fa-info-circle",
-                heading: "Team ID",
-                text: team.teamID,
-              })}
-              {/* fa-copy */}
-
+              <div className="event-data">
+                <div className="d-flex align-items-center">
+                  <i className="fa fa-info-circle mr-1"></i>
+                  <p className="ml-1 grey small-font">Team ID</p>
+                </div>
+                <p className="font-light">{team.teamID}
+                <span><i className="fa fa-copy mx-2" style={{ cursor: "pointer" }} onClick={() => copyTextFunc(team.teamID)}></i></span>
+                </p>
+              </div>
               <div className="event-data">
                 <div className="d-flex align-items-center">
                   <i className="fa fa-users mr-1"></i>

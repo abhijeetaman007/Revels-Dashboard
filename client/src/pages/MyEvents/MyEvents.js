@@ -41,7 +41,7 @@ const MyEvents = () => {
               taeb-direction="left"
               onClick={() => settab(0)}
             >
-              Sports
+              Sports + Gaming
             </div>
             <div
               className={tab === 1 ? 'taeb active font-heavy' : 'taeb'}
@@ -67,7 +67,7 @@ const MyEvents = () => {
             .filter((event) => {
               console.log(event);
               return tab === 0
-                ? event.event.eventType === 'Sports + Gaming'
+                ? event.event.eventType === 'SPORTS'
                 : event.event.eventType === 'CULTURAL';
             })
             .map((eventData, index) => {
