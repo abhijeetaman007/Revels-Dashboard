@@ -106,16 +106,30 @@ const { upload, multipleUpload } = require("../config/aws-s3/multer.config");
 const { requestAtom, responseAtom } = require("./user/atom");
 
 //Routes:
-router.get(
-  "/test",
-  isAdminLoggedIn,
-  hasCategorySuperAdminAccess,
-  (req, res) => {
-    let date = new Date();
-    // console.log(date);
-    res.send("Testing ");
-  }
-);
+// const College = require('../models/College');
+// const User = require('../models/User')
+// router.post(
+//   "/test",
+//   async(req, res) => {
+//     try
+//     {
+//       // let {name} = req.body;
+//     // let colleges =await  College.find({'name': {'$regex': name,$options:'i'}});
+//     // let users = await User.find({'college': {'$regex': 'P.E.S COLLEGE OF ENGINEERING    ',$options:'i'}}).count(  )
+//     // let users = await User.updateMany({'college': {'$regex': 'P.e.s college of engineering',$options:'i'}},{
+//       // college:'PES UNIVERSITY'
+//     // })
+
+//     return res.send({data:"updated"})
+//     }
+//     catch(err)
+//     {
+//       console.log(err)
+//       return res.status(500).send({msg:'Internal server error'})
+//     }
+    
+//   }
+// );
 
 //@User Routes:
 // Auth:

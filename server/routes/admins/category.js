@@ -157,7 +157,7 @@ const getCategoryEvent = async (req, res) => {
         let events = await Event.find({ category: category_Id }).populate(
             'delegateCards'
         );
-        //console.log("events", events);
+        console.log("events", events);
         return res.status(200).send({ success: true, data: events });
     } catch {
         console.log(err);
