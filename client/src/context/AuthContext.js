@@ -49,6 +49,7 @@ export default function AuthProvider({ children }) {
           setAdmin(res.data.data);
           setLoading(false);
           if (res.data.data.role.accessLevel === 3) {
+            console.log(res.data)
             setadminPayment(res.data.data);
             console.log(adminPayment);
             setLoading(false);
