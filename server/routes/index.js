@@ -79,6 +79,7 @@ const {
   addCollege,
   sendEmail,
   getAllRoles,
+  registerMultipleAdmins,
 } = require("./admins/sysAdmin");
 const {
   getAllDelegateCards,
@@ -283,5 +284,6 @@ router.post("/admin/vigilance/user/delegatecard", hasDelegateCard);
 // router.post('/sysadmin/college/add', addCollege);
 // router.post('/sysadmin/sendemail', sendEmail);
 // router.get('/sysadmin/role/getall',getAllRoles)
+// router.post('/sysadmin/admin/register/multiple',registerMultipleAdmins)
 
 module.exports = router;

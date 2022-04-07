@@ -225,6 +225,60 @@ const registerAdmin = async (req, res) => {
             .send({ success: false, msg: 'Internal Server Error' });
     }
 };
+
+// For Multiple Registration from same category
+const registerMultipleAdmins = async (req,res) =>{
+    try
+    {
+        let {admins, type, accessLevel, categoryId} = req.body
+        let category = await Category.findOne({ categoryId });
+        if (!category)
+            return res
+                .status(400)
+                .send({ success: false, msg: 'Category does not exists' });
+        console.log(category)
+
+        console.log("Category _ID",category._id)
+        let role = await Role.findOne(
+            {type, accessLevel,categoryId: category._id }
+        ).populate('categoryId');
+        if (!role)
+            return res
+                .status(400)
+                .send({ success: false, msg: 'Role does not exists' });
+
+        for(let i=0;i<admins.length;i++)
+        {
+        
+            const nanoid = customAlphabet(
+            '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz',
+            8
+          );
+            const pass = nanoid();
+            let newAdmin = new Admin({
+                name:admins[i].name,
+                password: pass,
+                role: role._id,
+                email:admins[i].email,
+                phoneNo:admins[i].phoneNo,
+            });
+            await newAdmin.save();
+            // console.log("New Role ",role)
+            console.log("New Admin ",i+1," : ",newAdmin);
+        }
+        return res.send({success:true,msg:"New Admins Registered"})
+
+    }
+    catch(err)
+    {
+        console.log(err);
+        return res.status(500).send({sucess:false,msg:'Internal Server Error'})
+    }
+}
+
+
+
+
 const getAllRoles = async (req,res)=>{
     try
     {
@@ -299,7 +353,8 @@ module.exports = {
     registerAdmin,
     addCollege,
     sendEmail,
-    getAllRoles
+    getAllRoles,
+    registerMultipleAdmins
 };
 
 // const fixbug = (req,res) =>{
