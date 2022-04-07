@@ -34,7 +34,6 @@ async function cashPayment(delegateCardID, price) {
     }
   );
   let data = resp.data.data;
-
   console.log("POST DATA : ", data);
   return resp;
 }
@@ -113,9 +112,9 @@ function DelegatePage() {
   const auth = useAuth();
   const user = auth.user;
   const isMyDelCard = (delCardId) => {
-    if (user.delegateCards.includes(delCardId)) {
+    if (user.delegateCards.find(d => d._id === delCardId) !== undefined) {
       return 1;
-    } else if (user.pendingDelegateCards.includes(delCardId)) {
+    } else if (user.pendingDelegateCards.find(d => d._id === delCardId) !== undefined) {
       return 2;
     } else {
       return 0;

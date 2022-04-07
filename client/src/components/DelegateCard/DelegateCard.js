@@ -3,7 +3,7 @@ import "./DelegateCard.scss";
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 
-const DelegateCard = ({ displayRazorpay, data, isMahe, cashPay, isBought }) => {
+const DelegateCard = ({ displayRazorpay, data, isMahe, cashPay, isBought }) => { 
   const [bought, setBought] = useState(isBought);
   const auth = useAuth();
   const cardPrice =
