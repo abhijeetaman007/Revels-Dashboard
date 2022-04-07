@@ -131,7 +131,7 @@ const isINF = async (req, res, next) => {
             next()
             return; 
         }
-        if (!(category.type == 'SUPPORTING' && category.categoryId == 'INF' && category.categoryId == "OM")) {
+        if (!(category.type == 'SUPPORTING' && (category.categoryId == 'INF' || category.categoryId == "OM"))) {
             return res
                 .status(403)
                 .send({ msg: 'Access Denied', success: false });
