@@ -11,7 +11,7 @@ const RoleSchema = new mongoose.Schema(
     // 0 - User Roles;
     // 1 - Category Read Only; 2 - Category Read/Write; 3 - Category SuperAdmin;
     // 4 - SuperAdmin
-    // 5 - cash collection
+    // 2 - cash collection,Category INF
     // For Judges Role - 3
     accessLevel: {
       type: Number,
