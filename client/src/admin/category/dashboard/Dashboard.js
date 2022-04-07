@@ -710,7 +710,7 @@ const Dashboard = () => {
                             <a
                               href={
                                 culEvent.delegateCards.length > 0
-                                  ? "http://localhost:5000/api/admin/category/event/participants/" +
+                                  ? "https://revelsmit.in/api/admin/category/event/participants/" +
                                     culEvent._id +
                                     "/" +
                                     culEvent.eventID +
@@ -722,7 +722,7 @@ const Dashboard = () => {
                                     localStorage.getItem(ADMIN_TOKEN_ID) +
                                     "/" +
                                     culEvent.delegateCards[0]._id
-                                  : "http://localhost:5000/api/admin/category/event/participants/" +
+                                  : "https://revelsmit.in/api/admin/category/event/participants/" +
                                     culEvent._id +
                                     "/" +
                                     culEvent.eventID +
