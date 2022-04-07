@@ -145,7 +145,15 @@ function DelegatePage() {
       <div className="d-flex flex-md-row flex-column flex-wrap m-0 p-0">
         {delegateCard.map((data, index) => {
           return (
-            <DelegateCard
+            <>
+           {(data._id === "624f412aa35cb9685d94f1d4" 
+            && user.status === "VERIFIED" 
+            && user.isMahe === 0 && 
+            user.accommodation.required) ||
+            (data._id==="624f412aa35cb9685d94f1d4" 
+            && user.status === "VERIFIED"
+            && user.college==="MANIPAL INSTITUTE OF TECHNOLOGY, BENGALURU") 
+            && <DelegateCard
               key={index}
               colorArr={colorArr}
               idx={index}
@@ -160,7 +168,24 @@ function DelegatePage() {
               }
               cashPay={cashPayment}
               isBought={isMyDelCard(data._id)}
-            />
+            />}
+            {(data._id !== "624f412aa35cb9685d94f1d4") && <DelegateCard
+              key={index}
+              colorArr={colorArr}
+              idx={index}
+              displayRazorpay={displayRazorpay}
+              data={data}
+              isMahe={
+                user.college === "MANIPAL INSTITUTE OF TECHNOLOGY"
+                  ? 1
+                  : user.isMahe
+                  ? 2
+                  : 0
+              }
+              cashPay={cashPayment}
+              isBought={isMyDelCard(data._id)}
+            />}
+            </>
           );
         })}
       </div>
