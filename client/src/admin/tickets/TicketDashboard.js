@@ -18,8 +18,9 @@ function Card({ info, user, searchUser }) {
       : info.nonMahePrice;
   const confirmPayment = async (e, delegateId) => {
     e.preventDefault();
+    const toastId = toast.loading("Loading...");
     try {
-      const toastId = toast.loading("Loading...");
+      
       const token = localStorage.getItem("adminid=");
       if (mode == null || amount == "" || receiptID == "") {
         return toast.error("Please Enter the required details", {
