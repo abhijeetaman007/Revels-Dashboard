@@ -212,7 +212,7 @@ const registerAdmin = async (req, res) => {
         // );
         
         // Node Mailer
-        await mailer(newAdmin.email,"Admin Credentials Revels'22 ",html)
+        // await mailer(newAdmin.email,"Admin Credentials Revels'22 ",html)
         // await mailer("","Admin Credentials Revels'22 ",html)
 
         return res

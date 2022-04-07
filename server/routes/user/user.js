@@ -217,7 +217,7 @@ const userLogin = async (req, res) => {
       { new: true }
     )
       .select({ password: 0 })
-      .populate('delegateCards role');
+      .populate('delegateCards pendingDelegateCards role');
     res.status(200).send({
       success: true,
       msg: 'Login Successful',
@@ -365,6 +365,8 @@ const userPassResetVerify = async (req, res) => {
 const getUserFromToken = async (req, res) => {
   try {
     let user = req.requestUser;
+    user = await User.find({_id:user._id}).select({ password: 0 })
+    .populate('delegateCards pendingDelegateCards role')
     console.log('user', user);
     if (user) return res.send({ success: true, data: user });
     else return res.status(400).send({ success: false, data: 'Invalid Token' });

@@ -379,13 +379,26 @@ const removeFromTeam = async (req, res) => {
 
 const getEventTeam = async (req, res) => {
     try {
+        console.log("Get Team Called")
         let { event_ID } = req.body;
         console.log(event_ID);
         console.log(req.requestUser._id);
-        let team = await Team.findOne({
-            event: event_ID,
-            'members.user': req.requestUser._id,
-        }).populate('members.user requestedMembers', { name: 1 });
+        // let team = await Team.findOne({
+            // event: event_ID,
+            // 'members.user': req.requestUser._id,
+        // }).populate('members.user requestedMembers', { name: 1 });
+
+        let team = await Team.findOne({event: event_ID, 'members.user': req.requestUser._id })
+            .populate({
+                path: 'event',
+                populate: {
+                    path: 'category',
+                },
+            })
+            .populate('members.user requestedMembers')
+            .select({ pasword: 0 })
+
+
         console.log('team', team);
         if (!team)
             return res

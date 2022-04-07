@@ -224,7 +224,7 @@ router.post(
   "/user/payment/approve",
   isAdminLoggedIn,
   isINF,
-  hasCategorySuperAdminAccess,
+  hasReadWriteAccess,
   approvedPendingDelegateCard
 );
 router.post("/user/payment", isUserLoggedIn, registerOrder);
@@ -270,8 +270,8 @@ router.post("/admin/vigilance/user", getUserFromID);
 router.post("/admin/vigilance/user/event", isEventRegistered);
 router.post("/admin/vigilance/user/delegatecard", hasDelegateCard);
 
-// // --------------------------INTERNAL ROUTES-----------------------------------
-// //@SysAdmin Routes - Private Routes for internal use - No frontend needed
+// // // --------------------------INTERNAL ROUTES-----------------------------------
+// // //@SysAdmin Routes - Private Routes for internal use - No frontend needed
 // // router.get('/sysadmin/register/category', categoryRegister);  //changed
 // router.post('/sysadmin/delegatecard/add', addDelegateCard);
 // router.post('/sysadmin/delegatecard/delete', deleteDelegateCard);
