@@ -67,7 +67,10 @@ function Card({ info, user, searchUser }) {
           id: toastId,
         });
     } catch (err) {
-      console.log(err);
+      toast.error(err.response.data.msg, {
+        id: toastId,
+      });
+      console.log(err.response.data.msg);
     }
   };
   return (
