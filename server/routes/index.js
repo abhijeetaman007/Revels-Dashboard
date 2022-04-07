@@ -85,6 +85,7 @@ const {
   getAllDelegateCards,
   getMyDelegateCards,
   getPendingDelegateCards,
+  getProshowCards,
   getAllMyTransactions,
   requestDelegateCard,
   approvedPendingDelegateCard,
@@ -128,7 +129,7 @@ const { requestAtom, responseAtom } = require("./user/atom");
 //       console.log(err)
 //       return res.status(500).send({msg:'Internal server error'})
 //     }
-    
+
 //   }
 // );
 
@@ -207,7 +208,14 @@ router.get(
 router.get(
   "/user/delegatecard/getpendingdelegatecards",
   isAdminLoggedIn,
+  isINF,
   getPendingDelegateCards
+);
+router.get(
+  "/user/delegatecard/getproshowcard",
+  isAdminLoggedIn,
+  isINF,
+  getProshowCards
 );
 router.get(
   "/user/delegatecard/getalltransactions",

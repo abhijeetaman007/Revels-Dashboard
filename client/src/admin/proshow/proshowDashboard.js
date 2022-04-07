@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import logo from "../../assets/logos/logo_white.png";
 import { useParams } from "react-router-dom";
-import "./TicketDashboard.scss";
+import "./Proshow.scss";
 import { useAuth } from "../../context/AuthContext";
 import toast from "react-hot-toast";
 function Card({ info, user, searchUser }) {
@@ -122,7 +122,7 @@ function Card({ info, user, searchUser }) {
     </>
   );
 }
-function TicketDashboard() {
+function ProshowDashboard() {
   const auth = useAuth();
   const [delegateId, setdelegateId] = useState();
   const [user, setuser] = useState();
@@ -133,6 +133,7 @@ function TicketDashboard() {
     console.log(auth.adminPayment);
   }, []);
   const searchUser = async (e) => {
+    console.log("hmm");
     e.preventDefault();
     const token = localStorage.getItem("adminid=");
     console.log(token);
@@ -140,8 +141,7 @@ function TicketDashboard() {
     try {
       console.log({ delegateID: delegateId });
       const res = await axios.get(
-        "/api/user/delegatecard/getpendingdelegatecards?delegateID=" +
-          delegateId,
+        "/api/user/delegatecard/getproshowcard?delegateID=" + delegateId,
 
         {
           headers: {
@@ -149,6 +149,7 @@ function TicketDashboard() {
           },
         }
       );
+      console.log(res.data, "hehe");
       if (res.data.success) {
         setuser(res.data.data);
         toast.success("User Fetched", {
@@ -218,31 +219,20 @@ function TicketDashboard() {
           )}
           <br />
           <br />
-          {user &&
-            user.pendingDelegateCards
-              .filter((pend) => {
-                {
-                  /* for dev: 624f451ea35cb9685d94f1d5 */
-                }
-                return cat === "inf"
-                  ? pend._id !== "624f412aa35cb9685d94f1d4" &&
-                      pend._id !== "624b37324fda25e0e4990ed2"
-                  : pend._id == "624f412aa35cb9685d94f1d4" &&
-                      pend._id !== "624b37324fda25e0e4990ed2";
-              })
-              .map((info, ind) => {
-                return (
-                  <>
-                    <Card
-                      key={ind}
-                      info={info}
-                      user={user}
-                      searchUser={searchUser}
-                    />
-                    <br />
-                  </>
-                );
-              })}
+          {user?.isMahe &&
+            user.pendingDelegateCards.map((info, ind) => {
+              return (
+                <>
+                  <Card
+                    key={ind}
+                    info={info}
+                    user={user}
+                    searchUser={searchUser}
+                  />
+                  <br />
+                </>
+              );
+            })}
           {user && (
             <>
               {user.pendingDelegateCards.length == 0 && (
@@ -259,4 +249,4 @@ function TicketDashboard() {
   );
 }
 
-export default TicketDashboard;
+export default ProshowDashboard;

@@ -3,7 +3,7 @@ import "./DelegateCard.scss";
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 
-const DelegateCard = ({ displayRazorpay, data, isMahe, cashPay, isBought }) => { 
+const DelegateCard = ({ displayRazorpay, data, isMahe, cashPay, isBought }) => {
   const [bought, setBought] = useState(isBought);
   const auth = useAuth();
   const cardPrice =
@@ -13,7 +13,8 @@ const DelegateCard = ({ displayRazorpay, data, isMahe, cashPay, isBought }) => {
       ? data.mahePrice
       : data.nonMahePrice;
   return (
-    data.isActive && (
+    data.isActive &&
+    cardPrice >= 0 && (
       <div
         className={`del-card card-up m-1 ${data.type.toLowerCase()} font-medium`}
       >
@@ -38,9 +39,7 @@ const DelegateCard = ({ displayRazorpay, data, isMahe, cashPay, isBought }) => {
           <div className="blank"></div>
           <div className={`price ${bought && "bought"}`}>
             <div className="clg px-1">
-              {
-                cardPrice === 0 ? <p>FREE</p>  : <p>&#x20B9;{cardPrice}</p>
-              }
+              {cardPrice === 0 ? <p>FREE</p> : <p>&#x20B9;{cardPrice}</p>}
               {bought === 1 ? (
                 <button disabled={true}>Purchased</button>
               ) : bought === 2 && cardPrice !== 0 ? (

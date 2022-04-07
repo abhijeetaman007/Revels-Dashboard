@@ -110,6 +110,24 @@ const getPendingDelegateCards = async (req, res) => {
       .send({ success: false, msg: "Internal Server Error" });
   }
 };
+const getProshowCards = async (req, res) => {
+  try {
+    console.log(req.query);
+    let delegateCards = await User.findOne(
+      {
+        userID: req.query.delegateID,
+        pendingDelegateCards: "624b37324fda25e0e4990ed2",
+      },
+      { "pendingDelegateCards.$": 1, name: 1, userID: 1, isMahe: 1 }
+    ).populate("pendingDelegateCards");
+    return res.status(200).send({ success: true, data: delegateCards });
+  } catch (err) {
+    console.log(err);
+    return res
+      .status(500)
+      .send({ success: false, msg: "Internal Server Error" });
+  }
+};
 
 const getAllDelegateCards = async (req, res) => {
   try {
@@ -189,4 +207,5 @@ module.exports = {
   getPendingDelegateCards,
   requestDelegateCard,
   approvedPendingDelegateCard,
+  getProshowCards,
 };

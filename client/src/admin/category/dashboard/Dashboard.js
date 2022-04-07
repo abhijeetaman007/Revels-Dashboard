@@ -647,9 +647,28 @@ const Dashboard = () => {
         >
           {category.description}
         </div>
-        {(category.categoryId === "INF"  || category.categoryId === "OM") && (
+        {category.categoryId === "PROSHOW" && (
           <>
-            <Link to= {category.categoryId === "INF" ? "/admin/payment/inf" : "/admin/payment/om" }>
+            <Link to="/admin/payment/proshow">
+              <button
+                type="button"
+                className="btn m-2 text-white"
+                style={{ backgroundColor: "#F4737E", width: "200px" }}
+              >
+                Proshow Payment
+              </button>
+            </Link>
+          </>
+        )}
+        {(category.categoryId === "INF" || category.categoryId === "OM") && (
+          <>
+            <Link
+              to={
+                category.categoryId === "INF"
+                  ? "/admin/payment/inf"
+                  : "/admin/payment/om"
+              }
+            >
               <button
                 type="button"
                 className="btn m-2 text-white"
@@ -662,7 +681,10 @@ const Dashboard = () => {
         )}
         {category.categoryId === "SCMIT" && (
           <>
-            <div className="tabs-wrapper font-medium" style={{margin : "0 auto" , marginTop: "2rem"}}>
+            <div
+              className="tabs-wrapper font-medium"
+              style={{ margin: "0 auto", marginTop: "2rem" }}
+            >
               <div
                 className={
                   eventTabSC === 0
@@ -696,7 +718,9 @@ const Dashboard = () => {
             >
               {allEventDetails
                 .filter((culEvent) => {
-                  return eventTabSC==0 ?  culEvent.eventType == "SPORTS" : culEvent.eventType == "CULTURAL";
+                  return eventTabSC == 0
+                    ? culEvent.eventType == "SPORTS"
+                    : culEvent.eventType == "CULTURAL";
                 })
                 .map((culEvent, ind) => {
                   return (

@@ -27,6 +27,7 @@ import Login from "../src/admin/login/login";
 import Dashboard from "./admin/category/dashboard/Dashboard";
 import Rulebook from "./pages/Rulebook/Rulebook";
 import TicketDashboard from "./admin/tickets/TicketDashboard";
+import ProshowDashboard from "./admin/proshow/proshowDashboard";
 import SuccessAnimation from "./components/VerifyAnimation/successAnimation";
 import FailedAnimation from "./components/VerifyAnimation/failedAnimation";
 import CancelledAnimation from "./components/VerifyAnimation/cancelledAnimation";
@@ -137,7 +138,7 @@ function App() {
             <Route
               exact
               path="/events/:eventid"
-              element={<InsideEvent isPublic={true}/>}
+              element={<InsideEvent isPublic={true} />}
             />
             <Route
               exact
@@ -160,7 +161,17 @@ function App() {
                 </AdminPrivateRoute>
               }
             />
-            <Route exact path="/admin/payment/:cat" element={<TicketDashboard />} />
+            <Route
+              exact
+              path="/admin/payment/:cat"
+              element={<TicketDashboard />}
+            />
+            <Route
+              exact
+              path="/admin/payment/proshow"
+              element={<ProshowDashboard />}
+            />
+
             {/* landing page route */}
             <Route exact path="/" element={<Landing />} />
             {/* error 404 route */}
