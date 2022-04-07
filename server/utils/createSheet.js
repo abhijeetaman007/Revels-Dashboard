@@ -14,6 +14,8 @@ const createSheet = async (response, name, id, max, delCard) => {
       ws.cell(1, headingColumnIndex++).string("userID_" + row);
       ws.cell(1, headingColumnIndex++).string("name_" + row);
       ws.cell(1, headingColumnIndex++).string("college_" + row);
+      ws.cell(1, headingColumnIndex++).string("email_" + row);
+      ws.cell(1, headingColumnIndex++).string("phone_" + row);
       if (delCard != null)
         ws.cell(1, headingColumnIndex++).string("status_" + row);
     }
@@ -28,6 +30,10 @@ const createSheet = async (response, name, id, max, delCard) => {
         ws.cell(rowIndex, columnIndex++).string(member.user.userID.toString());
         ws.cell(rowIndex, columnIndex++).string(member.user.name.toString());
         ws.cell(rowIndex, columnIndex++).string(member.user.college.toString());
+        ws.cell(rowIndex, columnIndex++).string(member.user.email.toString());
+        ws.cell(rowIndex, columnIndex++).string(
+          member.user.mobileNumber.toString()
+        );
         if (delCard != null) {
           var x = member.user.delegateCards.includes(delCard)
             ? 1
