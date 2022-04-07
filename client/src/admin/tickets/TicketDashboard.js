@@ -68,7 +68,7 @@ function Card({ info, user, searchUser }) {
           id: toastId,
         });
     } catch (err) {
-      toast.error(error.response.data.msg, {
+      toast.error(err.response.data.msg, {
         id: toastId,
       });
       console.log(err.response.data.msg);
