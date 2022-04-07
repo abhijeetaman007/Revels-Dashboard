@@ -647,19 +647,17 @@ const Dashboard = () => {
         >
           {category.description}
         </div>
-        {category.categoryId === "INF" && (
+        {(category.categoryId === "INF"  || category.categoryId === "OM") && (
           <>
-            <>
-              <Link to="/admin/payment">
-                <button
-                  type="button"
-                  className="btn m-2 text-white"
-                  style={{ backgroundColor: "#F4737E", width: "200px" }}
-                >
-                  Update Payment
-                </button>
-              </Link>
-            </>
+            <Link to= {category.categoryId === "INF" ? "/admin/payment/inf" : "/admin/payment/om" }>
+              <button
+                type="button"
+                className="btn m-2 text-white"
+                style={{ backgroundColor: "#F4737E", width: "200px" }}
+              >
+                Update Payment
+              </button>
+            </Link>
           </>
         )}
         {category.categoryId === "SCMIT" && (

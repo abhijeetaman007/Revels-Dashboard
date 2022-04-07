@@ -33,7 +33,7 @@ import CancelledAnimation from "./components/VerifyAnimation/cancelledAnimation"
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
-  console.log = () => {};
+  // console.log = () => {};
   return (
     <div className="App">
       <BrowserRouter>
@@ -160,7 +160,7 @@ function App() {
                 </AdminPrivateRoute>
               }
             />
-            <Route exact path="/admin/payment" element={<TicketDashboard />} />
+            <Route exact path="/admin/payment/:cat" element={<TicketDashboard />} />
             {/* landing page route */}
             <Route exact path="/" element={<Landing />} />
             {/* error 404 route */}

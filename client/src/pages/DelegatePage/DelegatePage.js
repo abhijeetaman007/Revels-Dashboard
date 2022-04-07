@@ -146,6 +146,7 @@ function DelegatePage() {
         {delegateCard.map((data, index) => {
           return (
             <>
+            {/* display accommodation delegate card for MIT, Bengaluru users */}
            {(data._id === "624f412aa35cb9685d94f1d4" 
             && user.status === "VERIFIED" 
             && user.isMahe === 0 && 
@@ -168,7 +169,7 @@ function DelegatePage() {
               }
               cashPay={cashPayment}
               isBought={isMyDelCard(data._id)}
-            />}
+            />}            
             {(data._id !== "624f412aa35cb9685d94f1d4") && <DelegateCard
               key={index}
               colorArr={colorArr}
