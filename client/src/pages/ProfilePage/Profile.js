@@ -52,6 +52,7 @@ function Profile() {
   useEffect(() => {
     if (!auth.loading) {
       if (!auth.user) {
+        console.log(auth.user)
         navigate("/");
       }
     }

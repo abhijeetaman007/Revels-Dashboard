@@ -25,7 +25,7 @@ export default function AuthProvider({ children }) {
           },
         });
         if (res.data.success) {
-          setUser(res.data.data);
+          setUser(res.data.data[0]);
           setLoading(false);
         }
       } catch (error) {
