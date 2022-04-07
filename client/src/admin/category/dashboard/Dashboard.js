@@ -25,6 +25,8 @@ const Dashboard = () => {
   const [delCards, setDelCards] = useState([]);
 
   const [options, setOptions] = useState([]);
+  const [allEventDetails, setallEventDetails] = useState([]);
+  const [eventTabSC, seteventTabSC] = useState(0);
   const getDelCards = async () => {
     try {
       const res = await axios.get("/api/user/delegatecard/getall");
@@ -39,6 +41,21 @@ const Dashboard = () => {
       setOptions(arr);
     } catch (err) {
       console.log(err);
+    }
+  };
+  const getAllEvents = async () => {
+    console.log("all events");
+    const header = {
+      authorization: localStorage.getItem(ADMIN_TOKEN_ID),
+    };
+    try {
+      const res = await axios.get("/api/admin/operations/getallevents", {
+        headers: header,
+      });
+      setallEventDetails(res.data.data);
+      console.log(res.data.data);
+    } catch (err) {
+      console.log(err.repsonse.data);
     }
   };
   const handleOnChange = (e) => {
@@ -309,10 +326,13 @@ const Dashboard = () => {
     }
   };
   useEffect(() => {
-    if (auth.adminPayment) navigate("/admin/payment");
+    console.log("heeq");
+    getAllEvents();
+    //if (auth.adminPayment) navigate("/admin/payment");
     getDelCards();
     getCategory();
     getEvents();
+    //getAllEvents();
     // getTeams();
   }, []);
   const deleteEvent = async (id) => {
@@ -640,6 +660,97 @@ const Dashboard = () => {
                 </button>
               </Link>
             </>
+          </>
+        )}
+        {category.categoryId === "SCMIT" && (
+          <>
+            <div className="tabs-wrapper font-medium" style={{margin : "0 auto" , marginTop: "2rem"}}>
+              <div
+                className={
+                  eventTabSC === 0
+                    ? "taeb-switch left text-center"
+                    : "taeb-switch right text-center"
+                }
+              >
+                <div
+                  className={
+                    eventTabSC === 0 ? "taeb active font-heavy" : "taeb"
+                  }
+                  taeb-direction="left"
+                  onClick={() => seteventTabSC(0)}
+                >
+                  Sports
+                </div>
+                <div
+                  className={
+                    eventTabSC === 1 ? "taeb active font-heavy" : "taeb"
+                  }
+                  taeb-direction="right"
+                  onClick={() => seteventTabSC(1)}
+                >
+                  Cultural
+                </div>
+              </div>
+            </div>
+            <div
+              className="d-flex flex-wrap justify-content-center align-items-center"
+              style={{ margin: "4rem 5rem" }}
+            >
+              {allEventDetails
+                .filter((culEvent) => {
+                  return eventTabSC==0 ?  culEvent.eventType == "SPORTS" : culEvent.eventType == "CULTURAL";
+                })
+                .map((culEvent, ind) => {
+                  return (
+                    <>
+                      <div className="main-wrapper font-light text-white m-1 rounded p-4">
+                        <div className="d-flex flex-row justify-content-between align-items-center">
+                          {culEvent.name}
+                          <div>
+                            <a
+                              href={
+                                culEvent.delegateCards.length > 0
+                                  ? "http://localhost:5000/api/admin/category/event/participants/" +
+                                    culEvent._id +
+                                    "/" +
+                                    culEvent.eventID +
+                                    "/" +
+                                    culEvent.name.split("/")[0] +
+                                    "/" +
+                                    culEvent.maxMembers +
+                                    "/" +
+                                    localStorage.getItem(ADMIN_TOKEN_ID) +
+                                    "/" +
+                                    culEvent.delegateCards[0]._id
+                                  : "http://localhost:5000/api/admin/category/event/participants/" +
+                                    culEvent._id +
+                                    "/" +
+                                    culEvent.eventID +
+                                    "/" +
+                                    culEvent.name.split("/")[0] +
+                                    "/" +
+                                    culEvent.maxMembers +
+                                    "/" +
+                                    localStorage.getItem(ADMIN_TOKEN_ID) +
+                                    "/none"
+                              }
+                            >
+                              <i
+                                className="edit fa fa-download"
+                                aria-hidden="true"
+                                style={{
+                                  marginRight: "1rem",
+                                  color: "#F4737E",
+                                }}
+                              ></i>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  );
+                })}
+            </div>
           </>
         )}
         {(category.type === "CULTURAL" || category.type === "SPORTS") && (
