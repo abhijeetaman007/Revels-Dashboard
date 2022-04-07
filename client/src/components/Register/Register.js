@@ -19,7 +19,7 @@ const Register = (props) => {
   const [college, setCollege] = useState(
     JSON.stringify({
       _id: "623b754d9823e7b3b02131a9",
-      name: "MANIPAL INSTITUTE OF TECHNOLOGY",
+      name: "--",
       state: "Karnataka",
       isMahe: true,
       createdAt: "2022-03-23T19:30:22.432Z",
@@ -171,7 +171,6 @@ const Register = (props) => {
             onChange={(e) => {
               e.preventDefault();
               let val = JSON.parse(e.target.value);
-              console.log(val)
               setCollege(e.target.value);
               setIsMahe(val.isMahe);
               setEmail("");
