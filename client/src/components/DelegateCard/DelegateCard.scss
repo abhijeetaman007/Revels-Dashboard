@@ -7,11 +7,18 @@ $delPurple: #C6A3FF;
   padding: 20px;
   border-radius: 10px;
   cursor: pointer;
+  background-image: url("./../../assets/delback.svg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: cover;
   h1 {
+    font-size: 30.4px;
     font-size: 1.9rem;
   }
   .del-type {
     border: 1px solid black;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
     padding: 0 5px;
     border-radius: 10px;
@@ -22,11 +29,13 @@ $delPurple: #C6A3FF;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    z-index: 500;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
     p {
+      font-size: 19.2px;
       font-size: 19.2px;
       font-size: 1.2rem;
     }
@@ -45,14 +54,20 @@ $delPurple: #C6A3FF;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
         margin: 10px 0;
         gap: 10px;
         width: 100%;
         h3 {
           font-size: 14.4px;
+          font-size: 14.4px;
           font-size: 0.9rem;
         }
         p {
+          font-size: 32px;
           font-size: 32px;
           font-size: 2rem;
         }
@@ -64,7 +79,7 @@ $delPurple: #C6A3FF;
       border: 0;
       border-radius: 10px;
       padding: 10px 0;
-      background-color: rgba(255, 255, 255, 0.418);      
+      background-color: rgb(228, 228, 228);      
     }
   }
 }
