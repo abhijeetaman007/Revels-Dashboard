@@ -136,6 +136,11 @@ function App() {
             />
             <Route
               exact
+              path="/events/:eventid"
+              element={<InsideEvent isPublic={true}/>}
+            />
+            <Route
+              exact
               path="/tshirts"
               element={<OpenPages pageType="coming-soon" />}
             />

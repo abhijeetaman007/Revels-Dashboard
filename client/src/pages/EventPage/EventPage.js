@@ -6,7 +6,7 @@ import noEvents from "../../assets/noEvents.json";
 import Loader from "../Loader/Loader";
 import "./TabSwitch.css";
 import "./search.scss"
-const Events = () => {
+const Events = ({ isPublic }) => {
   const [events, setEvents] = useState([]);
   const [tab, settab] = useState(0);
   const [isShuffle, setIsShuffle] = useState(true);
@@ -89,7 +89,7 @@ const Events = () => {
         ? 
         (isShuffle ? shuffleArray(events).map((eventData, index) => {
             return (
-              <EventCard key={index} index={index} data={eventData} isMyEvents={false} />
+              <EventCard key={index} index={index} data={eventData} isMyEvents={false} isPublic={isPublic} />
             );
           }) :
            
@@ -97,7 +97,7 @@ const Events = () => {
               return tab === 0 ?  event.eventType === "SPORTS" :  event.eventType === "CULTURAL"
             }).map((eventData, index) => {
               return (
-                <EventCard key={index} index={index} data={eventData} isMyEvents={false} />
+                <EventCard key={index} index={index} data={eventData} isMyEvents={false} isPublic={isPublic}/>
               );
             }
           )
