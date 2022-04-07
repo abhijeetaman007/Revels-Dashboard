@@ -437,6 +437,14 @@ const InsideEvent = ({ isPublic }) => {
           </div>
         </Modal>
         {team === null ? (
+          isPublic 
+          ?
+          <Link to="/login">
+            <button className="font-heavy">
+              Login to Register
+            </button>  
+          </Link>
+          :
           <button onClick={openModal} className="font-heavy">
             Register
           </button>
