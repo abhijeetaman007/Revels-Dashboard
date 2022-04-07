@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import logo from "../../assets/logos/logo_white.png";
+import { useParams } from "react-router-dom";
 import "./TicketDashboard.scss";
 import { useAuth } from "../../context/AuthContext";
 import toast from "react-hot-toast";
@@ -122,6 +123,13 @@ function TicketDashboard() {
   const auth = useAuth();
   const [delegateId, setdelegateId] = useState();
   const [user, setuser] = useState();
+  const { cat } = useParams();
+
+  console.log(user);
+  useEffect(() => {
+    console.log(auth.adminPayment);
+
+  },[])
   const searchUser = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("adminid=");
@@ -165,7 +173,7 @@ function TicketDashboard() {
     <div className="ticket-dash">
       <div className="top">
         <img src={logo} />
-        <h1>Payment Verify</h1>
+        <h1>Payment Verify </h1>
       </div>
       <p>
         <button className="tick-btn" onClick={auth.adminLogout}>
@@ -205,10 +213,13 @@ function TicketDashboard() {
           <br />
           <br />
           {user &&
-            user.pendingDelegateCards.map((info, ind) => {
+            user.pendingDelegateCards.filter((pend) => {
+              {/* for dev: 624f451ea35cb9685d94f1d5 */}
+               return cat === "inf" ? pend._id !== "624f412aa35cb9685d94f1d4" :pend._id == "624f412aa35cb9685d94f1d4";
+            }).map((info, ind) => {
               return (
                 <>
-                  <Card info={info} user={user} searchUser={searchUser} />
+                  <Card key={ind} info={info} user={user} searchUser={searchUser} />
                   <br />
                 </>
               );

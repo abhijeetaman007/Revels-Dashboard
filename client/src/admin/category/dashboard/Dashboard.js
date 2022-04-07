@@ -647,19 +647,17 @@ const Dashboard = () => {
         >
           {category.description}
         </div>
-        {category.categoryId === "INF" && (
+        {(category.categoryId === "INF"  || category.categoryId === "OM") && (
           <>
-            <>
-              <Link to="/admin/payment">
-                <button
-                  type="button"
-                  className="btn m-2 text-white"
-                  style={{ backgroundColor: "#F4737E", width: "200px" }}
-                >
-                  Update Payment
-                </button>
-              </Link>
-            </>
+            <Link to= {category.categoryId === "INF" ? "/admin/payment/inf" : "/admin/payment/om" }>
+              <button
+                type="button"
+                className="btn m-2 text-white"
+                style={{ backgroundColor: "#F4737E", width: "200px" }}
+              >
+                Update Payment
+              </button>
+            </Link>
           </>
         )}
         {category.categoryId === "SCMIT" && (
@@ -710,7 +708,7 @@ const Dashboard = () => {
                             <a
                               href={
                                 culEvent.delegateCards.length > 0
-                                  ? "http://localhost:5000/api/admin/category/event/participants/" +
+                                  ? "https://revelsmit.in/api/admin/category/event/participants/" +
                                     culEvent._id +
                                     "/" +
                                     culEvent.eventID +
@@ -722,7 +720,7 @@ const Dashboard = () => {
                                     localStorage.getItem(ADMIN_TOKEN_ID) +
                                     "/" +
                                     culEvent.delegateCards[0]._id
-                                  : "http://localhost:5000/api/admin/category/event/participants/" +
+                                  : "https://revelsmit.in/api/admin/category/event/participants/" +
                                     culEvent._id +
                                     "/" +
                                     culEvent.eventID +

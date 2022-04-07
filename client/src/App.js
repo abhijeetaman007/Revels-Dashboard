@@ -160,7 +160,7 @@ function App() {
                 </AdminPrivateRoute>
               }
             />
-            <Route exact path="/admin/payment" element={<TicketDashboard />} />
+            <Route exact path="/admin/payment/:cat" element={<TicketDashboard />} />
             {/* landing page route */}
             <Route exact path="/" element={<Landing />} />
             {/* error 404 route */}
