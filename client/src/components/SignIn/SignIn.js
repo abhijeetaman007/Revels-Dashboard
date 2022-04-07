@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 
 const SignIn = (props) => {
@@ -86,9 +86,21 @@ const SignIn = (props) => {
           </div>
           <label>Password</label>
         </div>
-        <button onClick={(e) => handleSubmit(e)} className="font-medium">
+        <button onClick={(e) => handleSubmit(e)} className="login-button font-medium">
           Login
         </button>
+        {sendVerif && (
+          <button className="resend-button font-medium" onClick={async () => {
+            toast.success("Verification Mail Sent Successfully", {
+              position: "bottom-center",
+              id: toast.loading("Loading..."),
+            });
+            setVerifMail(false);
+            const res = await auth.resendVerif(email, password);
+          }}>
+            Resend Verification Mail
+          </button>
+        )}
       </form>
       <div className="my-2 d-flex justify-content-between">
         <p
@@ -111,23 +123,6 @@ const SignIn = (props) => {
           Create Account
         </p>
       </div>
-      {sendVerif && (
-        <div className="user-box d-flex justify-content-center align-items-center">
-          <p
-            onClick={async () => {
-              toast.success("Verification Mail Sent Successfully", {
-                position: "bottom-center",
-                id: toast.loading("Loading..."),
-              });
-              setVerifMail(false);
-              const res = await auth.resendVerif(email, password);
-            }}
-            className="font-medium"
-          >
-            Resend Verification Mail
-          </p>
-        </div>
-      )}
     </div>
   );
 };

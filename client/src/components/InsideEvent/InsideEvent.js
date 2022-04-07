@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import copy from "copy-to-clipboard";
 import toast from "react-hot-toast";
 import { TOKEN_ID } from "../../utils/constants";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Layout from "../../pages/Layout/Layout";
 import Modal from "react-modal";
 import axios from "axios";
 import "./InsideEvent.scss";
 import { useAuth } from "../../context/AuthContext";
 import Loader from "../../pages/Loader/Loader";
+import Navbar from "../Navbar/Navbar";
 const customStyles = {
   content: {
     backgroundColor: "#100b1b",
@@ -22,7 +23,11 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
   },
 };
-const InsideEvent = () => {
+// handles hamburger click on mobiles
+const handleHamburger = () => {
+  document.querySelector(".dash-wrapper").classList.toggle("active");
+};
+const InsideEvent = ({ isPublic }) => {
   const auth = useAuth();
   const header = {
     authorization: localStorage.getItem(TOKEN_ID),
@@ -138,7 +143,6 @@ const InsideEvent = () => {
   };
   const copyTextFunc = (id) => {
     copy(id);
-    console.log(id);
     toast.success("Copied to clipboard");
   };
   // function to handle leave team
@@ -182,10 +186,15 @@ const InsideEvent = () => {
       </div>
     );
   };
-  if (loading) return <Loader />;
-  return (
-    <Layout activeTab="events" isAagazVisible={true}>
-      <div className="event-details">
+  const InsideEventDetails = () => {
+    return (
+      <div className={`event-details ${isPublic && "public-details"}`}>
+        <div className="back-events w-100 d-flex align-items-center">
+          <i className="fa fa-angle-left fa-2x mr-2 my-4"></i>
+          <Link to={isPublic ? "/events" : "/dashboard/events"}>
+            Back to events
+          </Link>
+        </div>
         <div className="cat-event">
           <div className="name-type">
             <p className="font-heavy">{event.eventType} </p>
@@ -428,6 +437,14 @@ const InsideEvent = () => {
           </div>
         </Modal>
         {team === null ? (
+          isPublic 
+          ?
+          <Link to="/login">
+            <button className="font-heavy">
+              Login to Register
+            </button>  
+          </Link>
+          :
           <button onClick={openModal} className="font-heavy">
             Register
           </button>
@@ -561,6 +578,19 @@ const InsideEvent = () => {
           </div>
         )}
       </div>
+    )
+  }
+  if (loading) return <Loader />;
+  return (
+    isPublic 
+    ?
+    <div>
+      <Navbar />
+      <InsideEventDetails />
+    </div> 
+    :
+    <Layout activeTab="events" isAagazVisible={true}>
+      <InsideEventDetails />
     </Layout>
   );
 };

@@ -1,10 +1,10 @@
 import React from 'react';
 import './EventCard.scss';
 import { Link } from 'react-router-dom';
-const EventCard = ({ data, index, isMyEvents }) => {
+const EventCard = ({ data, index, isMyEvents, isPublic }) => {
   const eventPath = isMyEvents
     ? `/dashboard/myevents/${data._id}`
-    : `/dashboard/event/${data._id}`;
+    : ( isPublic ? `/events/${data._id}` : `/dashboard/event/${data._id}`);
   const eventCardColours = ['event-back-1', 'event-back-2'];
   return (
     <div
@@ -47,7 +47,7 @@ const EventCard = ({ data, index, isMyEvents }) => {
                 'Individual'
               ) : (
                 <>
-                  {data.minMembers} - {data.maxMembers}
+                  {data.minMembers === data.maxMembers ? data.maxMembers : data.minMembers + " - " + data.maxMembers}
                 </>
               )}
             </h3>

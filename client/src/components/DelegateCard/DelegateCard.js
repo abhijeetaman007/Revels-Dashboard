@@ -34,19 +34,16 @@ const DelegateCard = ({ displayRazorpay, data, isMahe, cashPay, isBought }) => {
                 )
               )}
             </h1>
-            {/* <p className={`font-light text-white ${bought && "bought"}`}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took
-          </p> */}
           </div>
           <div className="blank"></div>
           <div className={`price ${bought && "bought"}`}>
             <div className="clg px-1">
-              <p>&#x20B9;{cardPrice}</p>
-              {bought == 1 ? (
+              {
+                cardPrice === 0 ? <p>FREE</p>  : <p>&#x20B9;{cardPrice}</p>
+              }
+              {bought === 1 ? (
                 <button disabled={true}>Purchased</button>
-              ) : bought == 2 && cardPrice != 0 ? (
+              ) : bought === 2 && cardPrice !== 0 ? (
                 <>
                   <button disabled={true}>
                     Pay via cash at the nearest Infodesk
@@ -66,13 +63,13 @@ const DelegateCard = ({ displayRazorpay, data, isMahe, cashPay, isBought }) => {
                     disabled={bought}
                     onClick={async () => {
                       const d = await cashPay(data._id, cardPrice);
-                      if (d.status == 200 && cardPrice == 0) setBought(1);
-                      else if (d.status == 200) setBought(2);
+                      if (d.status === 200 && cardPrice === 0) setBought(1);
+                      else if (d.status === 200) setBought(2);
                     }}
                   >
-                    {cardPrice == 0 ? "Buy Now" : "Pay via Cash"}
+                    {cardPrice === 0 ? "Buy Now" : "Pay via Cash"}
                   </button>{" "}
-                  {cardPrice != 0 && (
+                  {cardPrice !== 0 && (
                     <button
                       disabled={bought}
                       onClick={() =>

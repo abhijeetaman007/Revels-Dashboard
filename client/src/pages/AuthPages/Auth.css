@@ -26,7 +26,6 @@ text-align: center;
 padding: 10px;
 margin-top: 50px;
 mix-blend-mode: multiply;
-font-size: 32px;
 font-size: 2rem;
 color: #767676;
 letter-spacing: 9.6px;
@@ -108,7 +107,7 @@ border-image: linear-gradient(to right, #22B6E6 0%, #22B6E6 50%, #1a86aa 100%);
 border-image-slice: 1;
 -webkit-border-image-slice: 1;
 }
-.auth-form button {
+.auth-form button:not(.resend-button) {
   width: 100%;
   border: none;
   background-image: -webkit-linear-gradient(top, #22b6e6, #20aad7, #1e9ec8, #1e9ec8, #1a86aa);
@@ -116,8 +115,23 @@ border-image-slice: 1;
   border-radius: 10px;
   margin: 5px 0;
   padding: 8px;
+  padding: 8px;
   padding: 0.5rem;
   color: white;
+  font-size: 22.4px;
+  font-size: 22.4px;
+  font-size: 1.4rem;
+}
+.resend-button {
+  width: 100%;
+  border: none;
+  background-color: white;
+  border-radius: 10px;
+  margin: 5px 0;
+  padding: 8px;
+  padding: 8px;
+  padding: 0.5rem;
+  font-size: 22.4px;
   font-size: 22.4px;
   font-size: 1.4rem;
 }

@@ -11,7 +11,7 @@ const OpenPages = ({ pageType }) => {
             <Navbar isBackground={true}/>
             {pageType === "events" && 
             <div className="open-page-content">
-                <Events />
+                <Events isPublic={true}/>
             </div>}
             {pageType === "coming-soon" && <ComingSoonDash />}
             {pageType === "proshow" && <Proshow isPublicProshow={true}/>}

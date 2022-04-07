@@ -33,7 +33,7 @@ import CancelledAnimation from "./components/VerifyAnimation/cancelledAnimation"
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
-  console.log = () => {};
+  // console.log = () => {};
   return (
     <div className="App">
       <BrowserRouter>
@@ -133,6 +133,11 @@ function App() {
               exact
               path="/events"
               element={<OpenPages pageType="events" />}
+            />
+            <Route
+              exact
+              path="/events/:eventid"
+              element={<InsideEvent isPublic={true}/>}
             />
             <Route
               exact

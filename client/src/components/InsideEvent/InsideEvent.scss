@@ -9,8 +9,10 @@ $purple: #a974ff;
 .grey{
   color: #c4c4c4;
 }
-
 $event-card-background: #c6a3ff;
+.public-details {
+  padding: 10% 5%;
+}
 .event-details, .reg-area {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -20,6 +22,14 @@ $event-card-background: #c6a3ff;
       -ms-flex-direction: column;
           flex-direction: column;
   color: white;
+  .back-events {
+    a {
+      text-decoration: none;
+      &:hover {
+        color: white;
+      }
+    }
+  }
   button {
     width: fit-content;
     margin: 10px 0;
@@ -137,5 +147,8 @@ $event-card-background: #c6a3ff;
     img {
       height: 70px;
     }
+  }
+  .public-details {
+    padding-top: 40%;
   }
 }
