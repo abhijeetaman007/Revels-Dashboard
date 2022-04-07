@@ -147,13 +147,13 @@ function DelegatePage() {
           return (
             <>
             {/* display accommodation delegate card for MIT, Bengaluru users */}
-           {(data._id === "624f412aa35cb9685d94f1d4" 
+           {((data._id === "624f412aa35cb9685d94f1d4" 
             && user.status === "VERIFIED" 
             && user.isMahe === 0 && 
             user.accommodation.required) ||
             (data._id==="624f412aa35cb9685d94f1d4" 
             && user.status === "VERIFIED"
-            && user.college==="MANIPAL INSTITUTE OF TECHNOLOGY, BENGALURU") 
+            && user.college==="MANIPAL INSTITUTE OF TECHNOLOGY, BENGALURU")) 
             && <DelegateCard
               key={index}
               colorArr={colorArr}
