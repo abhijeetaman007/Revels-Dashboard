@@ -1,6 +1,5 @@
 const Team = require('../../models/Team');
 const Event = require('../../models/Event');
-const { nanoid } = require('nanoid');
 const User = require('../../models/User');
 
 const joinTeam = async (req, res) => {
@@ -144,7 +143,9 @@ const joinTeam = async (req, res) => {
         // check that teammembers are from same college
         console.log(user.college);
         console.log(newTeam.createdBy.college);
-        if (newTeam.createdBy.college != user.college) {
+        console.log("User isMahe is ", user.isMahe)
+        console.log("new Team isMahe is ", newTeam.createdBy.isMahe)
+        if(!((user.isMahe === 1) && (newTeam.createdBy.isMahe === 1))){
             return res.status(400).send({
                 success: false,
                 msg: 'User is not from same college as team creator',
@@ -273,8 +274,8 @@ const addToTeam = async (req, res) => {
         //check that teammembers are from same college
         console.log(member.college);
         console.log(newTeam.createdBy.college);
-        if (newTeam.createdBy.college != member.college) {
-            return res.send({
+        if(!((user.isMahe === 1) && (newTeam.createdBy.isMahe === 1))){
+            return res.status(400).send({
                 success: false,
                 msg: 'User is not from same college as team creator',
             });
