@@ -25,7 +25,7 @@ import NotFound from "./components/NotFound";
 import VerifyEmail from "./pages/VerifyEmail/VerifyEmail";
 import Login from "../src/admin/login/login";
 import Dashboard from "./admin/category/dashboard/Dashboard";
-import Rulebook from "./pages/Rulebook/Rulebook";
+import PdfPage from "./pages/Rulebook/PdfPage";
 import TicketDashboard from "./admin/tickets/TicketDashboard";
 import ProshowDashboard from "./admin/proshow/proshowDashboard";
 import SuccessAnimation from "./components/VerifyAnimation/successAnimation";
@@ -126,7 +126,7 @@ function App() {
               path="/rulebook"
               element={
                 <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.13.216/build/pdf.worker.min.js">
-                  <Rulebook />
+                  <PdfPage pdf="rulebook"/>
                 </Worker>
               }
             />
@@ -148,7 +148,11 @@ function App() {
             <Route
               exact
               path="/schedule"
-              element={<OpenPages pageType="coming-soon" />}
+              element={
+                <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.13.216/build/pdf.worker.min.js">
+                  <PdfPage pdf="schedule-cultural" />
+                </Worker>
+              }
             />
             {/* admin routes */}
             <Route exact path="/admin" element={<Login />} />

@@ -1,4 +1,7 @@
 @import "./../../styles/index.scss";
+.rpv-core__inner-pages {
+    overflow-x: hidden!important;
+}
 .pdf-viewer-wrapper {
     padding-top: 10%;
     width: 50vw;
@@ -11,11 +14,15 @@
     padding-right: 1%;
     position: fixed;
     display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
     bottom: 0;
+    gap: 10px;
+    padding-bottom: 2%;
     button {
         @include button-hover;
+        min-width: 200px;
         background: rgb(85,0,255);
         background: linear-gradient(19deg, rgb(82, 77, 92) 0%, rgba(255,0,78,1) 100%);
         color: white;
@@ -32,6 +39,8 @@
     .download-rule {
         z-index: 99;
         justify-content: center;
+        align-items: center;
+        padding-bottom: 15%;
     }
     .rpv-core__viewer {
         padding-top: 25%;
