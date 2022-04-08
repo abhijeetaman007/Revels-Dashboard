@@ -22,7 +22,7 @@ const PdfPage = ({pdf}) => {
                 <Viewer fileUrl={pdfPath} />;
             </div>
             <div className="download-rule">
-                <a href={pdfPath} download>
+                <a href="https://docs.google.com/spreadsheets/d/1z0cVObbbZ4gcXT5qlXEHZ5x5P-pp73qMP2R4Zosfd-k/edit?usp=drivesdk" target="_blank" rel="noreferrer">
                     <button className="font-medium">
                         Sports Fixtures <span><i className="fa fa-external-link"></i></span>
                     </button>
