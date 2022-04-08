@@ -679,7 +679,7 @@ const Dashboard = () => {
             </Link>
           </>
         )}
-        {(category.categoryId === "SCMIT") && (
+        {(category.categoryId === "SCMIT" || category.categoryId === "VIG") && (
           <>
             <div
               className="tabs-wrapper font-medium"
