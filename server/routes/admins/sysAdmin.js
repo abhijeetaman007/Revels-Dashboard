@@ -320,21 +320,29 @@ const addCollege = async (req, res) => {
 const sendEmail = async (req,res)=>{
     try
     {
-     
-        let email ="";
-        let subject ="";
-        let name ="";
-        let message="";
-        let url = "";
-        let buttonText="";
-        let html = emailTemplate(
-            name,
-            message,
-            url,
-            buttonText
-        );
-        // NodeMailer
-        await mailer(email,subject,html)
+        let {email} = req.body;
+        let admin = await Admin.findOne({email});
+        if(!admin)
+            return res.send({msg:'No Admin Found'});
+
+        console.log("Admin ",admin)
+        // console.log("Total ",admins.length);
+        // for(let i=1;i<admins.length;i++)
+        // {
+            let subject ="Admin Credentials for INF Portal";
+            let name =admin.name;
+            let message=`Please use following credentials for your category related portal.<div><b>Email</b> : ${admin.email} \n <b>Password : </b> ${admin.password}</div>`;
+            let url = `https://revelsmit.in/admin`;
+            let buttonText="INF Portal";
+            let html = emailTemplate(
+                name,
+                message,
+                url,
+                buttonText
+            );
+            // NodeMailer
+            await mailer(email,subject,html)
+        // }
         return res.send({msg:'Email Sent',success:true})
     }
     catch(err)

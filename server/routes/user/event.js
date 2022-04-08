@@ -132,6 +132,9 @@ const getUserTeams = async (req, res) => {
         populate: {
           path: "category",
         },
+        populate: {
+          path: "delegateCards",
+        },
       })
       .populate("members.user requestedMembers")
       .select({ pasword: 0 });
