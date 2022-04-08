@@ -10,6 +10,7 @@ import axios from "axios";
 import Loader from "../Loader/Loader";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
+import { Link } from "react-router-dom";
 function Profile() {
   const navigate = useNavigate();
   const auth = useAuth();
@@ -59,6 +60,7 @@ function Profile() {
   }, []);
 
   const uploadSelectiveDocs = async (e) => {
+    const toastId = toast.loading("Loading...");
     let len=0;
     if(aadhar)len++;
     if(collegeId)len++;
@@ -73,7 +75,6 @@ function Profile() {
     }
     const docs = new FormData();
     e.preventDefault();
-    const toastId = toast.loading("Loading...");
     
     if (aadhar) {
       docs.append("aadhar", aadhar);
@@ -188,22 +189,6 @@ function Profile() {
   };
 
   const updateAccommodation = async () => {
-    // if (!accomodation) {
-    //   toast.error("Choose Accomodation", {
-    //     position: "bottom-center",
-    //     id: toastId,
-    //   });
-    //   return;
-    // }
-
-    // if (!arrivalDateTime) {
-    //   toast.error("Select Arrival Date", {
-    //     position: "bottom-center",
-    //     id: toastId,
-    //   });
-    //   return;
-    // }
-
     try {
       let dateOb = new Date(arrivalDateTime);
       const res = await axios.post(
@@ -259,12 +244,12 @@ function Profile() {
               : "profile-content-area "
           }
         >
-          <div className="back-btn w-100">
+          <Link to="/dashboard/events" style={{textDecoration : "none"}} className="back-btn w-100">
             <i className="fa fa-angle-left fa-2x"></i>
-            <p className="" onClick={() => navigate("/dashboard/events")}>
+            <p>
               Dashboard
             </p>
-          </div>
+          </Link>
           <div className="text">
             <div className="name font-medium">
               <h1>{auth.user.name}</h1>
@@ -430,6 +415,7 @@ function Profile() {
                                 <img
                                   src={modalImage}
                                   style={{ pointerEvents: "none" }}
+                                  alt="Modal Image"
                                 />
                               </Modal>
                               <label>{doc.toUpperCase()}</label>
@@ -454,6 +440,7 @@ function Profile() {
                                   <img
                                     src={modalImage}
                                     style={{ pointerEvents: "none" }}
+                                    alt="Modal Image"
                                   />
                                 </Modal>
                                 <label>{doc.toUpperCase()}</label>
@@ -476,6 +463,7 @@ function Profile() {
                                       pointerEvents: "none",
                                       height: "50%",
                                     }}
+                                    alt='Modal Image'
                                   />
                                 </Modal>
                                 <label

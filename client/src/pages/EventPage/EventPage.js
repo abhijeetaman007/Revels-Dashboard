@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Helmet from "react-helmet";
 import EventCard from "../../components/EventCard/EventCard";
 import Lottie from "lottie-react";
 import noEvents from "../../assets/noEvents.json";
@@ -54,6 +55,44 @@ const Events = ({ isPublic }) => {
   return (
     <>
       <div className="d-flex flex-md-row flex-column align-items-center">
+        <Helmet>
+          <title>Events | Aagaz</title>
+          <meta name='description' content='Events | Aagaz' />
+          <meta name='theme-color' content='#FFFFFF' />
+          <meta
+            name='keywords'
+            content='events, revels, revelsmit, manipal, manipal institute of technology, 2022, sports, cultural, fest, national, aagaz, beginnings'
+          />
+          <meta name='url' content='https://revelsmit.in/events' />
+          <meta name='coverage' content='Worldwide' />
+          <meta name='target' content='all' />
+          <meta name='HandheldFriendly' content='True' />
+          <link rel="canonical" href="https://revelsmit.in/events" />
+          {/* OG meta tags */}
+          <meta property="og:type" content="webpage" />
+          <meta
+            property="og:title"
+            content="Aagaz | Revels '22"
+          />
+          <meta
+            property="og:description"
+            content="Aagaz | Revels '22"
+          />
+          <meta property="og:image" content='' />
+          <meta property="og:url" content='https://revelsmit.in/events' />
+          <meta
+            property="og:site_name"
+            content="Aagaz | Revels '22"
+          />
+          <meta
+            name='twitter:title'
+            content="Aagaz | Revels '22"
+          />
+          <meta
+            name="twitter:description"
+            content="The official website of Aagaz | Revels '22"
+          />
+        </Helmet>
         <div class="search-box font-medium">
           <button class="btn-search"><i class="fa fa-search text-white"></i></button>
           <input type="text" class="input-search" onChange={(e) => filterEvents(e)} placeholder="Type to Search..." />
@@ -69,13 +108,6 @@ const Events = ({ isPublic }) => {
           </div>
         </div>
       </div>
-      {/* work on the text to display while searching! */}
-      {/* {isSearch && <div className="mb-3" style={{ color: "#F5737F", fontSize: "1.2rem" }}>
-        <h5 className="font-medium">
-          <span><i class="fa fa-filter mx-2"></i></span>
-          Searching for events...
-        </h5>
-      </div>} */}
       <div
         style={{
           display: 'flex',

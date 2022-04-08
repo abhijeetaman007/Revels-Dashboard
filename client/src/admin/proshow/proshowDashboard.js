@@ -11,11 +11,9 @@ function Card({ info, user, searchUser }) {
   const [amount, setamount] = useState("");
   const [mode, setmode] = useState(null);
   const price =
-    user.isMahe === 1
+    (user.isMahe === 1 && user.college === "MANIPAL INSTITUTE OF TECHNOLOGY")
       ? info.mitPrice
-      : user.isMahe === 2
-      ? info.nonMitPrice
-      : info.nonMahePrice;
+      : info.mahePrice;
   const confirmPayment = async (e, delegateId) => {
     e.preventDefault();
     const toastId = toast.loading("Loading...");

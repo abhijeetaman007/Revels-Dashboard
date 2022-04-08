@@ -464,26 +464,27 @@ const InsideEvent = ({ isPublic }) => {
                 <div className="d-flex align-items-center">
                   <i className="fa fa-users mr-1"></i>
                   <p className="ml-1 grey small-font">Team Members</p>
+                </div>
+                <p>
                   {/* if team members length is less than minimum  */}
                   {team.members.length < event.minMembers && (
-                    <p className="font-light ml-auto">
-                      &nbsp;({event.minMembers - team.members.length} more
-                      required in team)
+                    <p className="font-light text-muted ml-auto">
+                      &nbsp;{event.minMembers - team.members.length} more
+                      required in team
                     </p>
                   )}
-                  <p></p>
-                </div>
+                  </p>
                 <div className="font-light d-flex">
                   {teammembers.length !== 0
                     ? teammembers.map((member, index) => (
-                        <span className="font-light">
+                        <span className="font-light mr-1">
                           {member.user._id === teamCreator && (
                             <span>
                               <i className="fa fa-star mr-1"></i>
                             </span>
                           )}
                           {member.user.name}
-                          {index !== teammembers.length - 1 && ", "}
+                          {index !== teammembers.length - 1 && ","}
                         </span>
                       ))
                     : null}
@@ -495,9 +496,10 @@ const InsideEvent = ({ isPublic }) => {
                 <div className="font-heavy">REQUESTS</div>
                 {requests.length !== 0 ? (
                   requests.map((x, idx) => (
-                    <div>
-                      {x.name}
+                    <div className="font-medium d-flex align-items-center">
+                      <p className="mr-2">{x.name}</p>
                       <button
+                        className="mr-2"
                         onClick={async () => {
                           try {
                             console.log({
@@ -516,7 +518,6 @@ const InsideEvent = ({ isPublic }) => {
                                 headers: header,
                               }
                             );
-                            console.log("ress3", res);
                             if (res.data.success) {
                               toast.success(res.data.msg);
                               window.location.reload(false);
@@ -529,7 +530,7 @@ const InsideEvent = ({ isPublic }) => {
                           }
                         }}
                       >
-                        Add To team
+                        <i className="fa fa-check"></i>
                       </button>
                       <button
                         onClick={async () => {
@@ -558,7 +559,7 @@ const InsideEvent = ({ isPublic }) => {
                           }
                         }}
                       >
-                        Remove Request
+                        <i className="fa fa-trash"></i>
                       </button>
                     </div>
                   ))
