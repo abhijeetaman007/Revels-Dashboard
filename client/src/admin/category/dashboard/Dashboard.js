@@ -331,7 +331,6 @@ const Dashboard = () => {
     }
   };
   useEffect(() => {
-    console.log("heeq");
     getAllEvents();
     //if (auth.adminPayment) navigate("/admin/payment");
     getDelCards();
@@ -418,6 +417,9 @@ const Dashboard = () => {
     } catch (err) {
       console.log(err);
       toast.error(err.response.data.msg);
+      setTimeout(() => {
+        setScanE(false);
+      }, 500)
       console.log(err.response.data.msg);
     }
   };
@@ -755,7 +757,7 @@ const Dashboard = () => {
           <>
             {dataLoaded && (
               <div className="px-2 w-100 my-3 d-flex justify-content-center">
-                <VigilanceCard data={result} />
+                <VigilanceCard data={result} isEventScan={eventScanQR}/>
               </div>
             )}
             <div style={{ background: "transparent", padding: "16px" }}>
@@ -777,7 +779,6 @@ const Dashboard = () => {
                   />
                 </div>}
               </>
-                
               ) : (
                 <>
                   <button
@@ -932,26 +933,4 @@ const Dashboard = () => {
     </div>
   );
 };
-
-const EventDetails = ({
-  culEvent,
-  setResult,
-  result,
-  eventScanQR,
-  setScan,
-  dataLoaded,
-  setdataLoaded,
-}) => {
-  const handleError = (err) => {
-    console.error(err);
-  };
-
-  const previewStyle = {
-    height: 240,
-    width: 320,
-  };
-
-  return <></>;
-};
-
 export default Dashboard;
