@@ -11,7 +11,7 @@ function Card({ info, user, searchUser }) {
   const [amount, setamount] = useState("");
   const [mode, setmode] = useState(null);
   const price =
-    (user.isMahe === 1 && user.college === "MANIPAL INSTITUTE OF TECHNOLOGY")
+    user.isMahe === 1 && user.college === "MANIPAL INSTITUTE OF TECHNOLOGY"
       ? info.mitPrice
       : info.mahePrice;
   const confirmPayment = async (e, delegateId) => {
@@ -34,14 +34,14 @@ function Card({ info, user, searchUser }) {
           id: toastId,
         });
       }
-
+      console.log(user, auth, "lol");
       const data = {
         delegateId,
         receiptID,
         amount,
         mode,
         user: user._id,
-        adminID: auth.adminPayment._id,
+        adminID: auth.adminPayment ? auth.adminPayment._id : auth.admin._id,
       };
       const res = await axios.post(
         "/api/user/payment/approve",
@@ -65,10 +65,11 @@ function Card({ info, user, searchUser }) {
           id: toastId,
         });
     } catch (err) {
+      console.log(err.toString());
       toast.error(err.response.data.msg, {
         id: toastId,
       });
-      console.log(err.response.data.msg);
+      // console.log(err.toString());
     }
   };
   return (
