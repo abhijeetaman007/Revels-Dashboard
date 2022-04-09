@@ -725,7 +725,7 @@ const Dashboard = () => {
         >
           {category.description}
         </div>
-        {category.categoryId === "PROSHOW" && (
+        {/* {category.categoryId === "PROSHOW" && (
           <>
             <Link to="/admin/payment/proshow">
               <button
@@ -737,14 +737,18 @@ const Dashboard = () => {
               </button>
             </Link>
           </>
-        )}
-        {(category.categoryId === "INF" || category.categoryId === "OM") && (
+        )} */}
+        {(category.categoryId === "INF" ||
+          category.categoryId === "OM" ||
+          category.categoryId === "PROSHOW") && (
           <>
             <Link
               to={
                 category.categoryId === "INF"
                   ? "/admin/payment/inf"
-                  : "/admin/payment/om"
+                  : category.categoryId === "OM"
+                  ? "/admin/payment/om"
+                  : "/admin/payment/proshow"
               }
             >
               <button

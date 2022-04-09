@@ -10,10 +10,13 @@ function Card({ info, user, searchUser }) {
   const [receiptID, setreceiptID] = useState("");
   const [amount, setamount] = useState("");
   const [mode, setmode] = useState(null);
+  console.log(user, info, "deets");
   const price =
-    user.isMahe === 1 && user.college === "MANIPAL INSTITUTE OF TECHNOLOGY"
+    user.college === "MANIPAL INSTITUTE OF TECHNOLOGY"
       ? info.mitPrice
-      : info.mahePrice;
+      : user.isMahe == 1
+      ? info.mahePrice
+      : info.nonMahePrice;
   const confirmPayment = async (e, delegateId) => {
     e.preventDefault();
     const toastId = toast.loading("Loading...");
@@ -129,6 +132,7 @@ function TicketDashboard() {
 
   console.log(user);
   useEffect(() => {
+    console.log(auth.admin);
     console.log(auth.adminPayment);
   }, []);
   const searchUser = async (e) => {
@@ -217,56 +221,70 @@ function TicketDashboard() {
           )}
           <br />
           <br />
-          {user &&
+          {user && (
             <div>
-            {user.pendingDelegateCards
-              .filter((pend) => {
-                {
-                  /* for dev: 624f451ea35cb9685d94f1d5 */
-                }
-                return cat === "inf"
-                  ? pend._id !== "624f412aa35cb9685d94f1d4" &&
+              {user.pendingDelegateCards
+                .filter((pend) => {
+                  {
+                    /* for dev: 624f451ea35cb9685d94f1d5 */
+                  }
+                  return cat === "inf"
+                    ? pend._id !== "624f412aa35cb9685d94f1d4" &&
+                        pend._id !== "624b37324fda25e0e4990ed2"
+                    : cat === "om"
+                    ? pend._id == "624f412aa35cb9685d94f1d4" &&
                       pend._id !== "624b37324fda25e0e4990ed2"
-                  : pend._id == "624f412aa35cb9685d94f1d4" &&
-                      pend._id !== "624b37324fda25e0e4990ed2";
-              })
-              .map((info, ind) => {
-                return (
-                  <>
-                    <Card
-                      key={ind}
-                      info={info}
-                      user={user}
-                      searchUser={searchUser}
-                    />
-                    <br />
-                  </>
-                );
-              })}
-              <h2 className="text-success mb-4 mt-2">{ user.delegateCards.length > 0 ? "Bought delegate cards" : "No other delegate card(s) bought" }</h2>
+                    : pend._id === "624b37324fda25e0e4990ed2";
+                })
+                .map((info, ind) => {
+                  return (
+                    <>
+                      <Card
+                        key={ind}
+                        info={info}
+                        user={user}
+                        searchUser={searchUser}
+                      />
+                      <br />
+                    </>
+                  );
+                })}
+              <h2 className="text-success mb-4 mt-2">
+                {user.delegateCards.length > 0
+                  ? "Bought delegate cards"
+                  : "No other delegate card(s) bought"}
+              </h2>
+
               <div className="d-flex justify-content-center mb-4 flex-wrap">
                 {user.delegateCards
-              .filter((pend) => {
-                {
-                  /* for dev: 624f451ea35cb9685d94f1d5 */
-                }
-                return cat === "inf"
-                  ? pend._id !== "624f412aa35cb9685d94f1d4" &&
-                      pend._id !== "624b37324fda25e0e4990ed2"
-                  : pend._id == "624f412aa35cb9685d94f1d4" &&
-                      pend._id !== "624b37324fda25e0e4990ed2";
-              })
-              .map((info, ind) => {
-                return (
-                  <>
-                    <p className="mx-2"><span><i className="fa fa-check-circle-o mr-1"></i></span>{info.name}</p>
-                    <br />
-                  </>
-                );
-              })}
+                  .filter((pend) => {
+                    {
+                      /* for dev: 624f451ea35cb9685d94f1d5 */
+                    }
+                    return cat === "inf"
+                      ? pend._id !== "624f412aa35cb9685d94f1d4" &&
+                          pend._id !== "624b37324fda25e0e4990ed2"
+                      : cat === "om"
+                      ? pend._id == "624f412aa35cb9685d94f1d4" &&
+                        pend._id !== "624b37324fda25e0e4990ed2"
+                      : pend._id === "624b37324fda25e0e4990ed2";
+                  })
+                  .map((info, ind) => {
+                    return (
+                      <>
+                        <p className="mx-2">
+                          <span>
+                            <i className="fa fa-check-circle-o mr-1"></i>
+                          </span>
+                          {info.name}
+                        </p>
+                        <br />
+                      </>
+                    );
+                  })}
               </div>
-          </div>
-          }
+            </div>
+          )}
           {user && (
             <>
               {user.pendingDelegateCards.length == 0 && (

@@ -170,11 +170,11 @@ function App() {
               path="/admin/payment/:cat"
               element={<TicketDashboard />}
             />
-            <Route
+            {/* <Route
               exact
               path="/admin/payment/proshow"
               element={<ProshowDashboard />}
-            />
+            /> */}
 
             {/* landing page route */}
             <Route exact path="/" element={<Landing />} />

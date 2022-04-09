@@ -143,6 +143,28 @@ const isINF = async (req, res, next) => {
       return;
     }
     if (
+      req.body.data &&
+      req.body?.data.delegateId != "624f412aa35cb9685d94f1d4" &&
+      category.categoryId != "OM"
+    ) {
+      return res.status(403).send({ msg: "Access Denied", success: false });
+    }
+    if (
+      req.body.data &&
+      req.body?.data.delegateId == "624b37324fda25e0e4990ed2" &&
+      category.categoryId != "PROSHOW"
+    ) {
+      return res.status(403).send({ msg: "Access Denied", success: false });
+    }
+    if (
+      req.body.data &&
+      (req.body?.data.delegateId != "624b37324fda25e0e4990ed2" ||
+        req.body?.data.delegateId != "624f412aa35cb9685d94f1d4") &&
+      category.categoryId != "INF"
+    ) {
+      return res.status(403).send({ msg: "Access Denied", success: false });
+    }
+    if (
       !(
         category.type == "SUPPORTING" &&
         (category.categoryId == "INF" ||
@@ -211,23 +233,23 @@ const isCulturalCategory = async (req, res, next) => {
   }
 };
 
-const isEventRegOpen =  async(req,res,next)=>{
-  try
-  {
-    let {eventID} = req.body;
-    let event = await Event.findOne({eventID});
-    if(!event.isActive)
-    {
-      return res.status(400).send({msg:'Event is not accepting registration',success:false})
+const isEventRegOpen = async (req, res, next) => {
+  try {
+    let { eventID } = req.body;
+    let event = await Event.findOne({ eventID });
+    if (!event.isActive) {
+      return res
+        .status(400)
+        .send({ msg: "Event is not accepting registration", success: false });
     }
-    next()
+    next();
+  } catch (err) {
+    console.log(err);
+    return res
+      .status(500)
+      .send({ msg: "Internal Server Error", success: false });
   }
-  catch(err)
-  {
-    console.log(err)
-    return res.status(500).send({msg:'Internal Server Error',success:false});
-  }
-}
+};
 
 module.exports = {
   isCategory,
