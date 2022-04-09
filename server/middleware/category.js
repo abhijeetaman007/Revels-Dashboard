@@ -144,7 +144,7 @@ const isINF = async (req, res, next) => {
     }
     if (
       req.body.data &&
-      req.body?.data.delegateId != "624f412aa35cb9685d94f1d4" &&
+      req.body?.data.delegateId == "624f412aa35cb9685d94f1d4" &&
       category.categoryId != "OM"
     ) {
       return res.status(403).send({ msg: "Access Denied", success: false });
