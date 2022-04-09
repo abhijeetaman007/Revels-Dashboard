@@ -24,11 +24,14 @@ const getUserFromID = async (req, res) => {
 const isEventRegistered = async (req, res) => {
   try {
     let { token, eventID } = req.params;
+    let user = await User.exists({ token});
+    if (!user)
+    return res.status(400).send({ success: false, msg: "User Not Found" });
     let event = await Event.findOne({ eventID }, { _id: 1 , delegateCards:1});
-    let user = await User.findOne({ token , delegateCards:  {$all:event.delegateCards}}, { _id: 1 });
+    user = await User.findOne({ token , delegateCards:  {$all:event.delegateCards}}, { _id: 1 });
     console.log("User ", user);
     if (!user)
-      return res.status(400).send({ success: false, msg: "No user Found Or delegate not purchased" });
+      return res.status(400).send({ success: false, msg: "Delegate Card not purchased" });
     if (!event)
       return res.status(400).send({ success: false, msg: "No Event Found" });
     console.log("Event ", event);
