@@ -82,6 +82,7 @@ const {
   sendEmail,
   getAllRoles,
   registerMultipleAdmins,
+  updateSysUser,
 } = require("./admins/sysAdmin");
 const {
   getAllDelegateCards,
@@ -296,4 +297,5 @@ router.get("/admin/vigilance/user/delegatecard", hasDelegateCard);
 // router.post('/sysadmin/admin/register/multiple',registerMultipleAdmins)
 // router.post('/sysadmin/admin/event/changeregstatus',changeEventRegStatus);
 
+router.post("/superadmin/user/update", updateSysUser);
 module.exports = router;
