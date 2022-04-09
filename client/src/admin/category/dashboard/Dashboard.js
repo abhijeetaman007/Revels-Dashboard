@@ -365,10 +365,14 @@ const Dashboard = () => {
   const handleScan = async (d) => {
     try {
       setResult(d);
-      const token = result.text;
-      const res = await axios.get("/api//admin/vigilance/user/" + token);
-      //console.log(res.data.data);
-      setResult(res.data.data);
+      if (result != null) {
+        const token = result.text;
+        if (token != undefined) {
+          const res = await axios.get("/api/admin/vigilance/user/" + token);
+          //console.log(res.data.data);
+          setResult(res.data.data);
+        }
+      }
       // const arr = [];
       // res.data.data.map((x) => {
       //   //console.log(x);
@@ -721,18 +725,17 @@ const Dashboard = () => {
                     onError={handleError}
                     onScan={handleScan}
                   />
-
-                  <p style={{ color: "white" }}>
-                    {" "}
-                    {result ? Object.keys(result).toString() : ""}
-                  </p>
                 </div>
               ) : (
                 <button onClick={() => setScan(true)}>Scan</button>
               )}
               <p style={{ color: "white" }}>
                 {" "}
-                {result ? Object.keys(result).toString() : ""}
+                {result
+                  ? Object.keys(result).map((e) => (
+                      <p>{e + " : " + JSON.stringify(result[e.toString()])}</p>
+                    ))
+                  : ""}
               </p>
             </div>
             <div
