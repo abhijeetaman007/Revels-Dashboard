@@ -27,7 +27,7 @@ const Dashboard = () => {
   const [eventScanQR, setScanE] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [delCards, setDelCards] = useState([]);
-  const [ eventId , setEventId] = useState();
+  const [eventId, setEventId] = useState();
 
   const [options, setOptions] = useState([]);
   const [allEventDetails, setallEventDetails] = useState([]);
@@ -397,7 +397,7 @@ const Dashboard = () => {
         const token = result.text;
         console.log(token);
         console.log(eventID);
-        
+
         if (token != undefined) {
           const res = await axios.get(
             "/api/admin/vigilance/user/event/" + eventID + "/" + token
@@ -419,7 +419,7 @@ const Dashboard = () => {
       toast.error(err.response.data.msg);
       setTimeout(() => {
         setScanE(false);
-      }, 500)
+      }, 500);
       console.log(err.response.data.msg);
     }
   };
@@ -757,29 +757,57 @@ const Dashboard = () => {
           <>
             {dataLoaded && (
               <div className="px-2 w-100 my-3 d-flex justify-content-center">
-                <VigilanceCard data={result} isEventScan={eventScanQR}/>
+                <VigilanceCard data={result} isEventScan={eventScanQR} />
               </div>
             )}
             <div style={{ background: "transparent", padding: "16px" }}>
-              {!dataLoaded ? (<>
-              {scanQR && <div>
-                  <QrReader
-                    delay={delay}
-                    style={previewStyle}
-                    onError={handleError}
-                    onScan={dataLoaded == false ? handleScan : {}}
-                  />
-                </div>}
-                {eventScanQR && <div>
-                  <QrReader
-                    delay={delay}
-                    style={previewStyle}
-                    onError={handleError}
-                    onScan={dataLoaded == false ? (d) => handleScanEvent(d, eventId ) : {}}
-                  />
-                </div>}
-              </>
-              ) : (
+              {!dataLoaded && (
+                <>
+                  {scanQR && (
+                    <div>
+                      <QrReader
+                        delay={delay}
+                        style={previewStyle}
+                        onError={handleError}
+                        onScan={dataLoaded == false ? handleScan : {}}
+                      />
+                    </div>
+                  )}
+                  {eventScanQR && (
+                    <div>
+                      <QrReader
+                        constraints={{ facingMode: "environment" }}
+                        delay={delay}
+                        style={previewStyle}
+                        onError={handleError}
+                        onScan={
+                          dataLoaded == false
+                            ? (d) => handleScanEvent(d, eventId)
+                            : {}
+                        }
+                      />
+                    </div>
+                  )}
+                </>
+              )}
+              {(scanQR || eventScanQR) && (
+                <center>
+                  {" "}
+                  <button
+                    className="px-4 py-1"
+                    style={{ border: 0, borderRadius: "10px" }}
+                    onClick={() => {
+                      setScan(false);
+                      setScanE(false);
+                      setdataLoaded(false);
+                      setResult({});
+                    }}
+                  >
+                    close
+                  </button>
+                </center>
+              )}
+              {!dataLoaded && !eventScanQR && !scanQR && (
                 <>
                   <button
                     className="px-4 py-1"
@@ -859,7 +887,10 @@ const Dashboard = () => {
                                 marginRight: "1rem",
                                 color: "#F4737E",
                               }}
-                              onClick={() => {setScanE(true); setEventId(culEvent.eventID)}}
+                              onClick={() => {
+                                setScanE(true);
+                                setEventId(culEvent.eventID);
+                              }}
                             ></i>
                           </div>
                           <div>
