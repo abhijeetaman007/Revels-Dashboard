@@ -39,7 +39,7 @@ function Profile() {
     return false;
   };
   const setDocument = (e, type) => {
-    if(!checkFileType(e.target.files[0].type)){
+    if (!checkFileType(e.target.files[0].type)) {
       toast.error("Only image/pdf allowed", {
         position: "bottom-center",
       });
@@ -53,7 +53,7 @@ function Profile() {
   useEffect(() => {
     if (!auth.loading) {
       if (!auth.user) {
-        console.log(auth.user)
+        console.log(auth.user);
         navigate("/");
       }
     }
@@ -61,12 +61,12 @@ function Profile() {
 
   const uploadSelectiveDocs = async (e) => {
     const toastId = toast.loading("Loading...");
-    let len=0;
-    if(aadhar)len++;
-    if(collegeId)len++;
-    if(vaccination)len++;
-    if(undertaking)len++;
-    if (len===0) {
+    let len = 0;
+    if (aadhar) len++;
+    if (collegeId) len++;
+    if (vaccination) len++;
+    if (undertaking) len++;
+    if (len === 0) {
       toast.error("No document selected", {
         position: "bottom-center",
         id: toastId,
@@ -75,7 +75,7 @@ function Profile() {
     }
     const docs = new FormData();
     e.preventDefault();
-    
+
     if (aadhar) {
       docs.append("aadhar", aadhar);
     }
@@ -88,8 +88,7 @@ function Profile() {
     if (undertaking) {
       docs.append("undertaking", undertaking);
     }
-    
-    
+
     try {
       const res = await axios.post("/api/user/update", docs, {
         headers: {
@@ -244,11 +243,13 @@ function Profile() {
               : "profile-content-area "
           }
         >
-          <Link to="/dashboard/events" style={{textDecoration : "none"}} className="back-btn w-100">
+          <Link
+            to="/dashboard/events"
+            style={{ textDecoration: "none" }}
+            className="back-btn w-100"
+          >
             <i className="fa fa-angle-left fa-2x"></i>
-            <p>
-              Dashboard
-            </p>
+            <p>Dashboard</p>
           </Link>
           <div className="text">
             <div className="name font-medium">
@@ -463,7 +464,7 @@ function Profile() {
                                       pointerEvents: "none",
                                       height: "50%",
                                     }}
-                                    alt='Modal Image'
+                                    alt="Modal Image"
                                   />
                                 </Modal>
                                 <label
@@ -476,7 +477,6 @@ function Profile() {
                                 </label>
                                 <input
                                   type="file"
-                                  
                                   onChange={(e) => setDocument(e, `${doc}`)}
                                 />
                                 <button onClick={uploadSelectiveDocs}>
@@ -498,7 +498,28 @@ function Profile() {
                 <span className="font-medium">{auth.user.userID}</span>
               </p>
               <div className="qr">
-                <QRCode value={auth.user.token} size={155} />
+                <QRCode
+                  value={auth.user.token}
+                  size={155}
+                  onClick={() => {
+                    toggleModal();
+                    setmodalImage(null);
+                  }}
+                />
+                <Modal open={open} onClose={() => toggleModal()} center>
+                  {modalImage ? (
+                    <img
+                      src={modalImage}
+                      style={{
+                        pointerEvents: "none",
+                        height: "50%",
+                      }}
+                      alt="Modal Image"
+                    />
+                  ) : (
+                    <QRCode value={auth.user.token} size={755} />
+                  )}
+                </Modal>
               </div>
               {/* <img src="https://media.geeksforgeeks.org/wp-content/uploads/20200716125639/gfg422.jpg" /> */}
             </div>

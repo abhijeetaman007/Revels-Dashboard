@@ -275,9 +275,9 @@ router.get(
 );
 
 // @Vigilance Routes
-router.post("/admin/vigilance/user", getUserFromID);
-router.post("/admin/vigilance/user/event", isEventRegistered);
-router.post("/admin/vigilance/user/delegatecard", hasDelegateCard);
+router.get("/admin/vigilance/user/:token", getUserFromID);
+router.get("/admin/vigilance/user/event", isEventRegistered);
+router.get("/admin/vigilance/user/delegatecard", hasDelegateCard);
 
 // // // --------------------------INTERNAL ROUTES-----------------------------------
 // // //@SysAdmin Routes - Private Routes for internal use - No frontend needed

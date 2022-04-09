@@ -12,6 +12,7 @@ import { useAuth } from "../../../context/AuthContext";
 // import MultiSelect from './MultiSelect';
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
+import QrReader from "react-qr-scanner";
 //import TicketDashboard from '../../tickets/TicketDashboard';
 
 const Dashboard = () => {
@@ -21,6 +22,7 @@ const Dashboard = () => {
     console.log(e);
     setSelDel(e);
   };
+  const [scanQR, setScan] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [delCards, setDelCards] = useState([]);
 
@@ -357,6 +359,34 @@ const Dashboard = () => {
       console.log(err);
     }
   };
+  const [delay, setDelay] = useState(100000);
+  const [result, setResult] = useState("No Result");
+
+  const handleScan = async (d) => {
+    try {
+      setResult(d);
+      const token = result.text;
+      const res = await axios.get("/api//admin/vigilance/user/" + token);
+      //console.log(res.data.data);
+      setResult(res.data.data);
+      // const arr = [];
+      // res.data.data.map((x) => {
+      //   //console.log(x);
+      //   arr.push({ value: x.cardID, label: x.name });
+      // });
+      // //console.log('arr', arr);
+      // setOptions(arr);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const handleError = (err) => {
+    console.error(err);
+  };
+  const previewStyle = {
+    height: 240,
+    width: 320,
+  };
   return (
     <div>
       <Navbar />
@@ -681,6 +711,30 @@ const Dashboard = () => {
         )}
         {(category.categoryId === "SCMIT" || category.categoryId === "VIG") && (
           <>
+            {scanQR && <button onClick={() => setScan(false)}>Stop</button>}
+            <div style={{ background: "transparent", padding: "16px" }}>
+              {scanQR ? (
+                <div>
+                  <QrReader
+                    delay={delay}
+                    style={previewStyle}
+                    onError={handleError}
+                    onScan={handleScan}
+                  />
+
+                  <p style={{ color: "white" }}>
+                    {" "}
+                    {result ? Object.keys(result).toString() : ""}
+                  </p>
+                </div>
+              ) : (
+                <button onClick={() => setScan(true)}>Scan</button>
+              )}
+              <p style={{ color: "white" }}>
+                {" "}
+                {result ? Object.keys(result).toString() : ""}
+              </p>
+            </div>
             <div
               className="tabs-wrapper font-medium"
               style={{ margin: "0 auto", marginTop: "2rem" }}
