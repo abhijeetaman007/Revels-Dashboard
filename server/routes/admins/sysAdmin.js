@@ -219,13 +219,7 @@ const registerAdmin = async (req, res) => {
     //     html,
     //     message
     // );
-
-    // Node Mailer
-    // await mailer(newAdmin.email,"Admin Credentials Revels'22 ",html)
-    // await mailer("","Admin Credentials Revels'22 ",html)
-
-<<<<<<< HEAD
-        // let html = emailTemplate(
+   // let html = emailTemplate(
         //     newAdmin.name,
         //     `Please use following credentials for your category related portal.<div><b>Email</b> : ${newAdmin.email} \n <b>Password : </b> ${newAdmin.password}</div>`,
         //     `https://outstation.revelsmit.in/`,
@@ -262,17 +256,6 @@ const registerAdmin = async (req, res) => {
             .status(500)
             .send({ success: false, msg: 'Internal Server Error' });
     }
-=======
-    return res
-      .status(200)
-      .send({ success: true, msg: "New Admin Registered", data: newAdmin });
-  } catch (err) {
-    console.log(err);
-    return res
-      .status(500)
-      .send({ success: false, msg: "Internal Server Error" });
-  }
->>>>>>> 8dcd5800e9531a1fd2d2f0e0afdb6e0b90e7dcc0
 };
 
 // For Multiple Registration from same category
