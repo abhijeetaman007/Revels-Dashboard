@@ -378,10 +378,11 @@ $text-color: #c4c4c4;
       .profile-content-area {-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=5)";
         width: 100%;
         margin-top: 60px;
-        
         overflow-y: scroll;
         .text {
           width: 80%;
+          word-break: break-all;
+          white-space: pre-wrap;
           margin: 0 auto;
           .grid {
             width: 90%;

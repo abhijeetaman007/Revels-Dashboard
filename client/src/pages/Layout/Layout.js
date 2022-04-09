@@ -119,6 +119,25 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
               </div>
             </Link>
           </div>
+          <div className="px-2 pb-4 d-flex justify-content-center">
+            <Link to="/schedule" onClick={handleHamburger} style={{ textDecoration: "none" }}>
+              <div className="text-muted">
+                <span>
+                  <i className="fa fa-sort-numeric-asc mr-2"></i>
+                </span>
+                Schedule
+              </div>
+            </Link>
+            <p className="mx-2">{" | "}</p>
+            <Link to="/rulebook" onClick={handleHamburger} style={{ textDecoration: "none" }}>
+              <div className="text-muted">
+                <span>
+                  <i className="fa fa-book mr-2"></i>
+                </span>
+                Rulebook
+              </div>
+            </Link>
+          </div>
           <div className="side-footer">
             <h4 className="font-medium">{user.name}</h4>
             <h5 className="font-light">{user.college}</h5>
