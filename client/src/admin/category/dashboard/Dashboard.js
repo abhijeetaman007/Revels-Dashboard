@@ -13,6 +13,7 @@ import { useAuth } from "../../../context/AuthContext";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import QrReader from "react-qr-scanner";
+import VigilanceCard from "../components/Tag/VigilanceCard";
 //import TicketDashboard from '../../tickets/TicketDashboard';
 
 const Dashboard = () => {
@@ -359,9 +360,9 @@ const Dashboard = () => {
       console.log(err);
     }
   };
-  const [delay, setDelay] = useState(100000);
-  const [result, setResult] = useState("No Result");
-
+  const [delay, setDelay] = useState(500);
+  const [result, setResult] = useState({});
+  const [dataLoaded , setdataLoaded] = useState(false);
   const handleScan = async (d) => {
     try {
       setResult(d);
@@ -371,6 +372,7 @@ const Dashboard = () => {
           const res = await axios.get("/api/admin/vigilance/user/" + token);
           //console.log(res.data.data);
           setResult(res.data.data);
+          setdataLoaded(true);
         }
       }
       // const arr = [];
@@ -715,28 +717,24 @@ const Dashboard = () => {
         )}
         {(category.categoryId === "SCMIT" || category.categoryId === "VIG") && (
           <>
-            {scanQR && <button onClick={() => setScan(false)}>Stop</button>}
+            {dataLoaded && <div className="px-2 w-100 my-3 d-flex justify-content-center">
+              <VigilanceCard data={result}/>
+            </div>}
             <div style={{ background: "transparent", padding: "16px" }}>
-              {scanQR ? (
+              {scanQR && !dataLoaded ? (
                 <div>
                   <QrReader
                     delay={delay}
                     style={previewStyle}
                     onError={handleError}
-                    onScan={handleScan}
+                    onScan={dataLoaded == false ? handleScan: {}}
                   />
                 </div>
               ) : (
-                <button onClick={() => setScan(true)}>Scan</button>
-              )}
-              <p style={{ color: "white" }}>
-                {" "}
-                {result
-                  ? Object.keys(result).map((e) => (
-                      <p>{e + " : " + JSON.stringify(result[e.toString()])}</p>
-                    ))
-                  : ""}
-              </p>
+                <>
+                <button className="px-4 py-1" style={{ border: 0, borderRadius: "10px" }} onClick={() => {setScan(true); setdataLoaded(false); setResult({})}}>Scan</button>
+                </>
+              )}              
             </div>
             <div
               className="tabs-wrapper font-medium"
