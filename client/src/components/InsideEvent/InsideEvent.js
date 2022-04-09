@@ -446,27 +446,18 @@ const InsideEvent = ({ isPublic }) => {
             </Link>
           ) : (
             <>
-              {event.eventType === "SPORTS" ? (
-                <>
-                  {event.mode === "ONLINE" ? (
-                    <button onClick={openModal} className="font-heavy">
-                      Register
-                    </button>
-                  ) : (
-                    <button
-                      onClick={openModal}
-                      className="font-heavy"
-                      disabled={true}
-                    >
-                      Registration Closed
-                    </button>
-                  )}
-                </>
-              ) : (
-                <button onClick={openModal} className="font-heavy">
-                  Register
-                </button>
-              )}
+            {
+              event.isActive ? 
+              <button onClick={openModal} className="font-heavy">
+                Register
+              </button> 
+              : <button
+                  className="font-heavy"
+                  disabled={true}
+                >
+                  Registration Closed
+                </button> 
+            }
             </>
           )
         ) : (
