@@ -766,7 +766,7 @@ const Dashboard = () => {
                   {scanQR && (
                     <div>
                       <QrReader
-                        constraints={{ facingMode: "environment", legacyMode: true }}
+                        constraints={{ facingMode: "environment" }}
                         delay={delay}
                         style={previewStyle}
                         onError={handleError}
@@ -777,7 +777,7 @@ const Dashboard = () => {
                   {eventScanQR && (
                     <div>
                       <QrReader
-                        constraints={{ facingMode: "environment", legacyMode: true }}
+                        constraints={{ facingMode: "environment" }}
                         delay={delay}
                         style={previewStyle}
                         onError={handleError}
