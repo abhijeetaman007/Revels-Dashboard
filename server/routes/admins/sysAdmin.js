@@ -193,12 +193,12 @@ const registerAdmin = async (req, res) => {
         //     `https://outstation.revelsmit.in/`,
         //     'OM Portal'
         // );
-        let html = emailTemplate(
-                newAdmin.name,
-                `Please use following credentials for your category related portal.<div><b>Email</b> : ${newAdmin.email} \n <b>Password : </b> ${newAdmin.password}</div>`,
-                `https://revelsmit.in/admin`,
-                'Category portal'
-            );
+        // let html = emailTemplate(
+        //         newAdmin.name,
+        //         `Please use following credentials for your category related portal.<div><b>Email</b> : ${newAdmin.email} \n <b>Password : </b> ${newAdmin.password}</div>`,
+        //         `https://revelsmit.in/admin`,
+        //         'Category portal'
+        //     );
 
         
         // SES
