@@ -252,7 +252,10 @@ const InsideEvent = ({ isPublic }) => {
         ) : (
           // check if delegateteamcard required by only team leader
           <p className="ele font-light" style={{ fontSize: "1.5rem" }}>
-            {" "} <span><i className="fa fa-ticket mr-2"></i></span>
+            {" "}
+            <span>
+              <i className="fa fa-ticket mr-2"></i>
+            </span>
             No Delegate Card Required
           </p>
         )}
@@ -437,17 +440,35 @@ const InsideEvent = ({ isPublic }) => {
           </div>
         </Modal>
         {team === null ? (
-          isPublic 
-          ?
-          <Link to="/login">
-            <button className="font-heavy">
-              Login to Register
-            </button>  
-          </Link>
-          :
-          <button onClick={openModal} className="font-heavy">
-            Register
-          </button>
+          isPublic ? (
+            <Link to="/login">
+              <button className="font-heavy">Login to Register</button>
+            </Link>
+          ) : (
+            <>
+              {event.eventType === "SPORTS" ? (
+                <>
+                  {event.mode === "ONLINE" ? (
+                    <button onClick={openModal} className="font-heavy">
+                      Register
+                    </button>
+                  ) : (
+                    <button
+                      onClick={openModal}
+                      className="font-heavy"
+                      disabled={true}
+                    >
+                      Registration Closed
+                    </button>
+                  )}
+                </>
+              ) : (
+                <button onClick={openModal} className="font-heavy">
+                  Register
+                </button>
+              )}
+            </>
+          )
         ) : (
           <div>
             <div className="event-group">
@@ -456,8 +477,15 @@ const InsideEvent = ({ isPublic }) => {
                   <i className="fa fa-info-circle mr-1"></i>
                   <p className="ml-1 grey small-font">Team ID</p>
                 </div>
-                <p className="font-light">{team.teamID}
-                <span><i className="fa fa-copy mx-2" style={{ cursor: "pointer" }} onClick={() => copyTextFunc(team.teamID)}></i></span>
+                <p className="font-light">
+                  {team.teamID}
+                  <span>
+                    <i
+                      className="fa fa-copy mx-2"
+                      style={{ cursor: "pointer" }}
+                      onClick={() => copyTextFunc(team.teamID)}
+                    ></i>
+                  </span>
                 </p>
               </div>
               <div className="event-data">
@@ -473,7 +501,7 @@ const InsideEvent = ({ isPublic }) => {
                       required in team
                     </p>
                   )}
-                  </p>
+                </p>
                 <div className="font-light d-flex">
                   {teammembers.length !== 0
                     ? teammembers.map((member, index) => (
@@ -579,17 +607,15 @@ const InsideEvent = ({ isPublic }) => {
           </div>
         )}
       </div>
-    )
-  }
+    );
+  };
   if (loading) return <Loader />;
-  return (
-    isPublic 
-    ?
+  return isPublic ? (
     <div>
       <Navbar />
       <InsideEventDetails />
-    </div> 
-    :
+    </div>
+  ) : (
     <Layout activeTab="events" isAagazVisible={true}>
       <InsideEventDetails />
     </Layout>
