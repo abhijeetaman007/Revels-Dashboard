@@ -345,6 +345,7 @@ const updateSysUser = async (req, res) => {
   try {
     let { email, password, userID, mobileNumber, userEmail, userCollege } =
       req.body;
+    let college = {};
     const isAdmin = await Admin.exists({
       email,
       password,
@@ -360,9 +361,19 @@ const updateSysUser = async (req, res) => {
         .json({ msg: "No User Exists with the given userID" });
     userEmail = userEmail ? userEmail : oldUser.email;
     userCollege = userCollege ? userCollege : oldUser.college;
+    if (userCollege) {
+      college = await College.findOne({ name: userCollege });
+      if (!college) return res.status(400).json({ msg: "No Such College" });
+    }
     const user = await User.findOneAndUpdate(
       { userID },
-      { $set: { email: userEmail, college: userCollege } },
+      {
+        $set: {
+          email: userEmail,
+          college: college.name,
+          isMahe: college.isMahe,
+        },
+      },
       { new: true }
     ).select("name email college mobileNumber userID");
     return res
