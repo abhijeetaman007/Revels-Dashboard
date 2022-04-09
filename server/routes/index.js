@@ -276,7 +276,7 @@ router.get(
 
 // @Vigilance Routes
 router.get("/admin/vigilance/user/:token", getUserFromID);
-router.get("/admin/vigilance/user/event", isEventRegistered);
+router.get("/admin/vigilance/user/event/:eventID/:token", isEventRegistered);
 router.get("/admin/vigilance/user/delegatecard", hasDelegateCard);
 
 // // // --------------------------INTERNAL ROUTES-----------------------------------

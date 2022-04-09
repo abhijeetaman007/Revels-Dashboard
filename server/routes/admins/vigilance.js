@@ -23,8 +23,8 @@ const getUserFromID = async (req, res) => {
 };
 const isEventRegistered = async (req, res) => {
   try {
-    let { userID, eventID } = req.body;
-    let user = await User.findOne({ userID }, { _id: 1 });
+    let { token, eventID } = req.params;
+    let user = await User.findOne({ token }, { _id: 1 });
     console.log("User ", user);
     if (!user)
       return res.status(400).send({ success: false, msg: "No user Found" });

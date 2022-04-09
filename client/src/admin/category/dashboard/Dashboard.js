@@ -23,6 +23,7 @@ const Dashboard = () => {
     setSelDel(e);
   };
   const [scanQR, setScan] = useState(false);
+  const [eventScanQR, setScanE] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [delCards, setDelCards] = useState([]);
 
@@ -386,6 +387,30 @@ const Dashboard = () => {
   };
   const handleError = (err) => {
     console.error(err);
+  };
+  const handleScanEvent = async (d, eventID) => {
+    try {
+      setResult(d);
+      if (result != null) {
+        const token = result.text;
+        if (token != undefined) {
+          const res = await axios.get(
+            "/api/admin/vigilance/user/event/" + eventID + "/" + token
+          );
+          //console.log(res.data.data);
+          setResult(res.data.data);
+        }
+      }
+      // const arr = [];
+      // res.data.data.map((x) => {
+      //   //console.log(x);
+      //   arr.push({ value: x.cardID, label: x.name });
+      // });
+      // //console.log('arr', arr);
+      // setOptions(arr);
+    } catch (err) {
+      console.log(err);
+    }
   };
   const previewStyle = {
     height: 240,
@@ -785,6 +810,30 @@ const Dashboard = () => {
                       <div className="main-wrapper font-light text-white m-1 rounded p-4">
                         <div className="d-flex flex-row justify-content-between align-items-center">
                           {culEvent.name}
+                          {eventScanQR && (
+                            <button onClick={() => setScan(false)}>Stop</button>
+                          )}
+                          <div
+                            style={{
+                              background: "transparent",
+                              padding: "16px",
+                            }}
+                          >
+                            {eventScanQR ? (
+                              <div>
+                                <QrReader
+                                  delay={delay}
+                                  style={previewStyle}
+                                  onError={handleError}
+                                  onScan={handleScanEvent}
+                                />
+                              </div>
+                            ) : (
+                              <button onClick={() => setScanE(true)}>
+                                Scan
+                              </button>
+                            )}
+                          </div>
                           <div>
                             <a
                               href={
