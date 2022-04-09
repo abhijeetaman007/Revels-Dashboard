@@ -14,6 +14,7 @@ function Card({ info, user, searchUser }) {
     user?.isMahe === 1 && user.college === "MANIPAL INSTITUTE OF TECHNOLOGY"
       ? info.mitPrice
       : info.mahePrice;
+  console.log(user);
   const confirmPayment = async (e, delegateId) => {
     e.preventDefault();
     const toastId = toast.loading("Loading...");
@@ -168,7 +169,7 @@ function ProshowDashboard() {
   };
 
   const color =
-    user.isMahe === 1 && user.college === "MANIPAL INSTITUTE OF TECHNOLOGY"
+    user?.isMahe === 1 && user.college === "MANIPAL INSTITUTE OF TECHNOLOGY"
       ? "orange"
       : "yellow";
   return (
