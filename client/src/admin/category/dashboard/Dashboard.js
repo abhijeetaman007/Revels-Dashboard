@@ -766,6 +766,7 @@ const Dashboard = () => {
                   {scanQR && (
                     <div>
                       <QrReader
+                        constraints={{ facingMode: "environment", legacyMode: true }}
                         delay={delay}
                         style={previewStyle}
                         onError={handleError}
@@ -776,7 +777,7 @@ const Dashboard = () => {
                   {eventScanQR && (
                     <div>
                       <QrReader
-                        constraints={{ facingMode: "environment" }}
+                        constraints={{ facingMode: "environment", legacyMode: true }}
                         delay={delay}
                         style={previewStyle}
                         onError={handleError}
@@ -794,7 +795,7 @@ const Dashboard = () => {
                 <center>
                   {" "}
                   <button
-                    className="px-4 py-1"
+                    className="px-4 py-1 bg-white"
                     style={{ border: 0, borderRadius: "10px" }}
                     onClick={() => {
                       setScan(false);
@@ -810,7 +811,7 @@ const Dashboard = () => {
               {!dataLoaded && !eventScanQR && !scanQR && (
                 <>
                   <button
-                    className="px-4 py-1"
+                    className="px-4 py-1 bg-white"
                     style={{ border: 0, borderRadius: "10px" }}
                     onClick={() => {
                       setScan(true);
