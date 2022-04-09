@@ -286,6 +286,26 @@ const getAllParticipants = async (req, res) => {
   }
 };
 
+const changeEventRegStatus  = async(req,res) =>{
+  try
+  {
+    let {eventType,status} = req.body;
+    // let event =await Event.findOne({_id:eventType});
+    let event = await Event.updateMany({eventType},{
+      isActive:status
+    },{
+      new:true,
+    });
+    return res.status(200).send({msg:'Event isActive upadated',data:event,success:true});
+  }
+  catch(err)
+  {
+    console.log(err);
+    return res.status(500).send({msg:'Internal Error Server'})
+  }
+}
+
+
 module.exports = {
   registerEvent,
   getUserTeams,
@@ -295,4 +315,5 @@ module.exports = {
   getEventTags,
   filterEvents,
   getAllParticipants,
+  changeEventRegStatus,
 };

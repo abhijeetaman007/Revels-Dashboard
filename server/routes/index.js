@@ -18,6 +18,7 @@ const {
   isSysAdmin,
   isCulturalCategory,
   isINF,
+  isEventRegOpen,
 } = require("../middleware/category");
 const {
   hasReadAccess,
@@ -46,6 +47,7 @@ const {
   getEventTags,
   filterEvents,
   getAllParticipants,
+  changeEventRegStatus,
 } = require("./user/event");
 const {
   addEvent,
@@ -111,20 +113,18 @@ const { requestAtom, responseAtom } = require("./user/atom");
 //Routes:
 // const College = require('../models/College');
 // const User = require('../models/User')
+// const Team = require('../models/Team')
 // router.post(
 //   "/test",
 //   async(req, res) => {
 //     try
 //     {
-//       // let {name} = req.body;
-//     // let colleges =await  College.find({'name': {'$regex': name,$options:'i'}});
-//     // let users = await User.find({'college': {'$regex': 'P.E.S COLLEGE OF ENGINEERING    ',$options:'i'}}).count(  )
-//     // let users = await User.updateMany({'college': {'$regex': 'P.e.s college of engineering',$options:'i'}},{
-//       // college:'PES UNIVERSITY'
-//     // })
-
-//     return res.send({data:"updated"})
-//     }
+//       let teams = await Team.find({event:'6245f1bc3babdcf2b2a99119'});   
+//       for(let i=0;i<teams.length;i++)
+//       {
+//         let found = await User.findOne()
+//       }
+//   }
 //     catch(err)
 //     {
 //       console.log(err)
@@ -186,6 +186,7 @@ router.post(
   "/user/event/register",
   isUserLoggedIn,
   isVerifiedForRevels,
+  isEventRegOpen,
   registerEvent
 );
 router.get(
@@ -280,8 +281,8 @@ router.get("/admin/vigilance/user/:token", getUserFromID);
 router.get("/admin/vigilance/user/event/:eventID/:token", isEventRegistered);
 router.get("/admin/vigilance/user/delegatecard", hasDelegateCard);
 
-// // // --------------------------INTERNAL ROUTES-----------------------------------
-// // //@SysAdmin Routes - Private Routes for internal use - No frontend needed
+// // --------------------------INTERNAL ROUTES-----------------------------------
+// //@SysAdmin Routes - Private Routes for internal use - No frontend needed
 // // router.get('/sysadmin/register/category', categoryRegister);  //changed
 // router.post('/sysadmin/delegatecard/add', addDelegateCard);
 // router.post('/sysadmin/delegatecard/delete', deleteDelegateCard);
@@ -294,6 +295,7 @@ router.get("/admin/vigilance/user/delegatecard", hasDelegateCard);
 // router.post('/sysadmin/sendemail', sendEmail);
 // router.get('/sysadmin/role/getall',getAllRoles)
 // router.post('/sysadmin/admin/register/multiple',registerMultipleAdmins)
+// router.post('/sysadmin/admin/event/changeregstatus',changeEventRegStatus);
 
 router.post("/superadmin/user/update", updateSysUser);
 module.exports = router;

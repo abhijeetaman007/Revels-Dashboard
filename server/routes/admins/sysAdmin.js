@@ -219,20 +219,43 @@ const registerAdmin = async (req, res) => {
     //     html,
     //     message
     // );
+   // let html = emailTemplate(
+        //     newAdmin.name,
+        //     `Please use following credentials for your category related portal.<div><b>Email</b> : ${newAdmin.email} \n <b>Password : </b> ${newAdmin.password}</div>`,
+        //     `https://outstation.revelsmit.in/`,
+        //     'OM Portal'
+        // );
+        // let html = emailTemplate(
+        //         newAdmin.name,
+        //         `Please use following credentials for your category related portal.<div><b>Email</b> : ${newAdmin.email} \n <b>Password : </b> ${newAdmin.password}</div>`,
+        //         `https://revelsmit.in/admin`,
+        //         'Category portal'
+        //     );
 
-    // Node Mailer
-    // await mailer(newAdmin.email,"Admin Credentials Revels'22 ",html)
-    // await mailer("","Admin Credentials Revels'22 ",html)
+        
+        // SES
+        // let message = `You are registered as Admin you can access your category portal with following credentials \n <b>Email : </b> ${newAdmin.email} \n <b>Password : ${newAdmin.pass}</b>\nRegards,\nSystem Admin - Aagaz | Revels '22`;
+        // await sendENotif(newAdmin.email, "Admin Credentials Revels'22", message);
+        // await sendEmailNotif(
+        //     newAdmin.email,
+        //     'Email Verification Revels',
+        //     html,
+        //     message
+        // );
+        
+        // Node Mailer
+        // await mailer(newAdmin.email,"Admin Credentials Revels'22 ",html)
+        // await mailer("","Admin Credentials Revels'22 ",html)
 
-    return res
-      .status(200)
-      .send({ success: true, msg: "New Admin Registered", data: newAdmin });
-  } catch (err) {
-    console.log(err);
-    return res
-      .status(500)
-      .send({ success: false, msg: "Internal Server Error" });
-  }
+        return res
+            .status(200)
+            .send({ success: true, msg: 'New Admin Registered',data:newAdmin });
+    } catch (err) {
+        console.log(err);
+        return res
+            .status(500)
+            .send({ success: false, msg: 'Internal Server Error' });
+    }
 };
 
 // For Multiple Registration from same category
