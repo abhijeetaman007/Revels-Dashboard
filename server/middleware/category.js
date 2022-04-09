@@ -211,6 +211,24 @@ const isCulturalCategory = async (req, res, next) => {
   }
 };
 
+const isEventRegOpen =  async(req,res,next)=>{
+  try
+  {
+    let {eventID} = req.body;
+    let event = await Event.findOne({eventID});
+    if(!event.isActive)
+    {
+      return res.status(400).send({msg:'Event is not accepting registration',success:false})
+    }
+    next()
+  }
+  catch(err)
+  {
+    console.log(err)
+    return res.status(500).send({msg:'Internal Server Error',success:false});
+  }
+}
+
 module.exports = {
   isCategory,
   isOM,
@@ -220,4 +238,5 @@ module.exports = {
   isCulturalCategory,
   isINF,
   isProshow,
+  isEventRegOpen,
 };
