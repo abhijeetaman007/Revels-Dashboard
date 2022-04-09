@@ -517,7 +517,7 @@ function Profile() {
                       alt="Modal Image"
                     />
                   ) : (
-                    <QRCode value={auth.user.token}  size={300} />
+                    <QRCode value={auth.user.token} size={300} />
                   )}
                 </Modal>
               </div>

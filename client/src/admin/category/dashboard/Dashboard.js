@@ -12,7 +12,7 @@ import { useAuth } from "../../../context/AuthContext";
 // import MultiSelect from './MultiSelect';
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-import QrReader from "modern-react-qr-reader";
+import QrReader from "react-web-qr-reader";
 
 import VigilanceCard from "../components/Tag/VigilanceCard";
 //import TicketDashboard from '../../tickets/TicketDashboard';
@@ -366,11 +366,11 @@ const Dashboard = () => {
   const [result, setResult] = useState({});
   const [dataLoaded, setdataLoaded] = useState(false);
   const handleScan = async (d) => {
-    console.log("hanld scan");
     try {
-      setResult(d);
+      setResult(d.data);
       if (result != null) {
-        const token = result.text;
+        console.log("hanld scan", d);
+        const token = result.toString();
         if (token != undefined) {
           const res = await axios.get("/api/admin/vigilance/user/" + token);
           //console.log(res.data.data);
@@ -390,22 +390,25 @@ const Dashboard = () => {
     }
   };
   const handleScanEvent = async (d, eventID) => {
-    console.log("handle scan event");
+    console.log("handle scan event", d);
     try {
-      setResult(d);
+      setResult(d.data);
       if (result != null) {
         console.log(result);
-        const token = result.text;
-        console.log(token);
+        const token = result;
+        console.log(JSON.stringify(result));
         console.log(eventID);
 
-        if (token != undefined) {
+        if (token !== undefined && typeof token === "string") {
           const res = await axios.get(
             "/api/admin/vigilance/user/event/" + eventID + "/" + token
           );
-          console.log(res.data.data);
-          setResult(res.data.data);
-          setdataLoaded(true);
+
+          if (res.data.success) {
+            console.log(res);
+            setResult(res.data.data);
+            setdataLoaded(true);
+          }
         }
       }
       // const arr = [];
@@ -417,7 +420,7 @@ const Dashboard = () => {
       // setOptions(arr);
     } catch (err) {
       console.log(err);
-      toast.error(err.response.data.msg);
+      toast.error(err.response?.data.msg);
       setTimeout(() => {
         setScanE(false);
       }, 500);
@@ -767,7 +770,7 @@ const Dashboard = () => {
                   {scanQR && (
                     <div>
                       <QrReader
-                        constraints={{ facingMode: "environment" }}
+                        // constraints={{ facingMode: "environment" }}
                         delay={delay}
                         style={previewStyle}
                         onError={handleError}
@@ -778,7 +781,7 @@ const Dashboard = () => {
                   {eventScanQR && (
                     <div>
                       <QrReader
-                        constraints={{ facingMode: "environment" }}
+                        // constraints={{ facingMode: "environment" }}
                         delay={delay}
                         style={previewStyle}
                         onError={handleError}
@@ -792,29 +795,15 @@ const Dashboard = () => {
                   )}
                 </>
               )}
-              {(scanQR || eventScanQR) && (
-                <center>
-                  {" "}
-                  <button
-                    className="px-4 py-1 bg-white"
-                    style={{ border: 0, borderRadius: "10px" }}
-                    onClick={() => {
-                      setScan(false);
-                      setScanE(false);
-                      setdataLoaded(false);
-                      setResult({});
-                    }}
-                  >
-                    close
-                  </button>
-                </center>
-              )}
+
               {!dataLoaded && !eventScanQR && !scanQR && (
                 <>
                   <button
                     className="px-4 py-1 bg-white"
                     style={{ border: 0, borderRadius: "10px" }}
                     onClick={() => {
+                      setResult({});
+                      setScanE(false);
                       setScan(true);
                       setdataLoaded(false);
                       setResult({});
@@ -825,6 +814,23 @@ const Dashboard = () => {
                 </>
               )}
             </div>
+            {(eventScanQR || scanQR) && (
+              <center>
+                {" "}
+                <button
+                  className="px-4 py-1 bg-white"
+                  style={{ border: 0, borderRadius: "10px" }}
+                  onClick={() => {
+                    setScan(false);
+                    setScanE(false);
+                    setdataLoaded(false);
+                    setResult({});
+                  }}
+                >
+                  close
+                </button>
+              </center>
+            )}
             <div
               className="tabs-wrapper font-medium"
               style={{ margin: "0 auto", marginTop: "2rem" }}
@@ -890,7 +896,10 @@ const Dashboard = () => {
                                 color: "#F4737E",
                               }}
                               onClick={() => {
+                                setResult({});
+                                setScan(false);
                                 setScanE(true);
+                                setdataLoaded(false);
                                 setEventId(culEvent.eventID);
                               }}
                             ></i>

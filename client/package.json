@@ -12,6 +12,7 @@
     "copy-to-clipboard": "^3.3.1",
     "dotenv": "^16.0.0",
     "lottie-react": "^2.2.1",
+    "modern-react-qr-reader": "^1.0.12",
     "moment": "^2.29.1",
     "node-sass": "^7.0.1",
     "parallax-js": "^3.1.0",
@@ -29,6 +30,7 @@
     "react-scripts": "5.0.0",
     "react-select": "^5.2.2",
     "react-tabs": "^4.0.1",
+    "react-web-qr-reader": "^1.0.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -126,7 +126,7 @@ function App() {
               path="/rulebook"
               element={
                 <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.13.216/build/pdf.worker.min.js">
-                  <PdfPage pdf="rulebook"/>
+                  <PdfPage pdf="rulebook" />
                 </Worker>
               }
             />
