@@ -218,7 +218,8 @@ function TicketDashboard() {
           <br />
           <br />
           {user &&
-            user.pendingDelegateCards
+            <div>
+            {user.pendingDelegateCards
               .filter((pend) => {
                 {
                   /* for dev: 624f451ea35cb9685d94f1d5 */
@@ -242,6 +243,30 @@ function TicketDashboard() {
                   </>
                 );
               })}
+              <h2 className="text-success mb-4 mt-2">{ user.delegateCards.length > 0 ? "Bought delegate cards" : "No other delegate card(s) bought" }</h2>
+              <div className="d-flex justify-content-center mb-4 flex-wrap">
+                {user.delegateCards
+              .filter((pend) => {
+                {
+                  /* for dev: 624f451ea35cb9685d94f1d5 */
+                }
+                return cat === "inf"
+                  ? pend._id !== "624f412aa35cb9685d94f1d4" &&
+                      pend._id !== "624b37324fda25e0e4990ed2"
+                  : pend._id == "624f412aa35cb9685d94f1d4" &&
+                      pend._id !== "624b37324fda25e0e4990ed2";
+              })
+              .map((info, ind) => {
+                return (
+                  <>
+                    <p className="mx-2"><span><i className="fa fa-check-circle-o mr-1"></i></span>{info.name}</p>
+                    <br />
+                  </>
+                );
+              })}
+              </div>
+          </div>
+          }
           {user && (
             <>
               {user.pendingDelegateCards.length == 0 && (
