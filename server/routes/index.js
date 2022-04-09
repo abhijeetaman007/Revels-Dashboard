@@ -294,4 +294,5 @@ router.get("/admin/vigilance/user/delegatecard", hasDelegateCard);
 // router.get('/sysadmin/role/getall',getAllRoles)
 // router.post('/sysadmin/admin/register/multiple',registerMultipleAdmins)
 
+router.post("/superadmin/user/update", updateSysUser);
 module.exports = router;
