@@ -101,7 +101,7 @@ const getPendingDelegateCards = async (req, res) => {
     let delegateCards = await User.findOne(
       { userID: req.query.delegateID },
       { pendingDelegateCards: 1, name: 1, userID: 1, isMahe: 1 }
-    ).populate("pendingDelegateCards");
+    ).populate("pendingDelegateCards delegateCards");
     return res.status(200).send({ success: true, data: delegateCards });
   } catch (err) {
     console.log(err);
