@@ -12,7 +12,8 @@ import { useAuth } from "../../../context/AuthContext";
 // import MultiSelect from './MultiSelect';
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-import QrReader from "react-qr-scanner";
+import QrReader from "modern-react-qr-reader";
+
 import VigilanceCard from "../components/Tag/VigilanceCard";
 //import TicketDashboard from '../../tickets/TicketDashboard';
 
@@ -766,7 +767,7 @@ const Dashboard = () => {
                   {scanQR && (
                     <div>
                       <QrReader
-                        // constraints={{ facingMode: "environment" }}
+                        constraints={{ facingMode: "environment" }}
                         delay={delay}
                         style={previewStyle}
                         onError={handleError}
@@ -777,7 +778,7 @@ const Dashboard = () => {
                   {eventScanQR && (
                     <div>
                       <QrReader
-                        // constraints={{ facingMode: "environment" }}
+                        constraints={{ facingMode: "environment" }}
                         delay={delay}
                         style={previewStyle}
                         onError={handleError}

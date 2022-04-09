@@ -11,7 +11,7 @@ function Card({ info, user, searchUser }) {
   const [amount, setamount] = useState("");
   const [mode, setmode] = useState(null);
   const price =
-    (user.isMahe === 1 && user.college === "MANIPAL INSTITUTE OF TECHNOLOGY")
+    user.isMahe === 1 && user.college === "MANIPAL INSTITUTE OF TECHNOLOGY"
       ? info.mitPrice
       : info.mahePrice;
   const confirmPayment = async (e, delegateId) => {
@@ -167,13 +167,10 @@ function ProshowDashboard() {
     }
   };
 
-  const color = user
-    ? user.isMahe == 2
-      ? "yellow"
-      : user.isMahe == 1
+  const color =
+    user.isMahe === 1 && user.college === "MANIPAL INSTITUTE OF TECHNOLOGY"
       ? "orange"
-      : "lightblue"
-    : "white";
+      : "yellow";
   return (
     <div className="ticket-dash">
       <div className="top">
