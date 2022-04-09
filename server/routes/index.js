@@ -80,6 +80,7 @@ const {
   sendEmail,
   getAllRoles,
   registerMultipleAdmins,
+  updateSysUser,
 } = require("./admins/sysAdmin");
 const {
   getAllDelegateCards,
