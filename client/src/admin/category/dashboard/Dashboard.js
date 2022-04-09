@@ -13,6 +13,7 @@ import { useAuth } from "../../../context/AuthContext";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import QrReader from "react-qr-scanner";
+import VigilanceCard from "../components/Tag/VigilanceCard";
 //import TicketDashboard from '../../tickets/TicketDashboard';
 
 const Dashboard = () => {
@@ -26,6 +27,7 @@ const Dashboard = () => {
   const [eventScanQR, setScanE] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [delCards, setDelCards] = useState([]);
+  const [ eventId , setEventId] = useState();
 
   const [options, setOptions] = useState([]);
   const [allEventDetails, setallEventDetails] = useState([]);
@@ -360,10 +362,11 @@ const Dashboard = () => {
       console.log(err);
     }
   };
-  const [delay, setDelay] = useState(100000);
-  const [result, setResult] = useState("No Result");
-
+  const [delay, setDelay] = useState(500);
+  const [result, setResult] = useState({});
+  const [dataLoaded, setdataLoaded] = useState(false);
   const handleScan = async (d) => {
+    console.log("hanld scan");
     try {
       setResult(d);
       if (result != null) {
@@ -372,6 +375,7 @@ const Dashboard = () => {
           const res = await axios.get("/api/admin/vigilance/user/" + token);
           //console.log(res.data.data);
           setResult(res.data.data);
+          setdataLoaded(true);
         }
       }
       // const arr = [];
@@ -383,35 +387,44 @@ const Dashboard = () => {
       // setOptions(arr);
     } catch (err) {
       console.log(err);
+    }
+  };
+  const handleScanEvent = async (d, eventID) => {
+    console.log("handle scan event");
+    try {
+      setResult(d);
+      if (result != null) {
+        console.log(result);
+        const token = result.text;
+        console.log(token);
+        console.log(eventID);
+        
+        if (token != undefined) {
+          const res = await axios.get(
+            "/api/admin/vigilance/user/event/" + eventID + "/" + token
+          );
+          console.log(res.data.data);
+          setResult(res.data.data);
+          setdataLoaded(true);
+        }
+      }
+      // const arr = [];
+      // res.data.data.map((x) => {
+      //   //console.log(x);
+      //   arr.push({ value: x.cardID, label: x.name });
+      // });
+      // //console.log('arr', arr);
+      // setOptions(arr);
+    } catch (err) {
+      console.log(err);
+      toast.error(err.response.data.msg);
+      console.log(err.response.data.msg);
     }
   };
   const handleError = (err) => {
     console.error(err);
   };
-  const handleScanEvent = async (d, eventID) => {
-    try {
-      setResult(d);
-      if (result != null) {
-        const token = result.text;
-        if (token != undefined) {
-          const res = await axios.get(
-            "/api/admin/vigilance/user/event/" + eventID + "/" + token
-          );
-          //console.log(res.data.data);
-          setResult(res.data.data);
-        }
-      }
-      // const arr = [];
-      // res.data.data.map((x) => {
-      //   //console.log(x);
-      //   arr.push({ value: x.cardID, label: x.name });
-      // });
-      // //console.log('arr', arr);
-      // setOptions(arr);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+
   const previewStyle = {
     height: 240,
     width: 320,
@@ -740,28 +753,46 @@ const Dashboard = () => {
         )}
         {(category.categoryId === "SCMIT" || category.categoryId === "VIG") && (
           <>
-            {scanQR && <button onClick={() => setScan(false)}>Stop</button>}
+            {dataLoaded && (
+              <div className="px-2 w-100 my-3 d-flex justify-content-center">
+                <VigilanceCard data={result} />
+              </div>
+            )}
             <div style={{ background: "transparent", padding: "16px" }}>
-              {scanQR ? (
-                <div>
+              {!dataLoaded ? (<>
+              {scanQR && <div>
                   <QrReader
                     delay={delay}
                     style={previewStyle}
                     onError={handleError}
-                    onScan={handleScan}
+                    onScan={dataLoaded == false ? handleScan : {}}
                   />
-                </div>
+                </div>}
+                {eventScanQR && <div>
+                  <QrReader
+                    delay={delay}
+                    style={previewStyle}
+                    onError={handleError}
+                    onScan={dataLoaded == false ? (d) => handleScanEvent(d, eventId ) : {}}
+                  />
+                </div>}
+              </>
+                
               ) : (
-                <button onClick={() => setScan(true)}>Scan</button>
+                <>
+                  <button
+                    className="px-4 py-1"
+                    style={{ border: 0, borderRadius: "10px" }}
+                    onClick={() => {
+                      setScan(true);
+                      setdataLoaded(false);
+                      setResult({});
+                    }}
+                  >
+                    Scan
+                  </button>
+                </>
               )}
-              <p style={{ color: "white" }}>
-                {" "}
-                {result
-                  ? Object.keys(result).map((e) => (
-                      <p>{e + " : " + JSON.stringify(result[e.toString()])}</p>
-                    ))
-                  : ""}
-              </p>
             </div>
             <div
               className="tabs-wrapper font-medium"
@@ -807,32 +838,28 @@ const Dashboard = () => {
                 .map((culEvent, ind) => {
                   return (
                     <>
+                      {/* <EventDetails culEvent={culEvent}  setResult={setResult} result={result} eventScanQR={eventScanQR} setScan={setScan} dataLoaded={dataLoaded} setdataLoaded={setdataLoaded}/> */}
                       <div className="main-wrapper font-light text-white m-1 rounded p-4">
                         <div className="d-flex flex-row justify-content-between align-items-center">
                           {culEvent.name}
-                          {eventScanQR && (
+                          {/* {eventScanQR && (
                             <button onClick={() => setScan(false)}>Stop</button>
-                          )}
+                          )} */}
                           <div
                             style={{
                               background: "transparent",
                               padding: "16px",
                             }}
                           >
-                            {eventScanQR ? (
-                              <div>
-                                <QrReader
-                                  delay={delay}
-                                  style={previewStyle}
-                                  onError={handleError}
-                                  onScan={handleScanEvent}
-                                />
-                              </div>
-                            ) : (
-                              <button onClick={() => setScanE(true)}>
-                                Scan
-                              </button>
-                            )}
+                            <i
+                              className="edit fa fa-qrcode"
+                              aria-hidden="true"
+                              style={{
+                                marginRight: "1rem",
+                                color: "#F4737E",
+                              }}
+                              onClick={() => {setScanE(true); setEventId(culEvent.eventID)}}
+                            ></i>
                           </div>
                           <div>
                             <a
@@ -904,6 +931,27 @@ const Dashboard = () => {
       </div>
     </div>
   );
+};
+
+const EventDetails = ({
+  culEvent,
+  setResult,
+  result,
+  eventScanQR,
+  setScan,
+  dataLoaded,
+  setdataLoaded,
+}) => {
+  const handleError = (err) => {
+    console.error(err);
+  };
+
+  const previewStyle = {
+    height: 240,
+    width: 320,
+  };
+
+  return <></>;
 };
 
 export default Dashboard;
