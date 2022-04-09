@@ -142,6 +142,7 @@ const isINF = async (req, res, next) => {
       next();
       return;
     }
+    //OM
     if (
       req.body.data &&
       req.body?.data.delegateId == "624f412aa35cb9685d94f1d4" &&
@@ -151,11 +152,27 @@ const isINF = async (req, res, next) => {
     }
     if (
       req.body.data &&
+      req.body?.data.delegateId != "624f412aa35cb9685d94f1d4" &&
+      category.categoryId == "OM"
+    ) {
+      return res.status(403).send({ msg: "Access Denied", success: false });
+    }
+    //PROSHOW
+    if (
+      req.body.data &&
       req.body?.data.delegateId == "624b37324fda25e0e4990ed2" &&
       category.categoryId != "PROSHOW"
     ) {
       return res.status(403).send({ msg: "Access Denied", success: false });
     }
+    if (
+      req.body.data &&
+      req.body?.data.delegateId != "624b37324fda25e0e4990ed2" &&
+      category.categoryId == "PROSHOW"
+    ) {
+      return res.status(403).send({ msg: "Access Denied", success: false });
+    }
+    //
     if (
       req.body.data &&
       (req.body?.data.delegateId == "624b37324fda25e0e4990ed2" ||
