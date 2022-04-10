@@ -112,13 +112,27 @@ function DelegatePage() {
   const auth = useAuth();
   const user = auth.user;
   const isMyDelCard = (delCardId) => {
-    if (user.delegateCards.find(d => d._id === delCardId) !== undefined) {
+    if (user.delegateCards.find((d) => d._id === delCardId) !== undefined) {
       return 1;
-    } else if (user.pendingDelegateCards.find(d => d._id === delCardId) !== undefined) {
+    } else if (
+      user.pendingDelegateCards.find((d) => d._id === delCardId) !== undefined
+    ) {
       return 2;
     } else {
       return 0;
     }
+  };
+  const isUpgrade = (_id) => {
+    console.log("inside");
+    console.log(isMyDelCard("624603fe950a69cc464ff72c"));
+    console.log(isMyDelCard("62460435950a69cc464ff730"));
+    if (
+      _id === "62526614385b39119957225a" &&
+      isMyDelCard("62460435950a69cc464ff730") === 0 &&
+      isMyDelCard("624603fe950a69cc464ff72c") === 1
+    )
+      return true;
+    return false;
   };
   useEffect(() => {
     // To get all types of proshow and non proshow
@@ -146,46 +160,69 @@ function DelegatePage() {
         {delegateCard.map((data, index) => {
           return (
             <>
-            {/* display accommodation delegate card for MIT, Bengaluru users */}
-           {((data._id === "624f412aa35cb9685d94f1d4" 
-            && user.status === "VERIFIED" 
-            && user.isMahe === 0 && 
-            user.accommodation.required) ||
-            (data._id==="624f412aa35cb9685d94f1d4" 
-            && user.status === "VERIFIED"
-            && user.college==="MANIPAL INSTITUTE OF TECHNOLOGY, BENGALURU")) 
-            && <DelegateCard
-              key={index}
-              colorArr={colorArr}
-              idx={index}
-              displayRazorpay={displayRazorpay}
-              data={data}
-              isMahe={
-                user.college === "MANIPAL INSTITUTE OF TECHNOLOGY"
-                  ? 1
-                  : user.isMahe
-                  ? 2
-                  : 0
-              }
-              cashPay={cashPayment}
-              isBought={isMyDelCard(data._id)}
-            />}            
-            {(data._id !== "624f412aa35cb9685d94f1d4") && <DelegateCard
-              key={index}
-              colorArr={colorArr}
-              idx={index}
-              displayRazorpay={displayRazorpay}
-              data={data}
-              isMahe={
-                user.college === "MANIPAL INSTITUTE OF TECHNOLOGY"
-                  ? 1
-                  : user.isMahe
-                  ? 2
-                  : 0
-              }
-              cashPay={cashPayment}
-              isBought={isMyDelCard(data._id)}
-            />}
+              {/* display accommodation delegate card for MIT, Bengaluru users */}
+              {((data._id === "624f412aa35cb9685d94f1d4" &&
+                user.status === "VERIFIED" &&
+                user.isMahe === 0 &&
+                user.accommodation.required) ||
+                (data._id === "624f412aa35cb9685d94f1d4" &&
+                  user.status === "VERIFIED" &&
+                  user.college ===
+                    "MANIPAL INSTITUTE OF TECHNOLOGY, BENGALURU")) && (
+                <DelegateCard
+                  key={index}
+                  colorArr={colorArr}
+                  idx={index}
+                  displayRazorpay={displayRazorpay}
+                  data={data}
+                  isMahe={
+                    user.college === "MANIPAL INSTITUTE OF TECHNOLOGY"
+                      ? 1
+                      : user.isMahe
+                      ? 2
+                      : 0
+                  }
+                  cashPay={cashPayment}
+                  isBought={isMyDelCard(data._id)}
+                />
+              )}
+              {data._id !== "624f412aa35cb9685d94f1d4" &&
+                data._id !== "62526614385b39119957225a" && (
+                  <DelegateCard
+                    key={index}
+                    colorArr={colorArr}
+                    idx={index}
+                    displayRazorpay={displayRazorpay}
+                    data={data}
+                    isMahe={
+                      user.college === "MANIPAL INSTITUTE OF TECHNOLOGY"
+                        ? 1
+                        : user.isMahe
+                        ? 2
+                        : 0
+                    }
+                    cashPay={cashPayment}
+                    isBought={isMyDelCard(data._id)}
+                  />
+                )}
+              {isUpgrade(data._id) && (
+                <DelegateCard
+                  key={index}
+                  colorArr={colorArr}
+                  idx={index}
+                  displayRazorpay={displayRazorpay}
+                  data={data}
+                  isMahe={
+                    user.college === "MANIPAL INSTITUTE OF TECHNOLOGY"
+                      ? 1
+                      : user.isMahe
+                      ? 2
+                      : 0
+                  }
+                  cashPay={cashPayment}
+                  isBought={isMyDelCard(data._id)}
+                />
+              )}
             </>
           );
         })}

@@ -192,13 +192,33 @@ const approvedPendingDelegateCard = async (req, res) => {
       isPaymentConfirmed: true,
     });
     await newTransaction.save();
-    await User.updateOne(
-      { _id: user },
-      {
-        $pull: { pendingDelegateCards: delegateId },
-        $addToSet: { delegateCards: delegateId },
-      }
-    );
+    if (delegateId != "62526614385b39119957225a") {
+      await User.updateOne(
+        { _id: user },
+        {
+          $pull: { pendingDelegateCards: delegateId },
+          $addToSet: { delegateCards: delegateId },
+        }
+      );
+    } else {
+      await User.updateOne(
+        { _id: user },
+        {
+          $pull: {
+            pendingDelegateCards: "62526614385b39119957225a",
+            delegateCards: "624603fe950a69cc464ff72c",
+          },
+        }
+      );
+      let us = await User.findOneAndUpdate(
+        { _id: user },
+        {
+          $addToSet: { delegateCards: "62460435950a69cc464ff730" },
+        }
+      );
+      console.log(us);
+    }
+
     return res.status(200).send({ success: true, data: newTransaction });
   } catch (err) {
     console.log(err);

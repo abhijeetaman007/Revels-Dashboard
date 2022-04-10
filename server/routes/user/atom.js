@@ -164,19 +164,38 @@ const responseAtom = async (req, resp) => {
     });
     await newTransaction.save();
     if (data.f_code == "Ok" || data.amt == "0.00") {
-      await User.updateOne(
-        { email: data.udf2 },
-        {
-          $pull: { delegateCards: data.udf4 },
-        }
-      );
-      let user = await User.findOneAndUpdate(
-        { email: data.udf2 },
-        {
-          $addToSet: { delegateCards: data.udf4 },
-        }
-      );
-      console.log(user);
+      if (data.udf4 != "62526614385b39119957225a") {
+        await User.updateOne(
+          { email: data.udf2 },
+          {
+            $pull: { pendingDelegateCards: data.udf4 },
+          }
+        );
+        let user = await User.findOneAndUpdate(
+          { email: data.udf2 },
+          {
+            $addToSet: { delegateCards: data.udf4 },
+          }
+        );
+        console.log(user);
+      } else {
+        await User.updateOne(
+          { email: data.udf2 },
+          {
+            $pull: {
+              pendingDelegateCards: data.udf4,
+              delegateCards: "624603fe950a69cc464ff72c",
+            },
+          }
+        );
+        let user = await User.findOneAndUpdate(
+          { email: data.udf2 },
+          {
+            $addToSet: { delegateCards: "62460435950a69cc464ff730" },
+          }
+        );
+        console.log(user);
+      }
     }
     if (data.f_code == "Ok" || data.amt == "0.00")
       return resp.redirect("http://revelsmit.in/success");
