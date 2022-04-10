@@ -8,6 +8,7 @@ import Tag from "../components/Tag/Tag";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
+  console.log(category)
   const [isChecked, setIsChecked] = useState(eventdata.teamDelegateCard);
   const [selDel, setSelDel] = useState(null);
   const [filteredDel, setFilteredDel] = useState([]);
@@ -330,7 +331,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
           name=""
           autoComplete="off"
           required
-          disabled={`${category.categoryId === "OPR" && true}`}
+          // disabled={`${category?.categoryId === "OPR" && true}`}
           maxLength={100}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="Event Name Here"
@@ -347,7 +348,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
               name=""
               autoComplete="off"
               required
-              disabled={`${category.categoryId === "OPR" && true}`}
+              // disabled={`${category?.categoryId === "OPR" && true}`}
               maxLength={100}
               className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
               placeholder="Minimum number of members"
@@ -365,7 +366,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
               type="number"
               autoComplete="off"
               required
-              disabled={`${category.categoryId === "OPR" && true}`}
+              // disabled={`${category?.categoryId === "OPR" && true}`}
               maxLength={100}
               className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
               placeholder="Maximum number of members"
@@ -385,7 +386,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
           name=""
           autoComplete="off"
           required
-          disabled={`${category.categoryId === "OPR" && true}`}
+          // disabled={`${category?.categoryId === "OPR" && true}`}
           maxLength={2000}
           className=" my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="Event description Here"
@@ -403,7 +404,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
           options={options}
           value={filteredDel}
           onChange={(e) => handleChange(e)}
-          isDisabled={`${category.categoryId === "OPR" && true}`}
+          // isDisabled={`${category?.categoryId === "OPR" && true}`}
         />
         <div className="d-flex flex-md-row flex-column">
           <div className="w-md-50 w-100 mx-md-1">
@@ -413,7 +414,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
             <select
               value={data.eventType}
               id="type"
-              disabled={`${category.categoryId === "OPR" && true}`}
+              // disabled={`${category?.categoryId === "OPR" && true}`}
               className="my-1 h-50 rounded mx-0 w-100 text-dark font-light"
               onChange={(e) => setData({ ...data, eventType: e.target.value })}
             >
@@ -431,7 +432,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
             <select
               value={data.mode}
               id="mode"
-              disabled={`${category.categoryId === "OPR" && true}`}
+              // disabled={`${category?.categoryId === "OPR" && true}`}
               className="my-1 h-50 rounded mx-0 w-100 text-dark font-light"
               onChange={(e) => setData({ ...data, mode: e.target.value })}
             >
@@ -451,7 +452,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
             type="checkbox"
             checked={isChecked}
             onChange={handleOnChange}
-            disabled={`${category.categoryId === "OPR" && true}`}
+            // disabled={`${category?.categoryId === "OPR" && true}`}
             value=""
           ></input>
         </div>
@@ -462,7 +463,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
           name=""
           autoComplete="off"
           required
-          disabled={`${category.categoryId === "OPR" && true}`}
+          // disabled={`${category?.categoryId === "OPR" && true}`}
           maxLength={100}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="Event prize Here"
@@ -477,7 +478,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
           name=""
           autoComplete="off"
           maxLength={1000}
-          disabled={`${category.categoryId === "OPR" && true}`}
+          // disabled={`${category?.categoryId === "OPR" && true}`}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="Event participation criteria Here"
           value={data.participationCriteria}
@@ -489,18 +490,18 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
         <label className="font-medium mt-2 w-100">
           Tags (no space in between a tag)
         </label>
-        <Tag placeholder={"Tag 1"} setTag={setT1} value={t1} disabled={`${category.categoryId === "OPR" && true}`}/>
+        <Tag placeholder={"Tag 1"} setTag={setT1} value={t1}/>
         {numTags >= 2 && (
-          <Tag placeholder={"Tag 2"} setTag={setT2} value={t2} disabled={`${category.categoryId === "OPR" && true}`}/>
+          <Tag placeholder={"Tag 2"} setTag={setT2} value={t2}/>
         )}
         {numTags >= 3 && (
-          <Tag placeholder={"Tag 3"} setTag={setT3} value={t3} disabled={`${category.categoryId === "OPR" && true}`}/>
+          <Tag placeholder={"Tag 3"} setTag={setT3} value={t3}/>
         )}
         {numTags >= 4 && (
-          <Tag placeholder={"Tag 4"} setTag={setT4} value={t4} disabled={`${category.categoryId === "OPR" && true}`}/>
+          <Tag placeholder={"Tag 4"} setTag={setT4} value={t4}/>
         )}
         {numTags !== 4 && (
-          <i className="fa fa-plus-square" onClick={category.categoryId !== "OPR" ? addTagElement : {}}></i>
+          <i className="fa fa-plus-square" onClick={addTagElement}></i>
         )}
 
         <label className="font-medium mt-3 w-100">Event Date</label>
@@ -524,7 +525,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
           type="date"
           name=""
           autoComplete="off"
-          disabled={`${category.categoryId === "OPR" && true}`}
+          // disabled={`${category?.categoryId === "OPR" && true}`}
           // value={data.registrationDeadline.toISOString().substr(0, 10)}
           // required
           maxLength={100}
@@ -560,7 +561,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
           name=""
           autoComplete="off"
           required
-          disabled={`${category.categoryId === "OPR" && true}`}
+          // disabled={`${category?.categoryId === "OPR" && true}`}
           maxLength={100}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="Event Head name"
@@ -575,7 +576,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
           name=""
           autoComplete="off"
           required
-          disabled={`${category.categoryId === "OPR" && true}`}
+          // disabled={`${category?.categoryId === "OPR" && true}`}
           maxLength={10}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="Event Head phone number"
@@ -590,7 +591,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
           name=""
           autoComplete="off"
           required
-          disabled={`${category.categoryId === "OPR" && true}`}
+          // disabled={`${category?.categoryId === "OPR" && true}`}
           maxLength={100}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="Event Head email ID"
@@ -605,7 +606,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
           name=""
           autoComplete="off"
           required
-          disabled={`${category.categoryId === "OPR" && true}`}
+          // disabled={`${category?.categoryId === "OPR" && true}`}
           maxLength={100}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="Event Head name"
@@ -618,7 +619,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
           name=""
           autoComplete="off"
           required
-          disabled={`${category.categoryId === "OPR" && true}`}
+          // disabled={`${category?.categoryId === "OPR" && true}`}
           maxLength={10}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="Event Head phone number"
@@ -631,7 +632,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
           name=""
           autoComplete="off"
           required
-          disabled={`${category.categoryId === "OPR" && true}`}
+          // disabled={`${category?.categoryId === "OPR" && true}`}
           maxLength={100}
           className="my-1 h-25 rounded mx-0 w-100 text-dark font-light"
           placeholder="Event Head email ID"
@@ -658,7 +659,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
               style={{ marginRight: "1rem", color: "#F4737E" }}
             ></i>
             {
-              category.categoryId !== "OPR" && 
+              category?.categoryId !== "OPR" && 
               <i
                 onClick={() => deleteEvent(data.eventID)}
                 className="edit fa fa-trash"
@@ -667,7 +668,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
               ></i>
             }
             {
-              category.categoryId !== "OPR" &&
+              category?.categoryId !== "OPR" &&
               <a
                 href={
                   data.delegateCards.length > 0
