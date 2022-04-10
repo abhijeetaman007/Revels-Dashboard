@@ -175,6 +175,7 @@ function DelegatePage() {
                   idx={index}
                   displayRazorpay={displayRazorpay}
                   data={data}
+                  userID={user.userID}
                   isMahe={
                     user.college === "MANIPAL INSTITUTE OF TECHNOLOGY"
                       ? 1
@@ -194,6 +195,7 @@ function DelegatePage() {
                     idx={index}
                     displayRazorpay={displayRazorpay}
                     data={data}
+                    userID={user.userID}
                     isMahe={
                       user.college === "MANIPAL INSTITUTE OF TECHNOLOGY"
                         ? 1
@@ -212,6 +214,7 @@ function DelegatePage() {
                   idx={index}
                   displayRazorpay={displayRazorpay}
                   data={data}
+                  userID={user.userID}
                   isMahe={
                     user.college === "MANIPAL INSTITUTE OF TECHNOLOGY"
                       ? 1

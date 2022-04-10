@@ -34,7 +34,7 @@ import CancelledAnimation from "./components/VerifyAnimation/cancelledAnimation"
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
-  console.log = () => {};
+  // console.log = () => {};
   return (
     <div className="App">
       <BrowserRouter>
