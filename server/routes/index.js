@@ -119,7 +119,7 @@ const { requestAtom, responseAtom } = require("./user/atom");
 //   async(req, res) => {
 //     try
 //     {
-//       let teams = await Team.find({event:'6245f1bc3babdcf2b2a99119'});   
+//       let teams = await Team.find({event:'6245f1bc3babdcf2b2a99119'});
 //       for(let i=0;i<teams.length;i++)
 //       {
 //         let found = await User.findOne()
@@ -226,10 +226,10 @@ router.get(
 );
 // Razorpay - Payment
 // TODO : put middleware after testing
-router.post("/Atom", requestAtom);
-router.post("/Response", responseAtom);
+router.post("/new/Atom", requestAtom);
+router.post("/new/Response", responseAtom);
 
-router.post("/user/payment/cash", isUserLoggedIn, requestDelegateCard);
+router.post("/new/user/payment/cash", isUserLoggedIn, requestDelegateCard);
 // @INF Route for cash payment verification
 router.post(
   "/user/payment/approve",
