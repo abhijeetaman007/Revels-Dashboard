@@ -123,7 +123,7 @@ function DelegatePage() {
     }
   };
   const isUpgrade = (_id) => {
-    console.log("inside");
+    console.log(_id);
     console.log(isMyDelCard("624603fe950a69cc464ff72c"));
     console.log(isMyDelCard("62460435950a69cc464ff730"));
     if (
