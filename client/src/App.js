@@ -176,8 +176,9 @@ function App() {
               path="/admin/payment/proshow"
               element={<ProshowDashboard />}
             />
-            <Route exact path="/calendar" element={<EventsCalendar />} />
+            
             {/* landing page route */}
+            {/* <Route exact path="/calendar" element={<EventsCalendar />} /> */}
             <Route exact path="/" element={<Landing />} />
             {/* error 404 route */}
             <Route path="*" element={<NotFound />} />
