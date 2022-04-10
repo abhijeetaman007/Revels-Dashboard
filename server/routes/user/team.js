@@ -143,7 +143,7 @@ const joinTeam = async (req, res) => {
     console.log('new Team isMahe is ', newTeam.createdBy.isMahe);
     if (
       !(
-        (user.isMahe == 1 || newTeam.createdBy.isMahe == 1) ||
+        (user.isMahe == 1 && newTeam.createdBy.isMahe == 1) ||
         (user.college.toString() == newTeam.createdBy.college.toString())
       )
     ) {
