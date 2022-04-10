@@ -38,49 +38,58 @@ const DelegateCard = ({ displayRazorpay, data, isMahe, cashPay, isBought }) => {
           </div>
           <div className="blank"></div>
           <div className={`price ${bought && "bought"}`}>
-            <div className="clg px-1">
-              {cardPrice === 0 ? <p>FREE</p> : <p>&#x20B9;{cardPrice}</p>}
-              {bought === 1 ? (
-                <button disabled={true}>Purchased</button>
-              ) : bought === 2 && cardPrice !== 0 ? (
-                <>
-                  <button disabled={true}>
-                    Pay via cash at the nearest Infodesk
-                  </button>
-                  <button
-                    disabled={false}
-                    onClick={() =>
-                      displayRazorpay(data._id, cardPrice, auth.user)
-                    }
-                  >
-                    Pay Online
-                  </button>
-                </>
-              ) : (
-                <>
-                  <button
-                    disabled={bought}
-                    onClick={async () => {
-                      const d = await cashPay(data._id, cardPrice);
-                      if (d.status === 200 && cardPrice === 0) setBought(1);
-                      else if (d.status === 200) setBought(2);
-                    }}
-                  >
-                    {cardPrice === 0 ? "Buy Now" : "Pay via Cash"}
-                  </button>{" "}
-                  {cardPrice !== 0 && (
+            {data.type !== "PROSHOW" ? (
+              <div className="clg px-1">
+                {cardPrice === 0 ? <p>FREE</p> : <p>&#x20B9;{cardPrice}</p>}
+                {bought === 1 ? (
+                  <button disabled={true}>Purchased</button>
+                ) : bought === 2 && cardPrice !== 0 ? (
+                  <>
+                    <button disabled={true}>
+                      Pay via cash at the nearest Infodesk
+                    </button>
                     <button
-                      disabled={bought}
+                      disabled={false}
                       onClick={() =>
                         displayRazorpay(data._id, cardPrice, auth.user)
                       }
                     >
                       Pay Online
                     </button>
-                  )}
-                </>
-              )}
-            </div>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      disabled={bought}
+                      onClick={async () => {
+                        const d = await cashPay(data._id, cardPrice);
+                        if (d.status === 200 && cardPrice === 0) setBought(1);
+                        else if (d.status === 200) setBought(2);
+                      }}
+                    >
+                      {cardPrice === 0 ? "Buy Now" : "Pay via Cash"}
+                    </button>{" "}
+                    {cardPrice !== 0 && (
+                      <button
+                        disabled={bought}
+                        onClick={() =>
+                          displayRazorpay(data._id, cardPrice, auth.user)
+                        }
+                      >
+                        Pay Online
+                      </button>
+                    )}
+                  </>
+                )}
+              </div>
+            ) : (
+              <div className="clg px-1">
+                {cardPrice === 0 ? <p>FREE</p> : <p>&#x20B9;{cardPrice}</p>}
+                <br></br>
+                <br></br>
+                <button disabled={true}>Will be Resumed Shortly</button>
+              </div>
+            )}
           </div>
           <div className="blank"></div>
         </div>
