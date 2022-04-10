@@ -1,12 +1,14 @@
 .proshow-card {
-  width: 30%;
-  height: 400px;
+  width: calc(100%/3.7);
+  height: 500px;
   border-radius: 10px;
 }
 
 .proshow-card .image-wrapper {
   border-radius: 10px;
-  background-image: url("./../../assets/Kuhad.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   height: 100%;
   width: 100%;
 }
@@ -28,8 +30,7 @@
   border-radius: 10px;
   height: 100%;
   padding: 20px;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0.01%, rgba(245, 115, 127, 0.08)), color-stop(0.02%, rgba(0, 0, 0, 0.01)), to(#F5737F));
-  background: linear-gradient(180deg, rgba(245, 115, 127, 0.08) 0.01%, rgba(0, 0, 0, 0.01) 0.02%, #F5737F 100%);
+  background: linear-gradient(135deg, rgba(245, 115, 127, 0.08) 0.01%, rgba(0, 0, 0, 0.01) 20%, #F5737F 90%);
 }
 
 .proshow-card .image-wrapper .gradient .proshow-card-header {
@@ -38,9 +39,9 @@
 }
 
 .proshow-card .image-wrapper .gradient .proshow-card-header h6 {
-  letter-spacing: 15px;
+  letter-spacing: 10px;
   font-size: 25.6px;
-  font-size: 1.6rem;
+  font-size: 1.1rem;
 }
 
 .proshow-card .image-wrapper .gradient .proshow-card-header p {
@@ -70,14 +71,14 @@
 
 .proshow-card .image-wrapper .gradient .artist-name h2 {
   font-size: 48px;
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin: 0;
 }
 
 .proshow-card .image-wrapper .gradient .artist-name p {
   margin: 0;
   font-size: 32px;
-  font-size: 2rem;
+  font-size: 1.7rem;
 }
 
 .proshow-card .image-wrapper .gradient button {

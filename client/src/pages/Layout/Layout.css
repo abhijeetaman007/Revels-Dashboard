@@ -125,7 +125,7 @@
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  z-index: 100;
+  z-index: 300;
 }
 
 .layout-wrapper .dash-wrapper .sidebar .cross {
@@ -233,11 +233,11 @@
 
 .layout-wrapper .dash-wrapper .content-area .aagaz-wrapper {
   position: absolute;
-  top: 45%;
-  right: 0;
+  top: 40%;
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
   z-index: -10;
+  right: 0;
 }
 
 .layout-wrapper .dash-wrapper .content-area .aagaz-wrapper img {
@@ -280,8 +280,11 @@
         -ms-flex-direction: column;
             flex-direction: column;
   }
+  .layout-wrapper .dash-wrapper .content-area .aagaz-wrapper {
+    right: -150px;
+  }
   .layout-wrapper .dash-wrapper.active .sidebar {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 70%;

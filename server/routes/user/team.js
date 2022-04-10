@@ -80,7 +80,7 @@ const joinTeam = async (req, res) => {
             let prodGeneralDelCard = '624603fe950a69cc464ff72c';
             let prodFlagshipDelCard = '62460435950a69cc464ff730';
             event.delegateCards.forEach((delCard) => {
-              console.log("del card check",delCard)
+                console.log('del card check', delCard);
                 if (
                     delCard.toString() == testGeneralDelCard ||
                     delCard.toString() == prodGeneralDelCard
@@ -93,24 +93,26 @@ const joinTeam = async (req, res) => {
                     ) {
                         console.log('Here flagship passed');
                         return;
-                    }}
-                    console.log("1 ",user.delegateCards.indexOf(delCard))
-                    console.log("2 ",user.pendingDelegateCards.indexOf(delCard))
-                    if (
-                        user.delegateCards.indexOf(delCard) == -1 &&
-                        user.pendingDelegateCards.indexOf(delCard) == -1
-                    ) {
-                      console.log("Not found")
-                        flag = 1;delCard
                     }
+                }
+                console.log('1 ', user.delegateCards.indexOf(delCard));
+                console.log('2 ', user.pendingDelegateCards.indexOf(delCard));
+                if (
+                    user.delegateCards.indexOf(delCard) == -1 &&
+                    user.pendingDelegateCards.indexOf(delCard) == -1
+                ) {
+                    console.log('Not found');
+                    flag = 1;
+                    delCard;
+                }
             });
             if (flag == 1)
-            return res.status(400).send({
-                success: false,
-                msg: 'Please buy event specific delegate card(s)',
-            });
+                return res.status(400).send({
+                    success: false,
+                    msg: 'Please buy event specific delegate card(s)',
+                });
         }
-       
+
         // console.log("team details");
         // console.log(team.members.length);
         // console.log(team.members);
@@ -140,16 +142,51 @@ const joinTeam = async (req, res) => {
         // newTeam.members.push(user._id);
         // await newTeam.save();
 
-        // check that teammembers are from same college
-        console.log(user.college);
-        console.log(newTeam.createdBy.college);
-        console.log("User isMahe is ", user.isMahe)
-        console.log("new Team isMahe is ", newTeam.createdBy.isMahe)
-        if(!((user.isMahe === 1) && (newTeam.createdBy.isMahe === 1))){
-            return res.status(400).send({
-                success: false,
-                msg: 'User is not from same college as team creator',
-            });
+        let gameDelCardsProd = [
+            '624604b6950a69cc464ff7f5',
+            '624604bb950a69cc464ff7f9',
+            '62499b8eacdf8b9307b7b52e',
+            '62499becacdf8b9307b7b532',
+            '62499c1facdf8b9307b7b536',
+            '624604b6950a69cc464ff7fa',
+            '624b365c4fda25e0e4990ed1',
+        ];
+        let gameDelCardsTest = [
+            '624604b6950a69cc464ff7f5',
+            '624604bb950a69cc464ff7f9',
+        ];
+        let gamingEvent = false;
+        for (let i = 0; i < event.delegateCards.length; i++) {
+            console.log('Here : ', event.delegateCards[i]);
+            if (
+                gameDelCardsProd.indexOf(event.delegateCards[i] != -1) ||
+                gameDelCardsTest.indexOf(event.delegateCards[i] != -1)
+            ) {
+                gamingEvent = true;
+                console.log('Gaming Event Found');
+                break;
+            }
+        }
+
+        //Checking GameEvent -- no condition on college
+        if (!gamingEvent) {
+            // check that teammembers are from same college -- for non gaming
+            console.log(user.college);
+            console.log(newTeam.createdBy.college);
+            console.log('User isMahe is ', user.isMahe);
+            console.log('new Team isMahe is ', newTeam.createdBy.isMahe);
+            if (
+                !(
+                    (user.isMahe == 1 && newTeam.createdBy.isMahe == 1) ||
+                    user.college.toString() ==
+                        newTeam.createdBy.college.toString()
+                )
+            ) {
+                return res.status(400).send({
+                    success: false,
+                    msg: 'User is not from same college as team creator',
+                });
+            }
         }
 
         //Sending Team Request
@@ -223,7 +260,7 @@ const addToTeam = async (req, res) => {
             return res
                 .status(400)
                 .send({ success: false, msg: 'Team Code Invalid' });
-  
+
         // Team Size Full
         if (event.maxMembers == newTeam.members.length)
             return res
@@ -234,51 +271,88 @@ const addToTeam = async (req, res) => {
                 .status(400)
                 .send({ success: false, msg: 'Access Denied' });
         if (!event.teamDelegateCard) {
-          // Check on delegate cards
-          let flag = 0;
-          let testGeneralDelCard = '624603fe950a69cc464ff72c';
-          let testFlagshipDelCard = '62460435950a69cc464ff730';
-          let prodGeneralDelCard = '624603fe950a69cc464ff72c';
-          let prodFlagshipDelCard = '62460435950a69cc464ff730';
-          event.delegateCards.forEach((delCard) => {
-            console.log("del card check",delCard)
-              if (
-                  delCard.toString() == testGeneralDelCard ||
-                  delCard.toString() == prodGeneralDelCard
-              ) {
-                  if (
-                      user.delegateCards.indexOf(testFlagshipDelCard) != -1 ||
-                      user.pendingDelegateCards.indexOf(
-                          prodFlagshipDelCard
-                      ) != -1
-                  ) {
-                      console.log('Here flagship passed');
-                      return;
-                  }}
-                  console.log("1 ",user.delegateCards.indexOf(delCard))
-                  console.log("2 ",user.pendingDelegateCards.indexOf(delCard))
-                  if (
-                      user.delegateCards.indexOf(delCard) == -1 &&
-                      user.pendingDelegateCards.indexOf(delCard) == -1
-                  ) {
-                    console.log("Not found")
-                      flag = 1;delCard
-                  }
-          });
-          if (flag == 1)
-          return res.status(400).send({
-              success: false,
-              msg: 'Please buy event specific delegate card(s)',
-          });
-      }
-        //check that teammembers are from same college
-        console.log(member.college);
-        console.log(newTeam.createdBy.college);
-        if(!((user.isMahe === 1) && (newTeam.createdBy.isMahe === 1))){
-            return res.status(400).send({
-                success: false,
-                msg: 'User is not from same college as team creator',
+            // Check on delegate cards
+            let flag = 0;
+            let testGeneralDelCard = '624603fe950a69cc464ff72c';
+            let testFlagshipDelCard = '62460435950a69cc464ff730';
+            let prodGeneralDelCard = '624603fe950a69cc464ff72c';
+            let prodFlagshipDelCard = '62460435950a69cc464ff730';
+            event.delegateCards.forEach((delCard) => {
+                console.log('del card check', delCard);
+                if (
+                    delCard.toString() == testGeneralDelCard ||
+                    delCard.toString() == prodGeneralDelCard
+                ) {
+                    if (
+                        user.delegateCards.indexOf(testFlagshipDelCard) != -1 ||
+                        user.pendingDelegateCards.indexOf(
+                            prodFlagshipDelCard
+                        ) != -1
+                    ) {
+                        console.log('Here flagship passed');
+                        return;
+                    }
+                }
+                
+                console.log('1 ', user.delegateCards.indexOf(delCard));
+                console.log('2 ', user.pendingDelegateCards.indexOf(delCard));
+                if (
+                    user.delegateCards.indexOf(delCard) == -1 &&
+                    user.pendingDelegateCards.indexOf(delCard) == -1
+                ) {
+                    console.log('Not found');
+                    flag = 1;
+                    delCard;
+                }
             });
+            if (flag == 1)
+                return res.status(400).send({
+                    success: false,
+                    msg: 'Please buy event specific delegate card(s)',
+                });
+        }
+        let gameDelCardsProd = [
+            '624604b6950a69cc464ff7f5',
+            '624604bb950a69cc464ff7f9',
+            '62499b8eacdf8b9307b7b52e',
+            '62499becacdf8b9307b7b532',
+            '62499c1facdf8b9307b7b536',
+            '624604b6950a69cc464ff7fa',
+            '624b365c4fda25e0e4990ed1',
+        ];
+        let gameDelCardsTest = [
+            '624604b6950a69cc464ff7f5',
+            '624604bb950a69cc464ff7f9',
+        ];
+        let gamingEvent = false;
+        for (let i = 0; i < event.delegateCards.length; i++) {
+            console.log('Here : ', event.delegateCards[i]);
+            if (
+                gameDelCardsProd.indexOf(event.delegateCards[i] != -1) ||
+                gameDelCardsTest.indexOf(event.delegateCards[i] != -1)
+            ) {
+                gamingEvent = true;
+                console.log('Gaming Event Found');
+                break;
+            }
+        }
+
+        //check that teammembers are from same college
+
+        if (!gamingEvent) {
+            console.log(member.college);
+            console.log(newTeam.createdBy.college);
+            if (
+                !(
+                    (user.isMahe == 1 && newTeam.createdBy.isMahe == 1) ||
+                    (user.college == newTeam.createdBy.college)
+                )
+            ) {
+                return res.status(400).send({
+                    success: false,
+                    msg: 'User is not from same college as team creator',
+                });
+            }
         }
 
         //Add To Team
@@ -380,16 +454,19 @@ const removeFromTeam = async (req, res) => {
 
 const getEventTeam = async (req, res) => {
     try {
-        console.log("Get Team Called")
+        console.log('Get Team Called');
         let { event_ID } = req.body;
         console.log(event_ID);
         console.log(req.requestUser._id);
         // let team = await Team.findOne({
-            // event: event_ID,
-            // 'members.user': req.requestUser._id,
+        // event: event_ID,
+        // 'members.user': req.requestUser._id,
         // }).populate('members.user requestedMembers', { name: 1 });
 
-        let team = await Team.findOne({event: event_ID, 'members.user': req.requestUser._id })
+        let team = await Team.findOne({
+            event: event_ID,
+            'members.user': req.requestUser._id,
+        })
             .populate({
                 path: 'event',
                 populate: {
@@ -397,8 +474,7 @@ const getEventTeam = async (req, res) => {
                 },
             })
             .populate('members.user requestedMembers')
-            .select({ pasword: 0 })
-
+            .select({ pasword: 0 });
 
         console.log('team', team);
         if (!team)

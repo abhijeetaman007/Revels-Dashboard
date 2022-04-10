@@ -1,5 +1,28 @@
-.proshow {
-  padding-bottom: 70px;
+.proshow-wrapper {
+  padding: 0rem;
+  display: block;
+}
+
+.proshow-wrapper h1 {
+  margin: 50px 0;
+  font-size: 3rem;
+  letter-spacing: 1rem;
+}
+
+.proshow-cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 15px;
 }
 
 .button-bar {
