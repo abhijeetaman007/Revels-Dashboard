@@ -207,7 +207,7 @@ const InsideEvent = ({ isPublic }) => {
             heading: "Team Size",
             text:
               event.minMembers === event.maxMembers
-                ? "Individual event"
+                ? (event.minMembers === 1 ? "Individual event" : event.minMembers) 
                 : `${event.minMembers} - ${event.maxMembers}`,
           })}
           {event.eventDateTime && (
@@ -292,7 +292,7 @@ const InsideEvent = ({ isPublic }) => {
               <p className="font-medium">{event.name}</p>
               <i className="fa fa-close ml-auto" onClick={closeModal}></i>
             </div>
-            {event.maxMembers === 1 && (
+            {(
               <div className="reg-area">
                 <div className="event-group ele text-white">
                   {DataComponent({
@@ -300,70 +300,7 @@ const InsideEvent = ({ isPublic }) => {
                     heading: "Team Size",
                     text:
                       event.minMembers === event.maxMembers
-                        ? (event.maxMembers == 1 ? "Individual event" : event.maxMembers)
-                        : `${event.minMembers} - ${event.maxMembers}`,
-                  })}
-                  {event.eventDateTime && (
-                    <>
-                      {DataComponent({
-                        icon: "fa-calendar-o",
-                        heading: "Event Date",
-                        text: `${new Date(event.eventDateTime).getDate()}/
-                    ${new Date(event.eventDateTime).getMonth() + 1}/
-                    ${new Date(event.eventDateTime).getFullYear()}`,
-                      })}
-                    </>
-                  )}
-                  {event.eventVenue && (
-                    <>
-                      {DataComponent({
-                        icon: "fa-map-marker",
-                        heading: "Event Venue",
-                        text: `${event.eventVenue}`,
-                      })}
-                    </>
-                  )}
-                  {event.registrationDeadline && (
-                    <>
-                      {DataComponent({
-                        icon: "fa-calendar-check-o",
-                        heading: "Registration Deadline",
-                        text: `${new Date(
-                          event.registrationDeadline
-                        ).getDate()}/
-                    ${new Date(event.registrationDeadline).getMonth() + 1}/
-                    ${new Date(event.registrationDeadline).getFullYear()}`,
-                      })}
-                    </>
-                  )}
-                  {event.delegateCards && (
-                    <>
-                      {event.delegateCards.length > 1 && (
-                        <>
-                          {DataComponent({
-                            icon: "fa-ticket",
-                            heading: "Delegate Cards Required",
-                            text: `${event.delegateCards.map((del, index) => {
-                              return +del.name;
-                            })}`,
-                          })}
-                        </>
-                      )}
-                    </>
-                  )}
-                </div>
-                <button onClick={registerIndividual}>Join Individually</button>
-              </div>
-            )}
-            {event.maxMembers > 1 && (
-              <div className="reg-area">
-                <div className="event-group ele text-white">
-                  {DataComponent({
-                    icon: "fa-users",
-                    heading: "Team Size",
-                    text:
-                      event.minMembers === event.maxMembers
-                        ? "Individual event"
+                        ? (event.minMembers === 1 ? "Individual event" : event.minMembers) 
                         : `${event.minMembers} - ${event.maxMembers}`,
                   })}
                   {event.eventDateTime && (
