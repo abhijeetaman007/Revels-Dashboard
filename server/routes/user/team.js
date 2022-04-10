@@ -293,6 +293,7 @@ const addToTeam = async (req, res) => {
                         return;
                     }
                 }
+                
                 console.log('1 ', user.delegateCards.indexOf(delCard));
                 console.log('2 ', user.pendingDelegateCards.indexOf(delCard));
                 if (
