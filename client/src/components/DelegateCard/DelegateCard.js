@@ -115,7 +115,7 @@ const DelegateCard = ({
                 <br></br>
                 <br></br>
                 <button disabled={true}>
-                  {data.isBought == 1
+                  {isBought == 1
                     ? "Purchased"
                     : "Phase 2 ticket sale starts soon !!"}
                 </button>
