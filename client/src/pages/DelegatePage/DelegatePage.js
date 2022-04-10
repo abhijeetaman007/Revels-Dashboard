@@ -123,9 +123,9 @@ function DelegatePage() {
     }
   };
   const isUpgrade = (_id) => {
-    console.log(_id);
-    console.log(isMyDelCard("624603fe950a69cc464ff72c"));
-    console.log(isMyDelCard("62460435950a69cc464ff730"));
+    // console.log(_id);
+    // console.log(isMyDelCard("624603fe950a69cc464ff72c"));
+    // console.log(isMyDelCard("62460435950a69cc464ff730"));
     if (
       _id === "62526614385b39119957225a" &&
       isMyDelCard("62460435950a69cc464ff730") === 0 &&
