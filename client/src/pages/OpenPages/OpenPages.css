@@ -3,6 +3,12 @@
   padding: 10% 5%;
 }
 
+@media only screen and (max-width: 1350px) {
+  .open-page-content {
+    padding-top: 15%;
+  }
+}
+
 @media only screen and (max-width: 812px) {
   .open-page-content {
     padding-top: 45%;

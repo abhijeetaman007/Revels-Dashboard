@@ -1,0 +1,155 @@
+.ticket-dash {
+  color: white;
+  height: 100%;
+  text-align: center;
+}
+
+.ticket-dash .search-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.ticket-dash .search-box input {
+  margin-bottom: 0;
+}
+
+.ticket-dash .search-box button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ticket-dash h1 {
+  font-size: 40px;
+  text-shadow: 2px 2px 0px #c31432;
+  mix-blend-mode: screen;
+  -webkit-animation: fadeIn 2.5s linear forwards;
+          animation: fadeIn 2.5s linear forwards;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.ticket-dash p {
+  font-size: 20px;
+  color: #c9c9c9;
+}
+
+.ticket-dash p span {
+  color: #c31432;
+}
+
+.tick-btn {
+  background-color: transparent;
+  color: white;
+  padding: 8px 20px;
+  margin-left: 25px;
+  font-size: 16px;
+  border-radius: 5px white;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.tick-btn:hover {
+  background-color: white;
+  color: black;
+}
+
+.top {
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 10vh;
+  width: 100%;
+}
+
+.top img {
+  height: 100%;
+  margin-right: 20px;
+}
+
+.user-pay {
+  width: 60%;
+  margin: 10px auto;
+  background-color: black;
+  padding: 1px 0;
+  border-radius: 20px;
+}
+
+.user-pay-header h2 {
+  font-size: 1.3rem;
+  margin-left: 30px;
+}
+
+.user-pay-header .fa {
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: 30px;
+  color: red;
+}
+
+.pending-cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 1rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .user-pay {
+    width: 90%;
+  }
+  .ticket-dash .search-box {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+  }
+  .ticket-dash .search-box input {
+    width: 90%;
+    margin: 0 auto;
+  }
+  .ticket-dash .search-box button {
+    margin: 0 auto;
+    margin-top: 20px;
+  }
+}
+/*# sourceMappingURL=TicketDashboard.css.map */

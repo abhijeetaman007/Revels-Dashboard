@@ -1,0 +1,12 @@
+.rbc-btn-group button:first-child {
+  display: none;
+}
+
+.rbc-btn-group button:nth-child(2) {
+  display: none;
+}
+
+.rbc-btn-group button:last-child {
+  display: none;
+}
+/*# sourceMappingURL=EventsCalendar.css.map */

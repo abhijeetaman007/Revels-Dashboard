@@ -1,4 +1,20 @@
-.event-details {
+.fa-ticket {
+  color: #a974ff;
+}
+
+.small-font {
+  font-size: 0.8rem;
+}
+
+.grey {
+  color: #c4c4c4;
+}
+
+.public-details {
+  padding: 10% 5%;
+}
+
+.event-details, .reg-area {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9,13 +25,21 @@
   color: white;
 }
 
-.event-details button {
+.event-details .back-events a, .reg-area .back-events a {
+  text-decoration: none;
+}
+
+.event-details .back-events a:hover, .reg-area .back-events a:hover {
+  color: white;
+}
+
+.event-details button, .reg-area button {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   margin: 10px 0;
-  color: #f5737f;
-  border: 1.5px solid #f5737f;
+  color: #a974ff;
+  border: 1.5px solid #a974ff;
   border-radius: 10px;
   background-color: transparent;
   padding: 6px 20px;
@@ -24,12 +48,12 @@
   text-transform: uppercase;
 }
 
-.event-details button:hover {
-  background-color: #f5737f;
-  color: white;
+.event-details button:hover, .reg-area button:hover {
+  background-color: #a974ff;
+  color: #100b1b;
 }
 
-.event-details .event-group {
+.event-details .event-group, .reg-area .event-group {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -39,19 +63,38 @@
   margin: 10px 0;
 }
 
-.event-details .event-group .event-data div p {
+.event-details .event-group .event-data .fa, .reg-area .event-group .event-data .fa {
+  color: #a974ff;
+}
+
+.event-details .event-group .event-data div p, .reg-area .event-group .event-data div p {
   font-size: 1.4rem;
 }
 
-.event-details .event-group .event-data p:last-child {
+.event-details .event-group .event-data p:last-child, .reg-area .event-group .event-data p:last-child {
   font-size: 1.2rem;
 }
 
-.event-details .cat-event p:first-child {
+.event-details .cat-event, .reg-area .cat-event {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+}
+
+.event-details .cat-event img, .reg-area .cat-event img {
+  height: 90px;
+  border-radius: 50%;
+}
+
+.event-details .cat-event .name-type p:first-child, .reg-area .cat-event .name-type p:first-child {
   font-size: 1.3rem;
 }
 
-.event-details .cat-event p:last-child {
+.event-details .cat-event .name-type p:last-child, .reg-area .cat-event .name-type p:last-child {
   font-size: 1.8rem;
 }
 
@@ -126,6 +169,12 @@
 @media screen and (max-width: 812px) {
   .ReactModal__Content {
     width: 97%;
+  }
+  .cat-event img {
+    height: 70px;
+  }
+  .public-details {
+    padding-top: 40%;
   }
 }
 /*# sourceMappingURL=InsideEvent.css.map */
