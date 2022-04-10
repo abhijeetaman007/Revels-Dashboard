@@ -300,7 +300,7 @@ const InsideEvent = ({ isPublic }) => {
                     heading: "Team Size",
                     text:
                       event.minMembers === event.maxMembers
-                        ? "Individual event"
+                        ? (event.maxMembers == 1 ? "Individual event" : event.maxMembers)
                         : `${event.minMembers} - ${event.maxMembers}`,
                   })}
                   {event.eventDateTime && (
