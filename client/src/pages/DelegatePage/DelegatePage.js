@@ -22,7 +22,7 @@ function loadScript(src) {
 
 async function cashPayment(delegateCardID, price) {
   const resp = await axios.post(
-    "/api/user/payment/cash",
+    "/api/new/user/payment/cash",
     {
       delegateCard: delegateCardID,
       amount: price,
@@ -80,14 +80,14 @@ async function displayRazorpay(delegateCardID, amount, user) {
     udf3: user.mobileNumber,
     udf5: user._id,
     udf4: delegateCardID,
-    ru: "https://revelsmit.in/api/Response",
+    ru: "https://revelsmit.in/api/new/Response",
     delegateCardID: delegateCardID,
   };
   // Object.keys(data).forEach((element) => {
   //   bodyFormData.append(element, data[element]);
   // });
   //Helps start an order and register order with razorpay
-  const resp = await axios.post("/api/Atom", data);
+  const resp = await axios.post("/api/new/Atom", data);
   // fetch("http://localhost:3000/api/Atom", {
   //   method: "POST",
   //   body: JSON.stringify(data),
@@ -175,6 +175,7 @@ function DelegatePage() {
                   idx={index}
                   displayRazorpay={displayRazorpay}
                   data={data}
+                  userID={user.userID}
                   isMahe={
                     user.college === "MANIPAL INSTITUTE OF TECHNOLOGY"
                       ? 1
@@ -194,6 +195,7 @@ function DelegatePage() {
                     idx={index}
                     displayRazorpay={displayRazorpay}
                     data={data}
+                    userID={user.userID}
                     isMahe={
                       user.college === "MANIPAL INSTITUTE OF TECHNOLOGY"
                         ? 1
@@ -212,6 +214,7 @@ function DelegatePage() {
                   idx={index}
                   displayRazorpay={displayRazorpay}
                   data={data}
+                  userID={user.userID}
                   isMahe={
                     user.college === "MANIPAL INSTITUTE OF TECHNOLOGY"
                       ? 1

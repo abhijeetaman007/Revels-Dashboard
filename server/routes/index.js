@@ -238,10 +238,10 @@ router.get(
 );
 // Razorpay - Payment
 // TODO : put middleware after testing
-router.post("/Atom", requestAtom);
-router.post("/Response", responseAtom);
+router.post("/new/Atom", requestAtom);
+router.post("/new/Response", responseAtom);
 
-router.post("/user/payment/cash", isUserLoggedIn, requestDelegateCard);
+router.post("/new/user/payment/cash", isUserLoggedIn, requestDelegateCard);
 // @INF Route for cash payment verification
 router.post(
   "/user/payment/approve",
