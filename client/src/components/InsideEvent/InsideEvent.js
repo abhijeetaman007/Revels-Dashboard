@@ -207,7 +207,9 @@ const InsideEvent = ({ isPublic }) => {
             heading: "Team Size",
             text:
               event.minMembers === event.maxMembers
-                ? (event.minMembers === 1 ? "Individual event" : event.minMembers) 
+                ? event.minMembers === 1
+                  ? "Individual event"
+                  : event.minMembers
                 : `${event.minMembers} - ${event.maxMembers}`,
           })}
           {event.eventDateTime && (
@@ -292,7 +294,7 @@ const InsideEvent = ({ isPublic }) => {
               <p className="font-medium">{event.name}</p>
               <i className="fa fa-close ml-auto" onClick={closeModal}></i>
             </div>
-            {(
+            {
               <div className="reg-area">
                 <div className="event-group ele text-white">
                   {DataComponent({
@@ -300,7 +302,6 @@ const InsideEvent = ({ isPublic }) => {
                     heading: "Team Size",
                     text:
                       event.minMembers === event.maxMembers
-<<<<<<< HEAD
                         ? event.maxMembers == 1
                           ? "Individual event"
                           : event.maxMembers
@@ -357,7 +358,7 @@ const InsideEvent = ({ isPublic }) => {
                 </div>
                 <button onClick={registerIndividual}>Join Individually</button>
               </div>
-            )}
+            }
             {event.maxMembers > 1 && (
               <div className="reg-area">
                 <div className="event-group ele text-white">
@@ -367,9 +368,6 @@ const InsideEvent = ({ isPublic }) => {
                     text:
                       event.minMembers === event.maxMembers
                         ? "Individual event"
-=======
-                        ? (event.minMembers === 1 ? "Individual event" : event.minMembers) 
->>>>>>> 0c7250fbd77eb9c74e80526d4d8aad10580204a4
                         : `${event.minMembers} - ${event.maxMembers}`,
                   })}
                   {event.eventDateTime && (
