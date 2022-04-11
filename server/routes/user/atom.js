@@ -233,9 +233,9 @@ const requestAtomFaculty = async (req, resp) => {
     let ids = await Transaction.find({}, { orderId: 1, _id: 0 })
       .sort({ orderId: -1 })
       .limit(1);
-    let orderId = 9001;
+    let orderId = 10001;
     if (ids[0]) {
-      orderId = ids[0].orderId - 1000 + 1;
+      orderId = ids[0].orderId + 1;
     }
 
     data.transid = orderId;
@@ -331,7 +331,7 @@ const requestAtomFaculty = async (req, resp) => {
       path: "/paynetz/epi/fts?login=" + data.login + "&encdata=" + encdata + "",
     };
     url = options["host"] + options["path"];
-    resp.json({ url: url });
+    resp.redirect(url);
   } catch (error) {
     console.log(error);
     return resp
@@ -378,7 +378,7 @@ const responseAtomFaculty = async (req, res) => {
     let newTransaction = new Transaction({
       user: null,
       delegateCard: data.udf4,
-      name: "atom_" + data.mmp_txn.toString(),
+      name: "faculty_atom_" + data.mmp_txn.toString(),
       transactionData: data,
       orderId: parseInt(data.mer_txn),
       amount: data.amt,
