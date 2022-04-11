@@ -12,6 +12,7 @@
         href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/smoothness/jquery-ui.css" media="all">
 </head>
 
+
 <body>
     <div class="panel panel-primary" style="width:45%;margin:3% auto; margin-top:3%">
         <div class="panel-heading">
@@ -21,135 +22,42 @@
             <p class="bg-info" id="msg"></p>
 
             <form class="form-horizontal" role="form" id="atomForm" method="post"
-                action="http://localhost:3000/api/Atom">
+                action="https://revelsmit.in/api/Atom/faculty">
 
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="login">login ID:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="login" name="login" placeholder="Enter Login ID"
-                            value="192" required="required">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="pass">Password:</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control" id="pass" name="pass" placeholder="Enter Password"
-                            value="Test@123" required="required">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="pass">Ttype:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="ttype" name="ttype" placeholder="Enter ttype"
-                            value="NBFundTransfer" required="required">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="productid">Product ID:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="productid" name="prodid"
-                            placeholder="Enter Product ID" value="NSE" required="required">
-                    </div>
-                </div>
 
                 <div class="form-group">
                     <label class="control-label col-sm-2" for="amount">Amount:</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="amount" value="50.00" name="amt"
+                        <input type="number" class="form-control" id="amount" value="450" name="amt"
                             placeholder="Enter Amount" required="required">
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="txncur">Transaction Currency:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="txncur" name="txncur"
-                            placeholder="Enter Transaction Currency" value="INR" required="required">
-                    </div>
-                </div>
 
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="txnamt">Transaction Amount:</label>
+                    <label class="control-label col-sm-2" for="name">Name</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="txnamt" value="50.00" name="txnamt"
-                            placeholder="Enter Transaction Amount" required="required">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="clientcode">Client Code:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" value="NAVIN" id="clientcode" name="clientcode"
-                            placeholder="Enter Client Code" required="required">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="transid">Transaction ID:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" value="1000" id="transid" name="transid"
-                            placeholder="Enter Transaction ID" required="required">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="datepick">Date:</label>
-                    <div class="col-sm-10">
-                        <p><input type="text" class="form-control" value="01/03/2019 16:20:00" name="datepick"
-                                placeholder="Select Transaction Date" required="required"></p>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="custacc">Customer Account:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="custacc" value="100000036600" name="custacc"
-                            placeholder="Enter Customer Account" required="required">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="udf1">UDF1:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="udf1" value="Rakesh Gosawami" name="udf1"
+                        <input type="text" class="form-control" id="name" value="" name="name"
                             placeholder="Enter Customer Name">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="udf2">UDF2:</label>
+                    <label class="control-label col-sm-2" for="email">Email</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="udf2" value="ankit.sharma@atomtech.in" name="udf2"
+                        <input type="text" class="form-control" id="email" value="" name="email"
                             placeholder="Enter Customer Email ID">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="udf3">UDF3:</label>
+                    <label class="control-label col-sm-2" for="mobileNumber">Mobile Number</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" value="8446320942" id="udf3" name="udf3"
+                        <input type="text" class="form-control" value="" id="mobileNumber" name="mobileNumber"
                             placeholder="Enter Customer Mobile Number">
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="udf4">UDF4:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="udf4" value="Ft tower, Andheri, Mumbai" name="udf4"
-                            placeholder="Enter Customer Address">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-sm-2" for="ru">URL:</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" id="ru" name="ru" placeholder="Enter URL"
-                            value="http://localhost:3000/Response">
-                    </div>
-                </div>
 
 
 
