@@ -300,7 +300,9 @@ const InsideEvent = ({ isPublic }) => {
                     heading: "Team Size",
                     text:
                       event.minMembers === event.maxMembers
-                        ? (event.maxMembers == 1 ? "Individual event" : event.maxMembers)
+                        ? event.maxMembers == 1
+                          ? "Individual event"
+                          : event.maxMembers
                         : `${event.minMembers} - ${event.maxMembers}`,
                   })}
                   {event.eventDateTime && (
@@ -428,6 +430,7 @@ const InsideEvent = ({ isPublic }) => {
                   onChange={(e) => {
                     setTeamIDInput(e.target.value);
                   }}
+                  value={teamIDInput}
                   style={{ color: "white" }}
                   placeholder="Team ID"
                 />
@@ -446,18 +449,15 @@ const InsideEvent = ({ isPublic }) => {
             </Link>
           ) : (
             <>
-            {
-              event.isActive ? 
-              <button onClick={openModal} className="font-heavy">
-                Register
-              </button> 
-              : <button
-                  className="font-heavy"
-                  disabled={true}
-                >
+              {event.isActive ? (
+                <button onClick={openModal} className="font-heavy">
+                  Register
+                </button>
+              ) : (
+                <button className="font-heavy" disabled={true}>
                   Registration Closed
-                </button> 
-            }
+                </button>
+              )}
             </>
           )
         ) : (
