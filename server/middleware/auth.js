@@ -69,45 +69,46 @@ const isUserLoggedIn = async (req, res, next) => {
 const isVerifiedForRevels = async (req, res, next) => {
     try {
         console.log('Status :', req.requestUser.status);
-        let { eventID } = req.body;
-        let event = await Event.findOne(
-            { eventID },
-            { delegateCards: 1, isActive: 1, registrationDeadline: 1 }
-        );
-        if (!event) {
-            return res
-                .status(400)
-                .send({ msg: 'Event Not FOund', success: false });
-        }
-        let gameDelCardsProd = [
-            '624604b6950a69cc464ff7f5',
-            '624604bb950a69cc464ff7f9',
-            '62499b8eacdf8b9307b7b52e',
-            '62499becacdf8b9307b7b532',
-            '62499c1facdf8b9307b7b536',
-            '624604b6950a69cc464ff7fa',
-            '624b365c4fda25e0e4990ed1',
-        ];
-        let gameDelCardsTest = [
-            '624604b6950a69cc464ff7f5',
-            '624604bb950a69cc464ff7f9',
-        ];
-        let gamingEvent = false;
-        for (let i = 0; i < event.delegateCards.length; i++) {
-            console.log('Here : ', event.delegateCards[i]);
-            if (
-                gameDelCardsProd.indexOf(event.delegateCards[i] != -1) ||
-                gameDelCardsTest.indexOf(event.delegateCards[i] != -1)
-            ) {
-                gamingEvent = true;
-                console.log('Gaming Event Found');
-                break;
-            }
-        }
-        if (gamingEvent) {
-            next();
-            return;
-        }
+        // let { eventID } = req.body;
+        // // console.log("eventID")
+        // let event = await Event.findOne(
+        //     { eventID },
+        //     { delegateCards: 1, isActive: 1, registrationDeadline: 1 }
+        // );
+        // if (!event) {
+        //     return res
+        //         .status(400)
+        //         .send({ msg: 'Event Not FOund', success: false });
+        // }
+        // let gameDelCardsProd = [
+        //     '624604b6950a69cc464ff7f5',
+        //     '624604bb950a69cc464ff7f9',
+        //     '62499b8eacdf8b9307b7b52e',
+        //     '62499becacdf8b9307b7b532',
+        //     '62499c1facdf8b9307b7b536',
+        //     '624604b6950a69cc464ff7fa',
+        //     '624b365c4fda25e0e4990ed1',
+        // ];
+        // let gameDelCardsTest = [
+        //     '624604b6950a69cc464ff7f5',
+        //     '624604bb950a69cc464ff7f9',
+        // ];
+        // let gamingEvent = false;
+        // for (let i = 0; i < event.delegateCards.length; i++) {
+        //     console.log('Here : ', event.delegateCards[i]);
+        //     if (
+        //         gameDelCardsProd.indexOf(event.delegateCards[i] != -1) ||
+        //         gameDelCardsTest.indexOf(event.delegateCards[i] != -1)
+        //     ) {
+        //         gamingEvent = true;
+        //         console.log('Gaming Event Found');
+        //         break;
+        //     }
+        // }
+        // if (gamingEvent) {
+        //     next();
+        //     return;
+        // }
         if (req.requestUser.status == 'UNVERIFIED')
             return res.status(400).send({
                 success: false,
