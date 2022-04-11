@@ -9,13 +9,11 @@ import Modal from "react-modal";
 import EventModal from "./EventModal";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext";
-// import MultiSelect from './MultiSelect';
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import QrReader from "react-web-qr-reader";
 
 import VigilanceCard from "../components/Tag/VigilanceCard";
-//import TicketDashboard from '../../tickets/TicketDashboard';
 
 const Dashboard = () => {
   const [selDel, setSelDel] = useState([]);
@@ -366,6 +364,7 @@ const Dashboard = () => {
   const [result, setResult] = useState({});
   const [dataLoaded, setdataLoaded] = useState(false);
   const handleScan = async (d) => {
+    window.scrollTo(0, 0);
     try {
       setResult(d.data);
       if (result != null) {
