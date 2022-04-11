@@ -210,17 +210,18 @@ const responseAtom = async (req, resp) => {
 
 const requestAtomFaculty = async (req, resp) => {
   try {
-    const { amount, name, email, mobileNumber } = req.body;
+    console.log(req.body);
+    const { amt, name, email, mobileNumber } = req.body;
     const data = {
       login: "332432",
       pass: "d59be440",
       ttype: "NBFundTransfer",
       prodid: "REVEL",
-      amt: amount.toString() + ".00",
+      amt: amt.toString() + ".00",
       txncur: "INR",
-      txnamt: amount.toString() + ".00",
+      txnamt: amt.toString() + ".00",
       clientcode: "Akash",
-      datepick: new Date.now(),
+      datepick: Date.now(),
       custacc: "100000036600",
       udf1: name,
       udf2: email,
@@ -240,7 +241,7 @@ const requestAtomFaculty = async (req, resp) => {
     data.transid = orderId;
 
     console.log(data);
-    var cc = req.body.clientcode;
+    var cc = data.clientcode;
     var final = new Buffer(cc).toString("base64");
     var url = data.ru == "" ? null : data.ru;
     var udf1 = data.udf1 == "" ? null : data.udf1;
@@ -339,7 +340,7 @@ const requestAtomFaculty = async (req, resp) => {
   }
 };
 
-const responseAtomFaculty = async (req, resp) => {
+const responseAtomFaculty = async (req, res) => {
   try {
     var res_enc_key = process.env.res_enc_key;
     var res_salt = process.env.res_salt;
