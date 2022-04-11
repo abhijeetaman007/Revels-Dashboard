@@ -50,4 +50,38 @@ const createSheet = async (response, name, id, max, delCard) => {
     resolve(wb);
   });
 };
-module.exports = createSheet;
+
+
+
+// const createSheet1 = async (response) => {
+//   // console.log(response);
+//   return new Promise(async (resolve) => {
+//     var wb = new xl.Workbook();
+//     var ws = wb.addWorksheet("Sheet");
+// var wb = new xl.Workbook();
+//     var ws = wb.addWorksheet("Sheet");
+//     const headingColumnNames = [
+//       "transaction_id",
+//       "Delegate ID",
+//       "Name",
+//       "Registration Number",
+//     ];
+//     let headingColumnIndex = 1;
+//     headingColumnNames.forEach((heading) => {
+//       ws.cell(1, headingColumnIndex++).string(heading);
+//     });
+//     let rowIndex = 2;
+//     response.forEach((resp) => {
+//       let columnIndex = 1;
+//       ws.cell(rowIndex, columnIndex++).string(resp.name);
+//       ws.cell(rowIndex, columnIndex++).string(resp.user.userID.toString());
+//       ws.cell(rowIndex, columnIndex++).string(resp.user.name.toString());
+//       ws.cell(rowIndex, columnIndex++).string(resp.user.registrationNumber.toString());
+//       rowIndex++;
+//     });
+//     resolve(wb);
+//   })
+// }
+
+
+module.exports = {createSheet};

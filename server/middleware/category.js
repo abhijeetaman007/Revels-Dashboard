@@ -268,6 +268,19 @@ const isEventRegOpen = async (req, res, next) => {
   }
 };
 
+// const isDelCardActive = async (req,res,next) =>{
+//   try{
+
+//   }
+//   catch(err)
+//   {
+//     console.log(err);
+//     return res
+//       .status(500)
+//       .send({ msg: "Internal Server Error", success: false });
+//   }
+// }
+
 module.exports = {
   isCategory,
   isOM,

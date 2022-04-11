@@ -114,17 +114,31 @@ const { requestAtom, responseAtom } = require("./user/atom");
 // const College = require('../models/College');
 // const User = require('../models/User')
 // const Team = require('../models/Team')
-// router.post(
+// const Transaction = require('../models/Transaction')
+// const {createSheet1} = require('../utils/createSheet')
+// router.get(
 //   "/test",
 //   async(req, res) => {
 //     try
 //     {
-//       let teams = await Team.find({event:'6245f1bc3babdcf2b2a99119'});   
-//       for(let i=0;i<teams.length;i++)
-//       {
-//         let found = await User.findOne()
-//       }
-//   }
+//       // let transactions  = await Transaction.find({
+//       //   // name:{$regex:'offline'},
+//       //   delegateCard:'624b37324fda25e0e4990ed2'
+//       // }).populate( {
+//       //     path:'user',
+//       //     select:{'name':1,'userID':1,'registrationNumber':1,'_id':0}
+//       // } ).select({name:1,_id:0});
+//       let transactions  = await Transaction.find({
+//         delegateCard:'624b37324fda25e0e4990ed2',
+//         isPaymentConfirmed:true,
+      
+//       }).count()
+//       // console.log()
+//       // createSheet1(transactions).then((file) => {
+//         // return file.write('trasactions_all.xlsx', res);
+//       // });
+//       return res.status(200).send({data:transactions})
+//     }
 //     catch(err)
 //     {
 //       console.log(err)
@@ -132,8 +146,6 @@ const { requestAtom, responseAtom } = require("./user/atom");
 //     }
 
 //   }
-// );
-
 //@User Routes:
 // Auth:
 router.post(
@@ -281,9 +293,9 @@ router.get("/admin/vigilance/user/:token", getUserFromID);
 router.get("/admin/vigilance/user/event/:eventID/:token", isEventRegistered);
 router.get("/admin/vigilance/user/delegatecard", hasDelegateCard);
 
-// // --------------------------INTERNAL ROUTES-----------------------------------
-// //@SysAdmin Routes - Private Routes for internal use - No frontend needed
-// // router.get('/sysadmin/register/category', categoryRegister);  //changed
+// --------------------------INTERNAL ROUTES-----------------------------------
+//@SysAdmin Routes - Private Routes for internal use - No frontend needed
+// router.get('/sysadmin/register/category', categoryRegister);  //changed
 // router.post('/sysadmin/delegatecard/add', addDelegateCard);
 // router.post('/sysadmin/delegatecard/delete', deleteDelegateCard);
 // router.get('/sysadmin/delegatecard/view', viewAllDelegateCards);
@@ -296,6 +308,5 @@ router.get("/admin/vigilance/user/delegatecard", hasDelegateCard);
 // router.get('/sysadmin/role/getall',getAllRoles)
 // router.post('/sysadmin/admin/register/multiple',registerMultipleAdmins)
 // router.post('/sysadmin/admin/event/changeregstatus',changeEventRegStatus);
-
-router.post("/superadmin/user/update", updateSysUser);
+// router.post("/superadmin/user/update", updateSysUser);
 module.exports = router;
