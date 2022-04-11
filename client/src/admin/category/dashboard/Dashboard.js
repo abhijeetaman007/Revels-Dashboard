@@ -334,33 +334,32 @@ const Dashboard = () => {
   };
   useEffect(() => {
     getAllEvents();
-    //if (auth.adminPayment) navigate("/admin/payment");
     getDelCards();
     getCategory();
     getEvents();
-    //getAllEvents();
-    // getTeams();
   }, []);
   const deleteEvent = async (id) => {
-    const toastId = toast.loading("Deleting...");
-    try {
-      const res = await axios.post(
-        "/api/admin/category/event/delete",
-        {
-          eventID: id,
-        },
-        {
-          headers: {
-            authorization: localStorage.getItem(ADMIN_TOKEN_ID),
+    if(window.confirm("Do you want to delete this event? This action is irreversible!")) {
+      const toastId = toast.loading("Deleting...");
+      try {
+        const res = await axios.post(
+          "/api/admin/category/event/delete",
+          {
+            eventID: id,
           },
+          {
+            headers: {
+              authorization: localStorage.getItem(ADMIN_TOKEN_ID),
+            },
+          }
+        );
+        toast.dismiss(toastId);
+        if (res.data.success) {
+          window.location.reload();
         }
-      );
-      toast.dismiss(toastId);
-      if (res.data.success) {
-        window.location.reload();
+      } catch (err) {
+        console.log(err);
       }
-    } catch (err) {
-      console.log(err);
     }
   };
   const [delay, setDelay] = useState(500);
