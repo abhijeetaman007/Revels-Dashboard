@@ -180,6 +180,7 @@ function App() {
               element={<ProshowDashboard />}
             /> */}
             {/* landing page route */}
+            <Route exact path="/calendar" element={<EventsCalendar />} />
             <Route exact path="/" element={<Landing />} />
             {/* error 404 route */}
             <Route path="*" element={<NotFound />} />
