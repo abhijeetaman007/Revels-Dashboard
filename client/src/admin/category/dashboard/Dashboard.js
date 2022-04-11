@@ -140,6 +140,7 @@ const Dashboard = () => {
     } catch (err) {
       console.log(err);
     }
+    console.log(category)
   };
   // const getTeams = async (event, name, id) => {
   //   try {
@@ -333,33 +334,32 @@ const Dashboard = () => {
   };
   useEffect(() => {
     getAllEvents();
-    //if (auth.adminPayment) navigate("/admin/payment");
     getDelCards();
     getCategory();
     getEvents();
-    //getAllEvents();
-    // getTeams();
   }, []);
   const deleteEvent = async (id) => {
-    const toastId = toast.loading("Deleting...");
-    try {
-      const res = await axios.post(
-        "/api/admin/category/event/delete",
-        {
-          eventID: id,
-        },
-        {
-          headers: {
-            authorization: localStorage.getItem(ADMIN_TOKEN_ID),
+    if(window.confirm("Do you want to delete this event? This action is irreversible!")) {
+      const toastId = toast.loading("Deleting...");
+      try {
+        const res = await axios.post(
+          "/api/admin/category/event/delete",
+          {
+            eventID: id,
           },
+          {
+            headers: {
+              authorization: localStorage.getItem(ADMIN_TOKEN_ID),
+            },
+          }
+        );
+        toast.dismiss(toastId);
+        if (res.data.success) {
+          window.location.reload();
         }
-      );
-      toast.dismiss(toastId);
-      if (res.data.success) {
-        window.location.reload();
+      } catch (err) {
+        console.log(err);
       }
-    } catch (err) {
-      console.log(err);
     }
   };
   const [delay, setDelay] = useState(500);
@@ -716,7 +716,7 @@ const Dashboard = () => {
             className="text-secondary pl-3 ml-3 border-left"
             style={{ fontSize: "1.2rem" }}
           >
-            {events.length} events
+            {category.categoryId !== "OPR" && events.length} {category.categoryId === "OPR" && allEventDetails.length} events
           </div>
         </div>
         <div
@@ -725,19 +725,6 @@ const Dashboard = () => {
         >
           {category.description}
         </div>
-        {/* {category.categoryId === "PROSHOW" && (
-          <>
-            <Link to="/admin/payment/proshow">
-              <button
-                type="button"
-                className="btn m-2 text-white"
-                style={{ backgroundColor: "#F4737E", width: "200px" }}
-              >
-                Proshow Payment
-              </button>
-            </Link>
-          </>
-        )} */}
         {(category.categoryId === "INF" ||
           category.categoryId === "OM" ||
           category.categoryId === "PROSHOW") && (
@@ -880,7 +867,7 @@ const Dashboard = () => {
                   return (
                     <>
                       {/* <EventDetails culEvent={culEvent}  setResult={setResult} result={result} eventScanQR={eventScanQR} setScan={setScan} dataLoaded={dataLoaded} setdataLoaded={setdataLoaded}/> */}
-                      <div className="main-wrapper font-light text-white m-1 rounded p-4">
+                      <div key={ind} className="main-wrapper font-light text-white m-1 rounded p-4">
                         <div className="d-flex flex-row justify-content-between align-items-center">
                           {culEvent.name}
                           {/* {eventScanQR && (
@@ -971,6 +958,18 @@ const Dashboard = () => {
             >
               {events.map((eventdata) => (
                 <EventModal eventdata={eventdata} deleteEvent={deleteEvent} />
+              ))}
+            </div>
+          </>
+        )}
+        {(category.categoryId === "OPR") && (
+          <>
+            <div
+              className="d-flex flex-wrap justify-content-center align-items-center"
+              style={{ margin: "4rem 5rem" }}
+            >
+              {allEventDetails.map((eventdata) => (
+                <EventModal eventdata={eventdata} deleteEvent={deleteEvent} category={category}/>
               ))}
             </div>
           </>

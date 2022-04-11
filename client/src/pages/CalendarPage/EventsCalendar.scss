@@ -1,10 +1,41 @@
-
-.rbc-btn-group button:first-child {
+$tile-background: #100b1b;
+$border-color: #f5737f;
+.rbc-btn-group {
     display: none;
 }
-.rbc-btn-group button:nth-child(2) {
+.rbc-time-header {
     display: none;
 }
-.rbc-btn-group button:last-child {
-    display: none;
+.rbc-timeslot-group {
+    background-color: $tile-background;
+    border: none;
+}
+.rbc-time-content,
+.rbc-time-view {
+    border: 0;
+}
+.rbc-day-slot .rbc-time-slot {
+    border: 0;
+}
+.rbc-time-content > * + * > * {
+    border-left: 1px solid $border-color;
+}
+.rbc-day-slot .rbc-event, 
+.rbc-day-slot .rbc-background-event {
+    border: none;
+}
+.rbc-event, 
+.rbc-day-slot .rbc-background-event {
+    background-color: $border-color;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.356);
+    margin: 0 5px;
+}
+.rbc-events-container {
+    padding: 20px;
+}
+.rbc-event-label {
+    font-size: 0.8rem;
+}
+.rbc-event-content {
+    font-size: 1.1rem;
 }

@@ -27,14 +27,13 @@ import Login from "../src/admin/login/login";
 import Dashboard from "./admin/category/dashboard/Dashboard";
 import PdfPage from "./pages/Rulebook/PdfPage";
 import TicketDashboard from "./admin/tickets/TicketDashboard";
-import ProshowDashboard from "./admin/proshow/proshowDashboard";
 import SuccessAnimation from "./components/VerifyAnimation/successAnimation";
 import FailedAnimation from "./components/VerifyAnimation/failedAnimation";
 import CancelledAnimation from "./components/VerifyAnimation/cancelledAnimation";
 
 function App() {
   axios.defaults.baseURL = process.env.REACT_APP_BASE_URL;
-  console.log = () => {};
+  // console.log = () => {};
   return (
     <div className="App">
       <BrowserRouter>
@@ -175,7 +174,6 @@ function App() {
               path="/admin/payment/proshow"
               element={<ProshowDashboard />}
             /> */}
-
             {/* landing page route */}
             <Route exact path="/" element={<Landing />} />
             {/* error 404 route */}

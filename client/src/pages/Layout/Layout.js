@@ -142,10 +142,10 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <h4 className="font-medium">{user.name}</h4>
             <h5 className="font-light">{user.college}</h5>
             <div className="buttons font-medium">
-              <button onClick={() => navigate(`/dashboard/profile`)}>
+              <button className="bg-white" onClick={() => navigate(`/dashboard/profile`)}>
                 Profile
               </button>
-              <button onClick={auth.userLogout}>Logout</button>
+              <button className="bg-white" onClick={auth.userLogout}>Logout</button>
             </div>
             <div className="font-light w-auto text-center mt-5">
               <div className="text-light" style={{ fontSize: "12px" }}>
