@@ -367,6 +367,7 @@ const InsideEvent = ({ isPublic }) => {
                   className="input-team w-100"
                   type="text"
                   onChange={(e) => {
+                    e.preventDefault();
                     setTeamIDInput(e.target.value);
                   }}
                   value={teamIDInput}
