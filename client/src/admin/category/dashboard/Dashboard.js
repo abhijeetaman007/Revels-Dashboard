@@ -371,8 +371,9 @@ const Dashboard = () => {
       setResult(d.data);
       if (result != null) {
         console.log("hanld scan", d);
-        const token = result.toString();
-        if (token != undefined) {
+        const token = result;
+        if (token !== undefined && typeof token === "string") {
+          console.log(token);
           const res = await axios.get("/api/admin/vigilance/user/" + token);
           //console.log(res.data.data);
           setResult(res.data.data);
@@ -888,6 +889,7 @@ const Dashboard = () => {
                                 color: "#F4737E",
                               }}
                               onClick={() => {
+                                document.body.scrollTop = document.documentElement.scrollTop = 100;
                                 setResult({});
                                 setScan(false);
                                 setScanE(true);

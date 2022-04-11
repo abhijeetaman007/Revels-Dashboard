@@ -72,6 +72,7 @@ const isVerifiedForRevels = async (req, res, next) => {
     console.log("Status :", req.requestUser.status);
     let { eventID } = req.body;
     if (eventID) {
+        // console.log("herer my events")
       const event = await Event.findOne({ eventID }, { category: 1 });
       if (event?.category == "62461a9e950a69cc465008fc") {
         return next();

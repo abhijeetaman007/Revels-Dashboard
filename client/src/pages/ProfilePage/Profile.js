@@ -499,7 +499,7 @@ function Profile() {
               </p>
               <div className="qr">
                 <QRCode
-                  value={auth.user.token}
+                  value={auth.user.userID +"_" + auth.user.token.slice(auth.user.token.length - 10).toString()}
                   size={155}
                   onClick={() => {
                     toggleModal();
@@ -517,7 +517,8 @@ function Profile() {
                       alt="Modal Image"
                     />
                   ) : (
-                    <QRCode value={auth.user.token} size={300} />
+                    <QRCode value={auth.user.userID 
+                    +"_" + auth.user.token.slice(auth.user.token.length - 10).toString()} size={300} />
                   )}
                 </Modal>
               </div>

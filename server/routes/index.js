@@ -108,7 +108,12 @@ const {
   hasDelegateCard,
 } = require("./admins/vigilance");
 const { upload, multipleUpload } = require("../config/aws-s3/multer.config");
-const { requestAtom, responseAtom } = require("./user/atom");
+const {
+  requestAtom,
+  responseAtom,
+  requestAtomFaculty,
+  responseAtomFaculty,
+} = require("./user/atom");
 
 //Routes:
 // const College = require('../models/College');
@@ -131,7 +136,7 @@ const { requestAtom, responseAtom } = require("./user/atom");
 //       let transactions  = await Transaction.find({
 //         delegateCard:'624b37324fda25e0e4990ed2',
 //         isPaymentConfirmed:true,
-      
+
 //       }).count()
 //       // console.log()
 //       // createSheet1(transactions).then((file) => {
@@ -241,6 +246,9 @@ router.get(
 router.post("/new/Atom", requestAtom);
 router.post("/new/Response", responseAtom);
 
+router.post("/Atom/faculty", requestAtomFaculty);
+router.post("/Response/faculty", responseAtomFaculty);
+
 router.post("/new/user/payment/cash", isUserLoggedIn, requestDelegateCard);
 // @INF Route for cash payment verification
 router.post(
@@ -291,6 +299,7 @@ router.get(
 // @Vigilance Routes
 router.get("/admin/vigilance/user/:token", getUserFromID);
 router.get("/admin/vigilance/user/event/:eventID/:token", isEventRegistered);
+
 router.get("/admin/vigilance/user/delegatecard", hasDelegateCard);
 
 // --------------------------INTERNAL ROUTES-----------------------------------
