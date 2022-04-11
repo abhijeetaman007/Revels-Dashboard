@@ -17,6 +17,7 @@ const getUserFromID = async (req, res) => {
         //   return res.status(400).send({ success: false, msg: "No user Found" });
         // return res.send({ success: true, data: user });
         console.log('vig token');
+        console.log(token);
         let userID = '',
             userToken = '',
             flag = 0;
@@ -30,10 +31,11 @@ const getUserFromID = async (req, res) => {
         }
         console.log('user', userID);
         console.log('token', userToken);
+        userID = Number(userID);
         let user = await User.findOne(
             { userID },
             { password: 0, passwordResetToken: 0 }
-        );
+        ).populate('role delegateCards');
         if (!user)
             return res
                 .status(400)

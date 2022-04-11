@@ -370,8 +370,9 @@ const Dashboard = () => {
       setResult(d.data);
       if (result != null) {
         console.log("hanld scan", d);
-        const token = result.toString();
-        if (token != undefined) {
+        const token = result;
+        if (token !== undefined && typeof token === "string") {
+          console.log(token);
           const res = await axios.get("/api/admin/vigilance/user/" + token);
           //console.log(res.data.data);
           setResult(res.data.data);
