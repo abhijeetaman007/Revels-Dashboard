@@ -84,4 +84,4 @@ const createSheet = async (response, name, id, max, delCard) => {
 // }
 
 
-module.exports = {createSheet};
+module.exports = createSheet;
