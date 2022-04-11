@@ -366,6 +366,7 @@ const Dashboard = () => {
   const [result, setResult] = useState({});
   const [dataLoaded, setdataLoaded] = useState(false);
   const handleScan = async (d) => {
+    window.scrollTo(0, 0);
     try {
       setResult(d.data);
       if (result != null) {

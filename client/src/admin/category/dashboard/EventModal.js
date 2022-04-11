@@ -52,6 +52,26 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
       transform: "translate(-50%, -50%)",
     },
   };
+  const getAllParticipantsOps = async () => {
+    try {
+      let path = "/api/admin/operations/event/participants/" +
+      data._id +
+      "/" +
+      data.eventID +
+      "/" +
+      data.name.split("/")[0] +
+      "/" +
+      data.maxMembers +
+      "/" +
+      localStorage.getItem(ADMIN_TOKEN_ID) +
+      "/" +
+      data.delegateCards[0]._id;
+      const res = await axios.get(path);
+      console.log(res)
+    } catch (error) {
+      console.log(error)
+    }
+  }
   useEffect(() => {
     getDelCards();
     // getParticipantsForOps();
@@ -63,6 +83,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
       });
     }
     setFilteredDel(filterArray);
+    getAllParticipantsOps()
   }, []);
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
