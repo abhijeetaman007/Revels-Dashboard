@@ -51,7 +51,9 @@ app.get("/api", (req, res) => {
     success: true,
   });
 });
-
+app.get("/api/faculty", function (req, res) {
+  res.sendFile(path.join(__dirname, "/atom/index.html"));
+});
 app.use("/api", router);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Running on port ${PORT}`));

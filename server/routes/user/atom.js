@@ -208,10 +208,6 @@ const responseAtom = async (req, resp) => {
   }
 };
 
-var crypto = require("crypto");
-const Transaction = require("../../models/Transaction");
-const User = require("../../models/User");
-
 const requestAtomFaculty = async (req, resp) => {
   try {
     const { amount, name, email, mobileNumber } = req.body;
