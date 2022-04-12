@@ -11,7 +11,7 @@ const PdfPage = ({pdf}) => {
     } else if(pdf === "mitpost") {
         pdfPath = "/mitpost.pdf";
     } else if(pdf === "schedule-cultural") {
-        pdfPath = "/schedule0.pdf";
+        pdfPath = "/schedule1.pdf";
     } else if(pdf === "schedule-sports") {
         pdfPath = "/sportsschedule.pdf";
     }
