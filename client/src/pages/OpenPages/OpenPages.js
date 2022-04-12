@@ -9,7 +9,7 @@ import Developers from '../DevelopersPage/Developers';
 const OpenPages = ({ pageType }) => {
   return (
     <div className="h-100 w-100">
-      {/* <Navbar isBackground={true} /> */}
+      <Navbar isBackground={true} />
       {pageType === 'events' && (
         <div className="open-page-content">
           <Events isPublic={true} />
