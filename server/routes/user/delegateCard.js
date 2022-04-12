@@ -82,11 +82,13 @@ const requestDelegateCard = async (req, res) => {
 
 const getMyDelegateCards = async (req, res) => {
   try {
-    let delegateCards = await Transaction.find(
-      { user: req.requestUser._id, isPaymentConfirmed: true },
+    let delegateCards = await User.findOne(
+      { _id: req.requestUser._id, isPaymentConfirmed: true },
       { delegateCards: 1 }
-    ).populate("delegateCard");
-    return res.status(200).send({ success: true, data: delegateCards });
+    ).populate("delegateCards");
+    return res
+      .status(200)
+      .send({ success: true, data: delegateCards.delegateCards });
   } catch (err) {
     console.log(err);
     return res

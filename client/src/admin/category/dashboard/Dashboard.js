@@ -9,13 +9,11 @@ import Modal from "react-modal";
 import EventModal from "./EventModal";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../../../context/AuthContext";
-// import MultiSelect from './MultiSelect';
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import QrReader from "react-web-qr-reader";
 
 import VigilanceCard from "../components/Tag/VigilanceCard";
-//import TicketDashboard from '../../tickets/TicketDashboard';
 
 const Dashboard = () => {
   const [selDel, setSelDel] = useState([]);
@@ -32,6 +30,7 @@ const Dashboard = () => {
 
   const [options, setOptions] = useState([]);
   const [allEventDetails, setallEventDetails] = useState([]);
+  const [allEventOps, setallEventOps] = useState([]);
   const [eventTabSC, seteventTabSC] = useState(0);
   const getDelCards = async () => {
     try {
@@ -59,6 +58,19 @@ const Dashboard = () => {
         headers: header,
       });
       setallEventDetails(res.data.data);
+      console.log(res.data.data);
+    } catch (err) {
+      console.log(err.repsonse.data);
+    }
+  };
+  const getAllEventsOps = async () => {
+    console.log("all events ops");
+    const header = {
+      authorization: localStorage.getItem(ADMIN_TOKEN_ID),
+    };
+    try {
+      const res = await axios.get("/api/user/event/getallevents");
+      setallEventOps(res.data.data);
       console.log(res.data.data);
     } catch (err) {
       console.log(err.repsonse.data);
@@ -337,6 +349,7 @@ const Dashboard = () => {
     getDelCards();
     getCategory();
     getEvents();
+    getAllEventsOps();
   }, []);
   const deleteEvent = async (id) => {
     if(window.confirm("Do you want to delete this event? This action is irreversible!")) {
@@ -366,6 +379,7 @@ const Dashboard = () => {
   const [result, setResult] = useState({});
   const [dataLoaded, setdataLoaded] = useState(false);
   const handleScan = async (d) => {
+    window.scrollTo(0, 0);
     try {
       setResult(d.data);
       if (result != null) {
@@ -970,7 +984,7 @@ const Dashboard = () => {
               className="d-flex flex-wrap justify-content-center align-items-center"
               style={{ margin: "4rem 5rem" }}
             >
-              {allEventDetails.map((eventdata) => (
+              {allEventOps.map((eventdata) => (
                 <EventModal eventdata={eventdata} deleteEvent={deleteEvent} category={category}/>
               ))}
             </div>

@@ -15,7 +15,7 @@ const Events = ({ isPublic }) => {
   const getAllEvents = async () => {
     try {
       const res = await axios.get("/api/user/event/getallevents");
-      setEvents(res.data.data);
+      setEvents(res.data.data.filter((eve) => {return eve.isActive === true}));
     } catch (error) {
       console.log(error);
     }
