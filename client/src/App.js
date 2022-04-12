@@ -144,11 +144,11 @@ function App() {
               path="/tshirts"
               element={<OpenPages pageType="coming-soon" />}
             />
-            <Route
+            {/* <Route
               exact
               path="/developers"
               element={<OpenPages pageType="developers" />}
-            />
+            /> */}
             <Route
               exact
               path="/schedule"
@@ -180,7 +180,7 @@ function App() {
               element={<ProshowDashboard />}
             /> */}
             {/* landing page route */}
-            <Route exact path="/calendar" element={<EventsCalendar />} />
+            {/* <Route exact path="/calendar" element={<EventsCalendar />} /> */}
             <Route exact path="/" element={<Landing />} />
             {/* error 404 route */}
             <Route path="*" element={<NotFound />} />
