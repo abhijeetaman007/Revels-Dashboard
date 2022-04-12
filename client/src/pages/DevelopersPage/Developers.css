@@ -1,0 +1,12 @@
+.dtitle {
+    background: 
+       linear-gradient(currentColor 0 0) left  var(--p, 50%) bottom 0 /var(--d, 20%) 3px no-repeat,
+       linear-gradient(currentColor 0 0) right var(--p, 50%) bottom 0 /var(--d, 20%) 3px no-repeat;
+    transition: 0.3s, background-position 0.3s 0.3s;
+  }
+  
+  .dtitle:hover {
+    --d: 100%;
+    --p: 100%;
+    transition: 0.3s, background-size 0.3s 0.3s;
+  }
