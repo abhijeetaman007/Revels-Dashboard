@@ -8,9 +8,7 @@ import Tag from "../components/Tag/Tag";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
-  console.log(category)
   const [isChecked, setIsChecked] = useState(eventdata.teamDelegateCard);
-  const [selDel, setSelDel] = useState(null);
   const [filteredDel, setFilteredDel] = useState([]);
 
   const handleChange = async (e) => {
@@ -52,26 +50,6 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
       transform: "translate(-50%, -50%)",
     },
   };
-  const getAllParticipantsOps = async () => {
-    try {
-      let path = "/api/admin/operations/event/participants/" +
-      data._id +
-      "/" +
-      data.eventID +
-      "/" +
-      data.name.split("/")[0] +
-      "/" +
-      data.maxMembers +
-      "/" +
-      localStorage.getItem(ADMIN_TOKEN_ID) +
-      "/" +
-      data.delegateCards[0]._id;
-      const res = await axios.get(path);
-      console.log(res)
-    } catch (error) {
-      console.log(error)
-    }
-  }
   useEffect(() => {
     getDelCards();
     // getParticipantsForOps();
@@ -83,7 +61,6 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
       });
     }
     setFilteredDel(filterArray);
-    getAllParticipantsOps()
   }, []);
 
   const [modalIsOpen, setIsOpen] = React.useState(false);
@@ -669,13 +646,19 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
       <div className="main-wrapper font-light text-white m-1 rounded p-4">
         <div className="d-flex flex-row justify-content-between align-items-center">
           {data.name}&nbsp;
-          <div>
+          <div className="d-flex align-items-center justify-content-center">
             <i
               onClick={openModal}
               className="edit fa fa-pencil"
               aria-hidden="true"
               style={{ marginRight: "1rem", color: "#F4737E" }}
             ></i>
+            {
+              category?.categoryId === "OPR" &&
+              <div className="text-danger" style={{ fontSize: "0.9rem" }}>
+                <p>{eventdata.teamCount} TEAM{eventdata.teamCount === 1 ? "" : "S"}</p>
+              </div>
+            }
             {
               category?.categoryId !== "OPR" && 
               <i
