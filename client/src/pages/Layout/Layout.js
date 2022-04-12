@@ -10,6 +10,7 @@ import logoWhite from "./.././../assets/logos/logo_white.png";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import Loader from "./../Loader/Loader";
+import Developers from "../DevelopersPage/Developers";
 const Layout = ({ children, isAagazVisible = false, activeTab }) => {
   const navigate = useNavigate();
   const auth = useAuth();
@@ -147,7 +148,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
               </button>
               <button className="bg-white" onClick={auth.userLogout}>Logout</button>
             </div>
-            <div className="font-light w-auto text-center mt-5">
+            <a href="../../developers" className="font-light w-auto text-center mt-5" style={{textDecoration:'none'}}>
               <div className="text-light" style={{ fontSize: "12px" }}>
                 Made with{" "}
                 <i
@@ -159,7 +160,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
               <div className="text-secondary" style={{ fontSize: "13px" }}>
                 sysadrevels22@gmail.com
               </div>
-            </div>
+            </a>
           </div>
         </div>
         <div className="content-area">
