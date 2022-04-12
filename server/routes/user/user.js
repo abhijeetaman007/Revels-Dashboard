@@ -209,7 +209,7 @@ const userLogin = async (req, res) => {
       userRole: user.role,
     };
     let token = jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: 1 * 60 * 60,
+      expiresIn: 6 * 60 * 60,
     });
     user = await User.findOneAndUpdate(
       { _id: user._id },
