@@ -49,7 +49,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <p className="font-light">Welcome back</p>
           </div>
         </div>
-        <i className="fa fa-bell" onClick={handleBell}></i>
+        {/* <i className="fa fa-bell" onClick={handleBell}></i> */}
       </nav>
       <div className="dash-wrapper">
         {/* <div className="notif-wrapper">
