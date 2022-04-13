@@ -108,7 +108,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
     minMembers: eventdata.minMembers,
     maxMembers: eventdata.maxMembers,
     eventHeads: eventdata.eventHeads,
-    eventDateTime: new Date(eventdata.eventDateTime).toDateString(),
+    eventDateTime: new Date(eventdata.eventDateTime),
     registrationDeadline: new Date(eventdata.registrationDeadline),
     eventVenue: eventdata.eventVenue,
     tags: eventdata.tags,
@@ -199,12 +199,12 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
     console.log('ooooooffff');
     console.log(delArr);
     let tagsarr = [];
-    console.log(t1);
+
     if (numTags.length !== 0) {
-      if (t1 !== '') tagsarr.push(t1.toUpperCase().trim());
-      if (t2 !== '') tagsarr.push(t2.toUpperCase().trim());
-      if (t3 !== '') tagsarr.push(t3.toUpperCase().trim());
-      if (t4 !== '') tagsarr.push(t4.toUpperCase().trim());
+      if (t1 !== '' && t1 != undefined) tagsarr.push(t1.toUpperCase().trim());
+      if (t2 !== '' && t2 != undefined) tagsarr.push(t2.toUpperCase().trim());
+      if (t3 !== '' && t3 != undefined) tagsarr.push(t3.toUpperCase().trim());
+      if (t4 !== '' && t4 != undefined) tagsarr.push(t4.toUpperCase().trim());
     }
     console.log(tagsarr);
     let headsarr = [];
@@ -221,6 +221,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
         email: head2E,
       });
     if (!validateForm()) {
+      console.log('ok123');
       toast.error('Please fill in all the fields', {
         id: toastId,
       });
@@ -243,12 +244,14 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
       (head2N != 0 && (head2P == '' || head2E == '')) ||
       (head2P != '' && (head2E == '' || head2N == 0))
     ) {
+      console.log('ok');
       toast.error("Please complete Event Head 2's details", {
         id: toastId,
       });
     } else {
       try {
         console.log(tagsarr);
+        console.log('supppppppppppp');
         const eventData = {
           eventID: data.eventID,
           name: data.name,
@@ -565,7 +568,9 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
             setData({ ...data, registrationDeadline: new Date(e.target.value) })
           }
         />
-        <p>Previous selected date: {eventdata.registrationDeadline}</p>
+        <p>
+          Previous selected date: {convertTime(eventdata.registrationDeadline)}
+        </p>
         <label className="font-medium mt-3">Event Venue</label>
         <input
           type="text"
