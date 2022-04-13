@@ -8,6 +8,7 @@ const { sendEmailNotif, sendENotif } = require("../../utils/ses");
 const { emailTemplate } = require("../../utils/template");
 const { mailer } = require("../../utils/mailer");
 const User = require("../../models/User");
+const { NetworkManager } = require("aws-sdk");
 
 const addDelegateCard = async (req, res) => {
   try {
@@ -234,18 +235,17 @@ const registerAdmin = async (req, res) => {
 
         
         // SES
-        // let message = `You are registered as Admin you can access your category portal with following credentials \n <b>Email : </b> ${newAdmin.email} \n <b>Password : ${newAdmin.pass}</b>\nRegards,\nSystem Admin - Aagaz | Revels '22`;
-        // await sendENotif(newAdmin.email, "Admin Credentials Revels'22", message);
-        // await sendEmailNotif(
-        //     newAdmin.email,
-        //     'Email Verification Revels',
-        //     html,
-        //     message
-        // );
+        let message = `You are registered as Admin you can access your category portal with following credentials \n Email :  ${newAdmin.email} \n Password : ${newAdmin.password} \nRegards,\nSystem Admin - Aagaz | Revels '22`;
+        await sendENotif(newAdmin.email, "Admin Credentials Revels'22", message);
+        await sendEmailNotif(
+          newAdmin.email,
+            'Email Verification Revels',
+            html,
+            message
+        );
         
         // Node Mailer
-        // await mailer(newAdmin.email,"Admin Credentials Revels'22 ",html)
-        // await mailer("","Admin Credentials Revels'22 ",html)
+        // await mailer("abhijeetaman007@gmail.com","Admin Credentials Revels'22 ",html)
 
         return res
             .status(200)
@@ -409,6 +409,23 @@ const updateSysUser = async (req, res) => {
       .send({ success: false, msg: "Internal Server Error" });
   }
 };
+
+
+// const getProshowUsers = async(req,res) =>{
+//   try
+//   {
+//     // let {} = req.body;
+//     // let ProShowCard = '624b37324fda25e0e4990ed2';
+//     let users = await User.find({delegateCards:'624b37324fda25e0e4990ed2'})
+//     return res.send({data:users,})
+//   }
+//   catch(err)
+//   {
+//     console.log(err);
+//     return res.status(500).send({msg:"Internal Server Error",success:false})
+//   }
+// }
+
 module.exports = {
   addDelegateCard,
   deleteDelegateCard,

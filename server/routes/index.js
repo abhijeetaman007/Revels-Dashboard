@@ -302,9 +302,9 @@ router.get("/admin/vigilance/user/event/:eventID/:token", isEventRegistered);
 
 router.get("/admin/vigilance/user/delegatecard", hasDelegateCard);
 
-// --------------------------INTERNAL ROUTES-----------------------------------
-//@SysAdmin Routes - Private Routes for internal use - No frontend needed
-// router.get('/sysadmin/register/category', categoryRegister);  //changed
+// // --------------------------INTERNAL ROUTES-----------------------------------
+// // @SysAdmin Routes - Private Routes for internal use - No frontend needed
+// // router.get('/sysadmin/register/category', categoryRegister);  //changed
 // router.post('/sysadmin/delegatecard/add', addDelegateCard);
 // router.post('/sysadmin/delegatecard/delete', deleteDelegateCard);
 // router.get('/sysadmin/delegatecard/view', viewAllDelegateCards);
