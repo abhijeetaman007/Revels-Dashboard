@@ -153,50 +153,50 @@ const getUserTeams = async (req, res) => {
 const getAllEvents = async (req, res) => {
   try {
     let events = await Event.find().populate("category delegateCards");
-     
-    let teams = await Team.find();
-    let map = new Map();
-    for(let i=0;i<teams.length;i++)
-    {
-      if(!map[teams[i].event] || (map[teams[i].event == undefined]))
-      {
-        map[teams[i].event] = 0;
-      }
-      map[teams[i].event]++;
-    }
-    for(let i=0;i<events.length;i++)
-    {
-      let count = 0;
-      if(map[events[i]._id])
-      {
-        count = map[events[i]._id];
-        // console.log("Count Here",count)
-      }
-      newEvent = {
-        _id:events[i]._id,
-        eventID:events[i].eventID,
-        name:events[i].name,
-        category:events[i].category,
-        description:events[i].description,
-        eventType:events[i].eventType,
-        mode:events[i].mode,
-        participationCriteria:events[i].participationCriteria,
-        prize:events[i].prize,
-        minMembers:events[i].minMembers,
-        maxMembers:events[i].maxMembers,
-        eventHeads:events[i].eventHeads,
-        tags:events[i].tags,        
-        isActive:events[i].isActive,
-        teamDelegateCard:events[i].teamDelegateCard,
-        delegateCards:events[i].delegateCards,
-        rounds:events[i].rounds,
-        eventDateTime:events[i].eventDateTime,
-        eventVenue:events[i].eventVenue,
-        registrationDeadline:events[i].registrationDeadline,
-        teamCount:count
-      }
-      events[i] = newEvent
-    }
+
+    // let teams = await Team.find();
+    // let map = new Map();
+    // for(let i=0;i<teams.length;i++)
+    // {
+    //   if(!map[teams[i].event] || (map[teams[i].event == undefined]))
+    //   {
+    //     map[teams[i].event] = 0;
+    //   }
+    //   map[teams[i].event]++;
+    // }
+    // for(let i=0;i<events.length;i++)
+    // {
+    //   let count = 0;
+    //   if(map[events[i]._id])
+    //   {
+    //     count = map[events[i]._id];
+    //     // console.log("Count Here",count)
+    //   }
+    //   newEvent = {
+    //     _id:events[i]._id,
+    //     eventID:events[i].eventID,
+    //     name:events[i].name,
+    //     category:events[i].category,
+    //     description:events[i].description,
+    //     eventType:events[i].eventType,
+    //     mode:events[i].mode,
+    //     participationCriteria:events[i].participationCriteria,
+    //     prize:events[i].prize,
+    //     minMembers:events[i].minMembers,
+    //     maxMembers:events[i].maxMembers,
+    //     eventHeads:events[i].eventHeads,
+    //     tags:events[i].tags,
+    //     isActive:events[i].isActive,
+    //     teamDelegateCard:events[i].teamDelegateCard,
+    //     delegateCards:events[i].delegateCards,
+    //     rounds:events[i].rounds,
+    //     eventDateTime:events[i].eventDateTime,
+    //     eventVenue:events[i].eventVenue,
+    //     registrationDeadline:events[i].registrationDeadline,
+    //     teamCount:count
+    //   }
+    //   events[i] = newEvent
+    // }
     // console.log(events[0].count)
     // console.log(events[0])
     return res.status(200).send({ success: false, data: events });
@@ -332,25 +332,27 @@ const getAllParticipants = async (req, res) => {
   }
 };
 
-const changeEventRegStatus  = async(req,res) =>{
-  try
-  {
-    let {eventType,status} = req.body;
+const changeEventRegStatus = async (req, res) => {
+  try {
+    let { eventType, status } = req.body;
     // let event =await Event.findOne({_id:eventType});
-    let event = await Event.updateMany({eventType},{
-      isActive:status
-    },{
-      new:true,
-    });
-    return res.status(200).send({msg:'Event isActive upadated',data:event,success:true});
-  }
-  catch(err)
-  {
+    let event = await Event.updateMany(
+      { eventType },
+      {
+        isActive: status,
+      },
+      {
+        new: true,
+      }
+    );
+    return res
+      .status(200)
+      .send({ msg: "Event isActive upadated", data: event, success: true });
+  } catch (err) {
     console.log(err);
-    return res.status(500).send({msg:'Internal Error Server'})
+    return res.status(500).send({ msg: "Internal Error Server" });
   }
-}
-
+};
 
 module.exports = {
   registerEvent,
