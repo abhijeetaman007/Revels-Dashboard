@@ -146,7 +146,7 @@ $text-color: #c4c4c4;
       -webkit-box-align: center;
           -ms-flex-align: center;
               align-items: center;
-      .text {
+      .text-details-user {
         width: 70%;
         height: -webkit-fit-content;
         height: -moz-fit-content;
@@ -171,7 +171,7 @@ $text-color: #c4c4c4;
         gap: 2rem;
 
         padding-bottom: 8%;
-        .name {
+        .name-user {
           border-left: 5px solid lightgray;
           padding-left: 20px;
           h1 {
@@ -354,7 +354,7 @@ $text-color: #c4c4c4;
       overflow-y: scroll;
       padding-top: 330px;
       padding-bottom: 50px;
-      .text {
+      .text-details-user {
         margin-top: 230px;
       }
     }
@@ -363,7 +363,8 @@ $text-color: #c4c4c4;
       overflow-y: scroll;
       padding-top: 480px;
       padding-bottom: 50px;
-      .text {
+      .text-details-user {
+        
         margin-top: 230px;
       }
     }
@@ -379,7 +380,7 @@ $text-color: #c4c4c4;
         width: 100%;
         margin-top: 60px;
         overflow-y: scroll;
-        .text {
+        .text-details-user {
           width: 80%;
           word-break: break-all;
           white-space: pre-wrap;
@@ -432,7 +433,7 @@ $text-color: #c4c4c4;
         .back-btn {
           left: 4%;
         }
-        .text {
+        .text-details-user {
           width: 80%;
           padding-top: 80px;
           padding-top: 80px;
