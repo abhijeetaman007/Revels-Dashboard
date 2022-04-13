@@ -67,18 +67,18 @@ body {
   width: 10px;
 }
 
-input[type='date'] {
+input[type='datetime-local'] {
   position: relative;
   padding: 10px;
 }
 
-input[type='date']::-webkit-calendar-picker-indicator {
+input[type='datetime-local']::-webkit-calendar-picker-indicator {
   color: transparent;
   background: none;
   z-index: 1;
 }
 
-input[type='date']:before {
+input[type='datetime-local']:before {
   color: transparent;
   background: none;
   display: block;

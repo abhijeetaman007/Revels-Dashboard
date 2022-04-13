@@ -464,7 +464,7 @@ const Dashboard = () => {
           <i class="fa fa-times" aria-hidden="true"></i>
         </div>
         <label className="font-medium mt-2">
-          Event Name<span style={{ color: "red" }}>*</span>
+          Event Name<span style={{ color: 'red' }}>*</span>
         </label>
         <input
           type="text"
@@ -479,7 +479,7 @@ const Dashboard = () => {
         <div className="d-flex flex-md-row flex-column">
           <div className="w-md-50 w-100 mx-md-1">
             <label className="font-medium mt-2">
-              Min Members<span style={{ color: "red" }}>*</span>
+              Min Members<span style={{ color: 'red' }}>*</span>
             </label>
             <input
               type="number"
@@ -494,7 +494,7 @@ const Dashboard = () => {
           </div>
           <div className="w-md-50 w-100 mx-md-1">
             <label className="font-medium mt-2">
-              Max Members<span style={{ color: "red" }}>*</span>
+              Max Members<span style={{ color: 'red' }}>*</span>
             </label>
             <input
               type="number"
@@ -509,7 +509,7 @@ const Dashboard = () => {
           </div>
         </div>
         <label className="font-medium mt-3">
-          Event Description<span style={{ color: "red" }}>*</span>
+          Event Description<span style={{ color: 'red' }}>*</span>
         </label>
         <textarea
           rows="4"
@@ -524,7 +524,7 @@ const Dashboard = () => {
         />
         <label className="font-medium mt-3">
           Delegate Cards Needed for Event
-          <span style={{ color: "red" }}>*</span>
+          <span style={{ color: 'red' }}>*</span>
         </label>
         <Select
           closeMenuOnSelect={false}
@@ -534,7 +534,7 @@ const Dashboard = () => {
           onChange={(e) => handleChange(e)}
         />
         <label for="mode" className="font-medium mt-3">
-          Event Type<span style={{ color: "red" }}>*</span>
+          Event Type<span style={{ color: 'red' }}>*</span>
         </label>
         <select
           name=""
@@ -549,7 +549,7 @@ const Dashboard = () => {
           <option value="SPORTS">Sports</option>
         </select>
         <label for="mode" className="font-medium mt-3">
-          Mode<span style={{ color: "red" }}>*</span>
+          Mode<span style={{ color: 'red' }}>*</span>
         </label>
         <select
           name=""
@@ -600,22 +600,22 @@ const Dashboard = () => {
         <label className="font-medium mt-2 w-100">
           Tags (no space in between a tag)
         </label>
-        <Tag placeholder={"Tag 1"} setTag={setT1} value={t1} />
+        <Tag placeholder={'Tag 1'} setTag={setT1} value={t1} />
         {numTags >= 2 && (
-          <Tag placeholder={"Tag 2"} setTag={setT2} value={t2} />
+          <Tag placeholder={'Tag 2'} setTag={setT2} value={t2} />
         )}
         {numTags >= 3 && (
-          <Tag placeholder={"Tag 3"} setTag={setT3} value={t3} />
+          <Tag placeholder={'Tag 3'} setTag={setT3} value={t3} />
         )}
         {numTags >= 4 && (
-          <Tag placeholder={"Tag 4"} setTag={setT4} value={t4} />
+          <Tag placeholder={'Tag 4'} setTag={setT4} value={t4} />
         )}
         {numTags !== 4 && (
           <i className="fa fa-plus-square" onClick={addTagElement}></i>
         )}
         <label className="font-medium mt-3 w-100">Event Date</label>
         <input
-          type="date"
+          type="datetime-local"
           name=""
           autoComplete="off"
           // required
@@ -641,7 +641,7 @@ const Dashboard = () => {
         <div className="font-heavy mt-4 h5">Event Head details</div>
         <div className="font-heavy mt-4 h6">Event Head 1</div>
         <label className="font-medium mt-2">
-          Name<span style={{ color: "red" }}>*</span>
+          Name<span style={{ color: 'red' }}>*</span>
         </label>
         <input
           type="text"
@@ -654,7 +654,7 @@ const Dashboard = () => {
           onChange={(e) => setHead1N(e.target.value)}
         />
         <label className="font-medium mt-2">
-          Phone number<span style={{ color: "red" }}>*</span>
+          Phone number<span style={{ color: 'red' }}>*</span>
         </label>
         <input
           type="number"
@@ -667,7 +667,7 @@ const Dashboard = () => {
           onChange={(e) => setHead1P(e.target.value)}
         />
         <label className="font-medium mt-2">
-          Email ID<span style={{ color: "red" }}>*</span>
+          Email ID<span style={{ color: 'red' }}>*</span>
         </label>
         <input
           type="email"
@@ -718,7 +718,7 @@ const Dashboard = () => {
         <button
           type="button"
           className="btn my-2 w-100 text-light"
-          style={{ backgroundColor: "#100B1B" }}
+          style={{ backgroundColor: '#100B1B' }}
           onClick={addEvent}
         >
           Save
@@ -726,51 +726,52 @@ const Dashboard = () => {
       </Modal>
       <div className="d-flex flex-column align-items-center justify-content-center">
         <div className="font-heavy text-light my-3 px-5 d-flex align-items-center">
-          <div style={{ fontSize: "2rem" }}>{category.category}</div>
+          <div style={{ fontSize: '2rem' }}>{category.category}</div>
           <div
             className="text-secondary pl-3 ml-3 border-left"
-            style={{ fontSize: "1.2rem" }}
+            style={{ fontSize: '1.2rem' }}
           >
-            {category.categoryId !== "OPR" && events.length} {category.categoryId === "OPR" && allEventDetails.length} events
+            {category.categoryId !== 'OPR' && events.length}{' '}
+            {category.categoryId === 'OPR' && allEventDetails.length} events
           </div>
         </div>
         <div
           className="font-light border border-light rounded text-light p-2 text-center"
-          style={{ width: "70%" }}
+          style={{ width: '70%' }}
         >
           {category.description}
         </div>
-        {(category.categoryId === "INF" ||
-          category.categoryId === "OM" ||
-          category.categoryId === "PROSHOW") && (
+        {(category.categoryId === 'INF' ||
+          category.categoryId === 'OM' ||
+          category.categoryId === 'PROSHOW') && (
           <>
             <Link
               to={
-                category.categoryId === "INF"
-                  ? "/admin/payment/inf"
-                  : category.categoryId === "OM"
-                  ? "/admin/payment/om"
-                  : "/admin/payment/proshow"
+                category.categoryId === 'INF'
+                  ? '/admin/payment/inf'
+                  : category.categoryId === 'OM'
+                  ? '/admin/payment/om'
+                  : '/admin/payment/proshow'
               }
             >
               <button
                 type="button"
                 className="btn m-2 text-white"
-                style={{ backgroundColor: "#F4737E", width: "200px" }}
+                style={{ backgroundColor: '#F4737E', width: '200px' }}
               >
                 Update Payment
               </button>
             </Link>
           </>
         )}
-        {(category.categoryId === "SCMIT" || category.categoryId === "VIG") && (
+        {(category.categoryId === 'SCMIT' || category.categoryId === 'VIG') && (
           <>
             {dataLoaded && (
               <div className="px-2 w-100 my-3 d-flex justify-content-center">
                 <VigilanceCard data={result} isEventScan={eventScanQR} />
               </div>
             )}
-            <div style={{ background: "transparent", padding: "16px" }}>
+            <div style={{ background: 'transparent', padding: '16px' }}>
               {!dataLoaded && (
                 <>
                   {scanQR && (
@@ -806,7 +807,7 @@ const Dashboard = () => {
                 <>
                   <button
                     className="px-4 py-1 bg-white"
-                    style={{ border: 0, borderRadius: "10px" }}
+                    style={{ border: 0, borderRadius: '10px' }}
                     onClick={() => {
                       setResult({});
                       setScanE(false);
@@ -822,10 +823,10 @@ const Dashboard = () => {
             </div>
             {(eventScanQR || scanQR) && (
               <center>
-                {" "}
+                {' '}
                 <button
                   className="px-4 py-1 bg-white"
-                  style={{ border: 0, borderRadius: "10px" }}
+                  style={{ border: 0, borderRadius: '10px' }}
                   onClick={() => {
                     setScan(false);
                     setScanE(false);
@@ -839,18 +840,18 @@ const Dashboard = () => {
             )}
             <div
               className="tabs-wrapper font-medium"
-              style={{ margin: "0 auto", marginTop: "2rem" }}
+              style={{ margin: '0 auto', marginTop: '2rem' }}
             >
               <div
                 className={
                   eventTabSC === 0
-                    ? "taeb-switch left text-center"
-                    : "taeb-switch right text-center"
+                    ? 'taeb-switch left text-center'
+                    : 'taeb-switch right text-center'
                 }
               >
                 <div
                   className={
-                    eventTabSC === 0 ? "taeb active font-heavy" : "taeb"
+                    eventTabSC === 0 ? 'taeb active font-heavy' : 'taeb'
                   }
                   taeb-direction="left"
                   onClick={() => seteventTabSC(0)}
@@ -859,7 +860,7 @@ const Dashboard = () => {
                 </div>
                 <div
                   className={
-                    eventTabSC === 1 ? "taeb active font-heavy" : "taeb"
+                    eventTabSC === 1 ? 'taeb active font-heavy' : 'taeb'
                   }
                   taeb-direction="right"
                   onClick={() => seteventTabSC(1)}
@@ -870,19 +871,22 @@ const Dashboard = () => {
             </div>
             <div
               className="d-flex flex-wrap justify-content-center align-items-center"
-              style={{ margin: "4rem 5rem" }}
+              style={{ margin: '4rem 5rem' }}
             >
               {allEventDetails
                 .filter((culEvent) => {
                   return eventTabSC == 0
-                    ? culEvent.eventType == "SPORTS"
-                    : culEvent.eventType == "CULTURAL";
+                    ? culEvent.eventType == 'SPORTS'
+                    : culEvent.eventType == 'CULTURAL';
                 })
                 .map((culEvent, ind) => {
                   return (
                     <>
                       {/* <EventDetails culEvent={culEvent}  setResult={setResult} result={result} eventScanQR={eventScanQR} setScan={setScan} dataLoaded={dataLoaded} setdataLoaded={setdataLoaded}/> */}
-                      <div key={ind} className="main-wrapper font-light text-white m-1 rounded p-4">
+                      <div
+                        key={ind}
+                        className="main-wrapper font-light text-white m-1 rounded p-4"
+                      >
                         <div className="d-flex flex-row justify-content-between align-items-center">
                           {culEvent.name}
                           {/* {eventScanQR && (
@@ -890,19 +894,20 @@ const Dashboard = () => {
                           )} */}
                           <div
                             style={{
-                              background: "transparent",
-                              padding: "16px",
+                              background: 'transparent',
+                              padding: '16px',
                             }}
                           >
                             <i
                               className="edit fa fa-qrcode"
                               aria-hidden="true"
                               style={{
-                                marginRight: "1rem",
-                                color: "#F4737E",
+                                marginRight: '1rem',
+                                color: '#F4737E',
                               }}
                               onClick={() => {
-                                document.body.scrollTop = document.documentElement.scrollTop = 100;
+                                document.body.scrollTop =
+                                  document.documentElement.scrollTop = 100;
                                 setResult({});
                                 setScan(false);
                                 setScanE(true);
@@ -915,37 +920,37 @@ const Dashboard = () => {
                             <a
                               href={
                                 culEvent.delegateCards.length > 0
-                                  ? "https://revelsmit.in/api/admin/category/event/participants/" +
+                                  ? 'https://revelsmit.in/api/admin/category/event/participants/' +
                                     culEvent._id +
-                                    "/" +
+                                    '/' +
                                     culEvent.eventID +
-                                    "/" +
-                                    culEvent.name.split("/")[0] +
-                                    "/" +
+                                    '/' +
+                                    culEvent.name.split('/')[0] +
+                                    '/' +
                                     culEvent.maxMembers +
-                                    "/" +
+                                    '/' +
                                     localStorage.getItem(ADMIN_TOKEN_ID) +
-                                    "/" +
+                                    '/' +
                                     culEvent.delegateCards[0]._id
-                                  : "https://revelsmit.in/api/admin/category/event/participants/" +
+                                  : 'https://revelsmit.in/api/admin/category/event/participants/' +
                                     culEvent._id +
-                                    "/" +
+                                    '/' +
                                     culEvent.eventID +
-                                    "/" +
-                                    culEvent.name.split("/")[0] +
-                                    "/" +
+                                    '/' +
+                                    culEvent.name.split('/')[0] +
+                                    '/' +
                                     culEvent.maxMembers +
-                                    "/" +
+                                    '/' +
                                     localStorage.getItem(ADMIN_TOKEN_ID) +
-                                    "/none"
+                                    '/none'
                               }
                             >
                               <i
                                 className="edit fa fa-download"
                                 aria-hidden="true"
                                 style={{
-                                  marginRight: "1rem",
-                                  color: "#F4737E",
+                                  marginRight: '1rem',
+                                  color: '#F4737E',
                                 }}
                               ></i>
                             </a>
@@ -958,19 +963,19 @@ const Dashboard = () => {
             </div>
           </>
         )}
-        {(category.type === "CULTURAL" || category.type === "SPORTS") && (
+        {(category.type === 'CULTURAL' || category.type === 'SPORTS') && (
           <>
             <button
               type="button"
               className="btn m-2 text-white"
-              style={{ backgroundColor: "#F4737E", width: "200px" }}
+              style={{ backgroundColor: '#F4737E', width: '200px' }}
               onClick={openModal}
             >
               Create Event
             </button>
             <div
               className="d-flex flex-wrap justify-content-center align-items-center"
-              style={{ margin: "4rem 5rem" }}
+              style={{ margin: '4rem 5rem' }}
             >
               {events.map((eventdata) => (
                 <EventModal eventdata={eventdata} deleteEvent={deleteEvent} />
@@ -978,14 +983,18 @@ const Dashboard = () => {
             </div>
           </>
         )}
-        {(category.categoryId === "OPR") && (
+        {category.categoryId === 'OPR' && (
           <>
             <div
               className="d-flex flex-wrap justify-content-center align-items-center"
-              style={{ margin: "4rem 5rem" }}
+              style={{ margin: '4rem 5rem' }}
             >
               {allEventOps.map((eventdata) => (
-                <EventModal eventdata={eventdata} deleteEvent={deleteEvent} category={category}/>
+                <EventModal
+                  eventdata={eventdata}
+                  deleteEvent={deleteEvent}
+                  category={category}
+                />
               ))}
             </div>
           </>

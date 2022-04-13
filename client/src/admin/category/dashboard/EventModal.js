@@ -1,28 +1,34 @@
-import React, { useEffect, useState } from "react";
-import toast from "react-hot-toast";
-import axios from "axios";
-import { ADMIN_TOKEN_ID } from "../../../utils/constants";
-import "./EventTitle.css";
-import Modal from "react-modal";
-import Tag from "../components/Tag/Tag";
-import Select from "react-select";
-import makeAnimated from "react-select/animated";
+import React, { useEffect, useState } from 'react';
+import moment from 'moment';
+import toast from 'react-hot-toast';
+import axios from 'axios';
+import { ADMIN_TOKEN_ID } from '../../../utils/constants';
+import './EventTitle.css';
+import Modal from 'react-modal';
+import Tag from '../components/Tag/Tag';
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
 const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
   const [isChecked, setIsChecked] = useState(eventdata.teamDelegateCard);
   const [filteredDel, setFilteredDel] = useState([]);
 
   const handleChange = async (e) => {
-    console.log("e", e);
+    console.log('e', e);
     setFilteredDel(e);
   };
 
   const [delCards, setDelCards] = useState([]);
 
   const [options, setOptions] = useState([]);
-
+  const convertTime = (time) => {
+    let newtime = new Date(time);
+    //return local date and time
+    return newtime.toLocaleString();
+    // return newtime.toLocaleTimeString();
+  };
   const getDelCards = async () => {
     try {
-      const res = await axios.get("/api/user/delegatecard/getall");
+      const res = await axios.get('/api/user/delegatecard/getall');
       // console.log('uhhhhhh', res.data.data);
       setDelCards(res.data.data);
       const arr = [];
@@ -43,11 +49,11 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
 
   const customStyles = {
     content: {
-      top: "50%",
-      left: "50%",
-      right: "auto",
-      bottom: "auto",
-      transform: "translate(-50%, -50%)",
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      transform: 'translate(-50%, -50%)',
     },
   };
   useEffect(() => {
@@ -75,14 +81,14 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
 
     setIsOpen(false);
   };
-  const [t1, setT1] = useState("");
-  const [t2, setT2] = useState("");
-  const [t3, setT3] = useState("");
-  const [t4, setT4] = useState("");
-  const [head1N, setHead1N] = useState("");
-  const [head2N, setHead2N] = useState("");
-  const [head1E, setHead1E] = useState("");
-  const [head2E, setHead2E] = useState("");
+  const [t1, setT1] = useState('');
+  const [t2, setT2] = useState('');
+  const [t3, setT3] = useState('');
+  const [t4, setT4] = useState('');
+  const [head1N, setHead1N] = useState('');
+  const [head2N, setHead2N] = useState('');
+  const [head1E, setHead1E] = useState('');
+  const [head2E, setHead2E] = useState('');
   const [head1P, setHead1P] = useState(0);
   const [head2P, setHead2P] = useState(0);
   const [headlen, setHeadlen] = useState(eventdata.eventHeads.length);
@@ -111,38 +117,39 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
     // isActive: data.isActive,
   });
   const getParticipantsForOps = async () => {
-    console.log(data)
+    console.log(data);
     try {
-      const path = "/api/admin/category/event/participants/" +
-      data._id +
-      "/" +
-      data.eventID +
-      "/" +
-      data.name.split("/")[0] +
-      "/" +
-      data.maxMembers +
-      "/" +
-      localStorage.getItem(ADMIN_TOKEN_ID) +
-      "/" +
-      data.delegateCards[0]._id
+      const path =
+        '/api/admin/category/event/participants/' +
+        data._id +
+        '/' +
+        data.eventID +
+        '/' +
+        data.name.split('/')[0] +
+        '/' +
+        data.maxMembers +
+        '/' +
+        localStorage.getItem(ADMIN_TOKEN_ID) +
+        '/' +
+        data.delegateCards[0]._id;
       const res = await axios.get(path);
-      console.log(res)
+      console.log(res);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+  };
   const validateForm = () => {
     console.log(data);
     if (
-      data.name === "" ||
+      data.name === '' ||
       data.minMembers === 0 ||
       data.maxMembers === 0 ||
-      data.description === "" ||
-      data.eventType === "" ||
-      data.mode === "" ||
-      head1N === "" ||
+      data.description === '' ||
+      data.eventType === '' ||
+      data.mode === '' ||
+      head1N === '' ||
       head1P === 0 ||
-      head1E === ""
+      head1E === ''
       // data.participationCriteria === '' ||
       // data.prize === '' ||
       // data.eventDateTime === '' ||
@@ -184,37 +191,37 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
     );
   };
   const updateEvent = async () => {
-    const toastId = toast.loading("Updating Event");
+    const toastId = toast.loading('Updating Event');
     const delArr = [];
     for (let i = 0; i < filteredDel.length; i++) {
       delArr.push({ cardID: filteredDel[i].value });
     }
-    console.log("ooooooffff");
+    console.log('ooooooffff');
     console.log(delArr);
     let tagsarr = [];
     console.log(t1);
     if (numTags.length !== 0) {
-      if (t1 !== "") tagsarr.push(t1.toUpperCase().trim());
-      if (t2 !== "") tagsarr.push(t2.toUpperCase().trim());
-      if (t3 !== "") tagsarr.push(t3.toUpperCase().trim());
-      if (t4 !== "") tagsarr.push(t4.toUpperCase().trim());
+      if (t1 !== '') tagsarr.push(t1.toUpperCase().trim());
+      if (t2 !== '') tagsarr.push(t2.toUpperCase().trim());
+      if (t3 !== '') tagsarr.push(t3.toUpperCase().trim());
+      if (t4 !== '') tagsarr.push(t4.toUpperCase().trim());
     }
     console.log(tagsarr);
     let headsarr = [];
-    if (head1N !== "")
+    if (head1N !== '')
       headsarr.push({
         name: head1N.toUpperCase().trim(),
         phoneNo: head1P,
         email: head1E,
       });
-    if (head2N !== "")
+    if (head2N !== '')
       headsarr.push({
         name: head2N.toUpperCase().trim(),
         phoneNo: head2P,
         email: head2E,
       });
     if (!validateForm()) {
-      toast.error("Please fill in all the fields", {
+      toast.error('Please fill in all the fields', {
         id: toastId,
       });
     }
@@ -232,9 +239,9 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
     //   toast.error('Please enter valid email for Head 2');
     // }
     else if (
-      (head2E != "" && (head2P == "" || head2N == 0)) ||
-      (head2N != 0 && (head2P == "" || head2E == "")) ||
-      (head2P != "" && (head2E == "" || head2N == 0))
+      (head2E != '' && (head2P == '' || head2N == 0)) ||
+      (head2N != 0 && (head2P == '' || head2E == '')) ||
+      (head2P != '' && (head2E == '' || head2N == 0))
     ) {
       toast.error("Please complete Event Head 2's details", {
         id: toastId,
@@ -260,9 +267,9 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
           teamDelegateCard: isChecked,
           delegateCards: delArr,
         };
-        console.log("eventdata", eventData);
+        console.log('eventdata', eventData);
         const res = await axios.post(
-          "/api/admin/category/event/update",
+          '/api/admin/category/event/update',
           {
             eventID: eventData.eventID,
             name: eventData.name,
@@ -289,18 +296,20 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
         );
 
         if (res.data.success) {
-          toast.success("Event updated successfully", {
+          toast.success('Event updated successfully', {
             id: toastId,
           });
 
           closeModal();
+          // window reload
+          window.location.reload();
         } else {
           toast.error(res.data.msg, {
             id: toastId,
           });
         }
       } catch (err) {
-        toast.error("Something Went Wrong", {
+        toast.error('Something Went Wrong', {
           id: toastId,
         });
       }
@@ -310,8 +319,8 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
     setNumTags(numTags + 1);
   };
   const disabled = {
-    disabled: (Boolean(category?.categoryId === "OPR") && true)
-  }
+    disabled: Boolean(category?.categoryId === 'OPR') && true,
+  };
   return (
     <div>
       <Modal
@@ -325,7 +334,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
           <i class="fa fa-times" aria-hidden="true"></i>
         </div>
         <label className="font-medium mt-2">
-          Event Name<span style={{ color: "red" }}>*</span>
+          Event Name<span style={{ color: 'red' }}>*</span>
         </label>
         <input
           type="text"
@@ -342,7 +351,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
         <div className="d-flex flex-md-row flex-column">
           <div className="w-md-50 w-100 mx-md-1">
             <label className="font-medium mt-2">
-              Min Members<span style={{ color: "red" }}>*</span>
+              Min Members<span style={{ color: 'red' }}>*</span>
             </label>
             <input
               type="number"
@@ -361,7 +370,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
           </div>
           <div className="w-md-50 w-100 mx-md-1">
             <label className="font-medium mt-2">
-              Max Members<span style={{ color: "red" }}>*</span>
+              Max Members<span style={{ color: 'red' }}>*</span>
             </label>
             <input
               type="number"
@@ -379,7 +388,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
           </div>
         </div>
         <label className="font-medium mt-3">
-          Event Description<span style={{ color: "red" }}>*</span>
+          Event Description<span style={{ color: 'red' }}>*</span>
         </label>
         <textarea
           rows="4"
@@ -396,7 +405,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
         />
         <label className="font-medium mt-3">
           Delegate Cards Needed for Event
-          <span style={{ color: "red" }}>*</span>
+          <span style={{ color: 'red' }}>*</span>
         </label>
         <Select
           closeMenuOnSelect={false}
@@ -410,7 +419,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
         <div className="d-flex flex-md-row flex-column">
           <div className="w-md-50 w-100 mx-md-1">
             <label for="mode" className="font-medium mt-3">
-              Event Type<span style={{ color: "red" }}>*</span>
+              Event Type<span style={{ color: 'red' }}>*</span>
             </label>
             <select
               value={data.eventType}
@@ -428,7 +437,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
           </div>
           <div className="w-md-50 w-100 mx-md-1">
             <label for="mode" className="font-medium mt-3">
-              Mode<span style={{ color: "red" }}>*</span>
+              Mode<span style={{ color: 'red' }}>*</span>
             </label>
             <select
               value={data.mode}
@@ -491,23 +500,46 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
         <label className="font-medium mt-2 w-100">
           Tags (no space in between a tag)
         </label>
-        <Tag placeholder={"Tag 1"} setTag={setT1} value={t1} disabled={disabled.disabled}/>
+        <Tag
+          placeholder={'Tag 1'}
+          setTag={setT1}
+          value={t1}
+          disabled={disabled.disabled}
+        />
         {numTags >= 2 && (
-          <Tag placeholder={"Tag 2"} setTag={setT2} value={t2} disabled={disabled.disabled}/>
+          <Tag
+            placeholder={'Tag 2'}
+            setTag={setT2}
+            value={t2}
+            disabled={disabled.disabled}
+          />
         )}
         {numTags >= 3 && (
-          <Tag placeholder={"Tag 3"} setTag={setT3} value={t3} disabled={disabled.disabled}/>
+          <Tag
+            placeholder={'Tag 3'}
+            setTag={setT3}
+            value={t3}
+            disabled={disabled.disabled}
+          />
         )}
         {numTags >= 4 && (
-          <Tag placeholder={"Tag 4"} setTag={setT4} value={t4} disabled={disabled.disabled}/>
+          <Tag
+            placeholder={'Tag 4'}
+            setTag={setT4}
+            value={t4}
+            disabled={disabled.disabled}
+          />
         )}
         {numTags !== 4 && (
-          <i className="fa fa-plus-square" onClick={!disabled.disabled && addTagElement}></i>
+          <i
+            className="fa fa-plus-square"
+            onClick={!disabled.disabled && addTagElement}
+          ></i>
         )}
 
         <label className="font-medium mt-3 w-100">Event Date</label>
         <input
-          type="date"
+          type="datetime-local"
           name=""
           autoComplete="off"
           // value={data.eventDateTime}
@@ -519,10 +551,10 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
             setData({ ...data, eventDateTime: new Date(e.target.value) })
           }
         />
-        {/* <p>Previous selected date: {eventdata.eventDateTime}</p> */}
+        <p>Previous selected date: {convertTime(eventdata.eventDateTime)}</p>
         <label className="font-medium mt-3 w-100">Registration Deadline</label>
         <input
-          type="date"
+          type="datetime-local"
           name=""
           autoComplete="off"
           maxLength={100}
@@ -533,6 +565,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
             setData({ ...data, registrationDeadline: new Date(e.target.value) })
           }
         />
+        <p>Previous selected date: {eventdata.registrationDeadline}</p>
         <label className="font-medium mt-3">Event Venue</label>
         <input
           type="text"
@@ -549,7 +582,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
         <div className="font-heavy mt-4 h5">Event Head details</div>
         <div className="font-heavy mt-4 h6">Event Head 1</div>
         <label className="font-medium mt-2">
-          Name<span style={{ color: "red" }}>*</span>
+          Name<span style={{ color: 'red' }}>*</span>
         </label>
         <input
           type="text"
@@ -564,7 +597,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
           onChange={(e) => setHead1N(e.target.value)}
         />
         <label className="font-medium mt-2">
-          Phone Number<span style={{ color: "red" }}>*</span>
+          Phone Number<span style={{ color: 'red' }}>*</span>
         </label>
         <input
           type="number"
@@ -579,7 +612,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
           onChange={(e) => setHead1P(parseInt(e.target.value))}
         />
         <label className="font-medium mt-2">
-          Email ID<span style={{ color: "red" }}>*</span>
+          Email ID<span style={{ color: 'red' }}>*</span>
         </label>
         <input
           type="email"
@@ -637,7 +670,7 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
         <button
           type="button"
           className="btn my-2 w-100 text-light"
-          style={{ backgroundColor: "#100B1B" }}
+          style={{ backgroundColor: '#100B1B' }}
           onClick={updateEvent}
         >
           Save
@@ -651,60 +684,60 @@ const EventModal = ({ eventdata, deleteEvent, downloadTeams, category }) => {
               onClick={openModal}
               className="edit fa fa-pencil"
               aria-hidden="true"
-              style={{ marginRight: "1rem", color: "#F4737E" }}
+              style={{ marginRight: '1rem', color: '#F4737E' }}
             ></i>
-            {
-              category?.categoryId === "OPR" &&
-              <div className="text-danger" style={{ fontSize: "0.9rem" }}>
-                <p>{eventdata.teamCount} TEAM{eventdata.teamCount === 1 ? "" : "S"}</p>
+            {category?.categoryId === 'OPR' && (
+              <div className="text-danger" style={{ fontSize: '0.9rem' }}>
+                <p>
+                  {eventdata.teamCount} TEAM
+                  {eventdata.teamCount === 1 ? '' : 'S'}
+                </p>
               </div>
-            }
-            {
-              category?.categoryId !== "OPR" && 
+            )}
+            {category?.categoryId !== 'OPR' && (
               <i
                 onClick={() => deleteEvent(data.eventID)}
                 className="edit fa fa-trash"
                 aria-hidden="true"
-                style={{ marginRight: "1rem", color: "#F4737E" }}
+                style={{ marginRight: '1rem', color: '#F4737E' }}
               ></i>
-            }
-            {
-              category?.categoryId !== "OPR" &&
+            )}
+            {category?.categoryId !== 'OPR' && (
               <a
                 href={
                   data.delegateCards.length > 0
-                    ? "https://revelsmit.in/api/admin/category/event/participants/" +
+                    ? 'https://revelsmit.in/api/admin/category/event/participants/' +
                       data._id +
-                      "/" +
+                      '/' +
                       data.eventID +
-                      "/" +
-                      data.name.split("/")[0] +
-                      "/" +
+                      '/' +
+                      data.name.split('/')[0] +
+                      '/' +
                       data.maxMembers +
-                      "/" +
+                      '/' +
                       localStorage.getItem(ADMIN_TOKEN_ID) +
-                      "/" +
+                      '/' +
                       data.delegateCards[0]._id
-                    : "https://revelsmit.in/api/admin/category/event/participants/" +
+                    : 'https://revelsmit.in/api/admin/category/event/participants/' +
                       data._id +
-                      "/" +
+                      '/' +
                       data.eventID +
-                      "/" +
-                      data.name.split("/")[0] +
-                      "/" +
+                      '/' +
+                      data.name.split('/')[0] +
+                      '/' +
                       data.maxMembers +
-                      "/" +
+                      '/' +
                       localStorage.getItem(ADMIN_TOKEN_ID) +
-                      "/none"
+                      '/none'
                 }
               >
                 <i
                   className="edit fa fa-download"
                   aria-hidden="true"
-                  style={{ marginRight: "1rem", color: "#F4737E" }}
+                  style={{ marginRight: '1rem', color: '#F4737E' }}
                 ></i>
               </a>
-            }
+            )}
           </div>
         </div>
       </div>
