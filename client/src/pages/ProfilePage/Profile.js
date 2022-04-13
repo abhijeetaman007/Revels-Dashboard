@@ -251,8 +251,8 @@ function Profile() {
             <i className="fa fa-angle-left fa-2x"></i>
             <p>Dashboard</p>
           </Link>
-          <div className="text">
-            <div className="name font-medium">
+          <div className="text-details-user">
+            <div className="name-user font-medium">
               <h1>{auth.user.name}</h1>
               <p>{auth.user.email}</p>
               <span className="border-box">
