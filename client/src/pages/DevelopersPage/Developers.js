@@ -16,8 +16,9 @@ const Developers = () => {
           letterSpacing: '0.4rem',
         }}
       >
-        MEET THE DEVELOPERS
+        Team Behind Revels'22
       </h1>
+
       <div className="d-flex flex-wrap justify-content-center align-items-center">
         {data.map((data, ind) => {
           return <Card key={ind} data={data} />;
