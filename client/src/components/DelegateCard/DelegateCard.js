@@ -19,10 +19,13 @@ const DelegateCard = ({
       ? data.mahePrice
       : data.nonMahePrice;
   return (
-    data.isActive &&
     cardPrice >= 0 && (
       <div
-        className={`del-card card-up m-1 ${data.type.toLowerCase()} font-medium`}
+        className={
+          data.isActive
+            ? `del-card card-up m-1 ${data.type.toLowerCase()} font-medium`
+            : `del-card card-up m-1 ${data.type.toLowerCase()} font-medium not-active`
+        }
       >
         <div className="del-content">
           <div>
@@ -55,7 +58,7 @@ const DelegateCard = ({
                       Pay via cash at the nearest Infodesk
                     </button>
                     <button
-                      disabled={false}
+                      disabled={data.isActive ? false : true}
                       onClick={() =>
                         displayRazorpay(data._id, cardPrice, auth.user)
                       }
@@ -66,7 +69,11 @@ const DelegateCard = ({
                 ) : (
                   <>
                     <button
-                      disabled={data._id == "624b37324fda25e0e4990ed2"}
+                      disabled={
+                        data.isActive
+                          ? data._id == "624b37324fda25e0e4990ed2"
+                          : true
+                      }
                       onClick={async () => {
                         const d = await cashPay(data._id, cardPrice);
                         if (d.status === 200 && cardPrice === 0) setBought(1);
@@ -77,7 +84,7 @@ const DelegateCard = ({
                     </button>{" "}
                     {cardPrice !== 0 && (
                       <button
-                        disabled={bought}
+                        disabled={data.isActive ? bought : true}
                         onClick={() =>
                           displayRazorpay(data._id, cardPrice, auth.user)
                         }
