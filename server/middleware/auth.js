@@ -6,7 +6,7 @@ const Event = require("../models/Event");
 const isUserLoggedIn = async (req, res, next) => {
   try {
     const token = req.headers["authorization"];
-    console.log("token", token);
+    //console.log("token", token);
     let payload;
     if (typeof token !== "undefined") {
       try {
@@ -17,7 +17,7 @@ const isUserLoggedIn = async (req, res, next) => {
           msg: "Invalid Token",
         });
       }
-      console.log("Payload ", payload);
+      //console.log("Payload ", payload);
       if (payload) {
         let user = await User.findById(payload.userID).populate("role");
         //console.log('Our User ', user);
@@ -69,10 +69,10 @@ const isUserLoggedIn = async (req, res, next) => {
 
 const isVerifiedForRevels = async (req, res, next) => {
   try {
-    console.log("Status :", req.requestUser.status);
+    //console.log("Status :", req.requestUser.status);
     let { eventID } = req.body;
     if (eventID) {
-        // console.log("herer my events")
+      // console.log("herer my events")
       const event = await Event.findOne({ eventID }, { category: 1 });
       if (event?.category == "62461a9e950a69cc465008fc") {
         return next();
@@ -111,9 +111,9 @@ const isAdminLoggedIn = async (req, res, next) => {
     console.log(token);
     if (typeof token !== "undefined") {
       let payload = await jwt.verify(token, process.env.JWT_SECRET);
-      console.log("Payload ", payload);
+      //console.log("Payload ", payload);
       if (payload) {
-        console.log("id:", payload.admin_Id);
+        //console.log("id:", payload.admin_Id);
         let admin = await Admin.findOne({
           _id: payload.admin_Id,
           token,

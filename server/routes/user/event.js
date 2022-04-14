@@ -318,7 +318,7 @@ const getAllParticipants = async (req, res) => {
       "members.user",
       "name userID delegateCards pendingDelegateCards college email mobileNumber"
     );
-    console.log(teams);
+    //console.log(teams);
     if (teams) {
       createSheet(teams, name, id, max, delCard).then((file) => {
         return file.write(id + "_teams.xlsx", res);
