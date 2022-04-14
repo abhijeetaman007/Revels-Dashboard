@@ -51,13 +51,16 @@ const DelegateCard = ({
               <div className="clg px-1">
                 {cardPrice === 0 ? <p>FREE</p> : <p>&#x20B9;{cardPrice}</p>}
                 {bought === 1 ? (
-                  <button disabled={true}>Purchased</button>
+                  <button style={{ color: "black" }} disabled={true}>
+                    Purchased
+                  </button>
                 ) : bought === 2 && cardPrice !== 0 ? (
                   <>
-                    <button disabled={true}>
+                    <button style={{ color: "black" }} disabled={true}>
                       Pay via cash at the nearest Infodesk
                     </button>
                     <button
+                      style={{ color: "black" }}
                       disabled={data.isActive ? false : true}
                       onClick={() =>
                         displayRazorpay(data._id, cardPrice, auth.user)
@@ -69,6 +72,7 @@ const DelegateCard = ({
                 ) : (
                   <>
                     <button
+                      style={{ color: "black" }}
                       disabled={
                         data.isActive
                           ? data._id == "624b37324fda25e0e4990ed2"
@@ -84,6 +88,7 @@ const DelegateCard = ({
                     </button>{" "}
                     {cardPrice !== 0 && (
                       <button
+                        style={{ color: "black" }}
                         disabled={data.isActive ? bought : true}
                         onClick={() =>
                           displayRazorpay(data._id, cardPrice, auth.user)
