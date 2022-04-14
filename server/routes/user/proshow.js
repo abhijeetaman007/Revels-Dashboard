@@ -76,6 +76,7 @@ const day1Bands = async (req, res) => {
       return res.status(200).send({ success: true, data: user });
     }
   } catch (err) {
+    console.log(err.toString());
     return res.send({ success: false, msg: "Internal Server Error" });
   }
 };
