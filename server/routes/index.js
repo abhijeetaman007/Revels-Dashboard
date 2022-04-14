@@ -303,7 +303,18 @@ router.get("/admin/vigilance/user/event/:eventID/:token", isEventRegistered);
 
 router.get("/admin/vigilance/user/delegatecard", hasDelegateCard);
 
-router.post("/admin/proshow/sale/:token", isAdminLoggedIn, isINF, day1Bands);
+router.post(
+  "/admin/proshow/sale/day1/:token",
+  isAdminLoggedIn,
+  isINF,
+  day1Bands
+);
+router.post(
+  "/admin/proshow/sale/day2/:token",
+  isAdminLoggedIn,
+  isINF,
+  day1Bands
+);
 
 // // --------------------------INTERNAL ROUTES-----------------------------------
 // // @SysAdmin Routes - Private Routes for internal use - No frontend needed
