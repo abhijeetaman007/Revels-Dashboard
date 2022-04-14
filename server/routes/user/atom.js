@@ -13,12 +13,12 @@ const tshirts = [
 ];
 const requestAtom = async (req, resp) => {
   try {
+    var data = req.body;
     if (tshirts.includes(data.udf4)) {
       const tshirt = await DelegateCard.findOne({ _id: data.udf4 });
       if (tshirt.maxCount < 1)
         return resp.status(200).send({ success: false, msg: "Sold Out" });
     }
-    var data = req.body;
     let ids = await Transaction.find({}, { orderId: 1, _id: 0 })
       .sort({ orderId: -1 })
       .limit(1);
