@@ -144,4 +144,4 @@ const day2Bands = async (req, res) => {
   }
 };
 
-module.exports = { day1Bands };
+module.exports = { day1Bands, day2Bands };

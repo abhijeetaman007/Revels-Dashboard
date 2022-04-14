@@ -58,9 +58,9 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    gender:{
-      type:String,
-      enum:['MALE','FEMALE','OTHERS']
+    gender: {
+      type: String,
+      enum: ["MALE", "FEMALE", "OTHERS"],
     },
     // state: {
     //   type: String,
@@ -131,6 +131,14 @@ const UserSchema = new mongoose.Schema(
         ref: "DelCard",
       },
     ],
+    day1: {
+      type: Boolean,
+      default: false,
+    },
+    day2: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );

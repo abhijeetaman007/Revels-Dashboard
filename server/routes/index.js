@@ -313,7 +313,7 @@ router.post(
   "/admin/proshow/sale/day2/:token",
   isAdminLoggedIn,
   isINF,
-  day1Bands
+  day2Bands
 );
 
 // // --------------------------INTERNAL ROUTES-----------------------------------
