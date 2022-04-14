@@ -66,7 +66,7 @@ const DelegateCard = ({
                 ) : (
                   <>
                     <button
-                      disabled={cardPrice !== 0}
+                      disabled={data._id == "624b37324fda25e0e4990ed2"}
                       onClick={async () => {
                         const d = await cashPay(data._id, cardPrice);
                         if (d.status === 200 && cardPrice === 0) setBought(1);
