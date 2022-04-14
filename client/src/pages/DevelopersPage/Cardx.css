@@ -1,0 +1,81 @@
+.dcard-wrapper{
+    position: relative;
+    width: 220px;
+    height: 300px;
+    margin: 2rem;
+}
+
+.image{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 140px;
+    height: 140px;
+    border-radius: 100px;
+    margin: 0 auto;
+}
+.dcontent-wrapper{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    color:white;
+    /* background-color: blueviolet; */
+    height: 270px;
+    border-radius: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    padding: 10px;
+}
+
+.name{
+    width: 50%;
+    font: 25px bold;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    
+}.line-with-circle{
+    text-align: center;
+    font-size: 30px;
+    width: 50%;
+    position: relative;
+}
+.line-with-circle:before {
+    content: "";
+    display: block;
+    width: 45%;
+    height: 3px;
+    background: white;
+    left: 0;
+    top: 60%;
+    position: absolute;
+  }
+  
+.line-with-circle:after {
+    content: "";
+    display: block;
+    width: 45%;
+    height: 3px;
+    background: white;
+    right: 0;
+    top: 60%;
+    position: absolute;
+  }
+
+.circle{
+height: 13px;
+  width: 13px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 3px solid white;
+  display: inline-block;
+}
+
+.icon{
+    font-size: 25px;
+    margin: 0.5rem;
+    color: white;
+}

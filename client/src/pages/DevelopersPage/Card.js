@@ -1,21 +1,33 @@
 import React from 'react';
 import './Card.css';
 
-const CC = ({data}) => {
-  return <div className='dcard-wrapper'>
-    <div className='dcontent-wrapper'>
-      <h3 className='name font-heavy'>{data.name}</h3>
-      <h2 className='line-with-circle'>
-        <span className='circle'></span>
-      </h2>
-      <div className='icons'>
-        <a href={data.github} target='__blank'><i className="fa fa-github icon"></i></a>
-        <a href={data.instagram} target='__blank'><i className="fa fa-instagram icon" aria-hidden="true"></i></a>
-        <a href={data.linkedin} target='__blank'><i className="fa fa-linkedin icon" aria-hidden="true"></i> </a>
+const Card = ({ data }) => {
+  return (
+    <div className="proshow-card card-up">
+      <div
+        className="image-wrapper"
+        style={{ backgroundImage: `url(${data.pic})` }}
+      >
+        <div className="gradient1">
+          <div className="artist-name">
+            <h2 className="font-heavy text-center">{data.name}</h2>
+            {/* <p className="font-light text-center">{data.description}</p> */}
+            <div className="icons">
+              <a className="icon" href={data.github} target="__blank">
+                <i className="fa fa-github icon"></i>
+              </a>
+              <a className="icon" href={data.instagram} target="__blank">
+                <i className="fa fa-instagram icon" aria-hidden="true"></i>
+              </a>
+              <a className="icon" href={data.linkedin} target="__blank">
+                <i className="fa fa-linkedin icon" aria-hidden="true"></i>{' '}
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <img className= 'image' src="https://image.shutterstock.com/image-photo/young-cute-beautiful-black-long-600w-1927264712.jpg" />
-  </div>;
+  );
 };
 
-export default CC;
+export default Card;

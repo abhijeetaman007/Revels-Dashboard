@@ -151,7 +151,7 @@
   cursor: pointer;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user {
   width: 70%;
   height: -webkit-fit-content;
   height: -moz-fit-content;
@@ -177,19 +177,19 @@
   padding-bottom: 8%;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .name {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user .name-user {
   border-left: 5px solid lightgray;
   padding-left: 20px;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .name h1 {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user .name-user h1 {
   font-size: 44.8px;
   font-size: 44.8px;
   font-size: 2.8rem;
   color: #c4515c;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .delegate-card {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user .delegate-card {
   padding: 10px;
   background-color: white;
   border-radius: 8px;
@@ -204,7 +204,7 @@
   text-align: center;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .delegate-card p {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user .delegate-card p {
   color: #c4515c;
   font-weight: 700;
   font-size: 25.6px;
@@ -213,14 +213,14 @@
   margin: 5px auto;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .delegate-card p span {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user .delegate-card p span {
   color: black;
   font-size: 40px;
   font-size: 40px;
   font-size: 2.5rem;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .delegate-card .qr {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user .delegate-card .qr {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -229,11 +229,11 @@
   justify-content: center;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .delegate-card .qr svg {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user .delegate-card .qr svg {
   width: 100%;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .grid {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user .grid {
   margin: 10px 0;
   width: 80%;
   display: -ms-grid;
@@ -242,14 +242,14 @@
   grid-template-columns: auto auto auto;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .grid div h1 {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user .grid div h1 {
   font-size: 16px;
   font-size: 16px;
   font-size: 1rem;
   font-weight: 700;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user .drivelink {
   width: 80%;
   margin: 10px 0;
   display: -webkit-box;
@@ -261,7 +261,7 @@
   flex-direction: column;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink .upload {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user .drivelink .upload {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -279,12 +279,12 @@
   border-radius: 10px;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink .upload:hover {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user .drivelink .upload:hover {
   -webkit-box-shadow: 0 0 1px 1px #c4515c;
           box-shadow: 0 0 1px 1px #c4515c;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink .upload input {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user .drivelink .upload input {
   margin: auto 0;
   color: white;
   border-bottom: none;
@@ -292,7 +292,7 @@
   width: 40%;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink .upload input[type="file"]::file-selector-button {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user .drivelink .upload input[type="file"]::file-selector-button {
   font-size: 16px;
   font-size: 16px;
   font-size: 1rem;
@@ -303,7 +303,7 @@
   border-radius: 5px;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink .radio-btn {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user .drivelink .radio-btn {
   width: 40%;
   margin: 20px 0;
   -webkit-box-align: center;
@@ -315,7 +315,7 @@
   justify-content: center;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink .radio-btn div {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user .drivelink .radio-btn div {
   width: 100px;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -323,7 +323,7 @@
   align-items: center;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink .radio-btn div div {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user .drivelink .radio-btn div div {
   text-align: left;
   margin-left: 0;
   display: -webkit-box;
@@ -337,22 +337,22 @@
   align-items: start;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink .radio-btn div div input[type="radio"] {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user .drivelink .radio-btn div div input[type="radio"] {
   margin: auto 0;
   -webkit-appearance: radio;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink .radio-btn div div label {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user .drivelink .radio-btn div div label {
   margin: 0 15px;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink .radio-btn div div input {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user .drivelink .radio-btn div div input {
   -ms-flex-item-align: center;
   -ms-grid-row-align: center;
       align-self: center;
 }
 
-.layout-wrapper .dash-wrapper .profile-content-area .text .drivelink button {
+.layout-wrapper .dash-wrapper .profile-content-area .text-details-user .drivelink button {
   padding: 5px 15px;
   width: 15%;
   font-size: 16px;
@@ -382,7 +382,7 @@
   padding-bottom: 50px;
 }
 
-.layout-wrapper .dash-wrapper .extended .text {
+.layout-wrapper .dash-wrapper .extended .text-details-user {
   margin-top: 230px;
 }
 
@@ -393,7 +393,7 @@
   padding-bottom: 50px;
 }
 
-.layout-wrapper .dash-wrapper .extended-two .text {
+.layout-wrapper .dash-wrapper .extended-two .text-details-user {
   margin-top: 230px;
 }
 
@@ -419,19 +419,21 @@
     -ms-flex-pack: distribute;
     justify-content: space-around;
   }
-  .layout-wrapper .dash-wrapper .profile-content-area .text {
+  .layout-wrapper .dash-wrapper .profile-content-area .text-details-user {
     width: 80%;
+    word-break: break-all;
+    white-space: pre-wrap;
     margin: 0 auto;
   }
-  .layout-wrapper .dash-wrapper .profile-content-area .text .grid {
+  .layout-wrapper .dash-wrapper .profile-content-area .text-details-user .grid {
     width: 90%;
     -ms-grid-columns: auto;
     grid-template-columns: auto;
   }
-  .layout-wrapper .dash-wrapper .profile-content-area .text .grid div {
+  .layout-wrapper .dash-wrapper .profile-content-area .text-details-user .grid div {
     margin: 10px 0;
   }
-  .layout-wrapper .dash-wrapper .profile-content-area .text .delegate-card {
+  .layout-wrapper .dash-wrapper .profile-content-area .text-details-user .delegate-card {
     -ms-flex-pack: distribute;
     justify-content: space-around;
     width: 80%;
@@ -475,19 +477,19 @@
   .layout-wrapper .dash-wrapper .profile-content-area .back-btn {
     left: 4%;
   }
-  .layout-wrapper .dash-wrapper .profile-content-area .text {
+  .layout-wrapper .dash-wrapper .profile-content-area .text-details-user {
     width: 80%;
     padding-top: 80px;
     padding-top: 80px;
     padding-top: 5rem;
     margin: 0 auto;
   }
-  .layout-wrapper .dash-wrapper .profile-content-area .text .grid,
-  .layout-wrapper .dash-wrapper .profile-content-area .text .drivelink {
+  .layout-wrapper .dash-wrapper .profile-content-area .text-details-user .grid,
+  .layout-wrapper .dash-wrapper .profile-content-area .text-details-user .drivelink {
     width: 100%;
   }
-  .layout-wrapper .dash-wrapper .profile-content-area .text .grid .upload,
-  .layout-wrapper .dash-wrapper .profile-content-area .text .drivelink .upload {
+  .layout-wrapper .dash-wrapper .profile-content-area .text-details-user .grid .upload,
+  .layout-wrapper .dash-wrapper .profile-content-area .text-details-user .drivelink .upload {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     -webkit-box-align: start;
@@ -497,19 +499,19 @@
     min-width: 100%;
     gap: 10px;
   }
-  .layout-wrapper .dash-wrapper .profile-content-area .text .grid .upload input,
-  .layout-wrapper .dash-wrapper .profile-content-area .text .drivelink .upload input {
+  .layout-wrapper .dash-wrapper .profile-content-area .text-details-user .grid .upload input,
+  .layout-wrapper .dash-wrapper .profile-content-area .text-details-user .drivelink .upload input {
     width: 60%;
   }
-  .layout-wrapper .dash-wrapper .profile-content-area .text .grid .radio-btn,
-  .layout-wrapper .dash-wrapper .profile-content-area .text .drivelink .radio-btn {
+  .layout-wrapper .dash-wrapper .profile-content-area .text-details-user .grid .radio-btn,
+  .layout-wrapper .dash-wrapper .profile-content-area .text-details-user .drivelink .radio-btn {
     width: 90%;
   }
-  .layout-wrapper .dash-wrapper .profile-content-area .text .grid button,
-  .layout-wrapper .dash-wrapper .profile-content-area .text .drivelink button {
+  .layout-wrapper .dash-wrapper .profile-content-area .text-details-user .grid button,
+  .layout-wrapper .dash-wrapper .profile-content-area .text-details-user .drivelink button {
     width: 40%;
   }
-  .layout-wrapper .dash-wrapper .profile-content-area .text .delegate-card {
+  .layout-wrapper .dash-wrapper .profile-content-area .text-details-user .delegate-card {
     -ms-flex-pack: distribute;
     justify-content: space-around;
     width: 100%;

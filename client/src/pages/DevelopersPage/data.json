@@ -1,44 +1,42 @@
 [
+  {
+      "name": "Abhijeet Sinha",
+      "github": "https://github.com/abhijeetaman007",
+      "linkedin" : "https://www.linkedin.com/in/abhijeetsinha1503/",
+      "instagram": "https://www.instagram.com/abhijeetsinhaa/",
+      "pic":"https://ik.imagekit.io/zfpktdjtq/Abhijeet_VF9e-aipi.jpeg?ik-sdk-version=javascript-1.4.3&updatedAt=1649965031778"
+    }, {
+      "name": "Akash Agarwal",
+      "github": "https://github.com/akash-4",
+      "linkedin": "https://www.linkedin.com/in/akashagarwal4/",
+      "instagram": "https://www.instagram.com/akash.psd/",
+      "pic":"https://ik.imagekit.io/zfpktdjtq/Akash_33b6wtB-b.jpeg?ik-sdk-version=javascript-1.4.3&updatedAt=1649965031819"
+    },
+     {
+      "name": "Ishan Kumar",
+      "github": "https://github.com/ik159",
+      "linkedin": "https://www.linkedin.com/in/ik159/",
+      "instagram": "https://www.instagram.com/ik.159/",
+      "pic":"https://ik.imagekit.io/zfpktdjtq/Ishan_B8EoNelxoB.jpeg?ik-sdk-version=javascript-1.4.3&updatedAt=1649965032112"
+    }, {
+      "name": "Pal Chheda",
+      "github": "https://github.com/PalChheda",
+      "linkedin": "https://www.linkedin.com/in/pal-chheda-21b34b1b7/",
+      "instagram": "https://www.instagram.com/pal_chheda/",
+      "pic":"https://ik.imagekit.io/zfpktdjtq/Pal_f2mMIF2EQ.jpg?ik-sdk-version=javascript-1.4.3&updatedAt=1649965216827"
+    },{
+      "name": "Parthiv Menon",
+      "github": "https://github.com/Parthiv-M",
+      "linkedin": "https://www.linkedin.com/in/parthivmenon/",
+      "instagram": "https://www.instagram.com/_.parthiv_",
+      "pic":"https://ik.imagekit.io/zfpktdjtq/Parthiv_8Z2kYE-LTr.jpeg?ik-sdk-version=javascript-1.4.3&updatedAt=1649965375276"
+    },
+    
     {
       "name": "Rhea Adhikari",
       "github": "https://github.com/RheaAdh",
       "linkedin": "https://www.linkedin.com/in/rhea-adhikari/",
-      "instagram": "https://www.instagram.com/rhea_adhikari/"
-    },
-    {
-      "name": "Parthiv Menon",
-      "github": "https://github.com/Parthiv-M",
-      "linkedin": "https://www.linkedin.com/in/parthivmenon/",
-      "instagram": "https://www.instagram.com/_.parthiv_"
-    },
-    {
-      "name": "Abhijeet Sinha",
-      "github": "https://github.com/abhijeetaman007",
-      "linkedin" : "https://www.linkedin.com/in/abhijeetsinha1503/",
-      "instagram": "https://www.instagram.com/abhijeetsinhaa/"
-    },
-    {
-      "name": "Ishan Kumar",
-      "github": "https://github.com/ik159",
-      "linkedin": "https://www.linkedin.com/in/ik159/",
-      "instagram": "https://www.instagram.com/ik.159/"
-    },
-    {
-      "name": "Pal Chheda",
-      "github": "https://github.com/PalChheda",
-      "linkedin": "https://www.linkedin.com/in/pal-chheda-21b34b1b7/",
-      "instagram": "https://www.instagram.com/pal_chheda/"
-    },
-    {
-      "name": "Akash Agarwal",
-      "github": "https://github.com/akash-4",
-      "linkedin": "https://www.linkedin.com/in/akashagarwal4/",
-      "instagram": "https://www.instagram.com/akash.psd/"
-    },
-    {
-      "name": "Anmol Agarwal",
-      "github": "https://github.com/anmolag10",
-      "linkedin": "https://www.linkedin.com/in/anmolag10",
-      "instagram": "https://www.instagram.com/anmolag10/"
-    }
+      "instagram": "https://www.instagram.com/rhea_adhikari/",
+      "pic":"https://ik.imagekit.io/zfpktdjtq/Rhea?ik-sdk-version=javascript-1.4.3&updatedAt=1649966974997"
+    } 
 ]
