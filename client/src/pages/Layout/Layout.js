@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import "./Layout.scss";
-import { useNavigate } from "react-router-dom";
-import aagaz from "./../../assets/aagaz.png";
-import events from "./../../assets/icons/events.svg";
-import myEvents from "./../../assets/icons/myEvents.svg";
-import proshow from "./../../assets/icons/proshow.svg";
-import delegateCard from "./../../assets/icons/delegateCard.svg";
-import logoWhite from "./.././../assets/logos/logo_white.png";
-import { Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";
-import Loader from "./../Loader/Loader";
-import Developers from "../DevelopersPage/Developers";
+import React, { useEffect, useState } from 'react';
+import './Layout.scss';
+import { useNavigate } from 'react-router-dom';
+import aagaz from './../../assets/aagaz.png';
+import events from './../../assets/icons/events.svg';
+import myEvents from './../../assets/icons/myEvents.svg';
+import proshow from './../../assets/icons/proshow.svg';
+import delegateCard from './../../assets/icons/delegateCard.svg';
+import logoWhite from './.././../assets/logos/logo_white.png';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
+import Loader from './../Loader/Loader';
+
 const Layout = ({ children, isAagazVisible = false, activeTab }) => {
   const navigate = useNavigate();
   const auth = useAuth();
@@ -21,20 +21,20 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
 
   // handles hamburger click on mobiles
   const handleHamburger = () => {
-    document.querySelector(".dash-wrapper").classList.toggle("active");
+    document.querySelector('.dash-wrapper').classList.toggle('active');
   };
   const handleBell = () => {
-    document.querySelector(".notif-wrapper").classList.toggle("active");
+    document.querySelector('.notif-wrapper').classList.toggle('active');
   };
   useEffect(() => {
     if (!auth.loading) {
       setLoading(false);
       if (!auth.user) {
-        navigate("/");
+        navigate('/');
       }
     }
     if (!loading)
-      document.querySelector(`#${activeTab}`).classList.toggle("active");
+      document.querySelector(`#${activeTab}`).classList.toggle('active');
   }, [auth.loading]);
 
   return loading ? (
@@ -66,10 +66,10 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <Link to="/dashboard/events" onClick={handleHamburger}>
               <div
                 className={`side-nav-link ${
-                  active === "events" ? "active" : ""
+                  active === 'events' ? 'active' : ''
                 }`}
                 id="events"
-                onClick={() => setActive("events")}
+                onClick={() => setActive('events')}
               >
                 <span>
                   <img src={events} alt="Events Icons"></img>
@@ -80,10 +80,10 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <Link to="/dashboard/myevents" onClick={handleHamburger}>
               <div
                 className={`side-nav-link ${
-                  active === "my-events" ? "active" : ""
+                  active === 'my-events' ? 'active' : ''
                 }`}
                 id="my-events"
-                onClick={() => setActive("my-events")}
+                onClick={() => setActive('my-events')}
               >
                 <span>
                   <img src={myEvents} alt="my Events Icon"></img>
@@ -94,10 +94,10 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <Link to="/dashboard/proshow" onClick={handleHamburger}>
               <div
                 className={`side-nav-link ${
-                  active === "proshow" ? "active" : ""
+                  active === 'proshow' ? 'active' : ''
                 }`}
                 id="proshow"
-                onClick={() => setActive("proshow")}
+                onClick={() => setActive('proshow')}
               >
                 <span>
                   <img src={proshow} alt="Proshow Icon"></img>
@@ -108,10 +108,10 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <Link to="/dashboard/delegatecard" onClick={handleHamburger}>
               <div
                 className={`side-nav-link ${
-                  active === "delegate-card" ? "active" : ""
+                  active === 'delegate-card' ? 'active' : ''
                 }`}
                 id="delegate-card"
-                onClick={() => setActive("delegate-card")}
+                onClick={() => setActive('delegate-card')}
               >
                 <span>
                   <img src={delegateCard} alt="Delegate Card Icon"></img>
@@ -119,9 +119,27 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
                 Delegate Cards
               </div>
             </Link>
+            <Link to="/developers" onClick={handleHamburger}>
+              <div
+                className={`side-nav-link ${
+                  active === 'developers' ? 'active' : ''
+                }`}
+                id="developers"
+                onClick={() => setActive('developers')}
+              >
+                <span>
+                  <img src={delegateCard} alt="Developers"></img>
+                </span>
+                Developers
+              </div>
+            </Link>
           </div>
           <div className="px-2 pb-4 d-flex justify-content-center">
-            <Link to="/schedule" onClick={handleHamburger} style={{ textDecoration: "none" }}>
+            <Link
+              to="/schedule"
+              onClick={handleHamburger}
+              style={{ textDecoration: 'none' }}
+            >
               <div className="text-muted">
                 <span>
                   <i className="fa fa-sort-numeric-asc mr-2"></i>
@@ -129,8 +147,12 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
                 Schedule
               </div>
             </Link>
-            <p className="mx-2">{" | "}</p>
-            <Link to="/rulebook" onClick={handleHamburger} style={{ textDecoration: "none" }}>
+            <p className="mx-2">{' | '}</p>
+            <Link
+              to="/rulebook"
+              onClick={handleHamburger}
+              style={{ textDecoration: 'none' }}
+            >
               <div className="text-muted">
                 <span>
                   <i className="fa fa-book mr-2"></i>
@@ -143,24 +165,33 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
             <h4 className="font-medium">{user.name}</h4>
             <h5 className="font-light">{user.college}</h5>
             <div className="buttons font-medium">
-              <button className="bg-white" onClick={() => navigate(`/dashboard/profile`)}>
+              <button
+                className="bg-white"
+                onClick={() => navigate(`/dashboard/profile`)}
+              >
                 Profile
               </button>
-              <button className="bg-white" onClick={auth.userLogout}>Logout</button>
+              <button className="bg-white" onClick={auth.userLogout}>
+                Logout
+              </button>
             </div>
-            <a href="../../developers" className="font-light w-auto text-center mt-5" style={{textDecoration:'none'}}>
-              <div className="text-light" style={{ fontSize: "12px" }}>
-                Made with{" "}
+            {/* <a
+              href="../../developers"
+              className="font-light w-auto text-center mt-5"
+              style={{ textDecoration: 'none' }}
+            >
+              <div className="text-light" style={{ fontSize: '12px' }}>
+                Made with{' '}
                 <i
                   className="fa fa-heart mx-1"
-                  style={{ fontSize: "13px", color: "red" }}
-                ></i>{" "}
+                  style={{ fontSize: '13px', color: 'red' }}
+                ></i>{' '}
                 by SysAdmin and Web '22
               </div>
-              <div className="text-secondary" style={{ fontSize: "13px" }}>
+              <div className="text-secondary" style={{ fontSize: '13px' }}>
                 sysadrevels22@gmail.com
               </div>
-            </a>
+            </a> */}
           </div>
         </div>
         <div className="content-area">

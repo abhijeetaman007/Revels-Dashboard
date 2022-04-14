@@ -431,6 +431,7 @@ input:after {
   background-repeat: no-repeat;
   background-position: right;
   background-size: cover;
+  z-index: 50;
 }
 
 .del-card:hover {
