@@ -128,7 +128,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
                 onClick={() => setActive('developers')}
               >
                 <span>
-                  <img src={delegateCard} alt="Developers"></img>
+                  <img src={myEvents} alt="Developers"></img>
                 </span>
                 Developers
               </div>
