@@ -73,18 +73,14 @@ const DelegateCard = ({
                   <>
                     <button
                       style={{ color: "black" }}
-                      disabled={
-                        data.isActive
-                          ? data._id == "624b37324fda25e0e4990ed2"
-                          : true
-                      }
+                      disabled={true}
                       onClick={async () => {
                         const d = await cashPay(data._id, cardPrice);
                         if (d.status === 200 && cardPrice === 0) setBought(1);
                         else if (d.status === 200) setBought(2);
                       }}
                     >
-                      {cardPrice === 0 ? "Buy Now" : "Pay via Cash"}
+                      {cardPrice === 0 ? "Buy Now" : "Pay via Cash[Closed]"}
                     </button>{" "}
                     {cardPrice !== 0 && (
                       <button
