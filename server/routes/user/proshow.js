@@ -3,6 +3,7 @@ const User = require("../../models/User");
 const day1Bands = async (req, res) => {
   try {
     let { token } = req.params;
+    console.log(token);
     if (token.length >= 20) {
       let user = await User.findOne(
         { token: token, delegateCards: "624b37324fda25e0e4990ed2" },
