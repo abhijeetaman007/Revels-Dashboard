@@ -114,6 +114,7 @@ const {
   requestAtomFaculty,
   responseAtomFaculty,
 } = require("./user/atom");
+const { day1Bands } = require("./user/proshow");
 
 //Routes:
 // const College = require('../models/College');
@@ -301,6 +302,8 @@ router.get("/admin/vigilance/user/:token", getUserFromID);
 router.get("/admin/vigilance/user/event/:eventID/:token", isEventRegistered);
 
 router.get("/admin/vigilance/user/delegatecard", hasDelegateCard);
+
+router.post("/admin/proshow/sale/:token", isAdminLoggedIn, isINF, day1Bands);
 
 // // --------------------------INTERNAL ROUTES-----------------------------------
 // // @SysAdmin Routes - Private Routes for internal use - No frontend needed
