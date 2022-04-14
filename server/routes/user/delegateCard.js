@@ -141,7 +141,7 @@ const getProshowCards = async (req, res) => {
 
 const getAllDelegateCards = async (req, res) => {
   try {
-    let delCards = await DelCard.find({}).sort({ type: -1 });
+    let delCards = await DelCard.find({}).sort({ isActive: -1, type: -1 });
     //console.log('All Cards ', delCards);
     return res.status(200).send({ success: true, data: delCards });
   } catch (err) {
