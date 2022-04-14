@@ -9,12 +9,10 @@ const day1Bands = async (req, res) => {
         { password: 0, passwordResetToken: 0, token: 0 }
       ).populate("role delegateCards");
       if (!user)
-        return res
-          .status(200)
-          .send({
-            success: false,
-            msg: "User not found or proshow pass not purchased",
-          });
+        return res.status(200).send({
+          success: false,
+          msg: "User not found or proshow pass not purchased",
+        });
       return res.send({ success: true, data: user });
     } else {
       console.log("vig token");
@@ -38,12 +36,10 @@ const day1Bands = async (req, res) => {
         { password: 0, passwordResetToken: 0 }
       ).populate("role delegateCards");
       if (!user)
-        return res
-          .status(400)
-          .send({
-            msg: "User not found or proshow pass not purchased",
-            success: false,
-          });
+        return res.status(200).send({
+          msg: "User not found or proshow pass not purchased",
+          success: false,
+        });
       if (user.token.slice(-10) != userToken)
         return res.status(400).send({ success: false, msg: "Invalid QR Code" });
       return res.status(200).send({ success: true, data: user });
