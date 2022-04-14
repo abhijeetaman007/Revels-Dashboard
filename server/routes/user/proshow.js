@@ -33,7 +33,7 @@ const day1Bands = async (req, res) => {
       console.log("token", userToken);
       userID = Number(userID);
       let user = await User.findOne(
-        { token: token, delegateCards: "624b37324fda25e0e4990ed2" },
+        { userID: userID, delegateCards: "624b37324fda25e0e4990ed2" },
         { password: 0, passwordResetToken: 0 }
       ).populate("role delegateCards");
       if (!user)
