@@ -114,7 +114,7 @@ const {
   requestAtomFaculty,
   responseAtomFaculty,
 } = require("./user/atom");
-const { day1Bands } = require("./user/proshow");
+const { day1Bands, day2Bands } = require("./user/proshow");
 
 //Routes:
 // const College = require('../models/College');
