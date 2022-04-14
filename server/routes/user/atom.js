@@ -1,9 +1,23 @@
 var crypto = require("crypto");
+const DelegateCard = require("../../models/DelegateCard");
 const Transaction = require("../../models/Transaction");
 const User = require("../../models/User");
-
+const tshirts = [
+  "62589320a24c0a3bf6e756f3",
+  "62589369a24c0a3bf6e756f7",
+  "62589372a24c0a3bf6e756fb",
+  "6258937aa24c0a3bf6e756ff",
+  "625893c6a24c0a3bf6e75704",
+  "625893cfa24c0a3bf6e75708",
+  "625893d7a24c0a3bf6e7570c",
+];
 const requestAtom = async (req, resp) => {
   try {
+    if (tshirts.includes(data.udf4)) {
+      const tshirt = await DelegateCard.findOne({ _id: data.udf4 });
+      if (tshirt.maxCount < 1)
+        return resp.status(200).send({ success: false, msg: "Sold Out" });
+    }
     var data = req.body;
     let ids = await Transaction.find({}, { orderId: 1, _id: 0 })
       .sort({ orderId: -1 })
@@ -120,6 +134,7 @@ const requestAtom = async (req, resp) => {
 
 const responseAtom = async (req, resp) => {
   try {
+    const tshirts = [];
     var res_enc_key = process.env.res_enc_key;
     var res_salt = process.env.res_salt;
     // var res_enc_key = "8E41C78439831010F81F61C344B7BFC7";
@@ -197,8 +212,16 @@ const responseAtom = async (req, resp) => {
         console.log(user);
       }
     }
-    if (data.f_code == "Ok" || data.amt == "0.00")
+    if (data.f_code == "Ok" || data.amt == "0.00") {
+      if (tshirts.includes(data.udf4)) {
+        const tshirt = await DelegateCard.findOne({ _id: data.udf4 });
+        await DelegateCard.updateOne(
+          { _id: data.udf4 },
+          { $set: { maxCount: tshirt.maxCount - 1 } }
+        );
+      }
       return resp.redirect("http://revelsmit.in/success");
+    }
     if (data.f_code == "F") return resp.redirect("https://revelsmit.in/failed");
     if (data.f_code == "C")
       return resp.redirect("https://revelsmit.in/cancelled");
