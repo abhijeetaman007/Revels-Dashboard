@@ -19,10 +19,13 @@ const DelegateCard = ({
       ? data.mahePrice
       : data.nonMahePrice;
   return (
-    data.isActive &&
     cardPrice >= 0 && (
       <div
-        className={`del-card card-up m-1 ${data.type.toLowerCase()} font-medium`}
+        className={
+          data.isActive
+            ? `del-card card-up m-1 ${data.type.toLowerCase()} font-medium`
+            : `del-card card-up m-1 ${data.type.toLowerCase()} font-medium not-active`
+        }
       >
         <div className="del-content">
           <div>
@@ -48,14 +51,17 @@ const DelegateCard = ({
               <div className="clg px-1">
                 {cardPrice === 0 ? <p>FREE</p> : <p>&#x20B9;{cardPrice}</p>}
                 {bought === 1 ? (
-                  <button disabled={true}>Purchased</button>
+                  <button style={{ color: "black" }} disabled={true}>
+                    Purchased
+                  </button>
                 ) : bought === 2 && cardPrice !== 0 ? (
                   <>
-                    <button disabled={true}>
+                    <button style={{ color: "black" }} disabled={true}>
                       Pay via cash at the nearest Infodesk
                     </button>
                     <button
-                      disabled={false}
+                      style={{ color: "black" }}
+                      disabled={data.isActive ? false : true}
                       onClick={() =>
                         displayRazorpay(data._id, cardPrice, auth.user)
                       }
@@ -66,18 +72,20 @@ const DelegateCard = ({
                 ) : (
                   <>
                     <button
-                      disabled={data._id == "624b37324fda25e0e4990ed2"}
+                      style={{ color: "black" }}
+                      disabled={true}
                       onClick={async () => {
                         const d = await cashPay(data._id, cardPrice);
                         if (d.status === 200 && cardPrice === 0) setBought(1);
                         else if (d.status === 200) setBought(2);
                       }}
                     >
-                      {cardPrice === 0 ? "Buy Now" : "Pay via Cash"}
+                      {cardPrice === 0 ? "Buy Now" : "Pay via Cash [Closed]"}
                     </button>{" "}
                     {cardPrice !== 0 && (
                       <button
-                        disabled={bought}
+                        style={{ color: "black" }}
+                        disabled={data.isActive ? bought : true}
                         onClick={() =>
                           displayRazorpay(data._id, cardPrice, auth.user)
                         }

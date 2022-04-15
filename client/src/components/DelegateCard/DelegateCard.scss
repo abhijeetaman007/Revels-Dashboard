@@ -2,6 +2,7 @@
 $delBlue: #22B6E6;
 $delPurple: #C6A3FF;
 .del-card {
+  min-height: 350px;
   @include card-hover;
   width: 28%;
   padding: 20px;
@@ -123,4 +124,11 @@ $delPurple: #C6A3FF;
 }
 .hidden{
   visibility: hidden;
+}
+.not-active{
+  opacity: 0.5;
+ 
+}
+button:disabled{
+  opacity: 0.5;
 }

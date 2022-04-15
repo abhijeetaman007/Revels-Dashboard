@@ -19,6 +19,7 @@ const Proshow = ({ isPublicProshow=false }) => {
           );
         })}
       </div>
+      <a style={{textDecoration:'none'}}href="./delegatecard" className="buy-now font-medium">BUY TICKETS NOW</a>
     </div>
   );
 };
