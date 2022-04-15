@@ -80,7 +80,7 @@ const DelegateCard = ({
                         else if (d.status === 200) setBought(2);
                       }}
                     >
-                      {cardPrice === 0 ? "Buy Now" : "Pay via Cash[Closed]"}
+                      {cardPrice === 0 ? "Buy Now" : "Pay via Cash [Closed]"}
                     </button>{" "}
                     {cardPrice !== 0 && (
                       <button
