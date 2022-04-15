@@ -38,9 +38,30 @@
         cursor: pointer;
     }
 }
+.buy-now{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin: 1rem 0 1rem 1rem;
+    background-color: white;
+    color: black;
+    padding: 1rem 3.5rem;
+    border-radius: 20px 0 0 20px;
+    letter-spacing: 0.1rem;
+    font-size: 1.8rem;
+}
 @media only screen and (max-width: 812px) {
     .button-bar {
         left: 0;
         width: 100%;
+    }
+    .buy-now{
+        border-radius: 0;
+        width: 100%;
+        padding: 1.5rem;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        margin: auto;
     }
 }
