@@ -12,7 +12,7 @@ const Developers = () => {
       <h1
         className="dtitle font-heavy text-center text-white pb-2"
         style={{
-          fontSize: '2rem',
+          fontSize: '2.5rem',
           letterSpacing: '0.4rem',
         }}
       >
