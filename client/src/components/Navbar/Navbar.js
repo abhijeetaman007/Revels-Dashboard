@@ -44,7 +44,7 @@ const Navbar = ({ isBackground }) => {
         {auth.user ? null : (
           <li className="nav-item" onClick={closeNav}>
             <a href="/developers" className="nav-link">
-              Admins
+              Team
             </a>
           </li>
         )}

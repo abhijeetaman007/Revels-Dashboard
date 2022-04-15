@@ -24,6 +24,24 @@ const Developers = () => {
           return <Card key={ind} data={data} />;
         })}
       </div>
+      <a
+        href="../../developers"
+        className="font-light w-auto text-center mt-5"
+        style={{ textDecoration: 'none' }}
+      >
+        <div className="text-light" style={{ fontSize: '12px' }}>
+          Made with{' '}
+          <i
+            className="fa fa-heart mx-1"
+            style={{ fontSize: '13px', color: 'red' }}
+          ></i>{' '}
+          by SysAdmin and Web '22
+        </div>
+        <div className="text-secondary" style={{ fontSize: '13px' }}>
+          sysadrevels22@gmail.com
+        </div>
+      </a>
+      <br></br>
     </div>
   );
 };

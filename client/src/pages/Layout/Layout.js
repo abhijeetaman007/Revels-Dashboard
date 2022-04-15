@@ -130,7 +130,7 @@ const Layout = ({ children, isAagazVisible = false, activeTab }) => {
                 <span>
                   <img src={myEvents} alt="Developers"></img>
                 </span>
-                Developers
+                System Admins
               </div>
             </Link>
           </div>
